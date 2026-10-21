@@ -473,8 +473,9 @@ Map<String, Offset> projectConstellation(
   final maxX = raw.values.map((p) => p.dx).reduce((a, b) => a > b ? a : b);
   final minY = ys.reduce((a, b) => a < b ? a : b);
   final maxY = raw.values.map((p) => p.dy).reduce((a, b) => a > b ? a : b);
-  final availableW = math.max(1.0, size.width - 48).toDouble();
-  final availableH = math.max(1.0, size.height - 48).toDouble();
+  final padding = math.min(24.0, math.min(size.width, size.height) * .1);
+  final availableW = math.max(1.0, size.width - padding * 2).toDouble();
+  final availableH = math.max(1.0, size.height - padding * 2).toDouble();
   final spanX = math.max(.0001, maxX - minX).toDouble();
   final spanY = math.max(.0001, maxY - minY).toDouble();
   final scale = math.min(availableW / spanX, availableH / spanY).toDouble();

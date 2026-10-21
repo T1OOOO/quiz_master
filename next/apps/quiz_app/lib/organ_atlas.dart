@@ -239,6 +239,39 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
       _answer = null;
     }
   });
+
+  String _choiceExplanation(OrganStructure item) {
+    final position = _v(item.positionEn, item.positionRu).trim();
+    final function = _v(item.functionEn, item.functionRu).trim();
+    if (position.isEmpty && function.isEmpty) return '';
+    return [
+      if (position.isNotEmpty) '${_t('Position', 'Положение')}: $position',
+      if (function.isNotEmpty) '${_t('Function', 'Функция')}: $function',
+    ].join('\n');
+  }
+
+  Widget _answerSummary({
+    required Key key,
+    required IconData icon,
+    required String label,
+    required String value,
+    required Color color,
+  }) => Card(
+    key: key,
+    color: color,
+    child: Padding(
+      padding: const EdgeInsets.all(12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon),
+          const SizedBox(width: 8),
+          Expanded(child: Text('$label: $value')),
+        ],
+      ),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) => FutureBuilder<OrganAtlas>(
     future: _future,
@@ -615,6 +648,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
     }
     final question = _round[_index];
     final options = question.optionIds.map(atlas.organ).toList();
+    final correct = atlas.organ(question.correctId);
     return _shell(
       SingleChildScrollView(
         padding: const EdgeInsets.all(16),
@@ -633,26 +667,67 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 12),
-            for (final item in options)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: OutlinedButton(
-                  key: Key('organ-option-${item.id}'),
-                  onPressed: _checked
-                      ? null
-                      : () => setState(() => _answer = item.id),
-                  style: OutlinedButton.styleFrom(
-                    disabledForegroundColor: Theme.of(context)
-                        .colorScheme
-                        .onSurface,
-                    minimumSize: const Size(44, 48),
-                    backgroundColor: _answer == item.id
-                        ? Theme.of(context).colorScheme.secondaryContainer
-                        : null,
-                  ),
-                  child: Text(_name(item)),
-                ),
+            for (final item in options) ...[
+              Builder(
+                builder: (context) {
+                  final correctOption =
+                      _checked && item.id == question.correctId;
+                  final wrongSelection =
+                      _checked && item.id == _answer && !correctOption;
+                  final scheme = Theme.of(context).colorScheme;
+                  final icon = correctOption
+                      ? Icons.check_circle_outline
+                      : wrongSelection
+                      ? Icons.cancel_outlined
+                      : null;
+                  final status = correctOption
+                      ? _t('Correct', 'Верный ответ')
+                      : wrongSelection
+                      ? _t('Your answer', 'Ваш ответ')
+                      : null;
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Semantics(
+                      label: status == null
+                          ? _name(item)
+                          : '$status: ${_name(item)}',
+                      child: OutlinedButton(
+                        key: Key('organ-option-${item.id}'),
+                        onPressed: _checked
+                            ? null
+                            : () => setState(() => _answer = item.id),
+                        style: OutlinedButton.styleFrom(
+                          disabledForegroundColor: wrongSelection
+                              ? scheme.onErrorContainer
+                              : correctOption
+                              ? scheme.onPrimaryContainer
+                              : scheme.onSurface,
+                          disabledBackgroundColor: wrongSelection
+                              ? scheme.errorContainer
+                              : correctOption
+                              ? scheme.primaryContainer
+                              : null,
+                          minimumSize: const Size(44, 48),
+                          backgroundColor: _answer == item.id && !_checked
+                              ? scheme.secondaryContainer
+                              : null,
+                        ),
+                        child: Row(
+                          children: [
+                            if (icon != null) ...[
+                              Icon(icon),
+                              const SizedBox(width: 8),
+                            ],
+                            Expanded(child: Text(_name(item))),
+                            if (status != null) Text(status),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
+            ],
             if (!_checked)
               FilledButton(
                 key: const Key('organ-check'),
@@ -660,21 +735,63 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
                 child: Text(_t('Check', 'Проверить')),
               ),
             if (_checked) ...[
-              Text(
-                _answer == question.correctId
-                    ? _t('Correct.', 'Верно.')
-                    : _t('Not quite.', 'Не совсем.'),
+              _answerSummary(
+                key: const Key('organ-feedback-your'),
+                icon: _answer == question.correctId
+                    ? Icons.check_circle_outline
+                    : Icons.cancel_outlined,
+                label: _t('Your answer', 'Ваш ответ'),
+                value: _name(atlas.organ(_answer!)),
+                color: _answer == question.correctId
+                    ? Theme.of(context).colorScheme.primaryContainer
+                    : Theme.of(context).colorScheme.errorContainer,
               ),
-              Text(_v(question.explanationEn, question.explanationRu)),
-              for (final source in question.sourceIds)
-                Text(
-                  '${_t('Source', 'Источник')}: ${learningSourceTitle(atlas.source(source).title, russian: _ru)}',
+              if (_answer != question.correctId)
+                _answerSummary(
+                  key: const Key('organ-feedback-correct'),
+                  icon: Icons.check_circle_outline,
+                  label: _t('Correct answer', 'Правильный ответ'),
+                  value: _name(correct),
+                  color: Theme.of(context).colorScheme.primaryContainer,
                 ),
               FilledButton(
                 key: const Key('organ-next'),
                 onPressed: _next,
                 child: Text(_t('Next', 'Далее')),
               ),
+              Text(
+                _answer == question.correctId
+                    ? _t('Correct.', 'Верно.')
+                    : _t('Not quite.', 'Не совсем.'),
+              ),
+              Text(_v(question.explanationEn, question.explanationRu)),
+              ExpansionTile(
+                key: const Key('organ-option-explanations'),
+                title: Text(
+                  _t('Explanations for the options', 'Пояснения к вариантам'),
+                ),
+                children: [
+                  for (final item in options)
+                    if (_choiceExplanation(item).isNotEmpty)
+                      ExpansionTile(
+                        key: Key('organ-option-explanation-${item.id}'),
+                        title: Text(
+                          _t('About ${_name(item)}', 'О ${_name(item)}'),
+                        ),
+                        childrenPadding: const EdgeInsets.fromLTRB(
+                          16,
+                          0,
+                          16,
+                          12,
+                        ),
+                        children: [Text(_choiceExplanation(item))],
+                      ),
+                ],
+              ),
+              for (final source in question.sourceIds)
+                Text(
+                  '${_t('Source', 'Источник')}: ${learningSourceTitle(atlas.source(source).title, russian: _ru)}',
+                ),
             ],
           ],
         ),

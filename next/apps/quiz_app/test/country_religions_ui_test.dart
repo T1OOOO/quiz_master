@@ -36,12 +36,17 @@ void main() {
         ..translateByDouble(-20, -10, 0, 1)
         ..scaleByDouble(1.8, 1.8, 1, 1);
       viewer.transformationController!.value = camera;
-      final layer = find.byKey(const Key('country-direct-layer-religion'));
-      await tester.ensureVisible(layer);
-      await tester.tap(layer);
+      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
+      await tester.tap(find.byKey(const Key('country-map-settings')));
       await tester.pumpAndSettle();
+      final layer = find.byKey(const Key('country-sheet-layer-religion'));
+      await tester.tap(layer);
+      await tester.pump();
       expect(tester.widget<FilterChip>(layer).selected, isTrue);
       expect(viewer.transformationController!.value, camera);
+      await tester.ensureVisible(find.byKey(const Key('country-apply-layer')));
+      await tester.tap(find.byKey(const Key('country-apply-layer')));
+      await tester.pumpAndSettle();
       await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
       await tester.tap(find.byKey(const Key('country-map-settings')));
       await tester.pumpAndSettle();

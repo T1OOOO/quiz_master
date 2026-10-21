@@ -1,0 +1,1454 @@
+{
+  "schema": "qm-landmark-thumbnail-regeneration/v1",
+  "generated_at_utc": "2026-10-21T08:42:47.790667+00:00",
+  "catalog": {
+    "path": "next/apps/quiz_app/assets/quizipedia/catalog.json",
+    "sha256": "0ef534bac377c150e3bf3109d7dea96fb56e1e68f8bbc04c81adc5804d2d984b",
+    "bytes": 560891
+  },
+  "policy": {
+    "count": 46,
+    "max_edge": 512,
+    "never_upscale": true,
+    "webp_quality": 76,
+    "webp_method": 6,
+    "orientation": "Pillow ImageOps.exif_transpose"
+  },
+  "tool": {
+    "python": "3.15.0",
+    "pillow": "13.0.0"
+  },
+  "items": [
+    {
+      "id": "colosseum",
+      "original": {
+        "path": "assets/quizipedia/colosseum.jpg",
+        "sha256": "fc4f8ccd54dbf068d3a527d4130629e3a397d8bff57321b4f59e673c95b0fd69",
+        "bytes": 162665,
+        "dimensions": [
+          684,
+          912
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-colosseum.webp",
+        "before": {
+          "sha256": "5fe000e6aab6d4d750789c4a3aa112bf341319a0b02d22e802b205ec444d2e94",
+          "bytes": 4088,
+          "dimensions": [
+            108,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "593faada9f50cbef8c81d15c225706159a433bbf55e0929c6b2b955958435238",
+          "bytes": 39750,
+          "dimensions": [
+            384,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "taj-mahal",
+      "original": {
+        "path": "assets/quizipedia/taj-mahal.jpg",
+        "sha256": "f81d14f932db98335d238fda787a39a6caa811971c1844fba9b15339a3168211",
+        "bytes": 115347,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-taj-mahal.webp",
+        "before": {
+          "sha256": "7b25e3378e8b149f536f7408cbdbf53f1dc03dbf3310c6212137017bbe9b3a22",
+          "bytes": 2500,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "6ab1edcffcc65967754fefca06a3460ae96724383c7806ace67091f7bcd52105",
+          "bytes": 15276,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "giza-pyramid",
+      "original": {
+        "path": "assets/quizipedia/giza-pyramid.jpg",
+        "sha256": "8ef792f9dfc71b16ea84bf7e78fc8536c6981dde74a5af286a1c641c8d408580",
+        "bytes": 107965,
+        "dimensions": [
+          960,
+          600
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-giza-pyramid.webp",
+        "before": {
+          "sha256": "bb04adc0c441701aca99da717bdc32a0e5371ab021d976c5ca282a0aaaf835ac",
+          "bytes": 1624,
+          "dimensions": [
+            192,
+            120
+          ]
+        },
+        "after": {
+          "sha256": "69777e1ea21b55fd6475639e894b7b33c5637f2bd32c84030b1e8518ddc3595b",
+          "bytes": 13598,
+          "dimensions": [
+            512,
+            320
+          ]
+        }
+      }
+    },
+    {
+      "id": "petra-treasury",
+      "original": {
+        "path": "assets/quizipedia/petra-treasury.jpg",
+        "sha256": "c32f91edcdb7ae3ad7245600d18b4af699021a4b919ef0560abc7f6c58a5bb6d",
+        "bytes": 156505,
+        "dimensions": [
+          640,
+          960
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-petra-treasury.webp",
+        "before": {
+          "sha256": "37e7b87023e33aa81f6d9f350e075e51ea0b78cb9480e99519f942649d04912d",
+          "bytes": 2650,
+          "dimensions": [
+            96,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "6e069d20be06f3e7d1f288afe12886e4d956334fdacea369fb996e1425792d07",
+          "bytes": 26838,
+          "dimensions": [
+            341,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "sydney-opera",
+      "original": {
+        "path": "assets/quizipedia/sydney-opera.jpg",
+        "sha256": "6cb36da39a4e64bb038f817f5637bb8c504addcdf0a28c11e3b8b1cd2dc95854",
+        "bytes": 144254,
+        "dimensions": [
+          960,
+          720
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-sydney-opera.webp",
+        "before": {
+          "sha256": "874d58d0f75e901e0a6ab93073579960e3f747920cb1f9d0f03d97beec186527",
+          "bytes": 4178,
+          "dimensions": [
+            192,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "b02ba3e9066b542dd1775f3049272c2d6e08aea0b894c79a1d4baee9f7b96170",
+          "bytes": 23028,
+          "dimensions": [
+            512,
+            384
+          ]
+        }
+      }
+    },
+    {
+      "id": "eiffel",
+      "original": {
+        "path": "assets/quizipedia/eiffel.jpg",
+        "sha256": "05e7a66fa98399d575086e5c1625dfbaec5cde00efdc7c84fca47449bb5e4295",
+        "bytes": 105545,
+        "dimensions": [
+          960,
+          633
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-eiffel.webp",
+        "before": {
+          "sha256": "73ffd9364f31b6523d4522ed3eb923c3b1fd4ec8e96cef9d9bfa03a9d2de371a",
+          "bytes": 3050,
+          "dimensions": [
+            192,
+            127
+          ]
+        },
+        "after": {
+          "sha256": "e448ced1e6c8d9b7fe17e768384ec123f81b3289c640a4d771b70ea772d173e2",
+          "bytes": 16102,
+          "dimensions": [
+            512,
+            338
+          ]
+        }
+      }
+    },
+    {
+      "id": "statue-liberty",
+      "original": {
+        "path": "assets/quizipedia/statue-liberty.jpg",
+        "sha256": "aca05c9c1b19f727efb5e7c2a096a09eb296a48db0bfb0af353ccd950a64d498",
+        "bytes": 138325,
+        "dimensions": [
+          960,
+          1471
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-statue-liberty.webp",
+        "before": {
+          "sha256": "fe7a1cae2b24c10dd062f6a3f595aa2166f4e9a8b7b0211cd7e6b5c2a86a47ab",
+          "bytes": 906,
+          "dimensions": [
+            94,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "6fd86723927f16cf94cdca02f0e0c72df4c87e0e024f8628b94b5fad69ac9fa9",
+          "bytes": 7934,
+          "dimensions": [
+            334,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "golden-gate",
+      "original": {
+        "path": "assets/quizipedia/golden-gate.jpg",
+        "sha256": "5773adbb5f7f02ef87af35538c096b6e2612d849ab32925b77bcdc40b49c6b36",
+        "bytes": 150349,
+        "dimensions": [
+          960,
+          600
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-golden-gate.webp",
+        "before": {
+          "sha256": "34114f23b2f9dfba8e0aabfc094fe37cee0bf8b763c0d3aafdacc92174dd3cd7",
+          "bytes": 3168,
+          "dimensions": [
+            192,
+            120
+          ]
+        },
+        "after": {
+          "sha256": "428507f1c08e9e02c02414d33a4c013fd770e4b50a683669cfc9c15d725a2312",
+          "bytes": 23618,
+          "dimensions": [
+            512,
+            320
+          ]
+        }
+      }
+    },
+    {
+      "id": "tower-bridge",
+      "original": {
+        "path": "assets/quizipedia/tower-bridge.jpg",
+        "sha256": "7872e029020345829448441922d906d136f6de66e1eb304c613a16eeeb3e52fd",
+        "bytes": 126888,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-tower-bridge.webp",
+        "before": {
+          "sha256": "62bf0cf2642c93047f293f2821eea6e981996bf43508ec83dfc8c48659d61587",
+          "bytes": 3480,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "e99c908d66b2ad2aa4d0916ee1fab100f16662e18210b823e3f7bb7a3ebc5f24",
+          "bytes": 20478,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "big-ben",
+      "original": {
+        "path": "assets/quizipedia/big-ben.jpg",
+        "sha256": "f88c0e511e03d663bbd4f311cd83d675afb696908d685d9dc7a92b7e9c86a6c6",
+        "bytes": 371884,
+        "dimensions": [
+          960,
+          1707
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-big-ben.webp",
+        "before": {
+          "sha256": "1717236e7926cf036b1e5eb7ac10c1c811d1225f49464f414195384bc3709fd7",
+          "bytes": 1830,
+          "dimensions": [
+            81,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "b338a1bc32244542e0f064c56b0b520ad422df07f8d840dc1891dadc64d69886",
+          "bytes": 19836,
+          "dimensions": [
+            288,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "acropolis",
+      "original": {
+        "path": "assets/quizipedia/acropolis.jpg",
+        "sha256": "724f2f3df426ff4ab1974906b37f9de492c71623a5dc67e73d97fd44a52f36a5",
+        "bytes": 160339,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-acropolis.webp",
+        "before": {
+          "sha256": "82fbf9bb59fea8afc41d1a1d19bd45ed3f81bf91c1cf08b361fc05a978b559e2",
+          "bytes": 2998,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "848f225f5080b08b5a9d9d3a970344031cb2317743e7458ae2ee3c616e1a2b7e",
+          "bytes": 25738,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "sagrada-familia",
+      "original": {
+        "path": "assets/quizipedia/sagrada-familia.jpg",
+        "sha256": "43ea4d849b7a563c7f287ce51dd1ff229f160c83e31e384f44a56f994c92f571",
+        "bytes": 334121,
+        "dimensions": [
+          960,
+          1397
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-sagrada-familia.webp",
+        "before": {
+          "sha256": "2836eb12ee8b731954159c5c3b957dbffcf1bbdf0def333d3ab1a2c9a2f5c175",
+          "bytes": 2596,
+          "dimensions": [
+            99,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "1fb581a4b4325054e6b22868b6ed4d7ef7761736ffa404f43041de7e5511ab82",
+          "bytes": 33862,
+          "dimensions": [
+            352,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "alhambra",
+      "original": {
+        "path": "assets/quizipedia/alhambra.jpg",
+        "sha256": "803a9fbd850a2f5e8638b2d7d4ebf01c61bc098005d3ef67aaa752aaec3b9910",
+        "bytes": 200053,
+        "dimensions": [
+          960,
+          639
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-alhambra.webp",
+        "before": {
+          "sha256": "0c8bc138e45730ac7d9744f9e9f7d651f40e8fc134519d17a352443888fd39d1",
+          "bytes": 3740,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "821cd094531c02d0496bc333340f8232bc0f6b78c8eb333d1757e178a5703505",
+          "bytes": 32062,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "pisa-tower",
+      "original": {
+        "path": "assets/quizipedia/pisa-tower.jpg",
+        "sha256": "731e286b21e6625b1bc8d269826d04502f3f9debdb4e83944066bec8adf320ff",
+        "bytes": 472108,
+        "dimensions": [
+          960,
+          1339
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-pisa-tower.webp",
+        "before": {
+          "sha256": "f1b084661bbdb4c81052b87f0e2d566af945088167f7a5b94f451ff19b09582b",
+          "bytes": 3452,
+          "dimensions": [
+            103,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "14da7f2031cf6321c2d0aa9bafedc4ccf12e380abd914005eaf86fdae0c429a9",
+          "bytes": 43200,
+          "dimensions": [
+            367,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "st-basil",
+      "original": {
+        "path": "assets/quizipedia/st-basil.jpg",
+        "sha256": "372825b06a246f45c03cf16f562f5c6004c3c76415cadb1ae92887fd7747756e",
+        "bytes": 289752,
+        "dimensions": [
+          960,
+          1065
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-st-basil.webp",
+        "before": {
+          "sha256": "08179ea9b0656e4ae09aa2ea892b117ffe0a8c0f06d7a55353152b8c0fae8a05",
+          "bytes": 2528,
+          "dimensions": [
+            130,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "08dae672320642b99de39e1e62580e64c973b9cacfe92c6dcaae1cb465ac9249",
+          "bytes": 40154,
+          "dimensions": [
+            462,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "savior-blood",
+      "original": {
+        "path": "assets/quizipedia/savior-blood.jpg",
+        "sha256": "d674e199d737244419ba44f700bf32158e3a26821535a4f9924190d4d4aa5e88",
+        "bytes": 226280,
+        "dimensions": [
+          960,
+          932
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-savior-blood.webp",
+        "before": {
+          "sha256": "00eedd581b21731cd171b027862db13a9fb229cae5b17c5e107081797091b222",
+          "bytes": 3164,
+          "dimensions": [
+            148,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "7423b6331613830b4e740628419decb2b7652938d83cd74716a688f1a3d467b2",
+          "bytes": 37572,
+          "dimensions": [
+            512,
+            497
+          ]
+        }
+      }
+    },
+    {
+      "id": "christ-redeemer",
+      "original": {
+        "path": "assets/quizipedia/christ-redeemer.jpg",
+        "sha256": "686711062de8e55b8f4810d8c770a5497267164cf334177fb6f8dccc66321e7c",
+        "bytes": 556296,
+        "dimensions": [
+          960,
+          1439
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-christ-redeemer.webp",
+        "before": {
+          "sha256": "6fd49b68cd959a77d2f3890a839fdffbbf2415d8be688f38d113bf2d0adaca3e",
+          "bytes": 2240,
+          "dimensions": [
+            96,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "45ece8137e010999295c7bd556772b63f885ccac0ba5f93c939168f89394c2f8",
+          "bytes": 37644,
+          "dimensions": [
+            342,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "brandenburg-gate",
+      "original": {
+        "path": "assets/quizipedia/brandenburg-gate.jpg",
+        "sha256": "1e9b30176eed052221a0f61bb3b5974c84812271ca043fc0a5ebdeb719d4a140",
+        "bytes": 169390,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-brandenburg-gate.webp",
+        "before": {
+          "sha256": "f0bdb0b7f1257b97b27988b93e57a8a814129b6b7708c15c692d71845ce6c33c",
+          "bytes": 4088,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "b65a3a36356d2cc5249f096c8183463135f9396e1ce7ca7840b5a167aed8814f",
+          "bytes": 25644,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "neuschwanstein",
+      "original": {
+        "path": "assets/quizipedia/neuschwanstein.jpg",
+        "sha256": "f7a12133b5aabb34f3961901dcc585bbd4a53e1d9eba21a31e579072e9e5f745",
+        "bytes": 249038,
+        "dimensions": [
+          960,
+          717
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-neuschwanstein.webp",
+        "before": {
+          "sha256": "cfc51f11e1a6b0b7e64affaf94aeb86316f99309dffd0d3e773acfb58b573845",
+          "bytes": 4864,
+          "dimensions": [
+            192,
+            143
+          ]
+        },
+        "after": {
+          "sha256": "9a4c9a117b5e28f038cedfc1757e088faed297a466fd099a0ab35625e791f596",
+          "bytes": 41278,
+          "dimensions": [
+            512,
+            382
+          ]
+        }
+      }
+    },
+    {
+      "id": "atomium",
+      "original": {
+        "path": "assets/quizipedia/atomium.jpg",
+        "sha256": "a15289a1aebcc955d8dd261872da9d3a9ebdf538fbd4e6d9698b36c193e55d7f",
+        "bytes": 265530,
+        "dimensions": [
+          960,
+          1210
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-atomium.webp",
+        "before": {
+          "sha256": "54383201fa6cdf2aee5bc900520a20b7bbf628281289758e3f7cd04ecd47325b",
+          "bytes": 2616,
+          "dimensions": [
+            114,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "78a73155682b54a1caef28f46563ba55d826d60fccf88b571b1a81e34f85987b",
+          "bytes": 26836,
+          "dimensions": [
+            406,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "rundetarn",
+      "original": {
+        "path": "assets/quizipedia/rundetarn.jpg",
+        "sha256": "67b5d3a8648fcff920f2efc6582ec211e5adae2859c66473191c750c0eaeb61d",
+        "bytes": 643459,
+        "dimensions": [
+          960,
+          1510
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-rundetarn.webp",
+        "before": {
+          "sha256": "83e44d10c08023ae31f0edef4dffc301ea5e73358e6c413e37c1a241429ea575",
+          "bytes": 3062,
+          "dimensions": [
+            92,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "20bdb8dd43e897f475dda55b83fb4fafbf0899d1e698362ae2c6fcf3a7015702",
+          "bytes": 40356,
+          "dimensions": [
+            326,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "qutb-minar",
+      "original": {
+        "path": "assets/quizipedia/qutb-minar.jpg",
+        "sha256": "3d81e8420a65c850483b0fa11383856d16a4c357954dc574250ec90600ec6ace",
+        "bytes": 235147,
+        "dimensions": [
+          960,
+          1451
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-qutb-minar.webp",
+        "before": {
+          "sha256": "27e2d2f8c78f4780230e17537f72c5582cab9a8d6dd93880ef14c32437b15fe0",
+          "bytes": 1236,
+          "dimensions": [
+            95,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "913bd1e81065250a3c737ee93415fb2097953f0ec74fef55105c1d0fcc5b800b",
+          "bytes": 15524,
+          "dimensions": [
+            339,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "hagia-sophia",
+      "original": {
+        "path": "assets/quizipedia/hagia-sophia.jpg",
+        "sha256": "0644f36efc7f9e0925f6a30154947835d7b6657f54c75fdea0c761b87fe5ff32",
+        "bytes": 139520,
+        "dimensions": [
+          960,
+          580
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-hagia-sophia.webp",
+        "before": {
+          "sha256": "6b25bc282fc8dec7b1bdcc514ddde9c239c5f8e563b15622cbc355861c804ef5",
+          "bytes": 3112,
+          "dimensions": [
+            192,
+            116
+          ]
+        },
+        "after": {
+          "sha256": "68ca572cf4732125da2204143e0022ba452510979f9468690bb29308249e92f8",
+          "bytes": 21650,
+          "dimensions": [
+            512,
+            309
+          ]
+        }
+      }
+    },
+    {
+      "id": "blue-mosque",
+      "original": {
+        "path": "assets/quizipedia/blue-mosque.jpg",
+        "sha256": "71f81c40dcc8ba665859e3298201640361d519bfda9734b79cbdcc8dfc6cff15",
+        "bytes": 215119,
+        "dimensions": [
+          960,
+          809
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-blue-mosque.webp",
+        "before": {
+          "sha256": "306c4e0ea73b17f5debe2fe1faf32068fea2bc38c1989f581ab553f4a41a0403",
+          "bytes": 3678,
+          "dimensions": [
+            171,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "9ce59c1f35c5a3acfce6e2d0422d72a4481afd8879089e4a373cefe22c55b796",
+          "bytes": 35780,
+          "dimensions": [
+            512,
+            431
+          ]
+        }
+      }
+    },
+    {
+      "id": "himeji",
+      "original": {
+        "path": "assets/quizipedia/himeji.jpg",
+        "sha256": "714639b0c98ea73857de4a41e5c734b66467bc44e76ae7c34cbf3ce80fbaf39d",
+        "bytes": 208995,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-himeji.webp",
+        "before": {
+          "sha256": "0f8261db1486aa050cdeebe1d48a9691f6ac471949b63721b84d44a5de25c3c7",
+          "bytes": 3942,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "b0477d281a423cfb848effb64d315fd9f7d3fd36105a7c95d0902454aecbbe1d",
+          "bytes": 36008,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "temple-heaven",
+      "original": {
+        "path": "assets/quizipedia/temple-heaven.jpg",
+        "sha256": "323f52fc3bd1c422ccb67464aee60dbb865c68f7bf5aa1f1333dc8d224b57374",
+        "bytes": 153746,
+        "dimensions": [
+          960,
+          639
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-temple-heaven.webp",
+        "before": {
+          "sha256": "4606b9fdd9b97b9baca589bfe68faa10afea81bf8a2e13518436a4d94128eadf",
+          "bytes": 3370,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "f25c333e4a159ed0792ce516123b635e2bfb2318db01d3b7060f9d9db97ebd2f",
+          "bytes": 25198,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "forbidden-city",
+      "original": {
+        "path": "assets/quizipedia/forbidden-city.jpg",
+        "sha256": "fd9f95785033ef7a8594f3fb8eafafa465978bf5358134d8135d79e884e8a7cd",
+        "bytes": 219414,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-forbidden-city.webp",
+        "before": {
+          "sha256": "0004af98de29f8b9b6c530fe34f6ab7e217fefdd310694ad266df262e565176b",
+          "bytes": 4684,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "1fb7b078d68a9bdd61172884f46e11a4c8919232b417d14f1430af75b3cda703",
+          "bytes": 38150,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "merlion",
+      "original": {
+        "path": "assets/quizipedia/merlion.jpg",
+        "sha256": "c295d306f9725a4d1ed89eb8fa62e95184f6f86b97bae471df3f07e2555ac0b0",
+        "bytes": 215931,
+        "dimensions": [
+          960,
+          720
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-merlion.webp",
+        "before": {
+          "sha256": "842b1bd8a086e2c57a4926fe04db9e8b0c92429977637cf4981c0cc598c2ae9a",
+          "bytes": 4786,
+          "dimensions": [
+            192,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "96d20520ec716cec7882bf609cf8f990093f4b703b4c36a0e41ba866dd4098b9",
+          "bytes": 38658,
+          "dimensions": [
+            512,
+            384
+          ]
+        }
+      }
+    },
+    {
+      "id": "wat-arun",
+      "original": {
+        "path": "assets/quizipedia/wat-arun.jpg",
+        "sha256": "64d0f3aadb246d68a0f3c3441866ef654782bd5bb7e27d02a52944d6af178a4c",
+        "bytes": 160159,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-wat-arun.webp",
+        "before": {
+          "sha256": "61c2aaaf320376e5d950e4adc5e35a20346fa666c368b86ef4d90582f1eff88d",
+          "bytes": 3240,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "74430e6fd4bc386fd8c6ae5da7c42202c23179ad7b5ca7496ddcf2ee4acbd28f",
+          "bytes": 26158,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "boudhanath",
+      "original": {
+        "path": "assets/quizipedia/boudhanath.jpg",
+        "sha256": "4b02f40442ae3f31828cf098f8e832fe1880837d4c8d01b54f297236ed8d73d3",
+        "bytes": 205998,
+        "dimensions": [
+          960,
+          720
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-boudhanath.webp",
+        "before": {
+          "sha256": "edbf83d0f14ad906d806088d2c0a3be13262c6b34fff73b29d9b83525a85767e",
+          "bytes": 5320,
+          "dimensions": [
+            192,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "5750fcec8d6784ea8bb28e7dc2c1cb8352cf6292f8acefd47c1be9f0edf55385",
+          "bytes": 34990,
+          "dimensions": [
+            512,
+            384
+          ]
+        }
+      }
+    },
+    {
+      "id": "koutoubia",
+      "original": {
+        "path": "assets/quizipedia/koutoubia.jpg",
+        "sha256": "45cfd4297db8228c561e10aeda9a04b18cf25dfb55114e58158b2a143a695e35",
+        "bytes": 344350,
+        "dimensions": [
+          960,
+          1280
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-koutoubia.webp",
+        "before": {
+          "sha256": "47d52888e927f9bdfc67b43a77f3c13dc9cd2ce8d1fc96e9433fff244238922f",
+          "bytes": 2646,
+          "dimensions": [
+            108,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "954f983e4f1d8a213a9becbff02c3dc5ac48aba55f9fa08ce961bb0cf12fbbe4",
+          "bytes": 28630,
+          "dimensions": [
+            384,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "djenne-mosque",
+      "original": {
+        "path": "assets/quizipedia/djenne-mosque.jpg",
+        "sha256": "dc3b402430c270ec6292d519747f76680e3b4c30cf4de05bb5d8581def2acf69",
+        "bytes": 198389,
+        "dimensions": [
+          960,
+          638
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-djenne-mosque.webp",
+        "before": {
+          "sha256": "c941f70c5cb6f6a23c9c4b9b19cf7e1638f98a36b2da3efeb9a7d9e9df58f071",
+          "bytes": 3566,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "67aedf6e550782256649e9f86029240e29781816259511b71ce4a08c4b20480a",
+          "bytes": 24948,
+          "dimensions": [
+            512,
+            340
+          ]
+        }
+      }
+    },
+    {
+      "id": "cn-tower",
+      "original": {
+        "path": "assets/quizipedia/cn-tower.jpg",
+        "sha256": "3aed471419e3c550c591d608f2a3688b1247a6b5b278eed32b7cfc2e752193fd",
+        "bytes": 249019,
+        "dimensions": [
+          960,
+          1424
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-cn-tower.webp",
+        "before": {
+          "sha256": "ef75c448454493e46e237acabcb6490391e92744329d84b9d5178c5876962291",
+          "bytes": 1072,
+          "dimensions": [
+            97,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "169def79520b69da374dcdc43d1664af41c0b13d0cbc84d3f0771ebfb5473b6a",
+          "bytes": 8178,
+          "dimensions": [
+            345,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "space-needle",
+      "original": {
+        "path": "assets/quizipedia/space-needle.jpg",
+        "sha256": "6637ec7c5bb7aa12c56445d19fa95c08330b5978c82a3776f0acdf2ac9eb8135",
+        "bytes": 373481,
+        "dimensions": [
+          960,
+          1893
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-space-needle.webp",
+        "before": {
+          "sha256": "9dcf0d5c53b4270e8c6a1eb057f05b9dd91dcb86337b66802705eafa6c887193",
+          "bytes": 1614,
+          "dimensions": [
+            73,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "e87e4026ddcac9959ba533a17957eed6a560296b87445cde6fa427abde961c9b",
+          "bytes": 17004,
+          "dimensions": [
+            260,
+            512
+          ]
+        }
+      }
+    },
+    {
+      "id": "belem-tower",
+      "original": {
+        "path": "assets/quizipedia/belem-tower.jpg",
+        "sha256": "c69df81a9f16ee0e24885bce44d5a64e562739187145f41e223a85963255160e",
+        "bytes": 244764,
+        "dimensions": [
+          960,
+          916
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-belem-tower.webp",
+        "before": {
+          "sha256": "d27ac7607ae6b4da4d5ef44e19ec08bf7b68203adf027d5b455b77dcf6b9eb09",
+          "bytes": 3168,
+          "dimensions": [
+            151,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "003b4f27b48d226c3805341ea4df0dee3b6ed365b6feda662bb2a46174aae385",
+          "bytes": 36922,
+          "dimensions": [
+            512,
+            489
+          ]
+        }
+      }
+    },
+    {
+      "id": "pena-palace",
+      "original": {
+        "path": "assets/quizipedia/pena-palace.jpg",
+        "sha256": "7d602dd3b4e2b50b271014de765f332104d192393b85f4c529d9dc2ce7ec9af4",
+        "bytes": 176681,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-pena-palace.webp",
+        "before": {
+          "sha256": "d6474cf33ed14450ab74e084ce5d9aa9206df3c22d6d4b9b798741e09551ebb4",
+          "bytes": 3408,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "28e4e486c2822d78b9dfee9583f77f45b6be4e573d167659e15858dbad234a2a",
+          "bytes": 28536,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "machu-picchu",
+      "original": {
+        "path": "assets/quizipedia/machu-picchu.jpg",
+        "sha256": "3d885fd62532e509e8cac82fc93556e3d107851fafd7ef8bf9f411ada12d237a",
+        "bytes": 240667,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-machu-picchu.webp",
+        "before": {
+          "sha256": "b93fa62a453589627c7dc14c2519e7e65eda0b5471439fe28a41e75ea6ced5b0",
+          "bytes": 4042,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "8b76b5c006efa2d18b1c090c4829491cc1df9f230d78b232d5aa9feb6480e065",
+          "bytes": 37938,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "stonehenge",
+      "original": {
+        "path": "assets/quizipedia/stonehenge.jpg",
+        "sha256": "a179d61f32cb8d886e35cf4869c1648a5710421eb64538a2d27a96441a504ab4",
+        "bytes": 164866,
+        "dimensions": [
+          960,
+          720
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-stonehenge.webp",
+        "before": {
+          "sha256": "0611bd7f4a2c4ec3a92145daae5baa66392b012d0b2f11e8af65ef7b51c4cdc7",
+          "bytes": 2932,
+          "dimensions": [
+            192,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "a1a845946732a768f8770e1b5563bc678d78047b3b0464cbc3bbea0372ae96e9",
+          "bytes": 22820,
+          "dimensions": [
+            512,
+            384
+          ]
+        }
+      }
+    },
+    {
+      "id": "angkor-wat",
+      "original": {
+        "path": "assets/quizipedia/angkor-wat.jpg",
+        "sha256": "8674c093b9f1c03ff97a8de50be5af14bde1abdc72ad51707663653af810972b",
+        "bytes": 240097,
+        "dimensions": [
+          960,
+          652
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-angkor-wat.webp",
+        "before": {
+          "sha256": "e06f437f3ef100e7d7802c9f8d8943c0bbcb9c50d8f9850f77ea9a80602d509d",
+          "bytes": 4584,
+          "dimensions": [
+            192,
+            130
+          ]
+        },
+        "after": {
+          "sha256": "a999c3a890fbbfafcdae6ebc7e8280109ebc3ba79d37b3ff9fb568f2ed975e4c",
+          "bytes": 40260,
+          "dimensions": [
+            512,
+            348
+          ]
+        }
+      }
+    },
+    {
+      "id": "borobudur",
+      "original": {
+        "path": "assets/quizipedia/borobudur.jpg",
+        "sha256": "f70655059cecfb29794d4fdf141364873e85e4804d870e82111f350377d081b9",
+        "bytes": 220220,
+        "dimensions": [
+          960,
+          640
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-borobudur.webp",
+        "before": {
+          "sha256": "c805870cfb27e61349f03d0bc905d480110cf2922e927cb58c6130049d9b651c",
+          "bytes": 5154,
+          "dimensions": [
+            192,
+            128
+          ]
+        },
+        "after": {
+          "sha256": "863a3203bc59103aabeb548a067b0221e295e755ee4cc68dde4ec34a1b33f8c3",
+          "bytes": 39930,
+          "dimensions": [
+            512,
+            341
+          ]
+        }
+      }
+    },
+    {
+      "id": "el-castillo",
+      "original": {
+        "path": "assets/quizipedia/el-castillo.jpg",
+        "sha256": "8462a823246de57f1541b0057de050f268d8f122f61b838d9658ef9dfdf5a7f8",
+        "bytes": 133184,
+        "dimensions": [
+          960,
+          511
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-el-castillo.webp",
+        "before": {
+          "sha256": "e436acf3b552783b290090fd010a6a7da6eecbb0f754940e61549d877b5fa3c6",
+          "bytes": 2934,
+          "dimensions": [
+            192,
+            102
+          ]
+        },
+        "after": {
+          "sha256": "d9c367a3c1cf029ed1a71783dfd30652265385a19f6344a1d5943a9b0d30de4b",
+          "bytes": 22330,
+          "dimensions": [
+            512,
+            273
+          ]
+        }
+      }
+    },
+    {
+      "id": "mont-saint-michel",
+      "original": {
+        "path": "assets/quizipedia/mont-saint-michel.jpg",
+        "sha256": "2bab288e3a7e87a7bb941c42d608ca4f28f9bed50bd601f73591bb31c3b763ff",
+        "bytes": 106494,
+        "dimensions": [
+          960,
+          540
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-mont-saint-michel.webp",
+        "before": {
+          "sha256": "dd2d832cc133da8ab38e161f8023041c0eaa45cd75c8d74bce40daf8781ee050",
+          "bytes": 2220,
+          "dimensions": [
+            192,
+            108
+          ]
+        },
+        "after": {
+          "sha256": "8019dd19edd6af614813ec7af6e6056962d559525e70667851ad445718518abd",
+          "bytes": 14488,
+          "dimensions": [
+            512,
+            288
+          ]
+        }
+      }
+    },
+    {
+      "id": "ahu-tongariki",
+      "original": {
+        "path": "assets/quizipedia/ahu-tongariki.jpg",
+        "sha256": "336ec7a57e7b22c8b8ce9fb3fed3dce4985099cd76deb0a5dfb3285010a11417",
+        "bytes": 186779,
+        "dimensions": [
+          960,
+          720
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-ahu-tongariki.webp",
+        "before": {
+          "sha256": "847081d43b9b14ce45067d3db604482f53ccfe8548ef5c0ee6e977d793564a06",
+          "bytes": 3084,
+          "dimensions": [
+            192,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "b1539fa6c1a44450f9d4e73ed4637f3d2d9c3001a48e7457ff518361f5f05bbc",
+          "bytes": 26598,
+          "dimensions": [
+            512,
+            384
+          ]
+        }
+      }
+    },
+    {
+      "id": "badaling",
+      "original": {
+        "path": "assets/quizipedia/badaling.jpg",
+        "sha256": "f7a2f4fdeeeb2c2e98e7be733ef9255a9ffd5adeaccdc853907f372fcfe02c69",
+        "bytes": 318211,
+        "dimensions": [
+          960,
+          720
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-badaling.webp",
+        "before": {
+          "sha256": "c0c272deebea84d167b40a7ad7aa08e20a8ec2b8ed770fa3c09d2dcb1838c8a9",
+          "bytes": 7246,
+          "dimensions": [
+            192,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "b24e307e99da07fdfb089b8968be651fc78040678a86e1e7859fc36e14d5d7e4",
+          "bytes": 61496,
+          "dimensions": [
+            512,
+            384
+          ]
+        }
+      }
+    },
+    {
+      "id": "abu-simbel",
+      "original": {
+        "path": "assets/quizipedia/abu-simbel.jpg",
+        "sha256": "f741fdd33305ac2653a3f838f6634aa472b62d172628a9130ebf2ba900eb0653",
+        "bytes": 269666,
+        "dimensions": [
+          960,
+          720
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-abu-simbel.webp",
+        "before": {
+          "sha256": "1c44d4bab86ffe5bd97debfc23d61c8dbe1dddbafabb0f9e0dbe9874acbc1a92",
+          "bytes": 4760,
+          "dimensions": [
+            192,
+            144
+          ]
+        },
+        "after": {
+          "sha256": "e5a30618573a1d925cc68927519413f7803be29d958ec56cb3709cf0d5300383",
+          "bytes": 43444,
+          "dimensions": [
+            512,
+            384
+          ]
+        }
+      }
+    },
+    {
+      "id": "palais-garnier",
+      "original": {
+        "path": "assets/quizipedia/palais-garnier.jpg",
+        "sha256": "0b629c5c3bb7889f6e2befe57454a26e0e2eeb850307ebfc7965451566b4127b",
+        "bytes": 216635,
+        "dimensions": [
+          960,
+          645
+        ]
+      },
+      "thumbnail": {
+        "path": "assets/quizipedia/thumb-palais-garnier.webp",
+        "before": {
+          "sha256": "c0fc65b954e3b52ef05230c8da41d1e16d3df54038ff982ef649bd797ca54368",
+          "bytes": 5472,
+          "dimensions": [
+            192,
+            129
+          ]
+        },
+        "after": {
+          "sha256": "7490f020c9512f0ea6a925713cd96cac996d1e55354e82c7057d58475b242cdf",
+          "bytes": 39638,
+          "dimensions": [
+            512,
+            344
+          ]
+        }
+      }
+    }
+  ],
+  "totals": {
+    "count": 46,
+    "old_bytes": 154092,
+    "new_bytes": 1356080
+  }
+}

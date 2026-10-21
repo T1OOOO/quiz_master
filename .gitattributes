@@ -21,6 +21,10 @@ quizzes/Preparation/prep_books_modern.json -text
 quizzes/Preparation/GeographyRegions/*.json -text
 next/content/home-alone-1-part-1/manifest.json -text
 
+# Keep future release-controller evidence identical in Windows checkouts.
+docs/rewrite-agents/tasks/FEEDBACK_EXECUTION_20261021/release-phone-followup/**/*.py text eol=lf
+next/apps/quiz_app/**/*.dart text eol=lf
+
 docs/rewrite-agents/tasks/FEEDBACK43_MINIMUM20_20261019/*.json -text
 quizzes/Collections/*.json -text
 quizzes/Cinema/People/cinema_people_20261011.json -text

@@ -84,16 +84,21 @@ void main() {
       );
       final camera = Matrix4.identity()..scaleByDouble(1.7, 1.7, 1, 1);
       viewer.transformationController!.value = camera;
-      final layer = find.byKey(const Key('country-direct-layer-instrument'));
-      await tester.ensureVisible(layer);
-      await tester.tap(layer);
+      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
+      await tester.tap(find.byKey(const Key('country-map-settings')));
       await tester.pumpAndSettle();
+      final layer = find.byKey(const Key('country-sheet-layer-instrument'));
+      await tester.tap(layer);
+      await tester.pump();
       expect(tester.widget<FilterChip>(layer).selected, isTrue);
       final map = tester.widget<QuizipediaWorldMap>(
         find.byType(QuizipediaWorldMap),
       );
       expect(map.overlayLabels['JP'], contains('Koto'));
       expect(viewer.transformationController!.value, camera);
+      await tester.ensureVisible(find.byKey(const Key('country-apply-layer')));
+      await tester.tap(find.byKey(const Key('country-apply-layer')));
+      await tester.pumpAndSettle();
       await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
       await tester.tap(find.byKey(const Key('country-map-settings')));
       await tester.pumpAndSettle();

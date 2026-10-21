@@ -22,24 +22,30 @@ void main() {
       expect(() => PhotoThumbnails.fromJson(value), throwsFormatException);
     }
   });
-  test('all46 photos have individual small decodable local previews', () async {
+  test('all46 photos have crisp individually bounded local previews', () async {
     final data = jsonDecode(
       await rootBundle.loadString('assets/quizipedia/catalog.json'),
     ) as Map;
     final rows = data['landmarks'] as List;
     expect(rows, hasLength(46));
+    var totalBytes = 0;
+    var initialGridBytes = 0;
     for (final row in rows) {
       final bytes = await rootBundle.load(row['thumbnail_asset'] as String);
-      expect(bytes.lengthInBytes, lessThan(15000));
+      totalBytes += bytes.lengthInBytes;
+      if (rows.indexOf(row) < 4) initialGridBytes += bytes.lengthInBytes;
+      expect(bytes.lengthInBytes, lessThan(64 * 1024));
       final codec = await ui.instantiateImageCodec(
         bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes),
       );
       final image = (await codec.getNextFrame()).image;
-      expect(image.width, lessThanOrEqualTo(192));
-      expect(image.height, lessThanOrEqualTo(144));
+      expect(image.width, inInclusiveRange(240, 512));
+      expect(image.height, inInclusiveRange(240, 512));
       image.dispose();
       codec.dispose();
     }
+    expect(totalBytes, lessThan(1536 * 1024));
+    expect(initialGridBytes, lessThan(128 * 1024));
   });
   test('legacy preview bundle remains decodable', () async {
     final text = await rootBundle.loadString(

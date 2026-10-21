@@ -488,8 +488,19 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byKey(const Key('country-direct-layers')), findsOneWidget);
-    await tester.tap(find.byKey(const Key('country-direct-layer-capital')));
-    await tester.tap(find.byKey(const Key('country-direct-layer-flag')));
+    await tester.tap(find.byKey(const Key('country-direct-layers')));
+    await tester.pumpAndSettle();
+    final capitalLayer = find.byKey(const Key('country-sheet-layer-capital'));
+    final flagLayer = find.byKey(const Key('country-sheet-layer-flag'));
+    await tester.tap(capitalLayer);
+    await tester.pump();
+    await tester.tap(flagLayer);
+    await tester.pump();
+    expect(tester.widget<FilterChip>(capitalLayer).selected, isTrue);
+    expect(tester.widget<FilterChip>(flagLayer).selected, isTrue);
+    await tester.ensureVisible(find.byKey(const Key('country-apply-layer')));
+    await tester.tap(find.byKey(const Key('country-apply-layer')));
+    await tester.pump();
     QuizipediaWorldMap currentMap() =>
         tester.widget<QuizipediaWorldMap>(find.byType(QuizipediaWorldMap));
     for (

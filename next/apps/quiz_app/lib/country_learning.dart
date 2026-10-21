@@ -22,6 +22,20 @@ import 'country_labels_ru.dart';
 
 const _factsAsset = 'assets/quizipedia/country_facts.json';
 
+const _mapLayers = [
+  'flag',
+  'capital',
+  'currency',
+  'population',
+  'area',
+  'water',
+  'resource',
+  'neighbor',
+  'religion',
+  'instrument',
+  'culture',
+];
+
 const _russianFactLabels = <String, String>{
   'All': 'Весь мир',
   'Europe': 'Европа',
@@ -593,6 +607,223 @@ class CountryQuestion {
     result.shuffle(random);
     return result.take(count).toList(growable: false);
   }
+}
+
+/// A source-backed explanation for one displayed practice choice.
+class CountryChoiceExplanation {
+  const CountryChoiceExplanation(this.option, this.text);
+
+  final String option;
+  final String text;
+}
+
+/// Resolves a displayed choice back to the country-atlas rows that support it.
+///
+/// Association choices are deliberately resolved from every matching row: an
+/// object can be shared by more than one country, so arbitrarily picking one
+/// would turn a true shared value into a misleading exclusive claim.
+List<CountryChoiceExplanation> countryChoiceExplanations(
+  CountryQuestion question,
+  List<CountryFact> facts,
+  Map<String, List<CountryAssociation>> associations, {
+  required bool russian,
+}) {
+  final factsById = {for (final fact in facts) fact.id: fact};
+  String countryName(CountryFact fact) => russian ? fact.nameRu : fact.nameEn;
+  String valueName(String value) =>
+      russian ? russianCountryLabel(value) : value;
+  String relation(CountryAssociation row) =>
+      russian ? russianLearningText(row.relationRu) : row.relationEn;
+
+  if (question.association != null && question.reverse) {
+    final object = question.association!;
+    return question.options
+        .map((option) {
+          final fact = facts
+              .where((candidate) => candidate.nameEn == option)
+              .firstOrNull;
+          if (fact == null) return CountryChoiceExplanation(option, '');
+          final row = (associations[fact.id] ?? const [])
+              .where(
+                (candidate) =>
+                    candidate.kind == object.kind &&
+                    candidate.nameEn == object.nameEn,
+              )
+              .firstOrNull;
+          if (row == null) {
+            final objectName = russian ? object.nameRu : object.nameEn;
+            return CountryChoiceExplanation(
+              option,
+              russian
+                  ? '${countryName(fact)} · в этом справочнике нет связи с объектом «$objectName»'
+                  : '${countryName(fact)} · this atlas does not list $objectName',
+            );
+          }
+          final objectName = russian ? row.nameRu : row.nameEn;
+          final rowRelation = relation(row);
+          return CountryChoiceExplanation(
+            option,
+            '$objectName · ${countryName(fact)}'
+            '${rowRelation.isEmpty ? '' : '\n$rowRelation'}',
+          );
+        })
+        .toList(growable: false);
+  }
+
+  if (question.association != null) {
+    return question.options
+        .map((option) {
+          final matches = <({CountryFact fact, CountryAssociation row})>[];
+          for (final entry in associations.entries) {
+            final fact = factsById[entry.key];
+            if (fact == null) continue;
+            for (final row in entry.value) {
+              if (row.kind == question.kind && row.nameEn == option) {
+                matches.add((fact: fact, row: row));
+              }
+            }
+          }
+          final details = matches
+              .map((match) {
+                final object = russian ? match.row.nameRu : match.row.nameEn;
+                final rowRelation = relation(match.row);
+                return '$object · ${countryName(match.fact)}'
+                    '${rowRelation.isEmpty ? '' : '\n$rowRelation'}';
+              })
+              .toSet()
+              .join('\n\n');
+          return CountryChoiceExplanation(option, details);
+        })
+        .where((item) => item.text.isNotEmpty)
+        .toList(growable: false);
+  }
+
+  bool matches(CountryFact fact, String option) => switch (question.kind) {
+    'flag' => fact.nameEn == option,
+    'capital' => fact.capital == option,
+    'language' => fact.languages.contains(option),
+    'currency' => fact.currencies.contains(option),
+    'region' => fact.region == option,
+    'population' =>
+      fact.population > 0 && populationBand(fact.population) == option,
+    'area' => fact.areaKm2 != null && areaBand(fact.areaKm2!) == option,
+    _ => false,
+  };
+
+  String detail(CountryFact fact, String option) => switch (question.kind) {
+    'flag' =>
+      russian
+          ? '${countryName(fact)} · столица: ${valueName(fact.capital)}'
+          : '${countryName(fact)} · capital: ${fact.capital}',
+    'capital' =>
+      russian
+          ? '${valueName(option)} · столица страны ${countryName(fact)}'
+          : '$option · capital of ${countryName(fact)}',
+    'language' =>
+      russian
+          ? '${valueName(option)} · официальный язык страны ${countryName(fact)}'
+          : '$option · official language of ${countryName(fact)}',
+    'currency' =>
+      russian
+          ? '${valueName(option)} · валюта страны ${countryName(fact)}'
+          : '$option · currency of ${countryName(fact)}',
+    'region' =>
+      russian
+          ? '${countryName(fact)} · регион: ${valueName(option)}'
+          : '${countryName(fact)} · region: $option',
+    'population' =>
+      russian
+          ? '${countryName(fact)} · категория численности: ${valueName(option)}'
+          : '${countryName(fact)} · population band: $option',
+    'area' =>
+      russian
+          ? '${countryName(fact)} · категория площади: ${valueName(option)}'
+          : '${countryName(fact)} · area band: $option',
+    _ => '',
+  };
+
+  String sharedDetail(List<CountryFact> matches, String option) {
+    if (matches.isEmpty) return '';
+    if (matches.length == 1) return detail(matches.single, option);
+    final count = matches.length;
+    return switch (question.kind) {
+      'capital' => matches.map((fact) => detail(fact, option)).join('\n'),
+      'language' =>
+        russian
+            ? '${valueName(option)} · официальный язык в $count странах справочника'
+            : '$option · official language in $count countries in this atlas',
+      'currency' =>
+        russian
+            ? '${valueName(option)} · валюта в $count странах справочника'
+            : '$option · currency in $count countries in this atlas',
+      'region' =>
+        russian
+            ? '${valueName(option)} · регион $count стран справочника'
+            : '$option · region of $count countries in this atlas',
+      'population' =>
+        russian
+            ? '${valueName(option)} · категория численности $count стран справочника'
+            : '$option · population band of $count countries in this atlas',
+      'area' =>
+        russian
+            ? '${valueName(option)} · категория площади $count стран справочника'
+            : '$option · area band of $count countries in this atlas',
+      _ => '',
+    };
+  }
+
+  return question.options
+      .map((option) {
+        final matchingFacts = facts
+            .where((fact) => matches(fact, option))
+            .toList();
+        final details = sharedDetail(matchingFacts, option);
+        return CountryChoiceExplanation(option, details);
+      })
+      .where((item) => item.text.isNotEmpty)
+      .toList(growable: false);
+}
+
+class CountryChoiceExplanationPanel extends StatelessWidget {
+  const CountryChoiceExplanationPanel({
+    super.key,
+    required this.explanations,
+    required this.title,
+    required this.display,
+  });
+
+  final List<CountryChoiceExplanation> explanations;
+  final String title;
+  final String Function(String) display;
+
+  @override
+  Widget build(BuildContext context) => Material(
+    color: Colors.transparent,
+    child: ExpansionTile(
+      key: const Key('country-choice-explanations'),
+      tilePadding: EdgeInsets.zero,
+      childrenPadding: const EdgeInsets.only(bottom: 8),
+      title: Text(title, style: Theme.of(context).textTheme.titleSmall),
+      children: [
+        for (var index = 0; index < explanations.length; index++)
+          Padding(
+            key: Key('country-choice-explanation-$index'),
+            padding: const EdgeInsets.only(left: 4, right: 4, bottom: 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  display(explanations[index].option),
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(height: 2),
+                Text(explanations[index].text),
+              ],
+            ),
+          ),
+      ],
+    ),
+  );
 }
 
 class CountryAtlasPage extends StatefulWidget {
@@ -1302,12 +1533,52 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
             refresh(() {});
           }
 
+          void toggleLayer(String layer, bool selected) {
+            change(() {
+              if (selected) {
+                _extraLayers.add(layer);
+              } else {
+                _extraLayers.remove(layer);
+                if (_layer == layer) _layer = 'none';
+              }
+            });
+            if (selected && layer == 'water') _loadWater();
+            if (selected && layer == 'capital') _loadCapitals();
+          }
+
           return FractionallySizedBox(
             heightFactor: .8,
             child: SingleChildScrollView(
               padding: const EdgeInsets.only(bottom: 24),
               child: Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _t('Map layers', 'Слои карты'),
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(height: 8),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            for (final layer in _mapLayers)
+                              FilterChip(
+                                key: Key('country-sheet-layer-$layer'),
+                                label: Text(_topicLabel(layer)),
+                                selected: _activeLayers.contains(layer),
+                                onSelected: (selected) =>
+                                    toggleLayer(layer, selected),
+                              ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: ExpansionTile(
@@ -1524,50 +1795,18 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   ],
                 ),
               ),
-              SizedBox(
-                key: const Key('country-direct-layers'),
-                height: chipHeight,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Row(
-                    children: [
-                      for (final layer in const [
-                        'flag',
-                        'capital',
-                        'currency',
-                        'population',
-                        'area',
-                        'water',
-                        'resource',
-                        'neighbor',
-                        'religion',
-                        'instrument',
-                        'culture',
-                      ])
-                        Padding(
-                          padding: const EdgeInsetsDirectional.only(end: 6),
-                          child: FilterChip(
-                            key: Key('country-direct-layer-$layer'),
-                            label: Text(_topicLabel(layer)),
-                            selected: _activeLayers.contains(layer),
-                            onSelected: (selected) {
-                              setState(() {
-                                if (selected) {
-                                  _extraLayers.add(layer);
-                                } else {
-                                  _extraLayers.remove(layer);
-                                  if (_layer == layer) _layer = 'none';
-                                }
-                              });
-                              if (selected && layer == 'water') _loadWater();
-                              if (selected && layer == 'capital') {
-                                _loadCapitals();
-                              }
-                            },
-                          ),
-                        ),
-                    ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: OutlinedButton.icon(
+                  key: const Key('country-direct-layers'),
+                  onPressed: showSettings,
+                  icon: const Icon(Icons.layers_outlined),
+                  label: Text(
+                    _activeLayers.isEmpty
+                        ? _t('Layers', 'Слои')
+                        : '${_t('Layers', 'Слои')}: ${_activeLayers.map(_topicLabel).join(', ')}',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
@@ -1944,6 +2183,10 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     };
   }
 
+  List<CountryChoiceExplanation> _choiceExplanations(
+    CountryQuestion question,
+  ) => countryChoiceExplanations(question, _facts, _associations, russian: _ru);
+
   Widget _religionDetails(CountryFact fact) {
     final data = _religions;
     if (data == null) return const SizedBox.shrink();
@@ -2308,6 +2551,15 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                         _answerExplanation(q),
                         key: const Key('country-answer-explanation'),
                       ),
+                      if (_choiceExplanations(q) case final explanations
+                          when explanations.isNotEmpty) ...[
+                        const SizedBox(height: 8),
+                        CountryChoiceExplanationPanel(
+                          explanations: explanations,
+                          title: _t('About each choice', 'О каждом варианте'),
+                          display: _display,
+                        ),
+                      ],
                       if (q.association?.sourceUrl.isNotEmpty ?? false)
                         _sourceLink(q.association!.sourceUrl),
                       if (q.kind == 'population')
