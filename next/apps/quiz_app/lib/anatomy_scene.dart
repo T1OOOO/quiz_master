@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import 'russian_learning_text.dart';
 
 class AnatomySceneMarker {
@@ -36,9 +37,14 @@ class AnatomyScene extends StatefulWidget {
     required this.zoomOutLabel,
     required this.resetLabel,
     required this.creditLabel,
+    this.markerDiameter = 48,
   });
   final String asset, zoomInLabel, zoomOutLabel, resetLabel, creditLabel;
   final double aspectRatio;
+
+  /// The visual pin size. The labelled chips below keep a full touch target
+  /// when an illustration has closely spaced source callouts.
+  final double markerDiameter;
   final List<AnatomySceneMarker> markers;
   final AnatomySceneCredit credit;
   final ValueChanged<AnatomySceneMarker> onMarkerTap;
@@ -81,16 +87,29 @@ class _AnatomySceneState extends State<AnatomyScene> {
                     Image.asset(widget.asset, fit: BoxFit.contain),
                     for (final marker in widget.markers)
                       Positioned(
-                        left: constraints.maxWidth * marker.x - 22,
-                        top: constraints.maxHeight * marker.y - 22,
+                        left:
+                            constraints.maxWidth * marker.x -
+                            widget.markerDiameter / 2,
+                        top:
+                            constraints.maxHeight * marker.y -
+                            widget.markerDiameter / 2,
                         child: Semantics(
                           button: true,
                           label: marker.label,
                           child: IconButton.filledTonal(
                             key: Key('anatomy-marker-${marker.id}'),
                             tooltip: marker.label,
+                            style: IconButton.styleFrom(
+                              minimumSize: Size.square(widget.markerDiameter),
+                              maximumSize: Size.square(widget.markerDiameter),
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
                             onPressed: () => widget.onMarkerTap(marker),
-                            icon: const Icon(Icons.location_on, size: 20),
+                            icon: Icon(
+                              Icons.location_on,
+                              size: widget.markerDiameter * .5,
+                            ),
                           ),
                         ),
                       ),
@@ -109,7 +128,9 @@ class _AnatomySceneState extends State<AnatomyScene> {
             for (final item in widget.markers) item.label: item,
           }.values)
             ActionChip(
+              key: Key('anatomy-marker-action-${marker.id}'),
               label: Text(marker.label),
+              materialTapTargetSize: MaterialTapTargetSize.padded,
               onPressed: () => widget.onMarkerTap(marker),
             ),
         ],
@@ -143,7 +164,9 @@ class _AnatomySceneState extends State<AnatomyScene> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text('${widget.credit.author}\n${russianLearningText(widget.credit.license)}'),
+                      Text(
+                        '${widget.credit.author}\n${russianLearningText(widget.credit.license)}',
+                      ),
                       TextButton(
                         onPressed: () => launchUrl(
                           Uri.parse(widget.credit.source),

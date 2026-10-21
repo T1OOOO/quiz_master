@@ -65,6 +65,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
   String _region = '', _system = '', _kind = '';
   Set<String>? _sceneIds;
   OrganStructure? _selected;
+  bool _endocrineView = false;
   bool _training = false, _checked = false, _finished = false, _review = false;
   List<OrganQuestion> _round = [], _missed = [];
   int _index = 0, _score = 0, _seed = 31;
@@ -361,40 +362,64 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
             children: [
               if (widget.initialScope == OrganAtlasScope.all ||
                   widget.initialScope == OrganAtlasScope.organs) ...[
-                _BodyMap(
-                  controller: _camera,
-                  organs: shown
-                      .where(
-                        (item) =>
-                            item.kind != 'bone' &&
-                            item.kind != 'bone_group' &&
-                            item.kind != 'brain_region',
-                      )
-                      .toList(),
-                  selected: _selected,
-                  name: _name,
-                  onSelected: _select,
-                ),
                 Wrap(
-                  alignment: WrapAlignment.center,
+                  key: const Key('organ-view-selector'),
+                  spacing: 8,
+                  runSpacing: 4,
                   children: [
-                    IconButton(
-                      tooltip: _t('Zoom in', 'Увеличить'),
-                      icon: const Icon(Icons.add),
-                      onPressed: () => _zoom(1.25),
+                    ChoiceChip(
+                      key: const Key('organ-view-anterior'),
+                      label: Text(_t('Organs', 'Органы')),
+                      selected: !_endocrineView,
+                      onSelected: (_) => setState(() => _endocrineView = false),
                     ),
-                    IconButton(
-                      tooltip: _t('Zoom out', 'Уменьшить'),
-                      icon: const Icon(Icons.remove),
-                      onPressed: () => _zoom(.8),
-                    ),
-                    TextButton.icon(
-                      onPressed: _reset,
-                      icon: const Icon(Icons.center_focus_strong),
-                      label: Text(_t('Fit', 'Вся схема')),
+                    ChoiceChip(
+                      key: const Key('organ-view-endocrine'),
+                      label: Text(_t('Endocrine glands', 'Эндокринные железы')),
+                      selected: _endocrineView,
+                      onSelected: (_) => setState(() => _endocrineView = true),
                     ),
                   ],
                 ),
+                const SizedBox(height: 8),
+                if (_endocrineView)
+                  _endocrineScene(atlas)
+                else ...[
+                  _BodyMap(
+                    controller: _camera,
+                    organs: shown
+                        .where(
+                          (item) =>
+                              item.kind != 'bone' &&
+                              item.kind != 'bone_group' &&
+                              item.kind != 'brain_region',
+                        )
+                        .toList(),
+                    selected: _selected,
+                    name: _name,
+                    onSelected: _select,
+                  ),
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    children: [
+                      IconButton(
+                        tooltip: _t('Zoom in', 'Увеличить'),
+                        icon: const Icon(Icons.add),
+                        onPressed: () => _zoom(1.25),
+                      ),
+                      IconButton(
+                        tooltip: _t('Zoom out', 'Уменьшить'),
+                        icon: const Icon(Icons.remove),
+                        onPressed: () => _zoom(.8),
+                      ),
+                      TextButton.icon(
+                        onPressed: _reset,
+                        icon: const Icon(Icons.center_focus_strong),
+                        label: Text(_t('Fit', 'Вся схема')),
+                      ),
+                    ],
+                  ),
+                ],
               ],
               if (widget.initialScope == OrganAtlasScope.bones) _boneScene(),
               if (widget.initialScope == OrganAtlasScope.brain) _brainScene(),
@@ -533,6 +558,70 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
         ),
     ];
   }
+
+  Widget _endocrineScene(OrganAtlas atlas) => Column(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      Text(
+        _t(
+          'Main endocrine glands: 8 marked; other glands remain in the catalogue.',
+          'Основные эндокринные железы: 8 отметок; остальные железы доступны в каталоге.',
+        ),
+      ),
+      const SizedBox(height: 4),
+      Text(
+        _t(
+          'Male and female reproductive structures are shown side by side schematically.',
+          'Мужские и женские репродуктивные структуры показаны рядом схематично.',
+        ),
+        style: Theme.of(context).textTheme.bodySmall,
+      ),
+      const SizedBox(height: 8),
+      AnatomyScene(
+        asset: 'assets/quizipedia/endocrine-ru-display.png',
+        aspectRatio: 317 / 421,
+        markerDiameter: 28,
+        credit: const AnatomySceneCredit(
+          author: 'Правительство США; исходная иллюстрация NCI SEER; русская версия на Викискладе',
+          license: 'Общественное достояние (PD-USGov)',
+          source: 'https://commons.wikimedia.org/wiki/File:Illu_endocrine_system_-ru.png',
+        ),
+        zoomInLabel: _t('Zoom in', 'Увеличить'),
+        zoomOutLabel: _t('Zoom out', 'Уменьшить'),
+        resetLabel: _t('Fit image', 'Вся схема'),
+        creditLabel: _t('Image credit', 'Источник изображения'),
+        markers: [
+          _marker('pituitary', 'Pituitary', 'Гипофиз', 142 / 317, 90 / 421),
+          _marker('pineal', 'Pineal gland', 'Эпифиз', 180 / 317, 77 / 421),
+          _marker(
+            'thyroid',
+            'Thyroid gland',
+            'Щитовидная железа',
+            142 / 317,
+            142 / 421,
+          ),
+          _marker('thymus', 'Thymus', 'Тимус', 177 / 317, 182 / 421),
+          _marker(
+            'adrenals',
+            'Adrenal glands',
+            'Надпочечники',
+            124 / 317,
+            263 / 421,
+          ),
+          _marker(
+            'pancreas',
+            'Pancreas',
+            'Поджелудочная железа',
+            171 / 317,
+            278 / 421,
+          ),
+          _marker('ovaries', 'Ovaries', 'Яичники', 190 / 317, 324 / 421),
+          _marker('testes', 'Testes', 'Яички', 136 / 317, 376 / 421),
+        ],
+        onMarkerTap: (marker) => _select(atlas.organ(marker.id)),
+      ),
+    ],
+  );
 
   Widget _boneScene() => AnatomyScene(
     asset: 'assets/quizipedia/skeleton-display.png',

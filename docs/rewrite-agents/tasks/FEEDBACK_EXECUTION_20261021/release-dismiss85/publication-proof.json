@@ -1,0 +1,88 @@
+{
+  "artifacts": {
+    "public-version.json": {
+      "content": {
+        "api_build_id": "quiz-2026.10.19-minimum20-7f8344d6",
+        "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+        "buildId": "quiz-2026.10.21-feedback-d0dff40a",
+        "commit": "d0dff40a35232c78e19fdd659fdc03a95521685e",
+        "frontend_only": true,
+        "local_build": true,
+        "main_dart_js_sha256": "3636c3c56a167e5ef8065440db2665c7c7f3452f3bc334d8084607acd82ff7e8",
+        "packs": 105,
+        "question_article_references": 241,
+        "question_articles": 305,
+        "questions": 4520,
+        "quizipedia_facts": 13828,
+        "quizipedia_sections": 15,
+        "source_api_commit": "7f8344d638e2079d3b47b74972754a3425419791",
+        "source_commit": "d0dff40a35232c78e19fdd659fdc03a95521685e",
+        "study_modules": 6,
+        "study_questions": 120,
+        "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+        "taxonomy_id": "qm-tags-v1",
+        "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+      },
+      "sha256": "43d2c3c5d7c1437c7607ceabbb385db033ba444902008d2e02189a11c41c72e2"
+    },
+    "publish-restore-evidence.json": {
+      "content": {
+        "backup_sha256": "65852cd7ce1b92e86b3a9498ec6a9647bde4d09678bcd21ac999702e4f918ca3",
+        "build_id": "quiz-2026.10.21-feedback-d0dff40a",
+        "bytes": 91348992,
+        "image_docker_id": "sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282",
+        "input_sha256": "44ae28a10eac1c2be311461d8b2f32d8e59bf2bc9f6dc9a8e338848d12b42608",
+        "integrity": "ok",
+        "kind": "restore",
+        "phase": "publish",
+        "recorded_at_utc": "2026-10-21T13:02:16.091470+00:00",
+        "restored_sha256": "65852cd7ce1b92e86b3a9498ec6a9647bde4d09678bcd21ac999702e4f918ca3"
+      },
+      "sha256": "a9e2b6eb2877fa2883dd59984f1f6f32d1145469ccb0c8f243548615ea81922c"
+    },
+    "publish-unmount.json": {
+      "content": {
+        "mounted": false,
+        "released_bytes": 268435456
+      },
+      "sha256": "b22ac9b211e5ef2b2672dbee69f81a2a68e378433326ccd72ad39bb5e168c256"
+    }
+  },
+  "available_replicas": 1,
+  "build_id": "quiz-2026.10.21-feedback-d0dff40a",
+  "deployment_revision": 83,
+  "free_bytes": 21420752896,
+  "free_percent": 20.915196103309555,
+  "health": {
+    "live": 200,
+    "ready": 200
+  },
+  "helm_revision": 85,
+  "image": "quiz-master:quiz-2026.10.21-feedback-d0dff40a@sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282",
+  "original_feedback_rows_preserved": true,
+  "public_main_js_sha256": "3636c3c56a167e5ef8065440db2665c7c7f3452f3bc334d8084607acd82ff7e8",
+  "public_version": {
+    "api_build_id": "quiz-2026.10.19-minimum20-7f8344d6",
+    "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+    "buildId": "quiz-2026.10.21-feedback-d0dff40a",
+    "commit": "d0dff40a35232c78e19fdd659fdc03a95521685e",
+    "frontend_only": true,
+    "local_build": true,
+    "main_dart_js_sha256": "3636c3c56a167e5ef8065440db2665c7c7f3452f3bc334d8084607acd82ff7e8",
+    "packs": 105,
+    "question_article_references": 241,
+    "question_articles": 305,
+    "questions": 4520,
+    "quizipedia_facts": 13828,
+    "quizipedia_sections": 15,
+    "source_api_commit": "7f8344d638e2079d3b47b74972754a3425419791",
+    "source_commit": "d0dff40a35232c78e19fdd659fdc03a95521685e",
+    "study_modules": 6,
+    "study_questions": 120,
+    "taxonomy_file_sha256": "98f019902b5cce5161b5980f3338d9cd072b094b0a760fc93adb748832546f8c",
+    "taxonomy_id": "qm-tags-v1",
+    "taxonomy_sha256": "07e4bbb5c7afcdab3b41a26dca1bf0ba9a830d5f776a98ebceeaeb2bd8356151"
+  },
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "recorded_at_utc": "2026-10-21T13:03:16.771495+00:00"
+}

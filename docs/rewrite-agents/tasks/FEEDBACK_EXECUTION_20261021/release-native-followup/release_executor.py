@@ -21,15 +21,15 @@ HOST = "racknerd-f0269d5"
 HOST_IP = "192.3.164.184"
 NAMESPACE = "quiz-master"
 RELEASE = "quiz-master"
-BASE_REVISION = "84"
-BASE_DEPLOYMENT_REVISION = "82"
-BASE_BUILD_ID = "quiz-2026.10.21-feedback-5befcb17"
-BASE_IMAGE = 'quiz-master:quiz-2026.10.21-feedback-5befcb17@sha256:8ca75f2985e06de6309f393a477f8e67e6dffddf36e6723c31db2969ca7053f0'
-BASE_OCI_INDEX_DIGEST = "sha256:8ca75f2985e06de6309f393a477f8e67e6dffddf36e6723c31db2969ca7053f0"
-BASE_OCI_MANIFEST_DIGEST = "sha256:49b9fbaf1f3d37812ae8f1fc518139c37c9a6ae650e34fc1aa04648237e083d3"
-BASE_DOCKER_CONFIG_DIGEST = "sha256:82c8966fe40f64af474de73905b02c79e3f96911dc739c6533dce6c8d82a3e0d"
+BASE_REVISION = "85"
+BASE_DEPLOYMENT_REVISION = "83"
+BASE_BUILD_ID = "quiz-2026.10.21-feedback-d0dff40a"
+BASE_IMAGE = 'quiz-master:quiz-2026.10.21-feedback-d0dff40a@sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282'
+BASE_OCI_INDEX_DIGEST = "sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282"
+BASE_OCI_MANIFEST_DIGEST = "sha256:52c135f33c22708969d7fd64dbae08442ca62ce9fa3b23cad6bd61c584b9d668"
+BASE_DOCKER_CONFIG_DIGEST = "sha256:62984511b49837eeac7fb688232d1ea4d9bdbf98ec7da36e501a717bba580d3a"
 EXT4_RESERVED_BLOCKS = 1271337
-BASE_INPUT_SHA256 = "d8dc03a4e08c39012454d80b5f021514394baa567f58b023d38e87fc18a386ca"
+BASE_INPUT_SHA256 = "44ae28a10eac1c2be311461d8b2f32d8e59bf2bc9f6dc9a8e338848d12b42608"
 BASE_LOCAL_TAG = f"quiz-master:{BASE_BUILD_ID}"
 API_SHA256 = "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4"
 PVC_UID = "7fc2428f-4146-4c78-a26d-2347d9f3b7bf"
@@ -256,7 +256,7 @@ def collect_inputs(package: Path) -> Inputs:
     target_api = sha256_file(api)
     if target_api != API_SHA256: raise GuardError("frontend-only API must equal deployed baseline")
     data = json.loads(version.read_text(encoding="utf-8"))
-    if (data.get("api_sha256") != target_api or data.get("packs") != 105 or data.get("questions") != 4520 or data.get("quizipedia_facts") != 13828 or data.get("quizipedia_sections") != 15 or data.get("question_articles") != 305 or data.get("question_article_references") != 241 or data.get("frontend_only") is not True): raise GuardError("candidate version contract differs")
+    if (data.get("api_sha256") != target_api or data.get("packs") != 105 or data.get("questions") != 4520 or data.get("quizipedia_facts") != 13830 or data.get("quizipedia_sections") != 15 or data.get("question_articles") != 305 or data.get("question_article_references") != 241 or data.get("frontend_only") is not True): raise GuardError("candidate version contract differs")
     flags = list((web / "flags").glob("*.png"))
     if len(flags) != 195 or any(not flag.read_bytes().startswith(b"\x89PNG\r\n\x1a\n") or flag.name != sha256_file(flag) + ".png" for flag in flags): raise GuardError("195 content-addressed PNG flags required")
     validate_catalog(package / "catalog.json")

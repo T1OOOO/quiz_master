@@ -130,7 +130,7 @@ def main():
  volatile=Path(__file__).parent/'volatile_checks.py'
  if not volatile.is_file(): raise release.GuardError('missing reviewed sibling volatile_checks.py')
  for name in release.SUPPORT: shutil.copy2((volatile if name=="volatile_checks.py" else baseline/name),dest/name)
- version.update(quizipedia_facts=13828,quizipedia_sections=15,buildId=build,commit=commit,source_commit=commit,frontend_only=True,api_build_id=version['api_build_id'],source_api_commit=API_SOURCE,main_dart_js_sha256=hashlib.sha256(js).hexdigest())
+ version.update(quizipedia_facts=13830,quizipedia_sections=15,buildId=build,commit=commit,source_commit=commit,frontend_only=True,api_build_id=version['api_build_id'],source_api_commit=API_SOURCE,main_dart_js_sha256=hashlib.sha256(js).hexdigest())
  (dest/'web/version.json').write_text(json.dumps(version,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
  (dest/'quiz-closure.json').write_text(json.dumps({'base_source_revision':API_SOURCE,'base':quizzes,'candidate':quizzes,'expected_mutated':[]},sort_keys=True,indent=2)+'\n',encoding='utf-8',newline='\n')
  (dest/'nonruntime-canonical-exception.json').write_text(json.dumps(canonical_exception,sort_keys=True,indent=2)+'\n',encoding='utf-8',newline='\n')

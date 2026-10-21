@@ -1,0 +1,107 @@
+{
+  "all_165_quiz_sources_unchanged": true,
+  "all_original_feedback_rows_unchanged": true,
+  "api_sha256": "e2884077520a274a753cab0eff58c663aed159fd723c24e2b8f1e234c75539e4",
+  "artifacts": {
+    "image-web-closure.json": {
+      "all_web_bytes_match": true,
+      "files": 826
+    },
+    "prepare-unmount.json": {
+      "mounted": false,
+      "released_bytes": 268435456
+    },
+    "quiz-source-closure.json": {
+      "approved_existing_mutations": 0,
+      "candidate_files": 165,
+      "original_files": 165
+    },
+    "rehearsal-evidence.json": {
+      "backup_sha256": "90ef3a931e8c9ed3cb5239ab89a97bbfe3b3913a08323a9d2ce9d3c0c1f0e52b",
+      "build_id": "quiz-2026.10.21-feedback-d0dff40a",
+      "http": {
+        "aliases": 56,
+        "archival_fallback_quizzes": 11,
+        "article_refs": 241,
+        "eligible_started": 57,
+        "new_questions_graded": 38,
+        "private_pooled_banks": 23,
+        "short_bands_rejected": 363,
+        "visible_banks": 105,
+        "visible_slots": 4520
+      },
+      "image_docker_id": "sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282",
+      "input_sha256": "44ae28a10eac1c2be311461d8b2f32d8e59bf2bc9f6dc9a8e338848d12b42608",
+      "integrity": "ok",
+      "kind": "rehearsal",
+      "phase": "prepare",
+      "recorded_at_utc": "2026-10-21T12:38:16.180968+00:00"
+    },
+    "rehearsal-http.json": {
+      "aliases": 56,
+      "archival_fallback_quizzes": 11,
+      "article_refs": 241,
+      "eligible_started": 57,
+      "new_questions_graded": 38,
+      "private_pooled_banks": 23,
+      "short_bands_rejected": 363,
+      "visible_banks": 105,
+      "visible_slots": 4520
+    },
+    "restore-evidence.json": {
+      "backup_sha256": "90ef3a931e8c9ed3cb5239ab89a97bbfe3b3913a08323a9d2ce9d3c0c1f0e52b",
+      "build_id": "quiz-2026.10.21-feedback-d0dff40a",
+      "bytes": 91348992,
+      "image_docker_id": "sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282",
+      "input_sha256": "44ae28a10eac1c2be311461d8b2f32d8e59bf2bc9f6dc9a8e338848d12b42608",
+      "integrity": "ok",
+      "kind": "restore",
+      "phase": "prepare",
+      "recorded_at_utc": "2026-10-21T12:37:49.805261+00:00",
+      "restored_sha256": "90ef3a931e8c9ed3cb5239ab89a97bbfe3b3913a08323a9d2ce9d3c0c1f0e52b"
+    }
+  },
+  "backup": {
+    "bytes": 91348992,
+    "integrity": "ok",
+    "mode": "0o600",
+    "path": "/opt/quiz-master/backups/quiz-2026.10.21-feedback-d0dff40a-prepare.sqlite",
+    "sha256": "90ef3a931e8c9ed3cb5239ab89a97bbfe3b3913a08323a9d2ce9d3c0c1f0e52b"
+  },
+  "build_id": "quiz-2026.10.21-feedback-d0dff40a",
+  "chart_rendered_baseline_matches_live": true,
+  "deployment_revision": 82,
+  "feedback_original_rows": 130,
+  "free_bytes": 20996382720,
+  "free_percent": 20.500841598847042,
+  "helm_revision": 84,
+  "image_identity": {
+    "amd64_manifest": "sha256:52c135f33c22708969d7fd64dbae08442ca62ce9fa3b23cad6bd61c584b9d668",
+    "config_digest": "sha256:62984511b49837eeac7fb688232d1ea4d9bdbf98ec7da36e501a717bba580d3a",
+    "cri_id": "sha256:62984511b49837eeac7fb688232d1ea4d9bdbf98ec7da36e501a717bba580d3a",
+    "docker_descriptor_digest": "sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282",
+    "docker_id": "sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282",
+    "oci_content_hashes_verified": true,
+    "oci_index": "sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282"
+  },
+  "image_web_all_bytes_match": true,
+  "image_web_files": 826,
+  "image_web_manifest_file_sha256": "23af933ecd5ff9b3ade145da231a9e9c61823f9d2f40179ff50d616e6bf9b923",
+  "input_sha256": "44ae28a10eac1c2be311461d8b2f32d8e59bf2bc9f6dc9a8e338848d12b42608",
+  "new_release_published": false,
+  "node_conditions": {
+    "DiskPressure": "False",
+    "MemoryPressure": "False",
+    "PIDPressure": "False",
+    "Ready": "True"
+  },
+  "prepared_receipt": {
+    "build_id": "quiz-2026.10.21-feedback-d0dff40a",
+    "image": "quiz-master:quiz-2026.10.21-feedback-d0dff40a@sha256:093122f18d8b1aee16f41011e3abec8c25ea1dc83a3b904054cf413a47658282",
+    "input_sha256": "44ae28a10eac1c2be311461d8b2f32d8e59bf2bc9f6dc9a8e338848d12b42608"
+  },
+  "prepared_receipt_raw_base64": "eyJidWlsZF9pZCI6ICJxdWl6LTIwMjYuMTAuMjEtZmVlZGJhY2stZDBkZmY0MGEiLCAiaW1hZ2UiOiAicXVpei1tYXN0ZXI6cXVpei0yMDI2LjEwLjIxLWZlZWRiYWNrLWQwZGZmNDBhQHNoYTI1NjowOTMxMjJmMThkOGIxYWVlMTZmNDEwMTFlM2FiZWM4YzI1ZWExZGM4M2EzYjkwNDA1NGNmNDEzYTQ3NjU4MjgyIiwgImlucHV0X3NoYTI1NiI6ICI0NGFlMjhhMTBlYWMxYzJiZTMxMTQ2MWQ4YjJmMzJkOGU1OWJmMmJjOWY2ZGM5YThlMzM4ODQ4ZDEyYjQyNjA4In0=",
+  "pvc_uid": "7fc2428f-4146-4c78-a26d-2347d9f3b7bf",
+  "reserved_block_count": 1271337,
+  "tmpfs_unmounted": true
+}
