@@ -23,4 +23,3 @@ This is a read-only inline code gate review of the v6 `DIFF` and `FULLTESTS` (he
 
 3. **Direct Manifest Pin Test Added (`FULLTESTS`)**:
    - `test_committed_manifest_is_exact_and_disjoint` validates `cache-cleanup-manifest-v6.json` directly against the unmocked `MANIFEST_SHA`, asserting exact row count (`21`), byte sum (`1,780,559,872`), disjointness from the 3 externally missing paths, and exclusion of all `ARCHIVE_RELEASES` and `PROTECTED` roots.
-

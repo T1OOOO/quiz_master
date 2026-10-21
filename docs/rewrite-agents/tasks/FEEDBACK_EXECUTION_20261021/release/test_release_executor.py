@@ -1,8 +1,34 @@
-import hashlib,json,tempfile,unittest
+import hashlib,json,tempfile,unittest,shlex
 from unittest import mock
 from pathlib import Path
 import release_executor as r
 class Release78GuardsTest(unittest.TestCase):
+ def test_oci_identity_inline_python_survives_shell_quoting(self):
+  script=r.remote_script('quiz-2026.10.21-feedback-deadbeef',r.API_SHA256,'prepare')
+  commands=[line for line in script.splitlines() if line.startswith(('k3s ctr -n k8s.io content get ','k3s crictl inspecti ')) and 'python3 -c' in line]
+  self.assertEqual(len(commands),3)
+  for command in commands:
+   tokens=shlex.split(command)
+   compile(tokens[tokens.index('-c')+1],'<generated OCI identity guard>','exec')
+ def test_imagefs_guards_resolve_a_directory_inside_the_mount(self):
+  build='quiz-2026.10.21-feedback-deadbeef'
+  stage=r.remote_stage_script(build)
+  staging_python=stage.split("python3 - <<'PY'\n",1)[1].split('\nPY\n',1)[0]
+  prepare=r.remote_script(build,r.API_SHA256,'prepare')
+  guard_line=next(line for line in prepare.splitlines() if line.startswith(" python3 -c 'import os,subprocess,re;"))
+  inline_python=shlex.split(guard_line)[2]
+  for code in (staging_python,inline_python):
+   for fstype,source,reserve,should_pass in [('ext4','/dev/vda2',1271337,True),('xfs','/dev/vda2',1271337,False),('ext4','/dev/other',1271337,False),('ext4','/dev/vda2',1,False)]:
+    def probe(args,**kwargs):
+     if args[0]=='findmnt':
+      if '-T' not in args:raise RuntimeError('a directory within a filesystem is not a mountpoint')
+      return (fstype if 'FSTYPE' in args else source)+'\n'
+     self.assertEqual(args,['tune2fs','-l','/dev/vda2'])
+     return 'Reserved block count: '+str(reserve)+'\n'
+    with self.subTest(code=code[:30],fstype=fstype,source=source,reserve=reserve),mock.patch('os.statvfs',create=True,return_value=mock.Mock(f_bfree=50,f_bavail=30,f_blocks=100)),mock.patch('subprocess.check_output',side_effect=probe):
+     if should_pass:exec(code,{})
+     else:
+      with self.assertRaises(AssertionError):exec(code,{})
  def test_flutter_build_fingerprint_is_an_exact_generated_path(self):
   with tempfile.TemporaryDirectory() as d:
    root=Path(d); (root/'.last_build_id').write_text('a'*32)

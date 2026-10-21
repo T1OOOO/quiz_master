@@ -35,4 +35,3 @@
    - Forces output into `BACKUP / 'generation2/archives' / '<basename>.tar.gz'` and refuses execution if `output`, `.part`, or `.repack-receipt.json` already exists (`'xb'` / `'x'`).
    - Fsyncs `.part` before `os.replace(part, output)` and fsyncs `.repack-receipt.json`.
    - Leaves original archives and live server roots untouched (`original_archive_retained: True`, `original_source_deleted: False`, `linux_restore_still_required: True`) and does not satisfy `receipt_gate` (`verifier: "linux_chunk_restore"` + independent review receipt are still required prior to any deletion).
-

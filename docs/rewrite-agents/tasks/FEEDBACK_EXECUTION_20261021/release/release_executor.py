@@ -308,8 +308,8 @@ kubectl get node "$node" -o json | python3 -c 'import json,sys; n=json.load(sys.
 python3 - <<'PY'
 import os,subprocess,re
 path={K3S_IMAGEFS!r}; s=os.statvfs(path); assert s.f_bfree>=s.f_bavail and s.f_bavail*5>=s.f_blocks
-assert subprocess.check_output(["findmnt","-no","FSTYPE",path],text=True).strip()=="ext4"
-assert subprocess.check_output(["findmnt","-no","SOURCE",path],text=True).strip()=="/dev/vda2"
+assert subprocess.check_output(["findmnt","-no","FSTYPE","-T",path],text=True).strip()=="ext4"
+assert subprocess.check_output(["findmnt","-no","SOURCE","-T",path],text=True).strip()=="/dev/vda2"
 out=subprocess.check_output(["tune2fs","-l","/dev/vda2"],text=True); assert re.search(r"^Reserved block count:\\s*1271337\\s*$",out,re.M)
 PY
 stage={shlex.quote(stage)}
@@ -375,7 +375,7 @@ node_guard() {{
  curl -fsS --connect-timeout 10 --max-time 30 https://quiz.kotopedia.org/health/ready >/dev/null
  node=$(kubectl get nodes -o jsonpath='{{.items[0].metadata.name}}')
  kubectl get node "$node" -o json | python3 -c 'import json,sys; n=json.load(sys.stdin); c=dict((x["type"],x["status"]) for x in n["status"].get("conditions",[])); assert c.get("Ready")=="True" and c.get("DiskPressure")=="False"; assert not n["spec"].get("unschedulable",False); assert not any(t.get("effect") in ("NoSchedule","NoExecute") for t in n["spec"].get("taints",[]))'
- python3 -c 'import os,subprocess,re; path="/var/lib/rancher/k3s/agent/containerd"; s=os.statvfs(path); assert s.f_bfree>=s.f_bavail and s.f_bavail*5>=s.f_blocks; assert subprocess.check_output(["findmnt","-no","FSTYPE",path],text=True).strip()=="ext4"; assert subprocess.check_output(["findmnt","-no","SOURCE",path],text=True).strip()=="/dev/vda2"; out=subprocess.check_output(["tune2fs","-l","/dev/vda2"],text=True); assert re.search(r"^Reserved block count:\\s*1271337\\s*$",out,re.M)'
+ python3 -c 'import os,subprocess,re; path="/var/lib/rancher/k3s/agent/containerd"; s=os.statvfs(path); assert s.f_bfree>=s.f_bavail and s.f_bavail*5>=s.f_blocks; assert subprocess.check_output(["findmnt","-no","FSTYPE","-T",path],text=True).strip()=="ext4"; assert subprocess.check_output(["findmnt","-no","SOURCE","-T",path],text=True).strip()=="/dev/vda2"; out=subprocess.check_output(["tune2fs","-l","/dev/vda2"],text=True); assert re.search(r"^Reserved block count:\\s*1271337\\s*$",out,re.M)'
  kubectl get --raw "/api/v1/nodes/$node/proxy/configz" | python3 -c 'import json,sys; c=json.load(sys.stdin).get("kubeletconfig",dict()); print(dict((x,c.get(x)) for x in ("evictionHard","evictionMinimumReclaim","imageGCHighThresholdPercent","imageGCLowThresholdPercent")))'
 }}
 test \"$(hostname)\" = {shlex.quote(HOST)}
@@ -435,11 +435,14 @@ free_bytes=$(df -B1 --output=avail /opt | tail -1 | tr -d ' ')
 required_bytes=$((web_bytes * 2 + base_image_bytes * 3 + db_bytes * 2 + {MIN_FIXED_HEADROOM}))
 test \"$free_bytes\" -ge \"$required_bytes\"
 base_docker_id=$(docker image inspect \"$base_local\" --format '{{{{.Id}}}}')
-test \"$base_docker_id\" = {shlex.quote(BASE_DOCKER_CONFIG_DIGEST)}
+# This pinned host uses the Docker OCI image store: .Id is the index digest.
+test \"$base_docker_id\" = {shlex.quote(BASE_OCI_INDEX_DIGEST)}
+test \"$(docker image inspect \"$base_local\" --format '{{{{json .Descriptor}}}}' | python3 -c 'import json,sys; print(json.load(sys.stdin)["digest"])')\" = {shlex.quote(BASE_OCI_INDEX_DIGEST)}
 [[ "$base_docker_id" =~ ^sha256:[0-9a-f]{{64}}$ ]]
 k3s ctr -n k8s.io images ls | awk -v ref="docker.io/library/{BASE_LOCAL_TAG}" -v digest={shlex.quote(BASE_OCI_INDEX_DIGEST)} '$1==ref && $3==digest {{found=1}} END{{exit !found}}'
-k3s ctr -n k8s.io content get {shlex.quote(BASE_OCI_INDEX_DIGEST)} | python3 -c 'import json,sys; d=json.load(sys.stdin); assert any(x.get("digest")=={BASE_OCI_MANIFEST_DIGEST!r} for x in d.get("manifests",[]))'
-k3s ctr -n k8s.io content get {shlex.quote(BASE_OCI_MANIFEST_DIGEST)} >/dev/null
+k3s ctr -n k8s.io content get {shlex.quote(BASE_OCI_INDEX_DIGEST)} | python3 -c 'import json,sys; d=json.load(sys.stdin); assert any(x.get("digest")=={json.dumps(BASE_OCI_MANIFEST_DIGEST)} for x in d.get("manifests",[]))'
+k3s ctr -n k8s.io content get {shlex.quote(BASE_OCI_MANIFEST_DIGEST)} | python3 -c 'import json,sys; assert json.load(sys.stdin)["config"]["digest"]=={json.dumps(BASE_DOCKER_CONFIG_DIGEST)}'
+k3s crictl inspecti {shlex.quote('docker.io/library/quiz-master@'+BASE_OCI_INDEX_DIGEST)} | python3 -c 'import json,sys; assert json.load(sys.stdin)["status"]["id"]=={json.dumps(BASE_DOCKER_CONFIG_DIGEST)}'
 base_api=$(docker create \"$base_local\")
 new_api=''
 rehearsal=''
