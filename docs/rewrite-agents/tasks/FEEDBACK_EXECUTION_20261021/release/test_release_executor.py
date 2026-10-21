@@ -16,12 +16,14 @@ class Release78GuardsTest(unittest.TestCase):
   r.validate_build_id('quiz-2026.10.21-feedback-deadbeef')
   with self.assertRaises(r.GuardError):r.validate_build_id('quiz-2026.10.20-lazy-deadbeef')
  def test_server_guards(self):
-  with self.assertRaises(r.GuardError):r.validate_imagefs_blocks(199,201,1000)
-  with self.assertRaises(r.GuardError):r.validate_imagefs_blocks(2000000,2000000+r.EXT4_RESERVED_BLOCKS-1,10000000)
-  r.validate_imagefs_blocks(2000000,2000000+r.EXT4_RESERVED_BLOCKS,10000000)
-  receipt=b'{\"build_id\":\"quiz-2026.10.21-feedback-deadbeef\",\"input_sha256\":\"x\",\"image\":\"x@sha256:y\"}'
+  # Real statvfs can differ from the superblock reservation by allocator metadata.
+  r.validate_imagefs_blocks(2000000,3275433,10000000,1271337,'/dev/vda2')
+  with self.assertRaises(r.GuardError):r.validate_imagefs_blocks(2000000,3275433,10000000,1019547,'/dev/vda2')
+  with self.assertRaises(r.GuardError):r.validate_imagefs_blocks(199,1271532,1000,1271337,'/dev/vda2')
+  with self.assertRaises(r.GuardError):r.validate_imagefs_blocks(2000000,3275433,10000000,None,None)
+  receipt=b'{"build_id":"quiz-2026.10.21-feedback-deadbeef","input_sha256":"x","image":"x@sha256:y"}'
   script=r.remote_script('quiz-2026.10.21-feedback-deadbeef',r.API_SHA256,'publish',reviewed_receipt_bytes=receipt)
-  for x in ('f_bfree-s.f_bavail == 1271337','helm rollback quiz-master 78','= "79"','restore-proof.sqlite','review receipt hash mismatch','deadbeef-publish.sqlite'):self.assertIn(x,script)
+  for x in ('tune2fs','Reserved block count','/dev/vda2','helm rollback quiz-master 78','= "79"','restore-proof.sqlite','review receipt hash mismatch','deadbeef-publish.sqlite'):self.assertIn(x,script)
   self.assertLess(script.index('volatile_checks.py" unmount'),script.index('helm upgrade'))
   prepare=r.remote_script('quiz-2026.10.21-feedback-deadbeef',r.API_SHA256,'prepare')
   self.assertIn('k3s ctr -n k8s.io content get sha256:342a',prepare); self.assertIn('baseline image web closure',prepare)

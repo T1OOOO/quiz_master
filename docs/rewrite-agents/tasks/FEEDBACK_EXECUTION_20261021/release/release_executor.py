@@ -72,9 +72,9 @@ def validate_node_status(node: dict[str, Any]) -> None:
         raise GuardError("node has a blocking scheduling taint")
 
 
-def validate_imagefs_blocks(f_bavail: int, f_bfree: int, f_blocks: int) -> None:
-    if (type(f_bavail) is not int or type(f_bfree) is not int or type(f_blocks) is not int or f_blocks <= 0 or f_bavail < 0 or f_bfree < f_bavail): raise GuardError("k3s image filesystem block counters are invalid")
-    if f_bfree - f_bavail != EXT4_RESERVED_BLOCKS: raise GuardError("ext4 reserved block count differs from the verified baseline")
+def validate_imagefs_blocks(f_bavail: int, f_bfree: int, f_blocks: int, reserved_block_count: int, block_device: str) -> None:
+    if (type(f_bavail) is not int or type(f_bfree) is not int or type(f_blocks) is not int or type(reserved_block_count) is not int or f_blocks <= 0 or f_bavail < 0 or f_bfree < f_bavail): raise GuardError("k3s image filesystem block counters are invalid")
+    if block_device != "/dev/vda2" or reserved_block_count != EXT4_RESERVED_BLOCKS: raise GuardError("ext4 superblock reserve or device differs from the verified baseline")
     if f_bavail * 5 < f_blocks: raise GuardError("k3s image filesystem has less than 20% available blocks")
 
 
@@ -164,7 +164,7 @@ def read_preflight(path: Path) -> None:
     if deployment.get("disk", {}).get("free", 0) <= 0: raise GuardError("preflight requires measured free space")
     validate_node_status(node)
     if imagefs.get("fstype") != "ext4": raise GuardError("preflight image filesystem must be ext4")
-    validate_imagefs_blocks(imagefs.get("f_bavail"), imagefs.get("f_bfree"), imagefs.get("f_blocks"))
+    validate_imagefs_blocks(imagefs.get("f_bavail"), imagefs.get("f_bfree"), imagefs.get("f_blocks"), imagefs.get("reserved_block_count"), imagefs.get("block_device"))
     if version.get("api_sha256") != API_SHA256: raise GuardError("preflight API hash differs")
     if version.get("buildId") != BASE_BUILD_ID: raise GuardError("preflight baseline build differs")
 
@@ -304,9 +304,11 @@ flock -n 9
 node=$(kubectl get nodes -o jsonpath='{{.items[0].metadata.name}}')
 kubectl get node "$node" -o json | python3 -c 'import json,sys; n=json.load(sys.stdin); c=dict((x["type"],x["status"]) for x in n["status"].get("conditions",[])); assert c.get("Ready")=="True" and c.get("DiskPressure")=="False"; assert not n["spec"].get("unschedulable",False); assert not any(t.get("effect") in ("NoSchedule","NoExecute") for t in n["spec"].get("taints",[]))'
 python3 - <<'PY'
-import os,subprocess
-s=os.statvfs({K3S_IMAGEFS!r}); assert s.f_bfree-s.f_bavail == 1271337; assert s.f_bavail * 5 >= s.f_blocks
-assert subprocess.check_output(["findmnt","-no","FSTYPE",{K3S_IMAGEFS!r}],text=True).strip()=="ext4"
+import os,subprocess,re
+path={K3S_IMAGEFS!r}; s=os.statvfs(path); assert s.f_bfree>=s.f_bavail and s.f_bavail*5>=s.f_blocks
+assert subprocess.check_output(["findmnt","-no","FSTYPE",path],text=True).strip()=="ext4"
+assert subprocess.check_output(["findmnt","-no","SOURCE",path],text=True).strip()=="/dev/vda2"
+out=subprocess.check_output(["tune2fs","-l","/dev/vda2"],text=True); assert re.search(r"^Reserved block count:\\s*1271337\\s*$",out,re.M)
 PY
 stage={shlex.quote(stage)}
 test ! -e "$stage"
@@ -371,7 +373,7 @@ node_guard() {{
  curl -fsS --connect-timeout 10 --max-time 30 https://quiz.kotopedia.org/health/ready >/dev/null
  node=$(kubectl get nodes -o jsonpath='{{.items[0].metadata.name}}')
  kubectl get node "$node" -o json | python3 -c 'import json,sys; n=json.load(sys.stdin); c=dict((x["type"],x["status"]) for x in n["status"].get("conditions",[])); assert c.get("Ready")=="True" and c.get("DiskPressure")=="False"; assert not n["spec"].get("unschedulable",False); assert not any(t.get("effect") in ("NoSchedule","NoExecute") for t in n["spec"].get("taints",[]))'
- python3 -c 'import os,subprocess; s=os.statvfs("/var/lib/rancher/k3s/agent/containerd"); assert s.f_bfree-s.f_bavail == 1271337; assert s.f_bavail * 5 >= s.f_blocks; assert subprocess.check_output(["findmnt","-no","FSTYPE","/var/lib/rancher/k3s/agent/containerd"],text=True).strip()=="ext4"'
+ python3 -c 'import os,subprocess,re; path="/var/lib/rancher/k3s/agent/containerd"; s=os.statvfs(path); assert s.f_bfree>=s.f_bavail and s.f_bavail*5>=s.f_blocks; assert subprocess.check_output(["findmnt","-no","FSTYPE",path],text=True).strip()=="ext4"; assert subprocess.check_output(["findmnt","-no","SOURCE",path],text=True).strip()=="/dev/vda2"; out=subprocess.check_output(["tune2fs","-l","/dev/vda2"],text=True); assert re.search(r"^Reserved block count:\\s*1271337\\s*$",out,re.M)'
  kubectl get --raw "/api/v1/nodes/$node/proxy/configz" | python3 -c 'import json,sys; c=json.load(sys.stdin).get("kubeletconfig",dict()); print(dict((x,c.get(x)) for x in ("evictionHard","evictionMinimumReclaim","imageGCHighThresholdPercent","imageGCLowThresholdPercent")))'
 }}
 test \"$(hostname)\" = {shlex.quote(HOST)}

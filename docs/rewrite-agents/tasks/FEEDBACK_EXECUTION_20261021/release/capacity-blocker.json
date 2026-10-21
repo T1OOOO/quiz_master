@@ -1,0 +1,15 @@
+{
+  "published_build": "quiz-2026.10.20-lazy-2af0ab3f",
+  "helm_revision": "78",
+  "deployment_revision": "76",
+  "available_bytes": 8491819008,
+  "total_bytes": 102417174528,
+  "available_percent": 8.291401366162868,
+  "required_percent": 20,
+  "reserved_block_count": 1271337,
+  "block_device": "/dev/vda2",
+  "fstype": "ext4",
+  "preflight_sha256": "396b30a2dc7b8d68c40eecbd280b5643f436bcb3ee07ed56e59dc8bc12c8b9eb",
+  "server_mutation": false,
+  "release_guard_result": "REFUSE: k3s image filesystem has less than 20% available blocks"
+}
