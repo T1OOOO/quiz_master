@@ -52,6 +52,7 @@ class _CatalogPageState extends ConsumerState<CatalogPage> {
           context,
           feedback,
           controller.nextQuestion,
+          controller.dismissFeedback,
           _submittedAnswerText(journey),
         );
       }
@@ -645,14 +646,15 @@ void _showFeedback(
   BuildContext context,
   PracticeFeedback feedback,
   VoidCallback next,
+  VoidCallback dismiss,
   String? answer,
 ) {
   showDialog<void>(
     context: context,
-    barrierDismissible: false,
+    barrierDismissible: true,
     builder: (_) =>
         _FeedbackDialog(feedback: feedback, next: next, answer: answer),
-  );
+  ).whenComplete(dismiss);
 }
 
 class _FeedbackDialog extends StatelessWidget {
@@ -674,8 +676,10 @@ class _FeedbackDialog extends StatelessWidget {
       next();
     }
 
+    void close() => Navigator.pop(context);
+
     return PopScope(
-      canPop: false,
+      canPop: true,
       child: Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: ConstrainedBox(
@@ -709,7 +713,7 @@ class _FeedbackDialog extends StatelessWidget {
                       IconButton(
                         tooltip: MaterialLocalizations.of(context)
                             .closeButtonTooltip,
-                        onPressed: advance,
+                        onPressed: close,
                         icon: const Icon(Icons.close),
                       ),
                   ],

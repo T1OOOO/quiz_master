@@ -440,6 +440,11 @@ class JourneyController extends Notifier<JourneyState> {
     );
   }
 
+  void dismissFeedback() {
+    if (state.feedback == null || state.submitting) return;
+    state = state.copyWith(staged: state.staged, feedback: null);
+  }
+
   Future<void> submit() async {
     final generation = _generation;
     final attempt = state.attempt;

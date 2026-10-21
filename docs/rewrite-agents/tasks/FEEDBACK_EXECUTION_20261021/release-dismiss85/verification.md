@@ -1,0 +1,5 @@
+# Feedback modal dismissal
+
+Rootpublished83phoneproof: picker1/76→19/76,wrongBison(correctWagyu); CloseunexpectedlyadvancedfirstpendingQ1. BothClose/Continuecalledadvance. NewdismissFeedbackclearsonlyfeedback, retainsindex/staged/reveals/receipts; Close/barrier/systemBackdismiss; Continuealoneadvancesfirstpending. NewwidgetREDexpectednonfirstindex1actual0; GREENexercisesQ2/Q3/Q4/Q5andallthreedismissmechanisms+ContinueQ1.
+
+40relevanttestsPASS. Firstdefaultfullrunonegenericerroronlyinexistingcompletedreviewtest, noerror/print/stackevent; testneverexecutesfeedbackdialog. IsolatedreproPASS2seconds. Unchangedfullsuiteatconcurrency2PASS406tests; no weakening. WholeappanalyzePASS;23PythonreleaseguardsPASS; actualindependentreviewsACCEPT. Frozenbuild/phone/finalimagegate/publicationstillrequired. NoAPI/quizzes/assetschanged; retains826webfiles and88mediarecords. Baselineactualpublished84/82/index8ca75/AMD49b9/config82c89/inputd8dc.
