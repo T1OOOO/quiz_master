@@ -426,21 +426,10 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
             ),
             const SizedBox(height: 14),
             for (final option
-                in (_ru ? question.optionsRu : question.optionsEn))
+                in (_ru ? question.optionsRu : question.optionsEn).indexed)
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
-                child: OutlinedButton(
-                  onPressed: _checked
-                      ? null
-                      : () => setState(() => _chosen = option),
-                  style: OutlinedButton.styleFrom(
-                    backgroundColor: _chosen == option
-                        ? Theme.of(context).colorScheme.secondaryContainer
-                        : null,
-                    minimumSize: const Size.fromHeight(48),
-                  ),
-                  child: Text(option),
-                ),
+                child: _practiceOption(question, option.$2, option.$1),
               ),
             if (!_checked)
               FilledButton(
@@ -490,12 +479,122 @@ class _FoodAtlasPageState extends State<FoodAtlasPage> {
                 },
                 child: Text(_t('Next', 'Далее')),
               ),
+              _choiceExplanations(atlas, question),
             ],
           ],
         ),
       ),
     );
   }
+
+  Widget _practiceOption(FoodQuestion question, String option, int index) {
+    final colors = Theme.of(context).colorScheme;
+    final correctAnswer = _ru ? question.answerRu : question.answerEn;
+    final correct = option == correctAnswer;
+    final selected = option == _chosen;
+    final wrongChoice = _checked && selected && !correct;
+    final label = !_checked
+        ? null
+        : correct
+        ? _t('Correct answer.', 'Правильный ответ.')
+        : wrongChoice
+        ? _t('Your choice was incorrect.', 'Ваш выбор неверный.')
+        : null;
+    final background = !_checked
+        ? (selected ? colors.secondaryContainer : null)
+        : correct
+        ? colors.tertiaryContainer
+        : wrongChoice
+        ? colors.errorContainer
+        : colors.surfaceContainerHighest;
+    return OutlinedButton(
+      key: Key('food-option-$index'),
+      onPressed: _checked ? null : () => setState(() => _chosen = option),
+      style: OutlinedButton.styleFrom(
+        disabledForegroundColor: colors.onSurface,
+        backgroundColor: background,
+        minimumSize: const Size.fromHeight(48),
+      ),
+      child: Row(
+        children: [
+          if (_checked)
+            Icon(
+              correct
+                  ? Icons.check_circle
+                  : wrongChoice
+                  ? Icons.cancel
+                  : Icons.circle_outlined,
+              color: correct
+                  ? colors.primary
+                  : wrongChoice
+                  ? colors.error
+                  : colors.onSurfaceVariant,
+            ),
+          if (_checked) const SizedBox(width: 8),
+          Expanded(child: Text(option)),
+          if (label != null) ...[
+            const SizedBox(width: 8),
+            Flexible(child: Text(label, textAlign: TextAlign.end)),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _choiceExplanations(FoodAtlas atlas, FoodQuestion question) =>
+      ExpansionTile(
+        key: const Key('food-choice-explanations'),
+        title: Text(_t('About every option', 'О каждом варианте')),
+        children: [
+          for (final option
+              in (_ru ? question.optionsRu : question.optionsEn).indexed)
+            _choiceExplanation(atlas, question, option.$2, option.$1),
+        ],
+      );
+
+  Widget _choiceExplanation(
+    FoodAtlas atlas,
+    FoodQuestion question,
+    String option,
+    int index,
+  ) {
+    final matches = question.kind == FoodQuestionKind.composition
+        ? atlas.dishes.where((dish) => _name(dish) == option).toList()
+        : atlas.dishes.where((dish) => _region(dish) == option).toList();
+    final sourceIds = matches
+        .expand((dish) => dish.sourceIds)
+        .toSet()
+        .toList(growable: false);
+    final sourceTitles = sourceIds
+        .map(
+          (id) => learningSourceTitle(atlas.sourceFor(id).title, russian: _ru),
+        )
+        .join(' · ');
+    final text = question.kind == FoodQuestionKind.composition
+        ? _compositionExplanation(matches.single)
+        : _regionExplanation(matches);
+    return ListTile(
+      key: Key('food-choice-explanation-$index'),
+      title: Text(option),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [Text(text), const SizedBox(height: 4), Text(sourceTitles)],
+      ),
+    );
+  }
+
+  String _compositionExplanation(FoodDish dish) {
+    final ingredients = dish.ingredients
+        .map((item) => _claim(item.nameRu, item.nameEn))
+        .join(', ');
+    return '${_claim(dish.nameRu, dish.nameEn)} · ${_claim(dish.countryRu, dish.countryEn)} · ${_claim(dish.regionRu, dish.regionEn)}\n'
+        '${_claim(dish.summaryRu, dish.summaryEn)}\n'
+        '${_t('Ingredients in this learning card', 'Ингредиенты в этой учебной карточке')}: $ingredients';
+  }
+
+  String _regionExplanation(List<FoodDish> dishes) =>
+      '${_t('Reference dishes in this region', 'Справочные блюда этого региона')}: '
+      '${dishes.map(_name).join(', ')}';
 }
 
 class _Message extends StatelessWidget {

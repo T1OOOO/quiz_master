@@ -775,19 +775,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
         for (final id in _options[q.id]!)
           Padding(
             padding: const EdgeInsets.only(top: 8),
-            child: OutlinedButton(
-              key: Key('music-option-$id'),
-              onPressed: _checked ? null : () => setState(() => _choice = id),
-              style: OutlinedButton.styleFrom(
-                disabledForegroundColor: Theme.of(context)
-                    .colorScheme
-                    .onSurface,
-                backgroundColor: _choice == id
-                    ? Theme.of(context).colorScheme.secondaryContainer
-                    : null,
-              ),
-              child: Text(_catalog!.entries[id]!.name(_ru)),
-            ),
+            child: _practiceOption(q, id),
           ),
         const SizedBox(height: 12),
         if (!_checked)
@@ -820,6 +808,7 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
           ),
           Text(_ru ? russianLearningText(q.explanationRu) : q.explanationEn),
           _sources(q.sourceIds),
+          _choiceExplanations(q),
           FilledButton(
             key: const Key('music-next'),
             onPressed: () => setState(() {
@@ -833,4 +822,91 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
       ],
     );
   }
+
+  Widget _practiceOption(MusicQuestion question, String id) {
+    final colors = Theme.of(context).colorScheme;
+    final correct = id == question.correctId;
+    final selected = id == _choice;
+    final wrongChoice = _checked && selected && !correct;
+    final background = !_checked
+        ? (selected ? colors.secondaryContainer : null)
+        : correct
+        ? colors.tertiaryContainer
+        : wrongChoice
+        ? colors.errorContainer
+        : colors.surfaceContainerHighest;
+    final label = !_checked
+        ? null
+        : correct
+        ? _t('Correct answer.', 'Правильный ответ.')
+        : wrongChoice
+        ? _t('Your choice was incorrect.', 'Ваш выбор неверный.')
+        : null;
+    return OutlinedButton(
+      key: Key('music-option-$id'),
+      onPressed: _checked ? null : () => setState(() => _choice = id),
+      style: OutlinedButton.styleFrom(
+        disabledForegroundColor: colors.onSurface,
+        backgroundColor: background,
+      ),
+      child: Row(
+        children: [
+          if (_checked)
+            Icon(
+              correct
+                  ? Icons.check_circle
+                  : wrongChoice
+                  ? Icons.cancel
+                  : Icons.circle_outlined,
+              color: correct
+                  ? colors.primary
+                  : wrongChoice
+                  ? colors.error
+                  : colors.onSurfaceVariant,
+            ),
+          if (_checked) const SizedBox(width: 8),
+          Expanded(child: Text(_catalog!.entries[id]!.name(_ru))),
+          if (label != null) ...[
+            const SizedBox(width: 8),
+            Flexible(child: Text(label, textAlign: TextAlign.end)),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _choiceExplanations(MusicQuestion question) => ExpansionTile(
+    key: const Key('music-choice-explanations'),
+    title: Text(_t('About every option', 'О каждом варианте')),
+    children: [
+      for (final id in _options[question.id]!)
+        Builder(
+          builder: (context) {
+            final entry = _catalog!.entries[id]!;
+            final sourceTitles = entry.sourceIds
+                .map(
+                  (sourceId) => learningSourceTitle(
+                    _catalog!.sources[sourceId]!.title,
+                    russian: _ru,
+                  ),
+                )
+                .join(' · ');
+            return ListTile(
+              key: Key('music-choice-explanation-$id'),
+              title: Text(entry.name(_ru)),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(entry.description(_ru)),
+                  const SizedBox(height: 4),
+                  Text(entry.example(_ru)),
+                  const SizedBox(height: 4),
+                  Text(sourceTitles),
+                ],
+              ),
+            );
+          },
+        ),
+    ],
+  );
 }

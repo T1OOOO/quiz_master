@@ -1890,7 +1890,13 @@ class _QuizGameState extends State<_QuizGame> {
                                             row['thumbnail_asset'] as String,
                                             bundle: widget.bundle,
                                             fit: BoxFit.cover,
-                                            cacheWidth: 96,
+                                            cacheWidth: _thumbnailDecodeWidth(
+                                              context,
+                                              (MediaQuery.sizeOf(context)
+                                                          .width -
+                                                      34) /
+                                                  2,
+                                            ),
                                             errorBuilder: (_, _, _) =>
                                                 const Icon(
                                                   Icons.photo_outlined,
@@ -1919,6 +1925,16 @@ class _QuizGameState extends State<_QuizGame> {
       ),
     );
   }
+
+  int _thumbnailDecodeWidth(BuildContext context, double logicalWidth) => math
+      .min(
+        512,
+        math.max(
+          1,
+          (logicalWidth * MediaQuery.devicePixelRatioOf(context)).ceil(),
+        ),
+      )
+      .toInt();
 
   Future<void> _pickLandmark() async {
     var query = '';
@@ -2042,7 +2058,11 @@ class _QuizGameState extends State<_QuizGame> {
                                                     as String,
                                                 bundle: widget.bundle,
                                                 fit: BoxFit.cover,
-                                                cacheWidth: 192,
+                                                cacheWidth:
+                                                    _thumbnailDecodeWidth(
+                                                      context,
+                                                      64,
+                                                    ),
                                                 errorBuilder: (_, _, _) =>
                                                     const Icon(
                                                       Icons.photo_outlined,

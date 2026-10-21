@@ -1107,26 +1107,20 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(height: 12),
-                  ...question.options.map(
+                  ...question.options.indexed.map(
                     (option) => Padding(
                       padding: const EdgeInsets.only(bottom: 8),
-                      child: OutlinedButton(
-                        onPressed: _checked
-                            ? null
-                            : () => setModalState(() => _answer = option),
-                        style: OutlinedButton.styleFrom(
-                          alignment: Alignment.centerLeft,
-                          side: BorderSide(
-                            color: _answer == option
-                                ? Theme.of(context).colorScheme.primary
-                                : Theme.of(context).colorScheme.outline,
-                          ),
-                        ),
-                        child: Text(_quizValue(atlas, option)),
+                      child: _quizOption(
+                        atlas,
+                        question,
+                        option.$2,
+                        option.$1,
+                        () => setModalState(() => _answer = option.$2),
                       ),
                     ),
                   ),
                   FilledButton(
+                    key: const Key('knowledge-check'),
                     onPressed: _answer == null || _checked
                         ? null
                         : () => setModalState(() => _checked = true),
@@ -1147,6 +1141,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
                     ),
                     _sourceButton(question.sourceUrl),
                     FilledButton.tonal(
+                      key: const Key('knowledge-next'),
                       onPressed: () => setModalState(() {
                         _questionIndex++;
                         _answer = null;
@@ -1154,12 +1149,142 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
                       }),
                       child: Text(_text('Next question', 'Следующий вопрос')),
                     ),
+                    _choiceExplanations(atlas, question),
                   ],
                 ],
               ),
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget _quizOption(
+    KnowledgeAtlas atlas,
+    KnowledgeQuestion question,
+    String option,
+    int index,
+    VoidCallback onSelect,
+  ) {
+    final colors = Theme.of(context).colorScheme;
+    final correct = option == question.answer;
+    final selected = option == _answer;
+    final wrongChoice = _checked && selected && !correct;
+    final label = !_checked
+        ? null
+        : correct
+        ? _text('Correct answer.', 'Правильный ответ.')
+        : wrongChoice
+        ? _text('Your choice was incorrect.', 'Ваш выбор неверный.')
+        : null;
+    return OutlinedButton(
+      key: Key('knowledge-option-$index'),
+      onPressed: _checked ? null : onSelect,
+      style: OutlinedButton.styleFrom(
+        alignment: Alignment.centerLeft,
+        disabledForegroundColor: colors.onSurface,
+        backgroundColor: !_checked
+            ? (selected ? colors.secondaryContainer : null)
+            : correct
+            ? colors.tertiaryContainer
+            : wrongChoice
+            ? colors.errorContainer
+            : colors.surfaceContainerHighest,
+      ),
+      child: Row(
+        children: [
+          if (_checked)
+            Icon(
+              correct
+                  ? Icons.check_circle
+                  : wrongChoice
+                  ? Icons.cancel
+                  : Icons.circle_outlined,
+              color: correct
+                  ? colors.primary
+                  : wrongChoice
+                  ? colors.error
+                  : colors.onSurfaceVariant,
+            ),
+          if (_checked) const SizedBox(width: 8),
+          Expanded(child: Text(_quizValue(atlas, option))),
+          if (label != null) ...[
+            const SizedBox(width: 8),
+            Flexible(child: Text(label, textAlign: TextAlign.end)),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _choiceExplanations(
+    KnowledgeAtlas atlas,
+    KnowledgeQuestion question,
+  ) => ExpansionTile(
+    key: const Key('knowledge-choice-explanations'),
+    title: Text(_text('About every option', 'О каждом варианте')),
+    children: [
+      for (final option in question.options.indexed)
+        _choiceExplanation(atlas, question, option.$2, option.$1),
+    ],
+  );
+
+  Widget _choiceExplanation(
+    KnowledgeAtlas atlas,
+    KnowledgeQuestion question,
+    String option,
+    int index,
+  ) {
+    final eventQuestion =
+        question.kind == KnowledgeQuestionKind.date ||
+        question.kind == KnowledgeQuestionKind.order;
+    final events = eventQuestion
+        ? atlas.events
+              .where(
+                (event) => question.kind == KnowledgeQuestionKind.date
+                    ? dateLabel(
+                            event.year,
+                            endYear: event.endYear,
+                            approximate: event.approximate,
+                          ) ==
+                          option
+                    : event.titleEn == option,
+              )
+              .toList()
+        : const <AtlasEvent>[];
+    final people = eventQuestion
+        ? const <AtlasPerson>[]
+        : atlas.people.where((person) => person.nameEn == option).toList();
+    final detail = eventQuestion
+        ? events
+              .map(
+                (event) =>
+                    '${_eventName(event)}: ${_ru ? event.whatRu : event.whatEn}',
+              )
+              .join('\n')
+        : people
+              .map(
+                (person) =>
+                    '${_personName(person)} · ${person.roles.map(_roleLabel).join(', ')}\n${_ru ? person.bioRu : person.bioEn}',
+              )
+              .join('\n');
+    final sources =
+        (eventQuestion
+                ? events.map((event) => event.sourceUrl)
+                : people.map((person) => person.sourceUrl))
+            .toSet()
+            .join(' · ');
+    return ListTile(
+      key: Key('knowledge-choice-explanation-$index'),
+      title: Text(_quizValue(atlas, option)),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(_ru ? russianLearningText(detail) : detail),
+          const SizedBox(height: 4),
+          Text('${_text('Source', 'Источник')}: $sources'),
+        ],
       ),
     );
   }

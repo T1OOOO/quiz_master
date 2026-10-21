@@ -916,26 +916,7 @@ class _BeliefQuizState extends State<_BeliefQuiz> {
               for (var j = 0; j < opts.length; j++)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: OutlinedButton(
-                    key: Key('belief-option-$j'),
-                    onPressed: _checked
-                        ? null
-                        : () => setState(() => _answer = opts[j]),
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: _answer == opts[j]
-                          ? Theme.of(c).colorScheme.secondaryContainer
-                          : null,
-                    ),
-                    child: Text(
-                      ru
-                          ? widget.atlas.nodes
-                                .firstWhere((n) => n.id == opts[j])
-                                .ru
-                          : widget.atlas.nodes
-                                .firstWhere((n) => n.id == opts[j])
-                                .en,
-                    ),
-                  ),
+                  child: _option(c, q, opts[j], j, t),
                 ),
               if (!_checked)
                 FilledButton(
@@ -968,6 +949,7 @@ class _BeliefQuizState extends State<_BeliefQuiz> {
                   }),
                   child: Text(t('Next', 'Далее')),
                 ),
+                _choiceExplanations(q, opts, t),
               ],
             ],
           ),
@@ -975,4 +957,120 @@ class _BeliefQuizState extends State<_BeliefQuiz> {
       ),
     );
   }
+
+  Widget _option(
+    BuildContext context,
+    BeliefQuestion question,
+    String option,
+    int index,
+    String Function(String, String) t,
+  ) {
+    final colors = Theme.of(context).colorScheme;
+    final correct = option == question.correct;
+    final selected = option == _answer;
+    final wrongChoice = _checked && selected && !correct;
+    final label = !_checked
+        ? null
+        : correct
+        ? t('Correct answer.', 'Правильный ответ.')
+        : wrongChoice
+        ? t('Your choice was incorrect.', 'Ваш выбор неверный.')
+        : null;
+    return OutlinedButton(
+      key: Key('belief-option-$index'),
+      onPressed: _checked ? null : () => setState(() => _answer = option),
+      style: OutlinedButton.styleFrom(
+        disabledForegroundColor: colors.onSurface,
+        backgroundColor: !_checked
+            ? (selected ? colors.secondaryContainer : null)
+            : correct
+            ? colors.tertiaryContainer
+            : wrongChoice
+            ? colors.errorContainer
+            : colors.surfaceContainerHighest,
+      ),
+      child: Row(
+        children: [
+          if (_checked)
+            Icon(
+              correct
+                  ? Icons.check_circle
+                  : wrongChoice
+                  ? Icons.cancel
+                  : Icons.circle_outlined,
+              color: correct
+                  ? colors.primary
+                  : wrongChoice
+                  ? colors.error
+                  : colors.onSurfaceVariant,
+            ),
+          if (_checked) const SizedBox(width: 8),
+          Expanded(child: Text(_nodeName(option))),
+          if (label != null) ...[
+            const SizedBox(width: 8),
+            Flexible(child: Text(label, textAlign: TextAlign.end)),
+          ],
+        ],
+      ),
+    );
+  }
+
+  String _nodeName(String id) {
+    final node = widget.atlas.nodes.firstWhere(
+      (candidate) => candidate.id == id,
+    );
+    return widget.ru ? node.ru : node.en;
+  }
+
+  Widget _choiceExplanations(
+    BeliefQuestion question,
+    List<String> options,
+    String Function(String, String) t,
+  ) => ExpansionTile(
+    key: const Key('belief-choice-explanations'),
+    title: Text(t('About every option', 'О каждом варианте')),
+    children: [
+      for (final id in options)
+        Builder(
+          builder: (context) {
+            final node = widget.atlas.nodes.firstWhere(
+              (candidate) => candidate.id == id,
+            );
+            final sourceIds = <String>{
+              ...node.sourceIds,
+              ...node.facts.expand((fact) => fact.sourceIds),
+            };
+            final sources = sourceIds
+                .map(
+                  (sourceId) => learningSourceTitle(
+                    widget.atlas.sources
+                        .firstWhere((source) => source.id == sourceId)
+                        .title,
+                    russian: widget.ru,
+                  ),
+                )
+                .join(' · ');
+            final detail = [
+              widget.ru ? node.summaryRu : node.summaryEn,
+              '${t('Domains', 'Сферы')}: ${widget.ru ? node.domainsRu : node.domainsEn}',
+              '${t('Symbols', 'Символы')}: ${widget.ru ? node.symbolsRu : node.symbolsEn}',
+              if (node.facts.isNotEmpty)
+                widget.ru ? node.facts.first.ru : node.facts.first.en,
+            ].join('\n');
+            return ListTile(
+              key: Key('belief-choice-explanation-$id'),
+              title: Text(_nodeName(id)),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(widget.ru ? russianLearningText(detail) : detail),
+                  const SizedBox(height: 4),
+                  Text(sources),
+                ],
+              ),
+            );
+          },
+        ),
+    ],
+  );
 }
