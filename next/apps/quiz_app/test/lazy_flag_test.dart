@@ -108,4 +108,80 @@ void main() {
       reason: 'Capital dots must not reserve every flag label at world scale.',
     );
   });
+
+  for (final viewport in const [Size(361, 738), Size(393, 851)]) {
+    testWidgets('selected capital stays above its flag at $viewport', (
+      tester,
+    ) async {
+      tester.view.physicalSize = viewport;
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final controller = TransformationController(
+        Matrix4.identity()..translateByDouble(4, 2, 0, 1),
+      );
+      addTearDown(controller.dispose);
+      final before = controller.value.clone();
+      final france = QuizipediaFeature(
+        id: 'FR',
+        nameEn: 'France',
+        nameRu: 'Франция',
+        polygons: [
+          [
+            const [
+              QuizipediaPoint(.1, .1),
+              QuizipediaPoint(.9, .1),
+              QuizipediaPoint(.9, .9),
+              QuizipediaPoint(.1, .9),
+              QuizipediaPoint(.1, .1),
+            ],
+          ],
+        ],
+      );
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Center(
+            child: SizedBox(
+              width: viewport.width,
+              height: viewport.width / 2,
+              child: QuizipediaWorldMap(
+                features: [france],
+                controller: controller,
+                onSelect: (_) {},
+                selected: 'FR',
+                showFlags: true,
+                capitalPoints: const {'FR': Offset(.5, .5)},
+                capitalLabels: const {'FR': 'Париж'},
+                overlayLabels: const {'FR': 'Франция'},
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final flag = tester.getRect(find.byKey(const Key('map-country-flag-fr')));
+      final capitalLabel = tester.getRect(
+        find.byKey(const Key('map-selected-capital-label')),
+      );
+      final capitalDot = tester.getRect(
+        find.byKey(const Key('map-selected-capital-dot')),
+      );
+      final mapViewport = tester.getRect(
+        find.byKey(const Key('quizipedia-viewport')),
+      );
+      final expected =
+          mapViewport.topLeft +
+          MatrixUtils.transformPoint(
+            before,
+            Offset(viewport.width / 2, viewport.width / 4),
+          );
+
+      expect(flag.overlaps(capitalLabel), isFalse);
+      expect(mapViewport.contains(capitalLabel.topLeft), isTrue);
+      expect(mapViewport.contains(capitalLabel.bottomRight), isTrue);
+      expect((capitalDot.center - expected).distance, lessThan(.01));
+      expect(controller.value.storage, orderedEquals(before.storage));
+    });
+  }
 }

@@ -2833,6 +2833,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
         final occupied = <Rect>[];
         final capitalMarkers = <Rect>[];
         final labels = <Widget>[];
+        Rect? selectedFlagRect;
         final scale = transform.getMaxScaleOnAxis();
         // At the whole-world view, a dense row of individual flag image
         // widgets is both unreadable and an eager asset load in disguise.
@@ -3042,6 +3043,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             continue;
           }
           occupied.add(rect);
+          if (hasFlag && isSelected) selectedFlagRect = rect;
           labels.add(
             Positioned.fromRect(
               rect: rect,
@@ -3094,6 +3096,90 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           );
           if (hasFlag && labels.length == flagMarkerBudget) break;
           if (labels.length == 40) break;
+        }
+        final selectedId = widget.selected;
+        final selectedCapital = selectedId == null
+            ? null
+            : widget.capitalPoints[selectedId];
+        final selectedCapitalLabel = selectedId == null
+            ? null
+            : widget.capitalLabels[selectedId];
+        if (widget.showFlags &&
+            selectedCapital != null &&
+            selectedCapitalLabel != null) {
+          final at = MatrixUtils.transformPoint(
+            transform,
+            Offset(
+              selectedCapital.dx * scene.width +
+                  (_view.width - scene.width) / 2,
+              selectedCapital.dy * scene.height +
+                  (_view.height - scene.height) / 2,
+            ),
+          );
+          final textPainter = TextPainter(
+            text: TextSpan(
+              text: selectedCapitalLabel,
+              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700),
+            ),
+            textDirection: Directionality.of(context),
+            textScaler: MediaQuery.textScalerOf(context),
+            maxLines: 1,
+          )..layout(maxWidth: 108);
+          final width = textPainter.width + 8;
+          textPainter.dispose();
+          // A flag is a large marker, while the capital remains at its source
+          // coordinate.  Put the selected capital caption beside that marker;
+          // when its flag is decluttered/off-screen, keep the caption beside
+          // the visible capital rather than losing it with the painter label.
+          final reference =
+              selectedFlagRect ??
+              Rect.fromCenter(center: at, width: 10, height: 10);
+          final right = reference.right + 4;
+          final left = right + width <= _view.width - 4
+              ? right
+              : math.max(4.0, reference.left - width - 4);
+          if (at.dx < 0 ||
+              at.dx > _view.width ||
+              at.dy < 0 ||
+              at.dy > _view.height) {
+            return Stack(children: labels);
+          }
+          labels.add(
+            Positioned(
+              left: at.dx - 5,
+              top: at.dy - 5,
+              child: const IgnorePointer(
+                child: DecoratedBox(
+                  key: Key('map-selected-capital-dot'),
+                  decoration: BoxDecoration(
+                    color: Color(0xfff6c762),
+                    shape: BoxShape.circle,
+                    border: Border.fromBorderSide(
+                      BorderSide(color: Colors.white),
+                    ),
+                  ),
+                  child: SizedBox(width: 10, height: 10),
+                ),
+              ),
+            ),
+          );
+          labels.add(
+            Positioned(
+              left: left,
+              top: (at.dy - 11).clamp(4.0, _view.height - 26).toDouble(),
+              width: width,
+              child: Text(
+                selectedCapitalLabel,
+                key: const Key('map-selected-capital-label'),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          );
         }
         return Stack(children: labels);
       },
@@ -3301,6 +3387,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                                       neighborIds: widget.neighborIds,
                                       capitalPoints: widget.capitalPoints,
                                       capitalLabels: widget.capitalLabels,
+                                      showFlags: widget.showFlags,
                                       showLabels: widget.showLabels,
                                       sceneScale: transform.getMaxScaleOnAxis(),
                                       russian:
@@ -3341,6 +3428,7 @@ class _MapPainter extends CustomPainter {
     required this.neighborIds,
     this.capitalPoints = const {},
     this.capitalLabels = const {},
+    this.showFlags = false,
     required this.showLabels,
     required this.russian,
     required this.sceneScale,
@@ -3358,6 +3446,7 @@ class _MapPainter extends CustomPainter {
   final Set<String> neighborIds;
   final Map<String, Offset> capitalPoints;
   final Map<String, String> capitalLabels;
+  final bool showFlags;
   final bool showLabels, russian, dark;
   final double sceneScale;
 
@@ -3514,7 +3603,10 @@ class _MapPainter extends CustomPainter {
           ..strokeWidth = 1 / sceneScale
           ..color = Colors.white,
       );
-      if (id != selected && sceneScale < 2.25) continue;
+      if ((id != selected && sceneScale < 2.25) ||
+          (showFlags && id == selected)) {
+        continue;
+      }
       final text = capitalLabels[id]!;
       final painter = TextPainter(
         text: TextSpan(
@@ -3700,6 +3792,7 @@ class _MapPainter extends CustomPainter {
       selected != old.selected ||
       correct != old.correct ||
       showLabels != old.showLabels ||
+      showFlags != old.showFlags ||
       russian != old.russian ||
       sceneScale != old.sceneScale ||
       neighborIds != old.neighborIds ||

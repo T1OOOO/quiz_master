@@ -3,6 +3,13 @@ from unittest import mock
 from pathlib import Path
 import release_executor as r
 class Release78GuardsTest(unittest.TestCase):
+ def test_flutter_build_fingerprint_is_an_exact_generated_path(self):
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d); (root/'.last_build_id').write_text('a'*32)
+   r.validate_web_delta({'.last_build_id':'old'},{'.last_build_id':'new'},{'.last_build_id':'new'},root,{})
+   with self.assertRaises(r.GuardError): r.validate_web_delta({'.last_build_id':'old'},{'.last_build_id':'new','unapproved.txt':'bad'},{'.last_build_id':'new','unapproved.txt':'bad'},root,{})
+   (root/'.last_build_id').write_text('not-a-Flutter-fingerprint')
+   with self.assertRaises(r.GuardError): r.validate_web_delta({'.last_build_id':'old'},{'.last_build_id':'new'},{'.last_build_id':'new'},root,{})
  def test_generated_manifests_do_not_require_content_allowlist(self):
   with tempfile.TemporaryDirectory() as d:
    root=Path(d); asset=root/'assets'/'data.json'; asset.parent.mkdir(); asset.write_bytes(b'new'); digest=hashlib.sha256(b'new').hexdigest()

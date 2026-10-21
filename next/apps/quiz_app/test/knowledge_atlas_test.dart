@@ -26,12 +26,20 @@ void main() {
   testWidgets(
     'work and creator links open usable detail sheets in both directions',
     (tester) async {
+      late String source;
       await tester.runAsync(() async {
-        await tester.pumpWidget(
-          const MaterialApp(home: KnowledgeAtlasPage(section: 'culture')),
+        source = await rootBundle.loadString(
+          'assets/quizipedia/knowledge_atlas.json',
         );
-        await Future<void>.delayed(const Duration(milliseconds: 500));
       });
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeAtlasPage(
+            section: 'culture',
+            bundle: _LoadedKnowledgeBundle(source),
+          ),
+        ),
+      );
       await tester.pumpAndSettle();
       await tester.enterText(
         find.byKey(const Key('knowledge-search')),
@@ -271,4 +279,18 @@ class _EmptyKnowledgeBundle extends CachingAssetBundle {
         'works': [],
         'people': [],
       });
+}
+
+// Preload the real data before fake-async pumping: a fixed wall-clock delay
+// races asset decoding under the full parallel suite.
+class _LoadedKnowledgeBundle extends CachingAssetBundle {
+  _LoadedKnowledgeBundle(this.source);
+  final String source;
+  @override
+  Future<ByteData> load(String key) => rootBundle.load(key);
+  @override
+  Future<String> loadString(String key, {bool cache = true}) =>
+      key == 'assets/quizipedia/knowledge_atlas.json'
+      ? Future.value(source)
+      : rootBundle.loadString(key, cache: cache);
 }

@@ -43,7 +43,7 @@ BACKUP_PARENT = "/opt/quiz-master/backups"
 MIN_FIXED_HEADROOM = 512 * 1024 * 1024
 K3S_IMAGEFS = "/var/lib/rancher/k3s/agent/containerd"
 BUILD_RE = re.compile(r"^quiz-2026\.10\.21-feedback-[a-f0-9]{8}$")
-EXPECTED_GENERATED_WEB_MUTATIONS = frozenset({"main.dart.js", "flutter_service_worker.js", "flutter_bootstrap.js", "version.json", "assets/AssetManifest.json", "assets/AssetManifest.bin", "assets/AssetManifest.bin.json", "assets/FontManifest.json", "assets/NOTICES"})
+EXPECTED_GENERATED_WEB_MUTATIONS = frozenset({".last_build_id", "main.dart.js", "flutter_service_worker.js", "flutter_bootstrap.js", "version.json", "assets/AssetManifest.json", "assets/AssetManifest.bin", "assets/AssetManifest.bin.json", "assets/FontManifest.json", "assets/NOTICES"})
 SUPPORT = ("volatile_checks.py", "rehearse.py", "pool-materialization-evidence.json", "import20-evidence.json", "import18-evidence.json", "planets-acceptance.json", "games-acceptance.json", "harrypotter-acceptance.json", "animal-extras-acceptance.json")
 PRIVATE_DRAFTS = ("feedback43-planets-extra-20261019.json", "feedback43-games-extra-20261019.json", "feedback43-harrypotter-extra-20261019.json", "feedback43-animal-extras-20261019.json")
 CATALOG_BANDS = frozenset({"easy", "medium", "hard", "nightmare", "unknown"})
@@ -205,6 +205,8 @@ def validate_asset_delta(base: dict[str, str], candidate: dict[str, str], web_ro
     changed_assets = {name for name in changed if name.startswith("assets/") and name not in EXPECTED_GENERATED_WEB_MUTATIONS}
     if changed_assets != set(allowlist): raise GuardError("approved asset allowlist must equal every added or modified asset")
     if changed - changed_assets - EXPECTED_GENERATED_WEB_MUTATIONS: raise GuardError("web release changed an unapproved non-generated path")
+    if ".last_build_id" in changed and not re.fullmatch(r"[a-f0-9]{32}", (web_root/".last_build_id").read_text(encoding="utf-8")):
+        raise GuardError("Flutter build fingerprint must be 32 hexadecimal characters")
     for name in changed_assets:
         row, file = allowlist[name], web_root / name
         if candidate[name] != row["sha256"] or not file.is_file() or sha256_file(file) != row["sha256"] or file.stat().st_size != row["bytes"]: raise GuardError("asset bytes differ from separately approved allowlist")
