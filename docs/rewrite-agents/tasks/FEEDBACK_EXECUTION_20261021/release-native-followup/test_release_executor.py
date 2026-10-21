@@ -23,19 +23,19 @@ class NativeFollowupBaselineTest(unittest.TestCase):
                 controller.BASE_DEPLOYMENT_REVISION,
                 controller.BASE_BUILD_ID,
             ),
-            ('80', '78', 'quiz-2026.10.21-feedback-7c1552a2'),
+            ('81', '79', 'quiz-2026.10.21-feedback-3208d5f0'),
         )
         self.assertEqual(
             controller.BASE_OCI_INDEX_DIGEST,
-            'sha256:09644c0ca5b90c626b1724c2fe38250fa295a11c7e71cf8abab1a2e8311773a3',
+            'sha256:26618e10660ea237444628ac82edc69cad3c57435c7862e044a0ab2788f8071a',
         )
         self.assertEqual(
             controller.BASE_OCI_MANIFEST_DIGEST,
-            'sha256:74e61f85b9370e34ca252ee0b644f10dc919fbd9a142ccd30b02b35d89bba8d4',
+            'sha256:a4470dfed924840aaa3154090c54656b623f894b47bdd067719270666b828757',
         )
         self.assertEqual(
             controller.BASE_DOCKER_CONFIG_DIGEST,
-            'sha256:27eb1e1b195597fa1a81100a5d405b200d4e299a1b1f64cecac238d002452053',
+            'sha256:4a6c8109834338d2a9a05ca787334d47810fb52652b720846c2fa592fec480c6',
         )
         script = controller.remote_script(
             'quiz-2026.10.21-feedback-deadbeef',
@@ -43,9 +43,9 @@ class NativeFollowupBaselineTest(unittest.TestCase):
             'publish',
             reviewed_receipt_bytes=b'{"build_id":"quiz-2026.10.21-feedback-deadbeef","input_sha256":"x","image":"x@sha256:y"}',
         )
-        self.assertIn('helm rollback quiz-master 80', script)
+        self.assertIn('helm rollback quiz-master 81', script)
         self.assertNotIn('quiz-2026.10.20-lazy-2af0ab3f', script)
-        self.assertNotIn('rollback quiz-master 79', script)
+        self.assertNotIn('rollback quiz-master 80', script)
         controller.validate_build_id('quiz-2026.10.21-native-followup-deadbeef')
 
     def test_frontend_controller_still_rejects_api_or_short_disk_guards(self):
@@ -57,13 +57,13 @@ class NativeFollowupBaselineTest(unittest.TestCase):
         with self.assertRaises(controller.GuardError):
             controller.validate_build_id('quiz-2026.10.20-lazy-deadbeef')
 
-    def test_helm_79_preflight_cannot_replay_against_helm_80_controller(self):
+    def test_helm_80_preflight_cannot_replay_against_helm_81_controller(self):
         controller = _controller()
         prior = [
             {
                 'hostname': controller.HOST,
-                'revision': '79',
-                'deployment_revision': '77',
+                'revision': '80',
+                'deployment_revision': '78',
                 'pvc_uid': controller.PVC_UID,
                 'containers': [
                     {'name': 'api', 'image': 'old'},
@@ -73,7 +73,7 @@ class NativeFollowupBaselineTest(unittest.TestCase):
             },
             {
                 'api_sha256': controller.API_SHA256,
-                'buildId': 'quiz-2026.10.21-feedback-0c536221',
+                'buildId': 'quiz-2026.10.21-feedback-7c1552a2',
             },
             {
                 'status': {

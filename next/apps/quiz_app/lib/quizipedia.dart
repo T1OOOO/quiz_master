@@ -1185,6 +1185,10 @@ class _QuizGameState extends State<_QuizGame> {
   Map<String, dynamic> _row(String id) =>
       _targets.firstWhere((row) => row['id'] == id);
   String _name(String id) => _localized(context, _row(id), 'name');
+  String _optionLabel(String id) =>
+      widget.module == _Module.landmarks && _reverse
+      ? _localized(context, _row(id), 'city')
+      : _name(id);
   String get _currentId => widget.challenge ? _session.current : _exploreId!;
   Map<String, dynamic> get _current => _row(_currentId);
   String get _articleDomain => switch (widget.module) {
@@ -1680,12 +1684,8 @@ class _QuizGameState extends State<_QuizGame> {
               padding: const EdgeInsets.symmetric(vertical: 4),
               child: _choiceButton(
                 id: id,
-                label: widget.module == _Module.landmarks && _reverse
-                    ? _localized(context, _row(id), 'city')
-                    : _name(id),
-                semantic: widget.module == _Module.landmarks && _reverse
-                    ? _localized(context, _row(id), 'city')
-                    : _name(id),
+                label: _optionLabel(id),
+                semantic: _optionLabel(id),
               ),
             ),
         const SizedBox(height: 12),
@@ -1703,18 +1703,60 @@ class _QuizGameState extends State<_QuizGame> {
     required String semantic,
   }) {
     final selected = _selected == id;
+    final correct = id == _currentId;
+    final selectedWrong = _submitted && selected && !correct;
+    final colors = Theme.of(context).colorScheme;
+    final background = !_submitted
+        ? (selected ? colors.secondaryContainer : null)
+        : correct
+        ? colors.primaryContainer
+        : selectedWrong
+        ? colors.errorContainer
+        : colors.surfaceContainerHighest;
+    final status = correct
+        ? _t(context, 'Correct answer', 'Правильный ответ')
+        : selectedWrong
+        ? _t(context, 'Your answer: incorrect', 'Ваш ответ: неверно')
+        : _t(context, 'Not selected', 'Не выбран');
     return Semantics(
       label: semantic,
       child: OutlinedButton(
+        key: Key('quizipedia-option-$id'),
         onPressed: _submitted ? null : () => _select(id),
         style: OutlinedButton.styleFrom(
-          disabledForegroundColor: Theme.of(context).colorScheme.onSurface,
+          disabledForegroundColor: colors.onSurface,
+          disabledBackgroundColor: background,
           minimumSize: const Size(48, 48),
-          backgroundColor: selected
-              ? Theme.of(context).colorScheme.secondaryContainer
-              : null,
+          backgroundColor: background,
         ),
-        child: Text(label),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                if (_submitted)
+                  Icon(
+                    correct
+                        ? Icons.check_circle_outline
+                        : selectedWrong
+                        ? Icons.cancel_outlined
+                        : Icons.circle_outlined,
+                  ),
+                if (_submitted) const SizedBox(width: 8),
+                Expanded(child: Text(label)),
+              ],
+            ),
+            if (_submitted)
+              Padding(
+                padding: const EdgeInsetsDirectional.only(start: 32, top: 2),
+                child: Text(
+                  status,
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -2239,9 +2281,7 @@ class _QuizGameState extends State<_QuizGame> {
 
   Widget _feedback() {
     final correct = _current;
-    final answer = widget.module == _Module.landmarks && _reverse
-        ? _localized(context, correct, 'city')
-        : _name(_currentId);
+    final answer = _optionLabel(_currentId);
     return Semantics(
       liveRegion: true,
       child: Card(
@@ -2260,14 +2300,12 @@ class _QuizGameState extends State<_QuizGame> {
                     : _t(context, 'Incorrect', 'Неверно'),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              if (widget.module == _Module.landmarks &&
-                  _selected != null &&
-                  !_wasCorrect)
+              if (_selected != null && !_wasCorrect)
                 Text(
                   _t(
                     context,
-                    'Your answer: ${_reverse ? _localized(context, _row(_selected!), 'city') : _name(_selected!)}',
-                    'Ваш ответ: ${_reverse ? _localized(context, _row(_selected!), 'city') : _name(_selected!)}',
+                    'Your answer: ${_optionLabel(_selected!)}',
+                    'Ваш ответ: ${_optionLabel(_selected!)}',
                   ),
                 ),
               Text(
@@ -2287,6 +2325,33 @@ class _QuizGameState extends State<_QuizGame> {
                 ),
               if (_localized(context, correct, 'explanation').isNotEmpty)
                 Text(_localized(context, correct, 'explanation')),
+              if (widget.module == _Module.sky)
+                ExpansionTile(
+                  key: const Key('native-option-explanations'),
+                  title: Text(
+                    _t(
+                      context,
+                      'Every option explained',
+                      'Пояснения ко всем вариантам',
+                    ),
+                  ),
+                  children: [
+                    for (final id in _session.options)
+                      ListTile(
+                        leading: Icon(
+                          id == _currentId
+                              ? Icons.check_circle_outline
+                              : id == _selected
+                              ? Icons.cancel_outlined
+                              : Icons.circle_outlined,
+                        ),
+                        title: Text(_name(id)),
+                        subtitle: Text(
+                          _localized(context, _row(id), 'explanation'),
+                        ),
+                      ),
+                  ],
+                ),
               if (widget.module == _Module.map) ..._countryFeedback(),
               if (widget.module == _Module.landmarks)
                 ExpansionTile(

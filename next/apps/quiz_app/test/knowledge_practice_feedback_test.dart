@@ -41,6 +41,59 @@ Map<String, dynamic> _fixture() => {
 };
 
 void main() {
+  testWidgets(
+    'phone practice has a persistent close control after explanations',
+    (tester) async {
+      tester.view.physicalSize = const Size(361, 738);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      final data = _fixture();
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeAtlasPage(section: 'history', bundle: _Bundle(data)),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byKey(const Key('knowledge-train')));
+      await tester.pumpAndSettle();
+      for (var answer = 0; answer < 6; answer++) {
+        final option = find.byKey(const Key('knowledge-option-0'));
+        await tester.ensureVisible(option);
+        await tester.tap(option);
+        await tester.pump();
+        final check = find.byKey(const Key('knowledge-check'));
+        await tester.ensureVisible(check);
+        await tester.tap(check);
+        await tester.pumpAndSettle();
+        if (answer < 5) {
+          final next = find.byKey(const Key('knowledge-next'));
+          await tester.ensureVisible(next);
+          await tester.tap(next);
+          await tester.pumpAndSettle();
+        }
+      }
+      final explanations = find.byKey(
+        const Key('knowledge-choice-explanations'),
+      );
+      await tester.scrollUntilVisible(
+        explanations,
+        160,
+        scrollable: find.byType(Scrollable).last,
+      );
+      await tester.tap(explanations);
+      await tester.pumpAndSettle();
+
+      final close = find.byKey(const Key('knowledge-close-training'));
+      expect(close, findsOneWidget);
+      expect(tester.getRect(close).bottom, lessThanOrEqualTo(738));
+      await tester.tap(close);
+      await tester.pumpAndSettle();
+      expect(find.byKey(const Key('knowledge-train')), findsOneWidget);
+      expect(find.byKey(const Key('knowledge-close-training')), findsNothing);
+    },
+  );
+
   testWidgets('wrong knowledge choice reveals six sourced explanations', (
     tester,
   ) async {

@@ -1113,6 +1113,107 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
     }
   }
 
+  List<_BrandOptionDetail> _optionDetails(
+    BrandAtlas atlas,
+    BrandQuestion question,
+    String option,
+  ) {
+    List<_BrandOptionDetail> fallback() => [
+      _BrandOptionDetail(
+        question.explanationRu,
+        question.explanationEn,
+        question.sourceIds,
+      ),
+    ];
+    switch (question.kind) {
+      case BrandQuestionKind.owner:
+        final owners = atlas.owners.where((owner) => owner.name == option);
+        final details = owners
+            .map(
+              (owner) => _BrandOptionDetail(
+                owner.descriptionRu,
+                owner.descriptionEn,
+                owner.sourceIds,
+              ),
+            )
+            .toList(growable: false);
+        return details.isEmpty ? fallback() : details;
+      case BrandQuestionKind.foundation:
+        final brands = atlas.brands.where(
+          (brand) => '${brand.foundedYear}' == option,
+        );
+        final details = brands
+            .map(
+              (brand) => _BrandOptionDetail(
+                '«${brand.name}»: ${_datePromptRu(brand.dateScope)} — $option. ${brand.dateNoteRu}',
+                '“${brand.name}”: ${_datePromptEn(brand.dateScope)} — $option. ${brand.dateNoteEn}',
+                brand.sourceIds,
+              ),
+            )
+            .toList(growable: false);
+        return details.isEmpty ? fallback() : details;
+      case BrandQuestionKind.formerName:
+        final brands = atlas.brands.where((brand) => brand.name == option);
+        final details = brands
+            .expand(
+              (brand) => [
+                _BrandOptionDetail(
+                  '«${brand.name}»: ${brand.ownershipNoteRu}',
+                  '“${brand.name}”: ${brand.ownershipNoteEn}',
+                  brand.sourceIds,
+                ),
+                ...brand.facts.map(
+                  (fact) => _BrandOptionDetail(
+                    fact.textRu,
+                    fact.textEn,
+                    fact.sourceIds,
+                  ),
+                ),
+              ],
+            )
+            .toList(growable: false);
+        return details.isEmpty ? fallback() : details;
+      case BrandQuestionKind.founder:
+        final brands = atlas.brands.where(
+          (brand) => brand.founders.contains(option),
+        );
+        final details = brands
+            .expand(
+              (brand) => [
+                _BrandOptionDetail(
+                  '«${brand.name}»: $option указан среди основателей.',
+                  '“${brand.name}”: $option is listed among the founders.',
+                  brand.sourceIds,
+                ),
+                ...brand.facts.map(
+                  (fact) => _BrandOptionDetail(
+                    fact.textRu,
+                    fact.textEn,
+                    fact.sourceIds,
+                  ),
+                ),
+              ],
+            )
+            .toList(growable: false);
+        return details.isEmpty ? fallback() : details;
+      case BrandQuestionKind.logo:
+        final details = atlas.brands
+            .expand(
+              (brand) => brand.logoHistory
+                  .where((moment) => '${moment.year}' == option)
+                  .map(
+                    (moment) => _BrandOptionDetail(
+                      '«${brand.name}»: ${moment.textRu}',
+                      '“${brand.name}”: ${moment.textEn}',
+                      moment.sourceIds,
+                    ),
+                  ),
+            )
+            .toList(growable: false);
+        return details.isEmpty ? fallback() : details;
+    }
+  }
+
   Widget _practiceView(BrandAtlas atlas) {
     if (_finished) return _practiceResult(atlas);
     final all = _retrying ? _retryQuestions : _roundQuestions;
@@ -1120,6 +1221,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
     final q = all[_question];
     return SafeArea(
       child: ListView(
+        key: const Key('brand-practice-scroll'),
         controller: _practiceScroll,
         padding: const EdgeInsets.all(16),
         children: [
@@ -1136,23 +1238,73 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
             style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 16),
-          ...q.options.map(
-            (option) => Padding(
+          ...q.options.indexed.map((entry) {
+            final index = entry.$1;
+            final option = entry.$2;
+            final correct = option == q.answer;
+            final selected = option == _chosen;
+            final selectedWrong = _checked && selected && !correct;
+            final colors = Theme.of(context).colorScheme;
+            final background = !_checked
+                ? (selected ? colors.secondaryContainer : null)
+                : correct
+                ? colors.primaryContainer
+                : selectedWrong
+                ? colors.errorContainer
+                : colors.surfaceContainerHighest;
+            final status = correct
+                ? _t('Correct answer', 'Правильный ответ')
+                : selectedWrong
+                ? _t('Your answer: incorrect', 'Ваш ответ: неверно')
+                : _t('Not selected', 'Не выбран');
+            final icon = correct
+                ? Icons.check_circle_outline
+                : selectedWrong
+                ? Icons.cancel_outlined
+                : Icons.circle_outlined;
+            return Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: OutlinedButton(
+                key: Key('brand-option-$index'),
                 onPressed: _checked
                     ? null
                     : () => setState(() => _chosen = option),
                 style: OutlinedButton.styleFrom(
-                  backgroundColor: _chosen == option
-                      ? Theme.of(context).colorScheme.secondaryContainer
-                      : null,
+                  backgroundColor: background,
+                  disabledBackgroundColor: background,
+                  disabledForegroundColor: colors.onSurface,
                   minimumSize: const Size.fromHeight(48),
                 ),
-                child: Text(_displayName(option)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        if (_checked) Icon(icon),
+                        if (_checked) const SizedBox(width: 8),
+                        Expanded(child: Text(_displayName(option))),
+                      ],
+                    ),
+                    if (_checked)
+                      Padding(
+                        padding: const EdgeInsetsDirectional.only(
+                          start: 32,
+                          top: 2,
+                        ),
+                        child: Semantics(
+                          label: status,
+                          child: Text(
+                            status,
+                            style: Theme.of(context).textTheme.labelSmall,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
               ),
-            ),
-          ),
+            );
+          }),
           if (!_checked)
             FilledButton(
               onPressed: _chosen == null
@@ -1182,6 +1334,21 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
                           ? _t('Correct', 'Верно')
                           : _t('Not quite', 'Пока неверно'),
                     ),
+                    if (_chosen != q.answer)
+                      Text(
+                        key: const Key('brand-feedback-your'),
+                        _t(
+                          'Your answer: ${_displayName(_chosen!)}',
+                          'Ваш ответ: ${_displayName(_chosen!)}',
+                        ),
+                      ),
+                    Text(
+                      key: const Key('brand-feedback-correct'),
+                      _t(
+                        'Correct answer: ${_displayName(q.answer)}',
+                        'Правильный ответ: ${_displayName(q.answer)}',
+                      ),
+                    ),
                     Text(_claim(q.explanationRu, q.explanationEn)),
                     _sourceButtons(atlas, q.sourceIds),
                   ],
@@ -1190,6 +1357,7 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
             ),
           if (_checked)
             FilledButton(
+              key: const Key('brand-next'),
               onPressed: () {
                 setState(() {
                   if (_question + 1 >= all.length) {
@@ -1203,6 +1371,62 @@ class _BrandAtlasPageState extends State<BrandAtlasPage> {
                 _practiceTop();
               },
               child: Text(_t('Next', 'Дальше')),
+            ),
+          if (_checked)
+            ExpansionTile(
+              key: const Key('brand-option-explanations'),
+              title: Text(
+                _t(
+                  'Explanations for every option',
+                  'Пояснения ко всем вариантам',
+                ),
+              ),
+              children: q.options.indexed
+                  .map((entry) {
+                    final index = entry.$1;
+                    final option = entry.$2;
+                    final correct = option == q.answer;
+                    final selectedWrong = option == _chosen && !correct;
+                    final details = _optionDetails(atlas, q, option);
+                    final sourceIds = details
+                        .expand((detail) => detail.sourceIds)
+                        .toSet()
+                        .toList(growable: false);
+                    return ListTile(
+                      key: Key('brand-option-explanation-$index'),
+                      leading: Icon(
+                        correct
+                            ? Icons.check_circle_outline
+                            : selectedWrong
+                            ? Icons.cancel_outlined
+                            : Icons.circle_outlined,
+                      ),
+                      title: Text(_displayName(option)),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            correct
+                                ? _t('Correct option', 'Правильный вариант')
+                                : selectedWrong
+                                ? _t(
+                                    'Your answer: incorrect',
+                                    'Ваш ответ: неверно',
+                                  )
+                                : _t('Not selected', 'Не выбран'),
+                          ),
+                          ...details.map(
+                            (detail) => Padding(
+                              padding: const EdgeInsets.only(top: 4),
+                              child: Text(_claim(detail.ru, detail.en)),
+                            ),
+                          ),
+                          _sourceButtons(atlas, sourceIds),
+                        ],
+                      ),
+                    );
+                  })
+                  .toList(growable: false),
             ),
           TextButton(
             onPressed: () => setState(() => _practice = false),
@@ -1263,5 +1487,11 @@ extension _FirstOrNull<T> on Iterable<T> {
 class _SourcedText {
   const _SourcedText(this.text, this.sourceIds);
   final String text;
+  final List<String> sourceIds;
+}
+
+class _BrandOptionDetail {
+  const _BrandOptionDetail(this.ru, this.en, this.sourceIds);
+  final String ru, en;
   final List<String> sourceIds;
 }

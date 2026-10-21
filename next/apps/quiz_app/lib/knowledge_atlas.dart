@@ -1089,71 +1089,93 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
           final question = questions[_questionIndex % questions.length];
           final correct = _answer == question.answer;
           return SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
+            child: SizedBox(
+              height: MediaQuery.sizeOf(context).height * .9,
+              child: Stack(
                 children: [
-                  Text(
-                    _text('Unranked practice', 'Тренировка без рейтинга'),
-                    style: Theme.of(context).textTheme.titleLarge,
+                  SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(20, 64, 20, 20),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _text('Unranked practice', 'Тренировка без рейтинга'),
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          _ru
+                              ? russianLearningText(question.promptRu)
+                              : question.promptEn,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        const SizedBox(height: 12),
+                        ...question.options.indexed.map(
+                          (option) => Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: _quizOption(
+                              atlas,
+                              question,
+                              option.$2,
+                              option.$1,
+                              () => setModalState(() => _answer = option.$2),
+                            ),
+                          ),
+                        ),
+                        FilledButton(
+                          key: const Key('knowledge-check'),
+                          onPressed: _answer == null || _checked
+                              ? null
+                              : () => setModalState(() => _checked = true),
+                          child: Text(_text('Check', 'Проверить')),
+                        ),
+                        if (_checked) ...[
+                          const SizedBox(height: 10),
+                          Text(
+                            correct
+                                ? _text('Correct!', 'Верно!')
+                                : '${_text('Correct answer:', 'Правильный ответ:')} ${_quizValue(atlas, question.answer)}',
+                            style: Theme.of(context).textTheme.titleSmall,
+                          ),
+                          Text(
+                            _ru
+                                ? _quizValue(
+                                    atlas,
+                                    russianLearningText(question.explanationRu),
+                                  )
+                                : question.explanationEn,
+                          ),
+                          _sourceButton(question.sourceUrl),
+                          FilledButton.tonal(
+                            key: const Key('knowledge-next'),
+                            onPressed: () => setModalState(() {
+                              _questionIndex++;
+                              _answer = null;
+                              _checked = false;
+                            }),
+                            child: Text(
+                              _text('Next question', 'Следующий вопрос'),
+                            ),
+                          ),
+                          _choiceExplanations(atlas, question),
+                        ],
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: 12),
-                  Text(
-                    _ru
-                        ? russianLearningText(question.promptRu)
-                        : question.promptEn,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 12),
-                  ...question.options.indexed.map(
-                    (option) => Padding(
-                      padding: const EdgeInsets.only(bottom: 8),
-                      child: _quizOption(
-                        atlas,
-                        question,
-                        option.$2,
-                        option.$1,
-                        () => setModalState(() => _answer = option.$2),
+                  Positioned(
+                    top: 4,
+                    right: 4,
+                    child: Tooltip(
+                      message: _text('Close training', 'Закрыть тренировку'),
+                      child: IconButton(
+                        key: const Key('knowledge-close-training'),
+                        tooltip: _text('Close training', 'Закрыть тренировку'),
+                        onPressed: () => Navigator.of(context).pop(),
+                        icon: const Icon(Icons.close),
                       ),
                     ),
                   ),
-                  FilledButton(
-                    key: const Key('knowledge-check'),
-                    onPressed: _answer == null || _checked
-                        ? null
-                        : () => setModalState(() => _checked = true),
-                    child: Text(_text('Check', 'Проверить')),
-                  ),
-                  if (_checked) ...[
-                    const SizedBox(height: 10),
-                    Text(
-                      correct
-                          ? _text('Correct!', 'Верно!')
-                          : '${_text('Correct answer:', 'Правильный ответ:')} ${_quizValue(atlas, question.answer)}',
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
-                    Text(
-                      _ru
-                          ? _quizValue(
-                              atlas,
-                              russianLearningText(question.explanationRu),
-                            )
-                          : question.explanationEn,
-                    ),
-                    _sourceButton(question.sourceUrl),
-                    FilledButton.tonal(
-                      key: const Key('knowledge-next'),
-                      onPressed: () => setModalState(() {
-                        _questionIndex++;
-                        _answer = null;
-                        _checked = false;
-                      }),
-                      child: Text(_text('Next question', 'Следующий вопрос')),
-                    ),
-                    _choiceExplanations(atlas, question),
-                  ],
                 ],
               ),
             ),
@@ -1324,7 +1346,10 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     for (final event in atlas.events) {
       if (event.titleEn == value) return event.titleRu;
     }
-    return value.replaceAll('BCE', 'до н. э.').replaceFirst('≈ ', 'около ');
+    return value
+        .replaceAll('BCE', 'до н. э.')
+        .replaceAll('до н. э..', 'до н. э.')
+        .replaceFirst('≈ ', 'около ');
   }
 }
 
