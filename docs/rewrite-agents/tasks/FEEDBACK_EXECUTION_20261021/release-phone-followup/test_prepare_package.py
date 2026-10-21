@@ -75,6 +75,37 @@ class PhoneFollowupPackageGuardsTest(unittest.TestCase):
                 set(), {'next/content/prep-capitals-1/legacy.json'}
             )
 
+    def test_inherited_static_text_changes_only_line_endings_and_keeps_js(self):
+        module = _packager()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            base, candidate = root / 'base', root / 'candidate'
+            for name in module.INHERITED_STATIC_TEXT:
+                for path, content in [(base / name, b'one\r\ntwo\r\n'), (candidate / name, b'one\ntwo\n')]:
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(content)
+            (candidate / 'main.dart.js').write_bytes(b'new application')
+            audit = module.preserve_inherited_static_text(candidate, base)
+            self.assertEqual(len(audit), 7)
+            for name in module.INHERITED_STATIC_TEXT:
+                self.assertEqual((candidate / name).read_bytes(), (base / name).read_bytes())
+            self.assertEqual((candidate / 'main.dart.js').read_bytes(), b'new application')
+
+    def test_real_static_content_change_is_rejected_before_any_copy(self):
+        module = _packager()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            base, candidate = root / 'base', root / 'candidate'
+            for name in module.INHERITED_STATIC_TEXT:
+                for path, content in [(base / name, b'old\r\n'), (candidate / name, b'old\n')]:
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(content)
+            last = module.INHERITED_STATIC_TEXT[-1]
+            (candidate / last).write_bytes(b'changed content\n')
+            with self.assertRaises(module.release.GuardError):
+                module.preserve_inherited_static_text(candidate, base)
+            self.assertEqual((candidate / module.INHERITED_STATIC_TEXT[0]).read_bytes(), b'old\n')
+
     def test_source_freeze_checks_clean_status_before_accepting_exact_exception(self):
         module = _packager()
         expected = set(module.CANONICAL_CONTENT_EXCEPTION)

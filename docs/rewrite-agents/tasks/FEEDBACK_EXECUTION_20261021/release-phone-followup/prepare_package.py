@@ -10,6 +10,31 @@ CANONICAL_CONTENT_EXCEPTION={
  'next/content/prep-capitals-1/manifest.json':'755692aff8a11be862e53c8f074637124db6573675d6ccd7e6cfa67c4603ade1',
  'next/content/prep-capitals-1/.gitattributes':'5c0ccd4346d40a9a257042b8a485544d843749688aee93ed1bcf52679a9a2441',
 }
+INHERITED_STATIC_TEXT=(
+ 'assets/assets/catalog.json',
+ 'assets/assets/study/catalog.json',
+ 'assets/assets/study/question-articles.json',
+ 'index.html', 'manifest.json', 'startup.css', 'startup.js',
+)
+
+
+def preserve_inherited_static_text(candidate, baseline):
+ # These unchanged files must retain their public cache identities. Validate
+ # every pair before copying any bytes; real content changes fail closed.
+ audit=[]
+ for name in INHERITED_STATIC_TEXT:
+  current, inherited=candidate/name,baseline/name
+  if not current.is_file() or not inherited.is_file():
+   raise release.GuardError('missing inherited static text: '+name)
+  before,after=current.read_bytes(),inherited.read_bytes()
+  if before.replace(b'\r\n',b'\n') != after.replace(b'\r\n',b'\n'):
+   raise release.GuardError('inherited static text content changed: '+name)
+  if before != after:
+   audit.append({'path':name,'built_sha256':hashlib.sha256(before).hexdigest(),
+                 'inherited_sha256':hashlib.sha256(after).hexdigest()})
+ for row in audit:
+  shutil.copy2(baseline/row['path'],candidate/row['path'])
+ return audit
 
 
 def validate_runtime_deltas(runtime_changed, content_changed):
@@ -97,6 +122,8 @@ def main():
   entries.append({'family':'Roboto','fonts':[{'asset':'fonts/fallback/Roboto-Regular.ttf'}]})
   if entries==json.loads((baseline/'web/assets/FontManifest.json').read_text(encoding='utf-8')): shutil.copy2(baseline/'web/assets/FontManifest.json',fonts)
   else: fonts.write_text(json.dumps(entries,separators=(',',':'))+'\n',encoding='utf-8',newline='\n')
+ static_audit=preserve_inherited_static_text(dest/'web',baseline/'web')
+ (dest/'static-byte-preservation.json').write_text(json.dumps(static_audit,sort_keys=True,indent=2)+'\n',encoding='utf-8',newline='\n')
  if tree(dest/'chart')!=tree(baseline/'chart'): raise release.GuardError('chart changed from deployed baseline')
  copy_verified(baseline/'quizzes',dest/'quizzes',quizzes)
  shutil.copytree(baseline/'private',dest/'private'); shutil.copy2(baseline/'api',dest/'api'); shutil.copy2(baseline/'catalog.json',dest/'catalog.json')
