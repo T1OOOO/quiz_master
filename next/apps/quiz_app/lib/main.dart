@@ -20,6 +20,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'quizipedia.dart';
 import 'question_articles.dart';
+import 'knowledge_map/knowledge_map_page.dart';
 
 part 'api_models.dart';
 part 'api_repository.dart';
@@ -155,6 +156,12 @@ GoRouter createRouter({String initialLocation = '/'}) {
   return GoRouter(
     initialLocation: initialLocation,
     routes: [
+      GoRoute(
+        path: '/atlas/map-preview',
+        builder: (context, _) => KnowledgeMapPage(
+          onExit: () => context.go('/quizipedia'),
+        ),
+      ),
       // Keep global controls below the navigator's already-owned overlay.
       ShellRoute(
         navigatorKey: contentNavigator,
