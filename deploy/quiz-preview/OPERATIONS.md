@@ -162,11 +162,11 @@ Linux API and Flutter Web release exited zero (Flutter 119.1 seconds). Build ID
 - API SHA256 `8202291efad70ec1bdb732d716835ce6e245fba3b66948b3edece9ceac2719d7`.
 - Web JS SHA256 `b0a37897be21fb6dfbc3f71710907da5d2f39f43480b979aaa7b380be9ec4f8c`.
 
-Local build commands (root, then `next/apps/quiz_app`):
+Local build commands from the repository root:
 
 ```sh
 GOOS=linux GOARCH=amd64 CGO_ENABLED=0 GOMAXPROCS=2 go build -p=1 -trimpath -o STAGING/api ./next/server/cmd/api
-flutter build web --release --no-pub --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org --pwa-strategy=none
+./scripts/build_flutter_web_release.sh
 ```
 
 25,812,118-byte isolated archive transferred by strict-host SSH/SCP into
