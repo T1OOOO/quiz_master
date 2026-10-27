@@ -30,6 +30,7 @@ import 'organ_atlas.dart';
 import 'music_learning.dart';
 import 'animal_atlas.dart';
 import 'vascular_atlas.dart';
+import 'periodic_table.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -735,6 +736,14 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
             ),
           ),
         _themeCard(
+          icon: Icons.science_outlined,
+          title: _t(context, 'Periodic table', 'Таблица Менделеева'),
+          subtitle: _t(context, 'Explore the elements', 'Изучайте химические элементы'),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(builder: (_) => const PeriodicTablePage()),
+          ),
+        ),
+        _themeCard(
           key: const Key('quizipedia-all-facts'),
           icon: Icons.fact_check_outlined,
           title: _t(
@@ -946,6 +955,19 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
                   _ => KnowledgeAtlasPage(
                     section: section,
                     bundle: widget.bundle,
+                    historyEventMapBuilder: section == 'history'
+                        ? (
+                            context, {
+                            required countryIds,
+                            required selectedCountryId,
+                            required onCountrySelected,
+                          }) => _LazyHistoryEventMap(
+                            load: _load,
+                            countryIds: countryIds,
+                            selectedCountryId: selectedCountryId,
+                            onCountrySelected: onCountrySelected,
+                          )
+                        : null,
                   ),
                 },
               ),
@@ -978,6 +1000,89 @@ class _CatalogModulePageState extends State<_CatalogModulePage> {
         body: snapshot.hasError
             ? _LoadError(onRetry: () => setState(() => future = widget.load()))
             : const Center(child: CircularProgressIndicator()),
+      );
+    },
+  );
+}
+
+/// Created only after the history atlas switches to its map tab.  This keeps
+/// the country geometry out of the initial timeline request.
+class _LazyHistoryEventMap extends StatefulWidget {
+  const _LazyHistoryEventMap({
+    required this.load,
+    required this.countryIds,
+    required this.selectedCountryId,
+    required this.onCountrySelected,
+  });
+
+  final Future<QuizipediaCatalog> Function() load;
+  final Set<String> countryIds;
+  final String? selectedCountryId;
+  final ValueChanged<String?> onCountrySelected;
+
+  @override
+  State<_LazyHistoryEventMap> createState() => _LazyHistoryEventMapState();
+}
+
+class _LazyHistoryEventMapState extends State<_LazyHistoryEventMap> {
+  late Future<QuizipediaCatalog> _future = widget.load();
+  final TransformationController _controller = TransformationController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => FutureBuilder<QuizipediaCatalog>(
+    future: _future,
+    builder: (context, snapshot) {
+      if (snapshot.hasError) {
+        return SizedBox(
+          height: 260,
+          child: Center(
+            child: FilledButton.icon(
+              onPressed: () => setState(() => _future = widget.load()),
+              icon: const Icon(Icons.refresh),
+              label: Text(_t(context, 'Retry map', 'Повторить загрузку карты')),
+            ),
+          ),
+        );
+      }
+      if (!snapshot.hasData) {
+        return const SizedBox(
+          height: 260,
+          child: Center(child: CircularProgressIndicator()),
+        );
+      }
+      final countries = snapshot.data!.countries;
+      final knownIds = countries.map((country) => country.id).toSet();
+      final selectableIds = widget.countryIds.intersection(knownIds);
+      final selected = selectableIds.contains(widget.selectedCountryId)
+          ? widget.selectedCountryId
+          : null;
+      return SizedBox(
+        height: 300,
+        child: QuizipediaWorldMap(
+          features: countries,
+          controller: _controller,
+          selected: selected,
+          highlighted: selected,
+          showLabels: false,
+          showSelectionLabel: false,
+          labelPriorityIds: selectableIds,
+          overlayLabels: {
+            for (final country in countries)
+              if (selectableIds.contains(country.id))
+                country.id: Localizations.localeOf(context).languageCode == 'ru'
+                    ? country.nameRu
+                    : country.nameEn,
+          },
+          onSelect: (id) => widget.onCountrySelected(
+            id != null && selectableIds.contains(id) ? id : null,
+          ),
+        ),
       );
     },
   );
@@ -2711,6 +2816,7 @@ class QuizipediaWorldMap extends StatefulWidget {
     this.capitalPoints = const {},
     this.capitalLabels = const {},
     this.showFlags = false,
+    this.alwaysShowCountryNames = false,
     this.showSelectionLabel = true,
     this.waters = const [],
     this.selectedWater,
@@ -2737,7 +2843,7 @@ class QuizipediaWorldMap extends StatefulWidget {
   /// Labels remain owned by the caller so they use verified local fact text.
   final Map<String, Offset> capitalPoints;
   final Map<String, String> capitalLabels;
-  final bool showFlags, showSelectionLabel;
+  final bool showFlags, showSelectionLabel, alwaysShowCountryNames;
   final List<WaterShape> waters;
   final String? selectedWater;
   final bool showWaterLabels;
@@ -2997,6 +3103,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
         final occupied = <Rect>[];
         final capitalMarkers = <Rect>[];
         final labels = <Widget>[];
+        final countryNames = <Widget>[];
         Rect? selectedFlagRect;
         final scale = transform.getMaxScaleOnAxis();
         // At the whole-world view, a dense row of individual flag image
@@ -3093,7 +3200,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           });
         for (final feature in ordered) {
           final text = widget.overlayLabels[feature.id];
-          if (text == null) continue;
+          if (text == null && !widget.alwaysShowCountryNames) continue;
           final rings = feature.polygons
               .where((p) => p.isNotEmpty)
               .map((p) => p.first)
@@ -3144,6 +3251,48 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               center.dy * scene.height + (_view.height - scene.height) / 2,
             ),
           );
+          if (widget.alwaysShowCountryNames &&
+              at.dx >= 0 &&
+              at.dx <= _view.width &&
+              at.dy >= 0 &&
+              at.dy <= _view.height) {
+            const nameWidth = 112.0;
+            countryNames.add(
+              Positioned(
+                left: (at.dx - nameWidth / 2).clamp(
+                  4.0,
+                  _view.width - nameWidth - 4,
+                ),
+                top: (at.dy - 12).clamp(4.0, _view.height - 4),
+                width: nameWidth,
+                child: Semantics(
+                  label: _t(
+                    context,
+                    'Country: ${feature.nameEn}',
+                    'Страна: ${feature.nameRu}',
+                  ),
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface
+                          .withValues(alpha: .88),
+                    ),
+                    child: Text(
+                      Localizations.localeOf(context).languageCode == 'ru'
+                          ? feature.nameRu
+                          : feature.nameEn,
+                      key: Key('map-country-name-${feature.id.toLowerCase()}'),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 9,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }
+          if (text == null || text.isEmpty) continue;
           final scale = transform.getMaxScaleOnAxis();
           final countryWidth = math.max(
             0.0,
@@ -3327,10 +3476,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                     rect.top >= 4 &&
                     rect.bottom <= _view.height - 4,
               );
-          final blockers = <Rect>[
-            ...occupied,
-            ?selectedFlagRect,
-          ];
+          final blockers = <Rect>[...occupied, ?selectedFlagRect];
           var caption = candidates.firstOrNull;
           for (final candidate in candidates) {
             if (!blockers.any(
@@ -3344,7 +3490,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               at.dx > _view.width ||
               at.dy < 0 ||
               at.dy > _view.height) {
-            return Stack(children: labels);
+            return Stack(children: [...labels, ...countryNames]);
           }
           labels.add(
             Positioned(
@@ -3383,7 +3529,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             ),
           );
         }
-        return Stack(children: labels);
+        return Stack(children: [...labels, ...countryNames]);
       },
     ),
   );

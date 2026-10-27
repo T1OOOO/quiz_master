@@ -94,6 +94,8 @@ void main() {
         180,
         scrollable: find.byType(Scrollable).first,
       );
+      await tester.ensureVisible(secondEntry);
+      await tester.pumpAndSettle();
       await tester.tap(secondEntry);
       await tester.pumpAndSettle();
       expect(find.text(second.titleEn).hitTestable(), findsOneWidget);
@@ -150,7 +152,13 @@ void main() {
       final firstEraEntry = find.byKey(
         Key('knowledge-event-${medieval.first.id}'),
       );
+      await tester.scrollUntilVisible(
+        firstEraEntry,
+        180,
+        scrollable: find.byType(Scrollable).first,
+      );
       await tester.ensureVisible(firstEraEntry);
+      await tester.pumpAndSettle();
       await tester.tap(firstEraEntry);
       await tester.pumpAndSettle();
       expect(find.text(medieval.first.titleEn).hitTestable(), findsOneWidget);

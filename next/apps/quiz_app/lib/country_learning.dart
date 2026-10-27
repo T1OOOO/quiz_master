@@ -846,6 +846,7 @@ class CountryAtlasPage extends StatefulWidget {
 class _CountryAtlasPageState extends State<CountryAtlasPage> {
   final _controller = TransformationController();
   final _practiceScroll = ScrollController();
+  final _mapSearch = TextEditingController();
   String _query = '',
       _region = 'All',
       _selected = '',
@@ -859,6 +860,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   bool _checked = false, _practice = false;
   bool _reverseRelations = false;
   bool _filtersVisible = false;
+  bool _alwaysShowCountryNames = false;
   String _layer = 'none', _sort = 'population';
   final Set<String> _extraLayers = <String>{};
   WaterAtlas? _waters;
@@ -1012,6 +1014,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
   void dispose() {
     _controller.dispose();
     _practiceScroll.dispose();
+    _mapSearch.dispose();
     super.dispose();
   }
 
@@ -1110,8 +1113,10 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     ..._extraLayers,
   };
 
-  String _mapLabel(CountryFact fact) {
-    final values = <String>[_ru ? fact.nameRu : fact.nameEn];
+  String _mapLabel(CountryFact fact, {bool includeCountry = true}) {
+    final values = <String>[
+      if (includeCountry) _ru ? fact.nameRu : fact.nameEn,
+    ];
     for (final layer in _activeLayers) {
       if (layer == 'flag' || layer == 'water') continue;
       final value = _layerText(fact, layer);
@@ -1276,6 +1281,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   highlighted: focus.isEmpty ? null : focus,
                   showSelectionLabel: false,
                   showLabels: false,
+                  alwaysShowCountryNames: _alwaysShowCountryNames,
                   labelPriorityIds: _fact?.neighbors.toSet() ?? const {},
                   neighborIds: _fact?.neighbors.toSet() ?? const {},
                   waters: _activeLayers.contains('water')
@@ -1286,7 +1292,15 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                       : null,
                   onWaterSelect: _selectWater,
                   overlayLabels: {
-                    for (final fact in _facts) fact.id: _mapLabel(fact),
+                    for (final fact in _facts)
+                      if (_mapLabel(
+                        fact,
+                        includeCountry: !_alwaysShowCountryNames,
+                      ).isNotEmpty)
+                        fact.id: _mapLabel(
+                          fact,
+                          includeCountry: !_alwaysShowCountryNames,
+                        ),
                   },
                   capitalPoints: _activeLayers.contains('capital')
                       ? _capitalPoints
@@ -1357,26 +1371,36 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                       ),
                     ),
                     Expanded(
-                      child: ListView.builder(
-                        itemCount: rows.length,
-                        itemBuilder: (context, index) {
-                          final fact = rows[index];
-                          return ListTile(
-                            title: Text(_ru ? fact.nameRu : fact.nameEn),
-                            subtitle: fact.capital.isEmpty
-                                ? null
-                                : Text(_display(fact.capital)),
-                            onTap: () {
-                              Navigator.pop(context);
-                              setState(() {
-                                _selectedWater = null;
-                                _selected = fact.id;
-                                _focus = fact.id;
-                              });
-                            },
-                          );
-                        },
-                      ),
+                      child: rows.isEmpty
+                          ? Center(
+                              child: Text(
+                                _t(
+                                  'No countries match this search',
+                                  'По этому запросу страны не найдены',
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          : ListView.builder(
+                              itemCount: rows.length,
+                              itemBuilder: (context, index) {
+                                final fact = rows[index];
+                                return ListTile(
+                                  title: Text(_ru ? fact.nameRu : fact.nameEn),
+                                  subtitle: fact.capital.isEmpty
+                                      ? null
+                                      : Text(_display(fact.capital)),
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    setState(() {
+                                      _selectedWater = null;
+                                      _selected = fact.id;
+                                      _focus = fact.id;
+                                    });
+                                  },
+                                );
+                              },
+                            ),
                     ),
                   ],
                 ),
@@ -1575,6 +1599,19 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                                     toggleLayer(layer, selected),
                               ),
                           ],
+                        ),
+                        const SizedBox(height: 8),
+                        FilterChip(
+                          key: const Key('country-sheet-always-country-names'),
+                          label: Text(
+                            _t(
+                              'Always show country names',
+                              'Всегда показывать названия стран',
+                            ),
+                          ),
+                          selected: _alwaysShowCountryNames,
+                          onSelected: (selected) =>
+                              change(() => _alwaysShowCountryNames = selected),
                         ),
                       ],
                     ),
@@ -1775,12 +1812,23 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                     Expanded(
                       child: TextField(
                         key: const Key('map-country-search'),
+                        controller: _mapSearch,
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.search),
                           labelText: _t(
                             'Search a country or fact',
                             'Найти страну или факт',
                           ),
+                          suffixIcon: _query.isEmpty
+                              ? null
+                              : IconButton(
+                                  tooltip: _t('Clear search', 'Очистить поиск'),
+                                  icon: const Icon(Icons.clear),
+                                  onPressed: () {
+                                    _mapSearch.clear();
+                                    setState(() => _query = '');
+                                  },
+                                ),
                         ),
                         onChanged: (value) => setState(() => _query = value),
                       ),
@@ -1820,40 +1868,60 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                 ),
               ),
               if (_query.isNotEmpty)
-                SizedBox(
-                  height: chipHeight,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: _facts
-                        .where(_matches)
-                        .map(
-                          (fact) => Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                maxWidth: MediaQuery.sizeOf(context).width - 24,
-                              ),
-                              child: ActionChip(
-                                label: Text(
-                                  _ru ? fact.nameRu : fact.nameEn,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                onPressed: () {
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                  setState(() {
-                                    _selectedWater = null;
-                                    _selected = fact.id;
-                                    _focus = fact.id;
-                                    _region = 'All';
-                                  });
-                                },
-                              ),
+                Builder(
+                  builder: (context) {
+                    final matches = _facts.where(_matches).toList();
+                    if (matches.isEmpty) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Semantics(
+                          liveRegion: true,
+                          child: Text(
+                            _t(
+                              'No countries or facts match this search',
+                              'По этому запросу страны или факты не найдены',
                             ),
                           ),
-                        )
-                        .toList(),
-                  ),
+                        ),
+                      );
+                    }
+                    return SizedBox(
+                      height: chipHeight,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: matches
+                            .map(
+                              (fact) => Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxWidth:
+                                        MediaQuery.sizeOf(context).width - 24,
+                                  ),
+                                  child: ActionChip(
+                                    label: Text(
+                                      _ru ? fact.nameRu : fact.nameEn,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    onPressed: () {
+                                      FocusManager.instance.primaryFocus
+                                          ?.unfocus();
+                                      setState(() {
+                                        _selectedWater = null;
+                                        _selected = fact.id;
+                                        _focus = fact.id;
+                                        _region = 'All';
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    );
+                  },
                 ),
               if (_activeLayers.contains('capital')) ...[
                 if (_loadingCapitals) const LinearProgressIndicator(),
@@ -1944,6 +2012,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   highlighted: _focus.isEmpty ? null : _focus,
                   showSelectionLabel: false,
                   showLabels: false,
+                  alwaysShowCountryNames: _alwaysShowCountryNames,
                   labelPriorityIds: _fact?.neighbors.toSet() ?? const {},
                   neighborIds: _fact?.neighbors.toSet() ?? const {},
                   waters: _activeLayers.contains('water')
@@ -1954,7 +2023,15 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                       : null,
                   onWaterSelect: _selectWater,
                   overlayLabels: {
-                    for (final fact in _facts) fact.id: _mapLabel(fact),
+                    for (final fact in _facts)
+                      if (_mapLabel(
+                        fact,
+                        includeCountry: !_alwaysShowCountryNames,
+                      ).isNotEmpty)
+                        fact.id: _mapLabel(
+                          fact,
+                          includeCountry: !_alwaysShowCountryNames,
+                        ),
                   },
                   capitalPoints: _activeLayers.contains('capital')
                       ? _capitalPoints

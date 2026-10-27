@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/chronology_timeline.dart';
 
@@ -13,6 +14,9 @@ void main() {
       addTearDown(tester.view.resetDevicePixelRatio);
       await tester.pumpWidget(
         MaterialApp(
+          locale: const Locale('ru'),
+          supportedLocales: const [Locale('en'), Locale('ru')],
+          localizationsDelegates: GlobalMaterialLocalizations.delegates,
           home: MediaQuery(
             data: MediaQueryData(textScaler: TextScaler.linear(textScale)),
             child: Scaffold(

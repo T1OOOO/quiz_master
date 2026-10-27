@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/country_learning.dart';
 import 'package:quiz_app/quizipedia.dart';
@@ -125,6 +126,95 @@ void main() {
       expect(viewer.transformationController!.value, camera);
 
       expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'shipped Russian Baikal association ranks above generic Lomonosov and keeps its source',
+    (tester) async {
+      tester.view.physicalSize = const Size(390, 844);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+
+      late Map<String, List<CountryAssociation>> associations;
+      await tester.runAsync(() async {
+        associations = await loadCountryAssociations(
+          'assets/quizipedia/country_links.json',
+        );
+      });
+      final baikal = associations['RU']!.singleWhere(
+        (row) => row.id == 'lake-baikal-unesco',
+      );
+      expect(baikal.kind, 'landmark');
+      expect(baikal.relationRu, 'Самое глубокое озеро в мире');
+      expect(baikal.sourceUrl, 'https://whc.unesco.org/ru/list/754/');
+
+      await tester.pumpWidget(
+        const MaterialApp(
+          locale: Locale('ru'),
+          supportedLocales: [Locale('ru'), Locale('en')],
+          localizationsDelegates: GlobalMaterialLocalizations.delegates,
+          home: CountryAtlasPage(
+            catalog: QuizipediaCatalog(
+              countries: [],
+              countryRows: [],
+              mapTargetIds: [],
+              anatomy: {},
+              landmarks: [],
+              constellations: [],
+              credits: [],
+            ),
+          ),
+        ),
+      );
+      await tester.runAsync(() async {
+        await Future<void>.delayed(const Duration(milliseconds: 1200));
+      });
+      await tester.pump();
+      await tester.pump();
+
+      await tester.enterText(
+        find.byKey(const Key('map-country-search')),
+        'Байкал',
+      );
+      await tester.pump(const Duration(milliseconds: 100));
+      final russia = find.widgetWithText(ActionChip, 'Россия');
+      expect(russia, findsOneWidget);
+      await tester.tap(russia);
+      await tester.pump(const Duration(milliseconds: 100));
+
+      expect(
+        find.textContaining('Озеро Байкал — Самое глубокое озеро в мире'),
+        findsOneWidget,
+      );
+      expect(
+        find.textContaining(
+          'Михаил Ломоносов — Родился на территории современной страны',
+        ),
+        findsNothing,
+      );
+
+      final facts =
+          (jsonDecode(
+                    File('assets/quizipedia/country_facts.json')
+                        .readAsStringSync(),
+                  )['countries']
+                  as List)
+              .map(
+                (row) => CountryFact.fromJson(Map<String, dynamic>.from(row)),
+              )
+              .toList();
+      final questions = CountryQuestion.associations(
+        facts,
+        associations,
+        kind: 'landmark',
+      );
+      expect(
+        questions.any((question) => question.association?.id == baikal.id),
+        isTrue,
+      );
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump();
     },
   );
 }

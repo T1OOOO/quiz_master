@@ -263,6 +263,8 @@ class _VascularAtlasPageState extends State<VascularAtlasPage> {
               zoomOutLabel: 'Уменьшить',
               resetLabel: 'Вся схема',
               creditLabel: 'Источник изображения',
+              hideMarkersLabel: 'Скрыть метки',
+              showMarkersLabel: 'Показать метки',
             ),
             if (_regionFilter != null)
               TextButton.icon(
