@@ -7,10 +7,45 @@ class MapCountry {
     required this.nameEn,
     this.capital,
     this.area,
+    this.population,
+    this.populationYear,
+    this.currencies = const [],
+    this.languages = const [],
+    this.interestingFacts = const [],
   });
   final String id, nameRu, nameEn;
   final String? capital;
-  final num? area;
+  final num? area, population;
+  final int? populationYear;
+  final List<String> currencies, languages;
+  final List<MapInterestingFact> interestingFacts;
+}
+
+class MapInterestingFact {
+  const MapInterestingFact({
+    required this.textRu,
+    required this.textEn,
+    required this.source,
+  });
+  final String textRu, textEn;
+  final Uri source;
+
+  static MapInterestingFact? fromJson(Object? value) {
+    if (value is! Map) return null;
+    final ru = value['text_ru'];
+    final en = value['text_en'];
+    final raw = value['source_url'];
+    if (ru is! String ||
+        ru.trim().isEmpty ||
+        en is! String ||
+        en.trim().isEmpty ||
+        raw is! String) {
+      return null;
+    }
+    final uri = Uri.tryParse(raw);
+    if (uri == null || uri.scheme != 'https' || uri.host.isEmpty) return null;
+    return MapInterestingFact(textRu: ru, textEn: en, source: uri);
+  }
 }
 
 class MapLandmark {

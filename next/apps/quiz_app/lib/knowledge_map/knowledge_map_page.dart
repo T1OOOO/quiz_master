@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../country_labels_ru.dart';
 import 'country_marker.dart';
 import 'map_state.dart';
 
@@ -53,20 +54,26 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Map<String, dynamic>? countries,
       capitals,
       waterways,
+      riverDetail,
+      lakeDetail,
       countryLabels,
       waterLabels,
       landmarks;
   Map<String, dynamic> flags = {};
+  bool detailRiversReady = false, detailLakesReady = false;
   bool failed = false,
       ready = false,
       layersOpen = false,
       showCapitals = true,
-      showLandmarks = true;
+      showLandmarks = true,
+      showCountryLabels = true,
+      showWaterLabels = true;
   String query = '';
   final hover = MapHoverState();
   Timer? hoverTimer;
   Future<void> hoverFilter = Future.value();
   Future<void> capitalCommands = Future.value();
+  Future<void> labelCommands = Future.value();
   final searchController = TextEditingController();
   int generation = 0;
   bool get ru => Localizations.localeOf(context).languageCode == 'ru';
@@ -78,22 +85,66 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     load();
   }
 
+  Future<Map<String, dynamic>?> loadOptionalWater(
+    String asset,
+    Set<String> geometryTypes,
+  ) async {
+    try {
+      final text = await (widget.bundle ?? rootBundle).loadString(
+        asset,
+        cache: false,
+      );
+      final data = jsonDecode(text);
+      if (data is! Map<String, dynamic> ||
+          data['type'] != 'FeatureCollection' ||
+          data['features'] is! List ||
+          (data['features'] as List).isEmpty) {
+        throw const FormatException('Invalid or empty water FeatureCollection');
+      }
+      for (final feature in data['features'] as List) {
+        if (feature is! Map ||
+            feature['type'] != 'Feature' ||
+            feature['geometry'] is! Map ||
+            !geometryTypes.contains((feature['geometry'] as Map)['type']) ||
+            (feature['geometry'] as Map)['coordinates'] is! List) {
+          throw const FormatException('Invalid detailed water geometry');
+        }
+      }
+      return data;
+    } catch (error) {
+      debugPrint('Knowledge map: detailed water unavailable ($asset): $error');
+      return null;
+    }
+  }
+
   Future<void> load() async {
     startupTimer?.cancel();
     hoverTimer?.cancel();
     hover.clear();
     controller = null;
+    detailRiversReady = false;
+    detailLakesReady = false;
     setState(() {
       failed = false;
       ready = false;
       state = null;
       showCapitals = true;
       showLandmarks = true;
+      showCountryLabels = true;
+      showWaterLabels = true;
       layersOpen = false;
       generation++;
     });
     final attempt = generation;
     try {
+      final riverFuture = loadOptionalWater(
+        'assets/quizipedia/map_v2/rivers_detail.geojson',
+        const {'LineString', 'MultiLineString'},
+      );
+      final lakeFuture = loadOptionalWater(
+        'assets/quizipedia/map_v2/lakes_detail.geojson',
+        const {'Polygon', 'MultiPolygon'},
+      );
       final texts = await Future.wait([
         (widget.bundle ?? rootBundle).loadString(
           'assets/quizipedia/map_v2/countries.geojson',
@@ -127,8 +178,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           'assets/quizipedia/map_v2/landmarks.geojson',
           cache: false,
         ),
+        (widget.bundle ?? rootBundle).loadString(
+          'assets/quizipedia/country_interesting_facts.json',
+          cache: false,
+        ),
       ]);
+      final details = await Future.wait([riverFuture, lakeFuture]);
       if (!mounted || generation != attempt) return;
+      riverDetail = details[0];
+      lakeDetail = details[1];
       countries = jsonDecode(texts[0]) as Map<String, dynamic>;
       capitals = jsonDecode(texts[1]) as Map<String, dynamic>;
       waterways = jsonDecode(texts[2]) as Map<String, dynamic>;
@@ -141,6 +199,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               as Map<String, dynamic>;
       waterLabels = jsonDecode(texts[6]) as Map<String, dynamic>;
       landmarks = jsonDecode(texts[7]) as Map<String, dynamic>;
+      final interesting =
+          (jsonDecode(texts[8]) as Map<String, dynamic>)['countries']
+              as Map<String, dynamic>;
       final landmarkItems = (landmarks!['features'] as List)
           .map(
             (f) => MapLandmark.fromProperties(
@@ -159,6 +220,25 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             nameEn: p['name_en'],
             capital: f?['capital'],
             area: f?['area_km2'],
+            population: f?['population'],
+            populationYear: f?['population_year'],
+            currencies:
+                (f?['currencies'] as List?)
+                    ?.whereType<String>()
+                    .where((s) => s.trim().isNotEmpty)
+                    .toList() ??
+                const [],
+            languages:
+                (f?['languages'] as List?)
+                    ?.whereType<String>()
+                    .where((s) => s.trim().isNotEmpty)
+                    .toList() ??
+                const [],
+            interestingFacts:
+                (interesting[p['country_id']] as List? ?? const [])
+                    .map(MapInterestingFact.fromJson)
+                    .whereType<MapInterestingFact>()
+                    .toList(),
           ),
         );
       }
@@ -221,10 +301,56 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       );
       stage = 'waterways';
       await c.addGeoJsonSource('waterways', waterways!);
+      if (!mounted || generation != attempt || controller != c || failed) {
+        return;
+      }
+      if (lakeDetail != null) {
+        try {
+          await c.addGeoJsonSource('lakes-detail', lakeDetail!);
+          await c.addFillLayer(
+            'lakes-detail',
+            'lakes-detail',
+            const FillLayerProperties(fillColor: '#b9dfe9'),
+            minzoom: 4,
+            enableInteraction: false,
+          );
+          if (!mounted || generation != attempt || controller != c || failed) {
+            return;
+          }
+          detailLakesReady = true;
+        } catch (error) {
+          debugPrint('Knowledge map: detailed lakes unavailable: $error');
+        }
+      }
+      if (!mounted || generation != attempt || controller != c || failed) {
+        return;
+      }
+      if (riverDetail != null) {
+        try {
+          await c.addGeoJsonSource('rivers-detail', riverDetail!);
+          await c.addLineLayer(
+            'rivers-detail',
+            'rivers-detail',
+            const LineLayerProperties(lineColor: '#91c9d9', lineWidth: 1.2),
+            minzoom: 4,
+            enableInteraction: false,
+          );
+          if (!mounted || generation != attempt || controller != c || failed) {
+            return;
+          }
+          detailRiversReady = true;
+        } catch (error) {
+          debugPrint('Knowledge map: detailed rivers unavailable: $error');
+        }
+      }
+      if (!mounted || generation != attempt || controller != c || failed) {
+        return;
+      }
       await c.addFillLayer(
         'waterways',
         'lakes',
         const FillLayerProperties(fillColor: '#b9dfe9'),
+        maxzoom: detailLakesReady ? 4 : null,
         filter: [
           '==',
           ['get', 'kind'],
@@ -235,6 +361,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'waterways',
         'rivers',
         const LineLayerProperties(lineColor: '#91c9d9', lineWidth: 1.2),
+        maxzoom: detailRiversReady ? 4 : null,
         filter: [
           '==',
           ['get', 'kind'],
@@ -361,6 +488,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     setState(() {
       state?.select(id);
       query = '';
+      layersOpen = false;
     });
     searchController.clear();
     if (!ready || c == null) return;
@@ -465,7 +593,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     FocusScope.of(context).unfocus();
     final c = controller;
     final attempt = generation;
-    setState(() => state?.selectLandmark(id));
+    setState(() {
+      state?.selectLandmark(id);
+      layersOpen = false;
+    });
     if (!ready || c == null) return;
     try {
       await c.setFilter('selected', [
@@ -500,6 +631,40 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         setState(() => failed = true);
       }
     }
+  }
+
+  Future<void> toggleLabels(String layer, bool value) async {
+    if (!mounted || !ready) return;
+    final c = controller;
+    final attempt = generation;
+    setState(() {
+      if (layer == 'country-markers') {
+        showCountryLabels = value;
+      } else {
+        showWaterLabels = value;
+      }
+    });
+    bool current() => layer == 'country-markers'
+        ? showCountryLabels == value
+        : showWaterLabels == value;
+    labelCommands = labelCommands.catchError((Object _) {}).then((_) async {
+      if (!mounted ||
+          generation != attempt ||
+          controller != c ||
+          c == null ||
+          !current()) {
+        return;
+      }
+      try {
+        await c.setLayerVisibility(layer, value);
+      } catch (error, stack) {
+        debugPrint('Knowledge map: label visibility failed: $error\n$stack');
+        if (mounted && generation == attempt && controller == c) {
+          setState(() => failed = true);
+        }
+      }
+    });
+    await labelCommands;
   }
 
   void clearHover() {
@@ -587,6 +752,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           final water = await c.queryRenderedFeatures(point, [
             'lakes',
             'rivers',
+            if (detailRiversReady) 'rivers-detail',
+            if (detailLakesReady) 'lakes-detail',
           ], null);
           if (!current()) return;
           if (water.isEmpty) {
@@ -615,16 +782,80 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     });
   }
 
+  Widget _detailCard({
+    required Size viewport,
+    required String title,
+    String? subtitle,
+    Widget? leading,
+    required VoidCallback onClose,
+    required List<Widget> children,
+  }) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: math.min(360, math.max(0, viewport.width - 24)),
+        maxHeight: math.max(0, math.min(340, viewport.height - 84)),
+      ),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
+              child: Row(
+                children: [
+                  if (leading != null) ...[leading, const SizedBox(width: 8)],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        if (subtitle != null)
+                          Text(
+                            subtitle,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    tooltip: tr('Close', 'Закрыть'),
+                    onPressed: onClose,
+                    icon: const Icon(Icons.close),
+                  ),
+                ],
+              ),
+            ),
+            Flexible(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: children,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final selected = state?.selected;
     final selectedLandmark = state?.selectedLandmark;
-    final hoveredLandmark = state?.landmarks
-        .where((l) => l.id == hover.landmarkId)
-        .firstOrNull;
-    final hovered = state?.countries
-        .where((c) => c.id == hover.countryId)
-        .firstOrNull;
     String countryName(String id) {
       final country = state?.countries.where((c) => c.id == id).firstOrNull;
       return country == null ? id : (ru ? country.nameRu : country.nameEn);
@@ -644,15 +875,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               final viewport = Size(
                 constraints.maxWidth,
                 constraints.maxHeight,
-              );
-              final tooltipSize = Size(
-                math.min(280, viewport.width),
-                math.min(hoveredLandmark == null ? 48 : 180, viewport.height),
-              );
-              final tooltipPosition = clampHoverTooltip(
-                (hover.point ?? Offset.zero) + const Offset(14, 14),
-                viewport,
-                tooltipSize,
               );
               return Stack(
                 fit: StackFit.expand,
@@ -768,13 +990,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       child: Column(
                         children: [
                           IconButton.filledTonal(
-                            tooltip: tr('Layers', 'Слои'),
-                            onPressed: () =>
-                                setState(() => layersOpen = !layersOpen),
-                            icon: const Icon(Icons.layers_outlined),
-                          ),
-                          const SizedBox(height: 8),
-                          IconButton.filledTonal(
                             tooltip: tr('Zoom in', 'Увеличить'),
                             onPressed: ready
                                 ? () => controller?.animateCamera(
@@ -795,322 +1010,278 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         ],
                       ),
                     ),
+                    Positioned(
+                      right: 12,
+                      bottom: 12,
+                      child: IconButton.filledTonal(
+                        tooltip: tr('Layers', 'Слои'),
+                        onPressed: () =>
+                            setState(() => layersOpen = !layersOpen),
+                        icon: Icon(
+                          layersOpen ? Icons.close : Icons.layers_outlined,
+                        ),
+                      ),
+                    ),
                     if (layersOpen)
                       Positioned(
-                        top: 60,
-                        right: 8,
+                        right: 12,
+                        bottom: 68,
                         child: Material(
                           elevation: 4,
-                          borderRadius: BorderRadius.circular(12),
-                          child: SizedBox(
-                            width: 220,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SwitchListTile(
-                                  title: Text(
-                                    tr('Landmarks', 'Достопримечательности'),
-                                  ),
-                                  value: showLandmarks,
-                                  onChanged: ready
-                                      ? (v) => toggleLandmarks(v)
-                                      : null,
-                                ),
-                                SwitchListTile(
-                                  title: Text(tr('Capitals', 'Столицы')),
-                                  value: showCapitals,
-                                  onChanged: ready
-                                      ? (v) => toggleCapitals(v)
-                                      : null,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    if (hoveredLandmark != null && hover.point != null)
-                      Positioned(
-                        left: tooltipPosition.dx,
-                        top: tooltipPosition.dy,
-                        child: IgnorePointer(
-                          child: SizedBox(
-                            width: tooltipSize.width,
-                            height: tooltipSize.height,
-                            child: Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: SingleChildScrollView(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        ru
-                                            ? hoveredLandmark.nameRu
-                                            : hoveredLandmark.nameEn,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      Text(
-                                        countryName(hoveredLandmark.countryId),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      Text(
-                                        ru
-                                            ? hoveredLandmark.explanationRu
-                                            : hoveredLandmark.explanationEn,
-                                        maxLines: 3,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                      Text(
-                                        hoveredLandmark.sourceUrl,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    if (hovered != null && hover.point != null)
-                      Positioned(
-                        left: tooltipPosition.dx,
-                        top: tooltipPosition.dy,
-                        child: IgnorePointer(
-                          child: SizedBox(
-                            width: tooltipSize.width,
-                            height: tooltipSize.height,
-                            child: Card(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                ),
-                                child: Row(
-                                  children: [
-                                    if (flags[hovered.id] != null)
-                                      Image.memory(
-                                        base64Decode(flags[hovered.id]),
-                                        width: 30,
-                                        height: 20,
-                                      ),
-                                    const SizedBox(width: 8),
-                                    Expanded(
-                                      child: Text(
-                                        ru ? hovered.nameRu : hovered.nameEn,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    if (selectedLandmark != null)
-                      Positioned(
-                        left: 12,
-                        bottom: 12,
-                        right: 12,
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
+                          borderRadius: BorderRadius.circular(16),
                           child: ConstrainedBox(
                             constraints: BoxConstraints(
-                              maxWidth: math.max(
-                                0,
-                                math.min(340, viewport.width - 24),
+                              maxWidth: math.min(
+                                360,
+                                math.max(0, viewport.width - 24),
                               ),
-                              maxHeight: math.min(
-                                viewport.height,
-                                math.max(80, viewport.height * .55),
-                              ),
+                              maxHeight: math.max(0, viewport.height - 80),
                             ),
-                            child: Card(
-                              child: SingleChildScrollView(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              ru
-                                                  ? selectedLandmark.nameRu
-                                                  : selectedLandmark.nameEn,
-                                              style: const TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ),
-                                          IconButton(
-                                            tooltip: tr('Close', 'Закрыть'),
-                                            onPressed: () =>
-                                                selectLandmark(null),
-                                            icon: const Icon(Icons.close),
-                                          ),
-                                        ],
-                                      ),
-                                      Text(
-                                        countryName(selectedLandmark.countryId),
-                                      ),
-                                      if (selectedLandmark.thumbnailAsset !=
-                                          null)
-                                        Image.asset(
-                                          selectedLandmark.thumbnailAsset!,
-                                          height: 90,
-                                          errorBuilder: (_, _, _) =>
-                                              const SizedBox.shrink(),
-                                        ),
-                                      if (selectedLandmark.thumbnailAsset !=
-                                              null &&
-                                          selectedLandmark.imageAttribution !=
-                                              null)
-                                        Text(
-                                          '${selectedLandmark.imageAttribution} · ${selectedLandmark.imageLicense ?? ''}',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall,
-                                        ),
-                                      if (selectedLandmark.thumbnailAsset !=
-                                              null &&
-                                          selectedLandmark.imageSourceUrl !=
-                                              null)
-                                        TextButton(
-                                          onPressed: () => launchUrl(
-                                            Uri.parse(
-                                              selectedLandmark.imageSourceUrl!,
-                                            ),
-                                            mode:
-                                                LaunchMode.externalApplication,
-                                          ),
-                                          child: Text(
-                                            tr(
-                                              'Image source',
-                                              'Источник изображения',
-                                            ),
-                                          ),
-                                        ),
-                                      if (selectedLandmark.thumbnailAsset !=
-                                              null &&
-                                          selectedLandmark.imageLicenseUrl !=
-                                              null)
-                                        TextButton(
-                                          onPressed: () => launchUrl(
-                                            Uri.parse(
-                                              selectedLandmark.imageLicenseUrl!,
-                                            ),
-                                            mode:
-                                                LaunchMode.externalApplication,
-                                          ),
-                                          child: Text(
-                                            tr(
-                                              'Image licence',
-                                              'Лицензия изображения',
-                                            ),
-                                          ),
-                                        ),
-                                      Text(
-                                        ru
-                                            ? selectedLandmark.explanationRu
-                                            : selectedLandmark.explanationEn,
-                                      ),
-                                      TextButton(
-                                        onPressed: () => launchUrl(
-                                          Uri.parse(selectedLandmark.sourceUrl),
-                                          mode: LaunchMode.externalApplication,
-                                        ),
-                                        child: Text(tr('Source', 'Источник')),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => launchUrl(
-                                          Uri.parse(
-                                            selectedLandmark
-                                                .coordinateSourceUrl,
-                                          ),
-                                          mode: LaunchMode.externalApplication,
-                                        ),
-                                        child: Text(
-                                          tr(
-                                            'Coordinates source',
-                                            'Источник координат',
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    if (selected != null)
-                      Positioned(
-                        left: 12,
-                        bottom: 12,
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxWidth: math.min(
-                              340,
-                              MediaQuery.sizeOf(context).width - 24,
-                            ),
-                          ),
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(12),
+                            child: SingleChildScrollView(
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      if (flags[selected.id] != null)
-                                        Image.memory(
-                                          base64Decode(flags[selected.id]),
-                                          width: 36,
-                                          height: 24,
-                                        ),
-                                      const SizedBox(width: 8),
-                                      Expanded(
-                                        child: Text(
-                                          ru
-                                              ? selected.nameRu
-                                              : selected.nameEn,
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xff302b24),
-                                          ),
-                                        ),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                      16,
+                                      12,
+                                      16,
+                                      4,
+                                    ),
+                                    child: Text(
+                                      tr(
+                                        'Rivers and lakes are always visible',
+                                        'Реки и озёра видны всегда',
                                       ),
-                                      IconButton(
-                                        tooltip: tr('Close', 'Закрыть'),
-                                        onPressed: () => select(null),
-                                        icon: const Icon(Icons.close),
-                                      ),
-                                    ],
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall,
+                                    ),
                                   ),
-                                  Text(
-                                    '${tr('Capital', 'Столица')}: ${selected.capital ?? '—'}',
+                                  SwitchListTile(
+                                    dense: true,
+                                    title: Text(
+                                      tr('Country labels', 'Названия стран'),
+                                    ),
+                                    value: showCountryLabels,
+                                    onChanged: ready
+                                        ? (v) =>
+                                              toggleLabels('country-markers', v)
+                                        : null,
                                   ),
-                                  Text(
-                                    '${tr('Area', 'Площадь')}: ${selected.area ?? '—'} km²',
+                                  SwitchListTile(
+                                    dense: true,
+                                    title: Text(
+                                      tr('Water labels', 'Названия водоёмов'),
+                                    ),
+                                    value: showWaterLabels,
+                                    onChanged: ready
+                                        ? (v) => toggleLabels('water-labels', v)
+                                        : null,
+                                  ),
+                                  SwitchListTile(
+                                    dense: true,
+                                    title: Text(tr('Capitals', 'Столицы')),
+                                    value: showCapitals,
+                                    onChanged: ready ? toggleCapitals : null,
+                                  ),
+                                  SwitchListTile(
+                                    dense: true,
+                                    title: Text(
+                                      tr('Landmarks', 'Интересные места'),
+                                    ),
+                                    value: showLandmarks,
+                                    onChanged: ready ? toggleLandmarks : null,
                                   ),
                                 ],
                               ),
                             ),
+                          ),
+                        ),
+                      ),
+                    if (!layersOpen && selectedLandmark != null)
+                      Positioned(
+                        left: 12,
+                        right: 12,
+                        bottom: 68,
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: _detailCard(
+                            viewport: viewport,
+                            title: ru
+                                ? selectedLandmark.nameRu
+                                : selectedLandmark.nameEn,
+                            subtitle: countryName(selectedLandmark.countryId),
+                            onClose: () => selectLandmark(null),
+                            children: [
+                              if (selectedLandmark.thumbnailAsset != null)
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8),
+                                  child: Image.asset(
+                                    selectedLandmark.thumbnailAsset!,
+                                    height: 110,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, _, _) =>
+                                        const SizedBox.shrink(),
+                                  ),
+                                ),
+                              const SizedBox(height: 8),
+                              Text(
+                                ru
+                                    ? selectedLandmark.explanationRu
+                                    : selectedLandmark.explanationEn,
+                              ),
+                              if (selectedLandmark.thumbnailAsset != null &&
+                                  selectedLandmark.imageAttribution != null)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8),
+                                  child: Text(
+                                    '${selectedLandmark.imageAttribution} · ${selectedLandmark.imageLicense ?? ''}',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall,
+                                  ),
+                                ),
+                              Wrap(
+                                spacing: 4,
+                                children: [
+                                  TextButton(
+                                    onPressed: () => launchUrl(
+                                      Uri.parse(selectedLandmark.sourceUrl),
+                                      mode: LaunchMode.externalApplication,
+                                    ),
+                                    child: Text(tr('Source', 'Источник')),
+                                  ),
+                                  TextButton(
+                                    onPressed: () => launchUrl(
+                                      Uri.parse(
+                                        selectedLandmark.coordinateSourceUrl,
+                                      ),
+                                      mode: LaunchMode.externalApplication,
+                                    ),
+                                    child: Text(
+                                      tr('Coordinates', 'Координаты'),
+                                    ),
+                                  ),
+                                  if (selectedLandmark.thumbnailAsset != null &&
+                                      selectedLandmark.imageSourceUrl != null)
+                                    TextButton(
+                                      onPressed: () => launchUrl(
+                                        Uri.parse(
+                                          selectedLandmark.imageSourceUrl!,
+                                        ),
+                                        mode: LaunchMode.externalApplication,
+                                      ),
+                                      child: Text(
+                                        tr('Image source', 'Источник фото'),
+                                      ),
+                                    ),
+                                  if (selectedLandmark.thumbnailAsset != null &&
+                                      selectedLandmark.imageLicenseUrl != null)
+                                    TextButton(
+                                      onPressed: () => launchUrl(
+                                        Uri.parse(
+                                          selectedLandmark.imageLicenseUrl!,
+                                        ),
+                                        mode: LaunchMode.externalApplication,
+                                      ),
+                                      child: Text(
+                                        tr('Image licence', 'Лицензия фото'),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    if (!layersOpen && selected != null)
+                      Positioned(
+                        left: 12,
+                        right: 12,
+                        bottom: 68,
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: _detailCard(
+                            viewport: viewport,
+                            title: ru ? selected.nameRu : selected.nameEn,
+                            leading: flags[selected.id] == null
+                                ? null
+                                : Image.memory(
+                                    base64Decode(flags[selected.id]),
+                                    width: 36,
+                                    height: 24,
+                                  ),
+                            onClose: () => select(null),
+                            children: [
+                              Text(
+                                '${tr('Capital', 'Столица')}: ${selected.capital == null
+                                    ? '—'
+                                    : ru
+                                    ? russianCountryLabel(selected.capital!)
+                                    : selected.capital}',
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                '${tr('Area', 'Площадь')}: ${selected.area ?? '—'} km²',
+                              ),
+                              if (selected.population != null) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  '${tr('Population', 'Население')}${selected.populationYear == null ? '' : ' (${selected.populationYear})'}: ${selected.population}',
+                                ),
+                              ],
+                              if (selected.currencies.isNotEmpty) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  '${tr('Currency', 'Валюта')}: ${selected.currencies.join(', ')}',
+                                ),
+                              ],
+                              if (selected.languages.isNotEmpty) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  '${tr('Languages', 'Языки')}: ${selected.languages.map((value) => ru ? russianCountryLabel(value) : value).join(', ')}',
+                                ),
+                              ],
+                              if (selected.interestingFacts.isNotEmpty) ...[
+                                const SizedBox(height: 12),
+                                Text(
+                                  tr('Interesting facts', 'Интересные факты'),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                for (
+                                  var index = 0;
+                                  index < selected.interestingFacts.length;
+                                  index++
+                                ) ...[
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    ru
+                                        ? selected
+                                              .interestingFacts[index]
+                                              .textRu
+                                        : selected
+                                              .interestingFacts[index]
+                                              .textEn,
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: TextButton(
+                                      key: ValueKey('fact-source-$index'),
+                                      onPressed: () => launchUrl(
+                                        selected.interestingFacts[index].source,
+                                        mode: LaunchMode.externalApplication,
+                                      ),
+                                      child: Text(
+                                        '${tr('Source', 'Источник')} ${index + 1}',
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ],
                           ),
                         ),
                       ),

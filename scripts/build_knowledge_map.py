@@ -16,11 +16,44 @@ SOURCES = {
  'quizipedia/landmark_locations.geojson': ('77a95d4d205041552d9de88f49256f3984563991b72762e83ef1763e6f532c7b', 'https://www.wikidata.org/', 'CC0 coordinates; see individual image metadata'),
  'next/apps/quiz_app/assets/quizipedia/catalog.json': ('0ef534bac377c150e3bf3109d7dea96fb56e1e68f8bbc04c81adc5804d2d984b', 'Repository landmark catalog', 'See individual image metadata'),
  'quizipedia/sources/map_v2/ne_10m_admin_0_countries.geojson': ('239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson', 'Public domain'),
+ 'quizipedia/sources/map_v2/ne_10m_rivers_lake_centerlines_scale_rank.geojson': ('65dca1bd1729a347dda0837f41b5d152252e33abd2d7ff3370a0539c33bdf89b', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_rivers_lake_centerlines_scale_rank.geojson', 'Public domain'),
  'quizipedia/sources/map_v2/ne_10m_lakes.geojson': ('2d036f53dedec578001c5c30c2959ee7d4eebc1306900fa4367c49929ec8f2d9', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_lakes.geojson', 'Public domain'),
  'quizipedia/sources/map_v2/ne_110m_lakes.geojson': ('eb02ecc86c82004fccbf979058bfabbbd6c2d07968c7844d38eb1c9152d2ffc9', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_lakes.geojson', 'Public domain'),
  'quizipedia/sources/map_v2/ne_110m_rivers_lake_centerlines.geojson': ('55aa4497405afc07cdc931b7fbe062c4d6693ba2a550c0d24899953f5d507c8d', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_rivers_lake_centerlines.geojson', 'Public domain'),
  'quizipedia/sources/map_v2/ne_110m_geography_marine_polys.geojson': ('b9c3f7f557d0ff5217906adc82b66ecdac14aa7438df7e518cf6675d037bceb8', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_geography_marine_polys.geojson', 'Public domain'),
 }
+
+# IDs retained only after bidirectional geographic coverage checks.
+DETAILED_RIVER_IDS = {'Q1653', 'Q46841'}
+
+def line_points(geometry):
+    return [geometry['coordinates']] if geometry['type']=='LineString' else geometry['coordinates']
+
+def river_near_reference(geometry, references):
+    # Reject accidental name collisions; 110m geometry is coarser than 10m.
+    reference=[p for g in references for line in line_points(g) for p in line]
+    points=[p for line in line_points(geometry) for p in line]
+    sample=points[::max(1,len(points)//40)]
+    if not reference or not sample: return False
+    near=sum(any((p[0]-q[0])**2+(p[1]-q[1])**2 <= 0.75**2 for q in reference) for p in sample)
+    return near/len(sample) >= 0.75
+
+def river_reference_covered(references, detailed):
+    old=[p for g in references for line in line_points(g) for p in line]
+    new=[p for g in detailed for line in line_points(g) for p in line]
+    if not old or not new: return False
+    near=sum(any((p[0]-q[0])**2+(p[1]-q[1])**2 <= 0.5**2 for q in new) for p in old)
+    return near/len(old) >= 0.95
+
+def river_segments_connected(geometries):
+    lines=[line for g in geometries for line in line_points(g)]
+    if not lines: return False
+    seen={0}
+    while True:
+        added={j for i in seen for j in range(len(lines)) if j not in seen and
+               min((a[0]-b[0])**2+(a[1]-b[1])**2 for a in (lines[i][0],lines[i][-1]) for b in (lines[j][0],lines[j][-1])) <= 0.05**2}
+        if not added: return len(seen)==len(lines)
+        seen.update(added)
 
 def checked_read(path, expected):
     data = path.read_bytes()
@@ -145,7 +178,41 @@ def build():
         old_parts=old['coordinates'] if old['type'].startswith('Multi') else [old['coordinates']]
         new_parts=new['coordinates'] if new['type'].startswith('Multi') else [new['coordinates']]
         merged[f['id']]['geometry']={'type':'Multi'+base,'coordinates':old_parts+new_parts}
+    old_rivers={ident:[f['geometry'] for f in waterways if f['id']==ident] for ident in DETAILED_RIVER_IDS}
+    detailed={ident:[] for ident in DETAILED_RIVER_IDS}
+    for f in data['quizipedia/sources/map_v2/ne_10m_rivers_lake_centerlines_scale_rank.geojson']['features']:
+        ident=f['properties']['wikidataid']
+        if ident in detailed:
+            if not river_near_reference(f['geometry'],old_rivers[ident]): raise ValueError('river location mismatch: '+ident)
+            detailed[ident].append(f['geometry'])
+    for ident in DETAILED_RIVER_IDS:
+        if not river_reference_covered(old_rivers[ident],detailed[ident]): raise ValueError('river coverage incomplete: '+ident)
+        if not river_segments_connected(detailed[ident]): raise ValueError('disconnected river: '+ident)
+        merged[ident]['geometry']={'type':'MultiLineString','coordinates':[line for geometry in detailed[ident] for line in line_points(geometry)]}
     waterways=list(merged.values())
+    river_detail=[]
+    source=data['quizipedia/sources/map_v2/ne_10m_rivers_lake_centerlines_scale_rank.geojson']['features']
+    for index, f in enumerate(source):
+        props=f['properties']; cls=props['featurecla']
+        if cls not in ('River','River (Intermittent)'): continue
+        geometry=f['geometry']
+        if geometry['type'] not in ('LineString','MultiLineString'): raise ValueError('invalid detailed river type')
+        validate_geometry(geometry)
+        zoom=props['min_zoom']
+        if type(zoom) not in (int,float) or not math.isfinite(zoom): raise ValueError('invalid detailed river min_zoom')
+        ident='ne10-river-'+str(index)
+        river_detail.append({'type':'Feature','id':ident,'properties':{'id':ident,'kind':'river','min_zoom':zoom,'intermittent':cls=='River (Intermittent)'},'geometry':geometry})
+    lake_detail=[]
+    source=data['quizipedia/sources/map_v2/ne_10m_lakes.geojson']['features']
+    for index, f in enumerate(source):
+        props=f['properties']; geometry=f['geometry']
+        if props['featurecla'] not in ('Lake','Reservoir','Alkaline Lake') or geometry['type'] not in ('Polygon','MultiPolygon'):
+            raise ValueError('invalid detailed lake feature')
+        validate_geometry(geometry)
+        zoom=props['min_zoom']
+        if type(zoom) not in (int,float) or not math.isfinite(zoom): raise ValueError('invalid detailed lake min_zoom')
+        ident='ne10-lake-'+str(index)
+        lake_detail.append({'type':'Feature','id':ident,'properties':{'id':ident,'kind':'lake','min_zoom':zoom},'geometry':geometry})
     landmarks=data['quizipedia/landmark_locations.geojson']['features']
     catalog=data['next/apps/quiz_app/assets/quizipedia/catalog.json']['landmarks']
     if {f['id'] for f in landmarks}!={r['id'] for r in catalog}: raise ValueError('landmark catalog mismatch')
@@ -154,11 +221,11 @@ def build():
         validate_geometry(f['geometry'])
         if any(not f['properties'].get(k) for k in ('country_id','name_ru','name_en','explanation_ru','explanation_en','source_url','coordinate_source_url','wikidata_id','image_attribution','image_license','image_source_url')): raise ValueError('missing landmark provenance')
     water_labels=[feature(f['id'],f['properties']['name_ru'],f['properties']['name_en'],f['properties']['kind'],{'type':'Point','coordinates':water_anchor(f['geometry'])}) for f in waterways if f['properties']['kind'] in ('river','lake')]
-    layers={name+'.geojson':{'type':'FeatureCollection','features':sorted(rows,key=lambda f:f['id'])} for name,rows in [('countries',countries),('country_labels',country_labels),('capitals',capitals),('waterways',waterways),('water_labels',water_labels),('landmarks',landmarks)]}
+    layers={name+'.geojson':{'type':'FeatureCollection','features':sorted(rows,key=lambda f:f['id'])} for name,rows in [('countries',countries),('country_labels',country_labels),('capitals',capitals),('waterways',waterways),('rivers_detail',river_detail),('lakes_detail',lake_detail),('water_labels',water_labels),('landmarks',landmarks)]}
     for name,collection in layers.items():
         ids=[f['id'] for f in collection['features']]
         if len(ids)!=len(set(ids)): raise ValueError('duplicate id in '+name)
-    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Country and lake geometry uses Natural Earth 1:10m; rivers and marine features remain 1:110m.', 'Country labels preserve existing 110m anchors and capital fallbacks; additional 10m shapes use 10m label anchors. Facts without a shape or verified capital have no marker.', 'Legacy 110m disputed geometries were not assigned another country: '+', '.join(sorted(omitted)), 'Montserrat uses its 1:10m country label; its existing Plymouth capital point is omitted because it is Plymouth, England.', 'Capital names without a matching Russian registry label retain the source name.', 'Waterways carry no inferred country relationship.']}
+    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Country and lake geometry uses Natural Earth 1:10m. The Danube and Lena use 1:10m river geometry matched by Wikidata ID and checked against 110m coverage; other rivers and marine features remain 1:110m.', 'Country labels preserve existing 110m anchors and capital fallbacks; additional 10m shapes use 10m label anchors. Facts without a shape or verified capital have no marker.', 'Legacy 110m disputed geometries were not assigned another country: '+', '.join(sorted(omitted)), 'Montserrat uses its 1:10m country label; its existing Plymouth capital point is omitted because it is Plymouth, England.', 'Capital names without a matching Russian registry label retain the source name.', 'Detailed physical rivers contain Natural Earth 1:10m River and River (Intermittent) classes without inferred identities; lake centerlines and canals are excluded.', 'Detailed physical lakes contain all Natural Earth 1:10m Lake, Reservoir and Alkaline Lake polygons without inferred identities.', 'Waterways carry no inferred country relationship.']}
     return layers,manifest
 
 def encoded(value):

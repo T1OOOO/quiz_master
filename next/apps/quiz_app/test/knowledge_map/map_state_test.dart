@@ -39,4 +39,30 @@ void main() {
     expect(state.selectedLandmark, isNull);
     expect(state.selected?.id, 'FR');
   });
+  test('interesting facts require both languages and an HTTPS source', () {
+    expect(
+      MapInterestingFact.fromJson({
+        'text_ru': 'Факт',
+        'text_en': 'Fact',
+        'source_url': 'javascript:alert(1)',
+      }),
+      isNull,
+    );
+    expect(
+      MapInterestingFact.fromJson({
+        'text_ru': '',
+        'text_en': 'Fact',
+        'source_url': 'https://example.org',
+      }),
+      isNull,
+    );
+    expect(
+      MapInterestingFact.fromJson({
+        'text_ru': 'Факт',
+        'text_en': 'Fact',
+        'source_url': 'https://example.org',
+      }),
+      isNotNull,
+    );
+  });
 }

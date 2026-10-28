@@ -36,14 +36,14 @@ loads pinned JavaScript/CSS from its default CDN; this is not an offline accepta
 ## Runtime checks
 
 Search for France, select the result, wait for camera animation to finish and
-check flag/name markers and numeric area context. Open side Layers and toggle
-capital dots off and back on; rivers, lakes and country markers remain visible.
-Move across country interiors and markers: the hovered country's outline and
-flag/name tooltip must follow the pointer without changing click selection.
-Moving onto sea or the search controls must clear the hover tooltip.
+check flag/name markers and numeric area context. Open the lower Layers panel
+and toggle country names, water names, capitals and landmarks. River and lake
+geometry stays visible. Move across countries: their boundaries are highlighted
+without a duplicate tooltip; click selection remains independent.
+Moving onto sea or the search controls must clear the hover outline.
 For the native event regression, search Monaco, zoom in until its marker is
 visible, hover that marker, then move once to the French land nearby and stop.
-The tooltip must change from Monaco to France without a second pointer move.
+The outline must move to France without a second pointer move.
 Feature-leave events must not cancel the pending map-mousemove query.
 Close the country card and tap another
 country; tapping sea should clear selection. Check a narrow mobile viewport and
@@ -60,9 +60,14 @@ and country label at Montserrat.
 ## Detailed map increment
 
 This data increment uses pinned Natural Earth 1:10m country polygons and
-lake geometry. River and marine geometry retain the existing pinned source;
-no river is joined to a new shape by an ambiguous name. The generator adds
+physical river and lake layers. From zoom 4, 3,739 river features and 1,355 lake
+and reservoir polygons replace the overview water geometry without doubling it.
+Below zoom 4 the overview remains visible. No names or Wikidata identities are
+inferred for the additional physical network. The generator adds
 `water_labels.geojson` with point anchors on river lines or inside lake polygons.
+If a detailed water asset cannot be loaded or decoded as a nonempty feature
+collection, or its layer cannot be installed, the corresponding overview water
+geometry stays visible at every zoom instead of hiding that layer.
 
 `quizipedia/landmark_locations.geojson` records coordinates for the 46 existing
 catalog landmarks. Coordinates were read from non-deprecated terrestrial
@@ -71,10 +76,16 @@ Existing names, descriptions, local thumbnails and image credits are retained.
 Each point carries its coordinate source and the existing official fact source.
 Coordinate data is CC0; media retains its per-image license.
 
+Country cards show the available population and its reference year, currencies
+and languages from the existing registry. `country_interesting_facts.json`
+contains a first reviewed set of bilingual facts for 20 countries, each with a
+source link. Countries without a reviewed fact simply omit that section; further
+coverage is tracked in `quiz_master-6vig`.
+
 Check capital dot/name toggling together, zoom-dependent river/lake names,
 landmark markers and their optional layer. Open a landmark by clicking its
 marker and verify its localized description, photo attribution and source.
-Check the landmark-to-country hover transition and narrow-screen scrolling.
+Check country outlines when moving the pointer and narrow-screen scrolling.
 Capital labels begin at zoom 4, river/lake labels at zoom 3, and landmarks at
 zoom 4. Capital labels anchor above their points and landmark labels below,
 so nearby features such as Paris and the Eiffel Tower can be distinguished.

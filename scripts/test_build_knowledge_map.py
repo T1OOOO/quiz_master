@@ -57,6 +57,63 @@ class MapBuildTest(unittest.TestCase):
         self.assertFalse(3 <= point[0] <= 7 and 3 <= point[1] <= 7)
         self.assertEqual(m.water_anchor({'type':'LineString','coordinates':[[0,0],[2,2],[4,4]]}),[2,2])
 
+    def test_detailed_rivers_preserve_ids_and_geographic_coverage(self):
+        waters={f['id']:f for f in self.layers['waterways.geojson']['features']}
+        self.assertEqual(m.DETAILED_RIVER_IDS,{'Q1653','Q46841'})
+        path='quizipedia/sources/map_v2/ne_10m_rivers_lake_centerlines_scale_rank.geojson'
+        source=m.checked_read(m.ROOT/path,m.SOURCES[path][0])
+        path='quizipedia/sources/map_v2/ne_110m_rivers_lake_centerlines.geojson'
+        old=m.checked_read(m.ROOT/path,m.SOURCES[path][0])
+        for ident in m.DETAILED_RIVER_IDS:
+            reference=[f['geometry'] for f in old['features'] if f['properties']['wikidataid']==ident]
+            selected=[f['geometry'] for f in source['features'] if f['properties']['wikidataid']==ident]
+            self.assertTrue(selected,ident)
+            self.assertTrue(m.river_reference_covered(reference,selected),ident)
+            self.assertTrue(m.river_segments_connected(selected),ident)
+            for geometry in selected:
+                self.assertTrue(m.river_near_reference(geometry,reference),ident)
+            actual=waters[ident]['geometry']
+            self.assertEqual(actual['type'],'MultiLineString')
+            self.assertEqual(actual['coordinates'],[line for g in selected for line in m.line_points(g)])
+            self.assertGreater(sum(len(line) for line in actual['coordinates']),250)
+        reference=[{'type':'LineString','coordinates':[[100,40],[101,41]]}]
+        distant={'type':'LineString','coordinates':[[0,0],[1,1]]}
+        self.assertFalse(m.river_near_reference(distant,reference))
+        self.assertFalse(m.river_reference_covered(reference,[distant]))
+        self.assertFalse(m.river_segments_connected(reference+[distant]))
+
+    def test_physical_river_detail_is_pinned_and_complete(self):
+        path='quizipedia/sources/map_v2/ne_10m_rivers_lake_centerlines_scale_rank.geojson'
+        source=m.checked_read(m.ROOT/path,m.SOURCES[path][0])['features']
+        expected={f'ne10-river-{index}': f for index,f in enumerate(source) if f['properties']['featurecla'] in ('River','River (Intermittent)')}
+        output=self.layers['rivers_detail.geojson']['features']
+        self.assertEqual(len(output),3739)
+        self.assertEqual({f['id'] for f in output},set(expected))
+        for f in output:
+            source_row=expected[f['id']]
+            self.assertEqual(f['geometry'],source_row['geometry'])
+            self.assertEqual(f['properties']['min_zoom'],source_row['properties']['min_zoom'])
+            self.assertEqual(f['properties']['intermittent'],source_row['properties']['featurecla']=='River (Intermittent)')
+            self.assertEqual(set(f['properties']),{'id','kind','min_zoom','intermittent'})
+            self.assertEqual(f['properties']['kind'],'river')
+        self.assertEqual(self.manifest['counts']['rivers_detail.geojson'],3739)
+        self.assertIn('rivers_detail.geojson',json.loads(m.serialize_build(self.layers,self.manifest)['manifest.json'])['outputs'])
+
+    def test_physical_lake_detail_matches_pinned_source(self):
+        path='quizipedia/sources/map_v2/ne_10m_lakes.geojson'
+        source=m.checked_read(m.ROOT/path,m.SOURCES[path][0])['features']
+        expected={f'ne10-lake-{index}': f for index,f in enumerate(source)}
+        output=self.layers['lakes_detail.geojson']['features']
+        self.assertEqual(len(output),1355)
+        self.assertEqual({f['id'] for f in output},set(expected))
+        for f in output:
+            src=expected[f['id']]
+            self.assertIn(f['geometry']['type'],('Polygon','MultiPolygon'))
+            self.assertEqual(f['geometry'],src['geometry'])
+            self.assertEqual(f['properties'],{'id':f['id'],'kind':'lake','min_zoom':src['properties']['min_zoom']})
+        self.assertEqual(self.manifest['counts']['lakes_detail.geojson'],1355)
+        self.assertIn('lakes_detail.geojson',json.loads(m.serialize_build(self.layers,self.manifest)['manifest.json'])['outputs'])
+
     def test_landmark_catalog_provenance_and_positions(self):
         rows=self.layers['landmarks.geojson']['features']
         catalog=m.checked_read(m.ROOT/'next/apps/quiz_app/assets/quizipedia/catalog.json',m.SOURCES['next/apps/quiz_app/assets/quizipedia/catalog.json'][0])['landmarks']
