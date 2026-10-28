@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 class MapCountry {
   const MapCountry({
     required this.id,
@@ -32,3 +34,35 @@ class MapState {
         .toList();
   }
 }
+
+class MapHoverState {
+  int _sequence = 0;
+  String? countryId;
+  Offset? point;
+
+  int begin() => ++_sequence;
+  bool isCurrent(int request) => request == _sequence;
+  bool complete(int request, String? id, Offset location) {
+    if (!isCurrent(request)) return false;
+    countryId = id;
+    point = id == null ? null : location;
+    return true;
+  }
+
+  void clear() {
+    _sequence++;
+    countryId = null;
+    point = null;
+  }
+}
+
+Offset clampHoverTooltip(Offset desired, Size viewport, Size tooltip) => Offset(
+  desired.dx.clamp(
+    0.0,
+    (viewport.width - tooltip.width).clamp(0.0, double.infinity),
+  ),
+  desired.dy.clamp(
+    0.0,
+    (viewport.height - tooltip.height).clamp(0.0, double.infinity),
+  ),
+);

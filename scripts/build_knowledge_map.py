@@ -62,18 +62,32 @@ def build():
     crosswalk={'TWN':'TW', 'KOS':'XK'}
     if any(iso not in facts for iso in crosswalk.values()):
         raise ValueError('crosswalk ID missing from country facts')
-    countries=[]; omitted=[]
+    countries=[]; country_labels=[]; omitted=[]
     for f in data['quizipedia/sources/world-source.json']['features']:
         p=f['properties']; iso=crosswalk.get(p['ADM0_A3'], exceptions.get(p['ADM0_A3'],p['ISO_A2']))
         if len(iso)!=2 or not iso.isalpha() or not iso.isupper():
             omitted.append(p['ADM0_A3']); continue
         names=registry.get(iso) or (facts[iso] if p['ADM0_A3'] in crosswalk else None); ident=iso if names else 'ne-'+p['ADM0_A3'].lower()
-        countries.append(feature(ident, names['name_ru'] if names else p['NAME_RU'], names['name_en'] if names else p['NAME_EN'], 'country', f['geometry'], iso))
+        country=feature(ident, names['name_ru'] if names else p['NAME_RU'], names['name_en'] if names else p['NAME_EN'], 'country', f['geometry'], iso)
+        countries.append(country)
+        label=feature(iso, country['properties']['name_ru'], country['properties']['name_en'], 'country', {'type':'Point','coordinates':[p['LABEL_X'], p['LABEL_Y']]}, iso)
+        label['properties']['anchor_source']='natural-earth-label'
+        country_labels.append(label)
     capitals=[]
+    label_ids={f['id'] for f in country_labels}
     for p in data['next/apps/quiz_app/assets/quizipedia/capital_points.json']['capitals']:
+        # The existing MS row is Plymouth, England, not Montserrat.
+        if p['country_id'] == 'MS': continue
         reg=registry.get(p['country_id']); names=reg['capitals'] if reg else []
         match=next((n for n in names if n['name_en'].casefold()==p['name'].casefold()), None)
         capitals.append(feature('capital-'+str(p['ne_id']), match['name_ru'] if match else p['name'], p['name'], 'capital', {'type':'Point','coordinates':[p['longitude'],p['latitude']]},p['country_id']))
+        iso=p['country_id']
+        if iso not in label_ids:
+            names=facts[iso]
+            label=feature(iso,names['name_ru'],names['name_en'],'country',{'type':'Point','coordinates':[p['longitude'],p['latitude']]},iso)
+            label['properties']['anchor_source']='capital-point'
+            country_labels.append(label)
+            label_ids.add(iso)
     water={p['id']:p for p in data['next/apps/quiz_app/assets/quizipedia/waterways.json']['features']}
     waterways=[]
     for path in list(SOURCES)[-3:]:
@@ -92,11 +106,11 @@ def build():
         new_parts=new['coordinates'] if new['type'].startswith('Multi') else [new['coordinates']]
         merged[f['id']]['geometry']={'type':'Multi'+base,'coordinates':old_parts+new_parts}
     waterways=list(merged.values())
-    layers={name+'.geojson':{'type':'FeatureCollection','features':sorted(rows,key=lambda f:f['id'])} for name,rows in [('countries',countries),('capitals',capitals),('waterways',waterways),('landmarks',[])]}
+    layers={name+'.geojson':{'type':'FeatureCollection','features':sorted(rows,key=lambda f:f['id'])} for name,rows in [('countries',countries),('country_labels',country_labels),('capitals',capitals),('waterways',waterways),('landmarks',[])]}
     for name,collection in layers.items():
         ids=[f['id'] for f in collection['features']]
         if len(ids)!=len(set(ids)): raise ValueError('duplicate id in '+name)
-    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Natural Earth 1:110m uses generalized boundaries and omits small islands.', 'Unmapped disputed country geometries are omitted without assigning another country: '+', '.join(sorted(omitted)), 'Landmarks are empty until coordinates and sources are verified.', 'Capital names without a matching Russian registry label retain the source name.', 'Waterways carry no inferred country relationship.']}
+    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Natural Earth 1:110m uses generalized boundaries and omits small islands.', 'Country labels use Natural Earth label anchors for shapes and first capital points for 44 additional countries; country facts without either have no marker.', 'Unmapped disputed country geometries are omitted without assigning another country: '+', '.join(sorted(omitted)), 'Montserrat (MS) is omitted: its existing Plymouth capital point is Plymouth, England, not Montserrat.', 'Landmarks are empty until coordinates and sources are verified.', 'Capital names without a matching Russian registry label retain the source name.', 'Waterways carry no inferred country relationship.']}
     return layers,manifest
 
 def encoded(value):

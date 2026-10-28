@@ -20,6 +20,38 @@ class MapFixtureBundle extends CachingAssetBundle {
       };
     } else if (key.endsWith('country_flag_images.json')) {
       data = {'flags': <String, String>{}};
+    } else if (key.endsWith('country_labels.geojson')) {
+      data = {
+        'type': 'FeatureCollection',
+        'features': [
+          {
+            'type': 'Feature',
+            'id': 'FR',
+            'properties': {
+              'country_id': 'FR',
+              'name_ru': 'Франция',
+              'name_en': 'France',
+            },
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [2.0, 48.0],
+            },
+          },
+          {
+            'type': 'Feature',
+            'id': 'MC',
+            'properties': {
+              'country_id': 'MC',
+              'name_ru': 'Монако',
+              'name_en': 'Monaco',
+            },
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [7.4, 43.7],
+            },
+          },
+        ],
+      };
     } else {
       data = {
         'type': 'FeatureCollection',
@@ -93,6 +125,78 @@ void main() {
     await tester.tap(find.byTooltip('Close'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Capital:'), findsNothing);
+  });
+  testWidgets('layers panel never offers a water visibility switch', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, select) => const SizedBox.expand(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Layers'));
+    await tester.pumpAndSettle();
+    expect(find.text('Rivers and lakes'), findsNothing);
+    expect(find.text('Capitals'), findsOneWidget);
+  });
+  testWidgets('hover context appears and clears independently of selection', (
+    tester,
+  ) async {
+    late void Function(String?, Offset) hover;
+    late VoidCallback leave;
+    late void Function(String?) select;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, select) => const SizedBox.expand(),
+          hoverMapBuilder: (context, selectCountry, onHover, onExit) {
+            hover = onHover;
+            leave = onExit;
+            select = selectCountry;
+            return const SizedBox.expand();
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    select('FR');
+    hover('FR', const Offset(790, 590));
+    await tester.pump();
+    expect(find.text('France'), findsNWidgets(2));
+    expect(find.textContaining('Capital: Paris'), findsOneWidget);
+    leave();
+    await tester.pump();
+    expect(find.text('France'), findsOneWidget);
+    expect(find.textContaining('Capital: Paris'), findsOneWidget);
+  });
+  testWidgets('marker-only country is searchable and displays hover context', (
+    tester,
+  ) async {
+    late void Function(String?, Offset) hover;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, select) => const SizedBox.expand(),
+          hoverMapBuilder: (context, select, onHover, onExit) {
+            hover = onHover;
+            return const SizedBox.expand();
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    hover('MC', const Offset(100, 100));
+    await tester.pump();
+    expect(find.text('Monaco'), findsOneWidget);
+    await tester.enterText(find.byType(TextField), 'Monaco');
+    await tester.pump();
+    expect(find.byType(ListTile), findsOneWidget);
   });
   testWidgets('broken assets show retry and recover when repaired', (
     tester,
