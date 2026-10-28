@@ -11,16 +11,20 @@ Future<Uint8List> renderCountryMarker({
   required String name,
   Uint8List? flagBytes,
   bool landmark = false,
+  bool capital = false,
   int? maxLines,
 }) async {
   final text = TextPainter(
     text: TextSpan(
       text: name,
-      style: const TextStyle(
-        fontSize: 13,
+      style: TextStyle(
+        fontSize: capital ? 11 : 13,
         fontWeight: FontWeight.w600,
         color: Color(0xff302b24),
         height: 1.15,
+        shadows: capital
+            ? const [Shadow(color: Color(0xfff4efd9), blurRadius: 3)]
+            : null,
       ),
     ),
     textDirection: TextDirection.ltr,
@@ -37,33 +41,52 @@ Future<Uint8List> renderCountryMarker({
         codec.dispose();
       }
     }
-    final leading = landmark ? 20.0 : 0.0;
-    final width = (math.max(text.width + leading, flag != null ? 24 : 0) + 16)
-        .ceil()
-        .clamp(24, 216);
-    final height = (math.max(text.height, 16) + 12 + (flag != null ? 20 : 0))
-        .ceil();
+    final leading = landmark
+        ? 20.0
+        : capital && flag != null
+        ? 20.0
+        : 0.0;
+    final width =
+        (math.max(text.width + leading, flag != null && !capital ? 24 : 0) +
+                (capital ? 8 : 16))
+            .ceil()
+            .clamp(24, 216);
+    final height =
+        (math.max(text.height, capital ? 0 : 16) +
+                (capital ? 8 : 12) +
+                (flag != null && !capital ? 20 : 0))
+            .ceil();
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
     final bounds = ui.RRect.fromRectAndRadius(
       ui.Rect.fromLTWH(.5, .5, width - 1, height - 1),
       const ui.Radius.circular(5),
     );
-    canvas.drawRRect(bounds, ui.Paint()..color = const Color(0xeeffffff));
-    canvas.drawRRect(
-      bounds,
-      ui.Paint()
-        ..color = const Color(0x558c8475)
-        ..style = ui.PaintingStyle.stroke,
-    );
+    if (!capital) {
+      canvas.drawRRect(bounds, ui.Paint()..color = const Color(0xeeffffff));
+      canvas.drawRRect(
+        bounds,
+        ui.Paint()
+          ..color = const Color(0x558c8475)
+          ..style = ui.PaintingStyle.stroke,
+      );
+    }
     if (flag != null) {
-      final scale = math.min(24 / flag.width, 16 / flag.height);
+      final scale = math.min(
+        (capital ? 16 : 24) / flag.width,
+        (capital ? 11 : 16) / flag.height,
+      );
       final fw = flag.width * scale;
       final fh = flag.height * scale;
       canvas.drawImageRect(
         flag,
         ui.Rect.fromLTWH(0, 0, flag.width.toDouble(), flag.height.toDouble()),
-        ui.Rect.fromLTWH((width - fw) / 2, 5 + (16 - fh) / 2, fw, fh),
+        ui.Rect.fromLTWH(
+          capital ? 4 : (width - fw) / 2,
+          capital ? (height - fh) / 2 : 5 + (16 - fh) / 2,
+          fw,
+          fh,
+        ),
         ui.Paint()..filterQuality = ui.FilterQuality.medium,
       );
     } else if (landmark) {
@@ -86,7 +109,7 @@ Future<Uint8List> renderCountryMarker({
       canvas,
       ui.Offset(
         (width - text.width + leading) / 2,
-        flag != null ? 25 : (height - text.height) / 2,
+        flag != null && !capital ? 25 : (height - text.height) / 2,
       ),
     );
     final picture = recorder.endRecording();
@@ -116,7 +139,7 @@ Future<Uint8List> renderCapitalMarker() async {
   final star = ui.Path();
   for (var i = 0; i < 10; i++) {
     final angle = -math.pi / 2 + i * math.pi / 5;
-    final radius = i.isEven ? 10.0 : 4.5;
+    final radius = i.isEven ? 7.5 : 3.5;
     final point = ui.Offset(
       12 + radius * math.cos(angle),
       12 + radius * math.sin(angle),

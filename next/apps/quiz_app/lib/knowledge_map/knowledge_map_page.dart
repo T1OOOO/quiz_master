@@ -11,7 +11,26 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../country_labels_ru.dart';
 import 'country_marker.dart';
+import 'country_number_format.dart';
+import 'countries_browser.dart';
 import 'map_state.dart';
+
+@visibleForTesting
+String thematicNumberLabel(
+  num? value, {
+  required bool russian,
+  required bool area,
+}) {
+  if (value == null) return russian ? 'Нет данных' : 'No data';
+  return '${formatCountryNumber(value, russian: russian)}${area ? (russian ? ' км²' : ' km²') : ''}';
+}
+
+@visibleForTesting
+String? capitalThematicLabel(MapCountry? country, {required bool russian}) {
+  final value = country?.capital;
+  if (value == null || value.trim().isEmpty) return null;
+  return russian ? russianCountryLabel(value) : value;
+}
 
 class KnowledgeMapPage extends StatefulWidget {
   const KnowledgeMapPage({super.key, this.onExit})
@@ -85,6 +104,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   String query = '';
   String thematic = 'none';
   List<dynamic> dishes = [];
+  Map<String, dynamic> waters = {};
+  List<dynamic> waterSources = [], foodSources = [];
   final Set<String> thematicSprites = {};
   final hover = MapHoverState();
   final tapRequests = MapTapRequests();
@@ -100,6 +121,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Size mapViewport = Size.zero;
   List<MapCountry> visible = [];
   bool visibleOpen = false;
+  bool browserOpen = false;
   bool get ru => Localizations.localeOf(context).languageCode == 'ru';
   String tr(String en, String russian) => ru ? russian : en;
 
@@ -149,6 +171,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     visibleRequest++;
     visible = [];
     visibleOpen = false;
+    browserOpen = false;
     controller = null;
     thematicSprites.clear();
     dishes = [];
@@ -224,8 +247,22 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           ),
         ) as Map<String, dynamic>;
         dishes = atlas['dishes'] as List? ?? [];
+        foodSources = atlas['sources'] as List? ?? [];
       } catch (_) {
         dishes = [];
+      }
+      try {
+        final waterData = jsonDecode(
+          await (widget.bundle ?? rootBundle).loadString(
+            'assets/quizipedia/country_waters.json',
+            cache: false,
+          ),
+        ) as Map<String, dynamic>;
+        waters = waterData['countries'] as Map<String, dynamic>? ?? {};
+        waterSources = waterData['sources'] as List? ?? [];
+      } catch (_) {
+        waters = {};
+        waterSources = [];
       }
       try {
         featureFacts = jsonDecode(
@@ -272,11 +309,18 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             nameRu: p['name_ru'],
             nameEn: p['name_en'],
             capital: f?['capital'],
+            region: f?['region'],
+            subregion: f?['subregion'],
+            neighbors: (f?['neighbors'] as List? ?? const [])
+                .whereType<String>()
+                .toList(),
             area: f?['area_km2'],
             population: (f?['population'] as num?) == 0
                 ? null
                 : f?['population'],
-            populationYear: f?['population_year'],
+            populationYear: f?['population_year'] == 0
+                ? null
+                : f?['population_year'],
             currencies:
                 (f?['currencies'] as List?)
                     ?.whereType<String>()
@@ -294,6 +338,38 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                     .map(MapInterestingFact.fromJson)
                     .whereType<MapInterestingFact>()
                     .toList(),
+          ),
+        );
+      }
+      final existingIds = items.map((item) => item.id).toSet();
+      for (final f in facts) {
+        if (existingIds.contains(f['id'])) continue;
+        items.add(
+          MapCountry(
+            id: f['id'],
+            nameRu: f['name_ru'] ?? f['name_en'],
+            nameEn: f['name_en'],
+            capital: f['capital'],
+            region: f['region'],
+            subregion: f['subregion'],
+            area: f['area_km2'],
+            population: f['population'] == 0 ? null : f['population'],
+            populationYear: f['population_year'] == 0
+                ? null
+                : f['population_year'],
+            currencies: (f['currencies'] as List? ?? const [])
+                .whereType<String>()
+                .toList(),
+            languages: (f['languages'] as List? ?? const [])
+                .whereType<String>()
+                .toList(),
+            neighbors: (f['neighbors'] as List? ?? const [])
+                .whereType<String>()
+                .toList(),
+            interestingFacts: (interesting[f['id']] as List? ?? const [])
+                .map(MapInterestingFact.fromJson)
+                .whereType<MapInterestingFact>()
+                .toList(),
           ),
         );
       }
@@ -479,9 +555,19 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           }
           final p = feature['properties'] as Map<String, dynamic>;
           final id = p['id'] as String;
+          final country = source == 'capital-labels'
+              ? state?.countryById(p['country_id'])
+              : null;
+          final countryName = country == null
+              ? null
+              : (localizedRu ? country.nameRu : country.nameEn);
+          final flag = country == null ? null : flags[country.id] as String?;
+          final name = '$prefix${p[localizedRu ? 'name_ru' : 'name_en']}';
           final marker = await renderCountryMarker(
-            name: '$prefix${p[localizedRu ? 'name_ru' : 'name_en']}',
+            name: countryName == null ? name : '$name · $countryName',
+            flagBytes: flag == null ? null : base64Decode(flag),
             landmark: source == 'landmarks',
+            capital: source == 'capital-labels',
           );
           if (!mounted || generation != attempt || controller != c || failed) {
             return;
@@ -550,7 +636,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final attempt = generation;
     setState(() {
       state?.select(id);
-      if (id != null) visibleOpen = false;
+      if (id != null) {
+        visibleOpen = false;
+        browserOpen = false;
+      }
       selectedFeature = null;
       selectedFeatureKind = null;
       query = '';
@@ -565,7 +654,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         id ?? '',
       ]);
       if (!mounted || generation != attempt || controller != c) return;
-      if (move && id != null && capitals != null) {
+      if (move &&
+          id != null &&
+          capitals != null &&
+          (countries!['features'] as List).any(
+            (f) => f['properties']['country_id'] == id,
+          )) {
         final matches = (capitals!['features'] as List).where(
           (f) => f['properties']['country_id'] == id,
         );
@@ -746,10 +840,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   : null)
             : value == 'population'
             ? country?.population
+            : value == 'capital'
+            ? capitalThematicLabel(country, russian: ru)
             : country?.area;
         final suffix = value == 'none'
             ? ''
-            : '\n${datum == null ? tr('No data', 'Нет данных') : '$datum${value == 'area' ? ' km²' : ''}'}';
+            : value == 'population' || value == 'area'
+            ? '\n${thematicNumberLabel(datum as num?, russian: ru, area: value == 'area')}'
+            : '\n${datum ?? tr('No data', 'Нет данных')}';
         final name = p[ru ? 'name_ru' : 'name_en'] as String;
         final sprite = 'country-$id-$value-${ru ? 'ru' : 'en'}';
         late Uint8List bytes;
@@ -1054,17 +1152,31 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     Widget? leading,
     required VoidCallback onClose,
     required List<Widget> children,
+    bool countryPanel = false,
   }) {
     return PointerInterceptor(
       child: ConstrainedBox(
+        key: countryPanel ? const ValueKey('country-bottom-panel') : null,
         constraints: BoxConstraints(
-          maxWidth: math.min(360, math.max(0, viewport.width - 24)),
-          maxHeight: math.max(
-            0,
-            math.min(340, viewport.height - (visible.isNotEmpty ? 240 : 84)),
-          ),
+          maxWidth: countryPanel
+              ? viewport.width
+              : math.min(360, math.max(0, viewport.width - 24)),
+          maxHeight: countryPanel
+              ? math.min(340, viewport.height * 0.45)
+              : math.max(
+                  0,
+                  math.min(
+                    340,
+                    viewport.height - (visible.isNotEmpty ? 240 : 84),
+                  ),
+                ),
         ),
-        child: Card(
+        child: Material(
+          elevation: 4,
+          color: const Color(0xfffaf9f6),
+          borderRadius: countryPanel
+              ? const BorderRadius.vertical(top: Radius.circular(20))
+              : BorderRadius.circular(12),
           clipBehavior: Clip.antiAlias,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -1097,6 +1209,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         ],
                       ),
                     ),
+                    if (countryPanel)
+                      IconButton(
+                        tooltip: tr('Layers', 'Слои'),
+                        onPressed: () => setState(() => layersOpen = true),
+                        icon: const Icon(Icons.layers_outlined),
+                      ),
                     IconButton(
                       tooltip: tr('Close', 'Закрыть'),
                       onPressed: onClose,
@@ -1121,6 +1239,39 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       ),
     );
   }
+
+  static const regionRu = <String, String>{
+    'Africa': 'Африка',
+    'Americas': 'Америка',
+    'Antarctic': 'Антарктика',
+    'Asia': 'Азия',
+    'Europe': 'Европа',
+    'Oceania': 'Океания',
+    'Australia and New Zealand': 'Австралия и Новая Зеландия',
+    'Caribbean': 'Карибский регион',
+    'Central America': 'Центральная Америка',
+    'Central Asia': 'Центральная Азия',
+    'Central Europe': 'Центральная Европа',
+    'Eastern Africa': 'Восточная Африка',
+    'Eastern Asia': 'Восточная Азия',
+    'Eastern Europe': 'Восточная Европа',
+    'Melanesia': 'Меланезия',
+    'Micronesia': 'Микронезия',
+    'Middle Africa': 'Центральная Африка',
+    'North America': 'Северная Америка',
+    'Northern Africa': 'Северная Африка',
+    'Northern Europe': 'Северная Европа',
+    'Polynesia': 'Полинезия',
+    'South America': 'Южная Америка',
+    'South-Eastern Asia': 'Юго-Восточная Азия',
+    'Southeast Europe': 'Юго-Восточная Европа',
+    'Southern Africa': 'Южная Африка',
+    'Southern Asia': 'Южная Азия',
+    'Southern Europe': 'Южная Европа',
+    'Western Africa': 'Западная Африка',
+    'Western Asia': 'Западная Азия',
+    'Western Europe': 'Западная Европа',
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -1153,68 +1304,84 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 constraints.maxWidth,
                 constraints.maxHeight,
               );
-              if (viewport != mapViewport) {
-                mapViewport = viewport;
+              final panelOpen =
+                  selected != null &&
+                  !layersOpen &&
+                  !visibleOpen &&
+                  !browserOpen;
+              final panelHeight = panelOpen
+                  ? math.min(340.0, viewport.height * 0.45)
+                  : 0.0;
+              final currentMapViewport = Size(
+                viewport.width,
+                viewport.height - panelHeight,
+              );
+              if (currentMapViewport != mapViewport) {
+                mapViewport = currentMapViewport;
                 visibleRequest++;
-                if (widget.visibleCountryIds == null) visible = [];
-                final clearListHover = visibleOpen;
-                visibleOpen = false;
                 WidgetsBinding.instance.addPostFrameCallback((_) {
-                  if (mounted) {
-                    if (clearListHover) clearHover();
-                    updateVisibleCountries();
-                  }
+                  if (mounted) updateVisibleCountries();
                 });
               }
               return Stack(
                 fit: StackFit.expand,
                 children: [
                   if (state != null && !failed && !unsupported)
-                    widget.featureMapBuilder?.call(context, selectFeature) ??
-                        widget.landmarkMapBuilder?.call(
-                          context,
-                          selectLandmark,
-                          setTestLandmarkHover,
-                        ) ??
-                        widget.hoverMapBuilder?.call(
-                          context,
-                          select,
-                          setTestHover,
-                          clearHover,
-                        ) ??
-                        widget.mapBuilder?.call(context, select) ??
-                        MouseRegion(
-                          onExit: (_) => clearHover(),
-                          child: MapLibreMap(
-                            key: ValueKey(generation),
-                            styleString: '{"version":8,"sources":{},"layers":[{"id":"sea","type":"background","paint":{"background-color":"#c8e5ed"}}]}',
-                            initialCameraPosition: const CameraPosition(
-                              target: LatLng(20, 10),
-                              zoom: 1.6,
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      top: 0,
+                      bottom: panelHeight,
+                      child:
+                          widget.featureMapBuilder?.call(
+                            context,
+                            selectFeature,
+                          ) ??
+                          widget.landmarkMapBuilder?.call(
+                            context,
+                            selectLandmark,
+                            setTestLandmarkHover,
+                          ) ??
+                          widget.hoverMapBuilder?.call(
+                            context,
+                            select,
+                            setTestHover,
+                            clearHover,
+                          ) ??
+                          widget.mapBuilder?.call(context, select) ??
+                          MouseRegion(
+                            onExit: (_) => clearHover(),
+                            child: MapLibreMap(
+                              key: ValueKey(generation),
+                              styleString: '{"version":8,"sources":{},"layers":[{"id":"sea","type":"background","paint":{"background-color":"#c8e5ed"}}]}',
+                              initialCameraPosition: const CameraPosition(
+                                target: LatLng(20, 10),
+                                zoom: 1.6,
+                              ),
+                              onMapCreated: (c) {
+                                controller = c;
+                                c.onMapMouseMove.add(onMouseMove);
+                              },
+                              onStyleLoadedCallback: setup,
+                              onCameraMove: (_) {
+                                visibleRequest++;
+                                if (visible.isNotEmpty) {
+                                  clearHover();
+                                  setState(() {
+                                    visible = [];
+                                    visibleOpen = false;
+                                  });
+                                }
+                              },
+                              onCameraIdle: updateVisibleCountries,
+                              onMapClick: tap,
+                              featureTapsTriggersMapClick: true,
+                              compassEnabled: false,
+                              attributionButtonPosition:
+                                  AttributionButtonPosition.bottomRight,
                             ),
-                            onMapCreated: (c) {
-                              controller = c;
-                              c.onMapMouseMove.add(onMouseMove);
-                            },
-                            onStyleLoadedCallback: setup,
-                            onCameraMove: (_) {
-                              visibleRequest++;
-                              if (visible.isNotEmpty) {
-                                clearHover();
-                                setState(() {
-                                  visible = [];
-                                  visibleOpen = false;
-                                });
-                              }
-                            },
-                            onCameraIdle: updateVisibleCountries,
-                            onMapClick: tap,
-                            featureTapsTriggersMapClick: true,
-                            compassEnabled: false,
-                            attributionButtonPosition:
-                                AttributionButtonPosition.bottomRight,
                           ),
-                        ),
+                    ),
                   if ((state == null || !ready) && !failed && !unsupported)
                     const Center(child: CircularProgressIndicator()),
                   if (ready && visible.isNotEmpty && !layersOpen)
@@ -1317,6 +1484,47 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       ),
                     ),
                   ),
+                  if (state != null && ready && !failed && !unsupported)
+                    Positioned(
+                      top: 64,
+                      left: 12,
+                      child: PointerInterceptor(
+                        child: FilledButton.tonal(
+                          onPressed: () => setState(() {
+                            browserOpen = !browserOpen;
+                            visibleOpen = false;
+                            layersOpen = false;
+                          }),
+                          child: Text(tr('Countries', 'Страны')),
+                        ),
+                      ),
+                    ),
+                  if (browserOpen && state != null)
+                    Positioned(
+                      left: 12,
+                      right: 12,
+                      bottom: 68,
+                      top: 120,
+                      child: PointerInterceptor(
+                        child: Material(
+                          elevation: 4,
+                          borderRadius: BorderRadius.circular(12),
+                          clipBehavior: Clip.antiAlias,
+                          child: CountriesBrowser(
+                            onClose: () => setState(() => browserOpen = false),
+                            countries: state!.countries,
+                            selectedId: state!.selectedId,
+                            flags: flags,
+                            mappedIds: (countries!['features'] as List)
+                                .map((f) => f['properties']['country_id'])
+                                .whereType<String>()
+                                .toSet(),
+                            onSelect: (country) =>
+                                select(country.id, move: true),
+                          ),
+                        ),
+                      ),
+                    ),
                   if (state != null && !failed && !unsupported) ...[
                     Positioned(
                       top: 8,
@@ -1399,20 +1607,24 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         ],
                       ),
                     ),
-                    Positioned(
-                      right: 12,
-                      bottom: 12,
-                      child: PointerInterceptor(
-                        child: IconButton.filledTonal(
-                          tooltip: tr('Layers', 'Слои'),
-                          onPressed: () =>
-                              setState(() => layersOpen = !layersOpen),
-                          icon: Icon(
-                            layersOpen ? Icons.close : Icons.layers_outlined,
+                    if (selected == null ||
+                        layersOpen ||
+                        visibleOpen ||
+                        browserOpen)
+                      Positioned(
+                        right: 12,
+                        bottom: 12,
+                        child: PointerInterceptor(
+                          child: IconButton.filledTonal(
+                            tooltip: tr('Layers', 'Слои'),
+                            onPressed: () =>
+                                setState(() => layersOpen = !layersOpen),
+                            icon: Icon(
+                              layersOpen ? Icons.close : Icons.layers_outlined,
+                            ),
                           ),
                         ),
                       ),
-                    ),
                     if (layersOpen)
                       Positioned(
                         right: 12,
@@ -1430,50 +1642,37 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                 maxHeight: math.max(0, viewport.height - 80),
                               ),
                               child: SingleChildScrollView(
-                                child: RadioGroup<String>(
-                                  groupValue: thematic,
-                                  onChanged: (value) {
-                                    if (ready && value != null) {
-                                      setThematic(value);
-                                    }
-                                  },
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12),
+                                  child: Wrap(
+                                    spacing: 8,
+                                    runSpacing: 4,
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            const Icon(
-                                              Icons.star,
-                                              color: Color(0xffb74832),
-                                              size: 20,
-                                            ),
-                                            const SizedBox(width: 6),
-                                            Text(tr('Capital', 'Столица')),
-                                          ],
-                                        ),
-                                      ),
                                       for (final mode in [
                                         'none',
                                         'population',
                                         'area',
+                                        'capital',
                                         'food',
                                       ])
-                                        RadioListTile<String>(
-                                          dense: true,
-                                          title: Text(switch (mode) {
+                                        ChoiceChip(
+                                          label: Text(switch (mode) {
                                             'population' => tr(
                                               'Population',
                                               'Население',
                                             ),
                                             'area' => tr('Area', 'Площадь'),
+                                            'capital' => tr(
+                                              'Capital',
+                                              'Столица',
+                                            ),
                                             'food' => tr('Dishes', 'Блюда'),
                                             _ => tr('Map', 'Карта'),
                                           }),
-                                          value: mode,
-                                          enabled: ready,
+                                          selected: thematic == mode,
+                                          onSelected: ready
+                                              ? (_) => setThematic(mode)
+                                              : null,
                                         ),
                                     ],
                                   ),
@@ -1627,14 +1826,18 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           ),
                         ),
                       ),
-                    if (!layersOpen && !visibleOpen && selected != null)
+                    if (!layersOpen &&
+                        !visibleOpen &&
+                        !browserOpen &&
+                        selected != null)
                       Positioned(
-                        left: 12,
-                        right: 12,
-                        bottom: 68,
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        child: SizedBox(
+                          height: panelHeight,
                           child: _detailCard(
+                            countryPanel: true,
                             viewport: viewport,
                             title: ru ? selected.nameRu : selected.nameEn,
                             leading: flags[selected.id] == null
@@ -1646,41 +1849,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                   ),
                             onClose: () => select(null),
                             children: [
-                              Text(
-                                '${tr('Capital', 'Столица')}: ${selected.capital == null
-                                    ? '—'
-                                    : ru
-                                    ? russianCountryLabel(selected.capital!)
-                                    : selected.capital}',
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                '${tr('Area', 'Площадь')}: ${selected.area ?? '—'} km²',
-                              ),
-                              if (selected.population != null) ...[
-                                const SizedBox(height: 4),
-                                Text(
-                                  '${tr('Population', 'Население')}${selected.populationYear == null ? '' : ' (${selected.populationYear})'}: ${selected.population}',
-                                ),
-                              ],
-                              if (selected.currencies.isNotEmpty) ...[
-                                const SizedBox(height: 4),
-                                Text(
-                                  '${tr('Currency', 'Валюта')}: ${selected.currencies.join(', ')}',
-                                ),
-                              ],
-                              if (selected.languages.isNotEmpty) ...[
-                                const SizedBox(height: 4),
-                                Text(
-                                  '${tr('Languages', 'Языки')}: ${selected.languages.map((value) => ru ? russianCountryLabel(value) : value).join(', ')}',
-                                ),
-                              ],
                               if (selected.interestingFacts.isNotEmpty) ...[
                                 const SizedBox(height: 12),
                                 Text(
                                   tr('Interesting facts', 'Интересные факты'),
                                   style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
+                                    color: Color(0xff76543c),
                                   ),
                                 ),
                                 for (
@@ -1713,6 +1889,172 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                   ),
                                 ],
                               ],
+                              const Divider(height: 24),
+                              Text(
+                                tr('Overview', 'Общие сведения'),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '${tr('Capital', 'Столица')}: ${selected.capital == null
+                                    ? '—'
+                                    : ru
+                                    ? russianCountryLabel(selected.capital!)
+                                    : selected.capital}',
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                '${tr('Area', 'Площадь')}: ${formatCountryNumber(selected.area, russian: ru)} ${tr('km²', 'км²')}',
+                              ),
+                              if (selected.population != null) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  '${tr('Population', 'Население')}${selected.populationYear == null ? '' : ' (${selected.populationYear})'}: ${formatCountryNumber(selected.population, russian: ru)}',
+                                ),
+                              ],
+                              if (selected.region != null)
+                                Text(
+                                  '${tr('Region', 'Регион')}: ${[selected.region, selected.subregion].whereType<String>().map((value) => ru ? (regionRu[value] ?? value) : value).join(' · ')}',
+                                ),
+                              if (selected.neighbors.isNotEmpty)
+                                Text(
+                                  '${tr('Neighbours', 'Соседи')}: ${selected.neighbors.map(countryName).join(', ')}',
+                                ),
+                              if (selected.currencies.isNotEmpty) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  '${tr('Currency', 'Валюта')}: ${selected.currencies.join(', ')}',
+                                ),
+                              ],
+                              if (selected.languages.isNotEmpty) ...[
+                                const SizedBox(height: 4),
+                                Text(
+                                  '${tr('Languages', 'Языки')}: ${selected.languages.map((value) => ru ? russianCountryLabel(value) : value).join(', ')}',
+                                ),
+                              ],
+                              if (state!.landmarks.any(
+                                (item) => item.countryId == selected.id,
+                              ))
+                                Text(
+                                  tr('Landmarks', 'Достопримечательности'),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              for (final landmark in state!.landmarks.where(
+                                (item) => item.countryId == selected.id,
+                              ))
+                                TextButton(
+                                  onPressed: () => selectLandmark(landmark.id),
+                                  child: Text(
+                                    ru ? landmark.nameRu : landmark.nameEn,
+                                  ),
+                                ),
+                              if ((waters[selected.id] as List? ?? const [])
+                                  .isNotEmpty)
+                                Text(
+                                  tr('Waters', 'Водоёмы'),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              for (final water
+                                  in (waters[selected.id] as List? ?? const [])
+                                      .where(
+                                        (water) =>
+                                            water is Map &&
+                                            water[ru ? 'name_ru' : 'name_en']
+                                                is String,
+                                      )) ...[
+                                Text(
+                                  water[ru ? 'name_ru' : 'name_en'] as String,
+                                ),
+                                for (final source in waterSources.where(
+                                  (source) =>
+                                      source['id'] == water['source_id'],
+                                ))
+                                  TextButton(
+                                    onPressed: () => launchUrl(
+                                      Uri.parse(source['url']),
+                                      mode: LaunchMode.externalApplication,
+                                    ),
+                                    child: Text(
+                                      '${tr('Water source', 'Источник о водоёме')}: ${water[ru ? 'name_ru' : 'name_en']}',
+                                    ),
+                                  ),
+                              ],
+                              if (dishes.any(
+                                (dish) =>
+                                    dish is Map &&
+                                    dish['country_en'] == selected.nameEn &&
+                                    dish[ru ? 'name_ru' : 'name_en'] is String,
+                              ))
+                                Text(
+                                  tr('Dishes', 'Блюда'),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              for (final dish in dishes.where(
+                                (dish) =>
+                                    dish is Map &&
+                                    dish['country_en'] == selected.nameEn &&
+                                    dish[ru ? 'name_ru' : 'name_en'] is String,
+                              )) ...[
+                                Text(
+                                  dish[ru ? 'name_ru' : 'name_en'] as String,
+                                ),
+                                for (final source in foodSources.where(
+                                  (source) =>
+                                      (dish['source_ids'] as List? ?? const [])
+                                          .contains(source['id']),
+                                ))
+                                  TextButton(
+                                    onPressed: () => launchUrl(
+                                      Uri.parse(source['url']),
+                                      mode: LaunchMode.externalApplication,
+                                    ),
+                                    child: Text(
+                                      '${tr('Dish source', 'Источник блюда')}: ${dish[ru ? 'name_ru' : 'name_en']}',
+                                    ),
+                                  ),
+                              ],
+                              Wrap(
+                                children: [
+                                  TextButton(
+                                    onPressed: () => launchUrl(
+                                      Uri.parse(
+                                        'https://github.com/mledoze/countries/blob/master/countries.json',
+                                      ),
+                                      mode: LaunchMode.externalApplication,
+                                    ),
+                                    child: Text(
+                                      tr(
+                                        'Country data source',
+                                        'Источник данных о стране',
+                                      ),
+                                    ),
+                                  ),
+                                  if (selected.population != null)
+                                    TextButton(
+                                      onPressed: () => launchUrl(
+                                        Uri.parse(
+                                          'https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?date=2024&format=json&per_page=400',
+                                        ),
+                                        mode: LaunchMode.externalApplication,
+                                      ),
+                                      child: Text(
+                                        tr(
+                                          'Population source',
+                                          'Источник населения',
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
                             ],
                           ),
                         ),

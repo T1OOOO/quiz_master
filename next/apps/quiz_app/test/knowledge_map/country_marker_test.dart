@@ -7,6 +7,38 @@ import 'package:quiz_app/knowledge_map/country_marker.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test('capital labels are compact and have transparent backgrounds', () async {
+    final plain = image.decodePng(await renderCountryMarker(name: 'Vienna'))!;
+    final capital = image.decodePng(
+      await renderCountryMarker(name: 'Vienna', capital: true),
+    )!;
+    expect(capital.width, lessThan(plain.width));
+    expect(capital.height, lessThan(plain.height));
+    expect(capital.getPixel(0, 0).a, lessThan(5));
+    expect(capital.where((p) => p.a > 0).length, greaterThan(10));
+  });
+
+  test('capital label places its flag beside the name', () async {
+    final flag = image.Image(width: 12, height: 8, numChannels: 4);
+    image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));
+    final plain = image.decodePng(
+      await renderCountryMarker(name: 'Vienna · Austria', capital: true),
+    )!;
+    final withFlag = image.decodePng(
+      await renderCountryMarker(
+        name: 'Vienna · Austria',
+        capital: true,
+        flagBytes: Uint8List.fromList(image.encodePng(flag)),
+      ),
+    )!;
+    expect(withFlag.width, greaterThan(plain.width));
+    expect(withFlag.height, plain.height);
+    expect(
+      withFlag.any((p) => p.r > 220 && p.g < 30 && p.b < 30 && p.a > 200),
+      isTrue,
+    );
+  });
+
   test('capital marker renders a visible star without font glyphs', () async {
     final star = image.decodePng(await renderCapitalMarker())!;
     expect(star.width, 24);

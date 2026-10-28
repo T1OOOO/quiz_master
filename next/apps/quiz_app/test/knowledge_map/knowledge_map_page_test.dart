@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:quiz_app/knowledge_map/knowledge_map_page.dart';
+import 'package:quiz_app/knowledge_map/map_state.dart';
 
 class MapFixtureBundle extends CachingAssetBundle {
   bool fail = false;
@@ -48,7 +49,36 @@ class MapFixtureBundle extends CachingAssetBundle {
       throw const FormatException('broken test asset');
     }
     final Object data;
-    if (key.endsWith('map_feature_facts.json')) {
+    if (key.endsWith('country_waters.json')) {
+      data = {
+        'countries': {
+          'FR': [
+            {
+              'name_en': 'Test sea',
+              'name_ru': 'Тестовое море',
+              'source_id': 'water',
+            },
+          ],
+        },
+        'sources': [
+          {'id': 'water', 'url': 'https://example.org/water'},
+        ],
+      };
+    } else if (key.endsWith('food_atlas.json')) {
+      data = {
+        'dishes': [
+          {
+            'name_en': 'Test dish',
+            'name_ru': 'Тестовое блюдо',
+            'country_en': 'France',
+            'source_ids': ['food'],
+          },
+        ],
+        'sources': [
+          {'id': 'food', 'url': 'https://example.org/food'},
+        ],
+      };
+    } else if (key.endsWith('map_feature_facts.json')) {
       data = {
         'capitals': {
           'capital-paris': [
@@ -97,6 +127,8 @@ class MapFixtureBundle extends CachingAssetBundle {
           {
             'id': 'FR',
             'capital': 'Paris',
+            'region': 'Europe',
+            'subregion': 'Central Europe',
             'area_km2': 551695,
             'population': 68000000,
             'population_year': 2024,
@@ -210,6 +242,114 @@ class MapFixtureBundle extends CachingAssetBundle {
 }
 
 void main() {
+  test('thematic population and area use rounded labels', () {
+    expect(
+      thematicNumberLabel(68551653, russian: true, area: false),
+      '≈ 69 млн',
+    );
+    expect(
+      thematicNumberLabel(551695, russian: true, area: true),
+      '≈ 550 тыс. км²',
+    );
+    expect(thematicNumberLabel(null, russian: true, area: true), 'Нет данных');
+  });
+  test(
+    'capital thematic value uses capital and locale, tolerating missing data',
+    () {
+      const france = MapCountry(
+        id: 'FR',
+        nameRu: 'Франция',
+        nameEn: 'France',
+        capital: 'Paris',
+      );
+      expect(capitalThematicLabel(france, russian: false), 'Paris');
+      expect(capitalThematicLabel(france, russian: true), 'Париж');
+      expect(capitalThematicLabel(null, russian: true), isNull);
+    },
+  );
+  for (final size in [const Size(320, 480), const Size(390, 844)]) {
+    testWidgets('countries control is accessible at $size', (tester) async {
+      tester.view.physicalSize = size;
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeMapPage.test(
+            bundle: MapFixtureBundle(),
+            visibleCountryIds: const ['FR'],
+            mapBuilder: (context, select) => const SizedBox.expand(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final countries = tester.getRect(find.text('Countries'));
+      expect(
+        countries.overlaps(tester.getRect(find.byTooltip('Zoom out'))),
+        isFalse,
+      );
+      expect(
+        countries.overlaps(tester.getRect(find.text('Visible countries'))),
+        isFalse,
+      );
+      await tester.tap(find.text('Countries'));
+      await tester.pumpAndSettle();
+      expect(find.byTooltip('Close'), findsOneWidget);
+      await tester.tap(find.byTooltip('Close'));
+      await tester.pumpAndSettle();
+      expect(find.byTooltip('Close'), findsNothing);
+    });
+  }
+  testWidgets('country panel resizes the same map and closing restores it', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    late void Function(String?) select;
+    var builds = 0;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, callback) {
+            select = callback;
+            builds++;
+            return const SizedBox(
+              key: ValueKey('map-area'),
+              width: double.infinity,
+              height: double.infinity,
+            );
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final mapElement = tester.element(find.byKey(const ValueKey('map-area')));
+    final before = tester.getSize(find.byKey(const ValueKey('map-area')));
+    select('FR');
+    await tester.pumpAndSettle();
+    final after = tester.getSize(find.byKey(const ValueKey('map-area')));
+    expect(
+      tester.element(find.byKey(const ValueKey('map-area'))),
+      same(mapElement),
+    );
+    expect(after.height, lessThan(before.height));
+    expect(
+      tester.getRect(find.byKey(const ValueKey('map-area'))).bottom,
+      tester.getRect(find.byKey(const ValueKey('country-bottom-panel'))).top,
+    );
+    await tester.tap(find.byTooltip('Close'));
+    await tester.pumpAndSettle();
+    expect(tester.getSize(find.byKey(const ValueKey('map-area'))), before);
+    expect(
+      tester.element(find.byKey(const ValueKey('map-area'))),
+      same(mapElement),
+    );
+    expect(builds, greaterThan(0));
+  });
+
   testWidgets('late map selection after page disposal is ignored', (
     tester,
   ) async {
@@ -255,8 +395,11 @@ void main() {
     await tester.pumpAndSettle();
     expect(tester.testTextInput.isVisible, isFalse);
     expect(find.textContaining('Capital: Paris'), findsOneWidget);
-    expect(find.textContaining('Area: 551695'), findsOneWidget);
-    expect(find.textContaining('Population (2024): 68000000'), findsOneWidget);
+    expect(find.textContaining('Area: ≈ 550 thousand'), findsOneWidget);
+    expect(
+      find.textContaining('Population (2024): ≈ 68 million'),
+      findsOneWidget,
+    );
     expect(find.text('Currency: EUR'), findsOneWidget);
     expect(find.text('Languages: French, Unknown language'), findsOneWidget);
     await tester.tap(find.byTooltip('Close'));
@@ -285,13 +428,21 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Population'), findsOneWidget);
     expect(find.text('Area'), findsOneWidget);
+    await tester.tap(find.text('Capital'));
+    await tester.pump();
+    expect(
+      tester
+          .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Capital'))
+          .selected,
+      isTrue,
+    );
     await tester.tap(find.text('Dishes'));
     await tester.pump();
     expect(
       tester
-          .widget<RadioGroup<String>>(find.byType(RadioGroup<String>))
-          .groupValue,
-      'food',
+          .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Dishes'))
+          .selected,
+      isTrue,
     );
     await tester.tap(find.text('Population'));
     await tester.pump();
@@ -299,9 +450,9 @@ void main() {
     await tester.pump();
     expect(
       tester
-          .widget<RadioGroup<String>>(find.byType(RadioGroup<String>))
-          .groupValue,
-      'food',
+          .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Dishes'))
+          .selected,
+      isTrue,
     );
     expect(find.text('Country labels'), findsNothing);
     expect(find.text('Capitals'), findsNothing);
@@ -422,6 +573,11 @@ void main() {
     expect(tester.getBottomLeft(find.byTooltip('Layers')).dy, greaterThan(400));
     select('FR');
     await tester.pump();
+    expect(find.byKey(const ValueKey('country-bottom-panel')), findsOneWidget);
+    expect(
+      tester.getRect(find.byKey(const ValueKey('country-bottom-panel'))).bottom,
+      480,
+    );
     final close = tester.getRect(find.byTooltip('Close'));
     expect(close.top, greaterThanOrEqualTo(0));
     expect(close.bottom, lessThanOrEqualTo(480));
@@ -646,12 +802,35 @@ void main() {
       await tester.pumpAndSettle();
       select('FR');
       await tester.pumpAndSettle();
+      expect(find.text('Eiffel Tower'), findsOneWidget);
+      expect(find.text('Landmarks'), findsOneWidget);
+      expect(find.text('Test sea'), findsOneWidget);
+      expect(find.text('Test dish'), findsOneWidget);
+      expect(find.text('Water source: Test sea'), findsOneWidget);
+      expect(find.text('Dish source: Test dish'), findsOneWidget);
+      final material = tester.widget<Material>(
+        find
+            .descendant(
+              of: find.byKey(const ValueKey('country-bottom-panel')),
+              matching: find.byType(Material),
+            )
+            .first,
+      );
+      expect(material.color!.computeLuminance(), greaterThan(0.8));
       expect(find.text('Interesting facts'), findsOneWidget);
       expect(find.text('First France fact'), findsOneWidget);
+      expect(
+        tester.getTopLeft(find.text('First France fact')).dy,
+        lessThan(tester.getTopLeft(find.textContaining('Area:')).dy),
+      );
       expect(find.byKey(const ValueKey('fact-source-0')), findsOneWidget);
-      await tester.drag(
-        find.byType(SingleChildScrollView).last,
-        const Offset(0, -250),
+      await tester.scrollUntilVisible(
+        find.text('Third France fact'),
+        120,
+        scrollable: find.descendant(
+          of: find.byKey(const ValueKey('country-bottom-panel')),
+          matching: find.byType(Scrollable),
+        ),
       );
       await tester.pumpAndSettle();
       expect(
@@ -690,6 +869,7 @@ void main() {
     expect(find.text('Интересные факты'), findsOneWidget);
     expect(find.text('Первый факт о Франции'), findsOneWidget);
     expect(find.text('Источник 1'), findsOneWidget);
+    expect(find.text('Регион: Европа · Центральная Европа'), findsOneWidget);
     expect(find.text('First France fact'), findsNothing);
   });
 
@@ -781,6 +961,7 @@ void main() {
     late void Function(String, Map<String, dynamic>) selectFeature;
     await tester.pumpWidget(
       MaterialApp(
+        theme: ThemeData.dark(),
         home: KnowledgeMapPage.test(
           bundle: MapFixtureBundle(),
           mapBuilder: (context, select) => const SizedBox.expand(),
@@ -800,6 +981,12 @@ void main() {
     });
     await tester.pumpAndSettle();
     expect(find.text('Paris'), findsOneWidget);
+    final card = tester.widget<Material>(
+      find
+          .ancestor(of: find.text('Paris'), matching: find.byType(Material))
+          .first,
+    );
+    expect(card.color!.computeLuminance(), greaterThan(0.8));
     expect(find.text('Capital · France'), findsOneWidget);
     expect(find.text('Paris fact'), findsOneWidget);
     expect(find.text('Source'), findsOneWidget);

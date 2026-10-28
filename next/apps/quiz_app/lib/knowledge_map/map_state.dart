@@ -31,6 +31,9 @@ class MapCountry {
     required this.nameRu,
     required this.nameEn,
     this.capital,
+    this.region,
+    this.subregion,
+    this.neighbors = const [],
     this.area,
     this.population,
     this.populationYear,
@@ -39,7 +42,8 @@ class MapCountry {
     this.interestingFacts = const [],
   });
   final String id, nameRu, nameEn;
-  final String? capital;
+  final String? capital, region, subregion;
+  final List<String> neighbors;
   final num? area, population;
   final int? populationYear;
   final List<String> currencies, languages;
@@ -116,8 +120,9 @@ class MapState {
 
   final List<MapCountry> countries;
   String? selectedId;
-  MapCountry? get selected =>
-      countries.where((c) => c.id == selectedId).firstOrNull;
+  MapCountry? countryById(Object? id) =>
+      countries.where((c) => c.id == id).firstOrNull;
+  MapCountry? get selected => countryById(selectedId);
   void select(String? id) {
     selectedId = id;
     selectedLandmarkId = null;

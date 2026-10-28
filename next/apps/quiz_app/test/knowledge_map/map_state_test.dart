@@ -3,6 +3,18 @@ import 'package:quiz_app/knowledge_map/map_state.dart';
 
 void main() {
   test(
+    'capital country lookup uses exact country id and tolerates missing ids',
+    () {
+      final state = MapState(const [
+        MapCountry(id: 'AT', nameRu: 'Австрия', nameEn: 'Austria'),
+        MapCountry(id: 'AU', nameRu: 'Австралия', nameEn: 'Australia'),
+      ]);
+      expect(state.countryById('AT')?.nameEn, 'Austria');
+      expect(state.countryById('A'), isNull);
+      expect(state.countryById(null), isNull);
+    },
+  );
+  test(
     'empty initial visible query retries, but cancellation prevents retry',
     () async {
       var calls = 0;
