@@ -1266,9 +1266,15 @@ class _BodyMapState extends State<_BodyMap> {
                                         ),
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primaryContainer,
+                                          color:
+                                              widget.selected?.id ==
+                                                  targets[i].id
+                                              ? Theme.of(context)
+                                                    .colorScheme
+                                                    .primary
+                                              : Theme.of(context)
+                                                    .colorScheme
+                                                    .primaryContainer,
                                           shape: BoxShape.circle,
                                           border: Border.all(
                                             color: Theme.of(context)
@@ -1281,9 +1287,15 @@ class _BodyMapState extends State<_BodyMap> {
                                           style: TextStyle(
                                             fontSize: 12 * scale,
                                             fontWeight: FontWeight.bold,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onPrimaryContainer,
+                                            color:
+                                                widget.selected?.id ==
+                                                    targets[i].id
+                                                ? Theme.of(context)
+                                                      .colorScheme
+                                                      .onPrimary
+                                                : Theme.of(context)
+                                                      .colorScheme
+                                                      .onPrimaryContainer,
                                           ),
                                         ),
                                       ),

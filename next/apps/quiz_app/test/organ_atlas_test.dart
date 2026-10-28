@@ -77,6 +77,27 @@ class _AtlasBundle extends CachingAssetBundle {
 }
 
 void main() {
+  testWidgets('selected organ remains highlighted on the mobile diagram', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    await tester.pumpWidget(
+      MaterialApp(home: OrganAtlasPage(bundle: _AtlasBundle())),
+    );
+    await tester.pumpAndSettle();
+    final heart = find.byKey(const Key('organ-map-target-heart'));
+    final before = tester.widget<Container>(heart).decoration as BoxDecoration;
+    await tester.ensureVisible(heart);
+    await tester.tap(heart);
+    await tester.pumpAndSettle();
+    Navigator.of(tester.element(find.byKey(const Key('organ-detail')))).pop();
+    await tester.pumpAndSettle();
+    final after = tester.widget<Container>(heart).decoration as BoxDecoration;
+    expect(after.color, isNot(before.color));
+  });
   testWidgets(
     'additional illustrated organs select their own cards at compact scale',
     (tester) async {
