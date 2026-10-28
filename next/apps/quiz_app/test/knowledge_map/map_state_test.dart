@@ -3,6 +3,56 @@ import 'package:quiz_app/knowledge_map/map_state.dart';
 
 void main() {
   test(
+    'empty initial visible query retries, but cancellation prevents retry',
+    () async {
+      var calls = 0;
+      final result = await queryVisibleWithRetry(
+        () async => ++calls == 1 ? [] : ['FR'],
+        () => true,
+        () async {},
+      );
+      expect(result, ['FR']);
+      expect(calls, 2);
+      calls = 0;
+      final cancelled = await queryVisibleWithRetry(
+        () async {
+          calls++;
+          return [];
+        },
+        () => false,
+        () async {},
+      );
+      expect(cancelled, isEmpty);
+      expect(calls, 1);
+    },
+  );
+  test(
+    'visible countries deduplicate rendered polygons and ignore unknown IDs',
+    () {
+      final countries = [
+        MapCountry(id: 'FR', nameRu: 'Франция', nameEn: 'France'),
+        MapCountry(id: 'DE', nameRu: 'Германия', nameEn: 'Germany'),
+      ];
+      expect(
+        visibleCountries(countries, [
+          {
+            'properties': {'country_id': 'DE'},
+          },
+          {
+            'properties': {'country_id': 'DE'},
+          },
+          {
+            'properties': {'country_id': 'XX'},
+          },
+          {
+            'properties': {'country_id': 'FR'},
+          },
+        ]).map((c) => c.id),
+        ['FR', 'DE'],
+      );
+    },
+  );
+  test(
     'search matches either language and ISO code, then selection can clear',
     () {
       final state = MapState([

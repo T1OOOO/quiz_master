@@ -19,6 +19,7 @@ class KnowledgeMapPage extends StatefulWidget {
       hoverMapBuilder = null,
       landmarkMapBuilder = null,
       featureMapBuilder = null,
+      visibleCountryIds = null,
       bundle = null;
   @visibleForTesting
   const KnowledgeMapPage.test({
@@ -27,6 +28,7 @@ class KnowledgeMapPage extends StatefulWidget {
     this.hoverMapBuilder,
     this.landmarkMapBuilder,
     this.featureMapBuilder,
+    this.visibleCountryIds,
     this.bundle,
     this.onExit,
   });
@@ -49,6 +51,7 @@ class KnowledgeMapPage extends StatefulWidget {
   )?
   featureMapBuilder;
   final AssetBundle? bundle;
+  final List<String>? visibleCountryIds;
   final VoidCallback? onExit;
   final Widget Function(BuildContext, void Function(String?))? mapBuilder;
   @override
@@ -93,6 +96,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   int thematicSequence = 0;
   final searchController = TextEditingController();
   int generation = 0;
+  int visibleRequest = 0;
+  Size mapViewport = Size.zero;
+  List<MapCountry> visible = [];
+  bool visibleOpen = false;
   bool get ru => Localizations.localeOf(context).languageCode == 'ru';
   String tr(String en, String russian) => ru ? russian : en;
 
@@ -139,6 +146,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     hoverTimer?.cancel();
     hover.clear();
     tapRequests.invalidate();
+    visibleRequest++;
+    visible = [];
+    visibleOpen = false;
     controller = null;
     thematicSprites.clear();
     dishes = [];
@@ -290,6 +300,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       if (mounted) {
         setState(() {
           state = MapState(items, landmarks: landmarkItems);
+          if (widget.visibleCountryIds != null) {
+            visible = items
+                .where((item) => widget.visibleCountryIds!.contains(item.id))
+                .toList();
+          }
           ready = widget.mapBuilder != null;
         });
       }
@@ -510,6 +525,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       }
       startupTimer?.cancel();
       setState(() => ready = true);
+      updateVisibleCountries();
     } catch (error, stack) {
       debugPrint('Knowledge map: setup failed at $stage: $error\n$stack');
       if (mounted && generation == attempt) setState(() => failed = true);
@@ -534,6 +550,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final attempt = generation;
     setState(() {
       state?.select(id);
+      if (id != null) visibleOpen = false;
       selectedFeature = null;
       selectedFeatureKind = null;
       query = '';
@@ -597,6 +614,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     }
     setState(() {
       state?.select(null);
+      visibleOpen = false;
       selectedFeatureKind = kind;
       selectedFeature = properties;
       layersOpen = false;
@@ -815,6 +833,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final attempt = generation;
     setState(() {
       state?.selectLandmark(id);
+      if (id != null) visibleOpen = false;
       selectedFeature = null;
       selectedFeatureKind = null;
       layersOpen = false;
@@ -894,6 +913,30 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     hover.clear();
     if (mounted) setState(() {});
     queueHoverFilter();
+  }
+
+  Future<void> updateVisibleCountries() async {
+    final c = controller;
+    final currentState = state;
+    final size = mapViewport;
+    if (!ready || c == null || currentState == null || size.isEmpty) return;
+    final request = ++visibleRequest;
+    try {
+      bool current() => mounted && request == visibleRequest && controller == c;
+      final features = await queryVisibleWithRetry(
+        () => c.queryRenderedFeaturesInRect(Offset.zero & size, ['land'], null),
+        current,
+        () => Future<void>.delayed(const Duration(milliseconds: 500)),
+      );
+      if (!current()) return;
+      final result = visibleCountries(currentState.countries, features);
+      setState(() => visible = result);
+    } catch (error) {
+      if (mounted && request == visibleRequest && controller == c) {
+        setState(() => visible = []);
+      }
+      debugPrint('Knowledge map: visible countries unavailable: $error');
+    }
   }
 
   void queueHoverFilter() {
@@ -1016,7 +1059,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       child: ConstrainedBox(
         constraints: BoxConstraints(
           maxWidth: math.min(360, math.max(0, viewport.width - 24)),
-          maxHeight: math.max(0, math.min(340, viewport.height - 84)),
+          maxHeight: math.max(
+            0,
+            math.min(340, viewport.height - (visible.isNotEmpty ? 240 : 84)),
+          ),
         ),
         child: Card(
           clipBehavior: Clip.antiAlias,
@@ -1080,6 +1126,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Widget build(BuildContext context) {
     final selected = state?.selected;
     final selectedLandmark = state?.selectedLandmark;
+    final visibleSorted = [...visible]
+      ..sort(
+        (a, b) =>
+            (ru ? a.nameRu : a.nameEn).compareTo(ru ? b.nameRu : b.nameEn),
+      );
     final feature = selectedFeature;
     final featureKind = selectedFeatureKind;
     String countryName(String id) {
@@ -1102,6 +1153,19 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 constraints.maxWidth,
                 constraints.maxHeight,
               );
+              if (viewport != mapViewport) {
+                mapViewport = viewport;
+                visibleRequest++;
+                if (widget.visibleCountryIds == null) visible = [];
+                final clearListHover = visibleOpen;
+                visibleOpen = false;
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (mounted) {
+                    if (clearListHover) clearHover();
+                    updateVisibleCountries();
+                  }
+                });
+              }
               return Stack(
                 fit: StackFit.expand,
                 children: [
@@ -1133,6 +1197,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               c.onMapMouseMove.add(onMouseMove);
                             },
                             onStyleLoadedCallback: setup,
+                            onCameraMove: (_) {
+                              visibleRequest++;
+                              if (visible.isNotEmpty) {
+                                clearHover();
+                                setState(() {
+                                  visible = [];
+                                  visibleOpen = false;
+                                });
+                              }
+                            },
+                            onCameraIdle: updateVisibleCountries,
                             onMapClick: tap,
                             featureTapsTriggersMapClick: true,
                             compassEnabled: false,
@@ -1142,6 +1217,80 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         ),
                   if ((state == null || !ready) && !failed && !unsupported)
                     const Center(child: CircularProgressIndicator()),
+                  if (ready && visible.isNotEmpty && !layersOpen)
+                    Positioned(
+                      right: 12,
+                      top: 112,
+                      child: PointerInterceptor(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            FilledButton.tonal(
+                              onPressed: () =>
+                                  setState(() => visibleOpen = !visibleOpen),
+                              child: Text(
+                                tr('Visible countries', 'Страны на карте'),
+                              ),
+                            ),
+                            if (visibleOpen)
+                              Material(
+                                elevation: 4,
+                                borderRadius: BorderRadius.circular(12),
+                                child: SizedBox(
+                                  width: math.max(
+                                    0,
+                                    math.min(280, viewport.width - 24),
+                                  ),
+                                  height: math.max(
+                                    0,
+                                    math.min(300, viewport.height - 220),
+                                  ),
+                                  child: ListView.builder(
+                                    itemCount: visibleSorted.length,
+                                    itemBuilder: (context, index) {
+                                      final country = visibleSorted[index];
+                                      final encoded =
+                                          flags[country.id] as String?;
+                                      return MouseRegion(
+                                        onEnter: (_) {
+                                          final request = hover.begin();
+                                          hover.complete(
+                                            request,
+                                            country.id,
+                                            Offset.zero,
+                                          );
+                                          queueHoverFilter();
+                                        },
+                                        onExit: (_) => clearHover(),
+                                        child: ListTile(
+                                          dense: true,
+                                          leading: encoded == null
+                                              ? null
+                                              : Image.memory(
+                                                  base64Decode(encoded),
+                                                  width: 30,
+                                                  height: 20,
+                                                ),
+                                          title: Text(
+                                            ru
+                                                ? country.nameRu
+                                                : country.nameEn,
+                                          ),
+                                          onTap: () {
+                                            setState(() => visibleOpen = false);
+                                            clearHover();
+                                            select(country.id);
+                                          },
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
                   if (failed || unsupported)
                     Center(
                       child: Column(
@@ -1334,7 +1483,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           ),
                         ),
                       ),
-                    if (!layersOpen && feature != null && featureKind != null)
+                    if (!layersOpen &&
+                        !visibleOpen &&
+                        feature != null &&
+                        featureKind != null)
                       Positioned(
                         left: 12,
                         right: 12,
@@ -1379,7 +1531,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           ),
                         ),
                       ),
-                    if (!layersOpen && selectedLandmark != null)
+                    if (!layersOpen && !visibleOpen && selectedLandmark != null)
                       Positioned(
                         left: 12,
                         right: 12,
@@ -1475,7 +1627,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           ),
                         ),
                       ),
-                    if (!layersOpen && selected != null)
+                    if (!layersOpen && !visibleOpen && selected != null)
                       Positioned(
                         left: 12,
                         right: 12,

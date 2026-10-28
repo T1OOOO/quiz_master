@@ -1,5 +1,30 @@
 import 'dart:ui';
 
+Future<List> queryVisibleWithRetry(
+  Future<List> Function() query,
+  bool Function() current,
+  Future<void> Function() wait,
+) async {
+  for (var attempt = 0; attempt < 10; attempt++) {
+    final features = await query();
+    if (features.isNotEmpty || !current() || attempt == 9) return features;
+    await wait();
+    if (!current()) return [];
+  }
+  return [];
+}
+
+List<MapCountry> visibleCountries(List<MapCountry> countries, List features) {
+  final ids = <String>{};
+  for (final feature in features) {
+    if (feature is Map && feature['properties'] is Map) {
+      final id = feature['properties']['country_id'];
+      if (id is String) ids.add(id);
+    }
+  }
+  return countries.where((country) => ids.contains(country.id)).toList();
+}
+
 class MapCountry {
   const MapCountry({
     required this.id,

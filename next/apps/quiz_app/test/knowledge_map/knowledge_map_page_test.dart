@@ -432,6 +432,103 @@ void main() {
     expect(tester.takeException(), isNull);
   });
   testWidgets(
+    'visible countries and layers stay usable with a mobile detail card',
+    (tester) async {
+      WidgetController.hitTestWarningShouldBeFatal = true;
+      addTearDown(() => WidgetController.hitTestWarningShouldBeFatal = false);
+      tester.view.physicalSize = const Size(390, 844);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      late void Function(String?) select;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeMapPage.test(
+            bundle: MapFixtureBundle(),
+            visibleCountryIds: const ['FR'],
+            mapBuilder: (context, callback) {
+              select = callback;
+              return const SizedBox.expand();
+            },
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      select('FR');
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Visible countries'));
+      await tester.pumpAndSettle();
+      expect(find.widgetWithText(ListTile, 'France'), findsOneWidget);
+      await tester.tap(find.byTooltip('Layers'));
+      await tester.pumpAndSettle();
+      expect(find.text('Population'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'search selection shows its card while visible countries list is open',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeMapPage.test(
+            bundle: MapFixtureBundle(),
+            visibleCountryIds: const ['FR'],
+            mapBuilder: (context, select) => const SizedBox.expand(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Visible countries'));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextField), 'France');
+      await tester.pumpAndSettle();
+      await tester.tap(
+        find.ancestor(of: find.text('FR'), matching: find.byType(ListTile)),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byTooltip('Close'), findsOneWidget);
+      expect(find.widgetWithText(ListTile, 'France'), findsNothing);
+    },
+  );
+  testWidgets(
+    'visible countries and detail controls remain tappable at 320 by 480',
+    (tester) async {
+      WidgetController.hitTestWarningShouldBeFatal = true;
+      addTearDown(() => WidgetController.hitTestWarningShouldBeFatal = false);
+      tester.view.physicalSize = const Size(320, 480);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      late void Function(String?) select;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeMapPage.test(
+            bundle: MapFixtureBundle(),
+            visibleCountryIds: const ['FR'],
+            mapBuilder: (context, callback) {
+              select = callback;
+              return const SizedBox.expand();
+            },
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      select('FR');
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Visible countries'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.widgetWithText(ListTile, 'France'));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('Source 1'));
+      expect(find.text('Source 1').hitTestable(), findsOneWidget);
+      await tester.tap(find.byTooltip('Close'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byTooltip('Layers'));
+      await tester.pumpAndSettle();
+      expect(find.text('Population'), findsOneWidget);
+    },
+  );
+  testWidgets(
     'landmark card remains usable on 390 by 844 at larger text size',
     (tester) async {
       tester.view.physicalSize = const Size(390, 844);
