@@ -41,6 +41,10 @@ capital dots off and back on; rivers, lakes and country markers remain visible.
 Move across country interiors and markers: the hovered country's outline and
 flag/name tooltip must follow the pointer without changing click selection.
 Moving onto sea or the search controls must clear the hover tooltip.
+For the native event regression, search Monaco, zoom in until its marker is
+visible, hover that marker, then move once to the French land nearby and stop.
+The tooltip must change from Monaco to France without a second pointer move.
+Feature-leave events must not cancel the pending map-mousemove query.
 Close the country card and tap another
 country; tapping sea should clear selection. Check a narrow mobile viewport and
 a desktop viewport, then return with Back. Check new browser errors separately

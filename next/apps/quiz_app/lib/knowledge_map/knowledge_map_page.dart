@@ -259,7 +259,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     hoverTimer?.cancel();
     hover.clear();
     controller?.onMapMouseMove.remove(onMouseMove);
-    controller?.onFeatureHover.remove(onFeatureHover);
     searchController.dispose();
     super.dispose();
   }
@@ -436,16 +435,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     });
   }
 
-  void onFeatureHover(
-    math.Point<double> point,
-    LatLng coordinates,
-    String id,
-    Annotation? annotation,
-    HoverEventType type,
-  ) {
-    if (type == HoverEventType.leave) clearHover();
-  }
-
   @override
   Widget build(BuildContext context) {
     final selected = state?.selected;
@@ -499,7 +488,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                             onMapCreated: (c) {
                               controller = c;
                               c.onMapMouseMove.add(onMouseMove);
-                              c.onFeatureHover.add(onFeatureHover);
                             },
                             onStyleLoadedCallback: setup,
                             onMapClick: tap,
