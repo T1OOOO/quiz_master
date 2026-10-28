@@ -80,12 +80,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       showCountryLabels = true,
       showWaterLabels = true;
   String query = '';
+  String thematic = 'none';
+  List<dynamic> dishes = [];
+  final Set<String> thematicSprites = {};
   final hover = MapHoverState();
   final tapRequests = MapTapRequests();
   Timer? hoverTimer;
   Future<void> hoverFilter = Future.value();
   Future<void> capitalCommands = Future.value();
   Future<void> labelCommands = Future.value();
+  Future<void> thematicCommands = Future.value();
+  int thematicSequence = 0;
   final searchController = TextEditingController();
   int generation = 0;
   bool get ru => Localizations.localeOf(context).languageCode == 'ru';
@@ -135,6 +140,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     hover.clear();
     tapRequests.invalidate();
     controller = null;
+    thematicSprites.clear();
+    dishes = [];
+    thematic = 'none';
+    thematicSequence++;
     detailRiversReady = false;
     detailLakesReady = false;
     setState(() {
@@ -198,6 +207,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       ]);
       final details = await Future.wait([riverFuture, lakeFuture]);
       try {
+        final atlas = jsonDecode(
+          await (widget.bundle ?? rootBundle).loadString(
+            'assets/quizipedia/food_atlas.json',
+            cache: false,
+          ),
+        ) as Map<String, dynamic>;
+        dishes = atlas['dishes'] as List? ?? [];
+      } catch (_) {
+        dishes = [];
+      }
+      try {
         featureFacts = jsonDecode(
           await (widget.bundle ?? rootBundle).loadString(
             'assets/quizipedia/map_feature_facts.json',
@@ -243,7 +263,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             nameEn: p['name_en'],
             capital: f?['capital'],
             area: f?['area_km2'],
-            population: f?['population'],
+            population: (f?['population'] as num?) == 0
+                ? null
+                : f?['population'],
             populationYear: f?['population_year'],
             currencies:
                 (f?['currencies'] as List?)
@@ -289,6 +311,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final c = controller;
     if (c == null) return;
     final attempt = generation;
+    thematicSprites.clear();
+    thematicSequence++;
     var stage = 'countries';
     try {
       await c.addGeoJsonSource('countries', countries!);
@@ -393,14 +417,13 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       );
       stage = 'capitals';
       await c.addGeoJsonSource('capitals', capitals!);
-      await c.addCircleLayer(
+      await c.addImage('capital-star', await renderCapitalMarker());
+      await c.addSymbolLayer(
         'capitals',
         'capital-dots',
-        const CircleLayerProperties(
-          circleColor: '#805e48',
-          circleRadius: 2.5,
-          circleStrokeColor: '#ffffff',
-          circleStrokeWidth: 1,
+        const SymbolLayerProperties(
+          iconImage: 'capital-star',
+          iconAllowOverlap: true,
         ),
         minzoom: 2.5,
       );
@@ -477,7 +500,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       }
 
       stage = 'capital labels';
-      await addLabels('capital-labels', capitals!, '• ', 4);
+      await addLabels('capital-labels', capitals!, '', 4);
       stage = 'water labels';
       await addLabels('water-labels', waterLabels!, '≈ ', 3);
       stage = 'landmarks';
@@ -648,6 +671,107 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       if (current()) {
         setState(() => failed = true);
       }
+    }
+  }
+
+  Future<void> setThematic(String value) async {
+    if (!mounted || !ready) return;
+    setState(() => thematic = value);
+    final request = ++thematicSequence;
+    final c = controller;
+    if (c == null || countryLabels == null || state == null) return;
+    thematicCommands = thematicCommands
+        .catchError((Object _) {})
+        .then((_) => _applyThematic(value, request, c));
+    await thematicCommands;
+  }
+
+  Future<void> _applyThematic(
+    String value,
+    int request,
+    MapLibreMapController c,
+  ) async {
+    if (!mounted || request != thematicSequence || controller != c) return;
+    final attempt = generation;
+    final labels =
+        jsonDecode(jsonEncode(countryLabels)) as Map<String, dynamic>;
+    try {
+      for (final feature in labels['features'] as List) {
+        if (!mounted ||
+            generation != attempt ||
+            controller != c ||
+            request != thematicSequence) {
+          return;
+        }
+        final p = feature['properties'] as Map<String, dynamic>;
+        final id = p['country_id'] as String;
+        final country = state!.countries
+            .where((item) => item.id == id)
+            .firstOrNull;
+        final matches = dishes
+            .where(
+              (dish) => dish is Map && dish['country_en'] == country?.nameEn,
+            )
+            .toList();
+        final uniqueCountry =
+            country != null &&
+            state!.countries
+                    .where((item) => item.nameEn == country.nameEn)
+                    .length ==
+                1;
+        final datum = value == 'food'
+            ? (uniqueCountry && matches.isNotEmpty
+                  ? matches
+                        .map((dish) => dish[ru ? 'name_ru' : 'name_en'])
+                        .whereType<String>()
+                        .join(', ')
+                  : null)
+            : value == 'population'
+            ? country?.population
+            : country?.area;
+        final suffix = value == 'none'
+            ? ''
+            : '\n${datum == null ? tr('No data', 'Нет данных') : '$datum${value == 'area' ? ' km²' : ''}'}';
+        final name = p[ru ? 'name_ru' : 'name_en'] as String;
+        final sprite = 'country-$id-$value-${ru ? 'ru' : 'en'}';
+        late Uint8List bytes;
+        await ensureMapSprite(
+          thematicSprites,
+          sprite,
+          () async {
+            final encoded = flags[id] as String?;
+            bytes = await renderCountryMarker(
+              name: '$name$suffix',
+              maxLines: value == 'none' ? null : 4,
+              flagBytes: encoded == null ? null : base64Decode(encoded),
+            );
+          },
+          () async {
+            if (!mounted ||
+                generation != attempt ||
+                controller != c ||
+                request != thematicSequence) {
+              throw StateError('Thematic request superseded');
+            }
+            await c.addImage(sprite, bytes);
+          },
+        );
+        if (!mounted ||
+            generation != attempt ||
+            controller != c ||
+            request != thematicSequence) {
+          return;
+        }
+        p['sprite'] = sprite;
+      }
+      if (mounted &&
+          generation == attempt &&
+          controller == c &&
+          request == thematicSequence) {
+        await c.setGeoJsonSource('country-markers', labels);
+      }
+    } catch (error) {
+      debugPrint('Knowledge map: thematic labels unavailable: $error');
     }
   }
 
@@ -1157,65 +1281,53 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                 maxHeight: math.max(0, viewport.height - 80),
                               ),
                               child: SingleChildScrollView(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                        16,
-                                        12,
-                                        16,
-                                        4,
-                                      ),
-                                      child: Text(
-                                        tr(
-                                          'Rivers and lakes are always visible',
-                                          'Реки и озёра видны всегда',
+                                child: RadioGroup<String>(
+                                  groupValue: thematic,
+                                  onChanged: (value) {
+                                    if (ready && value != null) {
+                                      setThematic(value);
+                                    }
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            const Icon(
+                                              Icons.star,
+                                              color: Color(0xffb74832),
+                                              size: 20,
+                                            ),
+                                            const SizedBox(width: 6),
+                                            Text(tr('Capital', 'Столица')),
+                                          ],
                                         ),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall,
                                       ),
-                                    ),
-                                    SwitchListTile(
-                                      dense: true,
-                                      title: Text(
-                                        tr('Country labels', 'Названия стран'),
-                                      ),
-                                      value: showCountryLabels,
-                                      onChanged: ready
-                                          ? (v) => toggleLabels(
-                                              'country-markers',
-                                              v,
-                                            )
-                                          : null,
-                                    ),
-                                    SwitchListTile(
-                                      dense: true,
-                                      title: Text(
-                                        tr('Water labels', 'Названия водоёмов'),
-                                      ),
-                                      value: showWaterLabels,
-                                      onChanged: ready
-                                          ? (v) =>
-                                                toggleLabels('water-labels', v)
-                                          : null,
-                                    ),
-                                    SwitchListTile(
-                                      dense: true,
-                                      title: Text(tr('Capitals', 'Столицы')),
-                                      value: showCapitals,
-                                      onChanged: ready ? toggleCapitals : null,
-                                    ),
-                                    SwitchListTile(
-                                      dense: true,
-                                      title: Text(
-                                        tr('Landmarks', 'Интересные места'),
-                                      ),
-                                      value: showLandmarks,
-                                      onChanged: ready ? toggleLandmarks : null,
-                                    ),
-                                  ],
+                                      for (final mode in [
+                                        'none',
+                                        'population',
+                                        'area',
+                                        'food',
+                                      ])
+                                        RadioListTile<String>(
+                                          dense: true,
+                                          title: Text(switch (mode) {
+                                            'population' => tr(
+                                              'Population',
+                                              'Население',
+                                            ),
+                                            'area' => tr('Area', 'Площадь'),
+                                            'food' => tr('Dishes', 'Блюда'),
+                                            _ => tr('Map', 'Карта'),
+                                          }),
+                                          value: mode,
+                                          enabled: ready,
+                                        ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

@@ -162,3 +162,15 @@ class MapTapRequests {
   bool isCurrent(int request) => request == _sequence;
   void invalidate() => _sequence++;
 }
+
+Future<void> ensureMapSprite(
+  Set<String> cache,
+  String key,
+  Future<void> Function() render,
+  Future<void> Function() register,
+) async {
+  if (cache.contains(key)) return;
+  await render();
+  await register();
+  cache.add(key);
+}

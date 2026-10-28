@@ -11,6 +11,7 @@ Future<Uint8List> renderCountryMarker({
   required String name,
   Uint8List? flagBytes,
   bool landmark = false,
+  int? maxLines,
 }) async {
   final text = TextPainter(
     text: TextSpan(
@@ -23,8 +24,8 @@ Future<Uint8List> renderCountryMarker({
       ),
     ),
     textDirection: TextDirection.ltr,
-    maxLines: 2,
-    ellipsis: '…',
+    maxLines: maxLines,
+    ellipsis: maxLines == null ? null : '…',
   )..layout(maxWidth: 170);
   ui.Image? flag;
   try {
@@ -36,9 +37,12 @@ Future<Uint8List> renderCountryMarker({
         codec.dispose();
       }
     }
-    final leading = flag != null ? 30.0 : (landmark ? 20.0 : 0.0);
-    final width = (text.width + leading + 16).ceil().clamp(24, 216);
-    final height = (math.max(text.height, 16) + 12).ceil();
+    final leading = landmark ? 20.0 : 0.0;
+    final width = (math.max(text.width + leading, flag != null ? 24 : 0) + 16)
+        .ceil()
+        .clamp(24, 216);
+    final height = (math.max(text.height, 16) + 12 + (flag != null ? 20 : 0))
+        .ceil();
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
     final bounds = ui.RRect.fromRectAndRadius(
@@ -59,7 +63,7 @@ Future<Uint8List> renderCountryMarker({
       canvas.drawImageRect(
         flag,
         ui.Rect.fromLTWH(0, 0, flag.width.toDouble(), flag.height.toDouble()),
-        ui.Rect.fromLTWH(8 + (24 - fw) / 2, (height - fh) / 2, fw, fh),
+        ui.Rect.fromLTWH((width - fw) / 2, 5 + (16 - fh) / 2, fw, fh),
         ui.Paint()..filterQuality = ui.FilterQuality.medium,
       );
     } else if (landmark) {
@@ -78,7 +82,13 @@ Future<Uint8List> renderCountryMarker({
         ui.Paint()..color = const Color(0xffffffff),
       );
     }
-    text.paint(canvas, ui.Offset(8 + leading, (height - text.height) / 2));
+    text.paint(
+      canvas,
+      ui.Offset(
+        (width - text.width + leading) / 2,
+        flag != null ? 25 : (height - text.height) / 2,
+      ),
+    );
     final picture = recorder.endRecording();
     try {
       final rendered = await picture.toImage(width, height);
@@ -97,5 +107,48 @@ Future<Uint8List> renderCountryMarker({
   } finally {
     flag?.dispose();
     text.dispose();
+  }
+}
+
+Future<Uint8List> renderCapitalMarker() async {
+  final recorder = ui.PictureRecorder();
+  final canvas = ui.Canvas(recorder);
+  final star = ui.Path();
+  for (var i = 0; i < 10; i++) {
+    final angle = -math.pi / 2 + i * math.pi / 5;
+    final radius = i.isEven ? 10.0 : 4.5;
+    final point = ui.Offset(
+      12 + radius * math.cos(angle),
+      12 + radius * math.sin(angle),
+    );
+    if (i == 0) {
+      star.moveTo(point.dx, point.dy);
+    } else {
+      star.lineTo(point.dx, point.dy);
+    }
+  }
+  star.close();
+  canvas.drawPath(star, ui.Paint()..color = const Color(0xffb74832));
+  canvas.drawPath(
+    star,
+    ui.Paint()
+      ..color = const Color(0xffffffff)
+      ..style = ui.PaintingStyle.stroke
+      ..strokeWidth = 1.5,
+  );
+  final picture = recorder.endRecording();
+  try {
+    final image = await picture.toImage(24, 24);
+    try {
+      final data = await image.toByteData(format: ui.ImageByteFormat.png);
+      if (data == null) throw StateError('Capital marker PNG encoding failed');
+      return normalizeFlagSprite(
+        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
+      );
+    } finally {
+      image.dispose();
+    }
+  } finally {
+    picture.dispose();
   }
 }

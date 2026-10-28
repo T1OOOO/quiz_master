@@ -7,6 +7,16 @@ import 'package:quiz_app/knowledge_map/country_marker.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test('capital marker renders a visible star without font glyphs', () async {
+    final star = image.decodePng(await renderCapitalMarker())!;
+    expect(star.width, 24);
+    expect(star.height, 24);
+    expect(
+      star.where((p) => p.r > 140 && p.g < 100 && p.a > 0).length,
+      greaterThan(30),
+    );
+  });
+
   test('landmark pin renders without relying on a font glyph', () async {
     final plain = image.decodePng(await renderCountryMarker(name: 'Памятник'))!;
     final pinned = image.decodePng(
@@ -21,6 +31,21 @@ void main() {
           .length,
       greaterThan(15),
     );
+  });
+
+  test('long country names wrap without truncation', () async {
+    final full = image.decodePng(
+      await renderCountryMarker(
+        name: 'Соединённое Королевство Великобритании и Северной Ирландии',
+      ),
+    )!;
+    final truncated = image.decodePng(
+      await renderCountryMarker(
+        name: 'Соединённое Королевство Великобритании и Северной Ирландии',
+        maxLines: 2,
+      ),
+    )!;
+    expect(full.height, greaterThan(truncated.height));
   });
 
   test('country names render as an RGBA PNG, including Cyrillic', () async {
@@ -44,7 +69,7 @@ void main() {
           flagBytes: Uint8List.fromList(image.encodePng(flag)),
         ),
       )!;
-      expect(withFlag.width, greaterThan(plain.width));
+      expect(withFlag.height, greaterThan(plain.height + 10));
       expect(
         withFlag.any((pixel) => pixel.r > 220 && pixel.g < 30 && pixel.b < 30),
         isTrue,
@@ -56,7 +81,10 @@ void main() {
     'long country names stay bounded and invalid flags fail explicitly',
     () async {
       final decoded = image.decodePng(
-        await renderCountryMarker(name: 'Длинное название страны ' * 12),
+        await renderCountryMarker(
+          name: 'Длинное название страны ' * 12,
+          maxLines: 2,
+        ),
       )!;
       expect(decoded.width, lessThanOrEqualTo(240));
       expect(decoded.height, lessThanOrEqualTo(64));

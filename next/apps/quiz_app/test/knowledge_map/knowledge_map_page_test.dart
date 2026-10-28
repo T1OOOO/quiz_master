@@ -269,7 +269,7 @@ void main() {
     expect(find.text('Monaco'), findsOneWidget);
     expect(tester.testTextInput.isVisible, isFalse);
   });
-  testWidgets('layers panel never offers a water visibility switch', (
+  testWidgets('thematic panel offers data without hiding base map features', (
     tester,
   ) async {
     await tester.pumpWidget(
@@ -283,27 +283,28 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Layers'));
     await tester.pumpAndSettle();
-    expect(find.text('Rivers and lakes'), findsNothing);
-    expect(find.text('Rivers and lakes are always visible'), findsOneWidget);
-    expect(find.text('Capitals'), findsOneWidget);
-    expect(find.text('Country labels'), findsOneWidget);
-    expect(find.text('Water labels'), findsOneWidget);
-    expect(find.text('Landmarks'), findsOneWidget);
-    final countrySwitch = find.widgetWithText(SwitchListTile, 'Country labels');
-    final waterSwitch = find.widgetWithText(SwitchListTile, 'Water labels');
-    expect(tester.widget<SwitchListTile>(countrySwitch).value, isTrue);
-    await tester.tap(countrySwitch);
+    expect(find.text('Population'), findsOneWidget);
+    expect(find.text('Area'), findsOneWidget);
+    await tester.tap(find.text('Dishes'));
     await tester.pump();
-    expect(tester.widget<SwitchListTile>(countrySwitch).value, isFalse);
-    expect(tester.widget<SwitchListTile>(waterSwitch).value, isTrue);
-    await tester.tap(waterSwitch);
+    expect(
+      tester
+          .widget<RadioGroup<String>>(find.byType(RadioGroup<String>))
+          .groupValue,
+      'food',
+    );
+    await tester.tap(find.text('Population'));
     await tester.pump();
-    expect(tester.widget<SwitchListTile>(waterSwitch).value, isFalse);
-    await tester.tap(countrySwitch);
-    await tester.tap(waterSwitch);
+    await tester.tap(find.text('Dishes'));
     await tester.pump();
-    expect(tester.widget<SwitchListTile>(countrySwitch).value, isTrue);
-    expect(tester.widget<SwitchListTile>(waterSwitch).value, isTrue);
+    expect(
+      tester
+          .widget<RadioGroup<String>>(find.byType(RadioGroup<String>))
+          .groupValue,
+      'food',
+    );
+    expect(find.text('Country labels'), findsNothing);
+    expect(find.text('Capitals'), findsNothing);
   });
   testWidgets('hover never duplicates selected country context', (
     tester,
@@ -426,7 +427,7 @@ void main() {
     expect(close.bottom, lessThanOrEqualTo(480));
     await tester.tap(find.byTooltip('Layers'));
     await tester.pumpAndSettle();
-    expect(find.text('Country labels'), findsOneWidget);
+    expect(find.text('Population'), findsOneWidget);
     expect(find.text('Rivers and lakes'), findsNothing);
     expect(tester.takeException(), isNull);
   });
@@ -634,8 +635,8 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Слои'));
     await tester.pumpAndSettle();
-    expect(find.text('Интересные места'), findsOneWidget);
-    expect(tester.getSize(find.text('Интересные места')).height, lessThan(30));
+    expect(find.text('Население'), findsOneWidget);
+    expect(tester.getSize(find.text('Население')).height, lessThan(30));
     expect(find.text('Достопримечательности'), findsNothing);
     expect(tester.takeException(), isNull);
   });
