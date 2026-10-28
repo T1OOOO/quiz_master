@@ -13,13 +13,56 @@ class MapCountry {
   final num? area;
 }
 
+class MapLandmark {
+  MapLandmark.fromProperties(Map<String, dynamic> p)
+    : id = p['id'] as String,
+      countryId = p['country_id'] as String,
+      nameRu = p['name_ru'] as String,
+      nameEn = p['name_en'] as String,
+      explanationRu = p['explanation_ru'] as String,
+      explanationEn = p['explanation_en'] as String,
+      sourceUrl = p['source_url'] as String,
+      coordinateSourceUrl = p['coordinate_source_url'] as String,
+      thumbnailAsset = p['thumbnail_asset'] as String?,
+      imageAttribution = p['image_attribution'] as String?,
+      imageLicense = p['image_license'] as String?,
+      imageLicenseUrl = p['image_license_url'] as String?,
+      imageSourceUrl = p['image_source_url'] as String?;
+  final String id,
+      countryId,
+      nameRu,
+      nameEn,
+      explanationRu,
+      explanationEn,
+      sourceUrl,
+      coordinateSourceUrl;
+  final String? thumbnailAsset,
+      imageAttribution,
+      imageLicense,
+      imageLicenseUrl,
+      imageSourceUrl;
+}
+
 class MapState {
-  MapState(this.countries);
+  MapState(this.countries, {this.landmarks = const []});
+  final List<MapLandmark> landmarks;
+  String? selectedLandmarkId;
+  MapLandmark? get selectedLandmark =>
+      landmarks.where((l) => l.id == selectedLandmarkId).firstOrNull;
+  void selectLandmark(String? id) {
+    selectedLandmarkId = id;
+    selectedId = null;
+  }
+
   final List<MapCountry> countries;
   String? selectedId;
   MapCountry? get selected =>
       countries.where((c) => c.id == selectedId).firstOrNull;
-  void select(String? id) => selectedId = id;
+  void select(String? id) {
+    selectedId = id;
+    selectedLandmarkId = null;
+  }
+
   List<MapCountry> search(String query) {
     final q = query.trim().toLowerCase();
     if (q.isEmpty) return [];
@@ -38,6 +81,7 @@ class MapState {
 class MapHoverState {
   int _sequence = 0;
   String? countryId;
+  String? landmarkId;
   Offset? point;
 
   int begin() => ++_sequence;
@@ -45,12 +89,22 @@ class MapHoverState {
   bool complete(int request, String? id, Offset location) {
     if (!isCurrent(request)) return false;
     countryId = id;
+    landmarkId = null;
     point = id == null ? null : location;
+    return true;
+  }
+
+  bool completeLandmark(int request, String id, Offset location) {
+    if (!isCurrent(request)) return false;
+    countryId = null;
+    landmarkId = id;
+    point = location;
     return true;
   }
 
   void clear() {
     _sequence++;
+    landmarkId = null;
     countryId = null;
     point = null;
   }

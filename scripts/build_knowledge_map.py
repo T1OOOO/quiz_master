@@ -13,6 +13,10 @@ SOURCES = {
  'next/apps/quiz_app/assets/quizipedia/capital_points.json': ('7edd476a15c7edab960a0e44d0fa449aa95c094bd191bec8d663b5f622380341', 'https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/', 'Public domain'),
  'next/apps/quiz_app/assets/quizipedia/waterways.json': ('cb884b1a74fbfdaea11176c51045d37ae19546b1cc9c2ad6763d91dbd0bd9593', 'Repository waterway identities', 'Public domain'),
  'next/apps/quiz_app/assets/quizipedia/country_facts.json': ('38283995143f52f4a82e947fc35cc5eb4b7419f92debd3697cd71d2728821063', 'Repository country facts registry', 'See source country_facts.json'),
+ 'quizipedia/landmark_locations.geojson': ('77a95d4d205041552d9de88f49256f3984563991b72762e83ef1763e6f532c7b', 'https://www.wikidata.org/', 'CC0 coordinates; see individual image metadata'),
+ 'next/apps/quiz_app/assets/quizipedia/catalog.json': ('0ef534bac377c150e3bf3109d7dea96fb56e1e68f8bbc04c81adc5804d2d984b', 'Repository landmark catalog', 'See individual image metadata'),
+ 'quizipedia/sources/map_v2/ne_10m_admin_0_countries.geojson': ('239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson', 'Public domain'),
+ 'quizipedia/sources/map_v2/ne_10m_lakes.geojson': ('2d036f53dedec578001c5c30c2959ee7d4eebc1306900fa4367c49929ec8f2d9', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_lakes.geojson', 'Public domain'),
  'quizipedia/sources/map_v2/ne_110m_lakes.geojson': ('eb02ecc86c82004fccbf979058bfabbbd6c2d07968c7844d38eb1c9152d2ffc9', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_lakes.geojson', 'Public domain'),
  'quizipedia/sources/map_v2/ne_110m_rivers_lake_centerlines.geojson': ('55aa4497405afc07cdc931b7fbe062c4d6693ba2a550c0d24899953f5d507c8d', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_rivers_lake_centerlines.geojson', 'Public domain'),
  'quizipedia/sources/map_v2/ne_110m_geography_marine_polys.geojson': ('b9c3f7f557d0ff5217906adc82b66ecdac14aa7438df7e518cf6675d037bceb8', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_geography_marine_polys.geojson', 'Public domain'),
@@ -54,6 +58,30 @@ def feature(id, ru, en, kind, geometry, country_id=None):
     if country_id: props['country_id'] = country_id
     return dict(type='Feature', id=id, properties=props, geometry=geometry)
 
+def water_anchor(geometry):
+    typ=geometry['type']; coords=geometry['coordinates']
+    if typ in ('LineString','MultiLineString'):
+        lines=[coords] if typ=='LineString' else coords
+        longest=max(lines,key=len)
+        return longest[len(longest)//2]
+    polygons=[coords] if typ=='Polygon' else coords
+    best=None
+    for polygon in polygons:
+        ring=polygon[0]
+        low=min(p[1] for p in ring); high=max(p[1] for p in ring)
+        for fraction in (0.5,0.25,0.75):
+            y=low+(high-low)*fraction
+            crossings=[]
+            for r in polygon:
+                for a,b in zip(r,r[1:]):
+                    if (a[1]>y)!=(b[1]>y):
+                        crossings.append(a[0]+(y-a[1])*(b[0]-a[0])/(b[1]-a[1]))
+            crossings.sort()
+            for left,right in zip(crossings[::2],crossings[1::2]):
+                if best is None or right-left>best[0]: best=(right-left,[(left+right)/2,y])
+    if best is None or best[0]<=0: raise ValueError('no interior water label point')
+    return best[1]
+
 def build():
     data = {p:checked_read(ROOT/p, meta[0]) for p,meta in SOURCES.items()}
     registry={r['iso2']:r for r in data['docs/rewrite-agents/preparation-country-registry/countries.json']['countries']}
@@ -62,17 +90,22 @@ def build():
     crosswalk={'TWN':'TW', 'KOS':'XK'}
     if any(iso not in facts for iso in crosswalk.values()):
         raise ValueError('crosswalk ID missing from country facts')
-    countries=[]; country_labels=[]; omitted=[]
+    countries=[]; country_labels=[]; omitted=[]; legacy={}
     for f in data['quizipedia/sources/world-source.json']['features']:
         p=f['properties']; iso=crosswalk.get(p['ADM0_A3'], exceptions.get(p['ADM0_A3'],p['ISO_A2']))
         if len(iso)!=2 or not iso.isalpha() or not iso.isupper():
             omitted.append(p['ADM0_A3']); continue
         names=registry.get(iso) or (facts[iso] if p['ADM0_A3'] in crosswalk else None); ident=iso if names else 'ne-'+p['ADM0_A3'].lower()
         country=feature(ident, names['name_ru'] if names else p['NAME_RU'], names['name_en'] if names else p['NAME_EN'], 'country', f['geometry'], iso)
-        countries.append(country)
+        legacy[iso]=country
         label=feature(iso, country['properties']['name_ru'], country['properties']['name_en'], 'country', {'type':'Point','coordinates':[p['LABEL_X'], p['LABEL_Y']]}, iso)
         label['properties']['anchor_source']='natural-earth-label'
         country_labels.append(label)
+    for f in data['quizipedia/sources/map_v2/ne_10m_admin_0_countries.geojson']['features']:
+        p=f['properties']; iso=crosswalk.get(p['ADM0_A3'], exceptions.get(p['ADM0_A3'],p['ISO_A2']))
+        if iso not in facts: continue
+        old=legacy.get(iso); names=facts[iso]
+        countries.append(feature(old['id'] if old else iso, old['properties']['name_ru'] if old else names['name_ru'], old['properties']['name_en'] if old else names['name_en'], 'country', f['geometry'], iso))
     capitals=[]
     label_ids={f['id'] for f in country_labels}
     for p in data['next/apps/quiz_app/assets/quizipedia/capital_points.json']['capitals']:
@@ -88,9 +121,16 @@ def build():
             label['properties']['anchor_source']='capital-point'
             country_labels.append(label)
             label_ids.add(iso)
+    for f in data['quizipedia/sources/map_v2/ne_10m_admin_0_countries.geojson']['features']:
+        p=f['properties']; iso=crosswalk.get(p['ADM0_A3'],exceptions.get(p['ADM0_A3'],p['ISO_A2']))
+        if iso in facts and iso not in label_ids:
+            names=facts[iso]
+            label=feature(iso,names['name_ru'],names['name_en'],'country',{'type':'Point','coordinates':[p['LABEL_X'],p['LABEL_Y']]},iso)
+            label['properties']['anchor_source']='natural-earth-10m-label'
+            country_labels.append(label); label_ids.add(iso)
     water={p['id']:p for p in data['next/apps/quiz_app/assets/quizipedia/waterways.json']['features']}
     waterways=[]
-    for path in list(SOURCES)[-3:]:
+    for path in ('quizipedia/sources/map_v2/ne_10m_lakes.geojson','quizipedia/sources/map_v2/ne_110m_rivers_lake_centerlines.geojson','quizipedia/sources/map_v2/ne_110m_geography_marine_polys.geojson'):
         for f in data[path]['features']:
             row=water.get(f['properties']['wikidataid'])
             if row: waterways.append(feature(row['id'],row['name_ru'],row['name_en'],row['kind'],f['geometry']))
@@ -106,11 +146,19 @@ def build():
         new_parts=new['coordinates'] if new['type'].startswith('Multi') else [new['coordinates']]
         merged[f['id']]['geometry']={'type':'Multi'+base,'coordinates':old_parts+new_parts}
     waterways=list(merged.values())
-    layers={name+'.geojson':{'type':'FeatureCollection','features':sorted(rows,key=lambda f:f['id'])} for name,rows in [('countries',countries),('country_labels',country_labels),('capitals',capitals),('waterways',waterways),('landmarks',[])]}
+    landmarks=data['quizipedia/landmark_locations.geojson']['features']
+    catalog=data['next/apps/quiz_app/assets/quizipedia/catalog.json']['landmarks']
+    if {f['id'] for f in landmarks}!={r['id'] for r in catalog}: raise ValueError('landmark catalog mismatch')
+    for f in landmarks:
+        if f['type']!='Feature' or f['geometry']['type']!='Point' or f['id']!=f['properties']['id']: raise ValueError('invalid landmark')
+        validate_geometry(f['geometry'])
+        if any(not f['properties'].get(k) for k in ('country_id','name_ru','name_en','explanation_ru','explanation_en','source_url','coordinate_source_url','wikidata_id','image_attribution','image_license','image_source_url')): raise ValueError('missing landmark provenance')
+    water_labels=[feature(f['id'],f['properties']['name_ru'],f['properties']['name_en'],f['properties']['kind'],{'type':'Point','coordinates':water_anchor(f['geometry'])}) for f in waterways if f['properties']['kind'] in ('river','lake')]
+    layers={name+'.geojson':{'type':'FeatureCollection','features':sorted(rows,key=lambda f:f['id'])} for name,rows in [('countries',countries),('country_labels',country_labels),('capitals',capitals),('waterways',waterways),('water_labels',water_labels),('landmarks',landmarks)]}
     for name,collection in layers.items():
         ids=[f['id'] for f in collection['features']]
         if len(ids)!=len(set(ids)): raise ValueError('duplicate id in '+name)
-    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Natural Earth 1:110m uses generalized boundaries and omits small islands.', 'Country labels use Natural Earth label anchors for shapes and first capital points for 44 additional countries; country facts without either have no marker.', 'Unmapped disputed country geometries are omitted without assigning another country: '+', '.join(sorted(omitted)), 'Montserrat (MS) is omitted: its existing Plymouth capital point is Plymouth, England, not Montserrat.', 'Landmarks are empty until coordinates and sources are verified.', 'Capital names without a matching Russian registry label retain the source name.', 'Waterways carry no inferred country relationship.']}
+    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Country and lake geometry uses Natural Earth 1:10m; rivers and marine features remain 1:110m.', 'Country labels preserve existing 110m anchors and capital fallbacks; additional 10m shapes use 10m label anchors. Facts without a shape or verified capital have no marker.', 'Legacy 110m disputed geometries were not assigned another country: '+', '.join(sorted(omitted)), 'Montserrat uses its 1:10m country label; its existing Plymouth capital point is omitted because it is Plymouth, England.', 'Capital names without a matching Russian registry label retain the source name.', 'Waterways carry no inferred country relationship.']}
     return layers,manifest
 
 def encoded(value):

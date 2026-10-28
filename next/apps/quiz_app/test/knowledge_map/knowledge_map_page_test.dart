@@ -20,6 +20,35 @@ class MapFixtureBundle extends CachingAssetBundle {
       };
     } else if (key.endsWith('country_flag_images.json')) {
       data = {'flags': <String, String>{}};
+    } else if (key.endsWith('landmarks.geojson')) {
+      data = {
+        'type': 'FeatureCollection',
+        'features': [
+          {
+            'type': 'Feature',
+            'id': 'eiffel',
+            'geometry': {
+              'type': 'Point',
+              'coordinates': [2.3, 48.8],
+            },
+            'properties': {
+              'id': 'eiffel',
+              'country_id': 'FR',
+              'name_en': 'Eiffel Tower',
+              'name_ru': 'Эйфелева башня',
+              'explanation_en': 'A landmark in Paris.',
+              'explanation_ru': 'Памятник Парижа.',
+              'source_url': 'https://example.org/source',
+              'coordinate_source_url': 'https://example.org/location',
+              'thumbnail_asset': 'assets/example.png',
+              'image_attribution': 'Photographer',
+              'image_license': 'CC BY',
+              'image_source_url': 'https://example.org/image',
+              'image_license_url': 'https://example.org/licence',
+            },
+          },
+        ],
+      };
     } else if (key.endsWith('country_labels.geojson')) {
       data = {
         'type': 'FeatureCollection',
@@ -104,7 +133,7 @@ void main() {
     });
     expect(errors, isEmpty);
   });
-  testWidgets('search selects a country and close clears its context', (
+  testWidgets('search selection dismisses keyboard and accepts another query', (
     tester,
   ) async {
     await tester.pumpWidget(
@@ -118,13 +147,21 @@ void main() {
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField), 'France');
     await tester.pump();
+    expect(tester.testTextInput.isVisible, isTrue);
     await tester.tap(find.byType(ListTile).first);
     await tester.pumpAndSettle();
+    expect(tester.testTextInput.isVisible, isFalse);
     expect(find.textContaining('Capital: Paris'), findsOneWidget);
     expect(find.textContaining('Area: 551695'), findsOneWidget);
     await tester.tap(find.byTooltip('Close'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Capital:'), findsNothing);
+    await tester.enterText(find.byType(TextField), 'Monaco');
+    await tester.pump();
+    await tester.tap(find.byType(ListTile).first);
+    await tester.pumpAndSettle();
+    expect(find.text('Monaco'), findsOneWidget);
+    expect(tester.testTextInput.isVisible, isFalse);
   });
   testWidgets('layers panel never offers a water visibility switch', (
     tester,
@@ -198,6 +235,46 @@ void main() {
     await tester.pump();
     expect(find.byType(ListTile), findsOneWidget);
   });
+  testWidgets(
+    'landmark hover and selection show details and attribution on a narrow screen',
+    (tester) async {
+      tester.view.physicalSize = const Size(320, 500);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      late void Function(String?) select;
+      late void Function(String?, Offset) hover;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeMapPage.test(
+            bundle: MapFixtureBundle(),
+            mapBuilder: (context, select) => const SizedBox.expand(),
+            landmarkMapBuilder: (context, onSelect, onHover) {
+              select = onSelect;
+              hover = onHover;
+              return const SizedBox.expand();
+            },
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      hover('eiffel', const Offset(300, 480));
+      await tester.pump();
+      expect(find.text('Eiffel Tower'), findsOneWidget);
+      expect(find.text('France'), findsOneWidget);
+      expect(find.text('A landmark in Paris.'), findsOneWidget);
+      select('eiffel');
+      hover(null, Offset.zero);
+      await tester.pumpAndSettle();
+      expect(find.text('Eiffel Tower'), findsOneWidget);
+      expect(find.textContaining('Photographer'), findsOneWidget);
+      expect(find.text('Source'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+      await tester.tap(find.byTooltip('Close'));
+      await tester.pumpAndSettle();
+      expect(find.text('Eiffel Tower'), findsNothing);
+    },
+  );
   testWidgets('broken assets show retry and recover when repaired', (
     tester,
   ) async {

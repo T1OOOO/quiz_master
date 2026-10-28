@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'country_marker.dart';
 import 'map_state.dart';
@@ -14,12 +15,14 @@ class KnowledgeMapPage extends StatefulWidget {
   const KnowledgeMapPage({super.key, this.onExit})
     : mapBuilder = null,
       hoverMapBuilder = null,
+      landmarkMapBuilder = null,
       bundle = null;
   @visibleForTesting
   const KnowledgeMapPage.test({
     super.key,
     required this.mapBuilder,
     this.hoverMapBuilder,
+    this.landmarkMapBuilder,
     this.bundle,
     this.onExit,
   });
@@ -30,6 +33,12 @@ class KnowledgeMapPage extends StatefulWidget {
     VoidCallback,
   )?
   hoverMapBuilder;
+  final Widget Function(
+    BuildContext,
+    void Function(String?),
+    void Function(String?, Offset),
+  )?
+  landmarkMapBuilder;
   final AssetBundle? bundle;
   final VoidCallback? onExit;
   final Widget Function(BuildContext, void Function(String?))? mapBuilder;
@@ -41,13 +50,23 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   MapLibreMapController? controller;
   Timer? startupTimer;
   MapState? state;
-  Map<String, dynamic>? countries, capitals, waterways, countryLabels;
+  Map<String, dynamic>? countries,
+      capitals,
+      waterways,
+      countryLabels,
+      waterLabels,
+      landmarks;
   Map<String, dynamic> flags = {};
-  bool failed = false, ready = false, layersOpen = false, showCapitals = true;
+  bool failed = false,
+      ready = false,
+      layersOpen = false,
+      showCapitals = true,
+      showLandmarks = true;
   String query = '';
   final hover = MapHoverState();
   Timer? hoverTimer;
   Future<void> hoverFilter = Future.value();
+  Future<void> capitalCommands = Future.value();
   final searchController = TextEditingController();
   int generation = 0;
   bool get ru => Localizations.localeOf(context).languageCode == 'ru';
@@ -69,6 +88,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       ready = false;
       state = null;
       showCapitals = true;
+      showLandmarks = true;
       layersOpen = false;
       generation++;
     });
@@ -99,6 +119,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           'assets/quizipedia/country_flag_images.json',
           cache: false,
         ),
+        (widget.bundle ?? rootBundle).loadString(
+          'assets/quizipedia/map_v2/water_labels.geojson',
+          cache: false,
+        ),
+        (widget.bundle ?? rootBundle).loadString(
+          'assets/quizipedia/map_v2/landmarks.geojson',
+          cache: false,
+        ),
       ]);
       if (!mounted || generation != attempt) return;
       countries = jsonDecode(texts[0]) as Map<String, dynamic>;
@@ -111,6 +139,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       flags =
           (jsonDecode(texts[5]) as Map<String, dynamic>)['flags']
               as Map<String, dynamic>;
+      waterLabels = jsonDecode(texts[6]) as Map<String, dynamic>;
+      landmarks = jsonDecode(texts[7]) as Map<String, dynamic>;
+      final landmarkItems = (landmarks!['features'] as List)
+          .map(
+            (f) => MapLandmark.fromProperties(
+              f['properties'] as Map<String, dynamic>,
+            ),
+          )
+          .toList();
       final items = <MapCountry>[];
       for (final feature in countryLabels!['features'] as List) {
         final p = feature['properties'] as Map<String, dynamic>;
@@ -127,12 +164,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       }
       if (mounted) {
         setState(() {
-          state = MapState(items);
+          state = MapState(items, landmarks: landmarkItems);
           ready = widget.mapBuilder != null;
         });
       }
       if (widget.mapBuilder == null) {
-        startupTimer = Timer(const Duration(seconds: 30), () {
+        startupTimer = Timer(const Duration(seconds: 90), () {
           if (mounted && generation == attempt && !ready) {
             debugPrint('Knowledge map: initialization timed out');
             setState(() => failed = true);
@@ -242,6 +279,59 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'country-markers',
         const SymbolLayerProperties(iconImage: ['get', 'sprite'], iconSize: 1),
       );
+      Future<void> addLabels(
+        String source,
+        Map<String, dynamic> collection,
+        String prefix,
+        double minZoom,
+      ) async {
+        for (final feature in collection['features'] as List) {
+          if (!mounted || generation != attempt || controller != c || failed) {
+            return;
+          }
+          final p = feature['properties'] as Map<String, dynamic>;
+          final id = p['id'] as String;
+          final marker = await renderCountryMarker(
+            name: '$prefix${p[localizedRu ? 'name_ru' : 'name_en']}',
+            landmark: source == 'landmarks',
+          );
+          if (!mounted || generation != attempt || controller != c || failed) {
+            return;
+          }
+          await c.addImage('$source-$id', marker);
+          p['sprite'] = '$source-$id';
+        }
+        if (!mounted || generation != attempt || controller != c || failed) {
+          return;
+        }
+        await c.addGeoJsonSource(source, collection);
+        await c.addSymbolLayer(
+          source,
+          source,
+          SymbolLayerProperties(
+            iconImage: const ['get', 'sprite'],
+            iconSize: 1,
+            iconAnchor: source == 'capital-labels'
+                ? 'bottom'
+                : source == 'landmarks'
+                ? 'top'
+                : 'center',
+            iconOffset: source == 'capital-labels'
+                ? const [0, -4]
+                : source == 'landmarks'
+                ? const [0, 4]
+                : const [0, 0],
+          ),
+          minzoom: minZoom,
+        );
+      }
+
+      stage = 'capital labels';
+      await addLabels('capital-labels', capitals!, '• ', 4);
+      stage = 'water labels';
+      await addLabels('water-labels', waterLabels!, '≈ ', 3);
+      stage = 'landmarks';
+      await addLabels('landmarks', landmarks!, '', 4);
       if (!mounted || generation != attempt || controller != c || failed) {
         return;
       }
@@ -265,6 +355,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
 
   Future<void> select(String? id, {bool move = false}) async {
     if (!mounted) return;
+    FocusScope.of(context).unfocus();
     final c = controller;
     final attempt = generation;
     setState(() {
@@ -310,7 +401,13 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final attempt = generation;
     if (!mounted || !ready || c == null) return;
     try {
-      var features = await c.queryRenderedFeatures(point, [
+      var features = await c.queryRenderedFeatures(point, ['landmarks'], null);
+      if (!mounted || generation != attempt || controller != c) return;
+      if (features.isNotEmpty) {
+        await selectLandmark(features.first['properties']['id'] as String);
+        return;
+      }
+      features = await c.queryRenderedFeatures(point, [
         'country-markers',
       ], null);
       if (!mounted || generation != attempt || controller != c) return;
@@ -336,10 +433,69 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final c = controller;
     final attempt = generation;
     setState(() => showCapitals = value);
+    capitalCommands = capitalCommands.catchError((Object _) {}).then((_) async {
+      if (!mounted ||
+          generation != attempt ||
+          controller != c ||
+          c == null ||
+          showCapitals != value) {
+        return;
+      }
+      try {
+        await c.setLayerVisibility('capital-dots', value);
+        if (!mounted ||
+            generation != attempt ||
+            controller != c ||
+            showCapitals != value) {
+          return;
+        }
+        await c.setLayerVisibility('capital-labels', value);
+      } catch (error, stack) {
+        debugPrint('Knowledge map: layer command failed: $error\n$stack');
+        if (mounted && generation == attempt && controller == c) {
+          setState(() => failed = true);
+        }
+      }
+    });
+    await capitalCommands;
+  }
+
+  Future<void> selectLandmark(String? id) async {
+    if (!mounted) return;
+    FocusScope.of(context).unfocus();
+    final c = controller;
+    final attempt = generation;
+    setState(() => state?.selectLandmark(id));
+    if (!ready || c == null) return;
     try {
-      await c?.setLayerVisibility('capital-dots', value);
+      await c.setFilter('selected', [
+        '==',
+        ['get', 'country_id'],
+        '',
+      ]);
     } catch (error, stack) {
-      debugPrint('Knowledge map: layer command failed: $error\n$stack');
+      debugPrint('Knowledge map: landmark selection failed: $error\n$stack');
+      if (mounted && generation == attempt && controller == c) {
+        setState(() => failed = true);
+      }
+    }
+  }
+
+  Future<void> toggleLandmarks(bool value) async {
+    if (!mounted || !ready) return;
+    final c = controller;
+    final attempt = generation;
+    setState(() {
+      showLandmarks = value;
+      if (!value && state?.selectedLandmark != null) {
+        state?.selectLandmark(null);
+      }
+    });
+    if (!value) clearHover();
+    try {
+      await c?.setLayerVisibility('landmarks', value);
+    } catch (error, stack) {
+      debugPrint('Knowledge map: landmark layer failed: $error\n$stack');
       if (mounted && generation == attempt && controller == c) {
         setState(() => failed = true);
       }
@@ -386,6 +542,18 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     queueHoverFilter();
   }
 
+  void setTestLandmarkHover(String? id, Offset point) {
+    if (!mounted) return;
+    final request = hover.begin();
+    if (id == null) {
+      hover.complete(request, null, point);
+    } else {
+      hover.completeLandmark(request, id, point);
+    }
+    setState(() {});
+    queueHoverFilter();
+  }
+
   void onMouseMove(math.Point<double> point, LatLng coordinates) {
     if (!mounted || !ready || controller == null) return;
     final request = hover.begin();
@@ -400,6 +568,18 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             controller == c &&
             hover.isCurrent(request);
         var features = await c.queryRenderedFeatures(point, [
+          'landmarks',
+        ], null);
+        if (!current()) return;
+        if (features.isNotEmpty) {
+          final id = features.first['properties']['id'] as String;
+          if (hover.completeLandmark(request, id, Offset(point.x, point.y))) {
+            setState(() {});
+            queueHoverFilter();
+          }
+          return;
+        }
+        features = await c.queryRenderedFeatures(point, [
           'country-markers',
         ], null);
         if (!current()) return;
@@ -438,9 +618,18 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   @override
   Widget build(BuildContext context) {
     final selected = state?.selected;
+    final selectedLandmark = state?.selectedLandmark;
+    final hoveredLandmark = state?.landmarks
+        .where((l) => l.id == hover.landmarkId)
+        .firstOrNull;
     final hovered = state?.countries
         .where((c) => c.id == hover.countryId)
         .firstOrNull;
+    String countryName(String id) {
+      final country = state?.countries.where((c) => c.id == id).firstOrNull;
+      return country == null ? id : (ru ? country.nameRu : country.nameEn);
+    }
+
     final unsupported =
         widget.mapBuilder == null &&
         !kIsWeb &&
@@ -457,8 +646,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 constraints.maxHeight,
               );
               final tooltipSize = Size(
-                math.min(200, viewport.width),
-                math.min(48, viewport.height),
+                math.min(280, viewport.width),
+                math.min(hoveredLandmark == null ? 48 : 180, viewport.height),
               );
               final tooltipPosition = clampHoverTooltip(
                 (hover.point ?? Offset.zero) + const Offset(14, 14),
@@ -469,7 +658,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 fit: StackFit.expand,
                 children: [
                   if (state != null && !failed && !unsupported)
-                    widget.hoverMapBuilder?.call(
+                    widget.landmarkMapBuilder?.call(
+                          context,
+                          selectLandmark,
+                          setTestLandmarkHover,
+                        ) ??
+                        widget.hoverMapBuilder?.call(
                           context,
                           select,
                           setTestHover,
@@ -614,6 +808,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 SwitchListTile(
+                                  title: Text(
+                                    tr('Landmarks', 'Достопримечательности'),
+                                  ),
+                                  value: showLandmarks,
+                                  onChanged: ready
+                                      ? (v) => toggleLandmarks(v)
+                                      : null,
+                                ),
+                                SwitchListTile(
                                   title: Text(tr('Capitals', 'Столицы')),
                                   value: showCapitals,
                                   onChanged: ready
@@ -621,6 +824,56 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                       : null,
                                 ),
                               ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (hoveredLandmark != null && hover.point != null)
+                      Positioned(
+                        left: tooltipPosition.dx,
+                        top: tooltipPosition.dy,
+                        child: IgnorePointer(
+                          child: SizedBox(
+                            width: tooltipSize.width,
+                            height: tooltipSize.height,
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: SingleChildScrollView(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        ru
+                                            ? hoveredLandmark.nameRu
+                                            : hoveredLandmark.nameEn,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      Text(
+                                        countryName(hoveredLandmark.countryId),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      Text(
+                                        ru
+                                            ? hoveredLandmark.explanationRu
+                                            : hoveredLandmark.explanationEn,
+                                        maxLines: 3,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      Text(
+                                        hoveredLandmark.sourceUrl,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -655,6 +908,147 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                       ),
                                     ),
                                   ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    if (selectedLandmark != null)
+                      Positioned(
+                        left: 12,
+                        bottom: 12,
+                        right: 12,
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: math.max(
+                                0,
+                                math.min(340, viewport.width - 24),
+                              ),
+                              maxHeight: math.min(
+                                viewport.height,
+                                math.max(80, viewport.height * .55),
+                              ),
+                            ),
+                            child: Card(
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              ru
+                                                  ? selectedLandmark.nameRu
+                                                  : selectedLandmark.nameEn,
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                          IconButton(
+                                            tooltip: tr('Close', 'Закрыть'),
+                                            onPressed: () =>
+                                                selectLandmark(null),
+                                            icon: const Icon(Icons.close),
+                                          ),
+                                        ],
+                                      ),
+                                      Text(
+                                        countryName(selectedLandmark.countryId),
+                                      ),
+                                      if (selectedLandmark.thumbnailAsset !=
+                                          null)
+                                        Image.asset(
+                                          selectedLandmark.thumbnailAsset!,
+                                          height: 90,
+                                          errorBuilder: (_, _, _) =>
+                                              const SizedBox.shrink(),
+                                        ),
+                                      if (selectedLandmark.thumbnailAsset !=
+                                              null &&
+                                          selectedLandmark.imageAttribution !=
+                                              null)
+                                        Text(
+                                          '${selectedLandmark.imageAttribution} · ${selectedLandmark.imageLicense ?? ''}',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall,
+                                        ),
+                                      if (selectedLandmark.thumbnailAsset !=
+                                              null &&
+                                          selectedLandmark.imageSourceUrl !=
+                                              null)
+                                        TextButton(
+                                          onPressed: () => launchUrl(
+                                            Uri.parse(
+                                              selectedLandmark.imageSourceUrl!,
+                                            ),
+                                            mode:
+                                                LaunchMode.externalApplication,
+                                          ),
+                                          child: Text(
+                                            tr(
+                                              'Image source',
+                                              'Источник изображения',
+                                            ),
+                                          ),
+                                        ),
+                                      if (selectedLandmark.thumbnailAsset !=
+                                              null &&
+                                          selectedLandmark.imageLicenseUrl !=
+                                              null)
+                                        TextButton(
+                                          onPressed: () => launchUrl(
+                                            Uri.parse(
+                                              selectedLandmark.imageLicenseUrl!,
+                                            ),
+                                            mode:
+                                                LaunchMode.externalApplication,
+                                          ),
+                                          child: Text(
+                                            tr(
+                                              'Image licence',
+                                              'Лицензия изображения',
+                                            ),
+                                          ),
+                                        ),
+                                      Text(
+                                        ru
+                                            ? selectedLandmark.explanationRu
+                                            : selectedLandmark.explanationEn,
+                                      ),
+                                      TextButton(
+                                        onPressed: () => launchUrl(
+                                          Uri.parse(selectedLandmark.sourceUrl),
+                                          mode: LaunchMode.externalApplication,
+                                        ),
+                                        child: Text(tr('Source', 'Источник')),
+                                      ),
+                                      TextButton(
+                                        onPressed: () => launchUrl(
+                                          Uri.parse(
+                                            selectedLandmark
+                                                .coordinateSourceUrl,
+                                          ),
+                                          mode: LaunchMode.externalApplication,
+                                        ),
+                                        child: Text(
+                                          tr(
+                                            'Coordinates source',
+                                            'Источник координат',
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

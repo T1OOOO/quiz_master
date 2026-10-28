@@ -5,6 +5,7 @@ deploy/** text eol=lf
 
 # Preserve reviewed source bytes and generated Quizipedia manifest hashes.
 quizipedia/*.json -text whitespace=cr-at-eol
+quizipedia/*.geojson -text whitespace=cr-at-eol
 quizipedia/sources/** -text whitespace=cr-at-eol
 next/apps/quiz_app/assets/quizipedia/** -text
 

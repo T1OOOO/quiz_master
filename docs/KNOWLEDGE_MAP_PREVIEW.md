@@ -26,7 +26,7 @@ bottom navigation. The existing map remains the default.
 For a release build:
 
 ```sh
-flutter build web --release --no-pub --no-wasm-dry-run --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org --dart-define=QM_BUILD_ID=map-labels-hover-20261028
+flutter build web --release --no-pub --no-wasm-dry-run --dart-define=QM_API_BASE_URL=https://quiz.kotopedia.org --dart-define=QM_BUILD_ID=map-detail-20261028
 ```
 
 Serve `build/web` with a static HTTP server and open the same hash route.
@@ -50,11 +50,41 @@ country; tapping sea should clear selection. Check a narrow mobile viewport and
 a desktop viewport, then return with Back. Check new browser errors separately
 from stale errors left by a prior debug session.
 
-The marker layer contains 219 country/territory anchors, including 44 without
-country polygons. Native collision detection hides overlapping labels until
+The marker layer contains 243 country/territory anchors and 239 country shapes.
+Native collision detection hides overlapping labels until
 zooming in. Country polygons have separate selected and hovered outlines.
 Montserrat's existing capital point incorrectly identifies Plymouth, England;
-it is excluded from this prototype pending a verified replacement.
+that capital is excluded, while its country now has a verified 1:10m polygon
+and country label at Montserrat.
+
+## Detailed map increment
+
+This data increment uses pinned Natural Earth 1:10m country polygons and
+lake geometry. River and marine geometry retain the existing pinned source;
+no river is joined to a new shape by an ambiguous name. The generator adds
+`water_labels.geojson` with point anchors on river lines or inside lake polygons.
+
+`quizipedia/landmark_locations.geojson` records coordinates for the 46 existing
+catalog landmarks. Coordinates were read from non-deprecated terrestrial
+Wikidata P625 statements; each item's P17 country was checked against P297 ISO2.
+Existing names, descriptions, local thumbnails and image credits are retained.
+Each point carries its coordinate source and the existing official fact source.
+Coordinate data is CC0; media retains its per-image license.
+
+Check capital dot/name toggling together, zoom-dependent river/lake names,
+landmark markers and their optional layer. Open a landmark by clicking its
+marker and verify its localized description, photo attribution and source.
+Check the landmark-to-country hover transition and narrow-screen scrolling.
+Capital labels begin at zoom 4, river/lake labels at zoom 3, and landmarks at
+zoom 4. Capital labels anchor above their points and landmark labels below,
+so nearby features such as Paris and the Eiffel Tower can be distinguished.
+Landmark pins are painted directly, without relying on optional font glyphs.
+Rivers and lakes always remain visible; their point labels use native collision
+placement. Turning off capitals hides their dots and names together.
+
+When checking a rebuilt static preview at the same URL, use a fresh browser
+session or a hard reload: ordinary reloads can retain the previous dynamically
+loaded `main.dart.js` in the browser HTTP cache.
 
 On Web, `featureTapsTriggersMapClick` is required because interactive country
 fills otherwise consume clicks before `onMapClick`. Flag PNGs are normalized to

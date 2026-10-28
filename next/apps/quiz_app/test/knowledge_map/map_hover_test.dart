@@ -14,6 +14,16 @@ void main() {
     expect(hover.complete(current, 'DE', const Offset(40, 50)), isTrue);
     expect(hover.countryId, 'DE');
   });
+  test('hiding landmarks invalidates an unresolved landmark hover', () {
+    final hover = MapHoverState();
+    final pending = hover.begin();
+    hover.clear();
+    expect(
+      hover.completeLandmark(pending, 'eiffel', const Offset(10, 10)),
+      isFalse,
+    );
+    expect(hover.landmarkId, isNull);
+  });
   test('tooltip placement stays inside even a small viewport', () {
     expect(
       clampHoverTooltip(

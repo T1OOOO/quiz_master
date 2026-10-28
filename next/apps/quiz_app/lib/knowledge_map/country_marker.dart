@@ -10,6 +10,7 @@ import 'flag_sprite.dart';
 Future<Uint8List> renderCountryMarker({
   required String name,
   Uint8List? flagBytes,
+  bool landmark = false,
 }) async {
   final text = TextPainter(
     text: TextSpan(
@@ -35,7 +36,7 @@ Future<Uint8List> renderCountryMarker({
         codec.dispose();
       }
     }
-    final leading = flag == null ? 0.0 : 30.0;
+    final leading = flag != null ? 30.0 : (landmark ? 20.0 : 0.0);
     final width = (text.width + leading + 16).ceil().clamp(24, 216);
     final height = (math.max(text.height, 16) + 12).ceil();
     final recorder = ui.PictureRecorder();
@@ -60,6 +61,21 @@ Future<Uint8List> renderCountryMarker({
         ui.Rect.fromLTWH(0, 0, flag.width.toDouble(), flag.height.toDouble()),
         ui.Rect.fromLTWH(8 + (24 - fw) / 2, (height - fh) / 2, fw, fh),
         ui.Paint()..filterQuality = ui.FilterQuality.medium,
+      );
+    } else if (landmark) {
+      // Draw the pin directly: the bundled text font lacks landmark glyphs.
+      final middle = height / 2;
+      final pin = ui.Path()
+        ..moveTo(15, middle + 9)
+        ..cubicTo(12, middle + 5, 8, middle + 1, 8, middle - 3)
+        ..cubicTo(8, middle - 12, 22, middle - 12, 22, middle - 3)
+        ..cubicTo(22, middle + 1, 18, middle + 5, 15, middle + 9)
+        ..close();
+      canvas.drawPath(pin, ui.Paint()..color = const Color(0xff247a83));
+      canvas.drawCircle(
+        ui.Offset(15, middle - 3),
+        2.5,
+        ui.Paint()..color = const Color(0xffffffff),
       );
     }
     text.paint(canvas, ui.Offset(8 + leading, (height - text.height) / 2));

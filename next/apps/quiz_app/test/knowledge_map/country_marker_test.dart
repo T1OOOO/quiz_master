@@ -7,6 +7,22 @@ import 'package:quiz_app/knowledge_map/country_marker.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test('landmark pin renders without relying on a font glyph', () async {
+    final plain = image.decodePng(await renderCountryMarker(name: 'Памятник'))!;
+    final pinned = image.decodePng(
+      await renderCountryMarker(name: 'Памятник', landmark: true),
+    )!;
+    expect(pinned.width, greaterThan(plain.width));
+    expect(
+      pinned
+          .where(
+            (p) => p.r < 60 && p.g > 90 && p.g < 150 && p.b > 90 && p.b < 160,
+          )
+          .length,
+      greaterThan(15),
+    );
+  });
+
   test('country names render as an RGBA PNG, including Cyrillic', () async {
     final bytes = await renderCountryMarker(name: 'Франция');
     final decoded = image.decodePng(bytes)!;
