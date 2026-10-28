@@ -94,7 +94,7 @@ class MapBuildTest(unittest.TestCase):
             self.assertEqual(f['geometry'],source_row['geometry'])
             self.assertEqual(f['properties']['min_zoom'],source_row['properties']['min_zoom'])
             self.assertEqual(f['properties']['intermittent'],source_row['properties']['featurecla']=='River (Intermittent)')
-            self.assertEqual(set(f['properties']),{'id','kind','min_zoom','intermittent'})
+            self.assertEqual(set(f['properties']) - {'water_id'},{'id','kind','min_zoom','intermittent'})
             self.assertEqual(f['properties']['kind'],'river')
         self.assertEqual(self.manifest['counts']['rivers_detail.geojson'],3739)
         self.assertIn('rivers_detail.geojson',json.loads(m.serialize_build(self.layers,self.manifest)['manifest.json'])['outputs'])
@@ -110,9 +110,26 @@ class MapBuildTest(unittest.TestCase):
             src=expected[f['id']]
             self.assertIn(f['geometry']['type'],('Polygon','MultiPolygon'))
             self.assertEqual(f['geometry'],src['geometry'])
-            self.assertEqual(f['properties'],{'id':f['id'],'kind':'lake','min_zoom':src['properties']['min_zoom']})
+            self.assertEqual({k:v for k,v in f['properties'].items() if k!='water_id'},{'id':f['id'],'kind':'lake','min_zoom':src['properties']['min_zoom']})
         self.assertEqual(self.manifest['counts']['lakes_detail.geojson'],1355)
         self.assertIn('lakes_detail.geojson',json.loads(m.serialize_build(self.layers,self.manifest)['manifest.json'])['outputs'])
+
+    def test_detail_water_ids_are_verified_and_unique(self):
+        waters={f['id']:f for f in self.layers['waterways.geojson']['features']}
+        lakes=self.layers['lakes_detail.geojson']['features']
+        rivers=self.layers['rivers_detail.geojson']['features']
+        linked_lakes=[f for f in lakes if 'water_id' in f['properties']]
+        linked_rivers=[f for f in rivers if 'water_id' in f['properties']]
+        self.assertEqual({f['properties']['water_id'] for f in linked_lakes}, {i for i,v in waters.items() if v['properties']['kind']=='lake'})
+        self.assertEqual({f['properties']['water_id'] for f in linked_rivers}, {'Q1653','Q46841'})
+        self.assertEqual(len(linked_lakes),24)
+        self.assertEqual(len(linked_rivers),28)
+        for f in linked_lakes:
+            self.assertEqual(f['geometry'],waters[f['properties']['water_id']]['geometry'])
+        for f in linked_rivers:
+            ident=f['properties']['water_id']
+            self.assertTrue(m.river_near_reference(f['geometry'],[waters[ident]['geometry']]))
+        self.assertEqual(len({f['id'] for f in lakes+rivers}),len(lakes+rivers))
 
     def test_landmark_catalog_provenance_and_positions(self):
         rows=self.layers['landmarks.geojson']['features']

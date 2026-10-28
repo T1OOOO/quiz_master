@@ -65,4 +65,13 @@ void main() {
       isNotNull,
     );
   });
+  test('a later tap invalidates an earlier asynchronous query', () {
+    final requests = MapTapRequests();
+    final first = requests.begin();
+    final second = requests.begin();
+    expect(requests.isCurrent(second), isTrue);
+    expect(requests.isCurrent(first), isFalse);
+    requests.invalidate();
+    expect(requests.isCurrent(second), isFalse);
+  });
 }

@@ -48,7 +48,20 @@ class MapFixtureBundle extends CachingAssetBundle {
       throw const FormatException('broken test asset');
     }
     final Object data;
-    if (key.endsWith('country_interesting_facts.json')) {
+    if (key.endsWith('map_feature_facts.json')) {
+      data = {
+        'capitals': {
+          'capital-paris': [
+            {
+              'text_ru': 'Факт о Париже',
+              'text_en': 'Paris fact',
+              'source_url': 'https://example.org/paris',
+            },
+          ],
+        },
+        'waterways': {},
+      };
+    } else if (key.endsWith('country_interesting_facts.json')) {
       data = {
         'countries': {
           'FR': [
@@ -112,6 +125,22 @@ class MapFixtureBundle extends CachingAssetBundle {
               'image_source_url': 'https://example.org/image',
               'image_license_url': 'https://example.org/licence',
             },
+          },
+        ],
+      };
+    } else if (key.endsWith('waterways.geojson')) {
+      data = {
+        'type': 'FeatureCollection',
+        'features': [
+          {
+            'type': 'Feature',
+            'properties': {
+              'id': 'Q1062',
+              'kind': 'lake',
+              'name_en': 'Ontario',
+              'name_ru': 'Онтарио',
+            },
+            'geometry': {'type': 'Polygon', 'coordinates': []},
           },
         ],
       };
@@ -262,6 +291,11 @@ void main() {
     await tester.tap(waterSwitch);
     await tester.pump();
     expect(tester.widget<SwitchListTile>(waterSwitch).value, isFalse);
+    await tester.tap(countrySwitch);
+    await tester.tap(waterSwitch);
+    await tester.pump();
+    expect(tester.widget<SwitchListTile>(countrySwitch).value, isTrue);
+    expect(tester.widget<SwitchListTile>(waterSwitch).value, isTrue);
   });
   testWidgets('hover never duplicates selected country context', (
     tester,
@@ -634,5 +668,56 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.byType(TextField), findsOneWidget);
     expect(find.text('Map unavailable'), findsNothing);
+  });
+  testWidgets('capital and water selections show their own details', (
+    tester,
+  ) async {
+    late void Function(String, Map<String, dynamic>) selectFeature;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, select) => const SizedBox.expand(),
+          featureMapBuilder: (context, select) {
+            selectFeature = select;
+            return const SizedBox.expand();
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    selectFeature('capital', {
+      'id': 'capital-paris',
+      'name_en': 'Paris',
+      'name_ru': 'Париж',
+      'country_id': 'FR',
+    });
+    await tester.pumpAndSettle();
+    expect(find.text('Paris'), findsOneWidget);
+    expect(find.text('Capital · France'), findsOneWidget);
+    expect(find.text('Paris fact'), findsOneWidget);
+    expect(find.text('Source'), findsOneWidget);
+    selectFeature('lake', {
+      'id': 'Q1062',
+      'name_en': 'Ontario',
+      'name_ru': 'Онтарио',
+    });
+    await tester.pumpAndSettle();
+    expect(find.text('Ontario'), findsOneWidget);
+    expect(find.text('Lake'), findsOneWidget);
+    expect(find.text('Paris'), findsNothing);
+    expect(find.text('Paris fact'), findsNothing);
+    selectFeature('lake', {
+      'id': 'ne10-lake-1',
+      'water_id': 'Q1062',
+      'kind': 'lake',
+    });
+    await tester.pumpAndSettle();
+    expect(find.text('Ontario'), findsOneWidget);
+    selectFeature('river', {'id': 'ne10-river-1', 'kind': 'river'});
+    await tester.pumpAndSettle();
+    expect(find.text('Unnamed feature'), findsOneWidget);
+    expect(find.text('River'), findsOneWidget);
+    expect(find.text('Source'), findsNothing);
   });
 }

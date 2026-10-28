@@ -201,7 +201,11 @@ def build():
         zoom=props['min_zoom']
         if type(zoom) not in (int,float) or not math.isfinite(zoom): raise ValueError('invalid detailed river min_zoom')
         ident='ne10-river-'+str(index)
-        river_detail.append({'type':'Feature','id':ident,'properties':{'id':ident,'kind':'river','min_zoom':zoom,'intermittent':cls=='River (Intermittent)'},'geometry':geometry})
+        properties={'id':ident,'kind':'river','min_zoom':zoom,'intermittent':cls=='River (Intermittent)'}
+        water_id=props.get('wikidataid')
+        if water_id in DETAILED_RIVER_IDS and water.get(water_id,{}).get('kind')=='river' and river_near_reference(geometry,old_rivers[water_id]):
+            properties['water_id']=water_id
+        river_detail.append({'type':'Feature','id':ident,'properties':properties,'geometry':geometry})
     lake_detail=[]
     source=data['quizipedia/sources/map_v2/ne_10m_lakes.geojson']['features']
     for index, f in enumerate(source):
@@ -212,7 +216,11 @@ def build():
         zoom=props['min_zoom']
         if type(zoom) not in (int,float) or not math.isfinite(zoom): raise ValueError('invalid detailed lake min_zoom')
         ident='ne10-lake-'+str(index)
-        lake_detail.append({'type':'Feature','id':ident,'properties':{'id':ident,'kind':'lake','min_zoom':zoom},'geometry':geometry})
+        properties={'id':ident,'kind':'lake','min_zoom':zoom}
+        water_id=props.get('wikidataid')
+        if water.get(water_id,{}).get('kind')=='lake' and water_id in merged and merged[water_id]['geometry']==geometry:
+            properties['water_id']=water_id
+        lake_detail.append({'type':'Feature','id':ident,'properties':properties,'geometry':geometry})
     landmarks=data['quizipedia/landmark_locations.geojson']['features']
     catalog=data['next/apps/quiz_app/assets/quizipedia/catalog.json']['landmarks']
     if {f['id'] for f in landmarks}!={r['id'] for r in catalog}: raise ValueError('landmark catalog mismatch')

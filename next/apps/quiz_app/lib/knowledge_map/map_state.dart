@@ -155,3 +155,10 @@ Offset clampHoverTooltip(Offset desired, Size viewport, Size tooltip) => Offset(
     (viewport.height - tooltip.height).clamp(0.0, double.infinity),
   ),
 );
+
+class MapTapRequests {
+  int _sequence = 0;
+  int begin() => ++_sequence;
+  bool isCurrent(int request) => request == _sequence;
+  void invalidate() => _sequence++;
+}

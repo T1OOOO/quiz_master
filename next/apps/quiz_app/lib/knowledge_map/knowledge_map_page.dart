@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../country_labels_ru.dart';
@@ -17,6 +18,7 @@ class KnowledgeMapPage extends StatefulWidget {
     : mapBuilder = null,
       hoverMapBuilder = null,
       landmarkMapBuilder = null,
+      featureMapBuilder = null,
       bundle = null;
   @visibleForTesting
   const KnowledgeMapPage.test({
@@ -24,6 +26,7 @@ class KnowledgeMapPage extends StatefulWidget {
     required this.mapBuilder,
     this.hoverMapBuilder,
     this.landmarkMapBuilder,
+    this.featureMapBuilder,
     this.bundle,
     this.onExit,
   });
@@ -40,6 +43,11 @@ class KnowledgeMapPage extends StatefulWidget {
     void Function(String?, Offset),
   )?
   landmarkMapBuilder;
+  final Widget Function(
+    BuildContext,
+    void Function(String, Map<String, dynamic>),
+  )?
+  featureMapBuilder;
   final AssetBundle? bundle;
   final VoidCallback? onExit;
   final Widget Function(BuildContext, void Function(String?))? mapBuilder;
@@ -60,6 +68,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       waterLabels,
       landmarks;
   Map<String, dynamic> flags = {};
+  Map<String, dynamic> featureFacts = {};
+  Map<String, dynamic>? selectedFeature;
+  String? selectedFeatureKind;
   bool detailRiversReady = false, detailLakesReady = false;
   bool failed = false,
       ready = false,
@@ -70,6 +81,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       showWaterLabels = true;
   String query = '';
   final hover = MapHoverState();
+  final tapRequests = MapTapRequests();
   Timer? hoverTimer;
   Future<void> hoverFilter = Future.value();
   Future<void> capitalCommands = Future.value();
@@ -121,6 +133,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     startupTimer?.cancel();
     hoverTimer?.cancel();
     hover.clear();
+    tapRequests.invalidate();
     controller = null;
     detailRiversReady = false;
     detailLakesReady = false;
@@ -184,6 +197,16 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         ),
       ]);
       final details = await Future.wait([riverFuture, lakeFuture]);
+      try {
+        featureFacts = jsonDecode(
+          await (widget.bundle ?? rootBundle).loadString(
+            'assets/quizipedia/map_feature_facts.json',
+            cache: false,
+          ),
+        ) as Map<String, dynamic>;
+      } catch (_) {
+        featureFacts = {};
+      }
       if (!mounted || generation != attempt) return;
       riverDetail = details[0];
       lakeDetail = details[1];
@@ -312,7 +335,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             'lakes-detail',
             const FillLayerProperties(fillColor: '#b9dfe9'),
             minzoom: 4,
-            enableInteraction: false,
+            enableInteraction: true,
           );
           if (!mounted || generation != attempt || controller != c || failed) {
             return;
@@ -333,7 +356,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             'rivers-detail',
             const LineLayerProperties(lineColor: '#91c9d9', lineWidth: 1.2),
             minzoom: 4,
-            enableInteraction: false,
+            enableInteraction: true,
           );
           if (!mounted || generation != attempt || controller != c || failed) {
             return;
@@ -482,11 +505,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
 
   Future<void> select(String? id, {bool move = false}) async {
     if (!mounted) return;
+    tapRequests.invalidate();
     FocusScope.of(context).unfocus();
     final c = controller;
     final attempt = generation;
     setState(() {
       state?.select(id);
+      selectedFeature = null;
+      selectedFeatureKind = null;
       query = '';
       layersOpen = false;
     });
@@ -524,24 +550,93 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     }
   }
 
+  Future<void> selectFeature(
+    String kind,
+    Map<String, dynamic> properties,
+  ) async {
+    if (!mounted) return;
+    tapRequests.invalidate();
+    FocusScope.of(context).unfocus();
+    final waterId = properties['water_id'];
+    if (waterId is String && waterways != null) {
+      final match = (waterways!['features'] as List)
+          .map((f) => f['properties'] as Map)
+          .where((p) => p['id'] == waterId && p['kind'] == kind)
+          .firstOrNull;
+      if (match != null) {
+        properties = {
+          ...properties,
+          'fact_id': waterId,
+          'name_en': match['name_en'],
+          'name_ru': match['name_ru'],
+        };
+      }
+    }
+    setState(() {
+      state?.select(null);
+      selectedFeatureKind = kind;
+      selectedFeature = properties;
+      layersOpen = false;
+    });
+    final c = controller;
+    if (c != null && ready) {
+      await c.setFilter('selected', [
+        '==',
+        ['get', 'country_id'],
+        '',
+      ]);
+    }
+  }
+
   Future<void> tap(math.Point<double> point, LatLng position) async {
     final c = controller;
     final attempt = generation;
     if (!mounted || !ready || c == null) return;
+    final request = tapRequests.begin();
+    bool current() =>
+        mounted &&
+        generation == attempt &&
+        controller == c &&
+        tapRequests.isCurrent(request);
     try {
       var features = await c.queryRenderedFeatures(point, ['landmarks'], null);
-      if (!mounted || generation != attempt || controller != c) return;
+      if (!current()) return;
       if (features.isNotEmpty) {
         await selectLandmark(features.first['properties']['id'] as String);
         return;
       }
+      for (final entry in <String, List<String>>{
+        'capital': ['capital-labels', 'capital-dots'],
+        'water': [
+          'water-labels',
+          'lakes',
+          'rivers',
+          if (detailLakesReady) 'lakes-detail',
+          if (detailRiversReady) 'rivers-detail',
+        ],
+      }.entries) {
+        features = await c.queryRenderedFeatures(point, entry.value, null);
+        if (!current()) return;
+        if (features.isNotEmpty) {
+          final p = Map<String, dynamic>.from(
+            features.first['properties'] as Map,
+          );
+          await selectFeature(
+            entry.key == 'water'
+                ? (p['kind'] as String? ?? 'water')
+                : entry.key,
+            p,
+          );
+          return;
+        }
+      }
       features = await c.queryRenderedFeatures(point, [
         'country-markers',
       ], null);
-      if (!mounted || generation != attempt || controller != c) return;
+      if (!current()) return;
       if (features.isEmpty) {
         features = await c.queryRenderedFeatures(point, ['land'], null);
-        if (!mounted || generation != attempt || controller != c) return;
+        if (!current()) return;
       }
       await select(
         features.isEmpty
@@ -550,7 +645,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       );
     } catch (error, stack) {
       debugPrint('Knowledge map: tap failed: $error\n$stack');
-      if (mounted && generation == attempt && controller == c) {
+      if (current()) {
         setState(() => failed = true);
       }
     }
@@ -590,11 +685,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
 
   Future<void> selectLandmark(String? id) async {
     if (!mounted) return;
+    tapRequests.invalidate();
     FocusScope.of(context).unfocus();
     final c = controller;
     final attempt = generation;
     setState(() {
       state?.selectLandmark(id);
+      selectedFeature = null;
+      selectedFeatureKind = null;
       layersOpen = false;
     });
     if (!ready || c == null) return;
@@ -790,63 +888,65 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     required VoidCallback onClose,
     required List<Widget> children,
   }) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: math.min(360, math.max(0, viewport.width - 24)),
-        maxHeight: math.max(0, math.min(340, viewport.height - 84)),
-      ),
-      child: Card(
-        clipBehavior: Clip.antiAlias,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
-              child: Row(
-                children: [
-                  if (leading != null) ...[leading, const SizedBox(width: 8)],
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        if (subtitle != null)
+    return PointerInterceptor(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: math.min(360, math.max(0, viewport.width - 24)),
+          maxHeight: math.max(0, math.min(340, viewport.height - 84)),
+        ),
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
+                child: Row(
+                  children: [
+                    if (leading != null) ...[leading, const SizedBox(width: 8)],
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
                           Text(
-                            subtitle,
-                            maxLines: 1,
+                            title,
+                            maxLines: 2,
                             overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                      ],
+                          if (subtitle != null)
+                            Text(
+                              subtitle,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
-                  IconButton(
-                    tooltip: tr('Close', 'Закрыть'),
-                    onPressed: onClose,
-                    icon: const Icon(Icons.close),
-                  ),
-                ],
-              ),
-            ),
-            Flexible(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: children,
+                    IconButton(
+                      tooltip: tr('Close', 'Закрыть'),
+                      onPressed: onClose,
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+              Flexible(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: children,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -856,6 +956,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Widget build(BuildContext context) {
     final selected = state?.selected;
     final selectedLandmark = state?.selectedLandmark;
+    final feature = selectedFeature;
+    final featureKind = selectedFeatureKind;
     String countryName(String id) {
       final country = state?.countries.where((c) => c.id == id).firstOrNull;
       return country == null ? id : (ru ? country.nameRu : country.nameEn);
@@ -880,7 +982,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 fit: StackFit.expand,
                 children: [
                   if (state != null && !failed && !unsupported)
-                    widget.landmarkMapBuilder?.call(
+                    widget.featureMapBuilder?.call(context, selectFeature) ??
+                        widget.landmarkMapBuilder?.call(
                           context,
                           selectLandmark,
                           setTestLandmarkHover,
@@ -932,11 +1035,13 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   Positioned(
                     top: 8,
                     left: 8,
-                    child: IconButton.filledTonal(
-                      tooltip: tr('Back', 'Назад'),
-                      onPressed:
-                          widget.onExit ?? () => Navigator.maybePop(context),
-                      icon: const Icon(Icons.arrow_back),
+                    child: PointerInterceptor(
+                      child: IconButton.filledTonal(
+                        tooltip: tr('Back', 'Назад'),
+                        onPressed:
+                            widget.onExit ?? () => Navigator.maybePop(context),
+                        icon: const Icon(Icons.arrow_back),
+                      ),
                     ),
                   ),
                   if (state != null && !failed && !unsupported) ...[
@@ -944,43 +1049,50 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       top: 8,
                       left: 64,
                       right: 64,
-                      child: Material(
-                        elevation: 2,
-                        borderRadius: BorderRadius.circular(12),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            TextField(
-                              controller: searchController,
-                              decoration: InputDecoration(
-                                prefixIcon: const Icon(Icons.search),
-                                hintText: tr('Search countries', 'Поиск стран'),
-                                border: InputBorder.none,
-                              ),
-                              onChanged: (v) => setState(() => query = v),
-                            ),
-                            if (query.isNotEmpty)
-                              ConstrainedBox(
-                                constraints: const BoxConstraints(
-                                  maxHeight: 200,
+                      child: PointerInterceptor(
+                        child: Material(
+                          elevation: 2,
+                          borderRadius: BorderRadius.circular(12),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              TextField(
+                                controller: searchController,
+                                decoration: InputDecoration(
+                                  prefixIcon: const Icon(Icons.search),
+                                  hintText: tr(
+                                    'Search countries',
+                                    'Поиск стран',
+                                  ),
+                                  border: InputBorder.none,
                                 ),
-                                child: ListView(
-                                  shrinkWrap: true,
-                                  children: [
-                                    for (final country
-                                        in state!.search(query).take(8))
-                                      ListTile(
-                                        title: Text(
-                                          ru ? country.nameRu : country.nameEn,
+                                onChanged: (v) => setState(() => query = v),
+                              ),
+                              if (query.isNotEmpty)
+                                ConstrainedBox(
+                                  constraints: const BoxConstraints(
+                                    maxHeight: 200,
+                                  ),
+                                  child: ListView(
+                                    shrinkWrap: true,
+                                    children: [
+                                      for (final country
+                                          in state!.search(query).take(8))
+                                        ListTile(
+                                          title: Text(
+                                            ru
+                                                ? country.nameRu
+                                                : country.nameEn,
+                                          ),
+                                          subtitle: Text(country.id),
+                                          onTap: () =>
+                                              select(country.id, move: true),
                                         ),
-                                        subtitle: Text(country.id),
-                                        onTap: () =>
-                                            select(country.id, move: true),
-                                      ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -989,23 +1101,27 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       right: 8,
                       child: Column(
                         children: [
-                          IconButton.filledTonal(
-                            tooltip: tr('Zoom in', 'Увеличить'),
-                            onPressed: ready
-                                ? () => controller?.animateCamera(
-                                    CameraUpdate.zoomIn(),
-                                  )
-                                : null,
-                            icon: const Icon(Icons.add),
+                          PointerInterceptor(
+                            child: IconButton.filledTonal(
+                              tooltip: tr('Zoom in', 'Увеличить'),
+                              onPressed: ready
+                                  ? () => controller?.animateCamera(
+                                      CameraUpdate.zoomIn(),
+                                    )
+                                  : null,
+                              icon: const Icon(Icons.add),
+                            ),
                           ),
-                          IconButton.filledTonal(
-                            tooltip: tr('Zoom out', 'Уменьшить'),
-                            onPressed: ready
-                                ? () => controller?.animateCamera(
-                                    CameraUpdate.zoomOut(),
-                                  )
-                                : null,
-                            icon: const Icon(Icons.remove),
+                          PointerInterceptor(
+                            child: IconButton.filledTonal(
+                              tooltip: tr('Zoom out', 'Уменьшить'),
+                              onPressed: ready
+                                  ? () => controller?.animateCamera(
+                                      CameraUpdate.zoomOut(),
+                                    )
+                                  : null,
+                              icon: const Icon(Icons.remove),
+                            ),
                           ),
                         ],
                       ),
@@ -1013,12 +1129,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                     Positioned(
                       right: 12,
                       bottom: 12,
-                      child: IconButton.filledTonal(
-                        tooltip: tr('Layers', 'Слои'),
-                        onPressed: () =>
-                            setState(() => layersOpen = !layersOpen),
-                        icon: Icon(
-                          layersOpen ? Icons.close : Icons.layers_outlined,
+                      child: PointerInterceptor(
+                        child: IconButton.filledTonal(
+                          tooltip: tr('Layers', 'Слои'),
+                          onPressed: () =>
+                              setState(() => layersOpen = !layersOpen),
+                          icon: Icon(
+                            layersOpen ? Icons.close : Icons.layers_outlined,
+                          ),
                         ),
                       ),
                     ),
@@ -1026,76 +1144,125 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       Positioned(
                         right: 12,
                         bottom: 68,
-                        child: Material(
-                          elevation: 4,
-                          borderRadius: BorderRadius.circular(16),
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxWidth: math.min(
-                                360,
-                                math.max(0, viewport.width - 24),
+                        child: PointerInterceptor(
+                          child: Material(
+                            elevation: 4,
+                            borderRadius: BorderRadius.circular(16),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                maxWidth: math.min(
+                                  360,
+                                  math.max(0, viewport.width - 24),
+                                ),
+                                maxHeight: math.max(0, viewport.height - 80),
                               ),
-                              maxHeight: math.max(0, viewport.height - 80),
-                            ),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      16,
-                                      12,
-                                      16,
-                                      4,
-                                    ),
-                                    child: Text(
-                                      tr(
-                                        'Rivers and lakes are always visible',
-                                        'Реки и озёра видны всегда',
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                        16,
+                                        12,
+                                        16,
+                                        4,
                                       ),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall,
+                                      child: Text(
+                                        tr(
+                                          'Rivers and lakes are always visible',
+                                          'Реки и озёра видны всегда',
+                                        ),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall,
+                                      ),
                                     ),
-                                  ),
-                                  SwitchListTile(
-                                    dense: true,
-                                    title: Text(
-                                      tr('Country labels', 'Названия стран'),
+                                    SwitchListTile(
+                                      dense: true,
+                                      title: Text(
+                                        tr('Country labels', 'Названия стран'),
+                                      ),
+                                      value: showCountryLabels,
+                                      onChanged: ready
+                                          ? (v) => toggleLabels(
+                                              'country-markers',
+                                              v,
+                                            )
+                                          : null,
                                     ),
-                                    value: showCountryLabels,
-                                    onChanged: ready
-                                        ? (v) =>
-                                              toggleLabels('country-markers', v)
-                                        : null,
-                                  ),
-                                  SwitchListTile(
-                                    dense: true,
-                                    title: Text(
-                                      tr('Water labels', 'Названия водоёмов'),
+                                    SwitchListTile(
+                                      dense: true,
+                                      title: Text(
+                                        tr('Water labels', 'Названия водоёмов'),
+                                      ),
+                                      value: showWaterLabels,
+                                      onChanged: ready
+                                          ? (v) =>
+                                                toggleLabels('water-labels', v)
+                                          : null,
                                     ),
-                                    value: showWaterLabels,
-                                    onChanged: ready
-                                        ? (v) => toggleLabels('water-labels', v)
-                                        : null,
-                                  ),
-                                  SwitchListTile(
-                                    dense: true,
-                                    title: Text(tr('Capitals', 'Столицы')),
-                                    value: showCapitals,
-                                    onChanged: ready ? toggleCapitals : null,
-                                  ),
-                                  SwitchListTile(
-                                    dense: true,
-                                    title: Text(
-                                      tr('Landmarks', 'Интересные места'),
+                                    SwitchListTile(
+                                      dense: true,
+                                      title: Text(tr('Capitals', 'Столицы')),
+                                      value: showCapitals,
+                                      onChanged: ready ? toggleCapitals : null,
                                     ),
-                                    value: showLandmarks,
-                                    onChanged: ready ? toggleLandmarks : null,
-                                  ),
-                                ],
+                                    SwitchListTile(
+                                      dense: true,
+                                      title: Text(
+                                        tr('Landmarks', 'Интересные места'),
+                                      ),
+                                      value: showLandmarks,
+                                      onChanged: ready ? toggleLandmarks : null,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
+                          ),
+                        ),
+                      ),
+                    if (!layersOpen && feature != null && featureKind != null)
+                      Positioned(
+                        left: 12,
+                        right: 12,
+                        bottom: 68,
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: _detailCard(
+                            viewport: viewport,
+                            title:
+                                (feature[ru ? 'name_ru' : 'name_en']
+                                    as String?) ??
+                                tr('Unnamed feature', 'Без названия'),
+                            subtitle: switch (featureKind) {
+                              'capital' =>
+                                '${tr('Capital', 'Столица')} · ${countryName(feature['country_id'] as String? ?? '')}',
+                              'lake' => tr('Lake', 'Озеро'),
+                              'river' => tr('River', 'Река'),
+                              _ => tr('Water', 'Водоём'),
+                            },
+                            onClose: () => select(null),
+                            children: [
+                              for (final fact
+                                  in ((featureFacts[featureKind == 'capital'
+                                                      ? 'capitals'
+                                                      : 'waterways']
+                                                  as Map?)?[feature['id']]
+                                              as List? ??
+                                          const [])
+                                      .map(MapInterestingFact.fromJson)
+                                      .whereType<MapInterestingFact>()) ...[
+                                Text(ru ? fact.textRu : fact.textEn),
+                                TextButton(
+                                  onPressed: () => launchUrl(
+                                    fact.source,
+                                    mode: LaunchMode.externalApplication,
+                                  ),
+                                  child: Text(tr('Source', 'Источник')),
+                                ),
+                              ],
+                            ],
                           ),
                         ),
                       ),
