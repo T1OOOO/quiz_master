@@ -59,7 +59,15 @@ class MapFixtureBundle extends CachingAssetBundle {
             },
           ],
         },
-        'waterways': {},
+        'waterways': {
+          'Q1062': [
+            {
+              'text_ru': 'Факт об Онтарио',
+              'text_en': 'Ontario fact',
+              'source_url': 'https://example.org/ontario',
+            },
+          ],
+        },
       };
     } else if (key.endsWith('country_interesting_facts.json')) {
       data = {
@@ -714,6 +722,7 @@ void main() {
     });
     await tester.pumpAndSettle();
     expect(find.text('Ontario'), findsOneWidget);
+    expect(find.text('Ontario fact'), findsOneWidget);
     selectFeature('river', {'id': 'ne10-river-1', 'kind': 'river'});
     await tester.pumpAndSettle();
     expect(find.text('Unnamed feature'), findsOneWidget);

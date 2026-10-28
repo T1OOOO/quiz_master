@@ -1248,7 +1248,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                   in ((featureFacts[featureKind == 'capital'
                                                       ? 'capitals'
                                                       : 'waterways']
-                                                  as Map?)?[feature['id']]
+                                                  as Map?)?[feature['fact_id'] ??
+                                                  feature['id']]
                                               as List? ??
                                           const [])
                                       .map(MapInterestingFact.fromJson)
