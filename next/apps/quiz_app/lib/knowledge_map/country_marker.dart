@@ -11,6 +11,7 @@ Future<Uint8List> renderCountryMarker({
   required String name,
   Uint8List? flagBytes,
   bool landmark = false,
+  bool wonder = false,
   bool capital = false,
   int? maxLines,
 }) async {
@@ -98,7 +99,11 @@ Future<Uint8List> renderCountryMarker({
         ..cubicTo(8, middle - 12, 22, middle - 12, 22, middle - 3)
         ..cubicTo(22, middle + 1, 18, middle + 5, 15, middle + 9)
         ..close();
-      canvas.drawPath(pin, ui.Paint()..color = const Color(0xff247a83));
+      canvas.drawPath(
+        pin,
+        ui.Paint()
+          ..color = wonder ? const Color(0xffbf4672) : const Color(0xff247a83),
+      );
       canvas.drawCircle(
         ui.Offset(15, middle - 3),
         2.5,

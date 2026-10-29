@@ -10,7 +10,7 @@ import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb, defaultTargetPlatform, TargetPlatform;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -33,8 +33,13 @@ part 'feedback.dart';
 part 'feedback_admin.dart';
 
 void main() => runApp(
-  const ProviderScope(
-    child: QuizApp(initialLocation: '/quizipedia', defaultLocale: Locale('ru')),
+  ProviderScope(
+    child: QuizApp(
+      initialLocation: !kIsWeb && defaultTargetPlatform == TargetPlatform.android
+          ? '/atlas/map-preview'
+          : '/quizipedia',
+      defaultLocale: const Locale('ru'),
+    ),
   ),
 );
 

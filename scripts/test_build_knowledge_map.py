@@ -144,12 +144,17 @@ class MapBuildTest(unittest.TestCase):
     def test_landmark_catalog_provenance_and_positions(self):
         rows=self.layers['landmarks.geojson']['features']
         catalog=m.checked_read(m.ROOT/'next/apps/quiz_app/assets/quizipedia/catalog.json',m.SOURCES['next/apps/quiz_app/assets/quizipedia/catalog.json'][0])['landmarks']
-        self.assertEqual({f['id'] for f in rows},{r['id'] for r in catalog})
-        self.assertEqual(len(rows),46)
+        curated=m.checked_read(m.ROOT/'quizipedia/map_v2_curated_landmarks.json',m.SOURCES['quizipedia/map_v2_curated_landmarks.json'][0])
+        catalog_ids={r['id'] for r in catalog}
+        self.assertEqual({f['id'] for f in rows},catalog_ids | {f['id'] for f in curated['features']})
+        self.assertEqual(len(rows),79)
         lookup={f['id']:f for f in rows}
+        self.assertEqual(lookup['mount-everest']['geometry']['coordinates'],[86.925,27.988])
+        self.assertEqual(lookup['denali']['geometry']['coordinates'],[-151.007,63.069])
         for ident,lon,lat in [('eiffel',2.294479,48.858296),('colosseum',12.492222,41.890278),('badaling',116.00649,40.35428)]:
             self.assertEqual(lookup[ident]['geometry']['coordinates'],[lon,lat])
         for f in rows:
+            if f['id'] not in catalog_ids: continue
             for key in ('coordinate_source_url','wikidata_id','source_url','image_attribution','image_license','image_source_url','name_ru','name_en','explanation_ru','explanation_en'):
                 self.assertTrue(f['properties'][key], (f['id'],key))
 

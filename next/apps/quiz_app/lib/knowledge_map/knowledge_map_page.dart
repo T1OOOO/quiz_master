@@ -11,6 +11,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../country_labels_ru.dart';
 import 'country_marker.dart';
+import 'country_label_layout.dart';
+import 'landmarks_browser.dart';
 import 'country_number_format.dart';
 import 'countries_browser.dart';
 import 'map_state.dart';
@@ -132,7 +134,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   bool visibleOpen = false;
   Map<String, dynamic>? appliedCountryLabels;
   String appliedThematic = 'none';
+  Map<String, (double, double)> labelOverrides = {};
   bool browserOpen = false;
+  bool placesOpen = false;
+  String placesCategory = 'all';
+  Future<void> placesCommands = Future.value();
   bool countryDetailsOpen = false;
   bool countryPanelOnSide = false;
   double? countryPanelHeight;
@@ -190,8 +196,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     tapRequests.invalidate();
     visibleRequest++;
     visible = [];
+    labelOverrides = {};
     visibleOpen = false;
     browserOpen = false;
+    placesOpen = false;
+    placesCategory = 'all';
     controller = null;
     thematicSprites.clear();
     dishes = [];
@@ -592,6 +601,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           }
           final p = feature['properties'] as Map<String, dynamic>;
           final id = p['id'] as String;
+          if (source == 'landmarks') {
+            p['map_category'] = placeCategory(
+              p['categories'] as List? ?? const [],
+            );
+          }
           final country = source == 'capital-labels'
               ? state?.countryById(p['country_id'])
               : null;
@@ -604,6 +618,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             name: countryName == null ? name : '$name · $countryName',
             flagBytes: flag == null ? null : base64Decode(flag),
             landmark: source == 'landmarks',
+            wonder:
+                source == 'landmarks' &&
+                placeCategory(p['categories'] as List? ?? const []) ==
+                    'wonders',
             capital: source == 'capital-labels',
           );
           if (!mounted || generation != attempt || controller != c || failed) {
@@ -652,7 +670,32 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       stage = 'water labels';
       await addLabels('water-labels', waterLabels!, '≈ ', 3);
       stage = 'landmarks';
-      await addLabels('landmarks', landmarks!, '', 4);
+      await addLabels('landmarks', landmarks!, '', 3.5);
+      await c.addCircleLayer(
+        'landmarks',
+        'landmark-pins',
+        const CircleLayerProperties(
+          circleRadius: 4,
+          circleColor: [
+            'match',
+            ['get', 'map_category'],
+            'mountains',
+            '#7253ad',
+            'depressions',
+            '#397ab0',
+            'deserts',
+            '#cc8220',
+            'reserves',
+            '#258054',
+            'wonders',
+            '#bf4672',
+            '#247a83',
+          ],
+          circleStrokeColor: '#ffffff',
+          circleStrokeWidth: 1.5,
+        ),
+        minzoom: 1.5,
+      );
       if (!mounted || generation != attempt || controller != c || failed) {
         return;
       }
@@ -698,6 +741,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       'capital-labels': show && showCapitals,
       'capital-dots': show && showCapitals,
       'landmarks': show && showLandmarks,
+      'landmark-pins': show && showLandmarks,
       'water-labels': show && showWaterLabels,
     }.entries) {
       await c.setLayerVisibility(entry.key, entry.value);
@@ -770,6 +814,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       selectedFeature = null;
       selectedFeatureKind = null;
       browserOpen = false;
+      placesOpen = false;
       visibleOpen = false;
       layersOpen = false;
     });
@@ -801,6 +846,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final attempt = generation;
     setState(() {
       state?.select(id);
+      placesOpen = false;
       countryDetailsOpen = false;
       if (id != null) {
         visibleOpen = false;
@@ -877,6 +923,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       visibleOpen = false;
       selectedFeatureKind = kind;
       selectedFeature = properties;
+      placesOpen = false;
       layersOpen = false;
     });
     final c = controller;
@@ -916,7 +963,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         }
         return;
       }
-      var features = await c.queryRenderedFeatures(point, ['landmarks'], null);
+      var features = await c.queryRenderedFeatures(point, [
+        'landmarks',
+        'landmark-pins',
+      ], null);
       if (!current()) return;
       if (features.isNotEmpty) {
         await selectLandmark(features.first['properties']['id'] as String);
@@ -1006,8 +1056,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   ) async {
     if (!mounted || request != thematicSequence || controller != c) return;
     final attempt = generation;
-    final labels =
-        jsonDecode(jsonEncode(countryLabels)) as Map<String, dynamic>;
+    final labels = jsonDecode(
+      jsonEncode(appliedCountryLabels ?? countryLabels),
+    ) as Map<String, dynamic>;
     try {
       for (final feature in labels['features'] as List) {
         if (!mounted ||
@@ -1135,6 +1186,72 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     await capitalCommands;
   }
 
+  Future<void> setPlacesCategory(String value) async {
+    setState(() => placesCategory = value);
+    final c = controller;
+    if (c == null || !ready || landmarks == null) return;
+    final ids = (landmarks!['features'] as List)
+        .where(
+          (f) =>
+              value == 'all' ||
+              (f['properties']['categories'] as List? ?? const []).contains(
+                value,
+              ),
+        )
+        .map((f) => f['properties']['id'] as String)
+        .toList();
+    final attempt = generation;
+    placesCommands = placesCommands.catchError((Object _) {}).then((_) async {
+      if (!mounted ||
+          controller != c ||
+          generation != attempt ||
+          placesCategory != value) {
+        return;
+      }
+      try {
+        final filter = [
+          'in',
+          ['get', 'id'],
+          ['literal', ids],
+        ];
+        await c.setFilter('landmarks', filter);
+        if (mounted && controller == c && generation == attempt) {
+          await c.setFilter('landmark-pins', filter);
+        }
+      } catch (error) {
+        debugPrint('Knowledge map: place filter failed: $error');
+      }
+    });
+    await placesCommands;
+  }
+
+  Future<void> openPlace(String id) async {
+    final matches = (landmarks?['features'] as List? ?? const []).where(
+      (f) => f['properties']['id'] == id,
+    );
+    if (matches.isEmpty) return;
+    final coordinates = matches.first['geometry']['coordinates'] as List;
+    setState(() => placesOpen = false);
+    await selectLandmark(id);
+    final c = controller;
+    if (!mounted || !ready || c == null || state?.selectedLandmarkId != id) {
+      return;
+    }
+    try {
+      await c.animateCamera(
+        CameraUpdate.newLatLngZoom(
+          LatLng(
+            (coordinates[1] as num).toDouble(),
+            (coordinates[0] as num).toDouble(),
+          ),
+          5.5,
+        ),
+      );
+    } catch (error) {
+      debugPrint('Knowledge map: place camera failed: $error');
+    }
+  }
+
   Future<void> selectLandmark(String? id) async {
     if (!mounted) return;
     tapRequests.invalidate();
@@ -1143,7 +1260,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final attempt = generation;
     setState(() {
       state?.selectLandmark(id);
-      if (id != null) visibleOpen = false;
+      if (id != null) {
+        visibleOpen = false;
+        placesOpen = false;
+      }
       selectedFeature = null;
       selectedFeatureKind = null;
       layersOpen = false;
@@ -1176,6 +1296,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     if (!value) clearHover();
     try {
       await c?.setLayerVisibility('landmarks', value);
+      await c?.setLayerVisibility('landmark-pins', value);
     } catch (error, stack) {
       debugPrint('Knowledge map: landmark layer failed: $error\n$stack');
       if (mounted && generation == attempt && controller == c) {
@@ -1237,6 +1358,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   }
 
   Future<void> updateVisibleCountries() async {
+    if (!mounted) return;
     final c = controller;
     final currentState = state;
     final size = mapViewport;
@@ -1244,14 +1366,89 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final request = ++visibleRequest;
     try {
       bool current() => mounted && request == visibleRequest && controller == c;
+      final scale = !kIsWeb && defaultTargetPlatform == TargetPlatform.android
+          ? MediaQuery.devicePixelRatioOf(context)
+          : 1.0;
       final features = await queryVisibleWithRetry(
-        () => c.queryRenderedFeaturesInRect(Offset.zero & size, ['land'], null),
+        () => c.queryRenderedFeaturesInRect(Offset.zero & (size * scale), [
+          'land',
+        ], null),
         current,
         () => Future<void>.delayed(const Duration(milliseconds: 500)),
       );
       if (!current()) return;
       final result = visibleCountries(currentState.countries, features);
       setState(() => visible = result);
+      if (practice || countryLabels == null || appliedCountryLabels == null) {
+        return;
+      }
+      final bounds = await c.getVisibleRegion();
+      if (!current()) return;
+      final viewport = GeoViewport(
+        west: bounds.southwest.longitude,
+        east: bounds.northeast.longitude,
+        south: bounds.southwest.latitude,
+        north: bounds.northeast.latitude,
+      );
+      final anchors = visibleCountryLabelAnchors(
+        countryLabels!['features'] as List,
+        features,
+        viewport,
+      );
+      final ids = anchors.keys.toList();
+      if (ids.isNotEmpty) {
+        final screen = await c.toScreenLocationBatch(
+          ids.map((id) {
+            final point = anchors[id]!;
+            return LatLng(point.$2, point.$1);
+          }),
+        );
+        if (!current()) return;
+        final maxX = size.width * scale, maxY = size.height * scale;
+        final padX = math.min(90.0 * scale, maxX / 2);
+        final padY = math.min(45.0 * scale, maxY / 2);
+        for (var i = 0; i < ids.length; i++) {
+          final point = screen[i];
+          final x = point.x.toDouble().clamp(padX, maxX - padX);
+          final y = point.y.toDouble().clamp(padY, maxY - padY);
+          if (x != point.x || y != point.y) {
+            final position = await c.toLatLng(math.Point(x, y));
+            if (!current()) return;
+            anchors[ids[i]] = (position.longitude, position.latitude);
+          }
+        }
+      }
+      if (mapEquals(anchors, labelOverrides)) return;
+      thematicCommands = thematicCommands.catchError((Object _) {}).then((
+        _,
+      ) async {
+        if (!current() ||
+            appliedCountryLabels == null ||
+            countryLabels == null) {
+          return;
+        }
+        final labels = jsonDecode(
+          jsonEncode(appliedCountryLabels),
+        ) as Map<String, dynamic>;
+        final originals = <String, dynamic>{
+          for (final feature in countryLabels!['features'] as List)
+            feature['properties']['country_id'] as String:
+                feature['geometry']['coordinates'],
+        };
+        for (final feature in labels['features'] as List) {
+          final id = feature['properties']['country_id'] as String;
+          final anchor = anchors[id];
+          feature['geometry']['coordinates'] = anchor == null
+              ? originals[id]
+              : [anchor.$1, anchor.$2];
+        }
+        await c.setGeoJsonSource('country-markers', labels);
+        if (current()) {
+          appliedCountryLabels = labels;
+          labelOverrides = anchors;
+        }
+      });
+      await thematicCommands;
     } catch (error) {
       if (mounted && request == visibleRequest && controller == c) {
         setState(() => visible = []);
@@ -1320,6 +1517,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             hover.isCurrent(request);
         var features = await c.queryRenderedFeatures(point, [
           'landmarks',
+          'landmark-pins',
         ], null);
         if (!current()) return;
         if (features.isNotEmpty) {
@@ -1584,7 +1782,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   countryDetailsOpen &&
                   !layersOpen &&
                   !visibleOpen &&
-                  !browserOpen;
+                  !browserOpen &&
+                  !placesOpen;
               final panelHeight = panelOpen && !countryPanelOnSide
                   ? (countryPanelHeight ??
                             math.min(340.0, viewport.height * 0.45))
@@ -1783,11 +1982,51 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         child: FilledButton.tonal(
                           onPressed: () => setState(() {
                             browserOpen = !browserOpen;
+                            if (browserOpen) placesOpen = false;
                             if (browserOpen) countryDetailsOpen = false;
                             visibleOpen = false;
                             layersOpen = false;
                           }),
                           child: Text(tr('Countries', 'Страны')),
+                        ),
+                      ),
+                    ),
+                  if (!practice &&
+                      state != null &&
+                      ready &&
+                      !failed &&
+                      !unsupported)
+                    Positioned(
+                      top: 112,
+                      left: 12,
+                      child: PointerInterceptor(
+                        child: FilledButton.tonalIcon(
+                          onPressed: () => setState(() {
+                            placesOpen = !placesOpen;
+                            browserOpen = false;
+                            visibleOpen = false;
+                            layersOpen = false;
+                            countryDetailsOpen = false;
+                          }),
+                          icon: const Icon(Icons.place_outlined),
+                          label: Text(tr('Places', 'Места')),
+                        ),
+                      ),
+                    ),
+                  if (placesOpen && landmarks != null)
+                    Positioned(
+                      top: 170,
+                      left: 12,
+                      bottom: 68,
+                      width: math.min(420, math.max(0, viewport.width - 24)),
+                      child: PointerInterceptor(
+                        child: LandmarksBrowser(
+                          features: landmarks!['features'] as List,
+                          category: placesCategory,
+                          russian: ru,
+                          onClose: () => setState(() => placesOpen = false),
+                          onCategory: setPlacesCategory,
+                          onSelect: openPlace,
                         ),
                       ),
                     ),
@@ -1812,7 +2051,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       !panelOpen &&
                       !layersOpen &&
                       !visibleOpen &&
-                      !browserOpen)
+                      !browserOpen &&
+                      !placesOpen)
                     Positioned(
                       bottom: 12,
                       left: 76,

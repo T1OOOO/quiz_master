@@ -553,6 +553,32 @@ void main() {
     expect(find.text('Correct!'), findsOneWidget);
   });
 
+  testWidgets('landmark collections allow browsing and opening a place', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, select) => const SizedBox.expand(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Places'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(DropdownButton<String>));
+    await tester.pumpAndSettle();
+    expect(find.text('New wonders'), findsOneWidget);
+    expect(find.text('Ancient wonders'), findsOneWidget);
+    expect(find.text('Mountains'), findsOneWidget);
+    await tester.tap(find.text('All places').last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Eiffel Tower'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Photographer'), findsOneWidget);
+  });
+
   testWidgets('late map selection after page disposal is ignored', (
     tester,
   ) async {

@@ -2,6 +2,17 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/knowledge_map/map_state.dart';
 
 void main() {
+  test('visibleCountryIds keeps countries whose rendered contour is partial', () {
+    final features = [
+      {'properties': {'country_id': 'alpha'}, 'geometry': {'type': 'Polygon'}},
+      {'properties': {'country_id': 'alpha'}, 'geometry': {'type': 'Polygon'}},
+      {'properties': {'country_id': 'beta'}, 'geometry': {'type': 'MultiPolygon'}},
+      {'properties': {'name': 'not a country'}},
+    ];
+
+    expect(visibleCountryIds(features), ['alpha', 'beta']);
+  });
+
   test(
     'capital country lookup uses exact country id and tolerates missing ids',
     () {

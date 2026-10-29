@@ -14,6 +14,7 @@ SOURCES = {
  'next/apps/quiz_app/assets/quizipedia/waterways.json': ('cb884b1a74fbfdaea11176c51045d37ae19546b1cc9c2ad6763d91dbd0bd9593', 'Repository waterway identities', 'Public domain'),
  'next/apps/quiz_app/assets/quizipedia/country_facts.json': ('90b994c5cfba397671cd5724cf805b8a387abcecc151e93f0e938d1005a38e5b', 'Repository country facts registry', 'See source country_facts.json'),
  'quizipedia/landmark_locations.geojson': ('77a95d4d205041552d9de88f49256f3984563991b72762e83ef1763e6f532c7b', 'https://www.wikidata.org/', 'CC0 coordinates; see individual image metadata'),
+ 'quizipedia/map_v2_curated_landmarks.json': ('450442b3ec50c65c392bf402686e7b24aabc89eea941aa6f445130782a18997a', 'Repository curated places; see individual sources', 'Project data; see individual sources'),
  'next/apps/quiz_app/assets/quizipedia/catalog.json': ('0ef534bac377c150e3bf3109d7dea96fb56e1e68f8bbc04c81adc5804d2d984b', 'Repository landmark catalog', 'See individual image metadata'),
  'quizipedia/sources/map_v2/ne_10m_admin_0_countries.geojson': ('239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson', 'Public domain'),
  'quizipedia/sources/map_v2/ne_10m_rivers_lake_centerlines_scale_rank.geojson': ('65dca1bd1729a347dda0837f41b5d152252e33abd2d7ff3370a0539c33bdf89b', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_rivers_lake_centerlines_scale_rank.geojson', 'Public domain'),
@@ -226,6 +227,16 @@ def build():
         if f['type']!='Feature' or f['geometry']['type']!='Point' or f['id']!=f['properties']['id']: raise ValueError('invalid landmark')
         validate_geometry(f['geometry'])
         if any(not f['properties'].get(k) for k in ('country_id','name_ru','name_en','explanation_ru','explanation_en','source_url','coordinate_source_url','wikidata_id','image_attribution','image_license','image_source_url')): raise ValueError('missing landmark provenance')
+    curated=data['quizipedia/map_v2_curated_landmarks.json']
+    existing={f['id']:f for f in landmarks}
+    for ident,categories in curated['categories'].items():
+        if ident not in existing or not categories: raise ValueError('invalid curated landmark category')
+        existing[ident]['properties']['categories']=categories
+    for f in curated['features']:
+        if f['type']!='Feature' or f['geometry']['type']!='Point' or f['id']!=f['properties']['id']: raise ValueError('invalid curated landmark')
+        validate_geometry(f['geometry'])
+        if any(not f['properties'].get(k) for k in ('country_id','name_ru','name_en','explanation_ru','explanation_en','source_url','coordinate_source_url')): raise ValueError('missing curated landmark provenance')
+        landmarks.append(f)
     water_labels=[feature(f['id'],f['properties']['name_ru'],f['properties']['name_en'],f['properties']['kind'],{'type':'Point','coordinates':water_anchor(f['geometry'])}) for f in waterways if f['properties']['kind'] in ('river','lake')]
     layers={name+'.geojson':{'type':'FeatureCollection','features':sorted(rows,key=lambda f:f['id'])} for name,rows in [('countries',countries),('country_labels',country_labels),('capitals',capitals),('waterways',waterways),('rivers_detail',river_detail),('lakes_detail',lake_detail),('water_labels',water_labels),('landmarks',landmarks)]}
     for name,collection in layers.items():

@@ -14,14 +14,26 @@ Future<List> queryVisibleWithRetry(
   return [];
 }
 
-List<MapCountry> visibleCountries(List<MapCountry> countries, List features) {
+/// Returns country ids represented by rendered land features, in render order.
+///
+/// The map renderer returns a feature when any part of its polygon intersects
+/// the query rectangle. Keeping this derived from rendered features (rather
+/// than centroid labels) means a country remains available to the info card
+/// even when only a sliver of its contour is on screen.
+List<String> visibleCountryIds(List features) {
   final ids = <String>{};
+  final ordered = <String>[];
   for (final feature in features) {
     if (feature is Map && feature['properties'] is Map) {
       final id = feature['properties']['country_id'];
-      if (id is String) ids.add(id);
+      if (id is String && ids.add(id)) ordered.add(id);
     }
   }
+  return ordered;
+}
+
+List<MapCountry> visibleCountries(List<MapCountry> countries, List features) {
+  final ids = visibleCountryIds(features).toSet();
   return countries.where((country) => ids.contains(country.id)).toList();
 }
 
