@@ -16,6 +16,7 @@ class MapFixtureBundle extends CachingAssetBundle {
   String? invalidLakeDetail;
   final requested = <String>[];
   bool missingInterestingFacts = false;
+  bool withFlags = false;
   Completer<void>? factsGate;
   @override
   Future<ByteData> load(String key) async {
@@ -139,7 +140,13 @@ class MapFixtureBundle extends CachingAssetBundle {
         ],
       };
     } else if (key.endsWith('country_flag_images.json')) {
-      data = {'flags': <String, String>{}};
+      data = {
+        'flags': withFlags
+            ? {
+                'FR': 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=',
+              }
+            : <String, String>{},
+      };
     } else if (key.endsWith('landmarks.geojson')) {
       data = {
         'type': 'FeatureCollection',
@@ -377,6 +384,128 @@ void main() {
       same(mapElement),
     );
     expect(builds, greaterThan(0));
+  });
+
+  testWidgets('country panel can be resized and docked beside the map', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(800, 600);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    late void Function(String?) select;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, callback) {
+            select = callback;
+            return const SizedBox.expand(key: ValueKey('map-area'));
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    select('FR');
+    await tester.pumpAndSettle();
+    final map = find.byKey(const ValueKey('map-area'));
+    final height = tester.getSize(map).height;
+    await tester.drag(
+      find.byKey(const ValueKey('country-panel-resize')),
+      const Offset(0, -90),
+    );
+    await tester.pumpAndSettle();
+    expect(tester.getSize(map).height, lessThan(height));
+    await tester.tap(find.byTooltip('Move panel to side'));
+    await tester.pumpAndSettle();
+    expect(tester.getSize(map).height, 600);
+    expect(tester.getSize(map).width, lessThan(800));
+    expect(
+      tester.getRect(find.byTooltip('Zoom in')).right,
+      lessThanOrEqualTo(tester.getRect(map).right),
+    );
+    expect(
+      tester.getRect(find.byType(TextField)).right,
+      lessThanOrEqualTo(tester.getRect(map).right),
+    );
+    expect(
+      tester.getRect(map).right,
+      tester.getRect(find.byKey(const ValueKey('country-bottom-panel'))).left,
+    );
+    await tester.tap(find.byTooltip('Move panel to bottom'));
+    await tester.pumpAndSettle();
+    expect(tester.getSize(map).width, 800);
+    expect(tester.getSize(map).height, lessThan(height));
+  });
+
+  testWidgets('practice checks a map selection and can be exited', (
+    tester,
+  ) async {
+    late void Function(String?) select;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, callback) {
+            select = callback;
+            return const SizedBox.expand();
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Practice'));
+    await tester.pumpAndSettle();
+    expect(find.text('Find the country on the map'), findsOneWidget);
+    select('MC');
+    await tester.pumpAndSettle();
+    expect(find.text('Try again'), findsOneWidget);
+    select('FR');
+    await tester.pumpAndSettle();
+    expect(find.text('Correct!'), findsOneWidget);
+    await tester.tap(find.byType(DropdownButton<int>));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Map → name').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Which country is outlined?'), findsOneWidget);
+    await tester.tap(find.widgetWithText(OutlinedButton, 'France'));
+    await tester.pumpAndSettle();
+    expect(find.text('Correct!'), findsOneWidget);
+    await tester.tap(find.byTooltip('Exit practice'));
+    await tester.pumpAndSettle();
+    expect(find.text('Find the country on the map'), findsNothing);
+  });
+
+  testWidgets('flag practice works in both directions', (tester) async {
+    late void Function(String?) select;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle()..withFlags = true,
+          mapBuilder: (context, callback) {
+            select = callback;
+            return const SizedBox.expand();
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Practice'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(DropdownButton<int>));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Flag → map').last);
+    await tester.pumpAndSettle();
+    select('FR');
+    await tester.pumpAndSettle();
+    expect(find.text('Correct!'), findsOneWidget);
+    await tester.tap(find.byType(DropdownButton<int>));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Map → flag').last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(OutlinedButton).last);
+    await tester.pumpAndSettle();
+    expect(find.text('Correct!'), findsOneWidget);
   });
 
   testWidgets('late map selection after page disposal is ignored', (

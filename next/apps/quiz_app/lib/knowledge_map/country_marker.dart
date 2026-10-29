@@ -18,7 +18,7 @@ Future<Uint8List> renderCountryMarker({
     text: TextSpan(
       text: name,
       style: TextStyle(
-        fontSize: capital ? 11 : 13,
+        fontSize: capital ? 11 : 16,
         fontWeight: FontWeight.w600,
         color: Color(0xff302b24),
         height: 1.15,
@@ -47,14 +47,14 @@ Future<Uint8List> renderCountryMarker({
         ? 20.0
         : 0.0;
     final width =
-        (math.max(text.width + leading, flag != null && !capital ? 24 : 0) +
+        (math.max(text.width + leading, flag != null && !capital ? 32 : 0) +
                 (capital ? 8 : 16))
             .ceil()
             .clamp(24, 216);
     final height =
         (math.max(text.height, capital ? 0 : 16) +
                 (capital ? 8 : 12) +
-                (flag != null && !capital ? 20 : 0))
+                (flag != null && !capital ? 26 : 0))
             .ceil();
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
@@ -73,8 +73,8 @@ Future<Uint8List> renderCountryMarker({
     }
     if (flag != null) {
       final scale = math.min(
-        (capital ? 16 : 24) / flag.width,
-        (capital ? 11 : 16) / flag.height,
+        (capital ? 16 : 32) / flag.width,
+        (capital ? 11 : 22) / flag.height,
       );
       final fw = flag.width * scale;
       final fh = flag.height * scale;
@@ -83,7 +83,7 @@ Future<Uint8List> renderCountryMarker({
         ui.Rect.fromLTWH(0, 0, flag.width.toDouble(), flag.height.toDouble()),
         ui.Rect.fromLTWH(
           capital ? 4 : (width - fw) / 2,
-          capital ? (height - fh) / 2 : 5 + (16 - fh) / 2,
+          capital ? (height - fh) / 2 : 5 + (22 - fh) / 2,
           fw,
           fh,
         ),
@@ -109,7 +109,7 @@ Future<Uint8List> renderCountryMarker({
       canvas,
       ui.Offset(
         (width - text.width + leading) / 2,
-        flag != null && !capital ? 25 : (height - text.height) / 2,
+        flag != null && !capital ? 31 : (height - text.height) / 2,
       ),
     );
     final picture = recorder.endRecording();

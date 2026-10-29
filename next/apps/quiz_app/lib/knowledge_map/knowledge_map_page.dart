@@ -133,6 +133,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Map<String, dynamic>? appliedCountryLabels;
   String appliedThematic = 'none';
   bool browserOpen = false;
+  bool countryPanelOnSide = false;
+  double? countryPanelHeight;
+  bool practice = false;
+  bool practiceBusy = false;
+  int practiceMode = 0;
+  String? practiceTarget;
+  List<MapCountry> practiceOptions = [];
+  bool? practiceResult;
   bool get ru => Localizations.localeOf(context).languageCode == 'ru';
   String tr(String en, String russian) => ru ? russian : en;
 
@@ -642,8 +650,126 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     super.dispose();
   }
 
+  List<MapCountry> get practiceCountries {
+    final mapped = (countries?['features'] as List? ?? const [])
+        .map((f) => f['properties']['country_id'])
+        .whereType<String>()
+        .toSet();
+    return (state?.countries ?? const <MapCountry>[])
+        .where(
+          (country) =>
+              mapped.contains(country.id) &&
+              (practiceMode != 1 && practiceMode != 3 ||
+                  flags[country.id] is String),
+        )
+        .toList();
+  }
+
+  Future<void> practiceVisibility(bool show) async {
+    final c = controller;
+    if (c == null || !ready) return;
+    for (final entry in <String, bool>{
+      'country-markers': show && showCountryLabels,
+      'capital-labels': show && showCapitals,
+      'capital-dots': show && showCapitals,
+      'landmarks': show && showLandmarks,
+      'water-labels': show && showWaterLabels,
+    }.entries) {
+      await c.setLayerVisibility(entry.key, entry.value);
+    }
+    await c.setFilter('selected', [
+      '==',
+      ['get', 'country_id'],
+      '',
+    ]);
+  }
+
+  Future<void> nextPractice() async {
+    if (practiceBusy || !mounted || !practice) return;
+    setState(() => practiceBusy = true);
+    try {
+      final candidates = practiceCountries..shuffle();
+      if (candidates.isEmpty) {
+        setState(() {
+          practiceTarget = null;
+          practiceOptions = [];
+          practiceResult = null;
+        });
+        return;
+      }
+      final target = candidates.first;
+      final options = candidates.take(4).toList()..shuffle();
+      setState(() {
+        practiceTarget = target.id;
+        practiceOptions = options;
+        practiceResult = null;
+      });
+      final c = controller;
+      if (c == null || !ready) return;
+      await c.setFilter('selected', [
+        '==',
+        ['get', 'country_id'],
+        practiceMode >= 2 ? target.id : '',
+      ]);
+      if (!mounted || !practice || practiceMode < 2) return;
+      final matches = (countryLabels?['features'] as List? ?? const []).where(
+        (f) => f['properties']['country_id'] == target.id,
+      );
+      if (matches.isNotEmpty) {
+        final coordinates = matches.first['geometry']['coordinates'] as List;
+        await c.animateCamera(
+          CameraUpdate.newLatLngZoom(
+            LatLng(
+              (coordinates[1] as num).toDouble(),
+              (coordinates[0] as num).toDouble(),
+            ),
+            3,
+          ),
+        );
+      }
+    } catch (error, stack) {
+      debugPrint('Knowledge map: practice failed: $error\n$stack');
+      if (mounted) setState(() => failed = true);
+    } finally {
+      if (mounted) setState(() => practiceBusy = false);
+    }
+  }
+
+  Future<void> setPractice(bool value) async {
+    if (!mounted || practiceBusy) return;
+    clearHover();
+    setState(() {
+      practice = value;
+      practiceBusy = true;
+      state?.select(null);
+      selectedFeature = null;
+      selectedFeatureKind = null;
+      browserOpen = false;
+      visibleOpen = false;
+      layersOpen = false;
+    });
+    try {
+      await practiceVisibility(!value);
+    } catch (error, stack) {
+      debugPrint('Knowledge map: practice visibility failed: $error\n$stack');
+      if (mounted) setState(() => failed = true);
+    } finally {
+      if (mounted) setState(() => practiceBusy = false);
+    }
+    if (value && mounted && practice && !failed) await nextPractice();
+  }
+
   Future<void> select(String? id, {bool move = false}) async {
     if (!mounted) return;
+    if (practice) {
+      if (!practiceBusy &&
+          practiceMode < 2 &&
+          id != null &&
+          practiceResult != true) {
+        setState(() => practiceResult = id == practiceTarget);
+      }
+      return;
+    }
     tapRequests.invalidate();
     FocusScope.of(context).unfocus();
     final c = controller;
@@ -755,6 +881,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         controller == c &&
         tapRequests.isCurrent(request);
     try {
+      if (practice) {
+        if (practiceMode < 2) {
+          final hits = await c.queryRenderedFeatures(point, ['land'], null);
+          if (current() && hits.isNotEmpty) {
+            await select(hits.first['properties']['country_id'] as String?);
+          }
+        }
+        return;
+      }
       var features = await c.queryRenderedFeatures(point, ['landmarks'], null);
       if (!current()) return;
       if (features.isNotEmpty) {
@@ -1124,7 +1259,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   }
 
   void onMouseMove(math.Point<double> point, LatLng coordinates) {
-    if (!mounted || !ready || controller == null) return;
+    if (!mounted || !ready || controller == null || practice) return;
     final request = hover.begin();
     final attempt = generation;
     final c = controller!;
@@ -1201,7 +1336,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               ? viewport.width
               : math.min(360, math.max(0, viewport.width - 24)),
           maxHeight: countryPanel
-              ? math.min(340, viewport.height * 0.45)
+              ? viewport.height
               : math.max(
                   0,
                   math.min(
@@ -1214,12 +1349,43 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           elevation: 4,
           color: const Color(0xfffaf9f6),
           borderRadius: countryPanel
-              ? const BorderRadius.vertical(top: Radius.circular(20))
+              ? (countryPanelOnSide
+                    ? const BorderRadius.horizontal(left: Radius.circular(20))
+                    : const BorderRadius.vertical(top: Radius.circular(20)))
               : BorderRadius.circular(12),
           clipBehavior: Clip.antiAlias,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              if (countryPanel && !countryPanelOnSide)
+                GestureDetector(
+                  key: const ValueKey('country-panel-resize'),
+                  behavior: HitTestBehavior.opaque,
+                  onVerticalDragUpdate: (details) => setState(() {
+                    countryPanelHeight =
+                        ((countryPanelHeight ??
+                                    math.min(340, viewport.height * 0.45)) -
+                                details.delta.dy)
+                            .clamp(
+                              viewport.height * 0.2,
+                              viewport.height * 0.8,
+                            );
+                  }),
+                  child: SizedBox(
+                    height: 24,
+                    width: double.infinity,
+                    child: Center(
+                      child: Container(
+                        width: 44,
+                        height: 5,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffaaa3ad),
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
                 child: Row(
@@ -1248,6 +1414,26 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         ],
                       ),
                     ),
+                    if (countryPanel)
+                      IconButton(
+                        tooltip: countryPanelOnSide
+                            ? tr(
+                                'Move panel to bottom',
+                                'Переместить панель вниз',
+                              )
+                            : tr(
+                                'Move panel to side',
+                                'Переместить панель вбок',
+                              ),
+                        onPressed: () => setState(
+                          () => countryPanelOnSide = !countryPanelOnSide,
+                        ),
+                        icon: Icon(
+                          countryPanelOnSide
+                              ? Icons.vertical_align_bottom
+                              : Icons.vertical_split_outlined,
+                        ),
+                      ),
                     if (countryPanel)
                       IconButton(
                         tooltip: tr('Layers', 'Слои'),
@@ -1348,11 +1534,16 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   !layersOpen &&
                   !visibleOpen &&
                   !browserOpen;
-              final panelHeight = panelOpen
-                  ? math.min(340.0, viewport.height * 0.45)
+              final panelHeight = panelOpen && !countryPanelOnSide
+                  ? (countryPanelHeight ??
+                            math.min(340.0, viewport.height * 0.45))
+                        .clamp(viewport.height * 0.2, viewport.height * 0.8)
+                  : 0.0;
+              final panelWidth = panelOpen && countryPanelOnSide
+                  ? math.min(360.0, viewport.width * 0.7)
                   : 0.0;
               final currentMapViewport = Size(
-                viewport.width,
+                viewport.width - panelWidth,
                 viewport.height - panelHeight,
               );
               if (currentMapViewport != mapViewport) {
@@ -1368,7 +1559,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   if (state != null && !failed && !unsupported)
                     Positioned(
                       left: 0,
-                      right: 0,
+                      right: panelWidth,
                       top: 0,
                       bottom: panelHeight,
                       child:
@@ -1424,9 +1615,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                     ),
                   if ((state == null || !ready) && !failed && !unsupported)
                     const Center(child: CircularProgressIndicator()),
-                  if (ready && visible.isNotEmpty && !layersOpen)
+                  if (!practice && ready && visible.isNotEmpty && !layersOpen)
                     Positioned(
-                      right: 12,
+                      right: panelWidth + 12,
                       top: 112,
                       child: PointerInterceptor(
                         child: Column(
@@ -1524,7 +1715,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       ),
                     ),
                   ),
-                  if (state != null && ready && !failed && !unsupported)
+                  if (!practice &&
+                      state != null &&
+                      ready &&
+                      !failed &&
+                      !unsupported)
                     Positioned(
                       top: 64,
                       left: 12,
@@ -1536,6 +1731,215 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                             layersOpen = false;
                           }),
                           child: Text(tr('Countries', 'Страны')),
+                        ),
+                      ),
+                    ),
+                  if (state != null &&
+                      ready &&
+                      !failed &&
+                      !unsupported &&
+                      !practice)
+                    Positioned(
+                      left: 12,
+                      bottom: 12,
+                      child: PointerInterceptor(
+                        child: IconButton.filledTonal(
+                          tooltip: tr('Practice', 'Тренировка'),
+                          onPressed: () => setPractice(true),
+                          icon: const Icon(Icons.quiz_outlined),
+                        ),
+                      ),
+                    ),
+                  if (practice)
+                    Positioned(
+                      left: 12,
+                      right: 12,
+                      bottom: 12,
+                      child: PointerInterceptor(
+                        child: Material(
+                          elevation: 4,
+                          borderRadius: BorderRadius.circular(16),
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxHeight: viewport.height * 0.48,
+                            ),
+                            child: SingleChildScrollView(
+                              child: Padding(
+                                padding: const EdgeInsets.all(12),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            tr(
+                                              'Map practice',
+                                              'Тренировка по карте',
+                                            ),
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        IconButton(
+                                          tooltip: tr(
+                                            'Exit practice',
+                                            'Выйти из тренировки',
+                                          ),
+                                          onPressed: practiceBusy
+                                              ? null
+                                              : () => setPractice(false),
+                                          icon: const Icon(Icons.close),
+                                        ),
+                                      ],
+                                    ),
+                                    DropdownButton<int>(
+                                      value: practiceMode,
+                                      isExpanded: true,
+                                      items: [
+                                        DropdownMenuItem(
+                                          value: 0,
+                                          child: Text(
+                                            tr(
+                                              'Name → map',
+                                              'Название → карта',
+                                            ),
+                                          ),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 1,
+                                          child: Text(
+                                            tr('Flag → map', 'Флаг → карта'),
+                                          ),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 2,
+                                          child: Text(
+                                            tr(
+                                              'Map → name',
+                                              'Карта → название',
+                                            ),
+                                          ),
+                                        ),
+                                        DropdownMenuItem(
+                                          value: 3,
+                                          child: Text(
+                                            tr('Map → flag', 'Карта → флаг'),
+                                          ),
+                                        ),
+                                      ],
+                                      onChanged: practiceBusy
+                                          ? null
+                                          : (value) {
+                                              if (value != null) {
+                                                setState(
+                                                  () => practiceMode = value,
+                                                );
+                                                nextPractice();
+                                              }
+                                            },
+                                    ),
+                                    if (practiceTarget == null)
+                                      Text(
+                                        tr(
+                                          'No countries available for this mode',
+                                          'Для этого режима нет доступных стран',
+                                        ),
+                                      )
+                                    else ...[
+                                      Text(
+                                        practiceMode < 2
+                                            ? tr(
+                                                'Find the country on the map',
+                                                'Найдите страну на карте',
+                                              )
+                                            : tr(
+                                                'Which country is outlined?',
+                                                'Какая страна выделена?',
+                                              ),
+                                      ),
+                                      if (practiceMode == 0)
+                                        Text(
+                                          ru
+                                              ? state!
+                                                    .countryById(
+                                                      practiceTarget,
+                                                    )!
+                                                    .nameRu
+                                              : state!
+                                                    .countryById(
+                                                      practiceTarget,
+                                                    )!
+                                                    .nameEn,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      if (practiceMode == 1)
+                                        Image.memory(
+                                          base64Decode(flags[practiceTarget]),
+                                          width: 72,
+                                          height: 48,
+                                        ),
+                                      if (practiceMode >= 2)
+                                        Wrap(
+                                          spacing: 8,
+                                          children: [
+                                            for (final country
+                                                in practiceOptions)
+                                              OutlinedButton(
+                                                onPressed:
+                                                    practiceResult == true
+                                                    ? null
+                                                    : () => setState(
+                                                        () => practiceResult =
+                                                            country.id ==
+                                                            practiceTarget,
+                                                      ),
+                                                child: practiceMode == 3
+                                                    ? Image.memory(
+                                                        base64Decode(
+                                                          flags[country.id],
+                                                        ),
+                                                        width: 48,
+                                                        height: 32,
+                                                      )
+                                                    : Text(
+                                                        ru
+                                                            ? country.nameRu
+                                                            : country.nameEn,
+                                                      ),
+                                              ),
+                                          ],
+                                        ),
+                                      if (practiceResult != null)
+                                        Text(
+                                          practiceResult!
+                                              ? tr('Correct!', 'Верно!')
+                                              : tr(
+                                                  'Try again',
+                                                  'Попробуйте ещё раз',
+                                                ),
+                                        ),
+                                      TextButton(
+                                        onPressed: practiceBusy
+                                            ? null
+                                            : nextPractice,
+                                        child: Text(
+                                          practiceResult == true
+                                              ? tr('Next', 'Дальше')
+                                              : tr('Skip', 'Пропустить'),
+                                        ),
+                                      ),
+                                    ],
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -1565,61 +1969,65 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         ),
                       ),
                     ),
-                  if (state != null && !failed && !unsupported) ...[
-                    Positioned(
-                      top: 8,
-                      left: 64,
-                      right: 64,
-                      child: PointerInterceptor(
-                        child: Material(
-                          elevation: 2,
-                          borderRadius: BorderRadius.circular(12),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              TextField(
-                                controller: searchController,
-                                decoration: InputDecoration(
-                                  prefixIcon: const Icon(Icons.search),
-                                  hintText: tr(
-                                    'Search countries',
-                                    'Поиск стран',
+                  if (!practice &&
+                      state != null &&
+                      !failed &&
+                      !unsupported) ...[
+                    if (viewport.width - panelWidth >= 200)
+                      Positioned(
+                        top: 8,
+                        left: 64,
+                        right: panelWidth + 64,
+                        child: PointerInterceptor(
+                          child: Material(
+                            elevation: 2,
+                            borderRadius: BorderRadius.circular(12),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TextField(
+                                  controller: searchController,
+                                  decoration: InputDecoration(
+                                    prefixIcon: const Icon(Icons.search),
+                                    hintText: tr(
+                                      'Search countries',
+                                      'Поиск стран',
+                                    ),
+                                    border: InputBorder.none,
                                   ),
-                                  border: InputBorder.none,
+                                  onChanged: (v) => setState(() => query = v),
                                 ),
-                                onChanged: (v) => setState(() => query = v),
-                              ),
-                              if (query.isNotEmpty)
-                                ConstrainedBox(
-                                  constraints: const BoxConstraints(
-                                    maxHeight: 200,
-                                  ),
-                                  child: ListView(
-                                    shrinkWrap: true,
-                                    children: [
-                                      for (final country
-                                          in state!.search(query).take(8))
-                                        ListTile(
-                                          title: Text(
-                                            ru
-                                                ? country.nameRu
-                                                : country.nameEn,
+                                if (query.isNotEmpty)
+                                  ConstrainedBox(
+                                    constraints: const BoxConstraints(
+                                      maxHeight: 200,
+                                    ),
+                                    child: ListView(
+                                      shrinkWrap: true,
+                                      children: [
+                                        for (final country
+                                            in state!.search(query).take(8))
+                                          ListTile(
+                                            title: Text(
+                                              ru
+                                                  ? country.nameRu
+                                                  : country.nameEn,
+                                            ),
+                                            subtitle: Text(country.id),
+                                            onTap: () =>
+                                                select(country.id, move: true),
                                           ),
-                                          subtitle: Text(country.id),
-                                          onTap: () =>
-                                              select(country.id, move: true),
-                                        ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
                     Positioned(
                       top: 8,
-                      right: 8,
+                      right: panelWidth + 8,
                       child: Column(
                         children: [
                           PointerInterceptor(
@@ -1871,11 +2279,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         !browserOpen &&
                         selected != null)
                       Positioned(
-                        left: 0,
+                        left: countryPanelOnSide ? null : 0,
                         right: 0,
+                        top: countryPanelOnSide ? 0 : null,
                         bottom: 0,
                         child: SizedBox(
-                          height: panelHeight,
+                          width: countryPanelOnSide ? panelWidth : null,
+                          height: countryPanelOnSide
+                              ? viewport.height
+                              : panelHeight,
                           child: _detailCard(
                             countryPanel: true,
                             viewport: viewport,
