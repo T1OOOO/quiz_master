@@ -448,7 +448,7 @@ void main() {
           bundle: MapFixtureBundle(),
           mapBuilder: (context, callback) {
             select = callback;
-            return const SizedBox.expand();
+            return const SizedBox.expand(key: ValueKey('practice-map'));
           },
         ),
       ),
@@ -456,6 +456,10 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Practice'));
     await tester.pumpAndSettle();
+    expect(
+      tester.getRect(find.byKey(const ValueKey('practice-map'))).bottom,
+      lessThanOrEqualTo(tester.getRect(find.text('Map practice')).top),
+    );
     expect(find.text('Find the country on the map'), findsOneWidget);
     select('MC');
     await tester.pumpAndSettle();

@@ -563,7 +563,20 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       await c.addSymbolLayer(
         'country-markers',
         'country-markers',
-        const SymbolLayerProperties(iconImage: ['get', 'sprite'], iconSize: 1),
+        const SymbolLayerProperties(
+          iconImage: ['get', 'sprite'],
+          iconSize: [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            1,
+            1,
+            4,
+            1.55,
+            7,
+            2,
+          ],
+        ),
       );
       Future<void> addLabels(
         String source,
@@ -606,7 +619,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           source,
           SymbolLayerProperties(
             iconImage: const ['get', 'sprite'],
-            iconSize: 1,
+            iconSize: source == 'capital-labels'
+                ? const [
+                    'interpolate',
+                    ['linear'],
+                    ['zoom'],
+                    4,
+                    1.5,
+                    7,
+                    2,
+                  ]
+                : 1,
             iconAnchor: source == 'capital-labels'
                 ? 'bottom'
                 : source == 'landmarks'
@@ -1542,9 +1565,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               final panelWidth = panelOpen && countryPanelOnSide
                   ? math.min(360.0, viewport.width * 0.7)
                   : 0.0;
+              final mapBottom = practice
+                  ? math.min(viewport.height, viewport.height * 0.48 + 12)
+                  : panelHeight;
               final currentMapViewport = Size(
                 viewport.width - panelWidth,
-                viewport.height - panelHeight,
+                viewport.height - mapBottom,
               );
               if (currentMapViewport != mapViewport) {
                 mapViewport = currentMapViewport;
@@ -1561,7 +1587,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       left: 0,
                       right: panelWidth,
                       top: 0,
-                      bottom: panelHeight,
+                      bottom: mapBottom,
                       child:
                           widget.featureMapBuilder?.call(
                             context,
