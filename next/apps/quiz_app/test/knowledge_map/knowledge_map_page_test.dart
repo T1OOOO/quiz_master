@@ -242,6 +242,56 @@ class MapFixtureBundle extends CachingAssetBundle {
 }
 
 void main() {
+  test(
+    'country layer replacement reports unrecoverable restore failure',
+    () async {
+      await expectLater(
+        replaceCountryLayer(
+          removeLayer: () async {},
+          removeSource: () async {},
+          addSource: (useNew) async =>
+              throw StateError(useNew ? 'new' : 'restore'),
+          addLayer: () async {},
+        ),
+        throwsA(isA<CountryLayerRecoveryFailure>()),
+      );
+    },
+  );
+
+  test(
+    'country layer replacement restores old data after an add failure',
+    () async {
+      final calls = <String>[];
+      var first = true;
+      await expectLater(
+        replaceCountryLayer(
+          removeLayer: () async => calls.add('remove layer'),
+          removeSource: () async => calls.add('remove source'),
+          addSource: (useNew) async {
+            calls.add(useNew ? 'new source' : 'old source');
+          },
+          addLayer: () async {
+            calls.add('add layer');
+            if (first) {
+              first = false;
+              throw StateError('failed');
+            }
+          },
+        ),
+        throwsStateError,
+      );
+      expect(calls, [
+        'remove layer',
+        'remove source',
+        'new source',
+        'add layer',
+        'remove source',
+        'old source',
+        'add layer',
+      ]);
+    },
+  );
+
   test('thematic population and area use rounded labels', () {
     expect(
       thematicNumberLabel(68551653, russian: true, area: false),

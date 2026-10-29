@@ -53,9 +53,9 @@ from stale errors left by a prior debug session.
 The marker layer contains 243 country/territory anchors and 239 country shapes.
 Native collision detection hides overlapping labels until
 zooming in. Country polygons have separate selected and hovered outlines.
-Montserrat's existing capital point incorrectly identifies Plymouth, England;
-that capital is excluded, while its country now has a verified 1:10m polygon
-and country label at Montserrat.
+Montserrat's capital is Brades, confirmed in November 2025; its point uses
+GeoNames 7266440. Plymouth is the former capital, and the old point identified
+Plymouth, England.
 
 ## Detailed map increment
 

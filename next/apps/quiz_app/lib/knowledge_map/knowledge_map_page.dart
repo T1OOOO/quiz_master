@@ -32,6 +32,41 @@ String? capitalThematicLabel(MapCountry? country, {required bool russian}) {
   return russian ? russianCountryLabel(value) : value;
 }
 
+class CountryLayerRecoveryFailure implements Exception {
+  CountryLayerRecoveryFailure(this.error);
+  final Object error;
+}
+
+@visibleForTesting
+Future<void> replaceCountryLayer({
+  required Future<void> Function() removeLayer,
+  required Future<void> Function() removeSource,
+  required Future<void> Function(bool useNew) addSource,
+  required Future<void> Function() addLayer,
+}) async {
+  var layerRemoved = false;
+  var sourceRemoved = false;
+  var newSource = false;
+  try {
+    await removeLayer();
+    layerRemoved = true;
+    await removeSource();
+    sourceRemoved = true;
+    await addSource(true);
+    newSource = true;
+    await addLayer();
+  } catch (error) {
+    try {
+      if (newSource) await removeSource();
+      if (sourceRemoved) await addSource(false);
+      if (layerRemoved) await addLayer();
+    } catch (recoveryError) {
+      throw CountryLayerRecoveryFailure(recoveryError);
+    }
+    rethrow;
+  }
+}
+
 class KnowledgeMapPage extends StatefulWidget {
   const KnowledgeMapPage({super.key, this.onExit})
     : mapBuilder = null,
@@ -121,6 +156,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Size mapViewport = Size.zero;
   List<MapCountry> visible = [];
   bool visibleOpen = false;
+  bool replacingCountryLayer = false;
+  Map<String, dynamic>? appliedCountryLabels;
+  String appliedThematic = 'none';
   bool browserOpen = false;
   bool get ru => Localizations.localeOf(context).languageCode == 'ru';
   String tr(String en, String russian) => ru ? russian : en;
@@ -538,6 +576,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         properties['sprite'] = 'country-$id';
       }
       await c.addGeoJsonSource('country-markers', countryLabels!);
+      appliedCountryLabels =
+          jsonDecode(jsonEncode(countryLabels)) as Map<String, dynamic>;
+      appliedThematic = 'none';
       await c.addSymbolLayer(
         'country-markers',
         'country-markers',
@@ -723,6 +764,19 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     }
   }
 
+  Future<List> queryCountryMarkers(
+    MapLibreMapController c,
+    math.Point<double> point,
+  ) async {
+    if (replacingCountryLayer) return [];
+    try {
+      return await c.queryRenderedFeatures(point, ['country-markers'], null);
+    } catch (_) {
+      if (replacingCountryLayer) return [];
+      rethrow;
+    }
+  }
+
   Future<void> tap(math.Point<double> point, LatLng position) async {
     final c = controller;
     final attempt = generation;
@@ -765,9 +819,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           return;
         }
       }
-      features = await c.queryRenderedFeatures(point, [
-        'country-markers',
-      ], null);
+      features = await queryCountryMarkers(c, point);
       if (!current()) return;
       if (features.isEmpty) {
         features = await c.queryRenderedFeatures(point, ['land'], null);
@@ -884,9 +936,49 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           generation == attempt &&
           controller == c &&
           request == thematicSequence) {
-        await c.setGeoJsonSource('country-markers', labels);
+        final previous = appliedCountryLabels;
+        if (previous == null) return;
+        tapRequests.invalidate();
+        clearHover();
+        replacingCountryLayer = true;
+        try {
+          await replaceCountryLayer(
+            removeLayer: () => c.removeLayer('country-markers'),
+            removeSource: () => c.removeSource('country-markers'),
+            addSource: (useNew) => c.addGeoJsonSource(
+              'country-markers',
+              useNew ? labels : previous,
+            ),
+            addLayer: () async {
+              await c.addSymbolLayer(
+                'country-markers',
+                'country-markers',
+                SymbolLayerProperties(
+                  iconImage: const ['get', 'sprite'],
+                  iconSize: 1,
+                  visibility: showCountryLabels ? 'visible' : 'none',
+                ),
+                belowLayerId: 'capital-labels',
+              );
+            },
+          );
+          appliedCountryLabels = labels;
+          appliedThematic = value;
+        } on CountryLayerRecoveryFailure catch (error, stack) {
+          debugPrint(
+            'Knowledge map: country layer recovery failed: $error\n$stack',
+          );
+          if (mounted && generation == attempt && controller == c) {
+            setState(() => failed = true);
+          }
+        } finally {
+          replacingCountryLayer = false;
+        }
       }
     } catch (error) {
+      if (mounted && generation == attempt && request == thematicSequence) {
+        setState(() => thematic = appliedThematic);
+      }
       debugPrint('Knowledge map: thematic labels unavailable: $error');
     }
   }
@@ -986,7 +1078,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     bool current() => layer == 'country-markers'
         ? showCountryLabels == value
         : showWaterLabels == value;
-    labelCommands = labelCommands.catchError((Object _) {}).then((_) async {
+    Future<void> applyVisibility() async {
       if (!mounted ||
           generation != attempt ||
           controller != c ||
@@ -1002,8 +1094,19 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           setState(() => failed = true);
         }
       }
-    });
-    await labelCommands;
+    }
+
+    if (layer == 'country-markers') {
+      thematicCommands = thematicCommands
+          .catchError((Object _) {})
+          .then((_) => applyVisibility());
+      await thematicCommands;
+    } else {
+      labelCommands = labelCommands
+          .catchError((Object _) {})
+          .then((_) => applyVisibility());
+      await labelCommands;
+    }
   }
 
   void clearHover() {
@@ -1107,9 +1210,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           }
           return;
         }
-        features = await c.queryRenderedFeatures(point, [
-          'country-markers',
-        ], null);
+        features = await queryCountryMarkers(c, point);
         if (!current()) return;
         if (features.isEmpty) {
           final water = await c.queryRenderedFeatures(point, [

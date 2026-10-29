@@ -33,7 +33,17 @@ class MapBuildTest(unittest.TestCase):
         self.assertEqual(labels['US']['geometry']['coordinates'],[-97.482602,39.538479])
         lon,lat=labels['MS']['geometry']['coordinates']
         self.assertTrue(-63 < lon < -61 and 16 < lat < 17)
-        self.assertFalse(any(f['properties'].get('country_id')=='MS' for f in self.layers['capitals.geojson']['features']))
+        capitals=[f for f in self.layers['capitals.geojson']['features'] if f['properties'].get('country_id')=='MS']
+        self.assertEqual(len(capitals),1)
+        self.assertEqual(capitals[0]['id'],'capital-geonames-7266440')
+        self.assertEqual(capitals[0]['geometry']['coordinates'],[-62.21058,16.79183])
+        self.assertEqual(capitals[0]['properties']['name_en'],'Brades')
+        self.assertEqual(capitals[0]['properties']['name_ru'],'Брейдс')
+        countries=json.loads((m.ROOT/'next/apps/quiz_app/assets/quizipedia/country_facts.json').read_text(encoding='utf8'))['countries']
+        self.assertEqual(next(c for c in countries if c['id']=='MS')['capital'],'Brades')
+        facts=json.loads((m.ROOT/'next/apps/quiz_app/assets/quizipedia/map_feature_facts.json').read_text(encoding='utf8'))
+        self.assertTrue(facts['capitals'][capitals[0]['id']])
+        self.assertNotIn('capital-1159135121',facts['capitals'])
 
     def test_water_labels_and_anchor(self):
         waters={f['id']:f for f in self.layers['waterways.geojson']['features']}

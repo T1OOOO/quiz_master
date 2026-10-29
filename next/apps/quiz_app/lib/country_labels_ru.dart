@@ -72,6 +72,7 @@ const Map<String, String> russianCountryLabels = <String, String>{
   "BOB": "боливийский боливиано",
   "Bogotá": "Богота",
   "Bosnian": "боснийский",
+  "Brades": "Брейдс",
   "Brasília": "Бразилиа",
   "Bratislava": "Братислава",
   "Brazzaville": "Браззавиль",

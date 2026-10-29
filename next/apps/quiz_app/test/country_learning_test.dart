@@ -1,10 +1,14 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/country_learning.dart';
+import 'package:quiz_app/country_labels_ru.dart';
 
 import 'dart:convert';
 import 'dart:io';
 
 void main() {
+  test('localizes the capital of Montserrat', () {
+    expect(russianCountryLabel('Brades'), 'Брейдс');
+  });
   test('shipped relation topics all produce single-answer questions', () {
     final doc = jsonDecode(
       File('assets/quizipedia/country_facts.json').readAsStringSync(),

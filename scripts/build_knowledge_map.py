@@ -10,9 +10,9 @@ SOURCES = {
  'quizipedia/sources/world-source.json': ('6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f', 'https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/', 'Public domain'),
  'quizipedia/content.json': ('ca0f92acffc7bd76424bb28c56c895f5f062de19eec76d4d4a97498fc449d947', 'Repository country identity exceptions', 'Project data'),
  'docs/rewrite-agents/preparation-country-registry/countries.json': ('78b1bb2d9fbfdb35033022dbdc94c34a89ad472a6cce835c5dd1ec2932f14b04', 'https://unstats.un.org/unsd/methodology/m49/overview/', 'See source registry'),
- 'next/apps/quiz_app/assets/quizipedia/capital_points.json': ('7edd476a15c7edab960a0e44d0fa449aa95c094bd191bec8d663b5f622380341', 'https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-populated-places/', 'Public domain'),
+ 'next/apps/quiz_app/assets/quizipedia/capital_points.json': ('ea88c890cf27dce524f5631c08ce5116edd37bb5cc5f467f5f6e8c0363283ec9', 'Repository capital points; see individual source registry', 'See source registry'),
  'next/apps/quiz_app/assets/quizipedia/waterways.json': ('cb884b1a74fbfdaea11176c51045d37ae19546b1cc9c2ad6763d91dbd0bd9593', 'Repository waterway identities', 'Public domain'),
- 'next/apps/quiz_app/assets/quizipedia/country_facts.json': ('38283995143f52f4a82e947fc35cc5eb4b7419f92debd3697cd71d2728821063', 'Repository country facts registry', 'See source country_facts.json'),
+ 'next/apps/quiz_app/assets/quizipedia/country_facts.json': ('90b994c5cfba397671cd5724cf805b8a387abcecc151e93f0e938d1005a38e5b', 'Repository country facts registry', 'See source country_facts.json'),
  'quizipedia/landmark_locations.geojson': ('77a95d4d205041552d9de88f49256f3984563991b72762e83ef1763e6f532c7b', 'https://www.wikidata.org/', 'CC0 coordinates; see individual image metadata'),
  'next/apps/quiz_app/assets/quizipedia/catalog.json': ('0ef534bac377c150e3bf3109d7dea96fb56e1e68f8bbc04c81adc5804d2d984b', 'Repository landmark catalog', 'See individual image metadata'),
  'quizipedia/sources/map_v2/ne_10m_admin_0_countries.geojson': ('239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255', 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson', 'Public domain'),
@@ -142,11 +142,9 @@ def build():
     capitals=[]
     label_ids={f['id'] for f in country_labels}
     for p in data['next/apps/quiz_app/assets/quizipedia/capital_points.json']['capitals']:
-        # The existing MS row is Plymouth, England, not Montserrat.
-        if p['country_id'] == 'MS': continue
         reg=registry.get(p['country_id']); names=reg['capitals'] if reg else []
         match=next((n for n in names if n['name_en'].casefold()==p['name'].casefold()), None)
-        capitals.append(feature('capital-'+str(p['ne_id']), match['name_ru'] if match else p['name'], p['name'], 'capital', {'type':'Point','coordinates':[p['longitude'],p['latitude']]},p['country_id']))
+        capitals.append(feature('capital-'+str(p['id'] if 'id' in p else p['ne_id']), match['name_ru'] if match else p.get('name_ru',p['name']), p['name'], 'capital', {'type':'Point','coordinates':[p['longitude'],p['latitude']]},p['country_id']))
         iso=p['country_id']
         if iso not in label_ids:
             names=facts[iso]
@@ -233,7 +231,7 @@ def build():
     for name,collection in layers.items():
         ids=[f['id'] for f in collection['features']]
         if len(ids)!=len(set(ids)): raise ValueError('duplicate id in '+name)
-    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Country and lake geometry uses Natural Earth 1:10m. The Danube and Lena use 1:10m river geometry matched by Wikidata ID and checked against 110m coverage; other rivers and marine features remain 1:110m.', 'Country labels preserve existing 110m anchors and capital fallbacks; additional 10m shapes use 10m label anchors. Facts without a shape or verified capital have no marker.', 'Legacy 110m disputed geometries were not assigned another country: '+', '.join(sorted(omitted)), 'Montserrat uses its 1:10m country label; its existing Plymouth capital point is omitted because it is Plymouth, England.', 'Capital names without a matching Russian registry label retain the source name.', 'Detailed physical rivers contain Natural Earth 1:10m River and River (Intermittent) classes without inferred identities; lake centerlines and canals are excluded.', 'Detailed physical lakes contain all Natural Earth 1:10m Lake, Reservoir and Alkaline Lake polygons without inferred identities.', 'Waterways carry no inferred country relationship.']}
+    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Country and lake geometry uses Natural Earth 1:10m. The Danube and Lena use 1:10m river geometry matched by Wikidata ID and checked against 110m coverage; other rivers and marine features remain 1:110m.', 'Country labels preserve existing 110m anchors and capital fallbacks; additional 10m shapes use 10m label anchors. Facts without a shape or verified capital have no marker.', 'Legacy 110m disputed geometries were not assigned another country: '+', '.join(sorted(omitted)), 'Montserrat’s capital is Brades, confirmed in November 2025; its coordinates use GeoNames 7266440.', 'Capital names without a matching Russian registry label retain the source name.', 'Detailed physical rivers contain Natural Earth 1:10m River and River (Intermittent) classes without inferred identities; lake centerlines and canals are excluded.', 'Detailed physical lakes contain all Natural Earth 1:10m Lake, Reservoir and Alkaline Lake polygons without inferred identities.', 'Waterways carry no inferred country relationship.']}
     return layers,manifest
 
 def encoded(value):
