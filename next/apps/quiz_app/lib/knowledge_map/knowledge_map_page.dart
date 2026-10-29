@@ -32,39 +32,13 @@ String? capitalThematicLabel(MapCountry? country, {required bool russian}) {
   return russian ? russianCountryLabel(value) : value;
 }
 
-class CountryLayerRecoveryFailure implements Exception {
-  CountryLayerRecoveryFailure(this.error);
-  final Object error;
-}
-
 @visibleForTesting
-Future<void> replaceCountryLayer({
-  required Future<void> Function() removeLayer,
-  required Future<void> Function() removeSource,
-  required Future<void> Function(bool useNew) addSource,
-  required Future<void> Function() addLayer,
+Future<void> commitCountryLabelsUpdate({
+  required Future<void> Function() update,
+  required void Function() commit,
 }) async {
-  var layerRemoved = false;
-  var sourceRemoved = false;
-  var newSource = false;
-  try {
-    await removeLayer();
-    layerRemoved = true;
-    await removeSource();
-    sourceRemoved = true;
-    await addSource(true);
-    newSource = true;
-    await addLayer();
-  } catch (error) {
-    try {
-      if (newSource) await removeSource();
-      if (sourceRemoved) await addSource(false);
-      if (layerRemoved) await addLayer();
-    } catch (recoveryError) {
-      throw CountryLayerRecoveryFailure(recoveryError);
-    }
-    rethrow;
-  }
+  await update();
+  commit();
 }
 
 class KnowledgeMapPage extends StatefulWidget {
@@ -156,7 +130,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Size mapViewport = Size.zero;
   List<MapCountry> visible = [];
   bool visibleOpen = false;
-  bool replacingCountryLayer = false;
   Map<String, dynamic>? appliedCountryLabels;
   String appliedThematic = 'none';
   bool browserOpen = false;
@@ -768,13 +741,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     MapLibreMapController c,
     math.Point<double> point,
   ) async {
-    if (replacingCountryLayer) return [];
-    try {
-      return await c.queryRenderedFeatures(point, ['country-markers'], null);
-    } catch (_) {
-      if (replacingCountryLayer) return [];
-      rethrow;
-    }
+    return c.queryRenderedFeatures(point, ['country-markers'], null);
   }
 
   Future<void> tap(math.Point<double> point, LatLng position) async {
@@ -938,42 +905,13 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           request == thematicSequence) {
         final previous = appliedCountryLabels;
         if (previous == null) return;
-        tapRequests.invalidate();
-        clearHover();
-        replacingCountryLayer = true;
-        try {
-          await replaceCountryLayer(
-            removeLayer: () => c.removeLayer('country-markers'),
-            removeSource: () => c.removeSource('country-markers'),
-            addSource: (useNew) => c.addGeoJsonSource(
-              'country-markers',
-              useNew ? labels : previous,
-            ),
-            addLayer: () async {
-              await c.addSymbolLayer(
-                'country-markers',
-                'country-markers',
-                SymbolLayerProperties(
-                  iconImage: const ['get', 'sprite'],
-                  iconSize: 1,
-                  visibility: showCountryLabels ? 'visible' : 'none',
-                ),
-                belowLayerId: 'capital-labels',
-              );
-            },
-          );
-          appliedCountryLabels = labels;
-          appliedThematic = value;
-        } on CountryLayerRecoveryFailure catch (error, stack) {
-          debugPrint(
-            'Knowledge map: country layer recovery failed: $error\n$stack',
-          );
-          if (mounted && generation == attempt && controller == c) {
-            setState(() => failed = true);
-          }
-        } finally {
-          replacingCountryLayer = false;
-        }
+        await commitCountryLabelsUpdate(
+          update: () => c.setGeoJsonSource('country-markers', labels),
+          commit: () {
+            appliedCountryLabels = labels;
+            appliedThematic = value;
+          },
+        );
       }
     } catch (error) {
       if (mounted && generation == attempt && request == thematicSequence) {
@@ -1454,6 +1392,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                             onExit: (_) => clearHover(),
                             child: MapLibreMap(
                               key: ValueKey(generation),
+                              disableSymbolPlacementFade: true,
                               styleString: '{"version":8,"sources":{},"layers":[{"id":"sea","type":"background","paint":{"background-color":"#c8e5ed"}}]}',
                               initialCameraPosition: const CameraPosition(
                                 target: LatLng(20, 10),

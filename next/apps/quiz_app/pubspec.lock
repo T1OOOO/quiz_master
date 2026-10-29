@@ -384,10 +384,9 @@ packages:
   maplibre_gl:
     dependency: "direct main"
     description:
-      name: maplibre_gl
-      sha256: "52e5c873137f8bcb2646802cf1d811575cb4b5bab52d1373d8d23a48f656f166"
-      url: "https://pub.dev"
-    source: hosted
+      path: "vendor/maplibre_gl"
+      relative: true
+    source: path
     version: "0.27.1"
   maplibre_gl_platform_interface:
     dependency: transitive
@@ -398,12 +397,11 @@ packages:
     source: hosted
     version: "0.27.1"
   maplibre_gl_web:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: maplibre_gl_web
-      sha256: "3c0e9084edbe7d860f2366f8d6658722c79f3722a4e1234f3e49251a57f8297a"
-      url: "https://pub.dev"
-    source: hosted
+      path: "vendor/maplibre_gl_web"
+      relative: true
+    source: path
     version: "0.27.1"
   markdown:
     dependency: transitive

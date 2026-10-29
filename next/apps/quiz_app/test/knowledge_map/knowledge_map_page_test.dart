@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:quiz_app/knowledge_map/knowledge_map_page.dart';
 import 'package:quiz_app/knowledge_map/map_state.dart';
 
@@ -243,54 +244,32 @@ class MapFixtureBundle extends CachingAssetBundle {
 
 void main() {
   test(
-    'country layer replacement reports unrecoverable restore failure',
+    'failed country source update does not commit the thematic mode',
     () async {
+      var applied = 'none';
       await expectLater(
-        replaceCountryLayer(
-          removeLayer: () async {},
-          removeSource: () async {},
-          addSource: (useNew) async =>
-              throw StateError(useNew ? 'new' : 'restore'),
-          addLayer: () async {},
-        ),
-        throwsA(isA<CountryLayerRecoveryFailure>()),
-      );
-    },
-  );
-
-  test(
-    'country layer replacement restores old data after an add failure',
-    () async {
-      final calls = <String>[];
-      var first = true;
-      await expectLater(
-        replaceCountryLayer(
-          removeLayer: () async => calls.add('remove layer'),
-          removeSource: () async => calls.add('remove source'),
-          addSource: (useNew) async {
-            calls.add(useNew ? 'new source' : 'old source');
-          },
-          addLayer: () async {
-            calls.add('add layer');
-            if (first) {
-              first = false;
-              throw StateError('failed');
-            }
-          },
+        commitCountryLabelsUpdate(
+          update: () async => throw StateError('source unavailable'),
+          commit: () => applied = 'population',
         ),
         throwsStateError,
       );
-      expect(calls, [
-        'remove layer',
-        'remove source',
-        'new source',
-        'add layer',
-        'remove source',
-        'old source',
-        'add layer',
-      ]);
+      expect(applied, 'none');
+      await commitCountryLabelsUpdate(
+        update: () async {},
+        commit: () => applied = 'population',
+      );
+      expect(applied, 'population');
     },
   );
+
+  test('symbol fade is disabled only when requested for a map', () {
+    expect(MapLibreMap().disableSymbolPlacementFade, isFalse);
+    expect(
+      MapLibreMap(disableSymbolPlacementFade: true).disableSymbolPlacementFade,
+      isTrue,
+    );
+  });
 
   test('thematic population and area use rounded labels', () {
     expect(
