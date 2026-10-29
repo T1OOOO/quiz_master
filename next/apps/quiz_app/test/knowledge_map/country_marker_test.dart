@@ -7,6 +7,31 @@ import 'package:quiz_app/knowledge_map/country_marker.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test(
+    'compact country card retains its flag and reduces its footprint',
+    () async {
+      final flag = image.Image(width: 12, height: 8, numChannels: 4);
+      image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));
+      final flagBytes = Uint8List.fromList(image.encodePng(flag));
+      final regular = image.decodePng(
+        await renderCountryMarker(name: 'Франция', flagBytes: flagBytes),
+      )!;
+      final compact = image.decodePng(
+        await renderCountryMarker(
+          name: 'Франция',
+          flagBytes: flagBytes,
+          compact: true,
+        ),
+      )!;
+      expect(compact.width, lessThan(regular.width));
+      expect(compact.height, lessThan(regular.height));
+      expect(
+        compact.any((p) => p.r > 220 && p.g < 30 && p.b < 30 && p.a > 200),
+        isTrue,
+      );
+    },
+  );
+
   test('capital labels are compact and have transparent backgrounds', () async {
     final plain = image.decodePng(await renderCountryMarker(name: 'Vienna'))!;
     final capital = image.decodePng(

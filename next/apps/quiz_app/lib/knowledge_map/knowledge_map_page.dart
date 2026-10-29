@@ -558,6 +558,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         final bytes = await renderCountryMarker(
           name: properties[localizedRu ? 'name_ru' : 'name_en'] as String,
           flagBytes: encoded == null ? null : base64Decode(encoded),
+          compact: true,
         );
         if (!mounted || generation != attempt || controller != c || failed) {
           return;
@@ -574,17 +575,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'country-markers',
         const SymbolLayerProperties(
           iconImage: ['get', 'sprite'],
-          iconSize: [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            1,
-            1,
-            4,
-            1.55,
-            7,
-            2,
-          ],
+          iconSize: 1.0,
         ),
       );
       Future<void> addLabels(
@@ -1105,6 +1096,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               name: '$name$suffix',
               maxLines: value == 'none' ? null : 4,
               flagBytes: encoded == null ? null : base64Decode(encoded),
+              compact: true,
             );
           },
           () async {
