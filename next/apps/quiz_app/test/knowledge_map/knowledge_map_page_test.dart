@@ -336,6 +336,43 @@ void main() {
       expect(find.byTooltip('Close'), findsNothing);
     });
   }
+  testWidgets('country details open only on request and can be reopened', (
+    tester,
+  ) async {
+    late void Function(String?) select;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, callback) {
+            select = callback;
+            return const SizedBox.expand();
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    select('FR');
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('country-bottom-panel')), findsNothing);
+    await tester.tap(find.text('Country details'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('country-bottom-panel')), findsOneWidget);
+    await tester.tap(find.byTooltip('Close'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('country-bottom-panel')), findsNothing);
+    expect(find.text('Country details'), findsOneWidget);
+    await tester.tap(find.text('Country details'));
+    await tester.pumpAndSettle();
+    expect(find.text('Capital: Paris'), findsOneWidget);
+    await tester.tap(find.byTooltip('Layers'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Layers'));
+    await tester.pumpAndSettle();
+    expect(find.byKey(const ValueKey('country-bottom-panel')), findsNothing);
+    expect(find.text('Country details'), findsOneWidget);
+  });
+
   testWidgets('country panel resizes the same map and closing restores it', (
     tester,
   ) async {
@@ -365,6 +402,8 @@ void main() {
     final mapElement = tester.element(find.byKey(const ValueKey('map-area')));
     final before = tester.getSize(find.byKey(const ValueKey('map-area')));
     select('FR');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Country details'));
     await tester.pumpAndSettle();
     final after = tester.getSize(find.byKey(const ValueKey('map-area')));
     expect(
@@ -407,6 +446,8 @@ void main() {
     );
     await tester.pumpAndSettle();
     select('FR');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Country details'));
     await tester.pumpAndSettle();
     final map = find.byKey(const ValueKey('map-area'));
     final height = tester.getSize(map).height;
@@ -556,6 +597,8 @@ void main() {
     await tester.tap(find.byType(ListTile).first);
     await tester.pumpAndSettle();
     expect(tester.testTextInput.isVisible, isFalse);
+    await tester.tap(find.text('Country details'));
+    await tester.pumpAndSettle();
     expect(find.textContaining('Capital: Paris'), findsOneWidget);
     expect(find.textContaining('Area: ≈ 550 thousand'), findsOneWidget);
     expect(
@@ -570,6 +613,9 @@ void main() {
     await tester.enterText(find.byType(TextField), 'Monaco');
     await tester.pump();
     await tester.tap(find.byType(ListTile).first);
+    await tester.pumpAndSettle();
+    expect(find.text('Country details'), findsOneWidget);
+    await tester.tap(find.text('Country details'));
     await tester.pumpAndSettle();
     expect(find.text('Monaco'), findsOneWidget);
     expect(tester.testTextInput.isVisible, isFalse);
@@ -641,6 +687,9 @@ void main() {
     );
     await tester.pumpAndSettle();
     select('FR');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Country details'));
+    await tester.pumpAndSettle();
     hover('FR', const Offset(790, 590));
     await tester.pump();
     expect(find.text('France'), findsOneWidget);
@@ -735,6 +784,8 @@ void main() {
     expect(tester.getBottomLeft(find.byTooltip('Layers')).dy, greaterThan(400));
     select('FR');
     await tester.pump();
+    await tester.tap(find.text('Country details'));
+    await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('country-bottom-panel')), findsOneWidget);
     expect(
       tester.getRect(find.byKey(const ValueKey('country-bottom-panel'))).bottom,
@@ -804,7 +855,7 @@ void main() {
         find.ancestor(of: find.text('FR'), matching: find.byType(ListTile)),
       );
       await tester.pumpAndSettle();
-      expect(find.byTooltip('Close'), findsOneWidget);
+      expect(find.text('Country details'), findsOneWidget);
       expect(find.widgetWithText(ListTile, 'France'), findsNothing);
     },
   );
@@ -836,6 +887,8 @@ void main() {
       await tester.tap(find.text('Visible countries'));
       await tester.pumpAndSettle();
       await tester.tap(find.widgetWithText(ListTile, 'France'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Country details'));
       await tester.pumpAndSettle();
       await tester.ensureVisible(find.text('Source 1'));
       expect(find.text('Source 1').hitTestable(), findsOneWidget);
@@ -964,6 +1017,8 @@ void main() {
       await tester.pumpAndSettle();
       select('FR');
       await tester.pumpAndSettle();
+      await tester.tap(find.text('Country details'));
+      await tester.pumpAndSettle();
       expect(find.text('Eiffel Tower'), findsOneWidget);
       expect(find.text('Landmarks'), findsOneWidget);
       expect(find.text('Test sea'), findsOneWidget);
@@ -1024,6 +1079,8 @@ void main() {
     );
     await tester.pumpAndSettle();
     select('FR');
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('О стране'));
     await tester.pumpAndSettle();
     expect(find.text('Столица: Париж'), findsOneWidget);
     expect(find.text('Языки: французский, Unknown language'), findsOneWidget);

@@ -133,6 +133,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Map<String, dynamic>? appliedCountryLabels;
   String appliedThematic = 'none';
   bool browserOpen = false;
+  bool countryDetailsOpen = false;
   bool countryPanelOnSide = false;
   double? countryPanelHeight;
   bool practice = false;
@@ -207,6 +208,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       showCountryLabels = true;
       showWaterLabels = true;
       layersOpen = false;
+      countryDetailsOpen = false;
       generation++;
     });
     final attempt = generation;
@@ -799,6 +801,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final attempt = generation;
     setState(() {
       state?.select(id);
+      countryDetailsOpen = false;
       if (id != null) {
         visibleOpen = false;
         browserOpen = false;
@@ -946,15 +949,36 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       }
       features = await queryCountryMarkers(c, point);
       if (!current()) return;
+      final markerTapped = features.isNotEmpty;
       if (features.isEmpty) {
         features = await c.queryRenderedFeatures(point, ['land'], null);
         if (!current()) return;
       }
-      await select(
-        features.isEmpty
-            ? null
-            : features.first['properties']['country_id'] as String?,
-      );
+      final id = features.isEmpty
+          ? null
+          : features.first['properties']['country_id'] as String?;
+      await select(id);
+      if (markerTapped &&
+          id != null &&
+          mounted &&
+          generation == attempt &&
+          controller == c &&
+          state?.selectedId == id) {
+        final matches = (countryLabels?['features'] as List? ?? const []).where(
+          (f) => f['properties']['country_id'] == id,
+        );
+        if (matches.isNotEmpty) {
+          final coordinates = matches.first['geometry']['coordinates'] as List;
+          await c.animateCamera(
+            CameraUpdate.newLatLng(
+              LatLng(
+                (coordinates[1] as num).toDouble(),
+                (coordinates[0] as num).toDouble(),
+              ),
+            ),
+          );
+        }
+      }
     } catch (error, stack) {
       debugPrint('Knowledge map: tap failed: $error\n$stack');
       if (current()) {
@@ -1460,7 +1484,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                     if (countryPanel)
                       IconButton(
                         tooltip: tr('Layers', 'Слои'),
-                        onPressed: () => setState(() => layersOpen = true),
+                        onPressed: () => setState(() {
+                          layersOpen = true;
+                          countryDetailsOpen = false;
+                        }),
                         icon: const Icon(Icons.layers_outlined),
                       ),
                     IconButton(
@@ -1554,6 +1581,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               );
               final panelOpen =
                   selected != null &&
+                  countryDetailsOpen &&
                   !layersOpen &&
                   !visibleOpen &&
                   !browserOpen;
@@ -1650,8 +1678,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             FilledButton.tonal(
-                              onPressed: () =>
-                                  setState(() => visibleOpen = !visibleOpen),
+                              onPressed: () => setState(() {
+                                visibleOpen = !visibleOpen;
+                                if (visibleOpen) countryDetailsOpen = false;
+                              }),
                               child: Text(
                                 tr('Visible countries', 'Страны на карте'),
                               ),
@@ -1753,6 +1783,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         child: FilledButton.tonal(
                           onPressed: () => setState(() {
                             browserOpen = !browserOpen;
+                            if (browserOpen) countryDetailsOpen = false;
                             visibleOpen = false;
                             layersOpen = false;
                           }),
@@ -1773,6 +1804,27 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           tooltip: tr('Practice', 'Тренировка'),
                           onPressed: () => setPractice(true),
                           icon: const Icon(Icons.quiz_outlined),
+                        ),
+                      ),
+                    ),
+                  if (!practice &&
+                      selected != null &&
+                      !panelOpen &&
+                      !layersOpen &&
+                      !visibleOpen &&
+                      !browserOpen)
+                    Positioned(
+                      bottom: 12,
+                      left: 76,
+                      right: 76,
+                      child: Center(
+                        child: PointerInterceptor(
+                          child: FilledButton.tonalIcon(
+                            onPressed: () =>
+                                setState(() => countryDetailsOpen = true),
+                            icon: const Icon(Icons.info_outline),
+                            label: Text(tr('Country details', 'О стране')),
+                          ),
                         ),
                       ),
                     ),
@@ -2081,10 +2133,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         ],
                       ),
                     ),
-                    if (selected == null ||
-                        layersOpen ||
-                        visibleOpen ||
-                        browserOpen)
+                    if (!panelOpen || layersOpen || visibleOpen || browserOpen)
                       Positioned(
                         right: 12,
                         bottom: 12,
@@ -2300,10 +2349,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           ),
                         ),
                       ),
-                    if (!layersOpen &&
-                        !visibleOpen &&
-                        !browserOpen &&
-                        selected != null)
+                    if (panelOpen)
                       Positioned(
                         left: countryPanelOnSide ? null : 0,
                         right: 0,
@@ -2325,7 +2371,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                     width: 36,
                                     height: 24,
                                   ),
-                            onClose: () => select(null),
+                            onClose: () =>
+                                setState(() => countryDetailsOpen = false),
                             children: [
                               if (selected.interestingFacts.isNotEmpty) ...[
                                 const SizedBox(height: 12),
