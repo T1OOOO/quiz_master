@@ -147,8 +147,10 @@ class MapBuildTest(unittest.TestCase):
         curated=m.checked_read(m.ROOT/'quizipedia/map_v2_curated_landmarks.json',m.SOURCES['quizipedia/map_v2_curated_landmarks.json'][0])
         catalog_ids={r['id'] for r in catalog}
         self.assertEqual({f['id'] for f in rows},catalog_ids | {f['id'] for f in curated['features']})
-        self.assertEqual(len(rows),79)
+        self.assertEqual(len(rows),81)
         lookup={f['id']:f for f in rows}
+        self.assertEqual(lookup['namib-sand-sea']['properties']['source_url'], 'https://whc.unesco.org/en/list/1430/')
+        self.assertEqual(lookup['everglades-national-park']['properties']['source_url'], 'https://whc.unesco.org/en/list/76/')
         self.assertEqual(lookup['mount-everest']['geometry']['coordinates'],[86.925,27.988])
         self.assertEqual(lookup['denali']['geometry']['coordinates'],[-151.007,63.069])
         for ident,lon,lat in [('eiffel',2.294479,48.858296),('colosseum',12.492222,41.890278),('badaling',116.00649,40.35428)]:

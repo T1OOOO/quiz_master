@@ -1394,30 +1394,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         countryLabels!['features'] as List,
         features,
         viewport,
+        fullOutlines: countries!['features'] as List,
       );
-      final ids = anchors.keys.toList();
-      if (ids.isNotEmpty) {
-        final screen = await c.toScreenLocationBatch(
-          ids.map((id) {
-            final point = anchors[id]!;
-            return LatLng(point.$2, point.$1);
-          }),
-        );
-        if (!current()) return;
-        final maxX = size.width * scale, maxY = size.height * scale;
-        final padX = math.min(90.0 * scale, maxX / 2);
-        final padY = math.min(45.0 * scale, maxY / 2);
-        for (var i = 0; i < ids.length; i++) {
-          final point = screen[i];
-          final x = point.x.toDouble().clamp(padX, maxX - padX);
-          final y = point.y.toDouble().clamp(padY, maxY - padY);
-          if (x != point.x || y != point.y) {
-            final position = await c.toLatLng(math.Point(x, y));
-            if (!current()) return;
-            anchors[ids[i]] = (position.longitude, position.latitude);
-          }
-        }
-      }
       if (mapEquals(anchors, labelOverrides)) return;
       thematicCommands = thematicCommands.catchError((Object _) {}).then((
         _,

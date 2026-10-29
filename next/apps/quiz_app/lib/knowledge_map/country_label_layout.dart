@@ -1,5 +1,5 @@
-/// Geometry helpers for keeping country labels visible when their centroid is
-/// outside the viewport. Coordinates are GeoJSON [longitude, latitude].
+/// Geometry helpers for placing country labels in the visible outline.
+/// Coordinates are GeoJSON [longitude, latitude].
 class GeoViewport {
   const GeoViewport({
     required this.west,
@@ -39,59 +39,121 @@ class GeoViewport {
       : type == 'MultiPolygon'
       ? raw
       : const [];
-  final candidates = <({double longitude, double latitude})>[];
+  ({double longitude, double latitude})? best;
+  var bestArea = -1.0;
   for (final polygon in polygons) {
     if (polygon is! List || polygon.isEmpty) continue;
-    final rings = polygon.whereType<List>().toList();
-    if (rings.isEmpty) continue;
-    final outer = _points(rings.first);
-    if (outer.length < 3) continue;
-    final centerLon = viewport.west + viewport._width / 2;
-    final centerLat = (viewport.south + viewport.north) / 2;
-    final inHole = rings
-        .skip(1)
-        .map(_points)
-        .any(
-          (hole) =>
-              hole.length >= 3 && _inside(centerLon, centerLat, hole, viewport),
-        );
-    if (_inside(centerLon, centerLat, outer, viewport) && !inHole) {
-      candidates.add((longitude: _normalize(centerLon), latitude: centerLat));
-      return candidates.first;
+    final rings = polygon.whereType<List>().map(_points).toList();
+    if (rings.isEmpty || rings.first.length < 3) continue;
+    final projected = <List<(double, double)>>[];
+    for (final ring in rings) {
+      if (ring.isEmpty) continue;
+      final points = <(double, double)>[];
+      var previous = viewport._x(ring.first.$1);
+      if (projected.isNotEmpty) {
+        previous = _continuousX(previous, projected.first.first.$1);
+      }
+      for (final p in ring) {
+        final x = _continuousX(viewport._x(p.$1), previous);
+        points.add((x, p.$2));
+        previous = x;
+      }
+      projected.add(points);
     }
-    for (final point in outer) {
-      if (viewport.contains(point.$1, point.$2)) {
-        candidates.add((longitude: point.$1, latitude: point.$2));
+    for (final shift in [-360.0, 0.0, 360.0]) {
+      var clipped = projected.first.map((p) => (p.$1 + shift, p.$2)).toList();
+      for (var edge = 0; edge < 4; edge++) {
+        clipped = _clipPolygon(clipped, edge, viewport);
+      }
+      if (clipped.isEmpty) continue;
+      var area = 0.0, cx = 0.0, cy = 0.0;
+      for (var i = 0; i < clipped.length; i++) {
+        final a = clipped[i], b = clipped[(i + 1) % clipped.length];
+        final cross = a.$1 * b.$2 - b.$1 * a.$2;
+        area += cross;
+        cx += (a.$1 + b.$1) * cross;
+        cy += (a.$2 + b.$2) * cross;
+      }
+      final size = area.abs();
+      if (size <= bestArea) continue;
+      final minX = clipped.map((p) => p.$1).reduce((a, b) => a < b ? a : b);
+      final maxX = clipped.map((p) => p.$1).reduce((a, b) => a > b ? a : b);
+      final minY = clipped.map((p) => p.$2).reduce((a, b) => a < b ? a : b);
+      final maxY = clipped.map((p) => p.$2).reduce((a, b) => a > b ? a : b);
+      final targetX = area.abs() > 1e-12 ? cx / (3 * area) : (minX + maxX) / 2;
+      final targetY = area.abs() > 1e-12 ? cy / (3 * area) : (minY + maxY) / 2;
+      bool inside(double x, double y) {
+        if (!_insideXY(x, y, clipped)) return false;
+        for (final hole in projected.skip(1)) {
+          final shifted = hole.map((p) => (p.$1 + shift, p.$2)).toList();
+          if (_insideXY(x, y, shifted)) return false;
+        }
+        return true;
+      }
+
+      double? x, y;
+      if (inside(targetX, targetY)) {
+        x = targetX;
+        y = targetY;
+      } else {
+        var distance = double.infinity;
+        for (var iy = 0; iy < 9; iy++) {
+          for (var ix = 0; ix < 9; ix++) {
+            final px = minX + (maxX - minX) * (ix + .5) / 9;
+            final py = minY + (maxY - minY) * (iy + .5) / 9;
+            final d =
+                (px - targetX) * (px - targetX) +
+                (py - targetY) * (py - targetY);
+            if (d < distance && inside(px, py)) {
+              x = px;
+              y = py;
+              distance = d;
+            }
+          }
+        }
+      }
+      if (x != null && y != null) {
+        bestArea = size;
+        best = (longitude: _normalize(viewport.west + x), latitude: y);
       }
     }
-    for (var i = 0; i < outer.length; i++) {
-      final a = outer[i], b = outer[(i + 1) % outer.length];
-      final ax = viewport._x(a.$1),
-          bx = _unwrapX(viewport._x(b.$1), ax, viewport._width);
-      final ay = a.$2, by = b.$2;
-      final clipped = _clip(
-        ax,
-        ay,
-        bx,
-        by,
-        0,
-        viewport._width,
-        viewport.south,
-        viewport.north,
-      );
-      if (clipped != null) {
-        candidates.add((
-          longitude: _normalize(viewport.west + clipped.$1),
-          latitude: clipped.$2,
-        ));
-      }
-    }
-    // Return a point from this connected component. Averaging points from
-    // separate islands can place a label in the ocean between them.
-    if (candidates.isNotEmpty) return candidates.first;
   }
-  if (candidates.isEmpty) return null;
-  return candidates.first;
+  return best;
+}
+
+List<(double, double)> _clipPolygon(
+  List<(double, double)> input,
+  int edge,
+  GeoViewport v,
+) {
+  if (input.isEmpty) return input;
+  bool inside((double, double) p) => switch (edge) {
+    0 => p.$1 >= 0,
+    1 => p.$1 <= v._width,
+    2 => p.$2 >= v.south,
+    _ => p.$2 <= v.north,
+  };
+  (double, double) intersect((double, double) a, (double, double) b) {
+    if (edge < 2) {
+      final x = edge == 0 ? 0.0 : v._width;
+      return (x, a.$2 + (b.$2 - a.$2) * (x - a.$1) / (b.$1 - a.$1));
+    }
+    final y = edge == 2 ? v.south : v.north;
+    return (a.$1 + (b.$1 - a.$1) * (y - a.$2) / (b.$2 - a.$2), y);
+  }
+
+  final result = <(double, double)>[];
+  var previous = input.last;
+  for (final current in input) {
+    if (inside(current)) {
+      if (!inside(previous)) result.add(intersect(previous, current));
+      result.add(current);
+    } else if (inside(previous)) {
+      result.add(intersect(previous, current));
+    }
+    previous = current;
+  }
+  return result;
 }
 
 List<(double, double)> _points(List ring) => ring
@@ -104,19 +166,13 @@ List<(double, double)> _points(List ring) => ring
     .where((p) => p.$1.isFinite && p.$2.isFinite)
     .toList();
 
-bool _inside(
-  double lon,
-  double lat,
-  List<(double, double)> ring,
-  GeoViewport v,
-) {
-  final x = v._x(lon);
+bool _insideXY(double x, double y, List<(double, double)> ring) {
+  if (ring.length < 3) return false;
   var inside = false;
   for (var i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    final xi = _continuousX(v._x(ring[i].$1), x),
-        xj = _continuousX(v._x(ring[j].$1), x);
-    if (((ring[i].$2 > lat) != (ring[j].$2 > lat)) &&
-        x < (xj - xi) * (lat - ring[i].$2) / (ring[j].$2 - ring[i].$2) + xi) {
+    final a = ring[i], b = ring[j];
+    if (((a.$2 > y) != (b.$2 > y)) &&
+        x < (b.$1 - a.$1) * (y - a.$2) / (b.$2 - a.$2) + a.$1) {
       inside = !inside;
     }
   }
@@ -134,62 +190,32 @@ double _continuousX(double value, double reference) {
   return x;
 }
 
-double _unwrapX(double x, double previous, double width) {
-  if (x - previous > 180) return x - 360;
-  if (previous - x > 180) return x + 360;
-  return x;
-}
-
 double _normalize(double lon) => ((lon + 180) % 360 + 360) % 360 - 180;
-
-(double, double)? _clip(
-  double x0,
-  double y0,
-  double x1,
-  double y1,
-  double minX,
-  double maxX,
-  double minY,
-  double maxY,
-) {
-  final dx = x1 - x0, dy = y1 - y0;
-  var t0 = 0.0, t1 = 1.0;
-  for (final pair in <(double, double)>[
-    (-dx, x0 - minX),
-    (dx, maxX - x0),
-    (-dy, y0 - minY),
-    (dy, maxY - y0),
-  ]) {
-    if (pair.$1 == 0) {
-      if (pair.$2 < 0) return null;
-    } else {
-      final t = pair.$2 / pair.$1;
-      if (pair.$1 < 0) {
-        if (t > t1) return null;
-        if (t > t0) t0 = t;
-      } else {
-        if (t < t0) return null;
-        if (t < t1) t1 = t;
-      }
-    }
-  }
-  return (x0 + t0 * dx, y0 + t0 * dy);
-}
 
 Map<String, (double, double)> visibleCountryLabelAnchors(
   List<dynamic> labels,
   List<dynamic> visible,
-  GeoViewport viewport,
-) {
+  GeoViewport viewport, {
+  List<dynamic>? fullOutlines,
+}) {
   final outlines = <String, Map>{};
   for (final item in visible) {
     if (item is! Map || item['properties'] is! Map) continue;
     final id = (item['properties'] as Map)['country_id'];
     if (id is String) outlines.putIfAbsent(id, () => item);
   }
+  if (fullOutlines != null) {
+    for (final item in fullOutlines) {
+      if (item is! Map || item['properties'] is! Map) continue;
+      final id = (item['properties'] as Map)['country_id'];
+      if (id is String && outlines.containsKey(id)) outlines[id] = item;
+    }
+  }
   final result = <String, (double, double)>{};
   for (final item in labels) {
-    if (item is! Map || item['properties'] is! Map || item['geometry'] is! Map) {
+    if (item is! Map ||
+        item['properties'] is! Map ||
+        item['geometry'] is! Map) {
       continue;
     }
     final id = (item['properties'] as Map)['country_id'];
@@ -200,12 +226,6 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
         coords[0] is! num ||
         coords[1] is! num ||
         !outlines.containsKey(id)) {
-      continue;
-    }
-    if (viewport.contains(
-      (coords[0] as num).toDouble(),
-      (coords[1] as num).toDouble(),
-    )) {
       continue;
     }
     final point = countryLabelAnchor(outlines[id]!, viewport);
