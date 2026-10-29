@@ -9,6 +9,24 @@ import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:quiz_app/knowledge_map/knowledge_map_page.dart';
 import 'package:quiz_app/knowledge_map/map_state.dart';
 
+Future<void> openMapSection(WidgetTester tester, String section) async {
+  await tester.tap(find.byTooltip('Map menu'));
+  await tester.pumpAndSettle();
+  await tester.tap(find.text(section).last);
+  await tester.pumpAndSettle();
+}
+
+Future<void> toggleMapData(WidgetTester tester) async {
+  if (find.byTooltip('Close map data').evaluate().isNotEmpty) {
+    await tester.tap(find.byTooltip('Close map data'));
+  } else if (find.byTooltip('Layers').evaluate().isNotEmpty) {
+    await tester.tap(find.byTooltip('Layers'));
+  } else {
+    await openMapSection(tester, 'Map data');
+  }
+  await tester.pumpAndSettle();
+}
+
 class MapFixtureBundle extends CachingAssetBundle {
   bool fail = false;
   bool missingRiverDetail = false;
@@ -250,6 +268,27 @@ class MapFixtureBundle extends CachingAssetBundle {
 }
 
 void main() {
+  testWidgets(
+    'map keeps controls compact and opens searchable countries from menu',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeMapPage.test(
+            bundle: MapFixtureBundle(),
+            visibleCountryIds: const ['FR'],
+            mapBuilder: (context, select) => const SizedBox.expand(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byTooltip('Map menu'), findsOneWidget);
+      expect(find.byType(TextField), findsNothing);
+      expect(find.text('Countries'), findsNothing);
+      expect(find.text('Places'), findsNothing);
+      await openMapSection(tester, 'Countries');
+      expect(find.byType(TextField), findsOneWidget);
+    },
+  );
   test(
     'failed country source update does not commit the thematic mode',
     () async {
@@ -319,17 +358,12 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      final countries = tester.getRect(find.text('Countries'));
+      final menu = tester.getRect(find.byTooltip('Map menu'));
       expect(
-        countries.overlaps(tester.getRect(find.byTooltip('Zoom out'))),
+        menu.overlaps(tester.getRect(find.byTooltip('Zoom out'))),
         isFalse,
       );
-      expect(
-        countries.overlaps(tester.getRect(find.text('Visible countries'))),
-        isFalse,
-      );
-      await tester.tap(find.text('Countries'));
-      await tester.pumpAndSettle();
+      await openMapSection(tester, 'Countries');
       expect(find.byTooltip('Close'), findsOneWidget);
       await tester.tap(find.byTooltip('Close'));
       await tester.pumpAndSettle();
@@ -365,9 +399,9 @@ void main() {
     await tester.tap(find.text('Country details'));
     await tester.pumpAndSettle();
     expect(find.text('Capital: Paris'), findsOneWidget);
-    await tester.tap(find.byTooltip('Layers'));
+    await toggleMapData(tester);
     await tester.pumpAndSettle();
-    await tester.tap(find.byTooltip('Layers'));
+    await toggleMapData(tester);
     await tester.pumpAndSettle();
     expect(find.byKey(const ValueKey('country-bottom-panel')), findsNothing);
     expect(find.text('Country details'), findsOneWidget);
@@ -466,7 +500,7 @@ void main() {
       lessThanOrEqualTo(tester.getRect(map).right),
     );
     expect(
-      tester.getRect(find.byType(TextField)).right,
+      tester.getRect(find.byTooltip('Map menu')).right,
       lessThanOrEqualTo(tester.getRect(map).right),
     );
     expect(
@@ -495,7 +529,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.byTooltip('Practice'));
+    await openMapSection(tester, 'Practice');
     await tester.pumpAndSettle();
     expect(
       tester.getRect(find.byKey(const ValueKey('practice-map'))).bottom,
@@ -535,7 +569,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.byTooltip('Practice'));
+    await openMapSection(tester, 'Practice');
     await tester.pumpAndSettle();
     await tester.tap(find.byType(DropdownButton<int>));
     await tester.pumpAndSettle();
@@ -565,7 +599,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Places'));
+    await openMapSection(tester, 'Places');
     await tester.pumpAndSettle();
     await tester.tap(find.byType(DropdownButton<String>));
     await tester.pumpAndSettle();
@@ -617,6 +651,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
+    await openMapSection(tester, 'Countries');
     await tester.enterText(find.byType(TextField), 'France');
     await tester.pump();
     expect(tester.testTextInput.isVisible, isTrue);
@@ -636,6 +671,7 @@ void main() {
     await tester.tap(find.byTooltip('Close'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Capital:'), findsNothing);
+    await openMapSection(tester, 'Countries');
     await tester.enterText(find.byType(TextField), 'Monaco');
     await tester.pump();
     await tester.tap(find.byType(ListTile).first);
@@ -658,8 +694,9 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.byTooltip('Layers'));
+    await toggleMapData(tester);
     await tester.pumpAndSettle();
+    expect(find.text('Map data'), findsOneWidget);
     expect(find.text('Population'), findsOneWidget);
     expect(find.text('Area'), findsOneWidget);
     await tester.tap(find.text('Capital'));
@@ -745,6 +782,7 @@ void main() {
     hover('MC', const Offset(100, 100));
     await tester.pump();
     expect(find.text('Monaco'), findsNothing);
+    await openMapSection(tester, 'Countries');
     await tester.enterText(find.byType(TextField), 'Monaco');
     await tester.pump();
     expect(find.byType(ListTile), findsOneWidget);
@@ -807,7 +845,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    expect(tester.getBottomLeft(find.byTooltip('Layers')).dy, greaterThan(400));
+    expect(find.byTooltip('Map menu'), findsOneWidget);
     select('FR');
     await tester.pump();
     await tester.tap(find.text('Country details'));
@@ -820,7 +858,7 @@ void main() {
     final close = tester.getRect(find.byTooltip('Close'));
     expect(close.top, greaterThanOrEqualTo(0));
     expect(close.bottom, lessThanOrEqualTo(480));
-    await tester.tap(find.byTooltip('Layers'));
+    await toggleMapData(tester);
     await tester.pumpAndSettle();
     expect(find.text('Population'), findsOneWidget);
     expect(find.text('Rivers and lakes'), findsNothing);
@@ -851,10 +889,11 @@ void main() {
       await tester.pumpAndSettle();
       select('FR');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Visible countries'));
+      await openMapSection(tester, 'Visible countries');
       await tester.pumpAndSettle();
       expect(find.widgetWithText(ListTile, 'France'), findsOneWidget);
-      await tester.tap(find.byTooltip('Layers'));
+      expect(find.byTooltip('Close visible countries'), findsOneWidget);
+      await toggleMapData(tester);
       await tester.pumpAndSettle();
       expect(find.text('Population'), findsOneWidget);
       expect(tester.takeException(), isNull);
@@ -873,13 +912,10 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Visible countries'));
-      await tester.pumpAndSettle();
+      await openMapSection(tester, 'Countries');
       await tester.enterText(find.byType(TextField), 'France');
       await tester.pumpAndSettle();
-      await tester.tap(
-        find.ancestor(of: find.text('FR'), matching: find.byType(ListTile)),
-      );
+      await tester.tap(find.widgetWithText(ListTile, 'France'));
       await tester.pumpAndSettle();
       expect(find.text('Country details'), findsOneWidget);
       expect(find.widgetWithText(ListTile, 'France'), findsNothing);
@@ -910,7 +946,7 @@ void main() {
       await tester.pumpAndSettle();
       select('FR');
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Visible countries'));
+      await openMapSection(tester, 'Visible countries');
       await tester.pumpAndSettle();
       await tester.tap(find.widgetWithText(ListTile, 'France'));
       await tester.pumpAndSettle();
@@ -920,7 +956,7 @@ void main() {
       expect(find.text('Source 1').hitTestable(), findsOneWidget);
       await tester.tap(find.byTooltip('Close'));
       await tester.pumpAndSettle();
-      await tester.tap(find.byTooltip('Layers'));
+      await toggleMapData(tester);
       await tester.pumpAndSettle();
       expect(find.text('Population'), findsOneWidget);
     },
@@ -979,7 +1015,7 @@ void main() {
       bundle.requested,
       contains('assets/quizipedia/map_v2/lakes_detail.geojson'),
     );
-    expect(find.byType(TextField), findsOneWidget);
+    expect(find.byTooltip('Map menu'), findsOneWidget);
     expect(find.text('Map unavailable'), findsNothing);
   });
 
@@ -997,7 +1033,7 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.byType(TextField), findsOneWidget);
+      expect(find.byTooltip('Map menu'), findsOneWidget);
       expect(find.text('Map unavailable'), findsNothing);
     });
   }
@@ -1017,7 +1053,7 @@ void main() {
       bundle.requested,
       contains('assets/quizipedia/map_v2/rivers_detail.geojson'),
     );
-    expect(find.byType(TextField), findsOneWidget);
+    expect(find.byTooltip('Map menu'), findsOneWidget);
     expect(find.text('Map unavailable'), findsNothing);
   });
 
@@ -1155,7 +1191,9 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.byTooltip('Слои'));
+    await tester.tap(find.byTooltip('Меню карты'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Данные на карте'));
     await tester.pumpAndSettle();
     expect(find.text('Население'), findsOneWidget);
     expect(tester.getSize(find.text('Население')).height, lessThan(30));
@@ -1178,7 +1216,7 @@ void main() {
     bundle.missingInterestingFacts = false;
     await tester.tap(find.text('Retry'));
     await tester.pumpAndSettle();
-    expect(find.byType(TextField), findsOneWidget);
+    expect(find.byTooltip('Map menu'), findsOneWidget);
   });
   testWidgets('broken assets show retry and recover when repaired', (
     tester,
@@ -1197,7 +1235,7 @@ void main() {
     bundle.fail = false;
     await tester.tap(find.text('Retry'));
     await tester.pumpAndSettle();
-    expect(find.byType(TextField), findsOneWidget);
+    expect(find.byTooltip('Map menu'), findsOneWidget);
     expect(find.text('Map unavailable'), findsNothing);
   });
   testWidgets('capital and water selections show their own details', (

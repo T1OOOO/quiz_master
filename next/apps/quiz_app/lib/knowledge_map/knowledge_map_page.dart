@@ -112,7 +112,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       showLandmarks = true,
       showCountryLabels = true,
       showWaterLabels = true;
-  String query = '';
   String thematic = 'none';
   List<dynamic> dishes = [];
   Map<String, dynamic> waters = {};
@@ -126,7 +125,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Future<void> labelCommands = Future.value();
   Future<void> thematicCommands = Future.value();
   int thematicSequence = 0;
-  final searchController = TextEditingController();
   int generation = 0;
   int visibleRequest = 0;
   Size mapViewport = Size.zero;
@@ -714,7 +712,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     hoverTimer?.cancel();
     hover.clear();
     controller?.onMapMouseMove.remove(onMouseMove);
-    searchController.dispose();
     super.dispose();
   }
 
@@ -854,10 +851,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       }
       selectedFeature = null;
       selectedFeatureKind = null;
-      query = '';
       layersOpen = false;
     });
-    searchController.clear();
     if (!ready || c == null) return;
     try {
       await c.setFilter('selected', [
@@ -1846,36 +1841,51 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                     ),
                   if ((state == null || !ready) && !failed && !unsupported)
                     const Center(child: CircularProgressIndicator()),
-                  if (!practice && ready && visible.isNotEmpty && !layersOpen)
+                  if (!practice &&
+                      visibleOpen &&
+                      visible.isNotEmpty &&
+                      !layersOpen)
                     Positioned(
                       right: panelWidth + 12,
-                      top: 112,
+                      top: 64,
                       child: PointerInterceptor(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            FilledButton.tonal(
-                              onPressed: () => setState(() {
-                                visibleOpen = !visibleOpen;
-                                if (visibleOpen) countryDetailsOpen = false;
-                              }),
-                              child: Text(
-                                tr('Visible countries', 'Страны на карте'),
-                              ),
+                        child: Material(
+                          elevation: 4,
+                          borderRadius: BorderRadius.circular(12),
+                          child: SizedBox(
+                            width: math.max(
+                              0,
+                              math.min(280, viewport.width - 24),
                             ),
-                            if (visibleOpen)
-                              Material(
-                                elevation: 4,
-                                borderRadius: BorderRadius.circular(12),
-                                child: SizedBox(
-                                  width: math.max(
-                                    0,
-                                    math.min(280, viewport.width - 24),
-                                  ),
-                                  height: math.max(
-                                    0,
-                                    math.min(300, viewport.height - 220),
-                                  ),
+                            height: math.max(
+                              0,
+                              math.min(300, viewport.height - 220),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: Text(
+                                        tr(
+                                          'Visible countries',
+                                          'Страны на карте',
+                                        ),
+                                      ),
+                                    ),
+                                    IconButton(
+                                      tooltip: tr(
+                                        'Close visible countries',
+                                        'Закрыть список стран',
+                                      ),
+                                      onPressed: () =>
+                                          setState(() => visibleOpen = false),
+                                      icon: const Icon(Icons.close),
+                                    ),
+                                  ],
+                                ),
+                                Expanded(
                                   child: ListView.builder(
                                     itemCount: visibleSorted.length,
                                     itemBuilder: (context, index) {
@@ -1917,8 +1927,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                     },
                                   ),
                                 ),
-                              ),
-                          ],
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -1954,46 +1965,81 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       !failed &&
                       !unsupported)
                     Positioned(
-                      top: 64,
-                      left: 12,
+                      top: 8,
+                      left: 64,
                       child: PointerInterceptor(
-                        child: FilledButton.tonal(
-                          onPressed: () => setState(() {
-                            browserOpen = !browserOpen;
-                            if (browserOpen) placesOpen = false;
-                            if (browserOpen) countryDetailsOpen = false;
-                            visibleOpen = false;
-                            layersOpen = false;
-                          }),
-                          child: Text(tr('Countries', 'Страны')),
-                        ),
-                      ),
-                    ),
-                  if (!practice &&
-                      state != null &&
-                      ready &&
-                      !failed &&
-                      !unsupported)
-                    Positioned(
-                      top: 112,
-                      left: 12,
-                      child: PointerInterceptor(
-                        child: FilledButton.tonalIcon(
-                          onPressed: () => setState(() {
-                            placesOpen = !placesOpen;
-                            browserOpen = false;
-                            visibleOpen = false;
-                            layersOpen = false;
-                            countryDetailsOpen = false;
-                          }),
-                          icon: const Icon(Icons.place_outlined),
-                          label: Text(tr('Places', 'Места')),
+                        child: Material(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .secondaryContainer,
+                          shape: const CircleBorder(),
+                          child: PopupMenuButton<String>(
+                            tooltip: tr('Map menu', 'Меню карты'),
+                            icon: const Icon(Icons.menu),
+                            onSelected: (section) {
+                              if (section == 'practice') {
+                                setPractice(true);
+                                return;
+                              }
+                              setState(() {
+                                browserOpen =
+                                    section == 'countries' && !browserOpen;
+                                placesOpen = section == 'places' && !placesOpen;
+                                visibleOpen =
+                                    section == 'visible' && !visibleOpen;
+                                layersOpen = section == 'data' && !layersOpen;
+                                countryDetailsOpen = false;
+                              });
+                            },
+                            itemBuilder: (context) => [
+                              PopupMenuItem(
+                                value: 'countries',
+                                child: ListTile(
+                                  leading: const Icon(Icons.public),
+                                  title: Text(tr('Countries', 'Страны')),
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: 'visible',
+                                enabled: visible.isNotEmpty,
+                                child: ListTile(
+                                  leading: const Icon(Icons.map_outlined),
+                                  title: Text(
+                                    tr('Visible countries', 'Страны на карте'),
+                                  ),
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: 'places',
+                                child: ListTile(
+                                  leading: const Icon(Icons.place_outlined),
+                                  title: Text(tr('Places', 'Места')),
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: 'data',
+                                child: ListTile(
+                                  leading: const Icon(Icons.layers_outlined),
+                                  title: Text(
+                                    tr('Map data', 'Данные на карте'),
+                                  ),
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: 'practice',
+                                child: ListTile(
+                                  leading: const Icon(Icons.quiz_outlined),
+                                  title: Text(tr('Practice', 'Тренировка')),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   if (placesOpen && landmarks != null)
                     Positioned(
-                      top: 170,
+                      top: 64,
                       left: 12,
                       bottom: 68,
                       width: math.min(420, math.max(0, viewport.width - 24)),
@@ -2005,22 +2051,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           onClose: () => setState(() => placesOpen = false),
                           onCategory: setPlacesCategory,
                           onSelect: openPlace,
-                        ),
-                      ),
-                    ),
-                  if (state != null &&
-                      ready &&
-                      !failed &&
-                      !unsupported &&
-                      !practice)
-                    Positioned(
-                      left: 12,
-                      bottom: 12,
-                      child: PointerInterceptor(
-                        child: IconButton.filledTonal(
-                          tooltip: tr('Practice', 'Тренировка'),
-                          onPressed: () => setPractice(true),
-                          icon: const Icon(Icons.quiz_outlined),
                         ),
                       ),
                     ),
@@ -2244,7 +2274,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       left: 12,
                       right: 12,
                       bottom: 68,
-                      top: 120,
+                      top: 64,
                       child: PointerInterceptor(
                         child: Material(
                           elevation: 4,
@@ -2269,101 +2299,38 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       state != null &&
                       !failed &&
                       !unsupported) ...[
-                    if (viewport.width - panelWidth >= 200)
+                    if (!browserOpen &&
+                        !placesOpen &&
+                        !visibleOpen &&
+                        !layersOpen)
                       Positioned(
                         top: 8,
-                        left: 64,
-                        right: panelWidth + 64,
-                        child: PointerInterceptor(
-                          child: Material(
-                            elevation: 2,
-                            borderRadius: BorderRadius.circular(12),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                TextField(
-                                  controller: searchController,
-                                  decoration: InputDecoration(
-                                    prefixIcon: const Icon(Icons.search),
-                                    hintText: tr(
-                                      'Search countries',
-                                      'Поиск стран',
-                                    ),
-                                    border: InputBorder.none,
-                                  ),
-                                  onChanged: (v) => setState(() => query = v),
-                                ),
-                                if (query.isNotEmpty)
-                                  ConstrainedBox(
-                                    constraints: const BoxConstraints(
-                                      maxHeight: 200,
-                                    ),
-                                    child: ListView(
-                                      shrinkWrap: true,
-                                      children: [
-                                        for (final country
-                                            in state!.search(query).take(8))
-                                          ListTile(
-                                            title: Text(
-                                              ru
-                                                  ? country.nameRu
-                                                  : country.nameEn,
-                                            ),
-                                            subtitle: Text(country.id),
-                                            onTap: () =>
-                                                select(country.id, move: true),
-                                          ),
-                                      ],
-                                    ),
-                                  ),
-                              ],
+                        right: panelWidth + 8,
+                        child: Column(
+                          children: [
+                            PointerInterceptor(
+                              child: IconButton.filledTonal(
+                                tooltip: tr('Zoom in', 'Увеличить'),
+                                onPressed: ready
+                                    ? () => controller?.animateCamera(
+                                        CameraUpdate.zoomIn(),
+                                      )
+                                    : null,
+                                icon: const Icon(Icons.add),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
-                    Positioned(
-                      top: 8,
-                      right: panelWidth + 8,
-                      child: Column(
-                        children: [
-                          PointerInterceptor(
-                            child: IconButton.filledTonal(
-                              tooltip: tr('Zoom in', 'Увеличить'),
-                              onPressed: ready
-                                  ? () => controller?.animateCamera(
-                                      CameraUpdate.zoomIn(),
-                                    )
-                                  : null,
-                              icon: const Icon(Icons.add),
+                            PointerInterceptor(
+                              child: IconButton.filledTonal(
+                                tooltip: tr('Zoom out', 'Уменьшить'),
+                                onPressed: ready
+                                    ? () => controller?.animateCamera(
+                                        CameraUpdate.zoomOut(),
+                                      )
+                                    : null,
+                                icon: const Icon(Icons.remove),
+                              ),
                             ),
-                          ),
-                          PointerInterceptor(
-                            child: IconButton.filledTonal(
-                              tooltip: tr('Zoom out', 'Уменьшить'),
-                              onPressed: ready
-                                  ? () => controller?.animateCamera(
-                                      CameraUpdate.zoomOut(),
-                                    )
-                                  : null,
-                              icon: const Icon(Icons.remove),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    if (!panelOpen || layersOpen || visibleOpen || browserOpen)
-                      Positioned(
-                        right: 12,
-                        bottom: 12,
-                        child: PointerInterceptor(
-                          child: IconButton.filledTonal(
-                            tooltip: tr('Layers', 'Слои'),
-                            onPressed: () =>
-                                setState(() => layersOpen = !layersOpen),
-                            icon: Icon(
-                              layersOpen ? Icons.close : Icons.layers_outlined,
-                            ),
-                          ),
+                          ],
                         ),
                       ),
                     if (layersOpen)
@@ -2385,36 +2352,63 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               child: SingleChildScrollView(
                                 child: Padding(
                                   padding: const EdgeInsets.all(12),
-                                  child: Wrap(
-                                    spacing: 8,
-                                    runSpacing: 4,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      for (final mode in [
-                                        'none',
-                                        'population',
-                                        'area',
-                                        'capital',
-                                        'food',
-                                      ])
-                                        ChoiceChip(
-                                          label: Text(switch (mode) {
-                                            'population' => tr(
-                                              'Population',
-                                              'Население',
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              tr('Map data', 'Данные на карте'),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium,
                                             ),
-                                            'area' => tr('Area', 'Площадь'),
-                                            'capital' => tr(
-                                              'Capital',
-                                              'Столица',
+                                          ),
+                                          IconButton(
+                                            tooltip: tr(
+                                              'Close map data',
+                                              'Закрыть данные карты',
                                             ),
-                                            'food' => tr('Dishes', 'Блюда'),
-                                            _ => tr('Map', 'Карта'),
-                                          }),
-                                          selected: thematic == mode,
-                                          onSelected: ready
-                                              ? (_) => setThematic(mode)
-                                              : null,
-                                        ),
+                                            onPressed: () => setState(
+                                              () => layersOpen = false,
+                                            ),
+                                            icon: const Icon(Icons.close),
+                                          ),
+                                        ],
+                                      ),
+                                      Wrap(
+                                        spacing: 8,
+                                        runSpacing: 4,
+                                        children: [
+                                          for (final mode in [
+                                            'none',
+                                            'population',
+                                            'area',
+                                            'capital',
+                                            'food',
+                                          ])
+                                            ChoiceChip(
+                                              label: Text(switch (mode) {
+                                                'population' => tr(
+                                                  'Population',
+                                                  'Население',
+                                                ),
+                                                'area' => tr('Area', 'Площадь'),
+                                                'capital' => tr(
+                                                  'Capital',
+                                                  'Столица',
+                                                ),
+                                                'food' => tr('Dishes', 'Блюда'),
+                                                _ => tr('Map', 'Карта'),
+                                              }),
+                                              selected: thematic == mode,
+                                              onSelected: ready
+                                                  ? (_) => setThematic(mode)
+                                                  : null,
+                                            ),
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ),
