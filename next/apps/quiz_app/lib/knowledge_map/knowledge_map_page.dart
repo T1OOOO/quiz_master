@@ -610,11 +610,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           final countryName = country == null
               ? null
               : (localizedRu ? country.nameRu : country.nameEn);
-          final flag = country == null ? null : flags[country.id] as String?;
           final name = '$prefix${p[localizedRu ? 'name_ru' : 'name_en']}';
           final marker = await renderCountryMarker(
             name: countryName == null ? name : '$name · $countryName',
-            flagBytes: flag == null ? null : base64Decode(flag),
             landmark: source == 'landmarks',
             wonder:
                 source == 'landmarks' &&
@@ -1994,42 +1992,55 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                             itemBuilder: (context) => [
                               PopupMenuItem(
                                 value: 'countries',
-                                child: ListTile(
-                                  leading: const Icon(Icons.public),
-                                  title: Text(tr('Countries', 'Страны')),
+                                child: PointerInterceptor(
+                                  child: ListTile(
+                                    leading: const Icon(Icons.public),
+                                    title: Text(tr('Countries', 'Страны')),
+                                  ),
                                 ),
                               ),
                               PopupMenuItem(
                                 value: 'visible',
                                 enabled: visible.isNotEmpty,
-                                child: ListTile(
-                                  leading: const Icon(Icons.map_outlined),
-                                  title: Text(
-                                    tr('Visible countries', 'Страны на карте'),
+                                child: PointerInterceptor(
+                                  child: ListTile(
+                                    leading: const Icon(Icons.map_outlined),
+                                    title: Text(
+                                      tr(
+                                        'Visible countries',
+                                        'Страны на карте',
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               PopupMenuItem(
                                 value: 'places',
-                                child: ListTile(
-                                  leading: const Icon(Icons.place_outlined),
-                                  title: Text(tr('Places', 'Места')),
+                                child: PointerInterceptor(
+                                  child: ListTile(
+                                    leading: const Icon(Icons.place_outlined),
+                                    title: Text(tr('Places', 'Места')),
+                                  ),
                                 ),
                               ),
                               PopupMenuItem(
                                 value: 'data',
-                                child: ListTile(
-                                  leading: const Icon(Icons.layers_outlined),
-                                  title: Text(
-                                    tr('Map data', 'Данные на карте'),
+                                child: PointerInterceptor(
+                                  child: ListTile(
+                                    leading: const Icon(Icons.layers_outlined),
+                                    title: Text(
+                                      tr('Map data', 'Данные на карте'),
+                                    ),
                                   ),
                                 ),
                               ),
                               PopupMenuItem(
                                 value: 'practice',
-                                child: ListTile(
-                                  leading: const Icon(Icons.quiz_outlined),
-                                  title: Text(tr('Practice', 'Тренировка')),
+                                child: PointerInterceptor(
+                                  child: ListTile(
+                                    leading: const Icon(Icons.quiz_outlined),
+                                    title: Text(tr('Practice', 'Тренировка')),
+                                  ),
                                 ),
                               ),
                             ],
@@ -2039,9 +2050,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                     ),
                   if (placesOpen && landmarks != null)
                     Positioned(
-                      top: 64,
+                      top: viewport.height < 400 ? 0 : 64,
                       left: 12,
-                      bottom: 68,
+                      bottom: viewport.height < 400 ? 0 : 68,
                       width: math.min(420, math.max(0, viewport.width - 24)),
                       child: PointerInterceptor(
                         child: LandmarksBrowser(

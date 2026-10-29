@@ -27,7 +27,7 @@ IconData placeCategoryIcon(String category) => switch (category) {
   _ => Icons.place_outlined,
 };
 
-class LandmarksBrowser extends StatelessWidget {
+class LandmarksBrowser extends StatefulWidget {
   const LandmarksBrowser({
     super.key,
     required this.features,
@@ -46,14 +46,31 @@ class LandmarksBrowser extends StatelessWidget {
   final VoidCallback onClose;
 
   @override
+  State<LandmarksBrowser> createState() => _LandmarksBrowserState();
+}
+
+class _LandmarksBrowserState extends State<LandmarksBrowser> {
+  String query = '';
+
+  @override
   Widget build(BuildContext context) {
+    final features = widget.features;
+    final category = widget.category;
+    final russian = widget.russian;
     String tr(String en, String ru) => russian ? ru : en;
     final places =
         features.where((feature) {
           final properties = feature['properties'] as Map;
-          return category == 'all' ||
+          final matchesCategory =
+              category == 'all' ||
               (properties['categories'] as List? ?? const []).contains(
                 category,
+              );
+          return matchesCategory &&
+              ['name_ru', 'name_en', 'city_ru', 'city_en'].any(
+                (key) => (properties[key] as String? ?? '')
+                    .toLowerCase()
+                    .contains(query),
               );
         }).toList()..sort(
           (a, b) => (a['properties'][russian ? 'name_ru' : 'name_en'] as String)
@@ -71,8 +88,19 @@ class LandmarksBrowser extends StatelessWidget {
             title: Text(tr('Places', 'Достопримечательности')),
             trailing: IconButton(
               tooltip: tr('Close places', 'Закрыть места'),
-              onPressed: onClose,
+              onPressed: widget.onClose,
               icon: const Icon(Icons.close),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: TextField(
+              decoration: InputDecoration(
+                labelText: tr('Search places', 'Поиск мест'),
+                prefixIcon: const Icon(Icons.search),
+              ),
+              onChanged: (value) =>
+                  setState(() => query = value.trim().toLowerCase()),
             ),
           ),
           Padding(
@@ -114,7 +142,7 @@ class LandmarksBrowser extends StatelessWidget {
                   ),
               ],
               onChanged: (value) {
-                if (value != null) onCategory(value);
+                if (value != null) widget.onCategory(value);
               },
             ),
           ),
@@ -122,10 +150,12 @@ class LandmarksBrowser extends StatelessWidget {
             child: places.isEmpty
                 ? Center(
                     child: Text(
-                      tr(
-                        'No places in this collection',
-                        'В этой подборке пока нет мест',
-                      ),
+                      query.isNotEmpty
+                          ? tr('No matching places', 'Места не найдены')
+                          : tr(
+                              'No places in this collection',
+                              'В этой подборке пока нет мест',
+                            ),
                     ),
                   )
                 : ListView.builder(
@@ -145,7 +175,7 @@ class LandmarksBrowser extends StatelessWidget {
                         subtitle: Text(
                           p[russian ? 'city_ru' : 'city_en'] as String? ?? '',
                         ),
-                        onTap: () => onSelect(p['id'] as String),
+                        onTap: () => widget.onSelect(p['id'] as String),
                       );
                     },
                   ),

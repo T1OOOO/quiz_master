@@ -601,6 +601,9 @@ void main() {
     await tester.pumpAndSettle();
     await openMapSection(tester, 'Places');
     await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'eiffel');
+    await tester.pumpAndSettle();
+    expect(find.text('Eiffel Tower'), findsOneWidget);
     await tester.tap(find.byType(DropdownButton<String>));
     await tester.pumpAndSettle();
     expect(find.text('New wonders'), findsOneWidget);
@@ -611,6 +614,32 @@ void main() {
     await tester.tap(find.text('Eiffel Tower'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Photographer'), findsOneWidget);
+  });
+
+  testWidgets('places search remains usable with a mobile keyboard', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(320, 480);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    addTearDown(tester.view.resetViewInsets);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, select) => const SizedBox.expand(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await openMapSection(tester, 'Places');
+    tester.view.viewInsets = const FakeViewPadding(bottom: 250);
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'eiffel');
+    await tester.pumpAndSettle();
+    expect(find.text('Eiffel Tower'), findsOneWidget);
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('late map selection after page disposal is ignored', (

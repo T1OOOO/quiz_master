@@ -34,7 +34,7 @@ Future<Uint8List> renderCountryMarker({
   )..layout(maxWidth: 170);
   ui.Image? flag;
   try {
-    if (flagBytes != null) {
+    if (flagBytes != null && !capital && !landmark) {
       final codec = await ui.instantiateImageCodec(flagBytes);
       try {
         flag = (await codec.getNextFrame()).image;

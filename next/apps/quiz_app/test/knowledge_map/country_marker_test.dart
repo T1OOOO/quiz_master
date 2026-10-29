@@ -18,26 +18,27 @@ void main() {
     expect(capital.where((p) => p.a > 0).length, greaterThan(10));
   });
 
-  test('capital label places its flag beside the name', () async {
-    final flag = image.Image(width: 12, height: 8, numChannels: 4);
-    image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));
-    final plain = image.decodePng(
-      await renderCountryMarker(name: 'Vienna · Austria', capital: true),
-    )!;
-    final withFlag = image.decodePng(
-      await renderCountryMarker(
-        name: 'Vienna · Austria',
-        capital: true,
-        flagBytes: Uint8List.fromList(image.encodePng(flag)),
-      ),
-    )!;
-    expect(withFlag.width, greaterThan(plain.width));
-    expect(withFlag.height, plain.height);
-    expect(
-      withFlag.any((p) => p.r > 220 && p.g < 30 && p.b < 30 && p.a > 200),
-      isTrue,
+  for (final landmark in [false, true]) {
+    test(
+      'capital and landmark labels do not render flags: landmark=$landmark',
+      () async {
+        final flag = image.Image(width: 12, height: 8, numChannels: 4);
+        image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));
+        final without = await renderCountryMarker(
+          name: 'Vienna',
+          capital: !landmark,
+          landmark: landmark,
+        );
+        final withFlag = await renderCountryMarker(
+          name: 'Vienna',
+          capital: !landmark,
+          landmark: landmark,
+          flagBytes: Uint8List.fromList(image.encodePng(flag)),
+        );
+        expect(withFlag, orderedEquals(without));
+      },
     );
-  });
+  }
 
   test('capital marker renders a visible star without font glyphs', () async {
     final star = image.decodePng(await renderCapitalMarker())!;
