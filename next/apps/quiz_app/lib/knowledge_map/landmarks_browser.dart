@@ -164,7 +164,8 @@ class _LandmarksBrowserState extends State<LandmarksBrowser> {
                       final p = places[index]['properties'] as Map;
                       final categories = p['categories'] as List? ?? const [];
                       final kind = placeCategory(categories);
-                      return ListTile(
+                      return ExpansionTile(
+                        key: ValueKey(p['id'] as String),
                         leading: Icon(
                           placeCategoryIcon(kind),
                           color: placeCategoryColor(kind),
@@ -175,7 +176,26 @@ class _LandmarksBrowserState extends State<LandmarksBrowser> {
                         subtitle: Text(
                           p[russian ? 'city_ru' : 'city_en'] as String? ?? '',
                         ),
-                        onTap: () => widget.onSelect(p['id'] as String),
+                        childrenPadding: const EdgeInsets.fromLTRB(
+                          16,
+                          0,
+                          16,
+                          8,
+                        ),
+                        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (p[russian ? 'explanation_ru' : 'explanation_en']
+                              is String)
+                            Text(
+                              p[russian ? 'explanation_ru' : 'explanation_en']
+                                  as String,
+                            ),
+                          TextButton.icon(
+                            onPressed: () => widget.onSelect(p['id'] as String),
+                            icon: const Icon(Icons.map_outlined),
+                            label: Text(tr('Show on map', 'Показать на карте')),
+                          ),
+                        ],
                       );
                     },
                   ),

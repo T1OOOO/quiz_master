@@ -16,6 +16,7 @@ import 'landmarks_browser.dart';
 import 'country_number_format.dart';
 import 'countries_browser.dart';
 import 'map_state.dart';
+import 'practice_hints.dart';
 
 @visibleForTesting
 String thematicNumberLabel(
@@ -146,6 +147,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   String? practiceTarget;
   List<MapCountry> practiceOptions = [];
   bool? practiceResult;
+  int practiceHintLevel = 0;
+  final GlobalKey practicePanelKey = GlobalKey();
+  double practicePanelExtent = 0;
   bool get ru => Localizations.localeOf(context).languageCode == 'ru';
   String tr(String en, String russian) => ru ? russian : en;
 
@@ -440,6 +444,16 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'land',
         const FillLayerProperties(fillColor: '#f4efd9'),
       );
+      await c.addFillLayer(
+        'countries',
+        'practice-excluded',
+        const FillLayerProperties(fillColor: '#68717a', fillOpacity: 0.5),
+        filter: [
+          'in',
+          ['get', 'country_id'],
+          ['literal', <String>[]],
+        ],
+      );
       await c.addLineLayer(
         'countries',
         'borders',
@@ -595,15 +609,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               p['categories'] as List? ?? const [],
             );
           }
-          final country = source == 'capital-labels'
-              ? state?.countryById(p['country_id'])
-              : null;
-          final countryName = country == null
-              ? null
-              : (localizedRu ? country.nameRu : country.nameEn);
           final name = '$prefix${p[localizedRu ? 'name_ru' : 'name_en']}';
           final marker = await renderCountryMarker(
-            name: countryName == null ? name : '$name · $countryName',
+            name: name,
             landmark: source == 'landmarks',
             wonder:
                 source == 'landmarks' &&
@@ -737,6 +745,68 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       ['get', 'country_id'],
       '',
     ]);
+    await c.setFilter('practice-excluded', [
+      'in',
+      ['get', 'country_id'],
+      ['literal', <String>[]],
+    ]);
+  }
+
+  bool get canUsePracticeHint {
+    final target = state?.countryById(practiceTarget);
+    if (!practice ||
+        practiceBusy ||
+        practiceResult == true ||
+        practiceMode >= 2 ||
+        practiceHintLevel >= 2) {
+      return false;
+    }
+    if (target?.region?.trim().isNotEmpty != true) return false;
+    return practiceHintLevel == 0 ||
+        target?.subregion?.trim().isNotEmpty == true;
+  }
+
+  Future<void> usePracticeHint() async {
+    if (!practice ||
+        practiceBusy ||
+        practiceMode >= 2 ||
+        practiceTarget == null) {
+      return;
+    }
+    final target = state?.countryById(practiceTarget);
+    if (target?.region == null ||
+        target!.region!.isEmpty ||
+        practiceHintLevel >= 2) {
+      return;
+    }
+    if (practiceHintLevel == 1 &&
+        (target.subregion == null || target.subregion!.isEmpty)) {
+      return;
+    }
+    setState(() {
+      practiceHintLevel++;
+      practiceBusy = true;
+    });
+    final excluded = practiceHintExcluded(
+      state!.countries,
+      practiceTarget,
+      practiceHintLevel,
+    ).toList();
+    final c = controller;
+    try {
+      if (c != null && ready) {
+        await c.setFilter('practice-excluded', [
+          'in',
+          ['get', 'country_id'],
+          ['literal', excluded],
+        ]);
+      }
+    } catch (error) {
+      debugPrint('Knowledge map: practice hint failed: $error');
+      if (mounted) setState(() => practiceHintLevel--);
+    } finally {
+      if (mounted) setState(() => practiceBusy = false);
+    }
   }
 
   Future<void> nextPractice() async {
@@ -758,9 +828,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         practiceTarget = target.id;
         practiceOptions = options;
         practiceResult = null;
+        practiceHintLevel = 0;
       });
       final c = controller;
       if (c == null || !ready) return;
+      await c.setFilter('practice-excluded', [
+        'in',
+        ['get', 'country_id'],
+        ['literal', <String>[]],
+      ]);
       await c.setFilter('selected', [
         '==',
         ['get', 'country_id'],
@@ -795,6 +871,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     clearHover();
     setState(() {
       practice = value;
+      practiceHintLevel = 0;
+      practicePanelExtent = 0;
       practiceBusy = true;
       state?.select(null);
       selectedFeature = null;
@@ -1755,8 +1833,26 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               final panelWidth = panelOpen && countryPanelOnSide
                   ? math.min(360.0, viewport.width * 0.7)
                   : 0.0;
+              if (practice) {
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  if (!mounted || !practice) return;
+                  final box = practicePanelKey.currentContext
+                      ?.findRenderObject();
+                  if (box is RenderBox && box.hasSize) {
+                    final height = box.size.height + 12;
+                    if ((practicePanelExtent - height).abs() > 1) {
+                      setState(() => practicePanelExtent = height);
+                    }
+                  }
+                });
+              }
               final mapBottom = practice
-                  ? math.min(viewport.height, viewport.height * 0.48 + 12)
+                  ? math.min(
+                      viewport.height,
+                      practicePanelExtent > 0
+                          ? practicePanelExtent
+                          : viewport.height * 0.48 + 12,
+                    )
                   : panelHeight;
               final currentMapViewport = Size(
                 viewport.width - panelWidth,
@@ -2086,6 +2182,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       bottom: 12,
                       child: PointerInterceptor(
                         child: Material(
+                          key: practicePanelKey,
                           elevation: 4,
                           borderRadius: BorderRadius.circular(16),
                           child: ConstrainedBox(
@@ -2102,14 +2199,58 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                     Row(
                                       children: [
                                         Expanded(
-                                          child: Text(
-                                            tr(
-                                              'Map practice',
-                                              'Тренировка по карте',
-                                            ),
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                          child: DropdownButton<int>(
+                                            value: practiceMode,
+                                            isExpanded: true,
+                                            items: [
+                                              DropdownMenuItem(
+                                                value: 0,
+                                                child: Text(
+                                                  tr(
+                                                    'Name → map',
+                                                    'Название → карта',
+                                                  ),
+                                                ),
+                                              ),
+                                              DropdownMenuItem(
+                                                value: 1,
+                                                child: Text(
+                                                  tr(
+                                                    'Flag → map',
+                                                    'Флаг → карта',
+                                                  ),
+                                                ),
+                                              ),
+                                              DropdownMenuItem(
+                                                value: 2,
+                                                child: Text(
+                                                  tr(
+                                                    'Map → name',
+                                                    'Карта → название',
+                                                  ),
+                                                ),
+                                              ),
+                                              DropdownMenuItem(
+                                                value: 3,
+                                                child: Text(
+                                                  tr(
+                                                    'Map → flag',
+                                                    'Карта → флаг',
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                            onChanged: practiceBusy
+                                                ? null
+                                                : (value) {
+                                                    if (value != null) {
+                                                      setState(
+                                                        () => practiceMode =
+                                                            value,
+                                                      );
+                                                      nextPractice();
+                                                    }
+                                                  },
                                           ),
                                         ),
                                         IconButton(
@@ -2123,52 +2264,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                           icon: const Icon(Icons.close),
                                         ),
                                       ],
-                                    ),
-                                    DropdownButton<int>(
-                                      value: practiceMode,
-                                      isExpanded: true,
-                                      items: [
-                                        DropdownMenuItem(
-                                          value: 0,
-                                          child: Text(
-                                            tr(
-                                              'Name → map',
-                                              'Название → карта',
-                                            ),
-                                          ),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 1,
-                                          child: Text(
-                                            tr('Flag → map', 'Флаг → карта'),
-                                          ),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 2,
-                                          child: Text(
-                                            tr(
-                                              'Map → name',
-                                              'Карта → название',
-                                            ),
-                                          ),
-                                        ),
-                                        DropdownMenuItem(
-                                          value: 3,
-                                          child: Text(
-                                            tr('Map → flag', 'Карта → флаг'),
-                                          ),
-                                        ),
-                                      ],
-                                      onChanged: practiceBusy
-                                          ? null
-                                          : (value) {
-                                              if (value != null) {
-                                                setState(
-                                                  () => practiceMode = value,
-                                                );
-                                                nextPractice();
-                                              }
-                                            },
                                     ),
                                     if (practiceTarget == null)
                                       Text(
@@ -2253,6 +2348,37 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                                   'Попробуйте ещё раз',
                                                 ),
                                         ),
+                                      if (practiceMode < 2)
+                                        Wrap(
+                                          spacing: 8,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.center,
+                                          children: [
+                                            OutlinedButton.icon(
+                                              onPressed: canUsePracticeHint
+                                                  ? usePracticeHint
+                                                  : null,
+                                              icon: const Icon(
+                                                Icons.lightbulb_outline,
+                                              ),
+                                              label: Text(
+                                                tr('Hint', 'Подсказка'),
+                                              ),
+                                            ),
+                                            if (practiceHintLevel > 0)
+                                              Text(
+                                                practiceHintLevel == 1
+                                                    ? tr(
+                                                        'Other regions shaded',
+                                                        'Другие регионы затемнены',
+                                                      )
+                                                    : tr(
+                                                        'Other subregions shaded',
+                                                        'Другие подрегионы затемнены',
+                                                      ),
+                                              ),
+                                          ],
+                                        ),
                                       TextButton(
                                         onPressed: practiceBusy
                                             ? null
@@ -2276,8 +2402,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                     Positioned(
                       left: 12,
                       right: 12,
-                      bottom: 68,
-                      top: 64,
+                      bottom: viewport.height < 400 ? 0 : 68,
+                      top: viewport.height < 400 ? 0 : 64,
                       child: PointerInterceptor(
                         child: Material(
                           elevation: 4,

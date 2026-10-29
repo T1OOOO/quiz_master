@@ -533,9 +533,18 @@ void main() {
     await tester.pumpAndSettle();
     expect(
       tester.getRect(find.byKey(const ValueKey('practice-map'))).bottom,
-      lessThanOrEqualTo(tester.getRect(find.text('Map practice')).top),
+      lessThanOrEqualTo(tester.getRect(find.byType(DropdownButton<int>)).top),
     );
     expect(find.text('Find the country on the map'), findsOneWidget);
+    await tester.tap(find.text('Hint'));
+    await tester.pumpAndSettle();
+    expect(find.text('Other regions shaded'), findsOneWidget);
+    await tester.tap(find.text('Hint'));
+    await tester.pumpAndSettle();
+    expect(find.text('Other subregions shaded'), findsOneWidget);
+    await tester.tap(find.text('Skip'));
+    await tester.pumpAndSettle();
+    expect(find.text('Other subregions shaded'), findsNothing);
     select('MC');
     await tester.pumpAndSettle();
     expect(find.text('Try again'), findsOneWidget);
@@ -613,6 +622,9 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Eiffel Tower'));
     await tester.pumpAndSettle();
+    expect(find.text('A landmark in Paris.'), findsOneWidget);
+    await tester.tap(find.text('Show on map'));
+    await tester.pumpAndSettle();
     expect(find.textContaining('Photographer'), findsOneWidget);
   });
 
@@ -639,6 +651,32 @@ void main() {
     await tester.enterText(find.byType(TextField), 'eiffel');
     await tester.pumpAndSettle();
     expect(find.text('Eiffel Tower'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('country search remains usable with a mobile keyboard', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(320, 480);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    addTearDown(tester.view.resetViewInsets);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, select) => const SizedBox.expand(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await openMapSection(tester, 'Countries');
+    tester.view.viewInsets = const FakeViewPadding(bottom: 250);
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'France');
+    await tester.pumpAndSettle();
+    expect(find.widgetWithText(ExpansionTile, 'France'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 
@@ -686,6 +724,9 @@ void main() {
     expect(tester.testTextInput.isVisible, isTrue);
     await tester.tap(find.byType(ListTile).first);
     await tester.pumpAndSettle();
+    expect(find.text('First France fact'), findsOneWidget);
+    await tester.tap(find.text('Show on map'));
+    await tester.pumpAndSettle();
     expect(tester.testTextInput.isVisible, isFalse);
     await tester.tap(find.text('Country details'));
     await tester.pumpAndSettle();
@@ -704,6 +745,8 @@ void main() {
     await tester.enterText(find.byType(TextField), 'Monaco');
     await tester.pump();
     await tester.tap(find.byType(ListTile).first);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Show on map'));
     await tester.pumpAndSettle();
     expect(find.text('Country details'), findsOneWidget);
     await tester.tap(find.text('Country details'));
@@ -945,6 +988,8 @@ void main() {
       await tester.enterText(find.byType(TextField), 'France');
       await tester.pumpAndSettle();
       await tester.tap(find.widgetWithText(ListTile, 'France'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Show on map'));
       await tester.pumpAndSettle();
       expect(find.text('Country details'), findsOneWidget);
       expect(find.widgetWithText(ListTile, 'France'), findsNothing);

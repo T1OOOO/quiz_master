@@ -5,6 +5,34 @@ import 'package:quiz_app/knowledge_map/countries_browser.dart';
 import 'package:quiz_app/knowledge_map/map_state.dart';
 
 void main() {
+  testWidgets('filtering does not move expanded state to another country', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: CountriesBrowser(
+            countries: const [
+              MapCountry(id: 'A', nameRu: 'А', nameEn: 'Alpha'),
+              MapCountry(id: 'B', nameRu: 'Б', nameEn: 'Beta'),
+            ],
+            selectedId: 'A',
+            onSelect: (_) {},
+          ),
+        ),
+      ),
+    );
+    final alpha = tester.widget<ExpansionTile>(
+      find.widgetWithText(ExpansionTile, 'Alpha'),
+    );
+    expect(alpha.collapsedBackgroundColor, isNotNull);
+    await tester.tap(find.text('Alpha'));
+    await tester.pumpAndSettle();
+    expect(find.text('Show on map'), findsOneWidget);
+    await tester.enterText(find.byType(TextField), 'Beta');
+    await tester.pumpAndSettle();
+    expect(find.text('Show on map'), findsNothing);
+  });
   testWidgets('searches all countries and selects an unmapped country', (
     tester,
   ) async {
@@ -35,6 +63,8 @@ void main() {
     expect(find.text('Other'), findsOneWidget);
     expect(find.text('Not on map'), findsOneWidget);
     await tester.tap(find.text('Other'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Show on map'));
     expect(selected?.id, 'XX');
   });
   testWidgets('table shows fields and missing data', (tester) async {

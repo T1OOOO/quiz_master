@@ -172,13 +172,37 @@ class _CountriesBrowserState extends State<CountriesBrowser> {
                     itemCount: items.length,
                     itemBuilder: (context, index) {
                       final c = items[index];
-                      return ListTile(
-                        selected: c.id == widget.selectedId,
+                      return ExpansionTile(
+                        key: ValueKey(c.id),
+                        backgroundColor: c.id == widget.selectedId
+                            ? Theme.of(context).colorScheme.secondaryContainer
+                            : null,
+                        collapsedBackgroundColor: c.id == widget.selectedId
+                            ? Theme.of(context).colorScheme.secondaryContainer
+                            : null,
                         title: countryName(c),
                         subtitle: Text(
                           '${tr('Capital', 'Столица')}: ${capital(c)} · ${tr('Population', 'Население')}: ${number(c.population)} · ${tr('Area, km²', 'Площадь, км²')}: ${number(c.area)}',
                         ),
-                        onTap: () => widget.onSelect(c),
+                        childrenPadding: const EdgeInsets.fromLTRB(
+                          16,
+                          0,
+                          16,
+                          8,
+                        ),
+                        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for (final fact in c.interestingFacts)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: Text(ru ? fact.textRu : fact.textEn),
+                            ),
+                          TextButton.icon(
+                            onPressed: () => widget.onSelect(c),
+                            icon: const Icon(Icons.map_outlined),
+                            label: Text(tr('Show on map', 'Показать на карте')),
+                          ),
+                        ],
                       );
                     },
                   ),
