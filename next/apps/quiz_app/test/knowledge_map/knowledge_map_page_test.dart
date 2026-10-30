@@ -664,6 +664,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.textContaining('Photographer'), findsOneWidget);
     await openMapSection(tester, 'Places');
+    expect(find.textContaining('Photographer'), findsNothing);
     expect(
       tester.widget<TextField>(find.byType(TextField)).controller?.text ??
           tester

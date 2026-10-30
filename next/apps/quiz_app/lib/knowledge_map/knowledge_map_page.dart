@@ -2630,6 +2630,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       ),
                     if (!layersOpen &&
                         !visibleOpen &&
+                        !browserOpen &&
+                        !placesOpen &&
                         feature != null &&
                         featureKind != null)
                       Positioned(
@@ -2676,7 +2678,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           ),
                         ),
                       ),
-                    if (!layersOpen && !visibleOpen && selectedLandmark != null)
+                    if (!layersOpen &&
+                        !visibleOpen &&
+                        !browserOpen &&
+                        !placesOpen &&
+                        selectedLandmark != null)
                       Positioned(
                         left: 12,
                         right: 12,
