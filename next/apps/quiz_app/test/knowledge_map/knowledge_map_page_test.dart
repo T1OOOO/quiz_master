@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:quiz_app/knowledge_map/knowledge_map_page.dart';
+import 'package:quiz_app/knowledge_map/landmarks_browser.dart';
 import 'package:quiz_app/knowledge_map/map_state.dart';
 
 Future<void> openMapSection(WidgetTester tester, String section) async {
@@ -36,9 +37,13 @@ class MapFixtureBundle extends CachingAssetBundle {
   bool missingInterestingFacts = false;
   bool withFlags = false;
   Completer<void>? factsGate;
+  Completer<void>? foodGate;
   @override
   Future<ByteData> load(String key) async {
     requested.add(key);
+    if (key.endsWith('food_atlas.json') && foodGate != null) {
+      await foodGate!.future;
+    }
     if (key.endsWith('lakes_detail.geojson') && invalidLakeDetail != null) {
       final content = invalidLakeDetail == 'json'
           ? '{'
@@ -268,6 +273,25 @@ class MapFixtureBundle extends CachingAssetBundle {
 }
 
 void main() {
+  testWidgets('map opens while supplementary facts are still loading', (
+    tester,
+  ) async {
+    final gate = Completer<void>();
+    final bundle = MapFixtureBundle()..foodGate = gate;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: bundle,
+          mapBuilder: (context, select) => const SizedBox.expand(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(find.byTooltip('Map menu'), findsOneWidget);
+    expect(gate.isCompleted, isFalse);
+    gate.complete();
+    await tester.pumpAndSettle();
+  });
   testWidgets(
     'map keeps controls compact and opens searchable countries from menu',
     (tester) async {
@@ -282,6 +306,14 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(find.byTooltip('Map menu'), findsOneWidget);
+      expect(
+        tester.getBottomLeft(find.byTooltip('Map menu')).dy,
+        greaterThan(500),
+      );
+      expect(
+        tester.getBottomRight(find.byTooltip('Zoom in')).dy,
+        greaterThan(500),
+      );
       expect(find.byType(TextField), findsNothing);
       expect(find.text('Countries'), findsNothing);
       expect(find.text('Places'), findsNothing);
@@ -536,15 +568,14 @@ void main() {
       lessThanOrEqualTo(tester.getRect(find.byType(DropdownButton<int>)).top),
     );
     expect(find.text('Find the country on the map'), findsOneWidget);
-    await tester.tap(find.text('Hint'));
-    await tester.pumpAndSettle();
-    expect(find.text('Other regions shaded'), findsOneWidget);
-    await tester.tap(find.text('Hint'));
-    await tester.pumpAndSettle();
-    expect(find.text('Other subregions shaded'), findsOneWidget);
+    for (var i = 1; i <= 5; i++) {
+      await tester.tap(find.byTooltip('Hint $i'));
+      await tester.pumpAndSettle();
+    }
+    expect(find.text('Region highlighted'), findsOneWidget);
     await tester.tap(find.text('Skip'));
     await tester.pumpAndSettle();
-    expect(find.text('Other subregions shaded'), findsNothing);
+    expect(find.text('Region highlighted'), findsNothing);
     select('MC');
     await tester.pumpAndSettle();
     expect(find.text('Try again'), findsOneWidget);
@@ -622,10 +653,32 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Eiffel Tower'));
     await tester.pumpAndSettle();
-    expect(find.text('A landmark in Paris.'), findsOneWidget);
+    expect(
+      find.descendant(
+        of: find.byType(LandmarksBrowser),
+        matching: find.text('A landmark in Paris.'),
+      ),
+      findsOneWidget,
+    );
     await tester.tap(find.text('Show on map'));
     await tester.pumpAndSettle();
     expect(find.textContaining('Photographer'), findsOneWidget);
+    await openMapSection(tester, 'Places');
+    expect(
+      tester.widget<TextField>(find.byType(TextField)).controller?.text ??
+          tester
+              .widget<EditableText>(find.byType(EditableText))
+              .controller
+              .text,
+      'eiffel',
+    );
+    expect(
+      find.descendant(
+        of: find.byType(LandmarksBrowser),
+        matching: find.text('A landmark in Paris.'),
+      ),
+      findsOneWidget,
+    );
   });
 
   testWidgets('places search remains usable with a mobile keyboard', (
@@ -1074,7 +1127,7 @@ void main() {
       expect(find.text('Eiffel Tower'), findsNothing);
     },
   );
-  testWidgets('missing detailed lakes keeps the map usable', (tester) async {
+  testWidgets('map startup does not wait for detailed lakes', (tester) async {
     final bundle = MapFixtureBundle()..missingLakeDetail = true;
     await tester.pumpWidget(
       MaterialApp(
@@ -1087,14 +1140,14 @@ void main() {
     await tester.pumpAndSettle();
     expect(
       bundle.requested,
-      contains('assets/quizipedia/map_v2/lakes_detail.geojson'),
+      isNot(contains('assets/quizipedia/map_v2/lakes_detail.geojson')),
     );
     expect(find.byTooltip('Map menu'), findsOneWidget);
     expect(find.text('Map unavailable'), findsNothing);
   });
 
   for (final invalid in ['json', 'type', 'geometry']) {
-    testWidgets('invalid detailed lakes $invalid keeps the map usable', (
+    testWidgets('map startup does not depend on detailed lakes $invalid', (
       tester,
     ) async {
       final bundle = MapFixtureBundle()..invalidLakeDetail = invalid;
@@ -1112,7 +1165,7 @@ void main() {
     });
   }
 
-  testWidgets('missing detailed rivers keeps the map usable', (tester) async {
+  testWidgets('map startup does not wait for detailed rivers', (tester) async {
     final bundle = MapFixtureBundle()..missingRiverDetail = true;
     await tester.pumpWidget(
       MaterialApp(
@@ -1125,7 +1178,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(
       bundle.requested,
-      contains('assets/quizipedia/map_v2/rivers_detail.geojson'),
+      isNot(contains('assets/quizipedia/map_v2/rivers_detail.geojson')),
     );
     expect(find.byTooltip('Map menu'), findsOneWidget);
     expect(find.text('Map unavailable'), findsNothing);

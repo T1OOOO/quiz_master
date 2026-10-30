@@ -96,8 +96,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Map<String, dynamic>? countries,
       capitals,
       waterways,
-      riverDetail,
-      lakeDetail,
       countryLabels,
       waterLabels,
       landmarks;
@@ -206,6 +204,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     controller = null;
     thematicSprites.clear();
     dishes = [];
+    foodSources = [];
+    waters = {};
+    waterSources = [];
+    featureFacts = {};
     thematic = 'none';
     thematicSequence++;
     detailRiversReady = false;
@@ -224,14 +226,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     });
     final attempt = generation;
     try {
-      final riverFuture = loadOptionalWater(
-        'assets/quizipedia/map_v2/rivers_detail.geojson',
-        const {'LineString', 'MultiLineString'},
-      );
-      final lakeFuture = loadOptionalWater(
-        'assets/quizipedia/map_v2/lakes_detail.geojson',
-        const {'Polygon', 'MultiPolygon'},
-      );
       final texts = await Future.wait([
         (widget.bundle ?? rootBundle).loadString(
           'assets/quizipedia/map_v2/countries.geojson',
@@ -270,45 +264,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           cache: false,
         ),
       ]);
-      final details = await Future.wait([riverFuture, lakeFuture]);
-      try {
-        final atlas = jsonDecode(
-          await (widget.bundle ?? rootBundle).loadString(
-            'assets/quizipedia/food_atlas.json',
-            cache: false,
-          ),
-        ) as Map<String, dynamic>;
-        dishes = atlas['dishes'] as List? ?? [];
-        foodSources = atlas['sources'] as List? ?? [];
-      } catch (_) {
-        dishes = [];
-      }
-      try {
-        final waterData = jsonDecode(
-          await (widget.bundle ?? rootBundle).loadString(
-            'assets/quizipedia/country_waters.json',
-            cache: false,
-          ),
-        ) as Map<String, dynamic>;
-        waters = waterData['countries'] as Map<String, dynamic>? ?? {};
-        waterSources = waterData['sources'] as List? ?? [];
-      } catch (_) {
-        waters = {};
-        waterSources = [];
-      }
-      try {
-        featureFacts = jsonDecode(
-          await (widget.bundle ?? rootBundle).loadString(
-            'assets/quizipedia/map_feature_facts.json',
-            cache: false,
-          ),
-        ) as Map<String, dynamic>;
-      } catch (_) {
-        featureFacts = {};
-      }
       if (!mounted || generation != attempt) return;
-      riverDetail = details[0];
-      lakeDetail = details[1];
       countries = jsonDecode(texts[0]) as Map<String, dynamic>;
       capitals = jsonDecode(texts[1]) as Map<String, dynamic>;
       waterways = jsonDecode(texts[2]) as Map<String, dynamic>;
@@ -415,6 +371,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           }
           ready = widget.mapBuilder != null;
         });
+        unawaited(loadSupplementaryData(attempt));
       }
       if (widget.mapBuilder == null) {
         startupTimer = Timer(const Duration(seconds: 90), () {
@@ -428,6 +385,32 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       debugPrint('Knowledge map: asset load failed: $error\n$stack');
       if (mounted && generation == attempt) setState(() => failed = true);
     }
+  }
+
+  Future<void> loadSupplementaryData(int attempt) async {
+    Future<Map<String, dynamic>> read(String asset) async {
+      try {
+        return jsonDecode(
+          await (widget.bundle ?? rootBundle).loadString(asset, cache: false),
+        ) as Map<String, dynamic>;
+      } catch (_) {
+        return {};
+      }
+    }
+
+    final results = await Future.wait([
+      read('assets/quizipedia/food_atlas.json'),
+      read('assets/quizipedia/country_waters.json'),
+      read('assets/quizipedia/map_feature_facts.json'),
+    ]);
+    if (!mounted || generation != attempt) return;
+    setState(() {
+      dishes = results[0]['dishes'] as List? ?? [];
+      foodSources = results[0]['sources'] as List? ?? [];
+      waters = results[1]['countries'] as Map<String, dynamic>? ?? {};
+      waterSources = results[1]['sources'] as List? ?? [];
+      featureFacts = results[2];
+    });
   }
 
   Future<void> setup() async {
@@ -448,6 +431,16 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'countries',
         'practice-excluded',
         const FillLayerProperties(fillColor: '#68717a', fillOpacity: 0.5),
+        filter: [
+          'in',
+          ['get', 'country_id'],
+          ['literal', <String>[]],
+        ],
+      );
+      await c.addFillLayer(
+        'countries',
+        'practice-region',
+        const FillLayerProperties(fillColor: '#f6c34f', fillOpacity: 0.35),
         filter: [
           'in',
           ['get', 'country_id'],
@@ -484,53 +477,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       if (!mounted || generation != attempt || controller != c || failed) {
         return;
       }
-      if (lakeDetail != null) {
-        try {
-          await c.addGeoJsonSource('lakes-detail', lakeDetail!);
-          await c.addFillLayer(
-            'lakes-detail',
-            'lakes-detail',
-            const FillLayerProperties(fillColor: '#b9dfe9'),
-            minzoom: 4,
-            enableInteraction: true,
-          );
-          if (!mounted || generation != attempt || controller != c || failed) {
-            return;
-          }
-          detailLakesReady = true;
-        } catch (error) {
-          debugPrint('Knowledge map: detailed lakes unavailable: $error');
-        }
-      }
-      if (!mounted || generation != attempt || controller != c || failed) {
-        return;
-      }
-      if (riverDetail != null) {
-        try {
-          await c.addGeoJsonSource('rivers-detail', riverDetail!);
-          await c.addLineLayer(
-            'rivers-detail',
-            'rivers-detail',
-            const LineLayerProperties(lineColor: '#91c9d9', lineWidth: 1.2),
-            minzoom: 4,
-            enableInteraction: true,
-          );
-          if (!mounted || generation != attempt || controller != c || failed) {
-            return;
-          }
-          detailRiversReady = true;
-        } catch (error) {
-          debugPrint('Knowledge map: detailed rivers unavailable: $error');
-        }
-      }
-      if (!mounted || generation != attempt || controller != c || failed) {
-        return;
-      }
       await c.addFillLayer(
         'waterways',
         'lakes',
         const FillLayerProperties(fillColor: '#b9dfe9'),
-        maxzoom: detailLakesReady ? 4 : null,
         filter: [
           '==',
           ['get', 'kind'],
@@ -541,7 +491,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'waterways',
         'rivers',
         const LineLayerProperties(lineColor: '#91c9d9', lineWidth: 1.2),
-        maxzoom: detailRiversReady ? 4 : null,
         filter: [
           '==',
           ['get', 'kind'],
@@ -697,9 +646,92 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       startupTimer?.cancel();
       setState(() => ready = true);
       updateVisibleCountries();
+      unawaited(installDetailedWater(c, attempt));
     } catch (error, stack) {
       debugPrint('Knowledge map: setup failed at $stage: $error\n$stack');
       if (mounted && generation == attempt) setState(() => failed = true);
+    }
+  }
+
+  Future<void> installDetailedWater(
+    MapLibreMapController c,
+    int attempt,
+  ) async {
+    final details = await Future.wait([
+      loadOptionalWater(
+        'assets/quizipedia/map_v2/rivers_detail.geojson',
+        const {'LineString', 'MultiLineString'},
+      ),
+      loadOptionalWater('assets/quizipedia/map_v2/lakes_detail.geojson', const {
+        'Polygon',
+        'MultiPolygon',
+      }),
+    ]);
+    if (!mounted || generation != attempt || controller != c || failed) return;
+    for (var i = 0; i < details.length; i++) {
+      final data = details[i];
+      if (data == null) continue;
+      final id = i == 0 ? 'rivers-detail' : 'lakes-detail';
+      try {
+        await c.addGeoJsonSource(id, data);
+        if (!mounted || generation != attempt || controller != c || failed) {
+          return;
+        }
+        if (i == 0) {
+          await c.addLineLayer(
+            id,
+            id,
+            const LineLayerProperties(lineColor: '#91c9d9', lineWidth: 1.2),
+            minzoom: 4,
+            belowLayerId: 'capital-dots',
+          );
+        } else {
+          await c.addFillLayer(
+            id,
+            id,
+            const FillLayerProperties(fillColor: '#b9dfe9'),
+            minzoom: 4,
+            belowLayerId: 'capital-dots',
+          );
+        }
+        if (!mounted || generation != attempt || controller != c || failed) {
+          return;
+        }
+        if (i == 0) {
+          detailRiversReady = true;
+          await c.setLayerProperties(
+            'rivers',
+            const LineLayerProperties(
+              lineColor: '#91c9d9',
+              lineWidth: 1.2,
+              lineOpacity: [
+                'step',
+                ['zoom'],
+                1,
+                4,
+                0,
+              ],
+            ),
+          );
+        } else {
+          detailLakesReady = true;
+          await c.setLayerProperties(
+            'lakes',
+            const FillLayerProperties(
+              fillColor: '#b9dfe9',
+              fillOpacity: [
+                'step',
+                ['zoom'],
+                1,
+                4,
+                0,
+              ],
+            ),
+          );
+        }
+      } catch (error) {
+        debugPrint('Knowledge map: $id unavailable: $error');
+      }
     }
   }
 
@@ -750,6 +782,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       ['get', 'country_id'],
       ['literal', <String>[]],
     ]);
+    await c.setFilter('practice-region', [
+      'in',
+      ['get', 'country_id'],
+      ['literal', <String>[]],
+    ]);
   }
 
   bool get canUsePracticeHint {
@@ -758,39 +795,39 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         practiceBusy ||
         practiceResult == true ||
         practiceMode >= 2 ||
-        practiceHintLevel >= 2) {
+        practiceHintLevel >= 5) {
       return false;
     }
-    if (target?.region?.trim().isNotEmpty != true) return false;
-    return practiceHintLevel == 0 ||
-        target?.subregion?.trim().isNotEmpty == true;
+    return target != null &&
+        (practiceHintLevel < 4 || target.region?.trim().isNotEmpty == true);
   }
 
   Future<void> usePracticeHint() async {
-    if (!practice ||
-        practiceBusy ||
-        practiceMode >= 2 ||
-        practiceTarget == null) {
-      return;
-    }
-    final target = state?.countryById(practiceTarget);
-    if (target?.region == null ||
-        target!.region!.isEmpty ||
-        practiceHintLevel >= 2) {
-      return;
-    }
-    if (practiceHintLevel == 1 &&
-        (target.subregion == null || target.subregion!.isEmpty)) {
-      return;
-    }
+    if (!canUsePracticeHint) return;
     setState(() {
       practiceHintLevel++;
       practiceBusy = true;
     });
+    final coordinates = <String, List<double>>{};
+    for (final feature in countryLabels?['features'] as List? ?? []) {
+      final id = feature['properties']['country_id'];
+      final point = feature['geometry']['coordinates'];
+      if (id is String &&
+          point is List &&
+          point.length >= 2 &&
+          point[0] is num &&
+          point[1] is num) {
+        coordinates[id] = [
+          (point[0] as num).toDouble(),
+          (point[1] as num).toDouble(),
+        ];
+      }
+    }
     final excluded = practiceHintExcluded(
       state!.countries,
       practiceTarget,
       practiceHintLevel,
+      coordinates: coordinates,
     ).toList();
     final c = controller;
     try {
@@ -799,6 +836,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           'in',
           ['get', 'country_id'],
           ['literal', excluded],
+        ]);
+        final candidates = practiceHintLevel == 5
+            ? practiceHintRegion(state!.countries, practiceTarget)
+            : coordinates.keys.toSet();
+        final highlighted = candidates.difference(excluded.toSet()).toList();
+        await c.setFilter('practice-region', [
+          'in',
+          ['get', 'country_id'],
+          ['literal', highlighted],
         ]);
       }
     } catch (error) {
@@ -833,6 +879,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       final c = controller;
       if (c == null || !ready) return;
       await c.setFilter('practice-excluded', [
+        'in',
+        ['get', 'country_id'],
+        ['literal', <String>[]],
+      ]);
+      await c.setFilter('practice-region', [
         'in',
         ['get', 'country_id'],
         ['literal', <String>[]],
@@ -1025,13 +1076,18 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         }
         return;
       }
-      var features = await c.queryRenderedFeatures(point, [
-        'landmarks',
-        'landmark-pins',
-      ], null);
+      var features = await queryCountryMarkers(c, point);
       if (!current()) return;
-      if (features.isNotEmpty) {
-        await selectLandmark(features.first['properties']['id'] as String);
+      final markerTapped = features.isNotEmpty;
+      if (!markerTapped) {
+        features = await c.queryRenderedFeatures(point, [
+          'landmarks',
+          'landmark-pins',
+        ], null);
+        if (!current()) return;
+      }
+      if (!markerTapped && features.isNotEmpty) {
+        await openPlace(features.first['properties']['id'] as String);
         return;
       }
       for (final entry in <String, List<String>>{
@@ -1044,6 +1100,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           if (detailRiversReady) 'rivers-detail',
         ],
       }.entries) {
+        if (markerTapped) break;
         features = await c.queryRenderedFeatures(point, entry.value, null);
         if (!current()) return;
         if (features.isNotEmpty) {
@@ -1059,9 +1116,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           return;
         }
       }
-      features = await queryCountryMarkers(c, point);
-      if (!current()) return;
-      final markerTapped = features.isNotEmpty;
       if (features.isEmpty) {
         features = await c.queryRenderedFeatures(point, ['land'], null);
         if (!current()) return;
@@ -1307,7 +1361,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             (coordinates[1] as num).toDouble(),
             (coordinates[0] as num).toDouble(),
           ),
-          5.5,
+          math.max(5.5, c.cameraPosition?.zoom ?? 5.5),
         ),
       );
     } catch (error) {
@@ -1453,11 +1507,27 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         south: bounds.southwest.latitude,
         north: bounds.northeast.latitude,
       );
-      final anchors = visibleCountryLabelAnchors(
+      final proposed = visibleCountryLabelAnchors(
         countryLabels!['features'] as List,
         features,
         viewport,
         fullOutlines: countries!['features'] as List,
+      );
+      final width = viewport.east >= viewport.west
+          ? viewport.east - viewport.west
+          : viewport.east + 360 - viewport.west;
+      final horizontalInset = width * math.min(0.3, 75 / size.width);
+      final verticalInset =
+          (viewport.north - viewport.south) * math.min(0.3, 40 / size.height);
+      final anchors = stableCountryLabelAnchors(
+        labelOverrides,
+        proposed,
+        GeoViewport(
+          west: viewport.west + horizontalInset,
+          east: viewport.west + width - horizontalInset,
+          south: viewport.south + verticalInset,
+          north: viewport.north - verticalInset,
+        ),
       );
       if (mapEquals(anchors, labelOverrides)) return;
       thematicCommands = thematicCommands.catchError((Object _) {}).then((
@@ -2051,8 +2121,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       !failed &&
                       !unsupported)
                     Positioned(
-                      top: 8,
-                      left: 64,
+                      bottom: panelHeight + 8,
+                      left: 8,
                       child: PointerInterceptor(
                         child: Material(
                           color: Theme.of(context)
@@ -2136,20 +2206,24 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         ),
                       ),
                     ),
-                  if (placesOpen && landmarks != null)
+                  if (landmarks != null)
                     Positioned(
+                      key: const ValueKey('places-browser'),
                       top: viewport.height < 400 ? 0 : 64,
                       left: 12,
                       bottom: viewport.height < 400 ? 0 : 68,
                       width: math.min(420, math.max(0, viewport.width - 24)),
-                      child: PointerInterceptor(
-                        child: LandmarksBrowser(
-                          features: landmarks!['features'] as List,
-                          category: placesCategory,
-                          russian: ru,
-                          onClose: () => setState(() => placesOpen = false),
-                          onCategory: setPlacesCategory,
-                          onSelect: openPlace,
+                      child: Offstage(
+                        offstage: !placesOpen,
+                        child: PointerInterceptor(
+                          child: LandmarksBrowser(
+                            features: landmarks!['features'] as List,
+                            category: placesCategory,
+                            russian: ru,
+                            onClose: () => setState(() => placesOpen = false),
+                            onCategory: setPlacesCategory,
+                            onSelect: openPlace,
+                          ),
                         ),
                       ),
                     ),
@@ -2354,27 +2428,35 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                           crossAxisAlignment:
                                               WrapCrossAlignment.center,
                                           children: [
-                                            OutlinedButton.icon(
-                                              onPressed: canUsePracticeHint
-                                                  ? usePracticeHint
-                                                  : null,
-                                              icon: const Icon(
-                                                Icons.lightbulb_outline,
+                                            for (var i = 0; i < 5; i++)
+                                              IconButton(
+                                                tooltip:
+                                                    '${tr('Hint', 'Подсказка')} ${i + 1}',
+                                                onPressed:
+                                                    canUsePracticeHint &&
+                                                        i == practiceHintLevel
+                                                    ? usePracticeHint
+                                                    : null,
+                                                icon: Icon(
+                                                  i < practiceHintLevel
+                                                      ? Icons.lightbulb
+                                                      : Icons.lightbulb_outline,
+                                                  color: i < practiceHintLevel
+                                                      ? Colors.amber.shade700
+                                                      : null,
+                                                ),
+                                                color: Colors.amber.shade700,
                                               ),
-                                              label: Text(
-                                                tr('Hint', 'Подсказка'),
-                                              ),
-                                            ),
                                             if (practiceHintLevel > 0)
                                               Text(
-                                                practiceHintLevel == 1
+                                                practiceHintLevel < 5
                                                     ? tr(
-                                                        'Other regions shaded',
-                                                        'Другие регионы затемнены',
+                                                        'Search area highlighted',
+                                                        'Область поиска подсвечена',
                                                       )
                                                     : tr(
-                                                        'Other subregions shaded',
-                                                        'Другие подрегионы затемнены',
+                                                        'Region highlighted',
+                                                        'Регион подсвечен',
                                                       ),
                                               ),
                                           ],
@@ -2433,9 +2515,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         !visibleOpen &&
                         !layersOpen)
                       Positioned(
-                        top: 8,
+                        bottom: panelHeight + 8,
                         right: panelWidth + 8,
-                        child: Column(
+                        child: Row(
                           children: [
                             PointerInterceptor(
                               child: IconButton.filledTonal(
@@ -2814,7 +2896,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                 (item) => item.countryId == selected.id,
                               ))
                                 TextButton(
-                                  onPressed: () => selectLandmark(landmark.id),
+                                  onPressed: () => openPlace(landmark.id),
                                   child: Text(
                                     ru ? landmark.nameRu : landmark.nameEn,
                                   ),

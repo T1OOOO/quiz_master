@@ -23,6 +23,23 @@ class GeoViewport {
   }
 }
 
+/// Reuse anchors while their label has room on screen.
+Map<String, (double, double)> stableCountryLabelAnchors(
+  Map<String, (double, double)> previous,
+  Map<String, (double, double)> proposed,
+  GeoViewport safeViewport,
+) => {
+  for (final entry in proposed.entries)
+    entry.key:
+        previous[entry.key] != null &&
+            safeViewport.contains(
+              previous[entry.key]!.$1,
+              previous[entry.key]!.$2,
+            )
+        ? previous[entry.key]!
+        : entry.value,
+};
+
 /// Finds a point inside the visible portion of a GeoJSON Polygon/MultiPolygon.
 /// Returns null for malformed or non-polygon geometry.
 ({double longitude, double latitude})? countryLabelAnchor(

@@ -35,9 +35,53 @@ void main() {
       ),
       MapCountry(id: 'XX', nameRu: 'Неизвестно', nameEn: 'Unknown'),
     ];
-    expect(practiceHintExcluded(countries, 'FR', 0), isEmpty);
-    expect(practiceHintExcluded(countries, 'FR', 1), {'JP'});
-    expect(practiceHintExcluded(countries, 'FR', 2), {'JP', 'PL'});
-    expect(practiceHintExcluded(countries, 'XX', 2), isEmpty);
+    const coordinates = {
+      'FR': [2.0, 49.0],
+      'DE': [13.0, 52.0],
+      'PL': [21.0, 52.0],
+      'JP': [140.0, 36.0],
+    };
+    expect(
+      practiceHintExcluded(countries, 'FR', 0, coordinates: coordinates),
+      isEmpty,
+    );
+    final first = practiceHintExcluded(
+      countries,
+      'FR',
+      1,
+      coordinates: coordinates,
+    );
+    final fourth = practiceHintExcluded(
+      countries,
+      'FR',
+      4,
+      coordinates: coordinates,
+    );
+    final last = practiceHintExcluded(
+      countries,
+      'FR',
+      5,
+      coordinates: coordinates,
+    );
+    expect(first, contains('JP'));
+    expect(fourth, containsAll(first));
+    expect(last, containsAll(fourth));
+    expect(last, contains('PL'));
+    expect(last, isNot(contains('FR')));
+    expect(last, isNot(contains('XX')));
+    expect(practiceHintRegion(countries, 'FR'), {'FR', 'DE'});
+    expect(practiceHintRegion(countries, 'XX'), isEmpty);
+    final farCoordinates = {
+      ...coordinates,
+      'DE': [100.0, 52.0],
+    };
+    expect(
+      practiceHintExcluded(countries, 'FR', 4, coordinates: farCoordinates),
+      contains('DE'),
+    );
+    expect(
+      practiceHintExcluded(countries, 'FR', 5, coordinates: farCoordinates),
+      isNot(contains('DE')),
+    );
   });
 }

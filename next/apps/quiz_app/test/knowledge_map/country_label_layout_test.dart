@@ -6,6 +6,14 @@ import 'dart:io';
 
 void main() {
   const view = GeoViewport(west: 0, east: 10, south: 0, north: 10);
+  test('keeps visible anchors until they approach the viewport edge', () {
+    final result = stableCountryLabelAnchors(
+      {'a': (5.0, 5.0), 'b': (0.5, 5.0), 'gone': (4.0, 4.0)},
+      {'a': (6.0, 6.0), 'b': (2.0, 5.0), 'new': (3.0, 3.0)},
+      const GeoViewport(west: 1, east: 9, south: 1, north: 9),
+    );
+    expect(result, {'a': (5.0, 5.0), 'b': (2.0, 5.0), 'new': (3.0, 3.0)});
+  });
   test('keeps an antimeridian island at the edge of a world view', () {
     const world = GeoViewport(west: -180, east: 180, south: -30, north: 30);
     final point = countryLabelAnchor({
