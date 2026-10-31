@@ -3,7 +3,19 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'atlas_media.dart';
 import 'fact_practice_models.dart';
+
+String _factMediaEntityId(StudyFact fact) {
+  if (fact.scope == 'countries' &&
+      (fact.fieldPath.startsWith('links.') ||
+          fact.fieldPath.startsWith('waters.') ||
+          fact.fieldPath.startsWith('culture.'))) {
+    final parts = fact.fieldPath.split('.');
+    if (parts.length >= 3 && parts[2].isNotEmpty) return parts[2];
+  }
+  return fact.entityId;
+}
 
 const factPracticeSections = <String, (String, String)>{
   'vascular': ('Артерии и вены', 'Arteries and veins'),
@@ -347,6 +359,13 @@ class _FactPracticePageState extends State<FactPracticePage> {
               return Card(
                 child: ListTile(
                   key: Key('fact-open-${q.fact.id}'),
+                  leading: AtlasMedia(
+                    scope: q.fact.scope,
+                    entityId: _factMediaEntityId(q.fact),
+                    fieldPath: q.fact.fieldPath,
+                    compact: true,
+                    hideWhenMissing: true,
+                  ),
                   title: Text(_ru ? q.fact.nameRu : q.fact.nameEn),
                   subtitle: Text(_ru ? q.fact.fieldRu : q.fact.fieldEn),
                   trailing: const Icon(Icons.chevron_right),
@@ -432,6 +451,13 @@ class _FactPracticePageState extends State<FactPracticePage> {
                     ),
                   ),
                   const SizedBox(height: 12),
+                  AtlasMedia(
+                    scope: f.scope,
+                    entityId: _factMediaEntityId(f),
+                    fieldPath: f.fieldPath,
+                    hideWhenMissing: true,
+                  ),
+                  const SizedBox(height: 8),
                   Text(
                     _t('Почему этот ответ', 'Why this answer'),
                     style: Theme.of(context).textTheme.titleSmall,

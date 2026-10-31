@@ -52,12 +52,17 @@ class AtlasEvent {
     required this.consequencesRu,
     required this.consequencesEn,
     required this.sourceUrl,
+    this.countryIds = const [],
   });
   final String id, era, titleRu, titleEn, whatRu, whatEn, whyRu, whyEn;
   final String consequencesRu, consequencesEn, sourceUrl;
   final int year;
   final int? endYear;
   final bool approximate;
+
+  /// Reviewed ISO country codes for the modern-country event map. Empty means
+  /// the atlas deliberately makes no geographic claim for this event.
+  final List<String> countryIds;
 
   factory AtlasEvent.fromJson(Map<String, dynamic> row) {
     final year = row['year'];
@@ -69,6 +74,13 @@ class AtlasEvent {
     final source = _required(row, 'source_url');
     if (!source.startsWith('https://')) {
       throw const FormatException('event source');
+    }
+    final rawCountryIds = row['country_ids'];
+    if (rawCountryIds != null &&
+        (rawCountryIds is! List ||
+            rawCountryIds.any((id) => id is! String || id.trim().isEmpty) ||
+            rawCountryIds.toSet().length != rawCountryIds.length)) {
+      throw const FormatException('event country_ids');
     }
     return AtlasEvent(
       id: _required(row, 'id'),
@@ -85,6 +97,9 @@ class AtlasEvent {
       consequencesRu: _required(row, 'consequences_ru'),
       consequencesEn: _required(row, 'consequences_en'),
       sourceUrl: source,
+      countryIds: List.unmodifiable(
+        rawCountryIds == null ? const <String>[] : rawCountryIds.cast<String>(),
+      ),
     );
   }
 }
@@ -484,10 +499,26 @@ String dateLabelRu(int year, {int? endYear, bool approximate = false}) {
 String _quotedRuWorkTitle(String title) =>
     title.startsWith('«') && title.endsWith('»') ? title : '«$title»';
 
+typedef HistoryEventMapBuilder = Widget Function(
+  BuildContext context, {
+  required Set<String> countryIds,
+  required String? selectedCountryId,
+  required ValueChanged<String?> onCountrySelected,
+});
+
 class KnowledgeAtlasPage extends StatefulWidget {
-  const KnowledgeAtlasPage({super.key, required this.section, this.bundle});
+  const KnowledgeAtlasPage({
+    super.key,
+    required this.section,
+    this.bundle,
+    this.historyEventMapBuilder,
+  });
   final String section;
   final AssetBundle? bundle;
+
+  /// Provided by Quizipedia so this atlas never loads map geometry on the
+  /// timeline route or imports the geography module back into this library.
+  final HistoryEventMapBuilder? historyEventMapBuilder;
   @override
   State<KnowledgeAtlasPage> createState() => _KnowledgeAtlasPageState();
 }
@@ -495,6 +526,8 @@ class KnowledgeAtlasPage extends StatefulWidget {
 class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
   late Future<KnowledgeAtlas> _future = _load();
   String? _era, _type, _query, _selectedEvent, _selectedWork, _selectedPerson;
+  String? _historyMapCountryId;
+  bool _historyMap = false;
   int _questionIndex = 0;
   String? _answer;
   bool _checked = false;
@@ -621,6 +654,17 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     final selected =
         events.where((event) => event.id == _selectedEvent).firstOrNull ??
         (events.isEmpty ? null : events.first);
+    final mappedEvents = events
+        .where((event) => event.countryIds.isNotEmpty)
+        .toList(growable: false);
+    final mapCountryIds = mappedEvents
+        .expand((event) => event.countryIds)
+        .toSet();
+    final selectedMapEvents = _historyMapCountryId == null
+        ? mappedEvents
+        : mappedEvents
+              .where((event) => event.countryIds.contains(_historyMapCountryId))
+              .toList(growable: false);
     return ListView(
       padding: const EdgeInsets.fromLTRB(12, 4, 12, 24),
       children: [
@@ -644,48 +688,150 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
           ],
         ),
         const SizedBox(height: 12),
-        ChronologyTimeline(
-          entries: events
-              .map(
-                (event) => ChronologyEntry(
-                  id: event.id,
-                  year: event.year,
-                  date: _date(
-                    event.year,
-                    endYear: event.endYear,
-                    approximate: event.approximate,
-                  ),
-                  title: _eventName(event),
-                ),
-              )
-              .toList(),
-          selectedId: selected?.id,
-          onSelected: (id) => _showEvent(
-            atlas,
-            events.firstWhere((event) => event.id == id),
-            events,
-          ),
+        SegmentedButton<bool>(
+          key: const Key('history-view-toggle'),
+          segments: [
+            ButtonSegment(
+              value: false,
+              label: Text(_text('Timeline', 'Линия времени')),
+              icon: const Icon(Icons.timeline),
+            ),
+            ButtonSegment(
+              value: true,
+              label: Text(_text('Event map', 'Карта событий')),
+              icon: const Icon(Icons.map_outlined),
+            ),
+          ],
+          selected: {_historyMap},
+          onSelectionChanged: (selection) =>
+              setState(() => _historyMap = selection.single),
         ),
         const SizedBox(height: 8),
-        ...events.map(
-          (event) => Card(
-            child: ListTile(
-              key: Key('knowledge-event-${event.id}'),
-              leading: _yearPill(
-                event.year,
-                endYear: event.endYear,
-                approximate: event.approximate,
-              ),
-              title: Text(_eventName(event)),
-              subtitle: Text(_eraLabel(event.era)),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () => _showEvent(atlas, event, events),
+        if (_historyMap)
+          _historyMapView(
+            atlas,
+            events,
+            mappedEvents,
+            selectedMapEvents,
+            mapCountryIds,
+          )
+        else ...[
+          ChronologyTimeline(
+            showEraFilters: false,
+            showPractice: true,
+            entries: events
+                .map(
+                  (event) => ChronologyEntry(
+                    id: event.id,
+                    year: event.year,
+                    date: _date(
+                      event.year,
+                      endYear: event.endYear,
+                      approximate: event.approximate,
+                    ),
+                    title: _eventName(event),
+                  ),
+                )
+                .toList(),
+            selectedId: selected?.id,
+            onSelected: (id) => _showEvent(
+              atlas,
+              events.firstWhere((event) => event.id == id),
+              events,
             ),
           ),
-        ),
+          const SizedBox(height: 8),
+          ..._historyEventRows(atlas, events),
+        ],
       ],
     );
   }
+
+  List<Widget> _historyEventRows(
+    KnowledgeAtlas atlas,
+    List<AtlasEvent> events,
+  ) => events
+      .map(
+        (event) => Card(
+          child: ListTile(
+            key: Key('knowledge-event-${event.id}'),
+            leading: _yearPill(
+              event.year,
+              endYear: event.endYear,
+              approximate: event.approximate,
+            ),
+            title: Text(_eventName(event)),
+            subtitle: Text(_eraLabel(event.era)),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => _showEvent(atlas, event, events),
+          ),
+        ),
+      )
+      .toList(growable: false);
+
+  Widget _historyMapView(
+    KnowledgeAtlas atlas,
+    List<AtlasEvent> events,
+    List<AtlasEvent> mappedEvents,
+    List<AtlasEvent> selectedMapEvents,
+    Set<String> countryIds,
+  ) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        _text(
+          'Place of an event on a modern map',
+          'Место события на современной карте',
+        ),
+        style: Theme.of(context).textTheme.titleMedium,
+      ),
+      Text(
+        _text(
+          '${mappedEvents.length} of ${events.length} events have a reviewed location; the rest are available on the timeline.',
+          '${mappedEvents.length} из ${events.length} событий имеют проверенную привязку; остальные доступны на линии времени.',
+        ),
+      ),
+      Text(
+        _text(
+          'Modern country areas are only reference points, not historical borders.',
+          'Современные границы стран показаны только как ориентир, а не как исторические границы.',
+        ),
+        style: Theme.of(context).textTheme.bodySmall,
+      ),
+      const SizedBox(height: 8),
+      if (widget.historyEventMapBuilder != null)
+        widget.historyEventMapBuilder!(
+          context,
+          countryIds: countryIds,
+          selectedCountryId: _historyMapCountryId,
+          onCountrySelected: (id) => setState(
+            () => _historyMapCountryId = countryIds.contains(id) ? id : null,
+          ),
+        )
+      else
+        Text(_text('Map is unavailable.', 'Карта недоступна.')),
+      const SizedBox(height: 8),
+      if (_historyMapCountryId != null)
+        TextButton.icon(
+          key: const Key('history-map-clear-country'),
+          onPressed: () => setState(() => _historyMapCountryId = null),
+          icon: const Icon(Icons.clear),
+          label: Text(_text('All mapped events', 'Все события на карте')),
+        ),
+      if (selectedMapEvents.isEmpty)
+        Padding(
+          padding: const EdgeInsets.all(12),
+          child: Text(
+            _text(
+              'No reviewed events for this country.',
+              'Для этой страны нет проверенных событий.',
+            ),
+          ),
+        )
+      else
+        ..._historyEventRows(atlas, selectedMapEvents),
+    ],
+  );
 
   Widget _culture(KnowledgeAtlas atlas) {
     final types = [
@@ -923,6 +1069,15 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
             Text(
               _eventName(event),
               style: Theme.of(context).textTheme.headlineSmall,
+            ),
+            const SizedBox(height: 8),
+            DefaultAssetBundle(
+              bundle: widget.bundle ?? rootBundle,
+              child: AtlasMedia(
+                scope: 'history',
+                entityId: event.id,
+                hideWhenMissing: true,
+              ),
             ),
             const SizedBox(height: 10),
             _labelled(

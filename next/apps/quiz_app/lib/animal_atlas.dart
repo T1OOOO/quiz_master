@@ -21,9 +21,11 @@ class AnimalRecord {
     required this.kindRu,
     required this.factRu,
     required this.sourceUrl,
+    this.highlightsRu = const [],
   });
 
   final String id, nameRu, wikiTitle, groupRu, kindRu, factRu, sourceUrl;
+  final List<String> highlightsRu;
 
   factory AnimalRecord.fromJson(Map<String, dynamic> json) {
     final sourceUrl = _requiredAnimalString(json, 'source_url');
@@ -31,6 +33,13 @@ class AnimalRecord {
     if (source?.scheme != 'https' || source!.host.isEmpty) {
       throw const FormatException('Animal source URL must use HTTPS');
     }
+    final rawHighlights = json['highlights_ru'];
+    final highlightsRu = rawHighlights is List
+        ? [
+            for (final item in rawHighlights)
+              if (item is String && item.trim().isNotEmpty) item.trim(),
+          ]
+        : const <String>[];
     return AnimalRecord(
       id: _requiredAnimalString(json, 'id'),
       nameRu: _requiredAnimalString(json, 'name_ru'),
@@ -39,6 +48,7 @@ class AnimalRecord {
       kindRu: _requiredAnimalString(json, 'kind_ru'),
       factRu: _requiredAnimalString(json, 'fact_ru'),
       sourceUrl: sourceUrl,
+      highlightsRu: List.unmodifiable(highlightsRu),
     );
   }
 }
@@ -275,6 +285,19 @@ class _AnimalDetails extends StatelessWidget {
             AtlasMedia(scope: 'animals', entityId: animal.id),
             const SizedBox(height: 12),
             Text(animal.factRu),
+            if (animal.highlightsRu.isNotEmpty) ...[
+              const SizedBox(height: 12),
+              Text(
+                'Интересные и известные факты',
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              const SizedBox(height: 6),
+              for (final highlight in animal.highlightsRu)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 6),
+                  child: Text('• $highlight'),
+                ),
+            ],
             TextButton.icon(
               onPressed: () => _open(animal.sourceUrl),
               icon: const Icon(Icons.open_in_new),

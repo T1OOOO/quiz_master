@@ -1,5 +1,6 @@
 library;
 
+import 'atlas_media.dart';
 import 'fact_practice.dart';
 
 import 'russian_learning_text.dart';
@@ -125,13 +126,25 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
     OrganAtlasScope.systems => true,
   };
 
-  String _scopeTitle() => switch (widget.initialScope) {
+  String _scopeTitle() => _scopeTitleFor(widget.initialScope);
+
+  String _scopeTitleFor(OrganAtlasScope scope) => switch (scope) {
     OrganAtlasScope.all => _t('Human anatomy atlas', 'Атлас анатомии'),
     OrganAtlasScope.organs => _t('Organs and glands', 'Органы и железы'),
     OrganAtlasScope.bones => _t('Bone catalogue', 'Каталог костей'),
     OrganAtlasScope.brain => _t('Brain regions', 'Отделы мозга'),
     OrganAtlasScope.systems => _t('Body systems', 'Системы организма'),
   };
+
+  void _openScope(OrganAtlasScope scope) {
+    if (scope == widget.initialScope) return;
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute<void>(
+        builder: (_) =>
+            OrganAtlasPage(bundle: widget.bundle, initialScope: scope),
+      ),
+    );
+  }
 
   String _scopeDirectoryTitle() => switch (widget.initialScope) {
     OrganAtlasScope.all => _t('All structures', 'Все структуры'),
@@ -336,6 +349,20 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
       appBar: AppBar(
         title: Text(_scopeTitle()),
         actions: [
+          PopupMenuButton<OrganAtlasScope>(
+            key: const Key('anatomy-scope-menu'),
+            tooltip: _t('Explore anatomy', 'Разделы атласа'),
+            icon: const Icon(Icons.account_tree_outlined),
+            onSelected: _openScope,
+            itemBuilder: (context) => [
+              for (final scope in OrganAtlasScope.values)
+                PopupMenuItem(
+                  value: scope,
+                  enabled: scope != widget.initialScope,
+                  child: Text(_scopeTitleFor(scope)),
+                ),
+            ],
+          ),
           FactPracticeAction(
             scope: 'organs',
             bundle: widget.bundle,
@@ -590,33 +617,93 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
         zoomOutLabel: _t('Zoom out', 'Уменьшить'),
         resetLabel: _t('Fit image', 'Вся схема'),
         creditLabel: _t('Image credit', 'Источник изображения'),
+        hideMarkersLabel: _t('Hide pins', 'Скрыть метки'),
+        showMarkersLabel: _t('Show pins', 'Показать метки'),
+        caption: _t(
+          'Front view; small dots mark the source locations, while side pins open the learning cards.',
+          'Вид спереди; малые точки отмечают место на исходной схеме, а боковые метки открывают карточки.',
+        ),
         markers: [
-          _marker('pituitary', 'Pituitary', 'Гипофиз', 142 / 317, 90 / 421),
-          _marker('pineal', 'Pineal gland', 'Эпифиз', 180 / 317, 77 / 421),
-          _marker(
+          _calloutMarker(
+            'pituitary',
+            'Pituitary',
+            'Гипофиз',
+            142 / 317,
+            90 / 421,
+            .10,
+            .10,
+            1,
+          ),
+          _calloutMarker(
+            'pineal',
+            'Pineal gland',
+            'Эпифиз',
+            180 / 317,
+            77 / 421,
+            .90,
+            .10,
+            2,
+          ),
+          _calloutMarker(
             'thyroid',
             'Thyroid gland',
             'Щитовидная железа',
             142 / 317,
             142 / 421,
+            .10,
+            .27,
+            3,
           ),
-          _marker('thymus', 'Thymus', 'Тимус', 177 / 317, 182 / 421),
-          _marker(
+          _calloutMarker(
+            'thymus',
+            'Thymus',
+            'Тимус',
+            177 / 317,
+            182 / 421,
+            .90,
+            .27,
+            4,
+          ),
+          _calloutMarker(
             'adrenals',
             'Adrenal glands',
             'Надпочечники',
             124 / 317,
             263 / 421,
+            .10,
+            .44,
+            5,
           ),
-          _marker(
+          _calloutMarker(
             'pancreas',
             'Pancreas',
             'Поджелудочная железа',
             171 / 317,
             278 / 421,
+            .90,
+            .44,
+            6,
           ),
-          _marker('ovaries', 'Ovaries', 'Яичники', 190 / 317, 324 / 421),
-          _marker('testes', 'Testes', 'Яички', 136 / 317, 376 / 421),
+          _calloutMarker(
+            'ovaries',
+            'Ovaries',
+            'Яичники',
+            190 / 317,
+            324 / 421,
+            .10,
+            .61,
+            7,
+          ),
+          _calloutMarker(
+            'testes',
+            'Testes',
+            'Яички',
+            136 / 317,
+            376 / 421,
+            .90,
+            .61,
+            8,
+          ),
         ],
         onMarkerTap: (marker) => _select(atlas.organ(marker.id)),
       ),
@@ -626,6 +713,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
   Widget _boneScene() => AnatomyScene(
     asset: 'assets/quizipedia/skeleton-display.png',
     aspectRatio: 500 / 967,
+    markerDiameter: 32,
     credit: const AnatomySceneCredit(
       author: 'Mariana Ruiz Villarreal / Mikael Häggström',
       license: 'Public domain',
@@ -635,6 +723,12 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
     zoomOutLabel: _t('Zoom out', 'Уменьшить'),
     resetLabel: _t('Fit image', 'Вся схема'),
     creditLabel: _t('Image credit', 'Источник изображения'),
+    hideMarkersLabel: _t('Hide pins', 'Скрыть метки'),
+    showMarkersLabel: _t('Show pins', 'Показать метки'),
+    caption: _t(
+      'Front view; use the pins or the labelled controls below to choose a body region.',
+      'Вид спереди; выберите область меткой или подписанной кнопкой ниже.',
+    ),
     markers: [
       _marker('skull', 'Skull', 'Череп', .46, .09),
       _marker('thorax', 'Thorax', 'Грудная клетка', .46, .26),
@@ -661,6 +755,7 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
   Widget _brainScene() => AnatomyScene(
     asset: 'assets/quizipedia/brain-display.png',
     aspectRatio: 500 / 699,
+    markerDiameter: 32,
     credit: const AnatomySceneCredit(
       author: 'Patrick J. Lynch; C. Carl Jaffe, MD',
       license: 'CC BY 2.5',
@@ -670,6 +765,12 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
     zoomOutLabel: _t('Zoom out', 'Уменьшить'),
     resetLabel: _t('Fit image', 'Вся схема'),
     creditLabel: _t('Image credit', 'Источник изображения'),
+    hideMarkersLabel: _t('Hide pins', 'Скрыть метки'),
+    showMarkersLabel: _t('Show pins', 'Показать метки'),
+    caption: _t(
+      'Sectional side view; pins choose learning topics and do not add diagnostic detail.',
+      'Схематичный боковой срез; метки выбирают учебные темы и не добавляют диагностических деталей.',
+    ),
     markers: [
       _marker('frontal', 'Frontal lobe', 'Лобная доля', .25, .16),
       _marker('parietal', 'Parietal lobe', 'Теменная доля', .60, .12),
@@ -693,6 +794,25 @@ class _OrganAtlasPageState extends State<OrganAtlasPage> {
     double x,
     double y,
   ) => AnatomySceneMarker(id: id, label: _t(english, russian), x: x, y: y);
+
+  AnatomySceneMarker _calloutMarker(
+    String id,
+    String english,
+    String russian,
+    double x,
+    double y,
+    double calloutX,
+    double calloutY,
+    int calloutNumber,
+  ) => AnatomySceneMarker(
+    id: id,
+    label: _t(english, russian),
+    x: x,
+    y: y,
+    calloutX: calloutX,
+    calloutY: calloutY,
+    calloutNumber: calloutNumber,
+  );
 
   Widget _quiz(OrganAtlas atlas) {
     if (_finished || _round.isEmpty) {
@@ -1183,6 +1303,15 @@ class _BodyMapState extends State<_BodyMap> {
           ),
         ),
         const SizedBox(height: 8),
+        Semantics(
+          liveRegion: true,
+          child: Text(
+            ru
+                ? 'Пронумерованные структуры (${targets.length})'
+                : 'Numbered structures (${targets.length})',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
+        ),
         Wrap(
           spacing: 4,
           runSpacing: 4,
@@ -1414,6 +1543,12 @@ class _Detail extends StatelessWidget {
           Text(
             v(item.nameEn, item.nameRu),
             style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          const SizedBox(height: 8),
+          AtlasMedia(
+            scope: 'organs',
+            entityId: item.id,
+            hideWhenMissing: true,
           ),
           if (item.nameLa != null)
             ExpansionTile(

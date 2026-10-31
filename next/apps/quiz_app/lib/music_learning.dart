@@ -1,6 +1,7 @@
 /// Sourced local music reference and finite, unranked visual practice.
 library;
 
+import 'atlas_media.dart';
 import 'fact_practice.dart';
 
 import 'russian_learning_text.dart';
@@ -501,6 +502,15 @@ class _MusicLearningPageState extends State<MusicLearningPage> {
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             if (!_ru) Text(entry.nameRu),
+            const SizedBox(height: 12),
+            DefaultAssetBundle(
+              bundle: widget.bundle ?? rootBundle,
+              child: AtlasMedia(
+                scope: 'music',
+                entityId: entry.id,
+                hideWhenMissing: true,
+              ),
+            ),
             const SizedBox(height: 16),
             if (entry.visual != null)
               MusicVisual(visual: entry.visual!, label: entry.name(_ru)),

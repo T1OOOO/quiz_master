@@ -1,6 +1,7 @@
 /// A touch-first explorer for the fixed J2000 constellation patterns.
 library;
 
+import 'atlas_media.dart';
 import 'fact_practice.dart';
 
 import 'dart:math' as math;
@@ -426,8 +427,58 @@ class _ConstellationAtlasPageState extends State<ConstellationAtlasPage> {
                         _t('About this pattern', 'О рисунке'),
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
+                      const SizedBox(height: 8),
+                      AtlasMedia(
+                        scope: 'sky',
+                        entityId: row['id'] as String,
+                        hideWhenMissing: true,
+                      ),
                       const SizedBox(height: 6),
                       Text(_explanation(row)),
+                      for (final (labelEn, labelRu, keyEn, keyRu) in [
+                        (
+                          'Horoscope dates (tropical zodiac)',
+                          'Даты в гороскопе (тропический зодиак)',
+                          'zodiac_dates_en',
+                          'zodiac_dates_ru',
+                        ),
+                        (
+                          'Astronomical Sun passage (IAU)',
+                          'Прохождение Солнца по созвездию (МАС)',
+                          'sun_passage_dates_en',
+                          'sun_passage_dates_ru',
+                        ),
+                        (
+                          'Horoscope profile',
+                          'Астрологический профиль',
+                          'zodiac_profile_en',
+                          'zodiac_profile_ru',
+                        ),
+                        (
+                          'Astrology & horoscope fact',
+                          'Факт из астрологии и гороскопов',
+                          'astrology_fact_en',
+                          'astrology_fact_ru',
+                        ),
+                        (
+                          'Astronomy fact',
+                          'Астрономический факт',
+                          'astronomy_fact_en',
+                          'astronomy_fact_ru',
+                        ),
+                      ])
+                        if ((row[_russian ? keyRu : keyEn] as String?)
+                                ?.trim()
+                                .isNotEmpty ==
+                            true) ...[
+                          const SizedBox(height: 10),
+                          Text(
+                            _t(labelEn, labelRu),
+                            style: Theme.of(context).textTheme.labelLarge,
+                          ),
+                          const SizedBox(height: 2),
+                          Text(row[_russian ? keyRu : keyEn] as String),
+                        ],
                       TextButton.icon(
                         onPressed: _openSource,
                         icon: const Icon(Icons.open_in_new),

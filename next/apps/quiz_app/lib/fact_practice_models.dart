@@ -524,6 +524,71 @@ void _catalogFacts(
       _textOr(row, 'latin_name'),
       sources,
     );
+    _add(
+      out,
+      'sky',
+      id,
+      ru,
+      en,
+      'zodiac_dates',
+      'Даты в гороскопе (тропический зодиак)',
+      'Horoscope dates (tropical zodiac)',
+      _textOr(row, 'zodiac_dates_ru'),
+      _textOr(row, 'zodiac_dates_en'),
+      sources,
+    );
+    _add(
+      out,
+      'sky',
+      id,
+      ru,
+      en,
+      'sun_passage_dates',
+      'Прохождение Солнца (астрономия, МАС)',
+      'Astronomical Sun passage (IAU)',
+      _textOr(row, 'sun_passage_dates_ru'),
+      _textOr(row, 'sun_passage_dates_en'),
+      sources,
+    );
+    _add(
+      out,
+      'sky',
+      id,
+      ru,
+      en,
+      'zodiac_profile',
+      'Гороскоп: символ, стихия и управитель',
+      'Horoscope: symbol, element, and ruler',
+      _textOr(row, 'zodiac_profile_ru'),
+      _textOr(row, 'zodiac_profile_en'),
+      sources,
+    );
+    _add(
+      out,
+      'sky',
+      id,
+      ru,
+      en,
+      'astrology_fact',
+      'Факт из астрологии и гороскопов',
+      'Astrology and horoscope fact',
+      _textOr(row, 'astrology_fact_ru'),
+      _textOr(row, 'astrology_fact_en'),
+      sources,
+    );
+    _add(
+      out,
+      'sky',
+      id,
+      ru,
+      en,
+      'astronomy_fact',
+      'Астрономический факт',
+      'Astronomy fact',
+      _textOr(row, 'astronomy_fact_ru'),
+      _textOr(row, 'astronomy_fact_en'),
+      sources,
+    );
     for (final star in _rows(row['stars'])) {
       final prefix = 'stars.${_text(star, 'id')}';
       _add(
@@ -1603,6 +1668,8 @@ String _valueKind(StudyFact fact) {
     'bio',
     'date_note',
     'ownership_note',
+    'astrology_fact',
+    'astronomy_fact',
   }.contains(leaf)) {
     return 'prose';
   }
@@ -1809,6 +1876,8 @@ String _linkKindRu(String value) =>
       'scientist': 'Учёный',
       'food': 'Блюдо',
       'sports_team': 'Спортивная команда',
+      'fact': 'Интересный факт',
+      'filming_location': 'Место съёмок кино',
     }[value] ??
     'Связанная сущность';
 String _linkKindEn(String value) =>
@@ -1821,6 +1890,8 @@ String _linkKindEn(String value) =>
       'scientist': 'Scientist',
       'food': 'Food',
       'sports_team': 'Sports team',
+      'fact': 'Interesting fact',
+      'filming_location': 'Filming location',
     }[value] ??
     'Related entity';
 (String, String) _religionGroup(String value) =>

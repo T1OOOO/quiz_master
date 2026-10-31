@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'atlas_media.dart';
 import 'fact_practice.dart';
 import 'fact_practice_models.dart';
 import 'anatomy_scene.dart';
@@ -263,6 +264,8 @@ class _VascularAtlasPageState extends State<VascularAtlasPage> {
               zoomOutLabel: 'Уменьшить',
               resetLabel: 'Вся схема',
               creditLabel: 'Источник изображения',
+              hideMarkersLabel: 'Скрыть метки',
+              showMarkersLabel: 'Показать метки',
             ),
             if (_regionFilter != null)
               TextButton.icon(
@@ -507,6 +510,12 @@ class _VesselDetails extends StatelessWidget {
             ),
             Text(
               '${_classLabel(record.vascularClass)} · ${record.circuits.map(_circuitLabel).join(', ')}',
+            ),
+            const SizedBox(height: 12),
+            AtlasMedia(
+              scope: 'vascular',
+              entityId: record.id,
+              hideWhenMissing: true,
             ),
             const SizedBox(height: 12),
             _DetailRow('Расположение', record.positionRu),

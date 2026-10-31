@@ -118,4 +118,25 @@ void main() {
     expect(find.text('Факт бигля'), findsOneWidget);
     expect(find.text('Источник факта'), findsOneWidget);
   });
+
+  test('production animals catalogue and atlas_media cover all 309 species and breeds', () async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    final animals = await loadAnimals(rootBundle);
+    expect(animals.length, greaterThanOrEqualTo(300));
+    expect(animals.every((a) => a.highlightsRu.isNotEmpty), isTrue);
+
+    final mediaRows = jsonDecode(
+      await rootBundle.loadString('assets/quizipedia/atlas_media.json'),
+    ) as List;
+    final byScopeId = {
+      for (final r in mediaRows.whereType<Map>())
+        '${r['scope']}:${r['id']}': r,
+    };
+    for (final animal in animals) {
+      final media = byScopeId['animals:${animal.id}'];
+      expect(media, isNotNull, reason: 'Missing media for animal ${animal.id}');
+      expect(await rootBundle.load(media!['asset'] as String), isNotNull);
+      expect(await rootBundle.load(media['thumbnail_asset'] as String), isNotNull);
+    }
+  });
 }
