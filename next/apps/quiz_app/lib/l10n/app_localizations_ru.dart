@@ -139,7 +139,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get finishQuiz => 'Завершить викторину';
 
   @override
-  String get history => 'История';
+  String get history => 'Мои результаты';
 
   @override
   String get noHistory => 'Завершённых викторин пока нет';

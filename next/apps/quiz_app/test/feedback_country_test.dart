@@ -187,6 +187,9 @@ void main() {
         ),
       );
       final page = tester.state<ScrollableState>(find.byType(Scrollable));
+      // The whole world fits at scale 1 and cannot pan; zoom in first.
+      camera.value = Matrix4.identity()..scaleByDouble(2, 2, 2, 1);
+      await tester.pump();
       final finger = await tester.startGesture(
         tester.getCenter(find.byType(InteractiveViewer)),
       );
@@ -359,8 +362,10 @@ void main() {
         isNotEmpty,
         reason: 'Unselected countries need visible names',
       );
-      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
-      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.ensureVisible(
+        find.byKey(const Key('country-direct-layers')),
+      );
+      await tester.tap(find.byKey(const Key('country-direct-layers')));
       await tester.pumpAndSettle();
       await tester.ensureVisible(
         find.text('Compare countries: population and area'),
@@ -400,14 +405,18 @@ void main() {
       });
       await tester.pumpAndSettle();
       final map = find.byKey(const Key('quizipedia-viewport'));
-      expect(tester.getSize(map).height, closeTo(180.5, 2));
+      expect(tester.getSize(map).height, closeTo(361, 2));
       final before = tester.getTopLeft(map);
       final viewer = tester.widget<InteractiveViewer>(map);
       final camera = viewer.transformationController!.value.clone();
       await tester.drag(map, const Offset(0, -90));
       await tester.pumpAndSettle();
       expect(tester.getTopLeft(map), before);
-      expect(viewer.transformationController!.value, isNot(camera));
+      expect(
+        viewer.transformationController!.value,
+        camera,
+        reason: 'The whole world is visible: the map owns the drag but stays.',
+      );
       expect(tester.takeException(), isNull);
     },
   );

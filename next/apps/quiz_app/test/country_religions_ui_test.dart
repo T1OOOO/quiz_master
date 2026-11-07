@@ -36,8 +36,8 @@ void main() {
         ..translateByDouble(-20, -10, 0, 1)
         ..scaleByDouble(1.8, 1.8, 1, 1);
       viewer.transformationController!.value = camera;
-      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
-      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.ensureVisible(find.byKey(const Key('country-direct-layers')));
+      await tester.tap(find.byKey(const Key('country-direct-layers')));
       await tester.pumpAndSettle();
       final layer = find.byKey(const Key('country-sheet-layer-religion'));
       await tester.tap(layer);
@@ -47,8 +47,8 @@ void main() {
       await tester.ensureVisible(find.byKey(const Key('country-apply-layer')));
       await tester.tap(find.byKey(const Key('country-apply-layer')));
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
-      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.ensureVisible(find.byKey(const Key('country-direct-layers')));
+      await tester.tap(find.byKey(const Key('country-direct-layers')));
       await tester.pumpAndSettle();
       expect(
         find.textContaining('2020 estimates (published 2025)'),

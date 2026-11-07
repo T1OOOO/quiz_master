@@ -5,10 +5,12 @@ import 'fact_practice.dart';
 
 import 'russian_learning_text.dart';
 
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
+import 'package:flutter/gestures.dart' show kDoubleTapTimeout;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart' show ScrollCacheExtent;
 import 'package:flutter/semantics.dart';
@@ -30,6 +32,7 @@ import 'organ_atlas.dart';
 import 'music_learning.dart';
 import 'animal_atlas.dart';
 import 'vascular_atlas.dart';
+import 'periodic_table.dart';
 
 const _catalogAsset = 'assets/quizipedia/catalog.json';
 
@@ -734,6 +737,20 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               ),
             ),
           ),
+        // History sits with the atlases, not twelve cards down the list.
+        _sectionCard(context, 'history'),
+        _themeCard(
+          icon: Icons.science_outlined,
+          title: _t(context, 'Periodic table', 'Таблица Менделеева'),
+          subtitle: _t(
+            context,
+            'Explore the elements',
+            'Изучайте химические элементы',
+          ),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(builder: (_) => const PeriodicTablePage()),
+          ),
+        ),
         _themeCard(
           key: const Key('quizipedia-all-facts'),
           icon: Icons.fact_check_outlined,
@@ -877,7 +894,6 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
           ),
         ),
         for (final section in [
-          'history',
           'culture',
           'people',
           'brands',
@@ -885,73 +901,83 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
           'greek',
           'religions',
         ])
-          _themeCard(
-            practiceScope: section == 'culture' ? 'works' : section,
-            icon: switch (section) {
-              'history' => Icons.timeline,
-              'culture' => Icons.theaters,
-              'brands' => Icons.business,
-              'food' => Icons.restaurant_menu,
-              'greek' => Icons.account_tree,
-              'religions' => Icons.public,
-              _ => Icons.people,
-            },
-            image: switch (section) {
-              'history' => 'assets/quizipedia/preview-history.webp',
-              'culture' || 'people' => 'assets/quizipedia/preview-cinema.webp',
-              'brands' => 'assets/quizipedia/preview-history.webp',
-              'food' => 'assets/quizipedia/preview-food.webp',
-              'greek' || 'religions' =>
-                'assets/quizipedia/preview-mythology-greece-cover.webp',
-              _ => null,
-            },
-            title: switch (section) {
-              'history' => _t(context, 'World history', 'История человечества'),
-              'culture' => _t(
-                context,
-                'Films, books and opera',
-                'Фильмы, книги и опера',
-              ),
-              'brands' => _t(
-                context,
-                'Brands and companies',
-                'Бренды и компании',
-              ),
-              'greek' => _t(context, 'Greek gods', 'Древнегреческие боги'),
-              'religions' => _t(
-                context,
-                'Religions and traditions',
-                'Религии и традиции',
-              ),
-              'food' => _t(
-                context,
-                'Food and regional cuisines',
-                'Блюда и кухни мира',
-              ),
-              _ => _t(
-                context,
-                'People and their works',
-                'Люди и их произведения',
-              ),
-            },
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) => switch (section) {
-                  'brands' => BrandAtlasPage(bundle: widget.bundle),
-                  'food' => FoodAtlasPage(bundle: widget.bundle),
-                  'greek' || 'religions' => BeliefAtlasPage(
-                    bundle: widget.bundle,
-                    initialSection: section,
-                  ),
-                  _ => KnowledgeAtlasPage(
-                    section: section,
-                    bundle: widget.bundle,
-                  ),
-                },
-              ),
-            ),
-          ),
+          _sectionCard(context, section),
       ],
+    ),
+  );
+
+  Widget _sectionCard(BuildContext context, String section) => _themeCard(
+    practiceScope: section == 'culture' ? 'works' : section,
+    icon: switch (section) {
+      'history' => Icons.timeline,
+      'culture' => Icons.theaters,
+      'brands' => Icons.business,
+      'food' => Icons.restaurant_menu,
+      'greek' => Icons.account_tree,
+      'religions' => Icons.public,
+      _ => Icons.people,
+    },
+    image: switch (section) {
+      'history' => 'assets/quizipedia/preview-history.webp',
+      'culture' || 'people' => 'assets/quizipedia/preview-cinema.webp',
+      'brands' => 'assets/quizipedia/preview-history.webp',
+      'food' => 'assets/quizipedia/preview-food.webp',
+      'greek' ||
+      'religions' => 'assets/quizipedia/preview-mythology-greece-cover.webp',
+      _ => null,
+    },
+    subtitle: section == 'history'
+        ? _t(
+            context,
+            'Timeline and map of events',
+            'Лента времени и карта событий',
+          )
+        : null,
+    title: switch (section) {
+      'history' => _t(context, 'World history', 'История человечества'),
+      'culture' => _t(
+        context,
+        'Films, books and opera',
+        'Фильмы, книги и опера',
+      ),
+      'brands' => _t(context, 'Brands and companies', 'Бренды и компании'),
+      'greek' => _t(context, 'Greek gods', 'Древнегреческие боги'),
+      'religions' => _t(
+        context,
+        'Religions and traditions',
+        'Религии и традиции',
+      ),
+      'food' => _t(context, 'Food and regional cuisines', 'Блюда и кухни мира'),
+      _ => _t(context, 'People and their works', 'Люди и их произведения'),
+    },
+    onTap: () => Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => switch (section) {
+          'brands' => BrandAtlasPage(bundle: widget.bundle),
+          'food' => FoodAtlasPage(bundle: widget.bundle),
+          'greek' || 'religions' => BeliefAtlasPage(
+            bundle: widget.bundle,
+            initialSection: section,
+          ),
+          _ => KnowledgeAtlasPage(
+            section: section,
+            bundle: widget.bundle,
+            historyEventMapBuilder: section == 'history'
+                ? (
+                    context, {
+                    required countryIds,
+                    required selectedCountryId,
+                    required onCountrySelected,
+                  }) => _LazyHistoryEventMap(
+                    load: _load,
+                    countryIds: countryIds,
+                    selectedCountryId: selectedCountryId,
+                    onCountrySelected: onCountrySelected,
+                  )
+                : null,
+          ),
+        },
+      ),
     ),
   );
 }
@@ -978,6 +1004,89 @@ class _CatalogModulePageState extends State<_CatalogModulePage> {
         body: snapshot.hasError
             ? _LoadError(onRetry: () => setState(() => future = widget.load()))
             : const Center(child: CircularProgressIndicator()),
+      );
+    },
+  );
+}
+
+/// Created only after the history atlas switches to its map tab.  This keeps
+/// the country geometry out of the initial timeline request.
+class _LazyHistoryEventMap extends StatefulWidget {
+  const _LazyHistoryEventMap({
+    required this.load,
+    required this.countryIds,
+    required this.selectedCountryId,
+    required this.onCountrySelected,
+  });
+
+  final Future<QuizipediaCatalog> Function() load;
+  final Set<String> countryIds;
+  final String? selectedCountryId;
+  final ValueChanged<String?> onCountrySelected;
+
+  @override
+  State<_LazyHistoryEventMap> createState() => _LazyHistoryEventMapState();
+}
+
+class _LazyHistoryEventMapState extends State<_LazyHistoryEventMap> {
+  late Future<QuizipediaCatalog> _future = widget.load();
+  final TransformationController _controller = TransformationController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => FutureBuilder<QuizipediaCatalog>(
+    future: _future,
+    builder: (context, snapshot) {
+      if (snapshot.hasError) {
+        return SizedBox(
+          height: 260,
+          child: Center(
+            child: FilledButton.icon(
+              onPressed: () => setState(() => _future = widget.load()),
+              icon: const Icon(Icons.refresh),
+              label: Text(_t(context, 'Retry map', 'Повторить загрузку карты')),
+            ),
+          ),
+        );
+      }
+      if (!snapshot.hasData) {
+        return const SizedBox(
+          height: 260,
+          child: Center(child: CircularProgressIndicator()),
+        );
+      }
+      final countries = snapshot.data!.countries;
+      final knownIds = countries.map((country) => country.id).toSet();
+      final selectableIds = widget.countryIds.intersection(knownIds);
+      final selected = selectableIds.contains(widget.selectedCountryId)
+          ? widget.selectedCountryId
+          : null;
+      return SizedBox(
+        height: 300,
+        child: QuizipediaWorldMap(
+          features: countries,
+          controller: _controller,
+          selected: selected,
+          highlighted: selected,
+          showLabels: false,
+          showSelectionLabel: false,
+          labelPriorityIds: selectableIds,
+          overlayLabels: {
+            for (final country in countries)
+              if (selectableIds.contains(country.id))
+                country.id: Localizations.localeOf(context).languageCode == 'ru'
+                    ? country.nameRu
+                    : country.nameEn,
+          },
+          onSelect: (id) => widget.onCountrySelected(
+            id != null && selectableIds.contains(id) ? id : null,
+          ),
+        ),
       );
     },
   );
@@ -2711,6 +2820,7 @@ class QuizipediaWorldMap extends StatefulWidget {
     this.capitalPoints = const {},
     this.capitalLabels = const {},
     this.showFlags = false,
+    this.alwaysShowCountryNames = false,
     this.showSelectionLabel = true,
     this.waters = const [],
     this.selectedWater,
@@ -2737,7 +2847,7 @@ class QuizipediaWorldMap extends StatefulWidget {
   /// Labels remain owned by the caller so they use verified local fact text.
   final Map<String, Offset> capitalPoints;
   final Map<String, String> capitalLabels;
-  final bool showFlags, showSelectionLabel;
+  final bool showFlags, showSelectionLabel, alwaysShowCountryNames;
   final List<WaterShape> waters;
   final String? selectedWater;
   final bool showWaterLabels;
@@ -2760,7 +2870,10 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
     duration: const Duration(milliseconds: 200),
   );
   Animation<Matrix4>? _cameraFrames;
-  Offset _doubleTapAt = Offset.zero;
+  // A tap selects at once; a second tap inside the double-tap window zooms.
+  // The built-in double-tap recognizer would hold every single tap for 300 ms.
+  Timer? _doubleTapTimer;
+  Offset? _lastTapAt;
   bool _cameraActive = false;
   int _viewportRevision = 0;
 
@@ -2809,13 +2922,27 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
 
   @override
   void dispose() {
+    _doubleTapTimer?.cancel();
     _camera.dispose();
     super.dispose();
+  }
+
+  /// Keep the viewport over the map so no camera move shows blank space
+  /// beyond its edges; gestures get the same limit from `boundaryMargin`.
+  Matrix4 _clampToView(Matrix4 target) {
+    final scale = target.getMaxScaleOnAxis();
+    final t = target.getTranslation();
+    return target..setTranslationRaw(
+      t.x.clamp(_view.width * (1 - scale), 0.0),
+      t.y.clamp(_view.height * (1 - scale), 0.0),
+      t.z,
+    );
   }
 
   void _moveCamera(Matrix4 target) {
     if (!_ownsCamera) return;
     _camera.stop();
+    target = _clampToView(target);
     if (MediaQuery.disableAnimationsOf(context)) {
       widget.controller.value = target;
       return;
@@ -2932,6 +3059,42 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
     _focusBounds(bounds!);
   }
 
+  /// Islands and city states are a few pixels wide on the world map; when
+  /// nothing was hit, accept a tap within 12 px of such a small feature.
+  QuizipediaFeature? _nearestSmallFeature(QuizipediaPoint point, Size scene) {
+    final scale = widget.controller.value.getMaxScaleOnAxis();
+    final tx = 12 / (scene.width * scale), ty = 12 / (scene.height * scale);
+    QuizipediaFeature? best;
+    var bestDistance = double.infinity;
+    for (final feature in widget.features) {
+      final rect = _featureRect(feature);
+      if (rect.width > 2 * tx || rect.height > 2 * ty) continue;
+      final dx = (point.x - rect.center.dx).abs() - rect.width / 2;
+      final dy = (point.y - rect.center.dy).abs() - rect.height / 2;
+      if (dx > tx || dy > ty) continue;
+      final distance = math.max(dx / tx, dy / ty);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = feature;
+      }
+    }
+    return best;
+  }
+
+  static Rect _featureRect(QuizipediaFeature feature) {
+    var left = 1.0, top = 1.0, right = 0.0, bottom = 0.0;
+    for (final polygon in feature.polygons) {
+      if (polygon.isEmpty) continue;
+      for (final p in polygon.first) {
+        if (p.x < left) left = p.x;
+        if (p.x > right) right = p.x;
+        if (p.y < top) top = p.y;
+        if (p.y > bottom) bottom = p.y;
+      }
+    }
+    return Rect.fromLTRB(left, top, right, bottom);
+  }
+
   void _focusBounds(Rect bounds) {
     final worldWidth = _scene.width;
     final worldHeight = _scene.height;
@@ -2997,6 +3160,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
         final occupied = <Rect>[];
         final capitalMarkers = <Rect>[];
         final labels = <Widget>[];
+        final countryNames = <Widget>[];
         Rect? selectedFlagRect;
         final scale = transform.getMaxScaleOnAxis();
         // At the whole-world view, a dense row of individual flag image
@@ -3093,7 +3257,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           });
         for (final feature in ordered) {
           final text = widget.overlayLabels[feature.id];
-          if (text == null) continue;
+          if (text == null && !widget.alwaysShowCountryNames) continue;
           final rings = feature.polygons
               .where((p) => p.isNotEmpty)
               .map((p) => p.first)
@@ -3144,6 +3308,48 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               center.dy * scene.height + (_view.height - scene.height) / 2,
             ),
           );
+          if (widget.alwaysShowCountryNames &&
+              at.dx >= 0 &&
+              at.dx <= _view.width &&
+              at.dy >= 0 &&
+              at.dy <= _view.height) {
+            const nameWidth = 112.0;
+            countryNames.add(
+              Positioned(
+                left: (at.dx - nameWidth / 2).clamp(
+                  4.0,
+                  _view.width - nameWidth - 4,
+                ),
+                top: (at.dy - 12).clamp(4.0, _view.height - 4),
+                width: nameWidth,
+                child: Semantics(
+                  label: _t(
+                    context,
+                    'Country: ${feature.nameEn}',
+                    'Страна: ${feature.nameRu}',
+                  ),
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface
+                          .withValues(alpha: .88),
+                    ),
+                    child: Text(
+                      Localizations.localeOf(context).languageCode == 'ru'
+                          ? feature.nameRu
+                          : feature.nameEn,
+                      key: Key('map-country-name-${feature.id.toLowerCase()}'),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 9,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }
+          if (text == null || text.isEmpty) continue;
           final scale = transform.getMaxScaleOnAxis();
           final countryWidth = math.max(
             0.0,
@@ -3327,10 +3533,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                     rect.top >= 4 &&
                     rect.bottom <= _view.height - 4,
               );
-          final blockers = <Rect>[
-            ...occupied,
-            ?selectedFlagRect,
-          ];
+          final blockers = <Rect>[...occupied, ?selectedFlagRect];
           var caption = candidates.firstOrNull;
           for (final candidate in candidates) {
             if (!blockers.any(
@@ -3344,7 +3547,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               at.dx > _view.width ||
               at.dy < 0 ||
               at.dy > _view.height) {
-            return Stack(children: labels);
+            return Stack(children: [...labels, ...countryNames]);
           }
           labels.add(
             Positioned(
@@ -3383,7 +3586,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             ),
           );
         }
-        return Stack(children: labels);
+        return Stack(children: [...labels, ...countryNames]);
       },
     ),
   );
@@ -3488,9 +3691,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                     key: const Key('quizipedia-viewport'),
                     transformationController: widget.controller,
                     constrained: false,
-                    boundaryMargin: EdgeInsets.all(
-                      math.max(_view.width, _view.height),
-                    ),
+                    boundaryMargin: EdgeInsets.zero,
                     minScale: 1,
                     maxScale: 16,
                     trackpadScrollCausesScale: true,
@@ -3509,68 +3710,75 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                             // Country lists and answer buttons retain named actions.
                             excludeFromSemantics: true,
                             behavior: HitTestBehavior.opaque,
-                            onDoubleTapDown: (details) {
-                              final origin = Offset(
-                                (_view.width - scene.width) / 2,
-                                (_view.height - scene.height) / 2,
+                            onTapUp: (details) {
+                              final local = details.localPosition;
+                              final previous = _lastTapAt;
+                              final doubleTap =
+                                  _doubleTapTimer?.isActive == true &&
+                                  previous != null &&
+                                  (local - previous).distance < 40;
+                              _doubleTapTimer?.cancel();
+                              if (doubleTap) {
+                                _lastTapAt = null;
+                                final origin = Offset(
+                                  (_view.width - scene.width) / 2,
+                                  (_view.height - scene.height) / 2,
+                                );
+                                _zoom(
+                                  2,
+                                  MatrixUtils.transformPoint(
+                                    widget.controller.value,
+                                    local + origin,
+                                  ),
+                                );
+                                return;
+                              }
+                              _lastTapAt = local;
+                              _doubleTapTimer = Timer(
+                                kDoubleTapTimeout,
+                                () => _lastTapAt = null,
                               );
-                              final p = details.localPosition + origin;
-                              final transformed = MatrixUtils.transformPoint(
-                                widget.controller.value,
-                                p,
+                              if (!widget.selectionEnabled) return;
+                              final point = QuizipediaPoint(
+                                local.dx / scene.width,
+                                local.dy / scene.height,
                               );
-                              _doubleTapAt = transformed;
-                            },
-                            onDoubleTap: () => _zoom(2, _doubleTapAt),
-                            onTapUp: !widget.selectionEnabled
-                                ? null
-                                : (details) {
-                                    final point = QuizipediaPoint(
-                                      details.localPosition.dx / scene.width,
-                                      details.localPosition.dy / scene.height,
-                                    );
-                                    final hit = widget.features.reversed
-                                        .where((f) => f.contains(point))
-                                        .firstOrNull;
-                                    final water =
-                                        widget.waters
+                              final hit =
+                                  widget.features.reversed
+                                      .where((f) => f.contains(point))
+                                      .firstOrNull ??
+                                  _nearestSmallFeature(point, scene);
+                              final water =
+                                  widget.waters
+                                      .where(
+                                        (w) =>
+                                            w.kind != 'marine' &&
+                                            w.contains(
+                                              WaterPoint(point.x, point.y),
+                                              tolerance:
+                                                  6 /
+                                                  (scene.width *
+                                                      widget.controller.value
+                                                          .getMaxScaleOnAxis()),
+                                            ),
+                                      )
+                                      .firstOrNull ??
+                                  (hit == null
+                                      ? widget.waters
                                             .where(
-                                              (w) =>
-                                                  w.kind != 'marine' &&
-                                                  w.contains(
-                                                    WaterPoint(
-                                                      point.x,
-                                                      point.y,
-                                                    ),
-                                                    tolerance:
-                                                        6 /
-                                                        (scene.width *
-                                                            widget
-                                                                .controller
-                                                                .value
-                                                                .getMaxScaleOnAxis()),
-                                                  ),
+                                              (w) => w.contains(
+                                                WaterPoint(point.x, point.y),
+                                              ),
                                             )
-                                            .firstOrNull ??
-                                        (hit == null
-                                            ? widget.waters
-                                                  .where(
-                                                    (w) => w.contains(
-                                                      WaterPoint(
-                                                        point.x,
-                                                        point.y,
-                                                      ),
-                                                    ),
-                                                  )
-                                                  .firstOrNull
-                                            : null);
-                                    if (water != null &&
-                                        widget.onWaterSelect != null) {
-                                      widget.onWaterSelect!(water.id);
-                                    } else {
-                                      widget.onSelect(hit?.id);
-                                    }
-                                  },
+                                            .firstOrNull
+                                      : null);
+                              if (water != null &&
+                                  widget.onWaterSelect != null) {
+                                widget.onWaterSelect!(water.id);
+                              } else {
+                                widget.onSelect(hit?.id);
+                              }
+                            },
                             child: ValueListenableBuilder<Matrix4>(
                               valueListenable: widget.controller,
                               builder: (context, transform, child) =>

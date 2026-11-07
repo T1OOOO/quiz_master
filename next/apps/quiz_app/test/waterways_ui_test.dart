@@ -269,8 +269,8 @@ void main() {
       );
       final camera = Matrix4.identity()..scaleByDouble(2, 2, 1, 1);
       viewer.transformationController!.value = camera;
-      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
-      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.ensureVisible(find.byKey(const Key('country-direct-layers')));
+      await tester.tap(find.byKey(const Key('country-direct-layers')));
       await tester.pumpAndSettle();
       final layer = find.byKey(const Key('country-sheet-layer-water'));
       await tester.tap(layer);

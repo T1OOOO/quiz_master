@@ -216,8 +216,8 @@ void main() {
         ),
         isNotNull,
       );
-      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
-      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.ensureVisible(find.byKey(const Key('country-direct-layers')));
+      await tester.tap(find.byKey(const Key('country-direct-layers')));
       await tester.pumpAndSettle();
 
       final flagLayer = find.byKey(const Key('country-sheet-layer-flag'));

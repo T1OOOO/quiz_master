@@ -1283,7 +1283,6 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   controller: _controller,
                   selected: selected.isEmpty ? null : selected,
                   highlighted: focus.isEmpty ? null : focus,
-                  showSelectionLabel: false,
                   showLabels: false,
                   alwaysShowCountryNames: _alwaysShowCountryNames,
                   labelPriorityIds: _fact?.neighbors.toSet() ?? const {},
@@ -1849,26 +1848,30 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: OutlinedButton.icon(
-                  key: const Key('country-direct-layers'),
-                  onPressed: showSettings,
-                  icon: const Icon(Icons.layers_outlined),
-                  label: Text(
-                    _activeLayers.isEmpty
-                        ? _t('Layers', 'Слои')
-                        : '${_t('Layers', 'Слои')}: ${_activeLayers.map(_topicLabel).join(', ')}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton.icon(
-                  key: const Key('country-expand-map'),
-                  onPressed: _showExpandedMap,
-                  icon: const Icon(Icons.fullscreen),
-                  label: Text(_t('Expand map', 'Развернуть карту')),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        key: const Key('country-direct-layers'),
+                        onPressed: showSettings,
+                        icon: const Icon(Icons.layers_outlined),
+                        label: Text(
+                          _activeLayers.isEmpty
+                              ? _t('Layers', 'Слои')
+                              : '${_t('Layers', 'Слои')}: ${_activeLayers.map(_topicLabel).join(', ')}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    IconButton(
+                      key: const Key('country-expand-map'),
+                      tooltip: _t('Expand map', 'Развернуть карту'),
+                      onPressed: _showExpandedMap,
+                      icon: const Icon(Icons.fullscreen),
+                    ),
+                  ],
                 ),
               ),
               if (_query.isNotEmpty)
@@ -2005,9 +2008,19 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
               ],
               const SizedBox(height: 6),
               SizedBox(
-                height: math.min(
-                  MediaQuery.sizeOf(context).width / 2,
-                  math.max(150, MediaQuery.sizeOf(context).height - 430),
+                // A portrait phone gets a square map: the 2:1 world sits in
+                // the middle and zooming fills the box instead of 180 px.
+                height: math.max(
+                  math.min(
+                    MediaQuery.sizeOf(context).width / 2,
+                    math.max(150, MediaQuery.sizeOf(context).height - 430),
+                  ),
+                  MediaQuery.sizeOf(context).width < 600
+                      ? math.min(
+                          MediaQuery.sizeOf(context).height / 2,
+                          MediaQuery.sizeOf(context).width,
+                        )
+                      : 0,
                 ),
                 child: QuizipediaWorldMap(
                   features: _visible,
@@ -2111,32 +2124,14 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   horizontal: 12,
                   vertical: 6,
                 ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        key: const Key('country-map-settings'),
-                        onPressed: showSettings,
-                        icon: const Icon(Icons.layers_outlined),
-                        label: Text(
-                          _layer == 'none'
-                              ? _t('Layers', 'Слои')
-                              : _topicLabel(_layer),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: FilledButton.icon(
-                        key: const Key('country-start-training'),
-                        onPressed: _start,
-                        icon: const Icon(Icons.quiz_outlined),
-                        label: Text(_t('Practice', 'Тренировка')),
-                      ),
-                    ),
-                  ],
+                child: SizedBox(
+                  width: double.infinity,
+                  child: FilledButton.icon(
+                    key: const Key('country-start-training'),
+                    onPressed: _start,
+                    icon: const Icon(Icons.quiz_outlined),
+                    label: Text(_t('Practice', 'Тренировка')),
+                  ),
                 ),
               ),
             ],

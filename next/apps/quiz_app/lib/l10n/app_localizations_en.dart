@@ -139,7 +139,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get finishQuiz => 'Finish quiz';
 
   @override
-  String get history => 'History';
+  String get history => 'My results';
 
   @override
   String get noHistory => 'No completed quizzes yet';

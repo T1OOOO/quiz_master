@@ -709,16 +709,16 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(AlertDialog), findsNothing);
 
-      await tester.ensureVisible(find.text('History'));
+      await tester.ensureVisible(find.text('My results'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('History'));
+      await tester.tap(find.text('My results'));
       await tester.pumpAndSettle();
       expect(find.text('Score: 25'), findsOneWidget);
       expect(api.historyCount, 1);
       await tester.tap(find.byTooltip('Русский'));
       await tester.tap(find.byTooltip('Dark theme'));
       await tester.pumpAndSettle();
-      expect(find.text('История'), findsOneWidget);
+      expect(find.text('Мои результаты'), findsOneWidget);
       await tester.binding.handlePopRoute();
       await tester.pumpAndSettle();
       expect(find.text('Счёт: 25'), findsOneWidget);
@@ -726,8 +726,8 @@ void main() {
         tester.widget<MaterialApp>(find.byType(MaterialApp)).themeMode,
         ThemeMode.dark,
       );
-      await tester.ensureVisible(find.text('История'));
-      await tester.tap(find.text('История'));
+      await tester.ensureVisible(find.text('Мои результаты'));
+      await tester.tap(find.text('Мои результаты'));
       await tester.pumpAndSettle();
       expect(api.historyCount, 2);
     },
@@ -774,7 +774,7 @@ void main() {
     await tester.enterText(find.byType(TextField), 'Ada');
     await tester.tap(find.text('Continue'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('History'));
+    await tester.tap(find.text('My results'));
     await tester.pumpAndSettle();
     expect(find.text('Unable to load history.'), findsOneWidget);
     await tester.tap(find.byTooltip('Русский'));

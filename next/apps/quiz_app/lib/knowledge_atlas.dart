@@ -337,19 +337,12 @@ class KnowledgeAtlas {
 
   List<KnowledgeQuestion> get questions {
     final result = <KnowledgeQuestion>[];
-    final yearLabels = <String>{
-      for (final event in events)
-        dateLabel(
-          event.year,
-          endYear: event.endYear,
-          approximate: event.approximate,
-        ),
-    };
+    final yearCounts = <int, int>{};
+    for (final event in events) {
+      yearCounts[event.year] = (yearCounts[event.year] ?? 0) + 1;
+    }
     final distinctYearEvents = events
-        .where(
-          (event) =>
-              events.where((other) => other.year == event.year).length == 1,
-        )
+        .where((event) => yearCounts[event.year] == 1)
         .toList();
     for (final event in distinctYearEvents) {
       final answerDate = dateLabel(
@@ -357,10 +350,23 @@ class KnowledgeAtlas {
         endYear: event.endYear,
         approximate: event.approximate,
       );
-      final candidates = yearLabels
-          .where((label) => label != answerDate)
-          .toSet()
-          .toList();
+      // Nearby dates make the question about this event, not about millennia.
+      final candidates =
+          (events.toList()..sort(
+                (a, b) => (a.year - event.year).abs().compareTo(
+                  (b.year - event.year).abs(),
+                ),
+              ))
+              .map(
+                (other) => dateLabel(
+                  other.year,
+                  endYear: other.endYear,
+                  approximate: other.approximate,
+                ),
+              )
+              .where((label) => label != answerDate)
+              .toSet()
+              .toList();
       if (candidates.length >= 5) {
         result.add(
           KnowledgeQuestion(
@@ -528,6 +534,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
   String? _era, _type, _query, _selectedEvent, _selectedWork, _selectedPerson;
   String? _historyMapCountryId;
   bool _historyMap = false;
+  List<KnowledgeQuestion>? _questions;
   int _questionIndex = 0;
   String? _answer;
   bool _checked = false;
@@ -651,9 +658,9 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
           ),
         )
         .toList();
-    final selected =
-        events.where((event) => event.id == _selectedEvent).firstOrNull ??
-        (events.isEmpty ? null : events.first);
+    final selected = events
+        .where((event) => event.id == _selectedEvent)
+        .firstOrNull;
     final mappedEvents = events
         .where((event) => event.countryIds.isNotEmpty)
         .toList(growable: false);
@@ -670,22 +677,26 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
       children: [
         _quizButton(atlas, eventIds: events.map((event) => event.id).toSet()),
         _search(),
-        Wrap(
-          spacing: 6,
-          children: [
-            ChoiceChip(
-              label: Text(_text('All eras', 'Все периоды')),
-              selected: _era == null,
-              onSelected: (_) => setState(() => _era = null),
-            ),
-            ...eras.map(
-              (era) => ChoiceChip(
-                label: Text(_eraLabel(era)),
-                selected: _era == era,
-                onSelected: (_) => setState(() => _era = era),
+        // One scrolling row: four wrapped rows of chips filled a phone screen.
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            spacing: 6,
+            children: [
+              ChoiceChip(
+                label: Text(_text('All eras', 'Все периоды')),
+                selected: _era == null,
+                onSelected: (_) => setState(() => _era = null),
               ),
-            ),
-          ],
+              ...eras.map(
+                (era) => ChoiceChip(
+                  label: Text(_eraLabel(era)),
+                  selected: _era == era,
+                  onSelected: (_) => setState(() => _era = era),
+                ),
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 12),
         SegmentedButton<bool>(
@@ -724,6 +735,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
                   (event) => ChronologyEntry(
                     id: event.id,
                     year: event.year,
+                    era: _eraLabel(event.era),
                     date: _date(
                       event.year,
                       endYear: event.endYear,
@@ -981,7 +993,7 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     Set<String>? eventIds,
     Set<String>? workIds,
     Set<String>? personIds,
-  }) => atlas.questions
+  }) => (_questions ??= atlas.questions)
       .where((question) {
         if (eventIds != null) {
           return question.eventIds.isNotEmpty &&
@@ -1216,6 +1228,8 @@ class _KnowledgeAtlasPageState extends State<KnowledgeAtlasPage> {
     // A modal builder is re-run when MediaQuery changes. Keep this outside
     // it so resizing the viewport preserves the event being read.
     var current = event;
+    // The strip marks and centres the event being read, not a stale one.
+    if (_selectedEvent != event.id) setState(() => _selectedEvent = event.id);
     showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,

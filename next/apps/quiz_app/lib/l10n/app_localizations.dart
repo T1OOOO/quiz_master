@@ -335,7 +335,7 @@ abstract class AppLocalizations {
   /// No description provided for @history.
   ///
   /// In en, this message translates to:
-  /// **'History'**
+  /// **'My results'**
   String get history;
 
   /// No description provided for @noHistory.

@@ -85,8 +85,8 @@ void main() {
       );
       final camera = Matrix4.identity()..scaleByDouble(1.7, 1.7, 1, 1);
       viewer.transformationController!.value = camera;
-      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
-      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.ensureVisible(find.byKey(const Key('country-direct-layers')));
+      await tester.tap(find.byKey(const Key('country-direct-layers')));
       await tester.pumpAndSettle();
       final layer = find.byKey(const Key('country-sheet-layer-instrument'));
       await tester.tap(layer);
@@ -100,8 +100,8 @@ void main() {
       await tester.ensureVisible(find.byKey(const Key('country-apply-layer')));
       await tester.tap(find.byKey(const Key('country-apply-layer')));
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byKey(const Key('country-map-settings')));
-      await tester.tap(find.byKey(const Key('country-map-settings')));
+      await tester.ensureVisible(find.byKey(const Key('country-direct-layers')));
+      await tester.tap(find.byKey(const Key('country-direct-layers')));
       await tester.pumpAndSettle();
       expect(
         find.textContaining('Selected cultural associations'),
