@@ -1,0 +1,344 @@
+[
+ {
+  "id": "tre-zeugma-ancient-city-near-gaziantep",
+  "field": "source_url",
+  "verdict": "fix",
+  "current": "https://goturkiye.com/gaziantep/see",
+  "proposed": "https://goturkiye.com/blog/zeugma-archaeological-site-mosaic-museum",
+  "evidence_url": "https://goturkiye.com/blog/zeugma-archaeological-site-mosaic-museum",
+  "note": "Cited page goturkiye.com/gaziantep/see does not mention Seleucus I Nicator; the blog (read) does (\"founded by Seleucus I Nicator ... around the 3rd century BCE\"), also Euphrates and Birecik Dam flooding. The rest of the claim matches gz-see."
+ },
+ {
+  "id": "tre-gaziantep-castle",
+  "field": "name_ru",
+  "verdict": "fix",
+  "current": "Крепость Газиантеп",
+  "proposed": "Крепость Газиантепа",
+  "evidence_url": "https://ru.wikipedia.org/wiki/Крепость_Газиантепа",
+  "note": "ru.wikipedia article title is \"Крепость Газиантепа\" (minor phrasing)."
+ },
+ {
+  "id": "tre-gaziantep-coppersmiths-bazaar",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "Lane of coppersmith shops where copperware is cleaned, engraved and sold; the trade is said to go back about 500 years and pass from father to son.",
+  "proposed": "Lane of coppersmith shops selling hand-made copperware; the craft is said to go back about 400 years and is handed down from master to apprentice.",
+  "evidence_url": "https://www.yeniankara.com.tr/turkiye-haberleri/gaziantep-bakircilar-carsisi-400-yillik-dovme-bakir-sanati-172596",
+  "note": "Only source was a personal travel blog (500 years, father to son, cleaned/engraved). Turkish press (yeniankara, opened) says roughly 400 years and usta-cirak (master-apprentice), not father-to-son. Figures conflict, so hedge and use the Turkish source. The blog-only details (cleaned/engraved, 280 shops) are dropped."
+ },
+ {
+  "id": "tre-gaziantep-coppersmiths-bazaar",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Ряды лавок медников, где медную утварь чистят, гравируют и продают; ремесло, по рассказам, насчитывает около 500 лет и передаётся от отца к сыну.",
+  "proposed": "Ряды лавок медников с медной утварью ручной работы; ремеслу, по преданию, около 400 лет, а мастерство передаётся от мастера к ученику.",
+  "evidence_url": "https://www.yeniankara.com.tr/turkiye-haberleri/gaziantep-bakircilar-carsisi-400-yillik-dovme-bakir-sanati-172596",
+  "note": "Same as EN fix."
+ },
+ {
+  "id": "tre-gaziantep-coppersmiths-bazaar",
+  "field": "source_url",
+  "verdict": "fix",
+  "current": "https://turkishtravelblog.com/coppersmith-bazaar-gaziantep/",
+  "proposed": "https://www.yeniankara.com.tr/turkiye-haberleri/gaziantep-bakircilar-carsisi-400-yillik-dovme-bakir-sanati-172596",
+  "evidence_url": "https://www.yeniankara.com.tr/turkiye-haberleri/gaziantep-bakircilar-carsisi-400-yillik-dovme-bakir-sanati-172596",
+  "note": "Better source than turkishtravelblog.com (a blog; its claim conflicts: 500 vs ~400 years)."
+ },
+ {
+  "id": "tre-gaziantep-coppersmiths-bazaar",
+  "field": "name_ru",
+  "verdict": "fix",
+  "current": "Базар медников (Бакырджилар) в Газиантепе",
+  "proposed": "Базар медников (Бакырджылар) в Газиантепе",
+  "evidence_url": "https://tr.wikipedia.org/wiki/Bak%C4%B1rc%C4%B1lar_%C3%87ar%C5%9F%C4%B1s%C4%B1",
+  "note": "Turkish \"Bakırcılar\" = Бакырджылар (ı = ы, not и). Spelling fix only; not opened on tr.wikipedia."
+ },
+ {
+  "id": "tre-antep-baklava-eu-pgi",
+  "field": "source_url",
+  "verdict": "fix",
+  "current": "https://gso.org.tr/en/general-page/products-with-geographical-indication-registrated/antep-baklava-16.html",
+  "proposed": "https://www.eeas.europa.eu/delegations/t%C3%BCrkiye/taste-heritage-gazianteps-iconic-tastes-secure-eu-protection_en",
+  "evidence_url": "https://www.eeas.europa.eu/delegations/t%C3%BCrkiye/taste-heritage-gazianteps-iconic-tastes-secure-eu-protection_en",
+  "note": "Claim (PGI 2013, applicant Gaziantep Chamber of Industry) is correct: the EEAS page (opened) says PGI granted in 2013 and names the Chamber as applicant; EU Reg. 1399/2013 of 18 Dec 2013 (found by search, not opened). The cited GSO page only says the application was published in the OJ on 8 Aug 2013, which is not the registration."
+ },
+ {
+  "id": "tre-gaziantep-menengic-coffee-eu-pdo",
+  "field": "name_ru",
+  "verdict": "fix",
+  "current": "Кофе менгич (menengiç) из Газиантепа",
+  "proposed": "Кофе менегич (menengiç) из Газиантепа",
+  "evidence_url": "https://www.eeas.europa.eu/delegations/t%C3%BCrkiye/taste-heritage-gazianteps-iconic-tastes-secure-eu-protection_en",
+  "note": "Facts OK (PDO, 2024: EEAS opened; Reg. 2024/2978 per search only). Russian transliteration \"менгич\" drops a syllable of me-nen-giç; \"менегич\" is closer. No ru.wikipedia article exists (search empty); keep the Latin form in brackets."
+ },
+ {
+  "id": "tre-gaziantep-pistachio-paste-eu-pgi",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Gaziantep Fıstık Ezmesi получила в 2025 году статус PGI в ЕС, пополнив число защищённых ЕС продуктов Газиантепа вместе с пахлавой и кофе менгич.",
+  "proposed": "Gaziantep Fıstık Ezmesi получила в 2025 году статус PGI в ЕС, пополнив число защищённых ЕС продуктов Газиантепа вместе с пахлавой и кофе менегич.",
+  "evidence_url": "https://www.eeas.europa.eu/delegations/t%C3%BCrkiye/taste-heritage-gazianteps-iconic-tastes-secure-eu-protection_en",
+  "note": "Facts OK (EEAS: PGI in 2025; Reg. 2025/1245 per search). Only the Russian spelling changes (\"менгич\" -> \"менегич\", consistent with the menengic item). Optional: lahmacun also got an EU PGI (Reg. 2025/2237 of 29 Oct 2025, opened on EUR-Lex)."
+ },
+ {
+  "id": "tre-gaziantep-dis-hedigi",
+  "field": "name_ru",
+  "verdict": "fix",
+  "current": "Диш хедиги — пшеничное блюдо Газиантепа",
+  "proposed": "Диш хедиги (diş hediği) — пшеничное блюдо Газиантепа",
+  "evidence_url": "https://www.ekonomigazetesi.com/sehirler/turkiyenin-en-fazla-cografi-isaretli-urunune-sahip-sehri-gaziantep-uc-lezzetini-daha-tescil-etti-90016",
+  "note": "Facts verified: HDN (21 Oct 2026, opened) and a second Turkish outlet (opened, 19 Oct 2026) say TURKPATENT registered diş hediği and the city total is 112 (an origin mark, \"mahreç işareti\"). No Russian usage found, so add the Latin form."
+ },
+ {
+  "id": "tre-emine-gogus-culinary-museum-gaziantep",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Назван первым музеем кухни в Турции; в историческом особняке Гёгюш у крепости Газиантепа манекены показывают, как готовили юваляму, мыру и другие местные блюда.",
+  "proposed": "Назван первым музеем кухни в Турции; в историческом особняке Гёгюш у крепости Газиантепа манекены показывают, как готовили юваляму, мырру и другие местные блюда.",
+  "evidence_url": "https://gaziantep.ktb.gov.tr/EN-200794/emine-gogus-culinary-museum.html",
+  "note": "Facts OK (page opened). Spelling must match the mırra item (\"мырра\"), so the accusative is \"мырру\"."
+ },
+ {
+  "id": "tre-rumkale-fortress-euphrates",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "The \"Roman Castle\" on the Gaziantep–Şanlıurfa border has Seljuk and Ottoman remains and a tradition linking it to St John; rising dam water left it largely inaccessible in 2012.",
+  "proposed": "The \"Roman Castle\" on the Gaziantep–Şanlıurfa border has Seljuk and Ottoman remains and a tradition linking it to St John; a 2012 report said rising water on the Euphrates behind the dam at Birecik had left it largely inaccessible.",
+  "evidence_url": "https://www.hurriyetdailynews.com/new-projects-realized-to-make-rumkale-a-tourist-showpiece-37202",
+  "note": "The article is dated 19 Dec 2012; \"in 2012\" reads as the year the flooding happened, but the article only reports the state as of 2012 (the dam is older)."
+ },
+ {
+  "id": "tre-rumkale-fortress-euphrates",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "«Римская крепость» на границе Газиантепа и Шанлыурфы сохранила сельджукские и османские постройки и предание о святом Иоанне; в 2012 году подъём воды за плотиной сделал её малодоступной.",
+  "proposed": "«Римская крепость» на границе Газиантепа и Шанлыурфы сохранила сельджукские и османские постройки и предание о святом Иоанне; по сообщению 2012 года, из-за подъёма воды Евфрата за плотиной в Бирекике она была почти недоступна.",
+  "evidence_url": "https://www.hurriyetdailynews.com/new-projects-realized-to-make-rumkale-a-tourist-showpiece-37202",
+  "note": "Same as EN. ru.wikipedia (Газиантеп (ил)) spells the site \"Румкале\" (also known as Ромкла), so the name is fine."
+ },
+ {
+  "id": "tre-sanliurfa-castle-corinthian-columns",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "Citadel above the old town where two 17.25 m Corinthian columns, raised by King Ma'nu IX of Edessa in 240-242 CE, are locally linked to the legend of Abraham's catapult.",
+  "proposed": "Citadel above the old town where two 17.25 m Corinthian columns, dated to 240-242 CE in the reign of King Ma'nu IX of Edessa, are locally linked to the legend of Abraham's catapult.",
+  "evidence_url": "https://sanliurfa.bel.tr/lang/en/icerik/12/7/urfa-castle",
+  "note": "goturkiye says Ma'nu IX 'erected' them, but the Syriac inscription quoted on the same page names a donor, Aftuha, who raised the column for Queen Shalmat; the Şanlıurfa municipality (found by search, snippet only) dates them to the reign of Ma'nu, 240-242. Say 'in the reign of'."
+ },
+ {
+  "id": "tre-sanliurfa-castle-corinthian-columns",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Цитадель над старым городом, где две коринфские колонны высотой 17,25 м, воздвигнутые царём Эдессы Маану IX в 240–242 годах, местные связывают с легендой о катапульте Авраама.",
+  "proposed": "Цитадель над старым городом, где две коринфские колонны высотой 17,25 м, датируемые 240–242 годами (время царя Эдессы Маану IX), местные связывают с легендой о катапульте Авраама.",
+  "evidence_url": "https://sanliurfa.bel.tr/lang/en/icerik/12/7/urfa-castle",
+  "note": "Same as EN."
+ },
+ {
+  "id": "tre-urfa-man-statue-sanliurfa-museum",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "Statue dated to 9300-8700 BCE, regarded as the oldest known sculpture, shown in the Şanlıurfa museum complex, the largest in Türkiye.",
+  "proposed": "Statue dated to about 9300-8700 BCE and often called the oldest known life-size sculpture of a human, shown in the Şanlıurfa museum complex, the largest in Türkiye.",
+  "evidence_url": "https://en.wikipedia.org/wiki/Urfa_Man",
+  "note": "\"Oldest known sculpture\" is too strong (the same goturkiye page calls the Göbeklitepe pillars the oldest sculptures). Wikipedia: \"oldest naturalistic life-sized sculpture of a human\", c. 9000 BC. The museum-complex claim is on the goturkiye page."
+ },
+ {
+  "id": "tre-urfa-man-statue-sanliurfa-museum",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Статуя возрастом 9300–8700 годов до н. э., считающаяся древнейшей известной скульптурой; хранится в музейном комплексе Шанлыурфы — самом большом в Турции.",
+  "proposed": "Статуя возрастом около 9300–8700 годов до н. э., которую часто называют древнейшей известной скульптурой человека в натуральную величину; хранится в музейном комплексе Шанлыурфы — самом большом в Турции.",
+  "evidence_url": "https://en.wikipedia.org/wiki/Urfa_Man",
+  "note": "Same as EN."
+ },
+ {
+  "id": "tre-urfa-man-statue-sanliurfa-museum",
+  "field": "name_ru",
+  "verdict": "fix",
+  "current": "Статуя «Урфинский человек» в музее Шанлыурфы",
+  "proposed": "Статуя «Человек из Урфы» в музее Шанлыурфы",
+  "evidence_url": "https://ru.wikipedia.org/wiki/Человек_из_Урфы",
+  "note": "ru.wikipedia title is \"Человек из Урфы\", not \"Урфинский человек\" (title exists in the ru.wikipedia search)."
+ },
+ {
+  "id": "tre-nemrut-lion-horoscope-relief-adiyaman",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "Slab on the west terrace marked with the date 7 July 62 BCE, taken as the start of Antiochus I's reign and sometimes called the oldest astrological calendar.",
+  "proposed": "Slab on the west terrace showing a chart of the sky usually read as 7 July 62 BCE; the date is debated, and it may mark when work on the monument began.",
+  "evidence_url": "https://en.wikipedia.org/wiki/Mount_Nemrut",
+  "note": "goturkiye (opened) says the date marks the beginning of Antiochus I's reign and calls it the \"world's oldest astrological calendar\". Wikipedia (Mount Nemrut) reads the relief as the sky of 7 July 62 BCE (others prefer 23 July 49 BCE), says it \"may be an indication of when construction began\" and makes no \"oldest\" claim. Drop both the accession and the superlative claims."
+ },
+ {
+  "id": "tre-nemrut-lion-horoscope-relief-adiyaman",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Плита на западной террасе с датой 7 июля 62 года до н. э., которую связывают с началом правления Антиоха I и порой называют древнейшим астрологическим календарём.",
+  "proposed": "Плита на западной террасе с картой неба, которую обычно читают как 7 июля 62 года до н. э.; датировка спорна, возможно, она отмечает начало строительства памятника.",
+  "evidence_url": "https://en.wikipedia.org/wiki/Mount_Nemrut",
+  "note": "Same as EN."
+ },
+ {
+  "id": "tre-malatya-apricot-eu-gi",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "Apricots from Malatya earned an EU geographical indication in July 2017; in 2016 about 90% of Türkiye's apricot exports came from Malatya.",
+  "proposed": "Malatya apricot (Malatya Kayısısı) was entered in the EU register as a Protected Designation of Origin (PDO) in 2017; the trade minister said about 90% of Türkiye's 2016 apricot exports came from Malatya.",
+  "evidence_url": "https://www.legislation.gov.uk/eur/2017/1220/data.html",
+  "note": "Commission Implementing Regulation (EU) 2017/1220 of 16 June 2017, Art. 1: \"The name Malatya Kayısısı (PDO) is hereby entered in the register\" (opened). HDN says only \"geographical indication\"; the exact status is PDO. The 90% figure is the minister's statement in HDN (opened)."
+ },
+ {
+  "id": "tre-malatya-apricot-eu-gi",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Абрикосы из Малатьи получили географическое указание ЕС в июле 2017 года; в 2016 году около 90% турецкого экспорта абрикосов приходилось на Малатью.",
+  "proposed": "Малатийский абрикос (Malatya Kayısısı) внесён в реестр ЕС как защищённое наименование места происхождения (PDO) в 2017 году; по словам министра торговли, около 90% турецкого экспорта абрикосов в 2016 году приходилось на Малатью.",
+  "evidence_url": "https://www.legislation.gov.uk/eur/2017/1220/data.html",
+  "note": "Same as EN."
+ },
+ {
+  "id": "tre-akdamar-island-church-lake-van",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "Largest island of Lake Van with a 10th-century church carved with biblical scenes; a museum since its 2007 restoration and on UNESCO's Tentative List since 2015.",
+  "proposed": "Island in Lake Van with a 10th-century church carved with biblical scenes; a museum since its 2007 restoration, and listed as the Akdamar Church on UNESCO's Tentative List since 2015.",
+  "evidence_url": "https://en.wikipedia.org/wiki/Akdamar_Island",
+  "note": "goturkiye (opened) says \"largest island\", but English Wikipedia says Akdamar is the second largest of the four main islands of Lake Van. UNESCO Tentative List (opened): \"Akdamar Church\", 13/04/2015, so 2015 is right, but the entry is for the church."
+ },
+ {
+  "id": "tre-akdamar-island-church-lake-van",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Крупнейший остров озера Ван с церковью X века, украшенной библейскими сценами; после реставрации 2007 года — музей, с 2015 года в предварительном списке ЮНЕСКО.",
+  "proposed": "Остров на озере Ван с церковью X века, украшенной библейскими сценами; после реставрации 2007 года — музей, а церковь Ахтамара с 2015 года входит в предварительный список ЮНЕСКО.",
+  "evidence_url": "https://en.wikipedia.org/wiki/Akdamar_Island",
+  "note": "Same as EN."
+ },
+ {
+  "id": "tre-shamiram-minua-canal-van",
+  "field": "name_en",
+  "verdict": "fix",
+  "current": "Minua (Shamram) Canal near Van",
+  "proposed": "Menua (Shamiram) Canal near Van",
+  "evidence_url": "https://goturkiye.com/van/see",
+  "note": "Source typo \"Shamram\"; the standard English spelling is Shamiram (the id and the Russian \"Шамирам\" already match). Facts verified on goturkiye (about 50 km, still in use after ~2,800 years). Also change \"Minua\" to \"Menua\" in relation_en."
+ },
+ {
+  "id": "tre-kars-gruyere-cheese",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "Gruyère is among the prominent cheeses of Kars, made with milk from animals grazing high plateaus; the Cheese Museum is in Boğatepe village.",
+  "proposed": "Gruyère is among the prominent cheeses of Kars, a high-plateau province known for dairy and beekeeping; the Cheese Museum is in Boğatepe village.",
+  "evidence_url": "https://goturkiye.com/kars/taste",
+  "note": "On the cited page the \"milk from animals grazing high plateaus\" clause belongs to Kars Kaşarı (Kars cheddar), not to gruyère; gruyère is only listed among the prominent cheeses. The Boğatepe Cheese Museum is confirmed."
+ },
+ {
+  "id": "tre-kars-gruyere-cheese",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Грюйер — один из главных сыров Карса, его делают из молока животных с высокогорных пастбищ; Музей сыра находится в селе Богатепе.",
+  "proposed": "Грюйер — один из главных сыров Карса, высокогорной провинции, известной молочными продуктами и пчеловодством; Музей сыра находится в селе Богатепе.",
+  "evidence_url": "https://goturkiye.com/kars/taste",
+  "note": "Same as EN."
+ },
+ {
+  "id": "tre-diyarbakir-liver-kebab",
+  "field": "name_en",
+  "verdict": "fix",
+  "current": "Diyarbakır liver kebab",
+  "proposed": "Diyarbakır lamb liver (ciğer)",
+  "evidence_url": "https://goturkiye.com/diyarbakir/taste",
+  "note": "The cited page (\"Diyarbakır Ciğeri\") only says lamb liver is a regional delicacy and the livers weigh about 600 g; it never says kebab (kebab appears only for katkat). The id can stay."
+ },
+ {
+  "id": "tre-diyarbakir-liver-kebab",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "Kebab of lamb liver, a delicacy of the region where the livers of local lambs weigh around 600 g each.",
+  "proposed": "Lamb liver is a delicacy of the region, where the livers of lambs raised on natural pasture weigh around 600 g each.",
+  "evidence_url": "https://goturkiye.com/diyarbakir/taste",
+  "note": "Same."
+ },
+ {
+  "id": "tre-diyarbakir-liver-kebab",
+  "field": "name_ru",
+  "verdict": "fix",
+  "current": "Печёночный кебаб из Диярбакыра",
+  "proposed": "Баранья печень (ciğer) из Диярбакыра",
+  "evidence_url": "https://goturkiye.com/diyarbakir/taste",
+  "note": "Same."
+ },
+ {
+  "id": "tre-diyarbakir-liver-kebab",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Кебаб из бараньей печени — деликатес региона, где печень местных ягнят весит около 600 г.",
+  "proposed": "Баранья печень — деликатес региона, где печень местных ягнят, выросших на естественных пастбищах, весит около 600 г.",
+  "evidence_url": "https://goturkiye.com/diyarbakir/taste",
+  "note": "Same."
+ },
+ {
+  "id": "tre-karkamis-carchemish-gaziantep",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "Centre of the most powerful Late Hittite kingdom, on the Euphrates; Sargon II of Assyria destroyed the city in 717 BCE, and Luwian hieroglyphic inscriptions and reliefs were found.",
+  "proposed": "Capital of an important Late Hittite kingdom on the Euphrates, described as the strongest of them; Sargon II of Assyria conquered the city in 717 BCE, and Luwian hieroglyphic inscriptions and reliefs were found.",
+  "evidence_url": "https://en.wikipedia.org/wiki/Carchemish",
+  "note": "goturkiye says \"destroyed\"; Wikipedia says \"conquered by Sargon II in 717 BC\" and calls it only \"an important Neo-Hittite kingdom\"; \"most powerful\" is the guide's own wording, so attribute it. Name_ru \"Каркамыш\" is confirmed by ru.wikipedia (Газиантеп (ил)); the ancient-city article is \"Каркемиш\"."
+ },
+ {
+  "id": "tre-karkamis-carchemish-gaziantep",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Центр самого сильного из позднехеттских царств на Евфрате; ассирийский царь Саргон II разрушил город в 717 году до н. э.; найдены лувийские иероглифические надписи и рельефы.",
+  "proposed": "Столица значительного позднехеттского царства на Евфрате, которое в путеводителе называют сильнейшим из них; ассирийский царь Саргон II завоевал город в 717 году до н. э.; найдены лувийские иероглифические надписи и рельефы.",
+  "evidence_url": "https://en.wikipedia.org/wiki/Carchemish",
+  "note": "Same as EN."
+ },
+ {
+  "id": "tre-el-aman-caravanserai-bitlis",
+  "field": "relation_en",
+  "verdict": "fix",
+  "current": "16th-century Ottoman caravanserai built by Hüsrev Pasha, governor of Van, at the crossing of the Caravan, Pilgrim's and Silk roads; called the largest caravanserai in Anatolia.",
+  "proposed": "16th-century Ottoman caravanserai built by Hüsrev Pasha, governor of Van, at the crossing of the Caravan, Pilgrim's and Silk roads; often counted among the largest caravanserais in Anatolia.",
+  "evidence_url": "https://kureansiklopedi.com/tr/detay/bitlis-el-aman-hani-9b9c8",
+  "note": "goturkiye says 'the largest caravanserai in Anatolia'; no independent source confirms it (the Turkish encyclopedia entry found by search, snippet only, says 'one of the largest'; the Seljuk Sultanhani is the usual 'largest'). Waqf deed dated 1579, so '16th century' is right."
+ },
+ {
+  "id": "tre-el-aman-caravanserai-bitlis",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Османский караван-сарай XVI века, построенный Хюсрев-пашой, наместником Вана, на пересечении Караванного, Паломнического и Шёлкового путей; назван крупнейшим в Анатолии.",
+  "proposed": "Османский караван-сарай XVI века, построенный Хюсрев-пашой, наместником Вана, на пересечении Караванного, Паломнического и Шёлкового путей; его относят к крупнейшим караван-сараям Анатолии.",
+  "evidence_url": "https://kureansiklopedi.com/tr/detay/bitlis-el-aman-hani-9b9c8",
+  "note": "Same as EN."
+ },
+ {
+  "id": "tre-ishak-pasha-palace-dogubayazit-agri",
+  "field": "name_ru",
+  "verdict": "fix",
+  "current": "Дворец Ишак-паши близ Догубаязыта (провинция Агры)",
+  "proposed": "Дворец Ишак-паши близ Догубаязита (провинция Агры)",
+  "evidence_url": "https://ru.wikipedia.org/wiki/Догубаязит",
+  "note": "ru.wikipedia article is \"Догубаязит\" (and \"Агры (ил)\" matches the province)."
+ },
+ {
+  "id": "tre-malatya-kagit-kebab",
+  "field": "name_ru",
+  "verdict": "fix",
+  "current": "Кягыт-кебаб Малатьи",
+  "proposed": "Каыт-кебаб Малатьи",
+  "evidence_url": "https://goturkiye.com/malatya/taste",
+  "note": "Turkish \"kağıt\" has back vowels, so \"кягыт\" (я) is wrong; \"каыт\" (or \"кагыт\") is the usual rendering. Low-confidence spelling fix; facts verified (10-12 h in pre-heated stone ovens in Malatya bazaars)."
+ },
+ {
+  "id": "tre-siirt-buryan-kebab",
+  "field": "relation_ru",
+  "verdict": "fix",
+  "current": "Целого ягнёнка или козлёнка подвешивают в колодце глубиной 1–1,5 м над углями, закрывают глиной и томят; блюдо есть и в других местах, но в Сиирте оно особенно местное.",
+  "proposed": "Целого ягнёнка или козлёнка подвешивают в колодце глубиной 1–1,5 м над углями, закрывают глиной и томят; блюдо готовят и в других городах Турции, но в Сиирте оно считается местной особенностью.",
+  "evidence_url": "https://goturkiye.com/siirt/taste",
+  "note": "Facts verified; the original clause \"особенно местное\" is unnatural Russian."
+ }
+]

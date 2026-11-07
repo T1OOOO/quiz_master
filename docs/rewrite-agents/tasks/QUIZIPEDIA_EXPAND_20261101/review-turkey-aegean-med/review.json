@@ -1,0 +1,209 @@
+[
+  {
+    "id": "trae-adana-salgam",
+    "field": "relation_en",
+    "verdict": "fix",
+    "current": "Salty-sour fermented drink of purple-carrot brine, traditional in Adana and the Çukurova region; Adana has celebrated it with a festival since 2010",
+    "proposed": "Salty-sour fermented drink of purple-carrot brine, traditional in Adana and the Çukurova region",
+    "evidence_url": "https://tr.euronews.com (Kebap ve Şalgam Festivali iptal edildi)",
+    "note": "Festival clause unreliable: the Adana festival began in 2010 as the Adana Raki Festival, was renamed Kebap ve Salgam Festivali in 2015, and has been banned/cancelled by the governorship in recent years; the claim rests on one Wikipedia sentence that conflates it with the World Raki Festival. Drop the clause."
+  },
+  {
+    "id": "trae-adana-salgam",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Солёно-кислый ферментированный напиток на рассоле из фиолетовой моркови, традиционный для Аданы и Чукурова; с 2010 года в Адане проходит посвящённый ему фестиваль",
+    "proposed": "Солёно-кислый ферментированный напиток на рассоле из фиолетовой моркови, традиционный для Аданы и Чукурова",
+    "evidence_url": "https://tr.euronews.com (Kebap ve Şalgam Festivali iptal edildi)",
+    "note": "Same as EN: remove the 'since 2010 festival' clause."
+  },
+  {
+    "id": "trae-hatay-unesco-creative-city-gastronomy",
+    "field": "relation_en",
+    "verdict": "fix",
+    "current": "Hatay has belonged to the UNESCO Creative Cities Network for gastronomy since 2017; its profile cites the Hatay Künefe Festival and says 13 civilizations shaped its cuisine",
+    "proposed": "Hatay has belonged to the UNESCO Creative Cities Network for gastronomy since 2017; its profile cites the Hatay Künefe Festival and repeats the saying that 13 world civilizations shaped its cuisine",
+    "evidence_url": "https://www.unesco.org/en/creative-cities/hatay",
+    "note": "Member since 2017 and festival confirmed; UNESCO says 'It is said that 13 world civilizations...', so keep the hedge."
+  },
+  {
+    "id": "trae-hatay-unesco-creative-city-gastronomy",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Хатай с 2017 года входит в Сеть творческих городов ЮНЕСКО в категории гастрономии; в профиле упомянут фестиваль кюнефе, а кухню, как сказано, сформировали 13 цивилизаций",
+    "proposed": "Хатай с 2017 года входит в Сеть творческих городов ЮНЕСКО в категории гастрономии; в профиле упомянут фестиваль кюнефе и говорится, что, по преданию, на местную кухню повлияли 13 мировых цивилизаций",
+    "evidence_url": "https://www.unesco.org/en/creative-cities/hatay",
+    "note": "Hedge made explicit."
+  },
+  {
+    "id": "trae-aydin-fig",
+    "field": "source_url",
+    "verdict": "fix",
+    "current": "https://www.turkpatent.gov.tr/en/news/antakya-kunefesi-has-been-registered-in-the-european-union",
+    "proposed": "https://www.gov.uk/protected-food-drink-names/aydin-inciri",
+    "evidence_url": "https://www.gov.uk/protected-food-drink-names/aydin-inciri",
+    "note": "Cited TURKPATENT news page only lists 'Aydin Inciri' among EU registrations; it says nothing about dried Sarilop figs. The gov.uk register page (PDO, original EU registration 17 Feb 2016) and its specification PDF (assets.publishing.service.gov.uk/media/665842e4dc15efdddf1a854c/Aydin_Inciri.pdf: 'name given to dried Sarilop figs ... produced in the area of Aydin') support the claim. New source entry needed; the claim text itself is correct."
+  },
+  {
+    "id": "trae-insuyu-cave-burdur",
+    "field": "relation_en",
+    "verdict": "fix",
+    "current": "Show cave over 500 m long near Burdur, discovered in 1952 and opened to the public in 1965, with lakes inside",
+    "proposed": "Show cave of about 600 m near Burdur, scientifically explored from 1952 and opened to visitors in the mid-1960s, with lakes inside",
+    "evidence_url": "https://en.wikipedia.org/wiki/%C4%B0nsuyu_Cave",
+    "note": "en.wikipedia contradicts itself: lead says opened 1965, body says 1966; tr.wikipedia gives length 597 m, and total mapped length is 3000 m+, so 'over 500 m' is only the show section. Avoid the exact year."
+  },
+  {
+    "id": "trae-insuyu-cave-burdur",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Туристическая пещера длиной более 500 м близ Бурдура, открытая в 1952 году и доступная для посетителей с 1965 года; внутри есть озёра",
+    "proposed": "Туристическая пещера длиной около 600 м близ Бурдура, научно исследованная с 1952 года и открытая для посетителей в середине 1960-х; внутри есть озёра",
+    "evidence_url": "https://tr.wikipedia.org/wiki/%C4%B0nsuyu_Ma%C4%9Faras%C4%B1",
+    "note": "Same as EN."
+  },
+  {
+    "id": "trae-church-of-st-peter-antakya",
+    "field": "relation_en",
+    "verdict": "fix",
+    "current": "Cave 13 m deep carved into Mount Starius near Antakya; its oldest surviving parts date from at least the 4th-5th century, and Crusaders added a facade in 1098",
+    "proposed": "Cave 13 m deep carved into Mount Starius near Antakya; its oldest surviving parts date from at least the 4th-5th century, and Crusaders who took Antioch in 1098 extended it and built a facade",
+    "evidence_url": "https://en.wikipedia.org/wiki/Church_of_Saint_Peter",
+    "note": "1098 is the year of capture, not of the facade; the present facade dates from the 1863 Capuchin rebuilding."
+  },
+  {
+    "id": "trae-church-of-st-peter-antakya",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Пещера глубиной 13 м, вырубленная в горе Старий близ Антакьи; древнейшие сохранившиеся части относятся минимум к IV-V векам, а фасад добавили крестоносцы в 1098 году",
+    "proposed": "Пещера глубиной 13 м, вырубленная в горе Стариус близ Антакьи; древнейшие сохранившиеся части относятся минимум к IV-V векам, а крестоносцы, взявшие Антиохию в 1098 году, удлинили её и пристроили фасад",
+    "evidence_url": "https://ru.wikipedia.org/wiki/Церковь_Святого_Петра_(Антакья)",
+    "note": "ru.wikipedia says 'гора Стариус', not 'Старий'."
+  },
+  {
+    "id": "trae-kizkalesi-corycus-mersin",
+    "field": "source_url",
+    "verdict": "fix",
+    "current": "https://en.wikipedia.org/wiki/Corycus",
+    "proposed": "https://en.wikipedia.org/wiki/K%C4%B1zkalesi",
+    "evidence_url": "https://en.wikipedia.org/wiki/K%C4%B1zkalesi",
+    "note": "'60 km from Mersin' is not in the cited Corycus article; the Kizkalesi town article states 60 km to Mersin on D 400. Snake legend is in Corycus (keep as second source)."
+  },
+  {
+    "id": "trae-izmir-international-fair",
+    "field": "source_url",
+    "verdict": "fix",
+    "current": "https://en.wikipedia.org/wiki/İzmir_International_Fair",
+    "proposed": "https://en.wikipedia.org/wiki/K%C3%BClt%C3%BCrpark",
+    "evidence_url": "https://en.wikipedia.org/wiki/K%C3%BClt%C3%BCrpark",
+    "note": "'Founded in 1936 on land ruined by the great fire' is in the Kulturpark article (opened 1 Sep 1936, 6th fair); the fair article only says Kulturpark covers the quarters ravaged by the 1922 fire and has no 1936."
+  },
+  {
+    "id": "trae-mugla-pine-honey",
+    "field": "relation_en",
+    "verdict": "fix",
+    "current": "Honeydew honey made by bees from secretions of the scale insect Marchalina hellenica on red pine; registered in 2018 as the designation of origin Muğla Çam Balı",
+    "proposed": "Honeydew honey made by bees from secretions of the scale insect Marchalina hellenica on Turkish red pine (Pinus brutia); registered in 2018 as the designation of origin Muğla Çam Balı",
+    "evidence_url": "https://ci.turkpatent.gov.tr/Files/GeographicalSigns/379.pdf",
+    "note": "Register: 15.08.2018, mense adi, kizilcam (Pinus brutia). 'Red pine' alone means Pinus resinosa in English."
+  },
+  {
+    "id": "trae-maras-coregi",
+    "field": "relation_en",
+    "verdict": "fix",
+    "current": "Local baked bun of Kahramanmaraş made especially in Ramadan; registered in 2018 as the geographical indication Maraş Çöreği",
+    "proposed": "Local thin, flat baked pastry of Kahramanmaraş, rolled with a grooved rolling pin and made especially in Ramadan; registered in 2018 as the geographical indication Maraş Çöreği",
+    "evidence_url": "https://ci.turkpatent.gov.tr/Files/GeographicalSigns/361.pdf",
+    "note": "Register 13.06.2018 confirmed; 'bun' misdescribes it (dough rolled to about 2 mm, 15 cm max, baked in a stone oven)."
+  },
+  {
+    "id": "trae-maras-coregi",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Местная выпечка Кахраманмараша, которую особенно активно готовят в Рамадан; в 2018 году зарегистрирована как географическое указание «Мараш чёреги»",
+    "proposed": "Местная тонкая плоская выпечка Кахраманмараша, раскатываемая рифлёной скалкой, которую особенно активно готовят в Рамадан; в 2018 году зарегистрирована как географическое указание «Мараш чёреги»",
+    "evidence_url": "https://ci.turkpatent.gov.tr/Files/GeographicalSigns/361.pdf",
+    "note": "Same as EN."
+  },
+  {
+    "id": "trae-mersin-tantuni",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Рубленая говяжья грудинка, обжаренная на хлопковом масле; подаётся с соком лимона или горького апельсина, айраном или шалгамом; зарегистрирован как географическое указание в 2017 году",
+    "proposed": "Нарезанные кубиками говяжьи рёбра с жиром, обжаренные на хлопковом масле; подаётся с соком лимона или горького апельсина, айраном или шалгамом; зарегистрирован как географическое указание в 2017 году",
+    "evidence_url": "https://ci.turkpatent.gov.tr/Files/GeographicalSigns/211.pdf",
+    "note": "Register: dana etinin yagli kaburga kismi (fatty rib), kup dogranir; 'грудинка' is brisket and 'рубленая' is minced. EN and the 21.03.2017 date are fine."
+  },
+  {
+    "id": "trae-antalya-piyaz",
+    "field": "name_ru",
+    "verdict": "fix",
+    "current": "Антальский пияз — фасоль с соусом тарратор",
+    "proposed": "Антальский пияз — фасоль с соусом таратор",
+    "evidence_url": "https://ru.wikipedia.org/wiki/Таратор",
+    "note": "Standard Russian spelling is 'таратор' (single р)."
+  },
+  {
+    "id": "trae-antalya-piyaz",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Блюдо, зарегистрированное как географическое указание Антальи (2017): фасоль с соусом тарратор, которую в Анталье подают как основное блюдо, а не салат",
+    "proposed": "Блюдо, зарегистрированное как географическое указание Антальи (2017): фасоль с соусом таратор, которую в Анталье подают как основное блюдо, а не салат",
+    "evidence_url": "https://ci.turkpatent.gov.tr/Files/GeographicalSigns/315.pdf",
+    "note": "Register 29.12.2017 confirmed; spelling fix only."
+  },
+  {
+    "id": "trae-titus-tunnel-samandag-hatay",
+    "field": "name_ru",
+    "verdict": "fix",
+    "current": "Тоннель Тита и Веспасиана близ Самандага (Хатай)",
+    "proposed": "Тоннель Веспасиана и Тита близ Самандага (Хатай)",
+    "evidence_url": "https://ru.wikipedia.org/wiki/Тоннель_Тита",
+    "note": "English name is Vespasianus Titus Tunnel; Веспасиан-Тит is chronological (ru.wikipedia title is just 'Тоннель Тита')."
+  },
+  {
+    "id": "trae-tarsus-hummus",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Блюдо, зарегистрированное как географическое указание Тарсуса (2017); во время дней Хыдырэллез в Тарсусе по традиции проходят конкурсы по приготовлению хумуса",
+    "proposed": "Блюдо, зарегистрированное как географическое указание Тарсуса (2017); во время дней Хедерлеза (Хыдырлез) в Тарсусе по традиции проходят конкурсы по приготовлению хумуса",
+    "evidence_url": "https://ru.wikipedia.org/wiki/Хедерлез",
+    "note": "Register 01.11.2017 and Hidirellez contests confirmed. ru.wikipedia calls the feast Хедерлез (variant Хыдырлез); 'Хыдырэллез' is not used."
+  },
+  {
+    "id": "trae-iztuzu-beach-dalyan",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Песчаная коса длиной 4,5 км близ Дальяна, отделяющая дельту реки от моря; средиземноморский пляж гнездования логгерхедов (кареттов), охраняемый с 1988 года",
+    "proposed": "Песчаная коса длиной 4,5 км близ Дальяна, отделяющая дельту реки от моря; средиземноморский пляж гнездования морских черепах логгерхедов (каретта), охраняемый с 1988 года",
+    "evidence_url": "https://ru.wikipedia.org/wiki/Логгерхед",
+    "note": "'кареттов' is an awkward plural; ru.wikipedia: 'Логгерхед ... или каретта'. 4.5 km and 1988 confirmed."
+  },
+  {
+    "id": "trae-yilankale-adana",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Армянская горная крепость конца XII-XIII века над рекой Джейхан в провинции Адана, возможно основанная царём Левоном I Киликийским",
+    "proposed": "Армянская горная крепость конца XII-XIII века над рекой Джейхан в провинции Адана, возможно основанная царём Левоном II Великим (коронован как Левон I)",
+    "evidence_url": "https://ru.wikipedia.org/wiki/Левон_II",
+    "note": "Low priority. ru.wikipedia numbers him Левон II Великий (crowned as Levon I); bare 'Левон I Киликийский' is ambiguous in Russian."
+  },
+  {
+    "id": "trae-mugla-kofte",
+    "field": "relation_ru",
+    "verdict": "fix",
+    "current": "Котлеты на гриле из говяжьего фарша только с солью, по желанию с чёрным перцем и зирой; в 2018 году зарегистрированы как географическое указание «Мугла кёфтеси»",
+    "proposed": "Кёфте на гриле из говяжьего фарша только с солью, по желанию с чёрным перцем и зирой; в 2018 году зарегистрированы как географическое указание «Мугла кёфтеси»",
+    "evidence_url": "https://ci.turkpatent.gov.tr/Files/GeographicalSigns/347.pdf",
+    "note": "Low priority. Register 17.04.2018 confirmed; 'котлеты' is a different dish, name_ru already says кёфте."
+  },
+  {
+    "id": "trae-karatepe-aslantas-osmaniye",
+    "field": "source_url",
+    "verdict": "fix",
+    "current": "https://en.wikipedia.org/wiki/Karatepe_bilingual",
+    "proposed": "https://en.wikipedia.org/wiki/Karatepe-Aslanta%C5%9F_Open-Air_Museum",
+    "evidence_url": "https://en.wikipedia.org/wiki/Karatepe-Aslanta%C5%9F_Open-Air_Museum",
+    "note": "Low priority. Cited Karatepe bilingual article never mentions Osmaniye; the museum article places the site in Kadirli district, Osmaniye. Claim is true; keep the bilingual article as second source."
+  }
+]
