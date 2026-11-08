@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/belief_atlas.dart';
+import 'package:quiz_app/body_atlas.dart';
 import 'package:quiz_app/brand_atlas.dart';
 import 'package:quiz_app/food_atlas.dart';
 import 'package:quiz_app/knowledge_atlas.dart';
 import 'package:quiz_app/music_learning.dart';
 import 'package:quiz_app/organ_atlas.dart';
+import 'package:quiz_app/periodic_table.dart';
 import 'package:quiz_app/quizipedia.dart';
 import 'package:quiz_app/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -45,11 +47,14 @@ void main() {
     'brands': () => const BrandAtlasPage(),
     'music': () => const MusicLearningPage(),
     'organs': () => const OrganAtlasPage(),
+    'body': () => const BodyAtlasPage(),
     'greek': () => const BeliefAtlasPage(),
     'religions': () => const BeliefAtlasPage(initialSection: 'religions'),
     'history': () => const KnowledgeAtlasPage(section: 'history'),
     'works': () => const KnowledgeAtlasPage(section: 'works'),
     'people': () => const KnowledgeAtlasPage(section: 'people'),
+    'periodic': () => const PeriodicTablePage(),
+    'periodic-training': () => const ElementTrainingPage(seed: 1),
   };
   for (final entry in pages.entries) {
     testWidgets('${entry.key} fits a narrow phone with enlarged Russian text', (
