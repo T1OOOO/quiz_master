@@ -25,6 +25,7 @@ const _factsAsset = 'assets/quizipedia/country_facts.json';
 
 const _mapLayers = [
   'flag',
+  'coat_of_arms',
   'capital',
   'currency',
   'population',
@@ -500,6 +501,8 @@ class CountryQuestion {
       'According to this atlas, which distinctive fact is associated with $country?',
     'filming_location' =>
       'According to this atlas, which famous filming location is in $country?',
+    'coat_of_arms' =>
+      'Which national coat of arms or state emblem belongs to $country?',
     'resource' => 'Which resource is listed for $country?',
     _ => 'Which ${row.kind} is associated with $country?',
   };
@@ -2201,6 +2204,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     'culture' => _t('Cultural traditions', 'Культурные традиции'),
     'fact' => _t('Interesting facts', 'Интересные факты'),
     'filming_location' => _t('Filming locations', 'Места съёмок кино'),
+    'coat_of_arms' => _t('Coats of arms', 'Гербы государств'),
     'flag' => _t('Flags', 'Флаги'),
     'capital' => _t('Capitals', 'Столицы'),
     'language' => _t('Official languages', 'Официальные языки'),
@@ -2246,6 +2250,8 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
         'Какой интересный факт связан со страной $name согласно этому атласу?',
       'filming_location' =>
         'Какое знаменитое место съёмок кино находится в стране $name?',
+      'coat_of_arms' =>
+        'Какой государственный герб (эмблема) принадлежит стране $name?',
       'resource' => 'Какой природный ресурс указан в справочнике страны $name?',
       'desert' => 'Какая пустыня расположена на территории страны $name?',
       'bridge' => 'Какой мост находится в стране $name?',
@@ -2405,6 +2411,12 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                 'assets/quizipedia/flag-${fact.id.toLowerCase()}.png',
                 height: 36,
                 semanticLabel: _t('Flag of $name', 'Флаг: $name'),
+              ),
+              const SizedBox(height: 8),
+              AtlasMedia(
+                scope: 'countries',
+                entityId: 'coat_of_arms_${fact.id.toLowerCase()}',
+                hideWhenMissing: true,
               ),
               if (fact.capital.isNotEmpty)
                 Text(field(_t('Capital', 'Столица'), _display(fact.capital))),

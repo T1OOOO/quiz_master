@@ -1878,6 +1878,7 @@ String _linkKindRu(String value) =>
       'sports_team': 'Спортивная команда',
       'fact': 'Интересный факт',
       'filming_location': 'Место съёмок кино',
+      'coat_of_arms': 'Герб государства',
     }[value] ??
     'Связанная сущность';
 String _linkKindEn(String value) =>
@@ -1892,6 +1893,7 @@ String _linkKindEn(String value) =>
       'sports_team': 'Sports team',
       'fact': 'Interesting fact',
       'filming_location': 'Filming location',
+      'coat_of_arms': 'Coat of arms',
     }[value] ??
     'Related entity';
 (String, String) _religionGroup(String value) =>
