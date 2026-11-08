@@ -9,9 +9,15 @@ class AnatomySceneMarker {
     required this.label,
     required this.x,
     required this.y,
+    this.calloutX,
+    this.calloutY,
+    this.calloutNumber,
   });
   final String id, label;
   final double x, y;
+
+  final double? calloutX, calloutY;
+  final int? calloutNumber;
 }
 
 class AnatomySceneCredit {
@@ -37,13 +43,26 @@ class AnatomyScene extends StatefulWidget {
     required this.zoomOutLabel,
     required this.resetLabel,
     required this.creditLabel,
+    required this.hideMarkersLabel,
+    required this.showMarkersLabel,
+    this.caption,
     this.markerDiameter = 48,
   });
-  final String asset, zoomInLabel, zoomOutLabel, resetLabel, creditLabel;
+  final String asset,
+      zoomInLabel,
+      zoomOutLabel,
+      resetLabel,
+      creditLabel,
+      hideMarkersLabel,
+      showMarkersLabel;
+
+  /// A short orientation note for the source illustration. It deliberately
+  /// distinguishes the learning pins from anatomical labels in the artwork.
+  final String? caption;
   final double aspectRatio;
 
-  /// The visual pin size. The labelled chips below keep a full touch target
-  /// when an illustration has closely spaced source callouts.
+  /// The visual pin size. Direct pins have a 48dp hit target; where those
+  /// targets would overlap, the labelled chips below remain the safe control.
   final double markerDiameter;
   final List<AnatomySceneMarker> markers;
   final AnatomySceneCredit credit;
@@ -53,7 +72,9 @@ class AnatomyScene extends StatefulWidget {
 }
 
 class _AnatomySceneState extends State<AnatomyScene> {
+  static const _markerTapDiameter = 48.0;
   final _controller = TransformationController();
+  var _markersVisible = true;
   @override
   void dispose() {
     _controller.dispose();
@@ -81,45 +102,153 @@ class _AnatomySceneState extends State<AnatomyScene> {
             child: AspectRatio(
               aspectRatio: widget.aspectRatio,
               child: LayoutBuilder(
-                builder: (context, constraints) => Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Image.asset(widget.asset, fit: BoxFit.contain),
-                    for (final marker in widget.markers)
-                      Positioned(
-                        left:
-                            constraints.maxWidth * marker.x -
-                            widget.markerDiameter / 2,
-                        top:
-                            constraints.maxHeight * marker.y -
-                            widget.markerDiameter / 2,
-                        child: Semantics(
-                          button: true,
-                          label: marker.label,
-                          child: IconButton.filledTonal(
-                            key: Key('anatomy-marker-${marker.id}'),
-                            tooltip: marker.label,
-                            style: IconButton.styleFrom(
-                              minimumSize: Size.square(widget.markerDiameter),
-                              maximumSize: Size.square(widget.markerDiameter),
-                              padding: EdgeInsets.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            ),
-                            onPressed: () => widget.onMarkerTap(marker),
-                            icon: Icon(
-                              Icons.location_on,
-                              size: widget.markerDiameter * .5,
+                builder: (context, constraints) {
+                  final directMarkers = <AnatomySceneMarker>[];
+                  if (_markersVisible) {
+                    for (final marker in widget.markers) {
+                      final candidate = Rect.fromCenter(
+                        center: Offset(
+                          constraints.maxWidth * (marker.calloutX ?? marker.x),
+                          constraints.maxHeight * (marker.calloutY ?? marker.y),
+                        ),
+                        width: _markerTapDiameter,
+                        height: _markerTapDiameter,
+                      );
+                      final overlapsDirectMarker = directMarkers.any((other) {
+                        final otherRect = Rect.fromCenter(
+                          center: Offset(
+                            constraints.maxWidth * (other.calloutX ?? other.x),
+                            constraints.maxHeight * (other.calloutY ?? other.y),
+                          ),
+                          width: _markerTapDiameter,
+                          height: _markerTapDiameter,
+                        );
+                        return candidate.overlaps(otherRect);
+                      });
+                      if (!overlapsDirectMarker) directMarkers.add(marker);
+                    }
+                  }
+                  return Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset(widget.asset, fit: BoxFit.contain),
+                      if (_markersVisible &&
+                          widget.markers.any(
+                            (marker) =>
+                                marker.calloutX != null &&
+                                marker.calloutY != null,
+                          ))
+                        Positioned.fill(
+                          child: IgnorePointer(
+                            child: CustomPaint(
+                              key: const Key('anatomy-scene-callout-lines'),
+                              painter: _CalloutLinesPainter(
+                                markers: widget.markers,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                  ],
-                ),
+                      if (_markersVisible)
+                        for (final marker in widget.markers)
+                          if (marker.calloutX != null &&
+                              marker.calloutY != null)
+                            Positioned(
+                              left: constraints.maxWidth * marker.x - 4,
+                              top: constraints.maxHeight * marker.y - 4,
+                              child: ExcludeSemantics(
+                                child: DecoratedBox(
+                                  key: Key(
+                                    'anatomy-source-marker-${marker.id}',
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .primary,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const SizedBox.square(dimension: 8),
+                                ),
+                              ),
+                            ),
+                      for (final marker in directMarkers)
+                        Positioned(
+                          left:
+                              constraints.maxWidth *
+                                  (marker.calloutX ?? marker.x) -
+                              _markerTapDiameter / 2,
+                          top:
+                              constraints.maxHeight *
+                                  (marker.calloutY ?? marker.y) -
+                              _markerTapDiameter / 2,
+                          child: IconButton(
+                            key: Key('anatomy-marker-${marker.id}'),
+                            tooltip: marker.label,
+                            style: IconButton.styleFrom(
+                              minimumSize: const Size.square(
+                                _markerTapDiameter,
+                              ),
+                              maximumSize: const Size.square(
+                                _markerTapDiameter,
+                              ),
+                              padding: EdgeInsets.zero,
+                            ),
+                            onPressed: () => widget.onMarkerTap(marker),
+                            icon: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .secondaryContainer,
+                                shape: BoxShape.circle,
+                              ),
+                              child: SizedBox.square(
+                                dimension: widget.markerDiameter,
+                                child: marker.calloutNumber == null
+                                    ? Icon(
+                                        Icons.location_on,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSecondaryContainer,
+                                        size: widget.markerDiameter * .5,
+                                      )
+                                    : Center(
+                                        child: Text(
+                                          '${marker.calloutNumber}',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelLarge
+                                              ?.copyWith(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .onSecondaryContainer,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
+                                      ),
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  );
+                },
               ),
             ),
           ),
         ),
       ),
+      if (widget.caption case final caption?)
+        Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: Semantics(
+            container: true,
+            child: Text(
+              caption,
+              key: const Key('anatomy-scene-caption'),
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ),
+        ),
       Wrap(
         spacing: 6,
         runSpacing: 4,
@@ -148,6 +277,26 @@ class _AnatomySceneState extends State<AnatomyScene> {
             onPressed: () => _zoom(.8),
             icon: const Icon(Icons.remove),
           ),
+          Tooltip(
+            message: _markersVisible
+                ? widget.hideMarkersLabel
+                : widget.showMarkersLabel,
+            child: TextButton.icon(
+              key: const Key('anatomy-scene-marker-toggle'),
+              onPressed: () =>
+                  setState(() => _markersVisible = !_markersVisible),
+              icon: Icon(
+                _markersVisible
+                    ? Icons.visibility_off_outlined
+                    : Icons.pin_drop,
+              ),
+              label: Text(
+                _markersVisible
+                    ? widget.hideMarkersLabel
+                    : widget.showMarkersLabel,
+              ),
+            ),
+          ),
           TextButton.icon(
             onPressed: () =>
                 setState(() => _controller.value = Matrix4.identity()),
@@ -172,7 +321,11 @@ class _AnatomySceneState extends State<AnatomyScene> {
                           Uri.parse(widget.credit.source),
                           mode: LaunchMode.externalApplication,
                         ),
-                        child: const Text('Источник изображения'),
+                        child: Text(
+                          _isRussian(context)
+                              ? 'Источник изображения'
+                              : 'Image source',
+                        ),
                       ),
                       if (widget.credit.license.contains('2.5'))
                         TextButton(
@@ -182,7 +335,11 @@ class _AnatomySceneState extends State<AnatomyScene> {
                             ),
                             mode: LaunchMode.externalApplication,
                           ),
-                          child: const Text('Условия использования'),
+                          child: Text(
+                            _isRussian(context)
+                                ? 'Условия использования'
+                                : 'License terms',
+                          ),
                         ),
                     ],
                   ),
@@ -190,7 +347,7 @@ class _AnatomySceneState extends State<AnatomyScene> {
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Закрыть'),
+                    child: Text(_isRussian(context) ? 'Закрыть' : 'Close'),
                   ),
                 ],
               ),
@@ -202,4 +359,35 @@ class _AnatomySceneState extends State<AnatomyScene> {
       ),
     ],
   );
+
+  bool _isRussian(BuildContext context) =>
+      Localizations.localeOf(context).languageCode.toLowerCase() == 'ru';
+}
+
+class _CalloutLinesPainter extends CustomPainter {
+  const _CalloutLinesPainter({required this.markers});
+
+  final List<AnatomySceneMarker> markers;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = const Color(0xFF1565C0)
+      ..strokeWidth = 1.5
+      ..style = PaintingStyle.stroke;
+    for (final marker in markers) {
+      final calloutX = marker.calloutX;
+      final calloutY = marker.calloutY;
+      if (calloutX == null || calloutY == null) continue;
+      canvas.drawLine(
+        Offset(size.width * marker.x, size.height * marker.y),
+        Offset(size.width * calloutX, size.height * calloutY),
+        paint,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _CalloutLinesPainter oldDelegate) =>
+      oldDelegate.markers != markers;
 }

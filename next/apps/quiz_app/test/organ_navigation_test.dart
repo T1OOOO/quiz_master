@@ -48,7 +48,8 @@ void main() {
         if (training) {
           expect(find.text('Check'), findsOneWidget);
         } else {
-          expect(find.byKey(const Key('organ-search')), findsOneWidget);
+          expect(find.byKey(const Key('body-scene')), findsOneWidget);
+          expect(find.byKey(const Key('body-search-action')), findsOneWidget);
         }
         expect(tester.takeException(), isNull);
       },

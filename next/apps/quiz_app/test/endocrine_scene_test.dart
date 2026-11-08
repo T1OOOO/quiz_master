@@ -112,7 +112,8 @@ void main() {
         find.textContaining('Правительство США; исходная иллюстрация NCI SEER'),
         findsOneWidget,
       );
-      await tester.tap(find.text('Закрыть'));
+      expect(find.text('Image source'), findsOneWidget);
+      await tester.tap(find.text('Close'));
       await tester.pump(const Duration(seconds: 1));
 
       final pituitaryAction = find.byKey(

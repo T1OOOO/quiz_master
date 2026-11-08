@@ -154,6 +154,31 @@ void main() {
       semantics.dispose();
     }
   });
+  testWidgets('numbered map legend reports the structures currently shown', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(home: OrganAtlasPage(bundle: _AtlasBundle())),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Numbered structures (4)'), findsOneWidget);
+  });
+  testWidgets('atlas navigation opens the bone catalogue from the organ view', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(home: OrganAtlasPage(bundle: _AtlasBundle())),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byKey(const Key('anatomy-scope-menu')));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Bone catalogue'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Bone catalogue'), findsWidgets);
+  });
   testWidgets(
     'vertical map drag pans organs rather than the surrounding page',
     (tester) async {

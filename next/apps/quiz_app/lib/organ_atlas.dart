@@ -1047,6 +1047,10 @@ class _Filters extends StatelessWidget {
   );
 }
 
+/// Localised label for an organ kind, body region or system id.
+String organFilterLabel(BuildContext context, String value) =>
+    _filterLabel(context, value);
+
 String _filterLabel(BuildContext context, String value) {
   final ru = Localizations.localeOf(context).languageCode == 'ru';
   const en = {
@@ -1545,11 +1549,7 @@ class _Detail extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: 8),
-          AtlasMedia(
-            scope: 'organs',
-            entityId: item.id,
-            hideWhenMissing: true,
-          ),
+          AtlasMedia(scope: 'organs', entityId: item.id, hideWhenMissing: true),
           if (item.nameLa != null)
             ExpansionTile(
               key: const Key('organ-latin-name'),
