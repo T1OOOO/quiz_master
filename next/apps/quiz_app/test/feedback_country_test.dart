@@ -732,4 +732,41 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Outside-land-label'), findsNothing);
   });
+
+  testWidgets('desktop country page keeps keyboard zoom after a selection', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1280, 800);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    await tester.runAsync(() async {
+      await tester.pumpWidget(
+        const MaterialApp(home: CountryAtlasPage(catalog: _catalog)),
+      );
+      await tester.pump();
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+    });
+    await tester.pumpAndSettle();
+    final map = find.byKey(const Key('quizipedia-viewport'));
+    final camera = tester
+        .widget<InteractiveViewer>(map)
+        .transformationController!;
+    await tester.tap(find.byKey(const Key('country-list-button')));
+    await tester.pumpAndSettle();
+    await tester.enterText(
+      find.byKey(const Key('country-list-search')),
+      'Russia',
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.widgetWithText(ListTile, 'Russia').first);
+    await tester.pumpAndSettle();
+    expect(find.byKey(const Key('country-details-panel')), findsOneWidget);
+    // The user clicks the map once the panel is open, then uses the keys.
+    await tester.tap(map, warnIfMissed: false);
+    await tester.pumpAndSettle();
+    await tester.sendKeyEvent(LogicalKeyboardKey.equal);
+    await tester.pumpAndSettle();
+    expect(camera.value.getMaxScaleOnAxis(), greaterThan(1.3));
+  });
 }

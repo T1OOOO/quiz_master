@@ -1806,340 +1806,368 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        key: const Key('map-country-search'),
-                        controller: _mapSearch,
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.search),
-                          labelText: _t(
-                            'Search a country or fact',
-                            'Найти страну или факт',
-                          ),
-                          suffixIcon: _query.isEmpty
-                              ? null
-                              : IconButton(
-                                  tooltip: _t('Clear search', 'Очистить поиск'),
-                                  icon: const Icon(Icons.clear),
-                                  onPressed: () {
-                                    _mapSearch.clear();
-                                    setState(() => _query = '');
-                                  },
-                                ),
-                        ),
-                        onChanged: (value) => setState(() => _query = value),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    FilledButton.tonalIcon(
-                      key: const Key('country-list-button'),
-                      icon: const Icon(Icons.format_list_bulleted),
-                      label: Text(_t('Countries', 'Страны')),
-                      onPressed: _showCountryList,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        key: const Key('country-direct-layers'),
-                        onPressed: showSettings,
-                        icon: const Icon(Icons.layers_outlined),
-                        label: Text(
-                          _activeLayers.isEmpty
-                              ? _t('Layers', 'Слои')
-                              : '${_t('Layers', 'Слои')}: ${_activeLayers.map(_topicLabel).join(', ')}',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 4),
-                    IconButton(
-                      key: const Key('country-expand-map'),
-                      tooltip: _t('Expand map', 'Развернуть карту'),
-                      onPressed: _showExpandedMap,
-                      icon: const Icon(Icons.fullscreen),
-                    ),
-                  ],
-                ),
-              ),
-              if (_query.isNotEmpty)
-                Builder(
-                  builder: (context) {
-                    final matches = _facts.where(_matches).toList();
-                    if (matches.isEmpty) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: Semantics(
-                          liveRegion: true,
-                          child: Text(
-                            _t(
-                              'No countries or facts match this search',
-                              'По этому запросу страны или факты не найдены',
+          child: _withDetailsPanel(
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          key: const Key('map-country-search'),
+                          controller: _mapSearch,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.search),
+                            labelText: _t(
+                              'Search a country or fact',
+                              'Найти страну или факт',
                             ),
-                          ),
-                        ),
-                      );
-                    }
-                    return SizedBox(
-                      height: chipHeight,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: matches
-                            .map(
-                              (fact) => Padding(
-                                padding: const EdgeInsets.only(left: 8),
-                                child: ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                    maxWidth:
-                                        MediaQuery.sizeOf(context).width - 24,
-                                  ),
-                                  child: ActionChip(
-                                    label: Text(
-                                      _ru ? fact.nameRu : fact.nameEn,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
+                            suffixIcon: _query.isEmpty
+                                ? null
+                                : IconButton(
+                                    tooltip: _t(
+                                      'Clear search',
+                                      'Очистить поиск',
                                     ),
+                                    icon: const Icon(Icons.clear),
                                     onPressed: () {
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
-                                      setState(() {
-                                        _selectedWater = null;
-                                        _selected = fact.id;
-                                        _focus = fact.id;
-                                        _region = 'All';
-                                      });
+                                      _mapSearch.clear();
+                                      setState(() => _query = '');
                                     },
                                   ),
+                          ),
+                          onChanged: (value) => setState(() => _query = value),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      FilledButton.tonalIcon(
+                        key: const Key('country-list-button'),
+                        icon: const Icon(Icons.format_list_bulleted),
+                        label: Text(_t('Countries', 'Страны')),
+                        onPressed: _showCountryList,
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          key: const Key('country-direct-layers'),
+                          onPressed: showSettings,
+                          icon: const Icon(Icons.layers_outlined),
+                          label: Text(
+                            _activeLayers.isEmpty
+                                ? _t('Layers', 'Слои')
+                                : '${_t('Layers', 'Слои')}: ${_activeLayers.map(_topicLabel).join(', ')}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      IconButton(
+                        key: const Key('country-expand-map'),
+                        tooltip: _t('Expand map', 'Развернуть карту'),
+                        onPressed: _showExpandedMap,
+                        icon: const Icon(Icons.fullscreen),
+                      ),
+                    ],
+                  ),
+                ),
+                if (_query.isNotEmpty)
+                  Builder(
+                    builder: (context) {
+                      final matches = _facts.where(_matches).toList();
+                      if (matches.isEmpty) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          child: Semantics(
+                            liveRegion: true,
+                            child: Text(
+                              _t(
+                                'No countries or facts match this search',
+                                'По этому запросу страны или факты не найдены',
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      return SizedBox(
+                        height: chipHeight,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: matches
+                              .map(
+                                (fact) => Padding(
+                                  padding: const EdgeInsets.only(left: 8),
+                                  child: ConstrainedBox(
+                                    constraints: BoxConstraints(
+                                      maxWidth:
+                                          MediaQuery.sizeOf(context).width - 24,
+                                    ),
+                                    child: ActionChip(
+                                      label: Text(
+                                        _ru ? fact.nameRu : fact.nameEn,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      onPressed: () {
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                        setState(() {
+                                          _selectedWater = null;
+                                          _selected = fact.id;
+                                          _focus = fact.id;
+                                          _region = 'All';
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      );
+                    },
+                  ),
+                if (_activeLayers.contains('capital')) ...[
+                  if (_loadingCapitals) const LinearProgressIndicator(),
+                  if (_capitalError != null)
+                    TextButton.icon(
+                      key: const Key('capital-points-retry'),
+                      onPressed: _loadCapitals,
+                      icon: const Icon(Icons.refresh),
+                      label: Text(
+                        _t('Retry capital points', 'Повторить загрузку столиц'),
+                      ),
+                    ),
+                ],
+                if (_activeLayers.contains('water')) ...[
+                  if (_loadingWater) const LinearProgressIndicator(),
+                  if (_waterError != null)
+                    TextButton.icon(
+                      key: const Key('water-geometry-retry'),
+                      onPressed: _loadWater,
+                      icon: const Icon(Icons.refresh),
+                      label: Text(
+                        _t('Retry water map', 'Повторить загрузку водоёмов'),
+                      ),
+                    ),
+                  if (_waters != null)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: OutlinedButton.icon(
+                              key: const Key('water-picker'),
+                              icon: const Icon(Icons.search),
+                              label: Text(
+                                _selectedWater == null
+                                    ? _t('Water bodies · 63', 'Водоёмы · 63')
+                                    : (_waters!.features
+                                              .where(
+                                                (w) => w.id == _selectedWater,
+                                              )
+                                              .map(
+                                                (w) =>
+                                                    _ru ? w.nameRu : w.nameEn,
+                                              )
+                                              .firstOrNull ??
+                                          ''),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              onPressed: () async {
+                                final id = await pickWater(context, _waters!);
+                                if (mounted && id != null) {
+                                  _selectWater(id);
+                                }
+                              },
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          IconButton(
+                            tooltip: _t(
+                              'Recognize water bodies',
+                              'Узнавать водоёмы',
+                            ),
+                            icon: const Icon(Icons.quiz_outlined),
+                            key: const Key('water-training'),
+                            onPressed: () => Navigator.of(context).push(
+                              MaterialPageRoute<void>(
+                                builder: (_) => WaterPracticePage(
+                                  catalog: widget.catalog,
+                                  atlas: _waters!,
                                 ),
                               ),
-                            )
-                            .toList(),
+                            ),
+                          ),
+                        ],
                       ),
-                    );
-                  },
-                ),
-              if (_activeLayers.contains('capital')) ...[
-                if (_loadingCapitals) const LinearProgressIndicator(),
-                if (_capitalError != null)
-                  TextButton.icon(
-                    key: const Key('capital-points-retry'),
-                    onPressed: _loadCapitals,
-                    icon: const Icon(Icons.refresh),
-                    label: Text(
-                      _t('Retry capital points', 'Повторить загрузку столиц'),
                     ),
-                  ),
-              ],
-              if (_activeLayers.contains('water')) ...[
-                if (_loadingWater) const LinearProgressIndicator(),
-                if (_waterError != null)
-                  TextButton.icon(
-                    key: const Key('water-geometry-retry'),
-                    onPressed: _loadWater,
-                    icon: const Icon(Icons.refresh),
-                    label: Text(
-                      _t('Retry water map', 'Повторить загрузку водоёмов'),
+                ],
+                const SizedBox(height: 6),
+                SizedBox(
+                  // Keyed so rows appearing above (search chips, hints) do
+                  // not remount the map and drop its keyboard focus.
+                  key: const ValueKey('country-map-frame'),
+                  // A portrait phone gets a square map: the 2:1 world sits in
+                  // the middle and zooming fills the box instead of 180 px.
+                  height: math.max(
+                    math.min(
+                      MediaQuery.sizeOf(context).width / 2,
+                      math.max(150, MediaQuery.sizeOf(context).height - 430),
                     ),
+                    MediaQuery.sizeOf(context).width < 600
+                        ? math.min(
+                            MediaQuery.sizeOf(context).height / 2,
+                            MediaQuery.sizeOf(context).width,
+                          )
+                        : 0,
                   ),
-                if (_waters != null)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: OutlinedButton.icon(
-                            key: const Key('water-picker'),
-                            icon: const Icon(Icons.search),
-                            label: Text(
-                              _selectedWater == null
-                                  ? _t('Water bodies · 63', 'Водоёмы · 63')
-                                  : (_waters!.features
-                                            .where(
-                                              (w) => w.id == _selectedWater,
-                                            )
-                                            .map(
-                                              (w) => _ru ? w.nameRu : w.nameEn,
-                                            )
-                                            .firstOrNull ??
-                                        ''),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            onPressed: () async {
-                              final id = await pickWater(context, _waters!);
-                              if (mounted && id != null) {
-                                _selectWater(id);
-                              }
-                            },
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        IconButton(
-                          tooltip: _t(
-                            'Recognize water bodies',
-                            'Узнавать водоёмы',
-                          ),
-                          icon: const Icon(Icons.quiz_outlined),
-                          key: const Key('water-training'),
-                          onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute<void>(
-                              builder: (_) => WaterPracticePage(
-                                catalog: widget.catalog,
-                                atlas: _waters!,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-              ],
-              const SizedBox(height: 6),
-              SizedBox(
-                // A portrait phone gets a square map: the 2:1 world sits in
-                // the middle and zooming fills the box instead of 180 px.
-                height: math.max(
-                  math.min(
-                    MediaQuery.sizeOf(context).width / 2,
-                    math.max(150, MediaQuery.sizeOf(context).height - 430),
-                  ),
-                  MediaQuery.sizeOf(context).width < 600
-                      ? math.min(
-                          MediaQuery.sizeOf(context).height / 2,
-                          MediaQuery.sizeOf(context).width,
-                        )
-                      : 0,
-                ),
-                child: QuizipediaWorldMap(
-                  features: _visible,
-                  controller: _controller,
-                  selected: _selected.isEmpty ? null : _selected,
-                  highlighted: _focus.isEmpty ? null : _focus,
-                  showSelectionLabel: false,
-                  showLabels: false,
-                  alwaysShowCountryNames: _alwaysShowCountryNames,
-                  labelPriorityIds: _fact?.neighbors.toSet() ?? const {},
-                  neighborIds: _fact?.neighbors.toSet() ?? const {},
-                  waters: _activeLayers.contains('water')
-                      ? (_waters?.features ?? const [])
-                      : const [],
-                  selectedWater: _activeLayers.contains('water')
-                      ? _selectedWater
-                      : null,
-                  onWaterSelect: _selectWater,
-                  overlayLabels: {
-                    for (final fact in _facts)
-                      if (_mapLabel(
-                        fact,
-                        includeCountry: !_alwaysShowCountryNames,
-                      ).isNotEmpty)
-                        fact.id: _mapLabel(
+                  child: QuizipediaWorldMap(
+                    features: _visible,
+                    controller: _controller,
+                    selected: _selected.isEmpty ? null : _selected,
+                    highlighted: _focus.isEmpty ? null : _focus,
+                    showSelectionLabel: false,
+                    showLabels: false,
+                    alwaysShowCountryNames: _alwaysShowCountryNames,
+                    labelPriorityIds: _fact?.neighbors.toSet() ?? const {},
+                    neighborIds: _fact?.neighbors.toSet() ?? const {},
+                    waters: _activeLayers.contains('water')
+                        ? (_waters?.features ?? const [])
+                        : const [],
+                    selectedWater: _activeLayers.contains('water')
+                        ? _selectedWater
+                        : null,
+                    onWaterSelect: _selectWater,
+                    overlayLabels: {
+                      for (final fact in _facts)
+                        if (_mapLabel(
                           fact,
                           includeCountry: !_alwaysShowCountryNames,
-                        ),
-                  },
-                  capitalPoints: _activeLayers.contains('capital')
-                      ? _capitalPoints
-                      : const {},
-                  capitalLabels: _activeLayers.contains('capital')
-                      ? {
-                          for (final fact in _facts)
-                            if (fact.capital.isNotEmpty)
-                              fact.id: _display(fact.capital),
-                        }
-                      : const {},
-                  showFlags: _activeLayers.contains('flag'),
-                  onSelect: (id) {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    setState(() {
-                      _selectedWater = null;
-                      _selected = id ?? '';
-                      _focus = id ?? '';
-                    });
-                  },
+                        ).isNotEmpty)
+                          fact.id: _mapLabel(
+                            fact,
+                            includeCountry: !_alwaysShowCountryNames,
+                          ),
+                    },
+                    capitalPoints: _activeLayers.contains('capital')
+                        ? _capitalPoints
+                        : const {},
+                    capitalLabels: _activeLayers.contains('capital')
+                        ? {
+                            for (final fact in _facts)
+                              if (fact.capital.isNotEmpty)
+                                fact.id: _display(fact.capital),
+                          }
+                        : const {},
+                    showFlags: _activeLayers.contains('flag'),
+                    onSelect: (id) {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      setState(() {
+                        _selectedWater = null;
+                        _selected = id ?? '';
+                        _focus = id ?? '';
+                      });
+                    },
+                  ),
                 ),
-              ),
-              if (_selected.isNotEmpty)
-                ListTile(
-                  key: const Key('country-selected-details'),
-                  leading: SizedBox(
-                    width: 48,
-                    height: 32,
-                    child: Image.asset(
-                      'assets/quizipedia/flag-${_selected.toLowerCase()}.png',
-                      key: const Key('country-flag-preview'),
-                      fit: BoxFit.contain,
-                      semanticLabel: _t('Country flag', 'Флаг страны'),
-                      errorBuilder: (_, _, _) =>
-                          const Icon(Icons.flag_outlined),
+                if (_selected.isNotEmpty)
+                  ListTile(
+                    key: const Key('country-selected-details'),
+                    leading: SizedBox(
+                      width: 48,
+                      height: 32,
+                      child: Image.asset(
+                        'assets/quizipedia/flag-${_selected.toLowerCase()}.png',
+                        key: const Key('country-flag-preview'),
+                        fit: BoxFit.contain,
+                        semanticLabel: _t('Country flag', 'Флаг страны'),
+                        errorBuilder: (_, _, _) =>
+                            const Icon(Icons.flag_outlined),
+                      ),
+                    ),
+                    dense: true,
+                    title: Text(
+                      _fact == null
+                          ? (_visible
+                                    .where((f) => f.id == _selected)
+                                    .map((f) => _ru ? f.nameRu : f.nameEn)
+                                    .firstOrNull ??
+                                _selected)
+                          : (_ru ? _fact!.nameRu : _fact!.nameEn),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    subtitle: Text(
+                      _fact == null
+                          ? _t(
+                              'Details are not available yet',
+                              'Сведения пока не добавлены',
+                            )
+                          : [
+                              _countryIntro(_fact!),
+                              if (_fact!.capital.isNotEmpty)
+                                _display(_fact!.capital),
+                              if (_fact!.neighbors.isNotEmpty)
+                                '${_t('Neighbours', 'Соседи')}: ${_facts.where((f) => _fact!.neighbors.contains(f.id)).map((f) => _ru ? f.nameRu : f.nameEn).join(', ')}',
+                            ].where((value) => value.isNotEmpty).join(' · '),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    trailing: _fact == null || _sidePanel
+                        ? null
+                        : const Icon(Icons.expand_less),
+                    onTap: _fact == null || _sidePanel ? null : _showDetails,
+                  ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: FilledButton.icon(
+                      key: const Key('country-start-training'),
+                      onPressed: _start,
+                      icon: const Icon(Icons.quiz_outlined),
+                      label: Text(_t('Practice', 'Тренировка')),
                     ),
                   ),
-                  dense: true,
-                  title: Text(
-                    _fact == null
-                        ? (_visible
-                                  .where((f) => f.id == _selected)
-                                  .map((f) => _ru ? f.nameRu : f.nameEn)
-                                  .firstOrNull ??
-                              _selected)
-                        : (_ru ? _fact!.nameRu : _fact!.nameEn),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  subtitle: Text(
-                    _fact == null
-                        ? _t(
-                            'Details are not available yet',
-                            'Сведения пока не добавлены',
-                          )
-                        : [
-                            _countryIntro(_fact!),
-                            if (_fact!.capital.isNotEmpty)
-                              _display(_fact!.capital),
-                            if (_fact!.neighbors.isNotEmpty)
-                              '${_t('Neighbours', 'Соседи')}: ${_facts.where((f) => _fact!.neighbors.contains(f.id)).map((f) => _ru ? f.nameRu : f.nameEn).join(', ')}',
-                          ].where((value) => value.isNotEmpty).join(' · '),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  trailing: _fact == null
-                      ? null
-                      : const Icon(Icons.expand_less),
-                  onTap: _fact == null ? null : _showDetails,
                 ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 6,
-                ),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: FilledButton.icon(
-                    key: const Key('country-start-training'),
-                    onPressed: _start,
-                    icon: const Icon(Icons.quiz_outlined),
-                    label: Text(_t('Practice', 'Тренировка')),
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+
+  /// A wide window shows the country details beside the map instead of a
+  /// narrow modal sheet in the middle of the screen.
+  bool get _sidePanel => MediaQuery.sizeOf(context).width >= 900;
+
+  /// Always a Row so the map subtree keeps its state (camera, keyboard
+  /// focus) when the panel appears or disappears.
+  Widget _withDetailsPanel(Widget column) => Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Expanded(child: column),
+      if (_sidePanel && _fact != null)
+        SizedBox(
+          key: const Key('country-details-panel'),
+          width: 380,
+          child: _details(inline: true),
+        ),
+    ],
+  );
 
   void _showDetails() => showModalBottomSheet<void>(
     context: context,
@@ -2318,7 +2346,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
     );
   }
 
-  Widget _details({StateSetter? refresh}) {
+  Widget _details({StateSetter? refresh, bool inline = false}) {
     void change(VoidCallback callback) {
       setState(callback);
       refresh?.call(() {});
@@ -2330,7 +2358,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
         padding: const EdgeInsets.all(12),
         child: FilledButton.icon(
           onPressed: () {
-            Navigator.pop(context);
+            if (!inline) Navigator.pop(context);
             _start();
           },
           icon: const Icon(Icons.quiz),
@@ -2497,7 +2525,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   _sourceLink('https://flagcdn.com/', 'Flagpedia / FlagCDN'),
                   FilledButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      if (!inline) Navigator.pop(context);
                       _start(countryId: fact.id);
                     },
                     child: Text(
@@ -2506,7 +2534,7 @@ class _CountryAtlasPageState extends State<CountryAtlasPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      if (!inline) Navigator.pop(context);
                       _start();
                     },
                     child: Text(

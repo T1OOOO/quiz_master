@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show LogicalKeyboardKey;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/quizipedia.dart';
 
@@ -258,5 +259,39 @@ void main() {
     await tester.pumpAndSettle();
     expect(controller.value.getMaxScaleOnAxis(), greaterThan(1.5));
     expect(selections, 0);
+  });
+
+  testWidgets('keyboard zooms and pans the map after a tap focuses it', (
+    tester,
+  ) async {
+    final controller = TransformationController();
+    addTearDown(controller.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SizedBox(
+            width: 320,
+            height: 300,
+            child: QuizipediaWorldMap(
+              features: const [country],
+              controller: controller,
+              onSelect: (_) {},
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.byType(InteractiveViewer));
+    await tester.pumpAndSettle();
+    await tester.sendKeyEvent(LogicalKeyboardKey.equal);
+    await tester.pumpAndSettle();
+    expect(controller.value.getMaxScaleOnAxis(), closeTo(1.5, .01));
+    final before = controller.value.storage[12];
+    await tester.sendKeyEvent(LogicalKeyboardKey.arrowRight);
+    await tester.pumpAndSettle();
+    expect(controller.value.storage[12], lessThan(before));
+    await tester.sendKeyEvent(LogicalKeyboardKey.home);
+    await tester.pumpAndSettle();
+    expect(controller.value, Matrix4.identity());
   });
 }
