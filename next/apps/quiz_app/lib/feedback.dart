@@ -32,10 +32,10 @@ class _FeedbackOverlayState extends ConsumerState<_FeedbackOverlay> {
       }
       final area = boundary.size.width * boundary.size.height;
       if (area <= 0) return null;
-      // At most four million pixels, even on high-DPI displays.
+      // Keep PNG screenshots compact so detailed maps stay under the 2 MiB API limit.
       final ratio = min(
         MediaQuery.devicePixelRatioOf(context),
-        sqrt(3900000 / area),
+        min(1.5, sqrt(2200000 / area)),
       );
       final shot = await boundary.toImage(pixelRatio: ratio);
       try {
@@ -160,38 +160,15 @@ class _FeedbackOverlayState extends ConsumerState<_FeedbackOverlay> {
           onPressed: _opening ? null : _open,
           child: const Icon(Icons.support_agent),
         );
-        if (route != '/quizipedia') {
-          return Stack(
-            children: [
-              RepaintBoundary(key: _boundary, child: widget.child),
-              if (show)
-                PositionedDirectional(
-                  end: 12,
-                  bottom: 88 + MediaQuery.viewInsetsOf(context).bottom,
-                  child: SafeArea(child: button),
-                ),
-            ],
-          );
-        }
-        return Column(
+        final insetsBottom = MediaQuery.viewInsetsOf(context).bottom;
+        return Stack(
           children: [
-            Expanded(
-              child: RepaintBoundary(key: _boundary, child: widget.child),
-            ),
-            if (show && MediaQuery.viewInsetsOf(context).bottom == 0)
-              ColoredBox(
-                color: Theme.of(context).scaffoldBackgroundColor,
-                child: SafeArea(
-                  top: false,
-                  child: Padding(
-                    key: const Key('feedback-footer'),
-                    padding: const EdgeInsets.fromLTRB(12, 4, 12, 8),
-                    child: Align(
-                      alignment: AlignmentDirectional.centerEnd,
-                      child: button,
-                    ),
-                  ),
-                ),
+            RepaintBoundary(key: _boundary, child: widget.child),
+            if (show && (route != '/quizipedia' || insetsBottom == 0))
+              PositionedDirectional(
+                end: 12,
+                bottom: (route == '/quizipedia' ? 72 : 88) + insetsBottom,
+                child: SafeArea(child: button),
               ),
           ],
         );

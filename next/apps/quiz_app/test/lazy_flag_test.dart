@@ -93,7 +93,7 @@ void main() {
         .where((key) => key.startsWith('assets/quizipedia/flag-'))
         .toSet();
     expect(individual, isNotEmpty);
-    expect(individual.length, lessThanOrEqualTo(8));
+    expect(individual.length, lessThanOrEqualTo(features.length));
     final visibleFlags = [
       for (final feature in features)
         if (find
@@ -103,10 +103,42 @@ void main() {
           feature.id,
     ];
     expect(
-      visibleFlags,
-      isNotEmpty,
-      reason: 'Capital dots must not reserve every flag label at world scale.',
+      visibleFlags.length,
+      features.length,
+      reason: 'All non-overlapping countries should display their flags.',
     );
+
+    PaintingBinding.instance.imageCache.clear();
+    PaintingBinding.instance.imageCache.clearLiveImages();
+    requests.clear();
+    final zoomed = TransformationController(
+      Matrix4.identity()..scaleByDouble(4, 4, 1, 1),
+    );
+    addTearDown(zoomed.dispose);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: SizedBox(
+          width: 320,
+          height: 180,
+          child: QuizipediaWorldMap(
+            key: const ValueKey('zoomed-lazy-map'),
+            features: features,
+            controller: zoomed,
+            onSelect: (_) {},
+            showFlags: true,
+            overlayLabels: {
+              for (final feature in features) feature.id: feature.nameEn,
+            },
+          ),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    final zoomedRequests = requests
+        .where((key) => key.startsWith('assets/quizipedia/flag-'))
+        .toSet();
+    expect(zoomedRequests, isNotEmpty);
+    expect(zoomedRequests.length, lessThan(features.length));
   });
 
   for (final viewport in const [Size(361, 738), Size(393, 851)]) {

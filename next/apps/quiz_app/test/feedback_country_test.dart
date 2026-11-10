@@ -405,7 +405,8 @@ void main() {
       });
       await tester.pumpAndSettle();
       final map = find.byKey(const Key('quizipedia-viewport'));
-      expect(tester.getSize(map).height, closeTo(361, 2));
+      expect(tester.getSize(map).height, greaterThanOrEqualTo(600));
+      expect(find.byType(SingleChildScrollView), findsNothing);
       final before = tester.getTopLeft(map);
       final viewer = tester.widget<InteractiveViewer>(map);
       final camera = viewer.transformationController!.value.clone();

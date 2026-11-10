@@ -97,8 +97,8 @@ void main() {
     await tester.pumpAndSettle();
     final map = find.byKey(const Key('quizipedia-viewport'));
     await tester.ensureVisible(map);
-    // A portrait phone gets a square map, not a 180 px strip.
-    expect(tester.getSize(map).height, closeTo(360, 2));
+    // A portrait phone gets a maximized viewport map, not a cramped strip.
+    expect(tester.getSize(map).height, greaterThanOrEqualTo(600));
     await tester.tap(find.byKey(const Key('country-expand-map')));
     await tester.pumpAndSettle();
     final expandedMap = find.byKey(const Key('quizipedia-viewport'));

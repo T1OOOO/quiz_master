@@ -179,6 +179,25 @@ void main() {
     expect(find.byType(AlertDialog), findsNothing);
     expect(find.text('Thank you for your feedback'), findsOneWidget);
   });
+
+  test('web API client defaults to current origin instead of loopback', () {
+    expect(
+      resolveQuizApiBaseUri(
+        configured: '',
+        isWeb: true,
+        base: Uri.parse('https://quiz.kotopedia.org/quizipedia'),
+      ),
+      Uri.parse('https://quiz.kotopedia.org'),
+    );
+    expect(
+      resolveQuizApiBaseUri(
+        configured: 'https://api.example.org',
+        isWeb: true,
+        base: Uri.parse('https://quiz.kotopedia.org/quizipedia'),
+      ),
+      Uri.parse('https://api.example.org'),
+    );
+  });
 }
 
 class _RetryFeedbackApi extends QuizApiClient {

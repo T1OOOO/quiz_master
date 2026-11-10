@@ -1,14 +1,22 @@
 part of 'main.dart';
 
+Uri resolveQuizApiBaseUri({
+  String configured = const String.fromEnvironment('QM_API_BASE_URL'),
+  bool isWeb = kIsWeb,
+  Uri? base,
+}) {
+  if (configured.isNotEmpty) return Uri.parse(configured);
+  final current = base ?? Uri.base;
+  if (isWeb &&
+      (current.scheme == 'https' || current.scheme == 'http') &&
+      current.host.isNotEmpty) {
+    return Uri.parse(current.origin);
+  }
+  return Uri.parse('http://127.0.0.1:8080');
+}
+
 final quizApiProvider = Provider<QuizApiClient>(
-  (ref) => QuizApiClient(
-    baseUri: Uri.parse(
-      const String.fromEnvironment(
-        'QM_API_BASE_URL',
-        defaultValue: 'http://127.0.0.1:8080',
-      ),
-    ),
-  ),
+  (ref) => QuizApiClient(baseUri: resolveQuizApiBaseUri()),
 );
 final journeyProvider = NotifierProvider<JourneyController, JourneyState>(
   JourneyController.new,

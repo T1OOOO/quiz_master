@@ -89,6 +89,8 @@ class QuizipediaWorldMap extends StatefulWidget {
     this.overlayLabels = const {},
     this.capitalPoints = const {},
     this.capitalLabels = const {},
+    this.flagPoints = const {},
+    this.pointCountryNames = const {},
     this.showFlags = false,
     this.alwaysShowCountryNames = false,
     this.showSelectionLabel = true,
@@ -117,6 +119,10 @@ class QuizipediaWorldMap extends StatefulWidget {
   /// Labels remain owned by the caller so they use verified local fact text.
   final Map<String, Offset> capitalPoints;
   final Map<String, String> capitalLabels;
+
+  /// Optional coordinates and names for microstates/islands without polygons.
+  final Map<String, Offset> flagPoints;
+  final Map<String, ({String en, String ru})> pointCountryNames;
   final bool showFlags, showSelectionLabel, alwaysShowCountryNames;
   final List<WaterShape> waters;
   final String? selectedWater;
@@ -327,10 +333,20 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
   }
 
   void _focus([String? id]) {
+    if (_view.isEmpty) return;
+    final targetId = id ?? widget.selected;
     final feature = id == null
         ? _selected
         : widget.features.where((f) => f.id == id).firstOrNull;
-    if (feature == null || _view.isEmpty) return;
+    if (feature == null) {
+      final point = targetId == null
+          ? null
+          : (widget.flagPoints[targetId] ?? widget.capitalPoints[targetId]);
+      if (point != null) {
+        _focusBounds(Rect.fromCenter(center: point, width: .025, height: .025));
+      }
+      return;
+    }
     // Use the largest part, avoiding distant islands stretching the camera.
     Rect? bounds;
     for (final polygon in feature.polygons) {
@@ -522,16 +538,6 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
         final countryNames = <Widget>[];
         Rect? selectedFlagRect;
         final scale = transform.getMaxScaleOnAxis();
-        // At the whole-world view, a dense row of individual flag image
-        // widgets is both unreadable and an eager asset load in disguise.
-        // Keep the selected/priority countries first and reveal more as the
-        // learner zooms, while the collision rectangles still handle local
-        // overlap.
-        final flagMarkerBudget = scale >= 2.25
-            ? 40
-            : scale >= 1.5
-            ? 16
-            : 8;
         final capitalIds =
             widget.capitalPoints.keys
                 .where(widget.capitalLabels.containsKey)
@@ -656,11 +662,13 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             );
           }
           if (text == null || text.isEmpty) continue;
-          final scale = transform.getMaxScaleOnAxis();
           final countryWidth = landBounds.width * scene.width * scale;
           final countryHeight = landBounds.height * scene.height * scale;
           final isSelected = feature.id == widget.selected;
-          if (!isSelected && (countryWidth < 28 || countryHeight < 14)) {
+          final hasFlag = widget.showFlags;
+          if (!hasFlag &&
+              !isSelected &&
+              (countryWidth < 28 || countryHeight < 14)) {
             continue;
           }
           final textScale = MediaQuery.textScalerOf(context).scale(11) / 11;
@@ -673,21 +681,32 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
             backgroundColor: Theme.of(context).colorScheme.surface
                 .withValues(alpha: .94),
           );
-          final metrics = TextPainter(
-            text: TextSpan(text: text, style: labelStyle),
-            textDirection: Directionality.of(context),
-            textScaler: MediaQuery.textScalerOf(context),
-            maxLines: 2,
-            ellipsis: '…',
-          )..layout(maxWidth: 160 * textScale);
-          final hasFlag = widget.showFlags;
-          final labelWidth = hasFlag ? 72.0 : metrics.width + 8;
-          final labelHeight = hasFlag ? 48.0 : metrics.height + 6;
-          metrics.dispose();
+          final showFlagCaption = isSelected || scale >= 2.2;
+          final flagW = showFlagCaption ? 34.0 : (scale >= 1.45 ? 22.0 : 18.0);
+          final flagH = showFlagCaption ? 22.0 : (scale >= 1.45 ? 15.0 : 12.0);
+          late final double labelWidth;
+          late final double labelHeight;
+          if (hasFlag) {
+            labelWidth = showFlagCaption ? 64.0 : flagW + 2;
+            labelHeight = showFlagCaption ? 38.0 : flagH + 2;
+          } else {
+            final metrics = TextPainter(
+              text: TextSpan(text: text, style: labelStyle),
+              textDirection: Directionality.of(context),
+              textScaler: MediaQuery.textScalerOf(context),
+              maxLines: 2,
+              ellipsis: '…',
+            )..layout(maxWidth: 160 * textScale);
+            labelWidth = metrics.width + 8;
+            labelHeight = metrics.height + 6;
+            metrics.dispose();
+          }
+          final edgePad = hasFlag && !showFlagCaption ? 2.0 : 8.0;
+          final collidePad = hasFlag && !showFlagCaption ? 1.0 : 3.0;
           // Anchor labels and flag markers on land. Their compact overlay may
           // extend over a coastline, but never repaints a country polygon.
-          if (labelWidth > _view.width - 16 ||
-              labelHeight > _view.height - 16 ||
+          if (labelWidth > _view.width - 2 * edgePad ||
+              labelHeight > _view.height - 2 * edgePad ||
               at.dx < 0 ||
               at.dx > _view.width ||
               at.dy < 0 ||
@@ -696,10 +715,13 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           }
           final rect = Rect.fromCenter(
             center: Offset(
-              at.dx.clamp(labelWidth / 2 + 8, _view.width - labelWidth / 2 - 8),
+              at.dx.clamp(
+                labelWidth / 2 + edgePad,
+                _view.width - labelWidth / 2 - edgePad,
+              ),
               at.dy.clamp(
-                labelHeight / 2 + 8,
-                _view.height - labelHeight / 2 - 8,
+                labelHeight / 2 + edgePad,
+                _view.height - labelHeight / 2 - edgePad,
               ),
             ),
             width: labelWidth,
@@ -707,9 +729,9 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
           );
           if (rect.left < 0 ||
               rect.right > _view.width ||
-              rect.top < 8 ||
-              rect.bottom > _view.height - 8 ||
-              occupied.any((r) => r.overlaps(rect.inflate(3)))) {
+              rect.top < edgePad ||
+              rect.bottom > _view.height - edgePad ||
+              occupied.any((r) => r.overlaps(rect.inflate(collidePad)))) {
             continue;
           }
           occupied.add(rect);
@@ -729,27 +751,40 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SizedBox(
-                              width: 40,
-                              height: 26,
-                              child: Image.asset(
-                                'assets/quizipedia/flag-${feature.id.toLowerCase()}.png',
-                                key: Key(
-                                  'map-country-flag-${feature.id.toLowerCase()}',
+                            DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Colors.white.withValues(alpha: .88),
+                                borderRadius: BorderRadius.circular(2),
+                                border: Border.all(
+                                  color: isSelected
+                                      ? Theme.of(context).colorScheme.primary
+                                      : Colors.black26,
+                                  width: isSelected ? 1.2 : .5,
                                 ),
-                                fit: BoxFit.contain,
-                                cacheWidth: 96,
-                                errorBuilder: (_, _, _) =>
-                                    const Icon(Icons.flag_outlined),
+                              ),
+                              child: SizedBox(
+                                width: flagW,
+                                height: flagH,
+                                child: Image.asset(
+                                  'assets/quizipedia/flag-${feature.id.toLowerCase()}.png',
+                                  key: Key(
+                                    'map-country-flag-${feature.id.toLowerCase()}',
+                                  ),
+                                  fit: BoxFit.contain,
+                                  cacheWidth: 96,
+                                  errorBuilder: (_, _, _) =>
+                                      const Icon(Icons.flag_outlined, size: 12),
+                                ),
                               ),
                             ),
-                            Text(
-                              text,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              style: labelStyle.copyWith(fontSize: 9),
-                            ),
+                            if (showFlagCaption)
+                              Text(
+                                text,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: labelStyle.copyWith(fontSize: 9),
+                              ),
                           ],
                         ),
                       )
@@ -764,8 +799,134 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               ),
             ),
           );
-          if (hasFlag && labels.length == flagMarkerBudget) break;
-          if (labels.length == 40) break;
+          if (!hasFlag && labels.length == 40) break;
+        }
+        if (widget.showFlags && widget.flagPoints.isNotEmpty) {
+          final pointIds =
+              widget.flagPoints.keys
+                  .where((id) => !featureMetrics.containsKey(id))
+                  .toList()
+                ..sort(
+                  (a, b) => (b == widget.selected ? 1 : 0).compareTo(
+                    a == widget.selected ? 1 : 0,
+                  ),
+                );
+          for (final id in pointIds) {
+            final center = widget.flagPoints[id]!;
+            final at = MatrixUtils.transformPoint(
+              transform,
+              Offset(
+                center.dx * scene.width + (_view.width - scene.width) / 2,
+                center.dy * scene.height + (_view.height - scene.height) / 2,
+              ),
+            );
+            final isSelected = id == widget.selected;
+            final showFlagCaption = isSelected || scale >= 2.2;
+            final flagW = showFlagCaption
+                ? 34.0
+                : (scale >= 1.45 ? 22.0 : 18.0);
+            final flagH = showFlagCaption
+                ? 22.0
+                : (scale >= 1.45 ? 15.0 : 12.0);
+            final labelWidth = showFlagCaption ? 64.0 : flagW + 2;
+            final labelHeight = showFlagCaption ? 38.0 : flagH + 2;
+            final edgePad = showFlagCaption ? 8.0 : 2.0;
+            final collidePad = showFlagCaption ? 3.0 : 1.0;
+            if (labelWidth > _view.width - 2 * edgePad ||
+                labelHeight > _view.height - 2 * edgePad ||
+                at.dx < 0 ||
+                at.dx > _view.width ||
+                at.dy < 0 ||
+                at.dy > _view.height) {
+              continue;
+            }
+            final rect = Rect.fromCenter(
+              center: Offset(
+                at.dx.clamp(
+                  labelWidth / 2 + edgePad,
+                  _view.width - labelWidth / 2 - edgePad,
+                ),
+                at.dy.clamp(
+                  labelHeight / 2 + edgePad,
+                  _view.height - labelHeight / 2 - edgePad,
+                ),
+              ),
+              width: labelWidth,
+              height: labelHeight,
+            );
+            if (rect.left < 0 ||
+                rect.right > _view.width ||
+                rect.top < edgePad ||
+                rect.bottom > _view.height - edgePad ||
+                occupied.any((r) => r.overlaps(rect.inflate(collidePad)))) {
+              continue;
+            }
+            occupied.add(rect);
+            if (isSelected) selectedFlagRect = rect;
+            final names = widget.pointCountryNames[id];
+            final nameEn = names?.en ?? widget.overlayLabels[id] ?? id;
+            final nameRu = names?.ru ?? widget.overlayLabels[id] ?? id;
+            final text =
+                widget.overlayLabels[id] ??
+                (Localizations.localeOf(context).languageCode == 'ru'
+                    ? nameRu
+                    : nameEn);
+            final labelStyle = DefaultTextStyle.of(context).style.copyWith(
+              fontSize: 9,
+              fontWeight: FontWeight.w700,
+              color: Theme.of(context).colorScheme.onSurface,
+              backgroundColor: Theme.of(context).colorScheme.surface
+                  .withValues(alpha: .94),
+            );
+            labels.add(
+              Positioned.fromRect(
+                rect: rect,
+                child: Center(
+                  child: Semantics(
+                    image: true,
+                    label: _t(context, 'Flag of $nameEn', 'Флаг: $nameRu'),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: .88),
+                            borderRadius: BorderRadius.circular(2),
+                            border: Border.all(
+                              color: isSelected
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Colors.black26,
+                              width: isSelected ? 1.2 : .5,
+                            ),
+                          ),
+                          child: SizedBox(
+                            width: flagW,
+                            height: flagH,
+                            child: Image.asset(
+                              'assets/quizipedia/flag-${id.toLowerCase()}.png',
+                              key: Key('map-country-flag-${id.toLowerCase()}'),
+                              fit: BoxFit.contain,
+                              cacheWidth: 96,
+                              errorBuilder: (_, _, _) =>
+                                  const Icon(Icons.flag_outlined, size: 12),
+                            ),
+                          ),
+                        ),
+                        if (showFlagCaption)
+                          Text(
+                            text,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            style: labelStyle,
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          }
         }
         final selectedId = widget.selected;
         final selectedCapital = selectedId == null
@@ -911,10 +1072,12 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
       // The map can be compact even on a tall phone page.  Its own bounds,
       // not the outer MediaQuery, decide whether a four-button vertical rail
       // would be clipped.
-      // A box taller than the 2:1 world leaves an ocean band under the map;
-      // a horizontal rail fits there instead of covering land.
-      final letterboxed = constraints.maxHeight - _sceneFor(view).height >= 72;
-      final compactControls = constraints.maxHeight < 240 || letterboxed;
+      final compactControls = constraints.maxHeight < 240;
+      final canFocusSelected =
+          selected != null ||
+          (widget.selected != null &&
+              (widget.flagPoints.containsKey(widget.selected) ||
+                  widget.capitalPoints.containsKey(widget.selected)));
       Widget selectionLabel() => IgnorePointer(
         child: Semantics(
           liveRegion: true,
@@ -974,7 +1137,7 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
               constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
               onPressed: widget.selectedWater != null
                   ? _focusWater
-                  : selected == null
+                  : !canFocusSelected
                   ? null
                   : () => _focus(),
             ),
@@ -1089,8 +1252,38 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                                   if (water != null &&
                                       widget.onWaterSelect != null) {
                                     widget.onWaterSelect!(water.id);
+                                  } else if (hit != null) {
+                                    widget.onSelect(hit.id);
+                                  } else if (widget.showFlags &&
+                                      widget.flagPoints.isNotEmpty) {
+                                    final scale = widget.controller.value
+                                        .getMaxScaleOnAxis();
+                                    final rx = 14 / (scene.width * scale);
+                                    final ry = 14 / (scene.height * scale);
+                                    String? pointHit;
+                                    var best = double.infinity;
+                                    for (final entry
+                                        in widget.flagPoints.entries) {
+                                      if (_featureMetrics.containsKey(
+                                        entry.key,
+                                      )) {
+                                        continue;
+                                      }
+                                      final dx =
+                                          (point.x - entry.value.dx).abs() / rx;
+                                      final dy =
+                                          (point.y - entry.value.dy).abs() / ry;
+                                      if (dx <= 1 && dy <= 1) {
+                                        final d = dx * dx + dy * dy;
+                                        if (d < best) {
+                                          best = d;
+                                          pointHit = entry.key;
+                                        }
+                                      }
+                                    }
+                                    widget.onSelect(pointHit);
                                   } else {
-                                    widget.onSelect(hit?.id);
+                                    widget.onSelect(null);
                                   }
                                   // After the callbacks: pages unfocus the
                                   // search field on selection, which would
@@ -1220,7 +1413,14 @@ class _QuizipediaWorldMapState extends State<QuizipediaWorldMap>
                     right: 8,
                     child: selectionLabel(),
                   ),
-                Positioned(bottom: 12, right: 12, child: zoomControls()),
+                Positioned(
+                  top: compactControls
+                      ? null
+                      : (widget.showSelectionLabel ? 56 : 8),
+                  bottom: compactControls ? 12 : null,
+                  right: compactControls ? 12 : 8,
+                  child: zoomControls(),
+                ),
               ],
             ),
           ),
