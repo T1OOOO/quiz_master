@@ -25,12 +25,24 @@ void main() {
       )!;
       expect(compact.width, lessThan(regular.width));
       expect(compact.height, lessThan(regular.height));
+      expect(compact.width, lessThanOrEqualTo(126));
       expect(
         compact.any((p) => p.r > 220 && p.g < 30 && p.b < 30 && p.a > 200),
         isTrue,
       );
     },
   );
+
+  test('long compact country names wrap inside a narrow label', () async {
+    final result = image.decodePng(
+      await renderCountryMarker(
+        name: 'Соединённое Королевство Великобритании',
+        compact: true,
+      ),
+    )!;
+    expect(result.width, lessThanOrEqualTo(126));
+    expect(result.height, greaterThan(30));
+  });
 
   test('capital labels are compact and have transparent backgrounds', () async {
     final plain = image.decodePng(await renderCountryMarker(name: 'Vienna'))!;

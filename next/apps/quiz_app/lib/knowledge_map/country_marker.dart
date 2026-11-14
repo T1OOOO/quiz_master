@@ -32,7 +32,7 @@ Future<Uint8List> renderCountryMarker({
     textDirection: TextDirection.ltr,
     maxLines: maxLines,
     ellipsis: maxLines == null ? null : '…',
-  )..layout(maxWidth: compact ? 140 : 170);
+  )..layout(maxWidth: compact ? 120 : 170);
   ui.Image? flag;
   try {
     if (flagBytes != null && !capital && !landmark) {
@@ -53,13 +53,13 @@ Future<Uint8List> renderCountryMarker({
                   text.width + leading,
                   flag != null && !capital ? (compact ? 24 : 32) : 0,
                 ) +
-                (capital ? 8 : (compact ? 12 : 16)))
+                (capital ? 8 : (compact ? 6 : 16)))
             .ceil()
             .clamp(24, 216);
     final height =
         (math.max(text.height, capital ? 0 : 16) +
-                (capital ? 8 : (compact ? 10 : 12)) +
-                (flag != null && !capital ? (compact ? 20 : 26) : 0))
+                (capital ? 8 : (compact ? 6 : 12)) +
+                (flag != null && !capital ? (compact ? 18 : 26) : 0))
             .ceil();
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
@@ -90,7 +90,7 @@ Future<Uint8List> renderCountryMarker({
           capital ? 4 : (width - fw) / 2,
           capital
               ? (height - fh) / 2
-              : (compact ? 4 + (16 - fh) / 2 : 5 + (22 - fh) / 2),
+              : (compact ? 2 + (16 - fh) / 2 : 5 + (22 - fh) / 2),
           fw,
           fh,
         ),
@@ -121,7 +121,7 @@ Future<Uint8List> renderCountryMarker({
       ui.Offset(
         (width - text.width + leading) / 2,
         flag != null && !capital
-            ? (compact ? 24 : 31)
+            ? (compact ? 20 : 31)
             : (height - text.height) / 2,
       ),
     );

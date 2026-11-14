@@ -511,23 +511,35 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       );
       stage = 'country markers';
       final localizedRu = ru;
-      for (final feature in countryLabels!['features'] as List) {
+      final countryFeatures = countryLabels!['features'] as List;
+      for (var start = 0; start < countryFeatures.length; start += 8) {
         if (!mounted || generation != attempt || controller != c || failed) {
           return;
         }
-        final properties = feature['properties'] as Map<String, dynamic>;
-        final id = properties['country_id'] as String;
-        final encoded = flags[id] as String?;
-        final bytes = await renderCountryMarker(
-          name: properties[localizedRu ? 'name_ru' : 'name_en'] as String,
-          flagBytes: encoded == null ? null : base64Decode(encoded),
-          compact: true,
+        final batch = countryFeatures.skip(start).take(8).toList();
+        final sprites = await Future.wait(
+          batch.map((feature) {
+            final properties = feature['properties'] as Map<String, dynamic>;
+            final encoded = flags[properties['country_id']] as String?;
+            return renderCountryMarker(
+              name: properties[localizedRu ? 'name_ru' : 'name_en'] as String,
+              flagBytes: encoded == null ? null : base64Decode(encoded),
+              compact: true,
+            );
+          }),
         );
         if (!mounted || generation != attempt || controller != c || failed) {
           return;
         }
-        await c.addImage('country-$id', bytes);
-        properties['sprite'] = 'country-$id';
+        for (var i = 0; i < batch.length; i++) {
+          if (!mounted || generation != attempt || controller != c || failed) {
+            return;
+          }
+          final properties = batch[i]['properties'] as Map<String, dynamic>;
+          final id = properties['country_id'] as String;
+          await c.addImage('country-$id', sprites[i]);
+          properties['sprite'] = 'country-$id';
+        }
       }
       await c.addGeoJsonSource('country-markers', countryLabels!);
       appliedCountryLabels =
@@ -547,32 +559,43 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         String prefix,
         double minZoom,
       ) async {
-        for (final feature in collection['features'] as List) {
+        final features = collection['features'] as List;
+        for (var start = 0; start < features.length; start += 8) {
           if (!mounted || generation != attempt || controller != c || failed) {
             return;
           }
-          final p = feature['properties'] as Map<String, dynamic>;
-          final id = p['id'] as String;
-          if (source == 'landmarks') {
-            p['map_category'] = placeCategory(
-              p['categories'] as List? ?? const [],
-            );
-          }
-          final name = '$prefix${p[localizedRu ? 'name_ru' : 'name_en']}';
-          final marker = await renderCountryMarker(
-            name: name,
-            landmark: source == 'landmarks',
-            wonder:
-                source == 'landmarks' &&
-                placeCategory(p['categories'] as List? ?? const []) ==
-                    'wonders',
-            capital: source == 'capital-labels',
+          final batch = features.skip(start).take(8).toList();
+          final sprites = await Future.wait(
+            batch.map((feature) {
+              final p = feature['properties'] as Map<String, dynamic>;
+              if (source == 'landmarks') {
+                p['map_category'] = placeCategory(
+                  p['categories'] as List? ?? const [],
+                );
+              }
+              return renderCountryMarker(
+                name: '$prefix${p[localizedRu ? 'name_ru' : 'name_en']}',
+                landmark: source == 'landmarks',
+                wonder:
+                    source == 'landmarks' &&
+                    placeCategory(p['categories'] as List? ?? const []) ==
+                        'wonders',
+                capital: source == 'capital-labels',
+              );
+            }),
           );
           if (!mounted || generation != attempt || controller != c || failed) {
             return;
           }
-          await c.addImage('$source-$id', marker);
-          p['sprite'] = '$source-$id';
+          for (var i = 0; i < batch.length; i++) {
+            if (!mounted || generation != attempt || controller != c || failed) {
+              return;
+            }
+            final p = batch[i]['properties'] as Map<String, dynamic>;
+            final id = p['id'] as String;
+            await c.addImage('$source-$id', sprites[i]);
+            p['sprite'] = '$source-$id';
+          }
         }
         if (!mounted || generation != attempt || controller != c || failed) {
           return;
