@@ -1,5 +1,14 @@
 # Quiz preview operations
 
+## 2026-11-19 — migration to the new VPS
+
+- Quiz moved from `192.3.164.184` to `192.236.188.33`. The old deployment was already at zero replicas. The DNS owner updated the existing A record for `quiz.kotopedia.org`.
+- Rebuilt the Web and Linux API from `230726213e0f839e2a122e6d25bc02c65961ef28`, the source of the last deployed release. The new build ID is `quiz-2026.11.19-vps-23072621`. Retained build inputs and install log locations are under `/opt/quiz-master/migration-20261119` and `E:/Projects/quiz-move-23072621`.
+- Took a SQLite backup on the original host, checked its integrity, transferred it over SSH, and verified the same SHA-256 on the new host and on the restored PVC before starting the API. The snapshot contained 187 participants, 768 attempts, 136 feedback reports and 180 practice attempts. Both servers retain `/opt/quiz-master/backups/quiz.db.vps-move-20261119`.
+- Installed Helm revision 1 at zero replicas, provisioned the dedicated `quiz-data` PVC with a temporary pod, seeded the copy, removed that pod, and upgraded to revision 2 with one replica. The chart uses the destination cluster's existing Traefik in `kube-system` and its `letsencrypt-prod` issuer. Revision 2 is ready and the issuer issued a certificate for the quiz domain.
+- Verified HTTPS on the destination, the Web JavaScript hash, 105 catalog packs, and a complete 25-answer test attempt with its history. The Matrix client endpoint still returned HTTP 200. Authoritative and public DNS resolvers returned the new IP, while the local resolver still held the old address until its cached TTL expired.
+- To stop the new version while preserving data, roll back the new Helm release to revision 1 (zero replicas). Keep both backups and both PVCs. The old image is absent on the source host, so a DNS reversal alone will not restore service there.
+
 ## 2026-10-03 02:45 — overlay-only feedback, stable question layout
 
 Revision 11: `quiz-2026.10.03-0245-6b5e2e6`. Removed dynamically inserted result/
