@@ -7,6 +7,17 @@ import 'package:quiz_app/knowledge_map/country_marker.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test('standalone flag has a fixed compact footprint', () async {
+    final flag = image.Image(width: 12, height: 8, numChannels: 4);
+    image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));
+    final sprite = image.decodePng(
+      await renderCountryFlag(Uint8List.fromList(image.encodePng(flag))),
+    )!;
+    expect(sprite.width, 48);
+    expect(sprite.height, 32);
+    expect(sprite.getPixel(24, 16).a, 255);
+  });
+
   test('country labels leave the map visible around the flag', () async {
     final flag = image.Image(width: 12, height: 8, numChannels: 4);
     image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));

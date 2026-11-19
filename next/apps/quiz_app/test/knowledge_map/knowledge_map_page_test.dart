@@ -1015,7 +1015,8 @@ void main() {
       await tester.pumpAndSettle();
       select('FR');
       await tester.pumpAndSettle();
-      await openMapSection(tester, 'Visible countries');
+      expect(find.text('On screen · 1'), findsOneWidget);
+      await tester.tap(find.text('On screen · 1'));
       await tester.pumpAndSettle();
       expect(find.widgetWithText(ListTile, 'France'), findsOneWidget);
       expect(find.byTooltip('Close visible countries'), findsOneWidget);
