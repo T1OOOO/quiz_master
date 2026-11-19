@@ -288,57 +288,91 @@ class _HistoryMapState extends State<HistoryMap> {
                     'No entries for this period and country yet. Try the full century.',
                   ),
                 ),
-              for (final r in rows)
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: HistoryEventSeal(r['kind'], size: 34),
-                  title: Text(
-                    '${r['start']}${r['end'] == r['start'] ? '' : '–${r['end']}'} · ${r['title_$lang']}',
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(r['summary_$lang']),
-                      if (detail)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 6),
+              for (final r in rows) ...[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    HistoryEventSeal(r['kind'], size: 34),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            historyEventDate(r),
+                            style: Theme.of(context).textTheme.labelMedium,
+                          ),
+                          Text(
+                            r['title_$lang'],
+                            style: Theme.of(context).textTheme.titleMedium
+                                ?.copyWith(fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  r['summary_$lang'],
+                  style: Theme.of(context).textTheme.bodyMedium
+                      ?.copyWith(height: 1.4),
+                ),
+                if (detail || r['place_$lang'] != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.place_outlined, size: 16),
+                        const SizedBox(width: 4),
+                        Expanded(
                           child: Text(
-                            countryNames
-                                .where(
-                                  (c) =>
-                                      (r['countries'] as List).contains(c.id),
-                                )
-                                .map(name)
-                                .join(' · '),
+                            [
+                              if (r['place_$lang'] != null) r['place_$lang'],
+                              if (detail)
+                                ...countryNames
+                                    .where(
+                                      (c) => (r['countries'] as List).contains(
+                                        c.id,
+                                      ),
+                                    )
+                                    .map(name),
+                            ].join(' · '),
                             style: Theme.of(context).textTheme.labelMedium,
                           ),
                         ),
-                      if (r['place_$lang'] != null)
-                        Text('⌖ ${r['place_$lang']}'),
-                      if (year < r['start'] || year > r['end'])
-                        TextButton.icon(
-                          icon: const Icon(Icons.timeline),
-                          onPressed: () {
-                            Navigator.pop(d);
-                            changeYear(r['start']);
-                          },
-                          label: Text(
-                            t(
-                              'Перейти к ${r['start']} году',
-                              'Go to ${r['start']}',
-                            ),
+                      ],
+                    ),
+                  ),
+                Wrap(
+                  children: [
+                    if (year < r['start'] || year > r['end'])
+                      TextButton.icon(
+                        icon: const Icon(Icons.timeline),
+                        onPressed: () {
+                          Navigator.pop(d);
+                          changeYear(r['start']);
+                        },
+                        label: Text(
+                          t(
+                            'Перейти к ${r['start']} году',
+                            'Go to ${r['start']}',
                           ),
                         ),
-                      TextButton(
-                        onPressed: () => launchUrl(
-                          Uri.parse(r['source_url']),
-                          mode: LaunchMode.externalApplication,
-                        ),
-                        child: Text(t('Источник', 'Source')),
                       ),
-                    ],
-                  ),
+                    TextButton.icon(
+                      icon: const Icon(Icons.open_in_new, size: 15),
+                      onPressed: () => launchUrl(
+                        Uri.parse(r['source_url']),
+                        mode: LaunchMode.externalApplication,
+                      ),
+                      label: Text(t('Источник', 'Source')),
+                    ),
+                  ],
                 ),
+                if (r != rows.last) const Divider(height: 24),
+              ],
             ],
           ),
         ),
