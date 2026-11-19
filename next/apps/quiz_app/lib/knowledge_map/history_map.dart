@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math' as math;
+import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart' show listEquals;
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'map_state.dart';
 import 'history_globe.dart';
 import 'history_event_symbol.dart';
 import 'history_timeline.dart';
+import 'history_relief.dart';
 
 export 'history_timeline.dart' show closestHistoryEvent;
 
@@ -59,6 +61,8 @@ class _HistoryMapState extends State<HistoryMap> {
   bool century = false;
   late bool globe = widget.initialGlobe;
   int resetGlobe = 0;
+  Map? preview;
+  final regionAnchors = <String, Offset>{};
   late List landPolygons;
   Map<String, dynamic> polityNames = {};
   late String? country = widget.initialCountry;
@@ -66,6 +70,7 @@ class _HistoryMapState extends State<HistoryMap> {
   _Polity? selected;
   final transform = TransformationController();
   final packs = <int, Future<List<_Polity>>>{};
+  ui.Image? relief;
   late final base = _loadBase();
   String t(String ru, String en) => widget.russian ? ru : en;
   String name(MapCountry c) => widget.russian ? c.nameRu : c.nameEn;
@@ -77,8 +82,25 @@ class _HistoryMapState extends State<HistoryMap> {
 
   @override
   void dispose() {
+    relief?.dispose();
     transform.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadHistoryRelief().then(
+      (image) {
+        if (!mounted) {
+          image.dispose();
+          return;
+        }
+        setState(() => relief = image);
+      },
+      onError: (Object error) =>
+          debugPrint('Historical terrain image unavailable: $error'),
+    );
   }
 
   Future<(Path, List<Map>)> _loadBase() async {
@@ -99,6 +121,16 @@ class _HistoryMapState extends State<HistoryMap> {
       ];
     }
     polityNames = jsonDecode(texts[2]) as Map<String, dynamic>;
+    final labels = jsonDecode(
+      await rootBundle.loadString('${_root}country_labels.geojson'),
+    );
+    for (final feature in labels['features']) {
+      final xy = feature['geometry']['coordinates'];
+      regionAnchors[feature['properties']['country_id']] = Offset(
+        (xy[0] as num).toDouble(),
+        (xy[1] as num).toDouble(),
+      );
+    }
     landPolygons = jsonDecode(texts[0]) as List;
     return (
       _shape(landPolygons),
@@ -141,6 +173,7 @@ class _HistoryMapState extends State<HistoryMap> {
     setState(() {
       year = v;
       selected = null;
+      preview = null;
     });
   }
 
@@ -206,6 +239,7 @@ class _HistoryMapState extends State<HistoryMap> {
         if (historyCentury(year) != c) year = c * 100 - 99;
         century = true;
         selected = null;
+        preview = null;
       });
     }
   }
@@ -260,7 +294,10 @@ class _HistoryMapState extends State<HistoryMap> {
       ),
     );
     if (mounted && choice != null) {
-      setState(() => country = choice.isEmpty ? null : choice);
+      setState(() {
+        country = choice.isEmpty ? null : choice;
+        preview = null;
+      });
     }
   }
 
@@ -387,8 +424,8 @@ class _HistoryMapState extends State<HistoryMap> {
       title: Text(t('Исторические границы', 'Historical boundaries')),
       content: Text(
         t(
-          'Реконструкции из Cliopatria v0.0.1 (Bennett и др., Seshat). Контуры упрощены. На светлых участках источник не указывает государство. Фильтр событий использует современные названия стран.',
-          'Reconstructions from Cliopatria v0.0.1 (Bennett et al., Seshat). Shapes are simplified. Pale land means no polity shown in the source. Event filters use modern country names.',
+          'Реконструкции из Cliopatria v0.0.1 (Bennett и др., Seshat). Контуры упрощены. На светлых участках источник не указывает государство. Фильтр событий использует современные названия стран. Рельеф: Natural Earth I with Shaded Relief and Water, public domain.',
+          'Reconstructions from Cliopatria v0.0.1 (Bennett et al., Seshat). Shapes are simplified. Pale land means no polity shown in the source. Event filters use modern country names. Relief: Natural Earth I with Shaded Relief and Water, public domain.',
         ),
       ),
       actions: [
@@ -455,6 +492,38 @@ class _HistoryMapState extends State<HistoryMap> {
                     .toList();
           final rows = historyEventsFor(scoped, year, century, null);
           final lang = widget.russian ? 'ru' : 'en';
+          final story =
+              preview ??
+              closestHistoryEvent(rows.isEmpty ? scoped : rows, year);
+          HistoryEventPin pinFor(Map row, Offset point) => (
+            longitude: point.dx,
+            latitude: point.dy,
+            title: row['title_$lang'] as String,
+            kind: row['kind'] as String,
+          );
+          HistoryEventPin? focus;
+          String? focusRegion;
+          if (story != null) {
+            final coords = story['location'];
+            if (coords is List) {
+              focus = pinFor(
+                story,
+                Offset(
+                  (coords[0] as num).toDouble(),
+                  (coords[1] as num).toDouble(),
+                ),
+              );
+            } else {
+              final id = country ?? story['countries'].first as String;
+              final point = regionAnchors[id];
+              if (point != null) {
+                focus = pinFor(story, point);
+                final c = countryNames.where((c) => c.id == id).firstOrNull;
+                focusRegion =
+                    '${t("Регион события", "Event region")} · ${c == null ? id : name(c)}';
+              }
+            }
+          }
           final pinRecords = <HistoryEventPin, Map>{};
           for (final r in scoped) {
             final location = r['location'];
@@ -471,8 +540,9 @@ class _HistoryMapState extends State<HistoryMap> {
                   r;
             }
           }
-          void openPin(HistoryEventPin pin) =>
-              showEvents([pinRecords[pin]!], detail: true);
+          void openPin(HistoryEventPin pin) => showEvents([
+            pin == focus && story != null ? story : pinRecords[pin]!,
+          ], detail: true);
           return Column(
             children: [
               Expanded(
@@ -507,7 +577,10 @@ class _HistoryMapState extends State<HistoryMap> {
                                 land: landPolygons,
                                 polities: globePolities,
                                 year: year,
+                                focus: focus,
+                                focusRegion: focusRegion,
                                 eventPins: pinRecords.keys.toList(),
+                                relief: relief,
                                 onEventTap: openPin,
                                 selectedName: selected?.name,
                                 onSelect: (name) => setState(
@@ -555,6 +628,7 @@ class _HistoryMapState extends State<HistoryMap> {
                                               selected,
                                               offset,
                                               s,
+                                              relief: relief,
                                             ),
                                           ),
                                           for (final pin in pinRecords.keys)
@@ -665,7 +739,12 @@ class _HistoryMapState extends State<HistoryMap> {
                     pickYear: chooseYear,
                     pickCentury: chooseCentury,
                     pickCountry: () => chooseCountry(events),
-                    setCentury: (v) => setState(() => century = v),
+                    setCentury: (v) => setState(() {
+                      century = v;
+                      preview = null;
+                    }),
+                    onPreviewChanged: (event) =>
+                        setState(() => preview = event),
                     openEvents: () => showEvents(rows),
                     openEvent: (event) => showEvents([event], detail: true),
                   ),
@@ -709,12 +788,20 @@ class _Polity {
 }
 
 class _Painter extends CustomPainter {
-  const _Painter(this.land, this.rows, this.selected, this.offset, this.scale);
+  const _Painter(
+    this.land,
+    this.rows,
+    this.selected,
+    this.offset,
+    this.scale, {
+    this.relief,
+  });
   final Path land;
   final List<_Polity> rows;
   final _Polity? selected;
   final Offset offset;
   final double scale;
+  final ui.Image? relief;
   static const tones = [
     Color(0xffa1c5a9),
     Color(0xffe7bf89),
@@ -729,6 +816,14 @@ class _Painter extends CustomPainter {
     canvas.save();
     canvas.translate(offset.dx, offset.dy);
     canvas.scale(scale);
+    if (relief case final image?) {
+      canvas.drawImageRect(
+        image,
+        Rect.fromLTWH(0, 0, image.width.toDouble(), image.height.toDouble()),
+        const Rect.fromLTWH(0, 0, 360, 180),
+        Paint()..filterQuality = FilterQuality.medium,
+      );
+    }
     final fill = Paint()..color = const Color(0xfff3e8cc);
     final line = Paint()
       ..style = PaintingStyle.stroke
@@ -744,13 +839,13 @@ class _Painter extends CustomPainter {
     for (double y = 30; y < 180; y += 30) {
       canvas.drawLine(Offset(0, y), Offset(360, y), grid);
     }
-    canvas.drawPath(land, fill);
+    if (relief == null) canvas.drawPath(land, fill);
     for (final p in rows) {
       final index = p.name.codeUnits.fold<int>(
         0,
         (a, b) => (31 * a + b) % tones.length,
       );
-      fill.color = tones[index];
+      fill.color = tones[index].withValues(alpha: relief == null ? 1 : .30);
       canvas.drawPath(p.path, fill);
       canvas.drawPath(p.path, line);
     }
@@ -769,5 +864,6 @@ class _Painter extends CustomPainter {
       old.rows != rows ||
       old.selected != selected ||
       old.offset != offset ||
-      old.scale != scale;
+      old.scale != scale ||
+      !identical(old.relief, relief);
 }

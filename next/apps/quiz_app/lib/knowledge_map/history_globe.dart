@@ -43,16 +43,22 @@ class HistoryGlobe extends StatefulWidget {
     required this.year,
     required this.onSelect,
     this.selectedName,
+    this.focus,
+    this.focusRegion,
     this.eventPins = const [],
     this.onEventTap,
+    this.relief,
   });
   final List land;
   final List<GlobePolity> polities;
   final int year;
   final ValueChanged<String?> onSelect;
   final String? selectedName;
+  final HistoryEventPin? focus;
+  final String? focusRegion;
   final List<HistoryEventPin> eventPins;
   final ValueChanged<HistoryEventPin>? onEventTap;
+  final ui.Image? relief;
   @override
   State<HistoryGlobe> createState() => _HistoryGlobeState();
 }
@@ -104,7 +110,30 @@ class _Scene {
   final Offset center;
 }
 
-class _HistoryGlobeState extends State<HistoryGlobe> {
+class _HistoryGlobeState extends State<HistoryGlobe>
+    with SingleTickerProviderStateMixin {
+  late final flight = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 440),
+  )..addListener(_advanceFlight);
+  double fromLon = 0, fromLat = 0, travelLon = 0, travelLat = 0;
+
+  void _advanceFlight() {
+    final t = Curves.easeInOutCubic.transform(flight.value);
+    setState(() {
+      _longitude = fromLon + travelLon * t;
+      _latitude = fromLat + travelLat * t;
+      _invalidate();
+    });
+  }
+
+  @override
+  void dispose() {
+    flight.dispose();
+    _terrainShader?.dispose();
+    super.dispose();
+  }
+
   late List<List<List<_Vector>>> _land;
   late List<(String, List<List<List<_Vector>>>)> _polities;
   final _prepared = Expando<List<List<List<_Vector>>>>();
@@ -116,15 +145,33 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
   ];
   double _longitude = 15, _latitude = 30, _zoom = 1;
   double _startZoom = 1;
+  int? _scalePointerCount;
   String? _selected;
   _Scene? _scene;
+  ui.FragmentShader? _terrainShader;
   Size? _sceneSize;
 
   @override
   void initState() {
     super.initState();
+    _loadShader();
     _selected = widget.selectedName;
+    if (widget.focus case final target?) {
+      _longitude = target.longitude;
+      _latitude = target.latitude;
+    }
     _prepareData();
+  }
+
+  Future<void> _loadShader() async {
+    try {
+      final program = await ui.FragmentProgram.fromAsset(
+        'shaders/history_globe.frag',
+      );
+      if (mounted) setState(() => _terrainShader = program.fragmentShader());
+    } catch (error) {
+      debugPrint('Historical terrain shader unavailable: $error');
+    }
   }
 
   void _prepareData() {
@@ -139,6 +186,22 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
   @override
   void didUpdateWidget(covariant HistoryGlobe oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (widget.focus != oldWidget.focus) {
+      flight.stop();
+      if (widget.focus case final target?) {
+        fromLon = _longitude;
+        fromLat = _latitude;
+        travelLon = (target.longitude - fromLon + 180) % 360 - 180;
+        travelLat = target.latitude - fromLat;
+        if (MediaQuery.disableAnimationsOf(context)) {
+          _longitude = target.longitude;
+          _latitude = target.latitude;
+          _invalidate();
+        } else {
+          flight.forward(from: 0);
+        }
+      }
+    }
     if (!identical(oldWidget.land, widget.land) ||
         !identical(oldWidget.polities, widget.polities)) {
       _prepareData();
@@ -154,7 +217,7 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
   }
 
   void _changeZoom(double value) => setState(() {
-    _zoom = value.clamp(1, 3);
+    _zoom = value.clamp(.64, 3);
     _invalidate();
   });
 
@@ -167,9 +230,28 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
     _changeZoom(_zoom * math.pow(0.999, amount).toDouble());
   }
 
-  void _panZoomUpdate(Offset delta, double scale) {
+  void _beginScale() {
+    _startZoom = _zoom;
+    _scalePointerCount = null;
+  }
+
+  void _endScale() {
+    _scalePointerCount = null;
+    _startZoom = _zoom;
+  }
+
+  void _panZoomUpdate(Offset delta, double scale, {int? pointerCount}) {
     final size = _sceneSize;
-    if (size == null || size.isEmpty) return;
+    if (size == null || size.isEmpty || !scale.isFinite || scale <= 0) return;
+    // On 1→2→1 transitions Flutter may re-base ScaleUpdateDetails.scale.
+    // Re-base our origin as well so the globe does not jump back to the
+    // beginning of the gesture.
+    if (pointerCount != null &&
+        _scalePointerCount != null &&
+        pointerCount != _scalePointerCount) {
+      _startZoom = _zoom / scale;
+    }
+    _scalePointerCount = pointerCount ?? _scalePointerCount;
     final radius = size.shortestSide * .47 * _zoom;
     setState(() {
       if (delta != Offset.zero) {
@@ -179,7 +261,9 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
           85,
         );
       }
-      _zoom = (_startZoom * scale).clamp(1, 3);
+      final requested = _startZoom * scale;
+      _zoom = requested.clamp(.64, 3);
+      if (requested != _zoom) _startZoom = _zoom / scale;
       _invalidate();
     });
   }
@@ -328,8 +412,9 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
           children: [
             Listener(
               behavior: HitTestBehavior.opaque,
+              onPointerDown: (_) => flight.stop(),
               onPointerSignal: _onPointerSignal,
-              onPointerPanZoomStart: (_) => _startZoom = _zoom,
+              onPointerPanZoomStart: (_) => _beginScale(),
               onPointerPanZoomUpdate: (d) =>
                   _panZoomUpdate(d.panDelta, d.scale),
               child: RawGestureDetector(
@@ -339,11 +424,13 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
                       GestureRecognizerFactoryWithHandlers<
                         _GlobeScaleRecognizer
                       >(_GlobeScaleRecognizer.new, (recognizer) {
-                        recognizer.onStart = (_) => _startZoom = _zoom;
+                        recognizer.onStart = (_) => _beginScale();
                         recognizer.onUpdate = (details) => _panZoomUpdate(
                           details.focalPointDelta,
                           details.scale,
+                          pointerCount: details.pointerCount,
                         );
+                        recognizer.onEnd = (_) => _endScale();
                       }),
                 },
                 child: GestureDetector(
@@ -367,11 +454,43 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
                     children: [
                       ClipRect(
                         child: CustomPaint(
-                          painter: _GlobePainter(scene, _selected),
+                          painter: _GlobePainter(
+                            scene,
+                            _selected,
+                            relief: widget.relief,
+                            shader: _terrainShader,
+                            longitude: _longitude,
+                            latitude: _latitude,
+                          ),
                           size: Size.infinite,
                         ),
                       ),
                       for (final pin in widget.eventPins)
+                        if (pin != widget.focus)
+                          if (projectGlobePoint(
+                                pin.longitude,
+                                pin.latitude,
+                                _longitude,
+                                _latitude,
+                              )
+                              case final p?)
+                            Positioned(
+                              left:
+                                  scene.center.dx +
+                                  p.dx * scene.radius -
+                                  historyPinTarget / 2,
+                              top:
+                                  scene.center.dy +
+                                  p.dy * scene.radius -
+                                  historyPinTarget / 2,
+                              width: historyPinTarget,
+                              height: historyPinTarget,
+                              child: historyPinWidget(
+                                pin,
+                                () => widget.onEventTap?.call(pin),
+                              ),
+                            ),
+                      if (widget.focus case final pin?)
                         if (projectGlobePoint(
                               pin.longitude,
                               pin.latitude,
@@ -390,9 +509,40 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
                                 historyPinTarget / 2,
                             width: historyPinTarget,
                             height: historyPinTarget,
-                            child: historyPinWidget(
-                              pin,
-                              () => widget.onEventTap?.call(pin),
+                            child: DecoratedBox(
+                              key: const ValueKey('history-focus-ring'),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: const Color(0x66552312),
+                                border: Border.all(
+                                  color: const Color(0xffffd684),
+                                  width: 2,
+                                ),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Color(0xaa453022),
+                                    blurRadius: 6,
+                                  ),
+                                ],
+                              ),
+                              child: widget.focusRegion == null
+                                  ? historyPinWidget(
+                                      pin,
+                                      () => widget.onEventTap?.call(pin),
+                                    )
+                                  : Semantics(
+                                      button: true,
+                                      label: widget.focusRegion,
+                                      child: GestureDetector(
+                                        onTap: () =>
+                                            widget.onEventTap?.call(pin),
+                                        child: const Icon(
+                                          Icons.public,
+                                          color: Color(0xfffff5db),
+                                          size: 25,
+                                        ),
+                                      ),
+                                    ),
                             ),
                           ),
                     ],
@@ -400,6 +550,38 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
                 ),
               ),
             ),
+            if (widget.focusRegion case final label?)
+              Positioned(
+                bottom: 12,
+                left: 10,
+                right: 70,
+                child: IgnorePointer(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: const Color(0xda183039),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        child: Text(
+                          label,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             Positioned(
               right: 12,
               bottom: 12,
@@ -454,25 +636,48 @@ class _GlobeScaleRecognizer extends ScaleGestureRecognizer {
 }
 
 class _GlobePainter extends CustomPainter {
-  const _GlobePainter(this.scene, this.selected);
+  const _GlobePainter(
+    this.scene,
+    this.selected, {
+    this.relief,
+    this.shader,
+    required this.longitude,
+    required this.latitude,
+  });
   final _Scene scene;
   final String? selected;
+  final ui.Image? relief;
+  final ui.FragmentShader? shader;
+  final double longitude, latitude;
   @override
   void paint(Canvas canvas, Size size) {
     final globe = Path()
       ..addOval(Rect.fromCircle(center: scene.center, radius: scene.radius));
     canvas.save();
     canvas.clipPath(globe);
-    canvas.drawCircle(
-      scene.center,
-      scene.radius,
-      Paint()
-        ..shader = ui.Gradient.radial(
-          scene.center - Offset(scene.radius * .3, scene.radius * .3),
-          scene.radius * 1.5,
-          [const Color(0xffb7e0e1), const Color(0xff47839b)],
-        ),
-    );
+    final surface = shader;
+    final textured = surface != null && relief != null;
+    if (textured) {
+      surface
+        ..setFloat(0, scene.center.dx)
+        ..setFloat(1, scene.center.dy)
+        ..setFloat(2, scene.radius)
+        ..setFloat(3, longitude * math.pi / 180)
+        ..setFloat(4, latitude * math.pi / 180)
+        ..setImageSampler(0, relief!);
+      canvas.drawCircle(scene.center, scene.radius, Paint()..shader = surface);
+    } else {
+      canvas.drawCircle(
+        scene.center,
+        scene.radius,
+        Paint()
+          ..shader = ui.Gradient.radial(
+            scene.center - Offset(scene.radius * .3, scene.radius * .3),
+            scene.radius * 1.5,
+            [const Color(0xffb7e0e1), const Color(0xff47839b)],
+          ),
+      );
+    }
     canvas.drawPath(
       scene.grid,
       Paint()
@@ -480,12 +685,16 @@ class _GlobePainter extends CustomPainter {
         ..style = PaintingStyle.stroke
         ..strokeWidth = .7,
     );
-    canvas.drawPath(scene.land, Paint()..color = const Color(0xffe6dfca));
+    if (!textured) {
+      canvas.drawPath(scene.land, Paint()..color = const Color(0xffe6dfca));
+    }
     for (final polity in scene.polities) {
       canvas.drawPath(
         polity.$2,
         Paint()
-          ..color = polity.$1 == selected ? const Color(0xffdfab4a) : polity.$3,
+          ..color = polity.$1 == selected
+              ? const Color(0xc4dfab4a)
+              : polity.$3.withValues(alpha: textured ? .30 : 1),
       );
       canvas.drawPath(
         polity.$2,
@@ -519,5 +728,8 @@ class _GlobePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _GlobePainter oldDelegate) =>
-      !identical(scene, oldDelegate.scene) || selected != oldDelegate.selected;
+      !identical(scene, oldDelegate.scene) ||
+      selected != oldDelegate.selected ||
+      shader != oldDelegate.shader ||
+      !identical(relief, oldDelegate.relief);
 }

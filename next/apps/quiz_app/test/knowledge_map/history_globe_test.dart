@@ -9,6 +9,45 @@ import 'package:quiz_app/knowledge_map/history_globe.dart';
 import 'package:quiz_app/knowledge_map/history_event_symbol.dart';
 
 void main() {
+  testWidgets(
+    'focused story on the opposite hemisphere arrives at the centre',
+    (tester) async {
+      const start = (
+        longitude: 28.0,
+        latitude: 41.0,
+        title: 'Istanbul',
+        kind: 'event',
+      );
+      const end = (
+        longitude: -79.0,
+        latitude: -2.0,
+        title: 'Guayaquil',
+        kind: 'event',
+      );
+      Widget frame(HistoryEventPin pin) => MaterialApp(
+        home: Scaffold(
+          body: HistoryGlobe(
+            land: const [],
+            polities: const [],
+            year: 1800,
+            focus: pin,
+            onSelect: (_) {},
+          ),
+        ),
+      );
+      await tester.pumpWidget(frame(start));
+      final center = tester.getCenter(find.byType(HistoryGlobe));
+      expect(tester.getCenter(find.byTooltip('Istanbul')), center);
+      await tester.pumpWidget(frame(end));
+      await tester.pumpAndSettle();
+      expect(
+        (tester.getCenter(find.byTooltip('Guayaquil')) - center).distance,
+        lessThan(1),
+      );
+      expect(find.byKey(const ValueKey('history-focus-ring')), findsOneWidget);
+      expect(find.byTooltip('Istanbul'), findsNothing);
+    },
+  );
   test('orthographic projection rejects the back hemisphere', () {
     expect(projectGlobePoint(0, 0, 0, 0), isNotNull);
     expect(projectGlobePoint(180, 0, 0, 0), isNull);
