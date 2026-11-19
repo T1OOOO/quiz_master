@@ -315,16 +315,6 @@ class _HistoryMapState extends State<HistoryMap> {
         ),
       ),
       actions: [
-        Tooltip(
-          message: globe
-              ? t('Показать плоскую карту', 'Show flat map')
-              : t('Показать глобус', 'Show globe'),
-          child: TextButton.icon(
-            onPressed: () => setState(() => globe = !globe),
-            icon: Icon(globe ? Icons.map_outlined : Icons.public, size: 20),
-            label: Text(globe ? '2D' : '3D'),
-          ),
-        ),
         TextButton(
           onPressed: () =>
               launchUrl(Uri.parse('https://doi.org/10.5281/zenodo.13363121')),
@@ -474,9 +464,30 @@ class _HistoryMapState extends State<HistoryMap> {
                               right: 0,
                               child: LinearProgressIndicator(),
                             ),
+                          Positioned(
+                            left: 10,
+                            top: 10,
+                            child: Tooltip(
+                              message: globe
+                                  ? t('Показать плоскую карту', 'Show flat map')
+                                  : t('Показать глобус', 'Show globe'),
+                              child: FilledButton.tonalIcon(
+                                onPressed: () => setState(() => globe = !globe),
+                                icon: Icon(
+                                  globe ? Icons.map_outlined : Icons.public,
+                                  size: 18,
+                                ),
+                                label: Text(
+                                  globe
+                                      ? t('2D · Карта', '2D · Map')
+                                      : t('3D · Глобус', '3D · Globe'),
+                                ),
+                              ),
+                            ),
+                          ),
                           if (selected != null)
                             Positioned(
-                              top: 4,
+                              top: 52,
                               left: 8,
                               right: 8,
                               child: Align(

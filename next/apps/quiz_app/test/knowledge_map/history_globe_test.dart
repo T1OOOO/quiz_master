@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/knowledge_map/history_globe.dart';
@@ -76,5 +78,88 @@ void main() {
     await tester.tapAt(tester.getCenter(find.byType(HistoryGlobe)));
     await tester.pump();
     expect(selected, 'Front');
+  });
+  testWidgets('C-shaped polygon agrees with inverse projection at horizon', (
+    tester,
+  ) async {
+    final corners = <List<double>>[
+      [135, -35],
+      [50, -35],
+      [50, -15],
+      [110, -15],
+      [110, 15],
+      [50, 15],
+      [50, 40],
+      [135, 40],
+      [135, -35],
+    ];
+    final ring = <List<double>>[];
+    for (var i = 0; i < corners.length - 1; i++) {
+      final a = corners[i], b = corners[i + 1];
+      final steps = math.max((b[0] - a[0]).abs(), (b[1] - a[1]).abs()).ceil();
+      for (var j = 0; j < steps; j++) {
+        final t = j / steps;
+        ring.add([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]);
+      }
+    }
+    ring.add(corners.last);
+    final reference = Path()..moveTo(corners[0][0], corners[0][1]);
+    for (final p in corners.skip(1)) {
+      reference.lineTo(p[0], p[1]);
+    }
+    reference.close();
+    String? selected;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: HistoryGlobe(
+            land: const [],
+            year: 1800,
+            polities: [
+              GlobePolity(
+                name: 'C',
+                polygons: [
+                  [ring],
+                ],
+              ),
+            ],
+            onSelect: (v) => selected = v,
+          ),
+        ),
+      ),
+    );
+    final rect = tester.getRect(find.byType(HistoryGlobe));
+    final center = rect.center;
+    final radius = math.min(rect.width, rect.height) * .47;
+    final lat0 = 30 * math.pi / 180;
+    var checked = 0;
+    for (var ix = -8; ix <= 8; ix++) {
+      for (var iy = -8; iy <= 8; iy++) {
+        final x = ix / 10, y = iy / 10;
+        if (x * x + y * y >= .90) continue;
+        final z = math.sqrt(1 - x * x - y * y);
+        final lat =
+            math.asin(z * math.sin(lat0) - y * math.cos(lat0)) * 180 / math.pi;
+        final lon =
+            15 +
+            math.atan2(x, z * math.cos(lat0) + y * math.sin(lat0)) *
+                180 /
+                math.pi;
+        if ([50.0, 110.0, 135.0].any((v) => (lon - v).abs() < 1) ||
+            [-35.0, -15.0, 15.0, 40.0].any((v) => (lat - v).abs() < 1))
+          continue;
+        selected = null;
+        await tester.tapAt(center + Offset(x * radius, y * radius));
+        await tester.pump();
+        final expected = reference.contains(Offset(lon, lat));
+        expect(
+          selected == 'C',
+          expected,
+          reason: 'lon=$lon lat=$lat screen=$x,$y',
+        );
+        checked++;
+      }
+    }
+    expect(checked, greaterThan(50));
   });
 }
