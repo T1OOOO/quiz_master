@@ -210,6 +210,11 @@ def build():
         ident='ne10-river-'+str(index)
         properties={'id':ident,'kind':'river','min_zoom':zoom,'intermittent':cls=='River (Intermittent)'}
         water_id=props.get('wikidataid')
+        for field in ('name_en', 'name_ru'):
+            if props.get(field):
+                properties[field] = props[field]
+        if isinstance(water_id, str) and water_id.startswith('Q') and water_id[1:].isdigit():
+            properties['source_water_id'] = water_id
         if water_id in DETAILED_RIVER_IDS and water.get(water_id,{}).get('kind')=='river' and river_near_reference(geometry,old_rivers[water_id]):
             properties['water_id']=water_id
         river_detail.append({'type':'Feature','id':ident,'properties':properties,'geometry':geometry})

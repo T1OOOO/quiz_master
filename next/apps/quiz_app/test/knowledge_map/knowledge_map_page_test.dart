@@ -115,6 +115,13 @@ class MapFixtureBundle extends CachingAssetBundle {
           ],
         },
         'waterways': {
+          'Q1653': [
+            {
+              'text_ru': 'Факт о Дунае',
+              'text_en': 'Danube fact',
+              'source_url': 'https://example.org/danube',
+            },
+          ],
           'Q1062': [
             {
               'text_ru': 'Факт об Онтарио',
@@ -206,6 +213,22 @@ class MapFixtureBundle extends CachingAssetBundle {
           {
             'type': 'Feature',
             'properties': {
+              'id': 'Q1653',
+              'kind': 'river',
+              'name_en': 'Danube',
+              'name_ru': 'Дунай',
+            },
+            'geometry': {
+              'type': 'LineString',
+              'coordinates': [
+                [10, 48],
+                [20, 45],
+              ],
+            },
+          },
+          {
+            'type': 'Feature',
+            'properties': {
               'id': 'Q1062',
               'kind': 'lake',
               'name_en': 'Ontario',
@@ -273,6 +296,21 @@ class MapFixtureBundle extends CachingAssetBundle {
 }
 
 void main() {
+  test('river segments resolve canonical and source identifiers', () {
+    expect(
+      waterFeatureId({'id': 'ne10-river-1', 'source_water_id': 'Q1653'}),
+      'Q1653',
+    );
+    expect(
+      waterFeatureId({
+        'id': 'ne10-river-1',
+        'source_water_id': 'Q1653',
+        'water_id': 'Q42',
+      }),
+      'Q42',
+    );
+    expect(waterFeatureId({'id': 'ne10-river-1'}), 'ne10-river-1');
+  });
   testWidgets('map opens while supplementary facts are still loading', (
     tester,
   ) async {
@@ -838,7 +876,17 @@ void main() {
       );
     }
     expect(find.text('Country labels'), findsNothing);
-    expect(find.text('Capitals'), findsNothing);
+    expect(find.text('Capitals'), findsOneWidget);
+    final rivers = find.widgetWithText(SwitchListTile, 'Rivers');
+    final lakes = find.widgetWithText(SwitchListTile, 'Lakes');
+    await tester.ensureVisible(rivers);
+    await tester.tap(rivers);
+    await tester.pumpAndSettle();
+    expect(tester.widget<SwitchListTile>(rivers).value, isFalse);
+    expect(tester.widget<SwitchListTile>(lakes).value, isTrue);
+    await tester.tap(rivers);
+    await tester.pumpAndSettle();
+    expect(tester.widget<SwitchListTile>(rivers).value, isTrue);
   });
   testWidgets('hover never duplicates selected country context', (
     tester,
@@ -1432,6 +1480,27 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Ontario'), findsOneWidget);
     expect(find.text('Ontario fact'), findsOneWidget);
+    selectFeature('river', {
+      'id': 'ne10-river-1',
+      'water_id': 'Q1653',
+      'kind': 'river',
+    });
+    await tester.pumpAndSettle();
+    expect(find.text('Danube'), findsOneWidget);
+    expect(find.text('Danube fact'), findsOneWidget);
+    await tester.tap(find.byTooltip('Close').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Danube'), findsNothing);
+    selectFeature('river', {
+      'id': 'ne10-river-2',
+      'source_water_id': 'Q1653',
+      'kind': 'river',
+      'name_en': 'Lower Danube',
+      'name_ru': 'Нижний Дунай',
+    });
+    await tester.pumpAndSettle();
+    expect(find.text('Lower Danube'), findsOneWidget);
+    expect(find.text('Danube fact'), findsOneWidget);
     selectFeature('river', {'id': 'ne10-river-1', 'kind': 'river'});
     await tester.pumpAndSettle();
     expect(find.text('Unnamed feature'), findsOneWidget);
@@ -1461,4 +1530,24 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+  testWidgets('global search finds a named river', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, select) => const SizedBox.expand(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Search'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextField), 'Danube');
+    await tester.pumpAndSettle();
+    expect(find.widgetWithText(ListTile, 'Danube'), findsOneWidget);
+    await tester.tap(find.widgetWithText(ListTile, 'Danube'));
+    await tester.pumpAndSettle();
+    expect(find.text('River'), findsOneWidget);
+    expect(find.text('Danube fact'), findsOneWidget);
+  });
 }

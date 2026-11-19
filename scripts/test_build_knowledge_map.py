@@ -119,7 +119,10 @@ class MapBuildTest(unittest.TestCase):
             self.assertEqual(f['geometry'],source_row['geometry'])
             self.assertEqual(f['properties']['min_zoom'],source_row['properties']['min_zoom'])
             self.assertEqual(f['properties']['intermittent'],source_row['properties']['featurecla']=='River (Intermittent)')
-            self.assertEqual(set(f['properties']) - {'water_id'},{'id','kind','min_zoom','intermittent'})
+            for key in ('name_en','name_ru'):
+                self.assertEqual(f['properties'].get(key), source_row['properties'].get(key) or None)
+            source_id = source_row['properties'].get('wikidataid') or ''
+            self.assertEqual(f['properties'].get('source_water_id'), source_id if source_id.startswith('Q') and source_id[1:].isdigit() else None)
             self.assertEqual(f['properties']['kind'],'river')
         self.assertEqual(self.manifest['counts']['rivers_detail.geojson'],3739)
         self.assertIn('rivers_detail.geojson',json.loads(m.serialize_build(self.layers,self.manifest)['manifest.json'])['outputs'])

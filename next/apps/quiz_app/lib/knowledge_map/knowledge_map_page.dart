@@ -22,11 +22,14 @@ import 'countries_browser.dart';
 import 'map_state.dart';
 import 'practice_hints.dart';
 import 'thematic_legend.dart';
+import 'history_map.dart';
 
 @visibleForTesting
 String? waterFeatureId(Map properties) {
   final canonical = properties['water_id'];
   if (canonical is String && canonical.isNotEmpty) return canonical;
+  final sourceId = properties['source_water_id'];
+  if (sourceId is String && sourceId.isNotEmpty) return sourceId;
   final id = properties['id'];
   return id is String && id.isNotEmpty ? id : null;
 }
@@ -173,6 +176,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Map<String, dynamic>? countries,
       capitals,
       waterways,
+      riverDetails,
       countryLabels,
       waterLabels,
       landmarks;
@@ -191,7 +195,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       showCapitals = true,
       showLandmarks = true,
       showCountryLabels = true,
-      showWaterLabels = true;
+      showWaterLabels = true,
+      showRivers = true,
+      showLakes = true;
+  final Set<String> visiblePlaceCategories = {
+    'wonders',
+    'mountains',
+    'deserts',
+    'depressions',
+    'reserves',
+    'landmark',
+  };
   String thematic = 'none';
   List<dynamic> dishes = [];
   Map<String, dynamic> waters = {};
@@ -301,6 +315,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     thematicSequence++;
     detailRiversReady = false;
     detailLakesReady = false;
+    riverDetails = null;
     setState(() {
       failed = false;
       ready = false;
@@ -704,6 +719,24 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           'river',
         ],
       );
+      await c.addLineLayer(
+        'waterways',
+        'river-highlight',
+        const LineLayerProperties(lineColor: '#007f9b', lineWidth: 4),
+        filter: [
+          'all',
+          [
+            '==',
+            ['get', 'kind'],
+            'river',
+          ],
+          [
+            '==',
+            ['get', 'id'],
+            '',
+          ],
+        ],
+      );
 
       await c.addGeoJsonSource('marine-focus', {
         'type': 'FeatureCollection',
@@ -745,7 +778,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             final properties = feature['properties'] as Map<String, dynamic>;
             return renderCountryMarker(
               pixelScale: 2,
-              name: properties[localizedRu ? 'name_ru' : 'name_en'] as String,
+              name: mapCountryName(
+                properties['country_id'] as String,
+                properties[localizedRu ? 'name_ru' : 'name_en'] as String,
+                russian: localizedRu,
+              ),
               compact: true,
             );
           }),
@@ -1013,6 +1050,23 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             minzoom: 4,
             belowLayerId: 'capital-dots',
           );
+          await c.addLineLayer(
+            id,
+            'rivers-detail-highlight',
+            const LineLayerProperties(lineColor: '#007f9b', lineWidth: 4),
+            minzoom: 4,
+            belowLayerId: 'capital-dots',
+            filter: [
+              '==',
+              [
+                'coalesce',
+                ['get', 'water_id'],
+                ['get', 'source_water_id'],
+                ['get', 'id'],
+              ],
+              '',
+            ],
+          );
         } else {
           await c.addFillLayer(
             id,
@@ -1047,6 +1101,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         }
         if (i == 0) {
           detailRiversReady = true;
+          riverDetails = data;
+          if (!showRivers) await toggleWater('river', false);
+          queueHoverFilter();
           await c.setLayerProperties(
             'rivers',
             const LineLayerProperties(
@@ -1063,6 +1120,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           );
         } else {
           detailLakesReady = true;
+          if (!showLakes) await toggleWater('lake', false);
           queueHoverFilter();
           await c.setLayerProperties(
             'lake-highlight',
@@ -1393,8 +1451,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         properties = {
           ...properties,
           'fact_id': waterId,
-          'name_en': match['name_en'],
-          'name_ru': match['name_ru'],
+          'name_en': properties['name_en'] ?? match['name_en'],
+          'name_ru': properties['name_ru'] ?? match['name_ru'],
         };
       }
     }
@@ -1531,10 +1589,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'capital': ['capital-labels', 'capital-dots'],
         'water': [
           'water-labels',
-          'lakes',
-          'rivers',
-          if (detailLakesReady) 'lakes-detail',
-          if (detailRiversReady) 'rivers-detail',
+          if (showLakes) 'lakes',
+          if (showRivers) 'rivers',
+          if (showLakes && detailLakesReady) 'lakes-detail',
+          if (showRivers && detailRiversReady) 'rivers-detail',
         ],
       }.entries) {
         if (markerTapped) break;
@@ -1549,6 +1607,32 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 ? (p['kind'] as String? ?? 'water')
                 : entry.key,
             p,
+            position,
+          );
+          return;
+        }
+      }
+      if (features.isEmpty && !markerTapped && showRivers && mounted) {
+        if (!mounted) return;
+        final scale = !kIsWeb && defaultTargetPlatform == TargetPlatform.android
+            ? MediaQuery.devicePixelRatioOf(context)
+            : 1.0;
+        final nearby = await c.queryRenderedFeaturesInRect(
+          Rect.fromCircle(center: Offset(point.x, point.y), radius: 8 * scale),
+          ['rivers', if (detailRiversReady) 'rivers-detail'],
+          null,
+        );
+        if (!current()) return;
+        if (nearby.isNotEmpty) {
+          final feature = nearby.cast<Map>().firstWhere(
+            (feature) =>
+                waterFeatureId(feature['properties'] as Map)?.startsWith('Q') ==
+                true,
+            orElse: () => nearby.first as Map,
+          );
+          await selectFeature(
+            'river',
+            Map<String, dynamic>.from(feature['properties'] as Map),
             position,
           );
           return;
@@ -1693,9 +1777,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           () async {
             bytes = await renderCountryMarker(
               pixelScale: 2,
-              name: value == 'none'
-                  ? name
-                  : mapCountryName(id, name, russian: ru),
+              name: mapCountryName(id, name, russian: ru),
               datum: displayDatum,
               maxLines: value == 'none' ? null : 4,
               compact: true,
@@ -1789,13 +1871,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final c = controller;
     if (c == null || !ready || landmarks == null) return;
     final ids = (landmarks!['features'] as List)
-        .where(
-          (f) =>
-              value == 'all' ||
-              (f['properties']['categories'] as List? ?? const []).contains(
-                value,
-              ),
-        )
+        .where((f) {
+          final categories = f['properties']['categories'] as List? ?? const [];
+          return visiblePlaceCategories.contains(placeCategory(categories)) &&
+              (value == 'all' || categories.contains(value));
+        })
         .map((f) => f['properties']['id'] as String)
         .toList();
     final attempt = generation;
@@ -1901,6 +1981,61 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         setState(() => failed = true);
       }
     }
+  }
+
+  Future<void> toggleWater(String kind, bool value) async {
+    if (!mounted || !ready) return;
+    setState(() {
+      if (kind == 'river') {
+        showRivers = value;
+      } else {
+        showLakes = value;
+      }
+      if (!value && selectedFeatureKind == kind) {
+        selectedFeature = null;
+        selectedFeatureKind = null;
+      }
+    });
+    clearHover();
+    final c = controller;
+    if (c == null) return;
+    final ids = kind == 'river'
+        ? [
+            'rivers',
+            'river-highlight',
+            if (detailRiversReady) ...[
+              'rivers-detail',
+              'rivers-detail-highlight',
+            ],
+          ]
+        : [
+            'lakes',
+            'lake-highlight',
+            if (detailLakesReady) ...['lakes-detail', 'lakes-detail-highlight'],
+          ];
+    for (final id in ids) {
+      await c.setLayerVisibility(id, kind == 'river' ? showRivers : showLakes);
+    }
+    await c.setFilter('water-labels', [
+      'in',
+      ['get', 'kind'],
+      [
+        'literal',
+        ['marine', if (showRivers) 'river', if (showLakes) 'lake'],
+      ],
+    ]);
+  }
+
+  Future<void> togglePlaceCategory(String category, bool value) async {
+    if (!mounted || !ready || landmarks == null) return;
+    setState(() {
+      if (value) {
+        visiblePlaceCategories.add(category);
+      } else {
+        visiblePlaceCategories.remove(category);
+      }
+    });
+    await setPlacesCategory(placesCategory);
   }
 
   Future<void> toggleLabels(String layer, bool value) async {
@@ -2161,6 +2296,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final selectedId = selectedFeature == null
         ? null
         : waterFeatureId(selectedFeature!);
+    final riverId = selectedFeatureKind == 'river' ? selectedId : null;
     final points = <LatLng>[
       if (selectedFeatureKind == 'marine' &&
           !coastalBasins.contains(selectedId) &&
@@ -2172,7 +2308,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           hoveredMarinePoint != null)
         hoveredMarinePoint!,
     ].map((p) => [p.longitude, p.latitude]).toList();
-    final key = jsonEncode([attempt, id, waterIds, detailLakesReady, points]);
+    final key = jsonEncode([
+      attempt,
+      id,
+      waterIds,
+      detailLakesReady,
+      detailRiversReady,
+      riverId,
+      points,
+    ]);
     if (key == queuedHoverFilterKey) return;
     queuedHoverFilterKey = key;
     hoverFilter = hoverFilter.catchError((Object _) {}).then((_) async {
@@ -2226,6 +2370,53 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         });
         await c.setFilter('marine-highlight', marineFilter);
         await c.setFilter('lake-highlight', lakeFilter);
+        await c.setFilter('river-highlight', [
+          'all',
+          [
+            '==',
+            ['get', 'kind'],
+            'river',
+          ],
+          [
+            '==',
+            ['get', 'id'],
+            riverId ?? '',
+          ],
+        ]);
+        if (detailRiversReady) {
+          final hasDetailedRiver =
+              riverId != null &&
+              (riverDetails?['features'] as List? ?? const []).any(
+                (feature) =>
+                    waterFeatureId(feature['properties'] as Map) == riverId,
+              );
+          await c.setLayerProperties(
+            'river-highlight',
+            LineLayerProperties(
+              lineColor: '#007f9b',
+              lineWidth: 4,
+              lineOpacity: hasDetailedRiver
+                  ? const [
+                      'step',
+                      ['zoom'],
+                      1,
+                      4,
+                      0,
+                    ]
+                  : 1,
+            ),
+          );
+          await c.setFilter('rivers-detail-highlight', [
+            '==',
+            [
+              'coalesce',
+              ['get', 'water_id'],
+              ['get', 'source_water_id'],
+              ['get', 'id'],
+            ],
+            riverId ?? '',
+          ]);
+        }
         if (detailLakesReady) {
           final detailFilter = [
             'in',
@@ -2354,6 +2545,18 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
 
   Future<void> _openAtlasSearch() async {
     if (practice || state == null) return;
+    final rivers = <String, Map>{};
+    for (final collection in [waterways, riverDetails]) {
+      for (final feature in collection?['features'] as List? ?? const []) {
+        final properties = feature['properties'];
+        if (properties is! Map || properties['kind'] != 'river') continue;
+        final id = waterFeatureId(properties);
+        final name = properties[ru ? 'name_ru' : 'name_en'];
+        if (id != null && name is String && name.trim().isNotEmpty) {
+          rivers.putIfAbsent(id, () => feature as Map);
+        }
+      }
+    }
     final entries = <AtlasSearchEntry>[
       for (final country in state!.countries)
         AtlasSearchEntry(
@@ -2376,6 +2579,13 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           name: feature['properties'][ru ? 'name_ru' : 'name_en'] as String,
           detail: tr('Place', 'Место'),
         ),
+      for (final entry in rivers.entries)
+        AtlasSearchEntry(
+          kind: 'river',
+          id: entry.key,
+          name: entry.value['properties'][ru ? 'name_ru' : 'name_en'] as String,
+          detail: tr('River', 'Река'),
+        ),
     ];
     entries.sort((a, b) => a.name.compareTo(b.name));
     final result = await showAtlasSearch(
@@ -2384,6 +2594,38 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       russian: ru,
     );
     if (!mounted || result == null || practice) return;
+    if (result.kind == 'river') {
+      final feature = rivers[result.id];
+      if (feature == null) return;
+      if (!showRivers) await toggleWater('river', true);
+      if (!mounted || practice) return;
+      await selectFeature(
+        'river',
+        Map<String, dynamic>.from(feature['properties'] as Map),
+      );
+      if (!mounted) return;
+      var coordinates = feature['geometry']['coordinates'];
+      while (coordinates is List &&
+          coordinates.isNotEmpty &&
+          coordinates.first is List) {
+        coordinates = coordinates[coordinates.length ~/ 2];
+      }
+      if (coordinates is List &&
+          coordinates.length >= 2 &&
+          coordinates[0] is num &&
+          coordinates[1] is num) {
+        await controller?.animateCamera(
+          CameraUpdate.newLatLngZoom(
+            LatLng(
+              (coordinates[1] as num).toDouble(),
+              (coordinates[0] as num).toDouble(),
+            ),
+            4,
+          ),
+        );
+      }
+      return;
+    }
     if (result.kind == 'place') {
       await openPlace(result.id);
       return;
@@ -2442,114 +2684,184 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Future<void> _openDataDialog(BuildContext context) async {
     final mode = await showDialog<String>(
       context: context,
-      builder: (dialogContext) => AlertDialog(
-        scrollable: true,
-        title: Row(
-          children: [
-            Expanded(child: Text(tr('Map data', 'Данные на карте'))),
-            IconButton(
-              tooltip: tr('Close map data', 'Закрыть данные карты'),
-              icon: const Icon(Icons.close),
-              onPressed: () => Navigator.pop(dialogContext),
-            ),
-          ],
-        ),
-        content: PointerInterceptor(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (dialogContext, dialogSetState) => AlertDialog(
+          scrollable: true,
+          title: Row(
             children: [
-              Wrap(
-                spacing: 8,
-                runSpacing: 4,
-                children: [
-                  for (final mode in [
-                    'none',
-                    'population',
-                    'area',
-                    'capital',
-                    'food',
-                  ])
-                    ChoiceChip(
-                      label: Text(switch (mode) {
-                        'population' => tr('Population', 'Население'),
-                        'area' => tr('Area', 'Площадь'),
-                        'capital' => tr('Capital', 'Столица'),
-                        'food' => tr('Dishes', 'Блюда'),
-                        _ => tr('Map', 'Карта'),
-                      }),
-                      selected: thematic == mode,
-                      onSelected: ready
-                          ? (_) => Navigator.pop(dialogContext, mode)
-                          : null,
-                    ),
-                ],
-              ),
-              const Divider(height: 24),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  tr('Map symbols', 'Условные обозначения'),
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Wrap(
-                spacing: 14,
-                runSpacing: 8,
-                children: [
-                  for (final (label, color, capital) in [
-                    (
-                      tr('Capital city', 'Столица страны'),
-                      const Color(0xffb74832),
-                      true,
-                    ),
-                    (
-                      tr('Landmarks', 'Достопримечательности'),
-                      placeCategoryColor('landmark'),
-                      false,
-                    ),
-                    (
-                      tr('Wonders', 'Чудеса света'),
-                      placeCategoryColor('wonders'),
-                      false,
-                    ),
-                    (
-                      tr('Mountains', 'Горы'),
-                      placeCategoryColor('mountains'),
-                      false,
-                    ),
-                    (
-                      tr('Depressions', 'Впадины'),
-                      placeCategoryColor('depressions'),
-                      false,
-                    ),
-                    (
-                      tr('Deserts', 'Пустыни'),
-                      placeCategoryColor('deserts'),
-                      false,
-                    ),
-                    (
-                      tr('Reserves', 'Заповедники'),
-                      placeCategoryColor('reserves'),
-                      false,
-                    ),
-                  ])
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          capital ? Icons.star : Icons.circle,
-                          color: color,
-                          size: capital ? 15 : 10,
-                        ),
-                        const SizedBox(width: 5),
-                        Text(label),
-                      ],
-                    ),
-                ],
+              Expanded(child: Text(tr('Map data', 'Данные на карте'))),
+              IconButton(
+                tooltip: tr('Close map data', 'Закрыть данные карты'),
+                icon: const Icon(Icons.close),
+                onPressed: () => Navigator.pop(dialogContext),
               ),
             ],
+          ),
+          content: PointerInterceptor(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 4,
+                  children: [
+                    for (final mode in [
+                      'none',
+                      'population',
+                      'area',
+                      'capital',
+                      'food',
+                    ])
+                      ChoiceChip(
+                        label: Text(switch (mode) {
+                          'population' => tr('Population', 'Население'),
+                          'area' => tr('Area', 'Площадь'),
+                          'capital' => tr('Capital', 'Столица'),
+                          'food' => tr('Dishes', 'Блюда'),
+                          _ => tr('Map', 'Карта'),
+                        }),
+                        selected: thematic == mode,
+                        onSelected: ready
+                            ? (_) => Navigator.pop(dialogContext, mode)
+                            : null,
+                      ),
+                  ],
+                ),
+                const Divider(height: 24),
+                for (final kind in ['river', 'lake'])
+                  SwitchListTile.adaptive(
+                    dense: true,
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      kind == 'river'
+                          ? tr('Rivers', 'Реки')
+                          : tr('Lakes', 'Озёра'),
+                    ),
+                    value: kind == 'river' ? showRivers : showLakes,
+                    onChanged: ready
+                        ? (v) async {
+                            await toggleWater(kind, v);
+                            if (dialogContext.mounted) dialogSetState(() {});
+                          }
+                        : null,
+                  ),
+                SwitchListTile.adaptive(
+                  dense: true,
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(tr('Capitals', 'Столицы')),
+                  value: showCapitals,
+                  onChanged: ready
+                      ? (value) async {
+                          await toggleCapitals(value);
+                          if (dialogContext.mounted) dialogSetState(() {});
+                        }
+                      : null,
+                ),
+                SwitchListTile.adaptive(
+                  dense: true,
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    tr('Places and landmarks', 'Места и достопримечательности'),
+                  ),
+                  value: showLandmarks,
+                  onChanged: ready
+                      ? (value) async {
+                          await toggleLandmarks(value);
+                          if (dialogContext.mounted) dialogSetState(() {});
+                        }
+                      : null,
+                ),
+                if (showLandmarks)
+                  Wrap(
+                    spacing: 6,
+                    children: [
+                      for (final (id, en, ruLabel) in [
+                        ('wonders', 'Wonders', 'Чудеса света'),
+                        ('mountains', 'Mountains', 'Горы'),
+                        ('deserts', 'Deserts', 'Пустыни'),
+                        ('depressions', 'Depressions', 'Впадины'),
+                        ('reserves', 'Reserves', 'Заповедники'),
+                        ('landmark', 'Landmarks', 'Достопримечательности'),
+                      ])
+                        FilterChip(
+                          label: Text(tr(en, ruLabel)),
+                          selected: visiblePlaceCategories.contains(id),
+                          onSelected: ready
+                              ? (value) async {
+                                  await togglePlaceCategory(id, value);
+                                  if (dialogContext.mounted)
+                                    dialogSetState(() {});
+                                }
+                              : null,
+                        ),
+                    ],
+                  ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    tr('Map symbols', 'Условные обозначения'),
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 14,
+                  runSpacing: 8,
+                  children: [
+                    for (final (label, color, capital) in [
+                      (
+                        tr('Capital city', 'Столица страны'),
+                        const Color(0xffb74832),
+                        true,
+                      ),
+                      (
+                        tr('Landmarks', 'Достопримечательности'),
+                        placeCategoryColor('landmark'),
+                        false,
+                      ),
+                      (
+                        tr('Wonders', 'Чудеса света'),
+                        placeCategoryColor('wonders'),
+                        false,
+                      ),
+                      (
+                        tr('Mountains', 'Горы'),
+                        placeCategoryColor('mountains'),
+                        false,
+                      ),
+                      (
+                        tr('Depressions', 'Впадины'),
+                        placeCategoryColor('depressions'),
+                        false,
+                      ),
+                      (
+                        tr('Deserts', 'Пустыни'),
+                        placeCategoryColor('deserts'),
+                        false,
+                      ),
+                      (
+                        tr('Reserves', 'Заповедники'),
+                        placeCategoryColor('reserves'),
+                        false,
+                      ),
+                    ])
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            capital ? Icons.star : Icons.circle,
+                            color: color,
+                            size: capital ? 15 : 10,
+                          ),
+                          const SizedBox(width: 5),
+                          Flexible(child: Text(label)),
+                        ],
+                      ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -2630,6 +2942,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           Icons.tune,
                         ),
                         (
+                          'history',
+                          tr('Historical map', 'Историческая карта'),
+                          tr(
+                            'Borders and events through time',
+                            'Границы и события по годам',
+                          ),
+                          Icons.history_edu,
+                        ),
+                        (
                           'practice',
                           tr('Practice', 'Тренировка'),
                           tr(
@@ -2669,12 +2990,24 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       ),
     );
     if (!mounted || section == null) return;
+    if (section == 'history' && context.mounted) {
+      await Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (_) => HistoryMap(
+            countries: state!.countries,
+            russian: ru,
+            initialCountry: state!.selectedId,
+          ),
+        ),
+      );
+      return;
+    }
     if (section == 'practice') {
       setPractice(true);
       return;
     }
     if (section == 'data') {
-      if (mounted) await _openDataDialog(context);
+      if (context.mounted) await _openDataDialog(context);
       return;
     }
     setState(() {
@@ -3266,6 +3599,26 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               ),
                             ),
                           ),
+                        ),
+                      ),
+                    ),
+                  if (!practice &&
+                      ready &&
+                      !panelOpen &&
+                      !browserOpen &&
+                      !placesOpen &&
+                      !visibleOpen)
+                    Positioned(
+                      bottom: 68,
+                      left: 12,
+                      child: PointerInterceptor(
+                        child: FloatingActionButton.small(
+                          heroTag: null,
+                          tooltip: tr('Map layers', 'Слои карты'),
+                          backgroundColor: const Color(0xfffff9e9),
+                          foregroundColor: const Color(0xff25645c),
+                          onPressed: () => _openDataDialog(context),
+                          child: const Icon(Icons.layers_outlined),
                         ),
                       ),
                     ),

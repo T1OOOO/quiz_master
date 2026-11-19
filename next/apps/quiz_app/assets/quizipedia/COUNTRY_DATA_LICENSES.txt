@@ -49,3 +49,12 @@ are available under ODbL 1.0 as above. Distances between capital markers are
 rounded great-circle distances calculated from the coordinates in capital_points.json.
 Its source registry credits Natural Earth and GeoNames. Elevations and place-name
 histories cite the individual records in the World Factbook archive.
+
+Historical atlas polygons (historical_shapes_16 to historical_shapes_20):
+Bennett, Mutch, Tollefson et al., Cliopatria v0.0.1, Seshat Global History Databank.
+https://doi.org/10.5281/zenodo.13363121 — CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+The atlas selects POLITY features overlapping 1501–2000, simplifies and rounds
+geometry, and groups records by century. Years are inclusive. The neutral land
+silhouette is derived from Natural Earth (public domain). Event sources are
+listed separately for each entry in history_events.json.
