@@ -163,17 +163,3 @@ class _Cannon extends CustomPainter {
   @override
   bool shouldRepaint(_Cannon oldDelegate) => false;
 }
-
-Widget historyPinWidget(HistoryEventPin pin, VoidCallback onTap) => Semantics(
-  button: true,
-  label: pin.title,
-  child: Tooltip(
-    message: pin.title,
-    excludeFromSemantics: true,
-    child: GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onTap,
-      child: Center(child: HistoryEventSeal(pin.kind, size: 29)),
-    ),
-  ),
-);
