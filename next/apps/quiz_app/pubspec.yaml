@@ -69,6 +69,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  shaders:
+    - shaders/history_globe.frag
   assets:
     - assets/fonts/Bravura.otf
     - assets/catalog.json
@@ -79,6 +81,7 @@ flutter:
     - assets/quizipedia/
     - assets/quizipedia/map_v2/
     - assets/quizipedia/relief/
+    - assets/knowledge_map_relief.webp
 
   # To add assets to your application, add an assets section, like this:
   # assets:

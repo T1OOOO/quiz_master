@@ -47,6 +47,7 @@ class HistoryTimeline extends StatelessWidget {
     required this.setCentury,
     required this.openEvents,
     required this.openEvent,
+    this.onPreviewChanged,
   });
   final int year;
   final String centuryName, countryName;
@@ -56,6 +57,7 @@ class HistoryTimeline extends StatelessWidget {
   final ValueChanged<bool> setCentury;
   final VoidCallback pickYear, pickCentury, pickCountry, openEvents;
   final ValueChanged<Map> openEvent;
+  final ValueChanged<Map>? onPreviewChanged;
 
   static const ink = Color(0xff193b43);
   static const accent = Color(0xff8b532c);
@@ -171,6 +173,7 @@ class HistoryTimeline extends StatelessWidget {
                     nearest: rows.isEmpty,
                     russian: russian,
                     onOpen: openEvent,
+                    onPreviewChanged: onPreviewChanged,
                   ),
                 Row(
                   children: [
@@ -241,18 +244,24 @@ class _StoryPreview extends StatefulWidget {
     required this.russian,
     required this.nearest,
     required this.onOpen,
+    this.onPreviewChanged,
   });
   final List<Map> rows;
   final bool russian, nearest;
   final ValueChanged<Map> onOpen;
+  final ValueChanged<Map>? onPreviewChanged;
   @override
   State<_StoryPreview> createState() => _StoryPreviewState();
 }
 
 class _StoryPreviewState extends State<_StoryPreview> {
   int index = 0;
-  void move(int delta) =>
-      setState(() => index = (index + delta) % widget.rows.length);
+  double dragDistance = 0;
+  void move(int delta) {
+    setState(() => index = (index + delta) % widget.rows.length);
+    widget.onPreviewChanged?.call(widget.rows[index]);
+  }
+
   @override
   Widget build(BuildContext context) {
     final event = widget.rows[index];
@@ -265,10 +274,20 @@ class _StoryPreviewState extends State<_StoryPreview> {
       ru ? style.ru : style.en,
     ].join(' · ');
     return GestureDetector(
+      onHorizontalDragStart: many ? (_) => dragDistance = 0 : null,
+      onHorizontalDragUpdate: many
+          ? (details) => dragDistance += details.primaryDelta ?? 0
+          : null,
       onHorizontalDragEnd: many
           ? (details) {
               final speed = details.primaryVelocity ?? 0;
-              if (speed.abs() > 60) move(speed < 0 ? 1 : -1);
+              if (dragDistance.abs() >= 24 || speed.abs() > 60) {
+                move(
+                  (dragDistance.abs() >= 24 ? dragDistance : speed) < 0
+                      ? 1
+                      : -1,
+                );
+              }
             }
           : null,
       child: Material(
@@ -312,6 +331,17 @@ class _StoryPreviewState extends State<_StoryPreview> {
                                 height: 1.16,
                               ),
                             ),
+                            if (event[ru ? 'place_ru' : 'place_en']
+                                case final String place)
+                              Text(
+                                place,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: HistoryTimeline.ink,
+                                ),
+                              ),
                           ],
                         ),
                       ),

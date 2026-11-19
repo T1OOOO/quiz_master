@@ -23,6 +23,7 @@ void main() {
         },
       ];
       var year = 1917;
+      Map? preview;
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -48,6 +49,7 @@ void main() {
                 setCentury: (_) {},
                 openEvents: () {},
                 openEvent: (_) {},
+                onPreviewChanged: (event) => preview = event,
               ),
             ),
           ),
@@ -57,6 +59,10 @@ void main() {
       await tester.tap(find.byTooltip('Листать события'));
       await tester.pump();
       expect(find.text('Долгое событие'), findsOneWidget);
+      expect(preview?['title_ru'], 'Долгое событие');
+      await tester.drag(find.text('Долгое событие'), const Offset(-80, 0));
+      await tester.pump();
+      expect(preview?['title_ru'], 'Событие года');
       final slider = tester.widget<Slider>(find.byType(Slider));
       slider.onChanged!(1903);
       await tester.pump();
