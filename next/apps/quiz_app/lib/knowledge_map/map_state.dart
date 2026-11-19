@@ -67,11 +67,18 @@ class MapInterestingFact {
     required this.textRu,
     required this.textEn,
     required this.source,
+    this.subjectRu,
+    this.subjectEn,
   });
   final String textRu, textEn;
+  final String? subjectRu, subjectEn;
   final Uri source;
 
-  static MapInterestingFact? fromJson(Object? value) {
+  static MapInterestingFact? fromJson(
+    Object? value, {
+    String? subjectRu,
+    String? subjectEn,
+  }) {
     if (value is! Map) return null;
     final ru = value['text_ru'];
     final en = value['text_en'];
@@ -85,7 +92,13 @@ class MapInterestingFact {
     }
     final uri = Uri.tryParse(raw);
     if (uri == null || uri.scheme != 'https' || uri.host.isEmpty) return null;
-    return MapInterestingFact(textRu: ru, textEn: en, source: uri);
+    return MapInterestingFact(
+      textRu: ru,
+      textEn: en,
+      source: uri,
+      subjectRu: subjectRu,
+      subjectEn: subjectEn,
+    );
   }
 }
 

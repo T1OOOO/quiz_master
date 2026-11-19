@@ -925,7 +925,7 @@ class MapLibreMapController extends MapLibrePlatform
     final photo = decodeImage(bytes)!;
     if (!_map.hasImage(name)) {
       // Convert image to RGBA format with proper byte ordering
-      final rgbaBytes = photo.convert(numChannels: 4).getBytes();
+      final rgbaBytes = photo.convert(format: Format.uint8, numChannels: 4).getBytes();
       final data = Uint8List.fromList(rgbaBytes);
 
       await _map.addImage(

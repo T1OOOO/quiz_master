@@ -778,7 +778,7 @@ void main() {
     expect(tester.testTextInput.isVisible, isTrue);
     await tester.tap(find.byType(ListTile).first);
     await tester.pumpAndSettle();
-    expect(find.text('First France fact'), findsOneWidget);
+    expect(find.byKey(const ValueKey('current-country-fact')), findsOneWidget);
     await tester.tap(find.text('Show on map'));
     await tester.pumpAndSettle();
     expect(tester.testTextInput.isVisible, isFalse);
@@ -1080,8 +1080,8 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Country details'));
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byTooltip('Source 1'));
-      expect(find.byTooltip('Source 1').hitTestable(), findsOneWidget);
+      await tester.ensureVisible(find.text('Source'));
+      expect(find.text('Source').hitTestable(), findsOneWidget);
       await tester.tap(find.byTooltip('Close'));
       await tester.pumpAndSettle();
       await toggleMapData(tester);
@@ -1209,12 +1209,6 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Country details'));
       await tester.pumpAndSettle();
-      expect(find.text('Eiffel Tower'), findsOneWidget);
-      expect(find.text('Landmarks'), findsOneWidget);
-      expect(find.text('Test sea'), findsOneWidget);
-      expect(find.text('Test dish'), findsOneWidget);
-      expect(find.text('Water source: Test sea'), findsOneWidget);
-      expect(find.text('Dish source: Test dish'), findsOneWidget);
       final material = tester.widget<Material>(
         find
             .descendant(
@@ -1224,26 +1218,34 @@ void main() {
             .first,
       );
       expect(material.color!.computeLuminance(), greaterThan(0.8));
-      expect(find.text('Interesting facts'), findsOneWidget);
-      expect(find.text('First France fact'), findsOneWidget);
+      final fact = find.byKey(const ValueKey('current-country-fact'));
+      String current() => tester.widget<Text>(fact).data!;
+      final first = current();
       expect(
-        tester.getTopLeft(find.text('First France fact')).dy,
+        tester.getTopLeft(fact).dy,
         lessThan(tester.getTopLeft(find.textContaining('Area:')).dy),
       );
-      expect(find.byKey(const ValueKey('fact-source-0')), findsOneWidget);
-      await tester.scrollUntilVisible(
-        find.text('Third France fact'),
-        120,
-        scrollable: find.descendant(
-          of: find.byKey(const ValueKey('country-bottom-panel')),
-          matching: find.byType(Scrollable),
-        ),
-      );
+      await tester.ensureVisible(find.text('Another fact'));
+      await tester.tap(find.text('Another fact'));
       await tester.pumpAndSettle();
-      expect(
-        tester.getBottomLeft(find.text('Third France fact')).dy,
-        lessThan(480),
-      );
+      expect(current(), isNot(first));
+      final second = current();
+      await tester.tap(find.byTooltip('Close'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Country details'));
+      await tester.pumpAndSettle();
+      expect(current(), isNot(second));
+      final reopened = current();
+      await tester.ensureVisible(find.text('Places and culture'));
+      await tester.tap(find.text('Places and culture'));
+      await tester.pumpAndSettle();
+      expect(current(), reopened);
+      expect(find.text('Eiffel Tower'), findsOneWidget);
+      expect(find.text('Landmarks'), findsOneWidget);
+      expect(find.text('Test sea'), findsOneWidget);
+      expect(find.text('Test dish'), findsOneWidget);
+      expect(find.text('Water source: Test sea'), findsOneWidget);
+      expect(find.text('Dish source: Test dish'), findsOneWidget);
       select('MC');
       await tester.pumpAndSettle();
       expect(find.text('Interesting facts'), findsNothing);
@@ -1275,9 +1277,13 @@ void main() {
     expect(find.text('Столица: Париж'), findsOneWidget);
     expect(find.text('Языки: французский, Unknown language'), findsOneWidget);
     expect(find.text('Валюта: EUR'), findsOneWidget);
-    expect(find.text('Интересные факты'), findsOneWidget);
-    expect(find.text('Первый факт о Франции'), findsOneWidget);
-    expect(find.byTooltip('Источник 1'), findsOneWidget);
+    expect(
+      tester
+          .widget<Text>(find.byKey(const ValueKey('current-country-fact')))
+          .data,
+      matches(RegExp('[А-Яа-я]')),
+    );
+    expect(find.text('Источник'), findsOneWidget);
     expect(find.text('Регион: Европа · Центральная Европа'), findsOneWidget);
     expect(find.text('First France fact'), findsNothing);
   });

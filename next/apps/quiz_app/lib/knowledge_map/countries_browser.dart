@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../country_labels_ru.dart';
 import 'country_number_format.dart';
+import 'country_fact_reader.dart';
 import 'map_state.dart';
 
 class CountriesBrowser extends StatefulWidget {
@@ -15,12 +16,16 @@ class CountriesBrowser extends StatefulWidget {
     this.mappedIds,
     this.flags = const {},
     this.onClose,
+    this.readingLists = const {},
+    this.factRotation,
   });
 
   final List<MapCountry> countries;
   final ValueChanged<MapCountry> onSelect;
   final String? selectedId;
   final VoidCallback? onClose;
+  final Map<String, List<MapInterestingFact>> readingLists;
+  final CountryFactRotation? factRotation;
   final Set<String>? mappedIds;
   final Map<String, dynamic> flags;
 
@@ -29,6 +34,7 @@ class CountriesBrowser extends StatefulWidget {
 }
 
 class _CountriesBrowserState extends State<CountriesBrowser> {
+  final localRotation = CountryFactRotation();
   String query = '';
   bool table = false;
 
@@ -187,6 +193,8 @@ class _CountriesBrowserState extends State<CountriesBrowser> {
                     itemCount: items.length,
                     itemBuilder: (context, index) {
                       final c = items[index];
+                      final stories =
+                          widget.readingLists[c.id] ?? c.interestingFacts;
                       return ExpansionTile(
                         key: ValueKey(c.id),
                         backgroundColor: c.id == widget.selectedId
@@ -218,10 +226,12 @@ class _CountriesBrowserState extends State<CountriesBrowser> {
                                 '${tr('Area', 'Площадь')}: ${number(c.area)} ${tr('km²', 'км²')}',
                               ),
                             ),
-                          for (final fact in c.interestingFacts)
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8),
-                              child: Text(ru ? fact.textRu : fact.textEn),
+                          if (stories.isNotEmpty)
+                            CountryFactReader(
+                              countryId: c.id,
+                              facts: stories,
+                              russian: ru,
+                              rotation: widget.factRotation ?? localRotation,
                             ),
                           TextButton.icon(
                             onPressed: () => widget.onSelect(c),

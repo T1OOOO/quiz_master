@@ -41,19 +41,38 @@ Future<Uint8List> renderCountryMarker({
   String? datum,
   bool compact = false,
   int? maxLines,
+  int pixelScale = 1,
 }) async {
   final text = TextPainter(
     text: TextSpan(
       text: name,
       style: TextStyle(
-        fontSize: capital || water ? 12 : (compact || landmark ? 14 : 16),
+        fontSize: capital || water ? 13 : (landmark ? 14 : 16),
         fontWeight: compact ? FontWeight.w700 : FontWeight.w500,
         fontStyle: water ? FontStyle.italic : FontStyle.normal,
-        color: water ? const Color(0xff285e77) : const Color(0xff193e3a),
+        color: water ? const Color(0xff285e77) : const Color(0xff142e31),
         height: 1.15,
         shadows: const [
-          Shadow(color: Color(0xffffffff), blurRadius: 3),
-          Shadow(color: Color(0xffffffff), blurRadius: 1.5),
+          Shadow(
+            color: Color(0xfffffff8),
+            offset: Offset(-1, 0),
+            blurRadius: 0.5,
+          ),
+          Shadow(
+            color: Color(0xfffffff8),
+            offset: Offset(1, 0),
+            blurRadius: 0.5,
+          ),
+          Shadow(
+            color: Color(0xfffffff8),
+            offset: Offset(0, -1),
+            blurRadius: 0.5,
+          ),
+          Shadow(
+            color: Color(0xfffffff8),
+            offset: Offset(0, 1),
+            blurRadius: 0.5,
+          ),
         ],
       ),
       children: [
@@ -61,8 +80,8 @@ Future<Uint8List> renderCountryMarker({
           TextSpan(
             text: '\n$datum',
             style: const TextStyle(
-              color: Color(0xff275d61),
-              fontSize: 12,
+              color: Color(0xff183f51),
+              fontSize: 13,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -102,7 +121,7 @@ Future<Uint8List> renderCountryMarker({
                 (flag != null && !capital ? (compact ? 18 : 26) : 0))
             .ceil();
     final recorder = ui.PictureRecorder();
-    final canvas = ui.Canvas(recorder);
+    final canvas = ui.Canvas(recorder)..scale(pixelScale.toDouble());
     if (flag != null) {
       final scale = math.min(
         (capital ? 16 : (compact ? 24 : 32)) / flag.width,
@@ -154,13 +173,14 @@ Future<Uint8List> renderCountryMarker({
     );
     final picture = recorder.endRecording();
     try {
-      final rendered = await picture.toImage(width, height);
+      final rendered = await picture.toImage(
+        width * pixelScale,
+        height * pixelScale,
+      );
       try {
         final data = await rendered.toByteData(format: ui.ImageByteFormat.png);
         if (data == null) throw StateError('Country label PNG encoding failed');
-        return normalizeFlagSprite(
-          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
-        );
+        return data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       } finally {
         rendered.dispose();
       }

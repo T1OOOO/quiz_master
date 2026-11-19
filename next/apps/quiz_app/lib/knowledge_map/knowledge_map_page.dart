@@ -11,6 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../country_labels_ru.dart';
 import 'country_marker.dart';
+import 'country_fact_reader.dart';
 import 'country_label_layout.dart';
 import 'landmarks_browser.dart';
 import 'country_number_format.dart';
@@ -139,6 +140,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   bool placesOpen = false;
   String placesCategory = 'all';
   Future<void> placesCommands = Future.value();
+  final factRotation = CountryFactRotation.session;
+  final panelStoryKey = GlobalKey();
+  Map<String, List<MapInterestingFact>> readingLists = {};
   bool countryDetailsOpen = false;
   bool countryPanelOnSide = false;
   double? countryPanelHeight;
@@ -228,6 +232,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       generation++;
     });
     final attempt = generation;
+    final historyReady = widget.bundle == null
+        ? factRotation.restore()
+        : Future<void>.value();
     try {
       final texts = await Future.wait([
         (widget.bundle ?? rootBundle).loadString(
@@ -267,6 +274,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           cache: false,
         ),
       ]);
+      await historyReady;
       if (!mounted || generation != attempt) return;
       countries = jsonDecode(texts[0]) as Map<String, dynamic>;
       capitals = jsonDecode(texts[1]) as Map<String, dynamic>;
@@ -369,6 +377,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       if (mounted) {
         setState(() {
           state = MapState(items, landmarks: landmarkItems);
+          readingLists = countryReadingLists(
+            items,
+            landmarkItems,
+            const [],
+            const {},
+          );
           if (widget.visibleCountryIds != null) {
             visible = items
                 .where((item) => widget.visibleCountryIds!.contains(item.id))
@@ -415,6 +429,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       waters = results[1]['countries'] as Map<String, dynamic>? ?? {};
       waterSources = results[1]['sources'] as List? ?? [];
       featureFacts = results[2];
+      readingLists = countryReadingLists(
+        state!.countries,
+        state!.landmarks,
+        capitals?['features'] as List? ?? const [],
+        featureFacts['capitals'] as Map? ?? const {},
+        dishes: dishes,
+        foodSources: foodSources,
+      );
     });
   }
 
@@ -527,6 +549,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             final properties = feature['properties'] as Map<String, dynamic>;
             final encoded = flags[properties['country_id']] as String?;
             return renderCountryMarker(
+              pixelScale: 2,
+              maxLines: 3,
               name: mapCountryName(
                 properties['country_id'] as String,
                 properties[localizedRu ? 'name_ru' : 'name_en'] as String,
@@ -559,7 +583,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'country-markers',
         const SymbolLayerProperties(
           iconImage: ['get', 'sprite'],
-          iconSize: 1.0,
+          iconSize: [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            1,
+            0.5,
+            7,
+            0.59,
+          ],
           symbolSortKey: ['get', 'label_priority'],
         ),
       );
@@ -583,6 +615,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 );
               }
               return renderCountryMarker(
+                pixelScale: 2,
                 name: p[localizedRu ? 'name_ru' : 'name_en'] as String,
                 landmark: source == 'landmarks',
                 wonder:
@@ -625,20 +658,20 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                     ['linear'],
                     ['zoom'],
                     4,
-                    1,
+                    0.5,
                     7,
-                    1.15,
+                    0.575,
                   ]
-                : 1,
+                : 0.5,
             iconAnchor: source == 'capital-labels'
                 ? 'bottom'
                 : source == 'landmarks'
                 ? 'top'
                 : 'center',
             iconOffset: source == 'capital-labels'
-                ? const [0, -4]
+                ? const [0, -8]
                 : source == 'landmarks'
-                ? const [0, 4]
+                ? const [0, 8]
                 : const [0, 0],
           ),
           belowLayerId: 'country-markers',
@@ -1266,9 +1299,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           () async {
             final encoded = flags[id] as String?;
             bytes = await renderCountryMarker(
+              pixelScale: 2,
               name: mapCountryName(id, name, russian: ru),
               datum: displayDatum,
-              maxLines: value == 'none' ? null : 4,
+              maxLines: value == 'none' ? 3 : 4,
               flagBytes: encoded == null ? null : flagImageBytes(encoded),
               compact: true,
             );
@@ -1717,6 +1751,128 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     });
   }
 
+  Future<void> _openMapMenu(BuildContext context) async {
+    final section = await showModalBottomSheet<String>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      constraints: const BoxConstraints(maxWidth: 480),
+      backgroundColor: const Color(0xfffffef9),
+      builder: (sheetContext) => PointerInterceptor(
+        child: SafeArea(
+          top: false,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.sizeOf(sheetContext).height * .88,
+            ),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            tr('Atlas menu', 'Меню атласа'),
+                            style: Theme.of(sheetContext).textTheme.titleLarge,
+                          ),
+                        ),
+                        IconButton(
+                          tooltip: tr('Close menu', 'Закрыть меню'),
+                          onPressed: () => Navigator.pop(sheetContext),
+                          icon: const Icon(Icons.close),
+                        ),
+                      ],
+                    ),
+                    for (final (id, title, subtitle, icon) in [
+                      (
+                        'countries',
+                        tr('Countries', 'Страны'),
+                        tr(
+                          'Search, facts and comparison table',
+                          'Поиск, факты и сравнительная таблица',
+                        ),
+                        Icons.public,
+                      ),
+                      (
+                        'visible',
+                        tr('Visible countries', 'Страны на карте'),
+                        tr(
+                          'Only in this part of the map',
+                          'Только страны в текущем окне',
+                        ),
+                        Icons.crop_free,
+                      ),
+                      (
+                        'places',
+                        tr('Places', 'Места'),
+                        tr(
+                          'Wonders, mountains and reserves',
+                          'Чудеса света, горы и заповедники',
+                        ),
+                        Icons.explore_outlined,
+                      ),
+                      (
+                        'data',
+                        tr('Map data', 'Данные на карте'),
+                        tr(
+                          'Choose labels and view the legend',
+                          'Выбрать подписи и посмотреть легенду',
+                        ),
+                        Icons.tune,
+                      ),
+                      (
+                        'practice',
+                        tr('Practice', 'Тренировка'),
+                        tr(
+                          'Guess countries and flags',
+                          'Угадывать страны и флаги',
+                        ),
+                        Icons.flag_outlined,
+                      ),
+                    ])
+                      ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                        ),
+                        enabled: id != 'visible' || visible.isNotEmpty,
+                        leading: CircleAvatar(
+                          backgroundColor: const Color(0xffe9f1ec),
+                          foregroundColor: const Color(0xff28594f),
+                          child: Icon(icon, size: 21),
+                        ),
+                        title: Text(
+                          title,
+                          style: const TextStyle(fontWeight: FontWeight.w600),
+                        ),
+                        subtitle: Text(subtitle),
+                        trailing: const Icon(Icons.chevron_right, size: 19),
+                        onTap: () => Navigator.pop(sheetContext, id),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    if (!mounted || section == null) return;
+    if (section == 'practice') {
+      setPractice(true);
+      return;
+    }
+    setState(() {
+      browserOpen = section == 'countries';
+      placesOpen = section == 'places';
+      visibleOpen = section == 'visible';
+      layersOpen = section == 'data';
+      countryDetailsOpen = false;
+    });
+  }
+
   Widget _detailCard({
     required Size viewport,
     required String title,
@@ -1725,6 +1881,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     required VoidCallback onClose,
     required List<Widget> children,
     bool countryPanel = false,
+    Widget? story,
   }) {
     return PointerInterceptor(
       child: ConstrainedBox(
@@ -1739,7 +1896,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   0,
                   math.min(
                     340,
-                    viewport.height - (viewport.width < 520 ? 118 : 74),
+                    viewport.height - (viewport.width < 520 ? 178 : 134),
                   ),
                 ),
         ),
@@ -1762,7 +1919,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   onVerticalDragUpdate: (details) => setState(() {
                     countryPanelHeight =
                         ((countryPanelHeight ??
-                                    math.min(340, viewport.height * 0.45)) -
+                                    math.min(390, viewport.height * 0.52)) -
                                 details.delta.dy)
                             .clamp(
                               viewport.height * 0.2,
@@ -1833,15 +1990,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               : Icons.vertical_split_outlined,
                         ),
                       ),
-                    if (countryPanel)
-                      IconButton(
-                        tooltip: tr('Layers', 'Слои'),
-                        onPressed: () => setState(() {
-                          layersOpen = true;
-                          countryDetailsOpen = false;
-                        }),
-                        icon: const Icon(Icons.layers_outlined),
-                      ),
                     IconButton(
                       tooltip: tr('Close', 'Закрыть'),
                       onPressed: onClose,
@@ -1851,16 +1999,47 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 ),
               ),
               Flexible(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 720),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                child: LayoutBuilder(
+                  builder: (context, space) {
+                    final wide =
+                        countryPanel && story != null && space.maxWidth >= 760;
+                    final reference = Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisSize: MainAxisSize.min,
                       children: children,
-                    ),
-                  ),
+                    );
+                    return SingleChildScrollView(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: wide ? 1000 : 620,
+                          ),
+                          child: wide
+                              ? Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(flex: 5, child: story),
+                                    const SizedBox(width: 26),
+                                    Expanded(flex: 6, child: reference),
+                                  ],
+                                )
+                              : Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    if (story != null) ...[
+                                      story,
+                                      const SizedBox(height: 18),
+                                    ],
+                                    reference,
+                                  ],
+                                ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
@@ -1958,7 +2137,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   !placesOpen;
               final panelHeight = panelOpen && !countryPanelOnSide
                   ? (countryPanelHeight ??
-                            math.min(340.0, viewport.height * 0.45))
+                            math.min(390.0, viewport.height * 0.52))
                         .clamp(viewport.height * 0.2, viewport.height * 0.8)
                   : 0.0;
               final panelWidth = panelOpen && countryPanelOnSide
@@ -2214,111 +2393,43 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           color: const Color(0xff20594f),
                           borderRadius: BorderRadius.circular(14),
                           elevation: 2,
-                          child: PopupMenuButton<String>(
-                            tooltip: tr('Map menu', 'Меню карты'),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 14,
-                              ),
-                              child: SizedBox(
-                                height: 48,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Icon(
-                                      Icons.explore_outlined,
-                                      color: Colors.white,
-                                      size: 22,
-                                    ),
-                                    if (currentMapViewport.width > 350 ||
-                                        selected == null &&
-                                            currentMapViewport.width > 230) ...[
-                                      const SizedBox(width: 8),
-                                      Text(
-                                        tr('Explore', 'Обзор'),
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w600,
+                          child: Tooltip(
+                            message: tr('Map menu', 'Меню карты'),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(14),
+                              onTap: () => _openMapMenu(context),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 14,
+                                ),
+                                child: SizedBox(
+                                  height: 48,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(
+                                        Icons.explore_outlined,
+                                        color: Colors.white,
+                                        size: 22,
+                                      ),
+                                      if (currentMapViewport.width > 450 ||
+                                          selected == null &&
+                                              currentMapViewport.width >
+                                                  230) ...[
+                                        const SizedBox(width: 8),
+                                        Text(
+                                          tr('Menu', 'Меню'),
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ],
-                                  ],
+                                  ),
                                 ),
                               ),
                             ),
-                            onSelected: (section) {
-                              if (section == 'practice') {
-                                setPractice(true);
-                                return;
-                              }
-                              setState(() {
-                                browserOpen =
-                                    section == 'countries' && !browserOpen;
-                                placesOpen = section == 'places' && !placesOpen;
-                                visibleOpen =
-                                    section == 'visible' && !visibleOpen;
-                                layersOpen = section == 'data' && !layersOpen;
-                                countryDetailsOpen = false;
-                              });
-                            },
-                            itemBuilder: (context) => [
-                              PopupMenuItem(
-                                value: 'countries',
-                                child: PointerInterceptor(
-                                  child: ListTile(
-                                    leading: const Icon(Icons.public),
-                                    title: Text(tr('Countries', 'Страны')),
-                                  ),
-                                ),
-                              ),
-                              PopupMenuItem(
-                                value: 'visible',
-                                enabled: visible.isNotEmpty,
-                                child: PointerInterceptor(
-                                  child: ListTile(
-                                    leading: const Icon(Icons.map_outlined),
-                                    title: Text(
-                                      tr(
-                                        'Visible countries',
-                                        'Страны на карте',
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              PopupMenuItem(
-                                value: 'places',
-                                child: PointerInterceptor(
-                                  child: ListTile(
-                                    leading: const Icon(Icons.place_outlined),
-                                    title: Text(tr('Places', 'Места')),
-                                  ),
-                                ),
-                              ),
-                              PopupMenuItem(
-                                value: 'data',
-                                child: PointerInterceptor(
-                                  child: ListTile(
-                                    leading: const Icon(Icons.layers_outlined),
-                                    title: Text(
-                                      tr('Map data', 'Данные на карте'),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              PopupMenuItem(
-                                value: 'practice',
-                                child: PointerInterceptor(
-                                  child: ListTile(
-                                    leading: const Icon(Icons.quiz_outlined),
-                                    title: Text(tr('Practice', 'Тренировка')),
-                                  ),
-                                ),
-                              ),
-                            ],
                           ),
                         ),
                       ),
@@ -2353,7 +2464,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       !placesOpen)
                     Positioned(
                       bottom: 12,
-                      left: viewport.width > 350 ? 114 : 68,
+                      left: viewport.width > 450 ? 138 : 68,
                       right: 69,
                       child: Center(
                         child: PointerInterceptor(
@@ -2609,6 +2720,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           borderRadius: BorderRadius.circular(12),
                           clipBehavior: Clip.antiAlias,
                           child: CountriesBrowser(
+                            readingLists: readingLists,
+                            factRotation: factRotation,
                             onClose: () => setState(() => browserOpen = false),
                             countries: state!.countries,
                             selectedId: state!.selectedId,
@@ -3018,69 +3131,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                   ),
                             onClose: () =>
                                 setState(() => countryDetailsOpen = false),
+                            story:
+                                (readingLists[selected.id] ?? const []).isEmpty
+                                ? null
+                                : CountryFactReader(
+                                    key: panelStoryKey,
+                                    countryId: selected.id,
+                                    facts: readingLists[selected.id]!,
+                                    rotation: factRotation,
+                                    russian: ru,
+                                  ),
                             children: [
-                              if (selected.interestingFacts.isNotEmpty) ...[
-                                const SizedBox(height: 12),
-                                Text(
-                                  tr('Interesting facts', 'Интересные факты'),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 16,
-                                    color: Color(0xff29594f),
-                                  ),
-                                ),
-                                for (final (index, fact)
-                                    in selected.interestingFacts.indexed)
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 8),
-                                    child: DecoratedBox(
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xffedf3ec),
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                          14,
-                                          10,
-                                          4,
-                                          10,
-                                        ),
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Expanded(
-                                              child: Text(
-                                                ru ? fact.textRu : fact.textEn,
-                                                style: const TextStyle(
-                                                  fontSize: 15,
-                                                  height: 1.4,
-                                                ),
-                                              ),
-                                            ),
-                                            IconButton(
-                                              key: ValueKey(
-                                                'fact-source-$index',
-                                              ),
-                                              tooltip:
-                                                  '${tr('Source', 'Источник')} ${index + 1}',
-                                              onPressed: () => launchUrl(
-                                                fact.source,
-                                                mode: LaunchMode
-                                                    .externalApplication,
-                                              ),
-                                              icon: const Icon(
-                                                Icons.open_in_new,
-                                                size: 16,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                              ],
-                              const Divider(height: 24),
                               Text(
                                 tr('Overview', 'Общие сведения'),
                                 style: const TextStyle(
@@ -3156,7 +3217,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               ])
                                 Padding(
                                   padding: const EdgeInsets.symmetric(
-                                    vertical: 5,
+                                    vertical: 7,
                                   ),
                                   child: Row(
                                     crossAxisAlignment:
@@ -3188,93 +3249,142 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                 ),
                               const Divider(height: 24),
                               if (state!.landmarks.any(
-                                (item) => item.countryId == selected.id,
-                              ))
-                                Text(
-                                  tr('Landmarks', 'Достопримечательности'),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              for (final landmark in state!.landmarks.where(
-                                (item) => item.countryId == selected.id,
-                              ))
-                                TextButton(
-                                  onPressed: () => openPlace(landmark.id),
-                                  child: Text(
-                                    ru ? landmark.nameRu : landmark.nameEn,
-                                  ),
-                                ),
-                              if ((waters[selected.id] as List? ?? const [])
-                                  .isNotEmpty)
-                                Text(
-                                  tr('Waters', 'Водоёмы'),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              for (final water
-                                  in (waters[selected.id] as List? ?? const [])
-                                      .where(
-                                        (water) =>
-                                            water is Map &&
-                                            water[ru ? 'name_ru' : 'name_en']
-                                                is String,
-                                      )) ...[
-                                Text(
-                                  water[ru ? 'name_ru' : 'name_en'] as String,
-                                ),
-                                for (final source in waterSources.where(
-                                  (source) =>
-                                      source['id'] == water['source_id'],
-                                ))
-                                  TextButton(
-                                    onPressed: () => launchUrl(
-                                      Uri.parse(source['url']),
-                                      mode: LaunchMode.externalApplication,
-                                    ),
-                                    child: Text(
-                                      '${tr('Water source', 'Источник о водоёме')}: ${water[ru ? 'name_ru' : 'name_en']}',
+                                    (item) => item.countryId == selected.id,
+                                  ) ||
+                                  (waters[selected.id] as List? ?? const [])
+                                      .isNotEmpty ||
+                                  dishes.any(
+                                    (dish) =>
+                                        dish is Map &&
+                                        dish['country_en'] == selected.nameEn,
+                                  ))
+                                ExpansionTile(
+                                  title: Text(
+                                    tr(
+                                      'Places and culture',
+                                      'Места и культура',
                                     ),
                                   ),
-                              ],
-                              if (dishes.any(
-                                (dish) =>
-                                    dish is Map &&
-                                    dish['country_en'] == selected.nameEn &&
-                                    dish[ru ? 'name_ru' : 'name_en'] is String,
-                              ))
-                                Text(
-                                  tr('Dishes', 'Блюда'),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  leading: const Icon(Icons.explore_outlined),
+                                  tilePadding: EdgeInsets.zero,
+                                  expandedCrossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    if (state!.landmarks.any(
+                                      (item) => item.countryId == selected.id,
+                                    ))
+                                      Text(
+                                        tr(
+                                          'Landmarks',
+                                          'Достопримечательности',
+                                        ),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    for (final landmark
+                                        in state!.landmarks.where(
+                                          (item) =>
+                                              item.countryId == selected.id,
+                                        ))
+                                      TextButton(
+                                        onPressed: () => openPlace(landmark.id),
+                                        child: Text(
+                                          ru
+                                              ? landmark.nameRu
+                                              : landmark.nameEn,
+                                        ),
+                                      ),
+                                    if ((waters[selected.id] as List? ??
+                                            const [])
+                                        .isNotEmpty)
+                                      Text(
+                                        tr('Waters', 'Водоёмы'),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    for (final water
+                                        in (waters[selected.id] as List? ??
+                                                const [])
+                                            .where(
+                                              (water) =>
+                                                  water is Map &&
+                                                  water[ru
+                                                          ? 'name_ru'
+                                                          : 'name_en']
+                                                      is String,
+                                            )) ...[
+                                      Text(
+                                        water[ru ? 'name_ru' : 'name_en']
+                                            as String,
+                                      ),
+                                      for (final source in waterSources.where(
+                                        (source) =>
+                                            source['id'] == water['source_id'],
+                                      ))
+                                        TextButton(
+                                          onPressed: () => launchUrl(
+                                            Uri.parse(source['url']),
+                                            mode:
+                                                LaunchMode.externalApplication,
+                                          ),
+                                          child: Text(
+                                            '${tr('Water source', 'Источник о водоёме')}: ${water[ru ? 'name_ru' : 'name_en']}',
+                                          ),
+                                        ),
+                                    ],
+                                    if (dishes.any(
+                                      (dish) =>
+                                          dish is Map &&
+                                          dish['country_en'] ==
+                                              selected.nameEn &&
+                                          dish[ru ? 'name_ru' : 'name_en']
+                                              is String,
+                                    ))
+                                      Text(
+                                        tr('Dishes', 'Блюда'),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    for (final dish in dishes.where(
+                                      (dish) =>
+                                          dish is Map &&
+                                          dish['country_en'] ==
+                                              selected.nameEn &&
+                                          dish[ru ? 'name_ru' : 'name_en']
+                                              is String,
+                                    )) ...[
+                                      Text(
+                                        dish[ru ? 'name_ru' : 'name_en']
+                                            as String,
+                                      ),
+                                      for (final source in foodSources.where(
+                                        (source) =>
+                                            (dish['source_ids'] as List? ??
+                                                    const [])
+                                                .contains(source['id']),
+                                      ))
+                                        TextButton(
+                                          onPressed: () => launchUrl(
+                                            Uri.parse(source['url']),
+                                            mode:
+                                                LaunchMode.externalApplication,
+                                          ),
+                                          child: Text(
+                                            '${tr('Dish source', 'Источник блюда')}: ${dish[ru ? 'name_ru' : 'name_en']}',
+                                          ),
+                                        ),
+                                    ],
+                                  ],
                                 ),
-                              for (final dish in dishes.where(
-                                (dish) =>
-                                    dish is Map &&
-                                    dish['country_en'] == selected.nameEn &&
-                                    dish[ru ? 'name_ru' : 'name_en'] is String,
-                              )) ...[
-                                Text(
-                                  dish[ru ? 'name_ru' : 'name_en'] as String,
+                              ExpansionTile(
+                                title: Text(
+                                  tr('Data sources', 'Источники данных'),
                                 ),
-                                for (final source in foodSources.where(
-                                  (source) =>
-                                      (dish['source_ids'] as List? ?? const [])
-                                          .contains(source['id']),
-                                ))
-                                  TextButton(
-                                    onPressed: () => launchUrl(
-                                      Uri.parse(source['url']),
-                                      mode: LaunchMode.externalApplication,
-                                    ),
-                                    child: Text(
-                                      '${tr('Dish source', 'Источник блюда')}: ${dish[ru ? 'name_ru' : 'name_en']}',
-                                    ),
-                                  ),
-                              ],
-                              Wrap(
+                                leading: const Icon(Icons.menu_book_outlined),
+                                tilePadding: EdgeInsets.zero,
                                 children: [
                                   TextButton(
                                     onPressed: () => launchUrl(
