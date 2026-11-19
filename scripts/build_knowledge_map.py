@@ -6,7 +6,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'next/apps/quiz_app/assets/quizipedia/map_v2'
+COASTAL_BASINS = 'quizipedia/sources/map_v2/coastal_basins.geojson'
 SOURCES = {
+ COASTAL_BASINS: ('e3b12ccb09656def19952c33a629932f18059ce8e9e4d277cda9aa04a146d8ce', 'Natural Earth 1:10m coastlines; see scripts/build_atlas_coastal_basins.py', 'Public domain'),
  'quizipedia/sources/world-source.json': ('6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f', 'https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/', 'Public domain'),
  'quizipedia/content.json': ('ca0f92acffc7bd76424bb28c56c895f5f062de19eec76d4d4a97498fc449d947', 'Repository country identity exceptions', 'Project data'),
  'docs/rewrite-agents/preparation-country-registry/countries.json': ('78b1bb2d9fbfdb35033022dbdc94c34a89ad472a6cce835c5dd1ec2932f14b04', 'https://unstats.un.org/unsd/methodology/m49/overview/', 'See source registry'),
@@ -188,6 +190,12 @@ def build():
         if not river_reference_covered(old_rivers[ident],detailed[ident]): raise ValueError('river coverage incomplete: '+ident)
         if not river_segments_connected(detailed[ident]): raise ValueError('disconnected river: '+ident)
         merged[ident]['geometry']={'type':'MultiLineString','coordinates':[line for geometry in detailed[ident] for line in line_points(geometry)]}
+    for basin in data[COASTAL_BASINS]['features']:
+        ident = basin['properties']['id']
+        if merged[ident]['properties']['kind'] != 'marine':
+            raise ValueError(f'not a marine feature: {ident}')
+        validate_geometry(basin['geometry'])
+        merged[ident]['geometry'] = basin['geometry']
     waterways=list(merged.values())
     river_detail=[]
     source=data['quizipedia/sources/map_v2/ne_10m_rivers_lake_centerlines_scale_rank.geojson']['features']
@@ -242,7 +250,7 @@ def build():
     for name,collection in layers.items():
         ids=[f['id'] for f in collection['features']]
         if len(ids)!=len(set(ids)): raise ValueError('duplicate id in '+name)
-    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Country and lake geometry uses Natural Earth 1:10m. The Danube and Lena use 1:10m river geometry matched by Wikidata ID and checked against 110m coverage; other rivers and marine features remain 1:110m.', 'Country labels preserve existing 110m anchors and capital fallbacks; additional 10m shapes use 10m label anchors. Facts without a shape or verified capital have no marker.', 'Legacy 110m disputed geometries were not assigned another country: '+', '.join(sorted(omitted)), 'Montserrat’s capital is Brades, confirmed in November 2025; its coordinates use GeoNames 7266440.', 'Equatorial Guinea’s capital is Ciudad de la Paz under Decree Law 1/2026 of 2 January 2026; its coordinates use GeoNames 12226438.', 'Capital names without a matching Russian registry label retain the source name.', 'Detailed physical rivers contain Natural Earth 1:10m River and River (Intermittent) classes without inferred identities; lake centerlines and canals are excluded.', 'Detailed physical lakes contain all Natural Earth 1:10m Lake, Reservoir and Alkaline Lake polygons without inferred identities.', 'Waterways carry no inferred country relationship.']}
+    manifest={'schema_version':'qm-geography/v1','sources':[{'path':p,'sha256':v[0],'url':v[1],'license':v[2]} for p,v in SOURCES.items()], 'counts':{p:len(c['features']) for p,c in layers.items()}, 'coverage_notes':['Country and lake geometry uses Natural Earth 1:10m. The Danube and Lena use 1:10m river geometry matched by Wikidata ID and checked against 110m coverage; the Mediterranean, Black, Red and Caspian seas and the Persian Gulf use 1:10m coastlines. Other rivers and open marine regions use 1:110m geometry.', 'Country labels preserve existing 110m anchors and capital fallbacks; additional 10m shapes use 10m label anchors. Facts without a shape or verified capital have no marker.', 'Legacy 110m disputed geometries were not assigned another country: '+', '.join(sorted(omitted)), 'Montserrat’s capital is Brades, confirmed in November 2025; its coordinates use GeoNames 7266440.', 'Equatorial Guinea’s capital is Ciudad de la Paz under Decree Law 1/2026 of 2 January 2026; its coordinates use GeoNames 12226438.', 'Capital names without a matching Russian registry label retain the source name.', 'Detailed physical rivers contain Natural Earth 1:10m River and River (Intermittent) classes without inferred identities; lake centerlines and canals are excluded.', 'Detailed physical lakes contain all Natural Earth 1:10m Lake, Reservoir and Alkaline Lake polygons without inferred identities.', 'Waterways carry no inferred country relationship.']}
     return layers,manifest
 
 def encoded(value):
