@@ -6,6 +6,30 @@ import 'package:flutter/painting.dart';
 
 import 'flag_sprite.dart';
 
+/// Short cartographic names. The directory keeps the full catalogue names.
+String mapCountryName(String id, String name, {required bool russian}) {
+  if (!russian) return name;
+  return const {
+        'AE': 'ОАЭ',
+        'BO': 'Боливия',
+        'CD': 'ДР Конго',
+        'CF': 'ЦАР',
+        'FM': 'Микронезия',
+        'GB': 'Великобритания',
+        'IR': 'Иран',
+        'KP': 'КНДР',
+        'KR': 'Южная Корея',
+        'LA': 'Лаос',
+        'MD': 'Молдова',
+        'RU': 'Россия',
+        'SY': 'Сирия',
+        'TZ': 'Танзания',
+        'US': 'США',
+        'VE': 'Венесуэла',
+      }[id] ??
+      name;
+}
+
 /// Bundled text rendering keeps Cyrillic labels independent of a glyph server.
 Future<Uint8List> renderCountryMarker({
   required String name,
@@ -13,6 +37,8 @@ Future<Uint8List> renderCountryMarker({
   bool landmark = false,
   bool wonder = false,
   bool capital = false,
+  bool water = false,
+  String? datum,
   bool compact = false,
   int? maxLines,
 }) async {
@@ -20,15 +46,29 @@ Future<Uint8List> renderCountryMarker({
     text: TextSpan(
       text: name,
       style: TextStyle(
-        fontSize: capital ? 11 : (compact ? 13 : 16),
-        fontWeight: FontWeight.w600,
-        color: Color(0xff302b24),
+        fontSize: capital || water ? 12 : (compact || landmark ? 14 : 16),
+        fontWeight: compact ? FontWeight.w700 : FontWeight.w500,
+        fontStyle: water ? FontStyle.italic : FontStyle.normal,
+        color: water ? const Color(0xff285e77) : const Color(0xff193e3a),
         height: 1.15,
-        shadows: capital
-            ? const [Shadow(color: Color(0xfff4efd9), blurRadius: 3)]
-            : null,
+        shadows: const [
+          Shadow(color: Color(0xffffffff), blurRadius: 3),
+          Shadow(color: Color(0xffffffff), blurRadius: 1.5),
+        ],
       ),
+      children: [
+        if (datum != null)
+          TextSpan(
+            text: '\n$datum',
+            style: const TextStyle(
+              color: Color(0xff275d61),
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+      ],
     ),
+    textAlign: TextAlign.center,
     textDirection: TextDirection.ltr,
     maxLines: maxLines,
     ellipsis: maxLines == null ? null : '…',
@@ -63,19 +103,6 @@ Future<Uint8List> renderCountryMarker({
             .ceil();
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(recorder);
-    final bounds = ui.RRect.fromRectAndRadius(
-      ui.Rect.fromLTWH(.5, .5, width - 1, height - 1),
-      const ui.Radius.circular(5),
-    );
-    if (!capital) {
-      canvas.drawRRect(bounds, ui.Paint()..color = const Color(0xeeffffff));
-      canvas.drawRRect(
-        bounds,
-        ui.Paint()
-          ..color = const Color(0x558c8475)
-          ..style = ui.PaintingStyle.stroke,
-      );
-    }
     if (flag != null) {
       final scale = math.min(
         (capital ? 16 : (compact ? 24 : 32)) / flag.width,

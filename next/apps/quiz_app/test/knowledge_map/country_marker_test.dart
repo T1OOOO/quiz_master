@@ -7,6 +7,25 @@ import 'package:quiz_app/knowledge_map/country_marker.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test('country labels leave the map visible around the flag', () async {
+    final flag = image.Image(width: 12, height: 8, numChannels: 4);
+    image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));
+    final marker = image.decodePng(
+      await renderCountryMarker(
+        name: 'France',
+        compact: true,
+        flagBytes: Uint8List.fromList(image.encodePng(flag)),
+      ),
+    )!;
+    expect(marker.getPixel(3, 7).a, 0);
+    expect(marker.getPixel(marker.width ~/ 2, 7).a, 255);
+    expect(
+      mapCountryName('RU', 'Российская Федерация', russian: true),
+      'Россия',
+    );
+    expect(mapCountryName('RU', 'Russia', russian: false), 'Russia');
+  });
+
   test(
     'compact country card retains its flag and reduces its footprint',
     () async {

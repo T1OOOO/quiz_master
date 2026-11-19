@@ -51,6 +51,7 @@ class _CountriesBrowserState extends State<CountriesBrowser> {
                 c.nameRu,
                 c.nameEn,
                 c.capital ?? '',
+                if (ru) capital(c),
               ].any((s) => s.toLowerCase().contains(query)),
             )
             .toList()
@@ -93,15 +94,29 @@ class _CountriesBrowserState extends State<CountriesBrowser> {
     );
     return Column(
       children: [
-        if (widget.onClose != null)
-          Align(
-            alignment: Alignment.centerRight,
-            child: IconButton(
-              tooltip: tr('Close', 'Закрыть'),
-              onPressed: widget.onClose,
-              icon: const Icon(Icons.close),
-            ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 6, 4, 0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  tr('Countries', 'Страны'),
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              Text(
+                '${items.length}',
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+              if (widget.onClose != null)
+                IconButton(
+                  tooltip: tr('Close', 'Закрыть'),
+                  onPressed: widget.onClose,
+                  icon: const Icon(Icons.close),
+                ),
+            ],
           ),
+        ),
         Padding(
           padding: const EdgeInsets.all(8),
           child: TextField(
@@ -182,7 +197,11 @@ class _CountriesBrowserState extends State<CountriesBrowser> {
                             : null,
                         title: countryName(c),
                         subtitle: Text(
-                          '${tr('Capital', 'Столица')}: ${capital(c)} · ${tr('Population', 'Население')}: ${number(c.population)} · ${tr('Area, km²', 'Площадь, км²')}: ${number(c.area)}',
+                          [
+                            if (c.capital != null) capital(c),
+                            if (c.population != null)
+                              '${number(c.population)} ${tr('people', 'чел.')}',
+                          ].join('  ·  '),
                         ),
                         childrenPadding: const EdgeInsets.fromLTRB(
                           16,
@@ -192,6 +211,13 @@ class _CountriesBrowserState extends State<CountriesBrowser> {
                         ),
                         expandedCrossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          if (c.area != null)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: Text(
+                                '${tr('Area', 'Площадь')}: ${number(c.area)} ${tr('km²', 'км²')}',
+                              ),
+                            ),
                           for (final fact in c.interestingFacts)
                             Padding(
                               padding: const EdgeInsets.only(bottom: 8),

@@ -1080,8 +1080,8 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Country details'));
       await tester.pumpAndSettle();
-      await tester.ensureVisible(find.text('Source 1'));
-      expect(find.text('Source 1').hitTestable(), findsOneWidget);
+      await tester.ensureVisible(find.byTooltip('Source 1'));
+      expect(find.byTooltip('Source 1').hitTestable(), findsOneWidget);
       await tester.tap(find.byTooltip('Close'));
       await tester.pumpAndSettle();
       await toggleMapData(tester);
@@ -1277,7 +1277,7 @@ void main() {
     expect(find.text('Валюта: EUR'), findsOneWidget);
     expect(find.text('Интересные факты'), findsOneWidget);
     expect(find.text('Первый факт о Франции'), findsOneWidget);
-    expect(find.text('Источник 1'), findsOneWidget);
+    expect(find.byTooltip('Источник 1'), findsOneWidget);
     expect(find.text('Регион: Европа · Центральная Европа'), findsOneWidget);
     expect(find.text('First France fact'), findsNothing);
   });
@@ -1325,7 +1325,11 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Население'), findsOneWidget);
     expect(tester.getSize(find.text('Население')).height, lessThan(30));
-    expect(find.text('Достопримечательности'), findsNothing);
+    expect(find.text('Условные обозначения'), findsOneWidget);
+    expect(
+      find.widgetWithText(ChoiceChip, 'Достопримечательности'),
+      findsNothing,
+    );
     expect(tester.takeException(), isNull);
   });
 
