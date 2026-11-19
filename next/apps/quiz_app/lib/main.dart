@@ -171,6 +171,7 @@ GoRouter createRouter({String initialLocation = '/'}) {
       GoRoute(
         path: '/atlas/history-map',
         builder: (context, state) => HistoryMap(
+          key: ValueKey(state.uri),
           russian: Localizations.localeOf(context).languageCode == 'ru',
           initialYear: int.tryParse(state.uri.queryParameters['year'] ?? '') ?? 1914,
           initialCountry: state.uri.queryParameters['country']?.toUpperCase(),
