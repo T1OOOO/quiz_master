@@ -29,7 +29,7 @@ void main() {
       addTearDown(router.dispose);
       expect(
         router.configuration.routes.whereType<GoRoute>().map((r) => r.path),
-        contains('/atlas/map-preview'),
+        containsAll(['/atlas/map-preview', '/atlas/history-map']),
       );
     },
   );

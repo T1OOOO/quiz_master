@@ -21,6 +21,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'quizipedia.dart';
 import 'question_articles.dart';
 import 'knowledge_map/knowledge_map_page.dart';
+import 'knowledge_map/history_map.dart';
 
 part 'api_models.dart';
 part 'api_repository.dart';
@@ -165,6 +166,15 @@ GoRouter createRouter({String initialLocation = '/'}) {
         path: '/atlas/map-preview',
         builder: (context, _) => KnowledgeMapPage(
           onExit: () => context.go('/quizipedia'),
+        ),
+      ),
+      GoRoute(
+        path: '/atlas/history-map',
+        builder: (context, state) => HistoryMap(
+          russian: Localizations.localeOf(context).languageCode == 'ru',
+          initialYear: int.tryParse(state.uri.queryParameters['year'] ?? '') ?? 1914,
+          initialCountry: state.uri.queryParameters['country']?.toUpperCase(),
+          onExit: () => context.go('/atlas/map-preview'),
         ),
       ),
       // Keep global controls below the navigator's already-owned overlay.
