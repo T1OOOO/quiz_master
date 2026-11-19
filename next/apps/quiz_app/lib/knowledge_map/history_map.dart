@@ -1,12 +1,17 @@
 import 'dart:convert';
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart' show listEquals;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'map_state.dart';
 import 'history_globe.dart';
+import 'history_event_symbol.dart';
+import 'history_timeline.dart';
+
+export 'history_timeline.dart' show closestHistoryEvent;
 
 const _root = 'assets/quizipedia/map_v2/';
 const _centuries = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
@@ -55,6 +60,7 @@ class _HistoryMapState extends State<HistoryMap> {
   late bool globe = widget.initialGlobe;
   int resetGlobe = 0;
   late List landPolygons;
+  Map<String, dynamic> polityNames = {};
   late String? country = widget.initialCountry;
   late List<MapCountry> countryNames = widget.countries;
   _Polity? selected;
@@ -80,6 +86,7 @@ class _HistoryMapState extends State<HistoryMap> {
       [
         'historical_land',
         'history_events',
+        'historical_polity_names_ru',
       ].map((s) => rootBundle.loadString('$_root$s.json')),
     );
     if (countryNames.isEmpty) {
@@ -91,6 +98,7 @@ class _HistoryMapState extends State<HistoryMap> {
           MapCountry(id: r['id'], nameRu: r['name_ru'], nameEn: r['name_en']),
       ];
     }
+    polityNames = jsonDecode(texts[2]) as Map<String, dynamic>;
     landPolygons = jsonDecode(texts[0]) as List;
     return (
       _shape(landPolygons),
@@ -120,16 +128,22 @@ class _HistoryMapState extends State<HistoryMap> {
     if (visibleYear == year && identical(visiblePack, pack)) return;
     visibleYear = year;
     visiblePack = pack;
-    visiblePolities = pack
+    final matching = pack
         .where((p) => p.start <= year && p.end >= year)
         .toList();
+    if (listEquals(matching, visiblePolities)) return;
+    visiblePolities = matching;
     globePolities = [for (final p in visiblePolities) p.globePolity];
   }
 
-  void changeYear(int v) => setState(() {
-    year = v;
-    selected = null;
-  });
+  void changeYear(int v) {
+    if (v == year) return;
+    setState(() {
+      year = v;
+      selected = null;
+    });
+  }
+
   Future<void> chooseYear() async {
     var input = year.toString();
     final n = await showDialog<int>(
@@ -250,13 +264,17 @@ class _HistoryMapState extends State<HistoryMap> {
     }
   }
 
-  Future<void> showEvents(List<Map> rows) async {
+  Future<void> showEvents(List<Map> rows, {bool detail = false}) async {
     final lang = widget.russian ? 'ru' : 'en';
     await showDialog<void>(
       context: context,
       builder: (d) => AlertDialog(
         title: Text(
-          '${century ? "$centuryName ${t('век', 'century')}" : year} · $regionName',
+          detail
+              ? (widget.russian
+                    ? HistoryEventStyle.forKind(rows.first['kind']).ru
+                    : HistoryEventStyle.forKind(rows.first['kind']).en)
+              : '${century ? "$centuryName ${t('век', 'century')}" : year} · $regionName',
         ),
         content: SizedBox(
           width: 480,
@@ -273,12 +291,7 @@ class _HistoryMapState extends State<HistoryMap> {
               for (final r in rows)
                 ListTile(
                   contentPadding: EdgeInsets.zero,
-                  leading: Icon(
-                    r['kind'] == 'war'
-                        ? Icons.shield_outlined
-                        : Icons.history_edu,
-                    color: const Color(0xff956329),
-                  ),
+                  leading: HistoryEventSeal(r['kind'], size: 34),
                   title: Text(
                     '${r['start']}${r['end'] == r['start'] ? '' : '–${r['end']}'} · ${r['title_$lang']}',
                   ),
@@ -286,6 +299,36 @@ class _HistoryMapState extends State<HistoryMap> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(r['summary_$lang']),
+                      if (detail)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6),
+                          child: Text(
+                            countryNames
+                                .where(
+                                  (c) =>
+                                      (r['countries'] as List).contains(c.id),
+                                )
+                                .map(name)
+                                .join(' · '),
+                            style: Theme.of(context).textTheme.labelMedium,
+                          ),
+                        ),
+                      if (r['place_$lang'] != null)
+                        Text('⌖ ${r['place_$lang']}'),
+                      if (year < r['start'] || year > r['end'])
+                        TextButton.icon(
+                          icon: const Icon(Icons.timeline),
+                          onPressed: () {
+                            Navigator.pop(d);
+                            changeYear(r['start']);
+                          },
+                          label: Text(
+                            t(
+                              'Перейти к ${r['start']} году',
+                              'Go to ${r['start']}',
+                            ),
+                          ),
+                        ),
                       TextButton(
                         onPressed: () => launchUrl(
                           Uri.parse(r['source_url']),
@@ -371,7 +414,31 @@ class _HistoryMapState extends State<HistoryMap> {
             return const Center(child: CircularProgressIndicator());
           }
           final (land, events) = snap.data!;
-          final rows = historyEventsFor(events, year, century, country);
+          final scoped = country == null
+              ? events
+              : events
+                    .where((r) => (r['countries'] as List).contains(country))
+                    .toList();
+          final rows = historyEventsFor(scoped, year, century, null);
+          final lang = widget.russian ? 'ru' : 'en';
+          final pinRecords = <HistoryEventPin, Map>{};
+          for (final r in scoped) {
+            final location = r['location'];
+            if (r['start'] <= year &&
+                r['end'] >= year &&
+                location is List &&
+                location.length == 2) {
+              pinRecords[(
+                    longitude: (location[0] as num).toDouble(),
+                    latitude: (location[1] as num).toDouble(),
+                    title: r['title_$lang'] as String,
+                    kind: r['kind'] as String,
+                  )] =
+                  r;
+            }
+          }
+          void openPin(HistoryEventPin pin) =>
+              showEvents([pinRecords[pin]!], detail: true);
           return Column(
             children: [
               Expanded(
@@ -406,6 +473,8 @@ class _HistoryMapState extends State<HistoryMap> {
                                 land: landPolygons,
                                 polities: globePolities,
                                 year: year,
+                                eventPins: pinRecords.keys.toList(),
+                                onEventTap: openPin,
                                 selectedName: selected?.name,
                                 onSelect: (name) => setState(
                                   () => selected = visible
@@ -442,15 +511,47 @@ class _HistoryMapState extends State<HistoryMap> {
                                               .firstOrNull,
                                         );
                                       },
-                                      child: CustomPaint(
-                                        size: Size(box.maxWidth, box.maxHeight),
-                                        painter: _Painter(
-                                          land,
-                                          visible,
-                                          selected,
-                                          offset,
-                                          s,
-                                        ),
+                                      child: Stack(
+                                        fit: StackFit.expand,
+                                        children: [
+                                          CustomPaint(
+                                            painter: _Painter(
+                                              land,
+                                              visible,
+                                              selected,
+                                              offset,
+                                              s,
+                                            ),
+                                          ),
+                                          for (final pin in pinRecords.keys)
+                                            Positioned(
+                                              left:
+                                                  offset.dx +
+                                                  (pin.longitude + 180) * s -
+                                                  historyPinTarget / 2,
+                                              top:
+                                                  offset.dy +
+                                                  (90 - pin.latitude) * s -
+                                                  historyPinTarget / 2,
+                                              width: historyPinTarget,
+                                              height: historyPinTarget,
+                                              child: AnimatedBuilder(
+                                                animation: transform,
+                                                builder: (_, child) =>
+                                                    Transform.scale(
+                                                      scale:
+                                                          1 /
+                                                          transform.value
+                                                              .getMaxScaleOnAxis(),
+                                                      child: child,
+                                                    ),
+                                                child: historyPinWidget(
+                                                  pin,
+                                                  () => openPin(pin),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
                                       ),
                                     ),
                                   );
@@ -493,7 +594,15 @@ class _HistoryMapState extends State<HistoryMap> {
                               child: Align(
                                 alignment: Alignment.topCenter,
                                 child: Chip(
-                                  label: Text(selected!.name),
+                                  label: Text(
+                                    widget.russian
+                                        ? (polityNames[selected!.name]
+                                                  as String? ??
+                                              selected!.name)
+                                        : selected!.name,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                   onDeleted: () =>
                                       setState(() => selected = null),
                                 ),
@@ -505,61 +614,27 @@ class _HistoryMapState extends State<HistoryMap> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Row(
-                  children: [
-                    TextButton(
-                      onPressed: chooseYear,
-                      child: Text(
-                        '$year',
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                    ),
-                    Expanded(
-                      child: Slider(
-                        label: '$year',
-                        min: 1501,
-                        max: 2000,
-                        divisions: 499,
-                        value: year.toDouble(),
-                        onChanged: (v) => changeYear(v.round()),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: chooseCentury,
-                      child: Text('$centuryName ${t('век', 'century')}'),
-                    ),
-                  ],
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(context).height * .44,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 6,
-                  children: [
-                    ChoiceChip(
-                      label: Text(t('За год', 'Year')),
-                      selected: !century,
-                      onSelected: (_) => setState(() => century = false),
-                    ),
-                    ChoiceChip(
-                      label: Text(t('За век', 'Century')),
-                      selected: century,
-                      onSelected: (_) => setState(() => century = true),
-                    ),
-                    ActionChip(
-                      avatar: const Icon(Icons.public, size: 16),
-                      label: Text(regionName),
-                      onPressed: () => chooseCountry(events),
-                    ),
-                    FilledButton.icon(
-                      icon: const Icon(Icons.history_edu),
-                      onPressed: () => showEvents(rows),
-                      label: Text('${t('События', 'Events')} · ${rows.length}'),
-                    ),
-                  ],
+                child: SingleChildScrollView(
+                  child: HistoryTimeline(
+                    year: year,
+                    centuryName: centuryName,
+                    russian: widget.russian,
+                    century: century,
+                    countryName: regionName,
+                    events: scoped,
+                    rows: rows,
+                    onYear: changeYear,
+                    pickYear: chooseYear,
+                    pickCentury: chooseCentury,
+                    pickCountry: () => chooseCountry(events),
+                    setCentury: (v) => setState(() => century = v),
+                    openEvents: () => showEvents(rows),
+                    openEvent: (event) => showEvents([event], detail: true),
+                  ),
                 ),
               ),
             ],
@@ -626,6 +701,15 @@ class _Painter extends CustomPainter {
       ..strokeWidth = .55 / scale
       ..strokeJoin = StrokeJoin.round
       ..color = const Color(0xff626959);
+    final grid = Paint()
+      ..color = const Color(0x403a7e86)
+      ..strokeWidth = .65 / scale;
+    for (double x = 30; x < 360; x += 30) {
+      canvas.drawLine(Offset(x, 0), Offset(x, 180), grid);
+    }
+    for (double y = 30; y < 180; y += 30) {
+      canvas.drawLine(Offset(0, y), Offset(360, y), grid);
+    }
     canvas.drawPath(land, fill);
     for (final p in rows) {
       final index = p.name.codeUnits.fold<int>(
