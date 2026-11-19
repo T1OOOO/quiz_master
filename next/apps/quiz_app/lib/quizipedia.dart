@@ -518,8 +518,9 @@ String _moduleTitle(BuildContext context, _Module module) => switch (module) {
 };
 
 class QuizipediaPage extends StatefulWidget {
-  const QuizipediaPage({super.key, this.bundle, this.onExit});
+  const QuizipediaPage({super.key, this.bundle, this.onExit, this.onOpenMap});
   final VoidCallback? onExit;
+  final VoidCallback? onOpenMap;
   final AssetBundle? bundle;
   @override
   State<QuizipediaPage> createState() => _QuizipediaPageState();
@@ -629,6 +630,12 @@ class _QuizipediaPageState extends State<QuizipediaPage> {
               onPressed: widget.onExit,
             ),
       actions: [
+        if (widget.onOpenMap != null)
+          TextButton.icon(
+            onPressed: widget.onOpenMap,
+            icon: const Icon(Icons.public),
+            label: Text(_t(context, 'World atlas', 'Атлас мира')),
+          ),
         IconButton(
           tooltip: _t(context, 'Credits', 'Источники'),
           icon: const Icon(Icons.info_outline),

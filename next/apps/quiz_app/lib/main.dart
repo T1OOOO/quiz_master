@@ -180,7 +180,10 @@ GoRouter createRouter({String initialLocation = '/'}) {
           GoRoute(
             path: '/quizipedia',
             builder: (context, _) =>
-                QuizipediaPage(onExit: () => context.go('/library')),
+                QuizipediaPage(
+                  onExit: () => context.go('/library'),
+                  onOpenMap: () => context.go('/atlas/map-preview'),
+                ),
           ),
           GoRoute(path: '/study', builder: (_, _) => const StudyLibraryPage()),
           GoRoute(
