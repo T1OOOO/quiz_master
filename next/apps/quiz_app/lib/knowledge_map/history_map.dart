@@ -31,21 +31,26 @@ List<Map> historyEventsFor(
 class HistoryMap extends StatefulWidget {
   const HistoryMap({
     super.key,
-    required this.countries,
+    this.countries = const [],
     required this.russian,
     this.initialCountry,
+    this.initialYear = 1914,
+    this.onExit,
   });
   final List<MapCountry> countries;
   final bool russian;
   final String? initialCountry;
+  final int initialYear;
+  final VoidCallback? onExit;
   @override
   State<HistoryMap> createState() => _HistoryMapState();
 }
 
 class _HistoryMapState extends State<HistoryMap> {
-  int year = 1914;
+  late int year = widget.initialYear.clamp(1501, 2000);
   bool century = false;
   late String? country = widget.initialCountry;
+  late List<MapCountry> countryNames = widget.countries;
   _Polity? selected;
   final transform = TransformationController();
   final packs = <int, Future<List<_Polity>>>{};
@@ -54,7 +59,7 @@ class _HistoryMapState extends State<HistoryMap> {
   String name(MapCountry c) => widget.russian ? c.nameRu : c.nameEn;
   String get centuryName => _centuries[historyCentury(year) - 16];
   String get regionName {
-    final r = widget.countries.where((c) => c.id == country).firstOrNull;
+    final r = countryNames.where((c) => c.id == country).firstOrNull;
     return r == null ? t('Все страны', 'All countries') : name(r);
   }
 
@@ -71,6 +76,15 @@ class _HistoryMapState extends State<HistoryMap> {
         'history_events',
       ].map((s) => rootBundle.loadString('$_root$s.json')),
     );
+    if (countryNames.isEmpty) {
+      final raw = jsonDecode(
+        await rootBundle.loadString('assets/quizipedia/country_facts.json'),
+      );
+      countryNames = [
+        for (final r in raw['countries'])
+          MapCountry(id: r['id'], nameRu: r['name_ru'], nameEn: r['name_en']),
+      ];
+    }
     return (
       _shape(jsonDecode(texts[0])),
       (jsonDecode(texts[1])['records'] as List).cast<Map>(),
@@ -160,7 +174,7 @@ class _HistoryMapState extends State<HistoryMap> {
     final ids = events
         .expand((r) => (r['countries'] as List).cast<String>())
         .toSet();
-    final choices = widget.countries.where((c) => ids.contains(c.id)).toList()
+    final choices = countryNames.where((c) => ids.contains(c.id)).toList()
       ..sort((a, b) => name(a).compareTo(name(b)));
     final choice = await showDialog<String>(
       context: context,
@@ -292,6 +306,9 @@ class _HistoryMapState extends State<HistoryMap> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
+      leading: widget.onExit == null
+          ? null
+          : BackButton(onPressed: widget.onExit),
       title: Text(t('Историческая карта', 'Historical map')),
       actions: [
         IconButton(

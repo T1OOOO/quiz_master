@@ -38,7 +38,10 @@ void main() {
     test('filters the selected country while retaining its overlaps', () {
       final result = historyEventsFor(events, 1601, false, 'SE');
       expect(result, hasLength(2));
-      expect(result.every((event) => (event['countries'] as List).contains('SE')), isTrue);
+      expect(
+        result.every((event) => (event['countries'] as List).contains('SE')),
+        isTrue,
+      );
       expect(historyEventsFor(events, 1601, false, 'FR'), isEmpty);
     });
 
