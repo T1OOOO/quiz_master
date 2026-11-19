@@ -2790,8 +2790,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           onSelected: ready
                               ? (value) async {
                                   await togglePlaceCategory(id, value);
-                                  if (dialogContext.mounted)
+                                  if (dialogContext.mounted) {
                                     dialogSetState(() {});
+                                  }
                                 }
                               : null,
                         ),
