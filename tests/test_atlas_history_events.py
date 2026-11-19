@@ -11,13 +11,13 @@ ASSET = ROOT / 'next/apps/quiz_app/assets/quizipedia/map_v2/history_events.json'
 class HistoryEventsTest(unittest.TestCase):
     def test_records_have_dates_locations_and_sources(self):
         records = json.loads(ASSET.read_text(encoding='utf-8'))['records']
-        self.assertGreaterEqual(len(records), 335)
-        self.assertGreaterEqual(len({c for r in records for c in r['countries']}), 175)
+        self.assertGreaterEqual(len(records), 418)
+        self.assertGreaterEqual(len({c for r in records for c in r['countries']}), 212)
         self.assertEqual(len({r['id'] for r in records}), len(records))
         self.assertEqual({(r['start'] - 1) // 100 + 1 for r in records}, {16, 17, 18, 19, 20})
         per_century = Counter((r['start'] - 1) // 100 + 1 for r in records)
-        for century in (16, 17, 18):
-            self.assertGreaterEqual(per_century[century], 55, century)
+        for century, minimum in [(16, 77), (17, 85), (18, 95)]:
+            self.assertGreaterEqual(per_century[century], minimum, century)
         labels = json.loads((ASSET.parent / 'country_labels.geojson').read_text(encoding='utf-8'))
         country_ids = {f['properties']['country_id'] for f in labels['features']}
         self.assertEqual(len(records), len({(r['title_ru'], r['start']) for r in records}))

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/knowledge_map/history_timeline.dart';
+import 'package:quiz_app/knowledge_map/history_map_pins.dart';
+import 'package:quiz_app/knowledge_map/history_event_symbol.dart';
 
 import 'package:quiz_app/knowledge_map/history_map.dart';
 
@@ -46,7 +48,6 @@ void main() {
                 pickYear: () {},
                 pickCentury: () {},
                 pickCountry: () {},
-                setCentury: (_) {},
                 openEvents: () {},
                 openEvent: (_) {},
                 onPreviewChanged: (event) => preview = event,
@@ -72,6 +73,51 @@ void main() {
       await tester.pump();
       expect(find.text('1914'), findsOneWidget);
       expect(find.textContaining('Ближайшее событие'), findsNothing);
+    },
+  );
+
+  testWidgets(
+    'nearby marks open every member, the caption opens just the focus, and zoom separates them',
+    (tester) async {
+      const a = (
+        longitude: 0.0,
+        latitude: 0.0,
+        title: 'Island',
+        kind: 'culture',
+      );
+      const b = (
+        longitude: 1.0,
+        latitude: 0.0,
+        title: 'Harbour',
+        kind: 'event',
+      );
+      List<HistoryEventPin>? chosen;
+      Widget frame(double separation) => MaterialApp(
+        home: Scaffold(
+          body: SizedBox(
+            width: 320,
+            height: 220,
+            child: HistoryMapPins(
+              size: const Size(320, 220),
+              pins: const [a, b],
+              focus: a,
+              caption: '1700 · Island',
+              russian: true,
+              project: (p) => Offset(90 + separation * p.longitude, 90),
+              onOpen: (pins) => chosen = pins,
+            ),
+          ),
+        ),
+      );
+      await tester.pumpWidget(frame(8));
+      await tester.tap(find.byTooltip('События рядом · 2'));
+      expect(chosen, [a, b]);
+      await tester.tap(find.text('1700 · Island'));
+      expect(chosen, [a]);
+      await tester.pumpWidget(frame(90));
+      expect(find.byTooltip('События рядом · 2'), findsNothing);
+      await tester.tap(find.byTooltip('Harbour'));
+      expect(chosen, [b]);
     },
   );
 

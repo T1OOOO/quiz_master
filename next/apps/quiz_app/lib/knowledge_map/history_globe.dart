@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
 import 'history_event_symbol.dart';
+import 'history_map_pins.dart';
 
 class GlobePolity {
   const GlobePolity({required this.name, required this.polygons});
@@ -45,6 +46,9 @@ class HistoryGlobe extends StatefulWidget {
     this.selectedName,
     this.focus,
     this.focusRegion,
+    this.focusCaption,
+    this.onGroupTap,
+    this.russian,
     this.eventPins = const [],
     this.onEventTap,
     this.relief,
@@ -55,7 +59,9 @@ class HistoryGlobe extends StatefulWidget {
   final ValueChanged<String?> onSelect;
   final String? selectedName;
   final HistoryEventPin? focus;
-  final String? focusRegion;
+  final String? focusRegion, focusCaption;
+  final bool? russian;
+  final ValueChanged<List<HistoryEventPin>>? onGroupTap;
   final List<HistoryEventPin> eventPins;
   final ValueChanged<HistoryEventPin>? onEventTap;
   final ui.Image? relief;
@@ -472,123 +478,36 @@ class _HistoryGlobeState extends State<HistoryGlobe>
                           size: Size.infinite,
                         ),
                       ),
-                      for (final pin in widget.eventPins)
-                        if (pin != widget.focus)
-                          if (projectGlobePoint(
-                                pin.longitude,
-                                pin.latitude,
-                                _longitude,
-                                _latitude,
-                              )
-                              case final p?)
-                            Positioned(
-                              left:
-                                  scene.center.dx +
-                                  p.dx * scene.radius -
-                                  historyPinTarget / 2,
-                              top:
-                                  scene.center.dy +
-                                  p.dy * scene.radius -
-                                  historyPinTarget / 2,
-                              width: historyPinTarget,
-                              height: historyPinTarget,
-                              child: historyPinWidget(
-                                pin,
-                                () => widget.onEventTap?.call(pin),
-                              ),
-                            ),
-                      if (widget.focus case final pin?)
-                        if (projectGlobePoint(
-                              pin.longitude,
-                              pin.latitude,
-                              _longitude,
-                              _latitude,
-                            )
-                            case final p?)
-                          Positioned(
-                            left:
-                                scene.center.dx +
-                                p.dx * scene.radius -
-                                historyPinTarget / 2,
-                            top:
-                                scene.center.dy +
-                                p.dy * scene.radius -
-                                historyPinTarget / 2,
-                            width: historyPinTarget,
-                            height: historyPinTarget,
-                            child: DecoratedBox(
-                              key: const ValueKey('history-focus-ring'),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: const Color(0x66552312),
-                                border: Border.all(
-                                  color: const Color(0xffffd684),
-                                  width: 2,
-                                ),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Color(0xaa453022),
-                                    blurRadius: 6,
-                                  ),
-                                ],
-                              ),
-                              child: widget.focusRegion == null
-                                  ? historyPinWidget(
-                                      pin,
-                                      () => widget.onEventTap?.call(pin),
-                                    )
-                                  : Semantics(
-                                      button: true,
-                                      label: widget.focusRegion,
-                                      child: GestureDetector(
-                                        onTap: () =>
-                                            widget.onEventTap?.call(pin),
-                                        child: const Icon(
-                                          Icons.public,
-                                          color: Color(0xfffff5db),
-                                          size: 25,
-                                        ),
-                                      ),
-                                    ),
-                            ),
-                          ),
+                      HistoryMapPins(
+                        size: size,
+                        pins: widget.eventPins,
+                        focus: widget.focus,
+                        russian: widget.russian ?? russian,
+                        caption: widget.focusCaption ?? widget.focusRegion,
+                        project: (pin) {
+                          final p = projectGlobePoint(
+                            pin.longitude,
+                            pin.latitude,
+                            _longitude,
+                            _latitude,
+                          );
+                          return p == null
+                              ? null
+                              : scene.center + p * scene.radius;
+                        },
+                        onOpen: (pins) {
+                          if (pins.length > 1 && widget.onGroupTap != null) {
+                            widget.onGroupTap!(pins);
+                          } else {
+                            widget.onEventTap?.call(pins.first);
+                          }
+                        },
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
-            if (widget.focusRegion case final label?)
-              Positioned(
-                bottom: 12,
-                left: 10,
-                right: 70,
-                child: IgnorePointer(
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: const Color(0xda183039),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        child: Text(
-                          label,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
             Positioned(
               right: 12,
               bottom: 12,

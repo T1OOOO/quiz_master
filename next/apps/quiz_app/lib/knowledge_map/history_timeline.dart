@@ -44,9 +44,9 @@ class HistoryTimeline extends StatelessWidget {
     required this.pickYear,
     required this.pickCentury,
     required this.pickCountry,
-    required this.setCentury,
     required this.openEvents,
     required this.openEvent,
+    this.preview,
     this.onPreviewChanged,
   });
   final int year;
@@ -54,9 +54,9 @@ class HistoryTimeline extends StatelessWidget {
   final bool russian, century;
   final List<Map> events, rows;
   final ValueChanged<int> onYear;
-  final ValueChanged<bool> setCentury;
   final VoidCallback pickYear, pickCentury, pickCountry, openEvents;
   final ValueChanged<Map> openEvent;
+  final Map? preview;
   final ValueChanged<Map>? onPreviewChanged;
 
   static const ink = Color(0xff193b43);
@@ -173,6 +173,7 @@ class HistoryTimeline extends StatelessWidget {
                     nearest: rows.isEmpty,
                     russian: russian,
                     onOpen: openEvent,
+                    preview: preview,
                     onPreviewChanged: onPreviewChanged,
                   ),
                 Row(
@@ -181,44 +182,6 @@ class HistoryTimeline extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: country,
-                      ),
-                    ),
-                    PopupMenuButton<bool>(
-                      tooltip: t('Период событий', 'Event period'),
-                      initialValue: century,
-                      onSelected: setCentury,
-                      itemBuilder: (_) => [
-                        for (final c in [false, true])
-                          PopupMenuItem(
-                            value: c,
-                            child: Text(
-                              c
-                                  ? t('За век', 'Full century')
-                                  : t('За год', 'This year'),
-                            ),
-                          ),
-                      ],
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 4,
-                          vertical: 10,
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              century
-                                  ? t('За век', 'Century')
-                                  : t('За год', 'Year'),
-                              style: const TextStyle(color: ink),
-                            ),
-                            const Icon(
-                              Icons.arrow_drop_down,
-                              size: 17,
-                              color: ink,
-                            ),
-                          ],
-                        ),
                       ),
                     ),
                     TextButton(
@@ -244,11 +207,13 @@ class _StoryPreview extends StatefulWidget {
     required this.russian,
     required this.nearest,
     required this.onOpen,
+    this.preview,
     this.onPreviewChanged,
   });
   final List<Map> rows;
   final bool russian, nearest;
   final ValueChanged<Map> onOpen;
+  final Map? preview;
   final ValueChanged<Map>? onPreviewChanged;
   @override
   State<_StoryPreview> createState() => _StoryPreviewState();
@@ -257,6 +222,15 @@ class _StoryPreview extends StatefulWidget {
 class _StoryPreviewState extends State<_StoryPreview> {
   int index = 0;
   double dragDistance = 0;
+  @override
+  void didUpdateWidget(_StoryPreview oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.preview != null && widget.preview != oldWidget.preview) {
+      final selected = widget.rows.indexOf(widget.preview!);
+      if (selected >= 0) index = selected;
+    }
+  }
+
   void move(int delta) {
     setState(() => index = (index + delta) % widget.rows.length);
     widget.onPreviewChanged?.call(widget.rows[index]);
