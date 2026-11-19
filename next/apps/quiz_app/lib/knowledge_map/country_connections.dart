@@ -40,8 +40,10 @@ class _Connections extends StatelessWidget {
 
   String tr(String en, String russian) => ru ? russian : en;
   String name(MapCountry row) => ru ? row.nameRu : row.nameEn;
-  List<Map> waterRows(String id) =>
-      (waters[id] as List? ?? const []).whereType<Map>().toList();
+  List<Map> waterRows(String id) => (waters[id] as List? ?? const [])
+      .whereType<Map>()
+      .where((row) => row['id'] is String && row['id'] != '')
+      .toList();
   Map border(String id) =>
       (borders['countries'] as Map?)?[id] as Map? ?? const {};
   Map<String, num> distances(String id) {
@@ -91,7 +93,7 @@ class _Connections extends StatelessWidget {
     final area = other.area;
     final distance = estimates.isEmpty
         ? tr('Length unavailable', 'Нет данных о длине')
-        : estimates.length == 1
+        : km(estimates.first) == km(estimates.last)
         ? '≈ ${km(estimates.first)}'
         : '${km(estimates.first)} – ${km(estimates.last)}';
     return ExpansionTile(
@@ -216,7 +218,9 @@ class _Connections extends StatelessWidget {
                               style: theme.textTheme.titleSmall,
                             ),
                           if (info['components_km'] case final Map components)
-                            for (final entry in components.entries)
+                            for (final entry in components.entries.where(
+                              (e) => e.value is num,
+                            ))
                               Text(
                                 '${switch (entry.key) {
                                   'metropolitan France' => tr('Metropolitan France', 'Европейская часть Франции'),

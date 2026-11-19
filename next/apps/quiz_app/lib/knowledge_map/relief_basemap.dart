@@ -24,30 +24,42 @@ class ReliefBasemap {
   }) async {
     final generation = ++_generation;
     final quadrants = <_ReliefQuadrant>[
-      _ReliefQuadrant('nw', const LatLngQuad(
-        topLeft: LatLng(85.0511287798, -180),
-        topRight: LatLng(85.0511287798, 0),
-        bottomRight: LatLng(0, 0),
-        bottomLeft: LatLng(0, -180),
-      )),
-      _ReliefQuadrant('ne', const LatLngQuad(
-        topLeft: LatLng(85.0511287798, 0),
-        topRight: LatLng(85.0511287798, 180),
-        bottomRight: LatLng(0, 180),
-        bottomLeft: LatLng(0, 0),
-      )),
-      _ReliefQuadrant('sw', const LatLngQuad(
-        topLeft: LatLng(0, -180),
-        topRight: LatLng(0, 0),
-        bottomRight: LatLng(-85.0511287798, 0),
-        bottomLeft: LatLng(-85.0511287798, -180),
-      )),
-      _ReliefQuadrant('se', const LatLngQuad(
-        topLeft: LatLng(0, 0),
-        topRight: LatLng(0, 180),
-        bottomRight: LatLng(-85.0511287798, 180),
-        bottomLeft: LatLng(-85.0511287798, 0),
-      )),
+      _ReliefQuadrant(
+        'nw',
+        const LatLngQuad(
+          topLeft: LatLng(85.0511287798, -180),
+          topRight: LatLng(85.0511287798, 0),
+          bottomRight: LatLng(0, 0),
+          bottomLeft: LatLng(0, -180),
+        ),
+      ),
+      _ReliefQuadrant(
+        'ne',
+        const LatLngQuad(
+          topLeft: LatLng(85.0511287798, 0),
+          topRight: LatLng(85.0511287798, 180),
+          bottomRight: LatLng(0, 180),
+          bottomLeft: LatLng(0, 0),
+        ),
+      ),
+      _ReliefQuadrant(
+        'sw',
+        const LatLngQuad(
+          topLeft: LatLng(0, -180),
+          topRight: LatLng(0, 0),
+          bottomRight: LatLng(-85.0511287798, 0),
+          bottomLeft: LatLng(-85.0511287798, -180),
+        ),
+      ),
+      _ReliefQuadrant(
+        'se',
+        const LatLngQuad(
+          topLeft: LatLng(0, 0),
+          topRight: LatLng(0, 180),
+          bottomRight: LatLng(-85.0511287798, 180),
+          bottomLeft: LatLng(-85.0511287798, 0),
+        ),
+      ),
     ];
     late final List<Uint8List> bytes;
     try {
@@ -71,7 +83,15 @@ class ReliefBasemap {
             sourceId,
             ImageSourceProperties(
               url: 'data:image/jpeg;base64,${base64Encode(imageBytes)}',
-              coordinates: quadrant.coordinates.toList(),
+              coordinates: [
+                for (final corner in [
+                  quadrant.coordinates.topLeft,
+                  quadrant.coordinates.topRight,
+                  quadrant.coordinates.bottomRight,
+                  quadrant.coordinates.bottomLeft,
+                ])
+                  [corner.longitude, corner.latitude],
+              ],
             ),
           );
         } else {

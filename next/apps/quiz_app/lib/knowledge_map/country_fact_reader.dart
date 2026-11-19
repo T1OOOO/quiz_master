@@ -126,8 +126,9 @@ Map<String, List<MapInterestingFact>> countryReadingLists(
         }
         // Two accounts of one tradition can enter via different catalogues.
         final source = fact.source.toString().replaceFirst(RegExp(r'/$'), '');
-        if (pages.contains(source) || !sourcedTopics.add((source, en)))
+        if (pages.contains(source) || !sourcedTopics.add((source, en))) {
           continue;
+        }
         seenRu.add(fact.textRu);
         seenEn.add(fact.textEn);
         stories.add(fact);
