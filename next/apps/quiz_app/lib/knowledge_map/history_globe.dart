@@ -332,66 +332,71 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
               onPointerPanZoomStart: (_) => _startZoom = _zoom,
               onPointerPanZoomUpdate: (d) =>
                   _panZoomUpdate(d.panDelta, d.scale),
-              child: GestureDetector(
-                // Native trackpad streams are handled by the Listener above.
-                supportedDevices: const {
-                  PointerDeviceKind.touch,
-                  PointerDeviceKind.mouse,
-                  PointerDeviceKind.stylus,
-                  PointerDeviceKind.invertedStylus,
-                },
+              child: RawGestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onScaleStart: (_) => _startZoom = _zoom,
-                onScaleUpdate: (details) =>
-                    _panZoomUpdate(details.focalPointDelta, details.scale),
-                onTapUp: (details) {
-                  final point = details.localPosition;
-                  String? selection;
-                  if ((point - scene.center).distance <= scene.radius) {
-                    for (final polity in scene.polities.reversed) {
-                      if (polity.$2.contains(point)) {
-                        selection = polity.$1;
-                        break;
+                gestures: {
+                  _GlobeScaleRecognizer:
+                      GestureRecognizerFactoryWithHandlers<
+                        _GlobeScaleRecognizer
+                      >(_GlobeScaleRecognizer.new, (recognizer) {
+                        recognizer.onStart = (_) => _startZoom = _zoom;
+                        recognizer.onUpdate = (details) => _panZoomUpdate(
+                          details.focalPointDelta,
+                          details.scale,
+                        );
+                      }),
+                },
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTapUp: (details) {
+                    final point = details.localPosition;
+                    String? selection;
+                    if ((point - scene.center).distance <= scene.radius) {
+                      for (final polity in scene.polities.reversed) {
+                        if (polity.$2.contains(point)) {
+                          selection = polity.$1;
+                          break;
+                        }
                       }
                     }
-                  }
-                  setState(() => _selected = selection);
-                  widget.onSelect(selection);
-                },
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ClipRect(
-                      child: CustomPaint(
-                        painter: _GlobePainter(scene, _selected),
-                        size: Size.infinite,
-                      ),
-                    ),
-                    for (final pin in widget.eventPins)
-                      if (projectGlobePoint(
-                            pin.longitude,
-                            pin.latitude,
-                            _longitude,
-                            _latitude,
-                          )
-                          case final p?)
-                        Positioned(
-                          left:
-                              scene.center.dx +
-                              p.dx * scene.radius -
-                              historyPinTarget / 2,
-                          top:
-                              scene.center.dy +
-                              p.dy * scene.radius -
-                              historyPinTarget / 2,
-                          width: historyPinTarget,
-                          height: historyPinTarget,
-                          child: historyPinWidget(
-                            pin,
-                            () => widget.onEventTap?.call(pin),
-                          ),
+                    setState(() => _selected = selection);
+                    widget.onSelect(selection);
+                  },
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      ClipRect(
+                        child: CustomPaint(
+                          painter: _GlobePainter(scene, _selected),
+                          size: Size.infinite,
                         ),
-                  ],
+                      ),
+                      for (final pin in widget.eventPins)
+                        if (projectGlobePoint(
+                              pin.longitude,
+                              pin.latitude,
+                              _longitude,
+                              _latitude,
+                            )
+                            case final p?)
+                          Positioned(
+                            left:
+                                scene.center.dx +
+                                p.dx * scene.radius -
+                                historyPinTarget / 2,
+                            top:
+                                scene.center.dy +
+                                p.dy * scene.radius -
+                                historyPinTarget / 2,
+                            width: historyPinTarget,
+                            height: historyPinTarget,
+                            child: historyPinWidget(
+                              pin,
+                              () => widget.onEventTap?.call(pin),
+                            ),
+                          ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -424,6 +429,27 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
         );
       },
     );
+  }
+}
+
+// Two contacts on the map explicitly request zoom. Claim the scale gesture
+// immediately so small, deliberate pinches also move the globe.
+class _GlobeScaleRecognizer extends ScaleGestureRecognizer {
+  _GlobeScaleRecognizer()
+    : super(
+        supportedDevices: const {
+          PointerDeviceKind.touch,
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.invertedStylus,
+        },
+      );
+  @override
+  void handleEvent(PointerEvent event) {
+    super.handleEvent(event);
+    if (event is PointerDownEvent && pointerCount == 2) {
+      resolve(GestureDisposition.accepted);
+    }
   }
 }
 
