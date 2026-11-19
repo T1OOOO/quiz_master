@@ -24,32 +24,32 @@ class ReliefBasemap {
   }) async {
     final generation = ++_generation;
     final quadrants = <_ReliefQuadrant>[
-      _ReliefQuadrant('nw', const [
-        [-180, 85.0511287798],
-        [0, 85.0511287798],
-        [0, 0],
-        [-180, 0],
-      ]),
-      _ReliefQuadrant('ne', const [
-        [0, 85.0511287798],
-        [180, 85.0511287798],
-        [180, 0],
-        [0, 0],
-      ]),
-      _ReliefQuadrant('sw', const [
-        [-180, 0],
-        [0, 0],
-        [0, -85.0511287798],
-        [-180, -85.0511287798],
-      ]),
-      _ReliefQuadrant('se', const [
-        [0, 0],
-        [180, 0],
-        [180, -85.0511287798],
-        [0, -85.0511287798],
-      ]),
+      _ReliefQuadrant('nw', const LatLngQuad(
+        topLeft: LatLng(85.0511287798, -180),
+        topRight: LatLng(85.0511287798, 0),
+        bottomRight: LatLng(0, 0),
+        bottomLeft: LatLng(0, -180),
+      )),
+      _ReliefQuadrant('ne', const LatLngQuad(
+        topLeft: LatLng(85.0511287798, 0),
+        topRight: LatLng(85.0511287798, 180),
+        bottomRight: LatLng(0, 180),
+        bottomLeft: LatLng(0, 0),
+      )),
+      _ReliefQuadrant('sw', const LatLngQuad(
+        topLeft: LatLng(0, -180),
+        topRight: LatLng(0, 0),
+        bottomRight: LatLng(-85.0511287798, 0),
+        bottomLeft: LatLng(-85.0511287798, -180),
+      )),
+      _ReliefQuadrant('se', const LatLngQuad(
+        topLeft: LatLng(0, 0),
+        topRight: LatLng(0, 180),
+        bottomRight: LatLng(-85.0511287798, 180),
+        bottomLeft: LatLng(-85.0511287798, 0),
+      )),
     ];
-    late final List<dynamic> bytes;
+    late final List<Uint8List> bytes;
     try {
       bytes = await Future.wait(quadrants.map(_read));
     } catch (_) {
@@ -65,13 +65,13 @@ class ReliefBasemap {
       final sourceId = 'quiz-relief-${quadrant.id}';
       final layerId = 'quiz-relief-layer-${quadrant.id}';
       try {
-        final imageBytes = bytes[i] as List<int>;
+        final imageBytes = bytes[i];
         if (kIsWeb) {
           await controller.addSource(
             sourceId,
             ImageSourceProperties(
               url: 'data:image/jpeg;base64,${base64Encode(imageBytes)}',
-              coordinates: quadrant.coordinates,
+              coordinates: quadrant.coordinates.toList(),
             ),
           );
         } else {
@@ -85,11 +85,19 @@ class ReliefBasemap {
           sourceId,
           layerId,
           const RasterLayerProperties(
-            rasterOpacity: 0.52,
+            rasterOpacity: [
+              'interpolate',
+              ['linear'],
+              ['zoom'],
+              3.5,
+              0.52,
+              5.8,
+              0.0,
+            ],
             rasterFadeDuration: 250,
           ),
           belowLayerId: belowLayerId,
-          maxzoom: 5.0,
+          maxzoom: 8.0,
         );
       } catch (_) {
         // A map style may already contain the source during a hot reload.
@@ -110,5 +118,5 @@ class _ReliefQuadrant {
   const _ReliefQuadrant(this.id, this.coordinates);
 
   final String id;
-  final List<List<num>> coordinates;
+  final LatLngQuad coordinates;
 }
