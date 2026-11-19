@@ -1,0 +1,249 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+
+import '../country_labels_ru.dart';
+import 'country_number_format.dart';
+import 'country_fact_reader.dart';
+import 'map_state.dart';
+
+class CountriesBrowser extends StatefulWidget {
+  const CountriesBrowser({
+    super.key,
+    required this.countries,
+    required this.onSelect,
+    this.selectedId,
+    this.mappedIds,
+    this.flags = const {},
+    this.onClose,
+    this.readingLists = const {},
+    this.factRotation,
+  });
+
+  final List<MapCountry> countries;
+  final ValueChanged<MapCountry> onSelect;
+  final String? selectedId;
+  final VoidCallback? onClose;
+  final Map<String, List<MapInterestingFact>> readingLists;
+  final CountryFactRotation? factRotation;
+  final Set<String>? mappedIds;
+  final Map<String, dynamic> flags;
+
+  @override
+  State<CountriesBrowser> createState() => _CountriesBrowserState();
+}
+
+class _CountriesBrowserState extends State<CountriesBrowser> {
+  final localRotation = CountryFactRotation();
+  String query = '';
+  bool table = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final ru = Localizations.localeOf(context).languageCode == 'ru';
+    String tr(String en, String russian) => ru ? russian : en;
+    String name(MapCountry c) => ru ? c.nameRu : c.nameEn;
+    String number(num? value) => formatCountryNumber(value, russian: ru);
+    String capital(MapCountry c) => c.capital == null
+        ? '—'
+        : ru
+        ? russianCountryLabel(c.capital!)
+        : c.capital!;
+    final items =
+        widget.countries
+            .where(
+              (c) => [
+                c.id,
+                c.nameRu,
+                c.nameEn,
+                c.capital ?? '',
+                if (ru) capital(c),
+              ].any((s) => s.toLowerCase().contains(query)),
+            )
+            .toList()
+          ..sort((a, b) => name(a).compareTo(name(b)));
+    Widget flag(MapCountry c) {
+      final encoded = widget.flags[c.id];
+      if (encoded is! String) return const SizedBox(width: 30);
+      try {
+        return Image.memory(
+          base64Decode(encoded),
+          width: 30,
+          height: 20,
+          errorBuilder: (_, _, _) => const SizedBox(width: 30),
+        );
+      } on FormatException {
+        return const SizedBox(width: 30);
+      }
+    }
+
+    Widget countryName(MapCountry c) => Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        flag(c),
+        const SizedBox(width: 8),
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(name(c)),
+              if (widget.mappedIds != null && !widget.mappedIds!.contains(c.id))
+                Text(
+                  tr('Not on map', 'Нет на карте'),
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+            ],
+          ),
+        ),
+      ],
+    );
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 6, 4, 0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  tr('Countries', 'Страны'),
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              Text(
+                '${items.length}',
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+              if (widget.onClose != null)
+                IconButton(
+                  tooltip: tr('Close', 'Закрыть'),
+                  onPressed: widget.onClose,
+                  icon: const Icon(Icons.close),
+                ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: TextField(
+            decoration: InputDecoration(
+              labelText: tr('Search countries', 'Поиск стран'),
+              prefixIcon: const Icon(Icons.search),
+            ),
+            onChanged: (value) =>
+                setState(() => query = value.trim().toLowerCase()),
+          ),
+        ),
+        SegmentedButton<bool>(
+          segments: [
+            ButtonSegment(value: false, label: Text(tr('List', 'Список'))),
+            ButtonSegment(value: true, label: Text(tr('Table', 'Таблица'))),
+          ],
+          selected: {table},
+          onSelectionChanged: (value) => setState(() => table = value.first),
+        ),
+        if (table)
+          Text(
+            tr(
+              'Swipe sideways to see the table',
+              'Прокрутите таблицу в сторону',
+            ),
+          ),
+        if (items.isEmpty)
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(tr('No countries found', 'Страны не найдены')),
+          ),
+        if (items.isNotEmpty)
+          Expanded(
+            child: table
+                ? SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: SingleChildScrollView(
+                      child: DataTable(
+                        dataRowMaxHeight: double.infinity,
+                        showCheckboxColumn: false,
+                        columns: [
+                          DataColumn(label: Text(tr('Country', 'Страна'))),
+                          DataColumn(label: Text(tr('Capital', 'Столица'))),
+                          DataColumn(
+                            label: Text(tr('Population', 'Население')),
+                          ),
+                          DataColumn(
+                            label: Text(tr('Area, km²', 'Площадь, км²')),
+                          ),
+                        ],
+                        rows: [
+                          for (final c in items)
+                            DataRow(
+                              selected: c.id == widget.selectedId,
+                              onSelectChanged: (_) => widget.onSelect(c),
+                              cells: [
+                                DataCell(countryName(c)),
+                                DataCell(Text(capital(c))),
+                                DataCell(Text(number(c.population))),
+                                DataCell(Text(number(c.area))),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ),
+                  )
+                : ListView.builder(
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      final c = items[index];
+                      final stories =
+                          widget.readingLists[c.id] ?? c.interestingFacts;
+                      return ExpansionTile(
+                        key: ValueKey(c.id),
+                        backgroundColor: c.id == widget.selectedId
+                            ? Theme.of(context).colorScheme.secondaryContainer
+                            : null,
+                        collapsedBackgroundColor: c.id == widget.selectedId
+                            ? Theme.of(context).colorScheme.secondaryContainer
+                            : null,
+                        title: countryName(c),
+                        subtitle: Text(
+                          [
+                            if (c.capital != null) capital(c),
+                            if (c.population != null)
+                              '${number(c.population)} ${tr('people', 'чел.')}',
+                          ].join('  ·  '),
+                        ),
+                        childrenPadding: const EdgeInsets.fromLTRB(
+                          16,
+                          0,
+                          16,
+                          8,
+                        ),
+                        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (c.area != null)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: Text(
+                                '${tr('Area', 'Площадь')}: ${number(c.area)} ${tr('km²', 'км²')}',
+                              ),
+                            ),
+                          if (stories.isNotEmpty)
+                            CountryFactReader(
+                              countryId: c.id,
+                              facts: stories,
+                              russian: ru,
+                              rotation: widget.factRotation ?? localRotation,
+                            ),
+                          TextButton.icon(
+                            onPressed: () => widget.onSelect(c),
+                            icon: const Icon(Icons.map_outlined),
+                            label: Text(tr('Show on map', 'Показать на карте')),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+          ),
+      ],
+    );
+  }
+}

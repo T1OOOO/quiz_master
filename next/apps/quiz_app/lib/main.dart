@@ -10,7 +10,7 @@ import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart' show kIsWeb, defaultTargetPlatform, TargetPlatform;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -20,6 +20,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'quizipedia.dart';
 import 'question_articles.dart';
+import 'knowledge_map/knowledge_map_page.dart';
 
 part 'api_models.dart';
 part 'api_repository.dart';
@@ -32,8 +33,13 @@ part 'feedback.dart';
 part 'feedback_admin.dart';
 
 void main() => runApp(
-  const ProviderScope(
-    child: QuizApp(initialLocation: '/quizipedia', defaultLocale: Locale('ru')),
+  ProviderScope(
+    child: QuizApp(
+      initialLocation: !kIsWeb && defaultTargetPlatform == TargetPlatform.android
+          ? '/atlas/map-preview'
+          : '/quizipedia',
+      defaultLocale: const Locale('ru'),
+    ),
   ),
 );
 
@@ -155,6 +161,12 @@ GoRouter createRouter({String initialLocation = '/'}) {
   return GoRouter(
     initialLocation: initialLocation,
     routes: [
+      GoRoute(
+        path: '/atlas/map-preview',
+        builder: (context, _) => KnowledgeMapPage(
+          onExit: () => context.go('/quizipedia'),
+        ),
+      ),
       // Keep global controls below the navigator's already-owned overlay.
       ShellRoute(
         navigatorKey: contentNavigator,
@@ -168,7 +180,10 @@ GoRouter createRouter({String initialLocation = '/'}) {
           GoRoute(
             path: '/quizipedia',
             builder: (context, _) =>
-                QuizipediaPage(onExit: () => context.go('/library')),
+                QuizipediaPage(
+                  onExit: () => context.go('/library'),
+                  onOpenMap: () => context.go('/atlas/map-preview'),
+                ),
           ),
           GoRoute(path: '/study', builder: (_, _) => const StudyLibraryPage()),
           GoRoute(
