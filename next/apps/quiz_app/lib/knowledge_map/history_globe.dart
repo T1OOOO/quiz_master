@@ -2,6 +2,9 @@ import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+
+import 'history_event_symbol.dart';
 
 class GlobePolity {
   const GlobePolity({required this.name, required this.polygons});
@@ -40,12 +43,16 @@ class HistoryGlobe extends StatefulWidget {
     required this.year,
     required this.onSelect,
     this.selectedName,
+    this.eventPins = const [],
+    this.onEventTap,
   });
   final List land;
   final List<GlobePolity> polities;
   final int year;
   final ValueChanged<String?> onSelect;
   final String? selectedName;
+  final List<HistoryEventPin> eventPins;
+  final ValueChanged<HistoryEventPin>? onEventTap;
   @override
   State<HistoryGlobe> createState() => _HistoryGlobeState();
 }
@@ -89,7 +96,8 @@ class _Projected {
 }
 
 class _Scene {
-  _Scene(this.land, this.polities, this.radius, this.center);
+  _Scene(this.land, this.polities, this.radius, this.center, this.grid);
+  final Path grid;
   final Path land;
   final List<(String, Path, Color)> polities;
   final double radius;
@@ -99,9 +107,15 @@ class _Scene {
 class _HistoryGlobeState extends State<HistoryGlobe> {
   late List<List<List<_Vector>>> _land;
   late List<(String, List<List<List<_Vector>>>)> _polities;
+  final _prepared = Expando<List<List<List<_Vector>>>>();
+  static final _graticule = [
+    for (double lon = -180; lon < 180; lon += 30)
+      [for (double lat = -90; lat <= 90; lat += 4) _coordinate(lon, lat)],
+    for (double lat = -60; lat <= 60; lat += 30)
+      [for (double lon = -180; lon <= 180; lon += 4) _coordinate(lon, lat)],
+  ];
   double _longitude = 15, _latitude = 30, _zoom = 1;
   double _startZoom = 1;
-  Offset? _lastFocal;
   String? _selected;
   _Scene? _scene;
   Size? _sceneSize;
@@ -114,9 +128,10 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
   }
 
   void _prepareData() {
-    _land = _prepare(widget.land);
+    _land = _prepared[widget.land] ??= _prepare(widget.land);
     _polities = [
-      for (final p in widget.polities) (p.name, _prepare(p.polygons)),
+      for (final p in widget.polities)
+        (p.name, _prepared[p.polygons] ??= _prepare(p.polygons)),
     ];
     _scene = null;
   }
@@ -142,6 +157,33 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
     _zoom = value.clamp(1, 3);
     _invalidate();
   });
+
+  void _onPointerSignal(PointerSignalEvent event) {
+    if (event is! PointerScrollEvent) return;
+    // Browsers report wheel deltas in logical pixels.  Keep the response
+    // deliberately small so a trackpad does not jump across the globe.
+    final amount = event.scrollDelta.dy;
+    if (amount == 0) return;
+    _changeZoom(_zoom * math.pow(0.999, amount).toDouble());
+  }
+
+  void _panZoomUpdate(Offset delta, double scale) {
+    final size = _sceneSize;
+    if (size == null || size.isEmpty) return;
+    final radius = size.shortestSide * .47 * _zoom;
+    setState(() {
+      if (delta != Offset.zero) {
+        _longitude = (_longitude - delta.dx / radius * 180 / math.pi) % 360;
+        _latitude = (_latitude + delta.dy / radius * 180 / math.pi).clamp(
+          -85,
+          85,
+        );
+      }
+      _zoom = (_startZoom * scale).clamp(1, 3);
+      _invalidate();
+    });
+  }
+
   _Scene _getScene(Size size) {
     if (_scene != null && _sceneSize == size) return _scene!;
     final radius = math.min(size.width, size.height) * 0.47 * _zoom;
@@ -236,6 +278,24 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
       Color(0xffbdd09a),
       Color(0xffd5a69a),
     ];
+    final grid = Path();
+    for (final arc in _graticule) {
+      var first = true;
+      for (final v in arc) {
+        final projected = project(v);
+        if (projected.depth < 0) {
+          first = true;
+          continue;
+        }
+        final screen = point(projected);
+        if (first) {
+          grid.moveTo(screen.dx, screen.dy);
+        } else {
+          grid.lineTo(screen.dx, screen.dy);
+        }
+        first = false;
+      }
+    }
     _sceneSize = size;
     return _scene = _Scene(
       geometry(_land),
@@ -252,6 +312,7 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
       ],
       radius,
       center,
+      grid,
     );
   }
 
@@ -265,46 +326,73 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
         return Stack(
           fit: StackFit.expand,
           children: [
-            GestureDetector(
+            Listener(
               behavior: HitTestBehavior.opaque,
-              onScaleStart: (details) {
-                _startZoom = _zoom;
-                _lastFocal = details.localFocalPoint;
-              },
-              onScaleUpdate: (details) {
-                final previous = _lastFocal;
-                _lastFocal = details.localFocalPoint;
-                setState(() {
-                  if (details.pointerCount == 1 && previous != null) {
-                    final delta = details.localFocalPoint - previous;
-                    _longitude =
-                        (_longitude - delta.dx / scene.radius * 180 / math.pi) %
-                        360;
-                    _latitude =
-                        (_latitude + delta.dy / scene.radius * 180 / math.pi)
-                            .clamp(-85, 85);
-                  } else if (details.pointerCount > 1) {
-                    _zoom = (_startZoom * details.scale).clamp(1, 3);
-                  }
-                  _invalidate();
-                });
-              },
-              onTapUp: (details) {
-                final point = details.localPosition;
-                String? selection;
-                if ((point - scene.center).distance <= scene.radius) {
-                  for (final polity in scene.polities.reversed) {
-                    if (polity.$2.contains(point)) {
-                      selection = polity.$1;
-                      break;
+              onPointerSignal: _onPointerSignal,
+              onPointerPanZoomStart: (_) => _startZoom = _zoom,
+              onPointerPanZoomUpdate: (d) =>
+                  _panZoomUpdate(d.panDelta, d.scale),
+              child: GestureDetector(
+                // Native trackpad streams are handled by the Listener above.
+                supportedDevices: const {
+                  PointerDeviceKind.touch,
+                  PointerDeviceKind.mouse,
+                  PointerDeviceKind.stylus,
+                  PointerDeviceKind.invertedStylus,
+                },
+                behavior: HitTestBehavior.opaque,
+                onScaleStart: (_) => _startZoom = _zoom,
+                onScaleUpdate: (details) =>
+                    _panZoomUpdate(details.focalPointDelta, details.scale),
+                onTapUp: (details) {
+                  final point = details.localPosition;
+                  String? selection;
+                  if ((point - scene.center).distance <= scene.radius) {
+                    for (final polity in scene.polities.reversed) {
+                      if (polity.$2.contains(point)) {
+                        selection = polity.$1;
+                        break;
+                      }
                     }
                   }
-                }
-                setState(() => _selected = selection);
-                widget.onSelect(selection);
-              },
-              child: ClipRect(
-                child: CustomPaint(painter: _GlobePainter(scene, _selected)),
+                  setState(() => _selected = selection);
+                  widget.onSelect(selection);
+                },
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ClipRect(
+                      child: CustomPaint(
+                        painter: _GlobePainter(scene, _selected),
+                        size: Size.infinite,
+                      ),
+                    ),
+                    for (final pin in widget.eventPins)
+                      if (projectGlobePoint(
+                            pin.longitude,
+                            pin.latitude,
+                            _longitude,
+                            _latitude,
+                          )
+                          case final p?)
+                        Positioned(
+                          left:
+                              scene.center.dx +
+                              p.dx * scene.radius -
+                              historyPinTarget / 2,
+                          top:
+                              scene.center.dy +
+                              p.dy * scene.radius -
+                              historyPinTarget / 2,
+                          width: historyPinTarget,
+                          height: historyPinTarget,
+                          child: historyPinWidget(
+                            pin,
+                            () => widget.onEventTap?.call(pin),
+                          ),
+                        ),
+                  ],
+                ),
               ),
             ),
             Positioned(
@@ -358,6 +446,13 @@ class _GlobePainter extends CustomPainter {
           scene.radius * 1.5,
           [const Color(0xffb7e0e1), const Color(0xff47839b)],
         ),
+    );
+    canvas.drawPath(
+      scene.grid,
+      Paint()
+        ..color = const Color(0x46346170)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = .7,
     );
     canvas.drawPath(scene.land, Paint()..color = const Color(0xffe6dfca));
     for (final polity in scene.polities) {

@@ -16,6 +16,26 @@
       "source_url": "https://www.metmuseum.org/pt/toah/ht/08/afe"
     },
     {
+      "id": "aztec_1521",
+      "start": 1521,
+      "end": 1521,
+      "countries": [
+        "MX"
+      ],
+      "kind": "war",
+      "title_ru": "Падение Теночтитлана",
+      "title_en": "Fall of Tenochtitlan",
+      "summary_ru": "После осады Теночтитлан был взят испанскими войсками и союзниками тлашкальцев.",
+      "summary_en": "Tenochtitlan fell after a siege by Spanish forces and Tlaxcalan allies.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/americas",
+      "location": [
+        -99.13,
+        19.43
+      ],
+      "place_ru": "Теночтитлан (Мехико)",
+      "place_en": "Tenochtitlan (Mexico City)"
+    },
+    {
       "id": "mughal",
       "start": 1526,
       "end": 1526,
@@ -27,7 +47,49 @@
       "title_en": "Mughal Empire founded",
       "summary_ru": "Бабур победил при Панипате и заложил новую империю в Южной Азии.",
       "summary_en": "Babur won at Panipat and founded a new empire in South Asia.",
-      "source_url": "https://www.metmuseum.org/ko/toah/ht/08/ssa"
+      "source_url": "https://www.metmuseum.org/ko/toah/ht/08/ssa",
+      "location": [
+        76.97,
+        29.39
+      ],
+      "place_ru": "Панипат",
+      "place_en": "Panipat"
+    },
+    {
+      "id": "inca_conquest_1533",
+      "start": 1533,
+      "end": 1533,
+      "countries": [
+        "PE",
+        "ES"
+      ],
+      "kind": "war",
+      "title_ru": "Падение Куско",
+      "title_en": "Fall of Cusco",
+      "summary_ru": "Испанские силы заняли Куско после пленения Атауальпы и разгрома Инкской империи.",
+      "summary_en": "Spanish forces occupied Cusco after capturing Atahualpa and defeating the Inca Empire.",
+      "location": [
+        -71.97,
+        -13.52
+      ],
+      "place_ru": "Куско",
+      "place_en": "Cusco",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/americas"
+    },
+    {
+      "id": "ethiopia_portugal_1543",
+      "start": 1543,
+      "end": 1543,
+      "countries": [
+        "ET",
+        "PT"
+      ],
+      "kind": "war",
+      "title_ru": "Битва при Вайне-Дага",
+      "title_en": "Battle of Wayna Daga",
+      "summary_ru": "Эфиопско-португальские силы победили войска Адаля в борьбе за Эфиопское нагорье.",
+      "summary_en": "Ethiopian and Portuguese forces defeated Adal armies in the struggle for the Ethiopian highlands.",
+      "source_url": "https://www.britannica.com/event/Ethiopian-Adal-war"
     },
     {
       "id": "science",
@@ -36,12 +98,58 @@
       "countries": [
         "DE"
       ],
-      "kind": "event",
+      "kind": "science",
       "title_ru": "Коперник публикует гелиоцентрическую модель",
       "title_en": "Copernicus publishes heliocentrism",
       "summary_ru": "Книга Коперника предложила модель с Солнцем в центре планетной системы.",
       "summary_en": "Copernicus's book proposed a Sun-centred model of the planetary system.",
-      "source_url": "https://www.loc.gov/exhibits/exploring-the-early-americas/documenting-new-knowledge.html"
+      "source_url": "https://www.loc.gov/exhibits/exploring-the-early-americas/documenting-new-knowledge.html",
+      "location": [
+        11.08,
+        49.45
+      ],
+      "place_ru": "Нюрнберг, место издания",
+      "place_en": "Nuremberg, publication city"
+    },
+    {
+      "id": "cocoliztli_mexico_1545",
+      "start": 1545,
+      "end": 1550,
+      "countries": [
+        "MX"
+      ],
+      "kind": "epidemic",
+      "title_ru": "Эпидемия коколистли в Мексике",
+      "title_en": "Cocoliztli epidemic in Mexico",
+      "summary_ru": "Во время эпидемии, известной как «коколистли», погибли многие жители Мексики. Одно из археологических свидетельств сохранилось в Тепосколула-Юкундаа, на территории нынешнего штата Оахака.",
+      "summary_en": "The epidemic known as cocoliztli killed many people in Mexico. One archaeological record survives at Teposcolula-Yucundaa, in present-day Oaxaca.",
+      "location": [
+        -97.48,
+        17.51
+      ],
+      "place_ru": "Тепосколула, Оахака",
+      "place_en": "Teposcolula, Oaxaca",
+      "source_url": "https://www.nature.com/articles/s41559-017-0446-6"
+    },
+    {
+      "id": "potosi_silver_1545",
+      "start": 1545,
+      "end": 1545,
+      "countries": [
+        "BO"
+      ],
+      "kind": "event",
+      "title_ru": "Начало серебряного бума в Потоси",
+      "title_en": "The Potosí silver boom begins",
+      "summary_ru": "Богатое месторождение Серро-Рико стало центром добычи серебра в Андах. Рядом с рудниками вырос город Потоси.",
+      "summary_en": "The silver deposits of Cerro Rico became a centre of Andean mining. The city of Potosí grew beside the mines.",
+      "source_url": "https://whc.unesco.org/document/137881",
+      "location": [
+        -65.75,
+        -19.62
+      ],
+      "place_ru": "Серро-Рико",
+      "place_en": "Cerro Rico"
     },
     {
       "id": "suleymaniye_1550",
@@ -50,12 +158,158 @@
       "countries": [
         "TR"
       ],
-      "kind": "event",
+      "kind": "culture",
       "title_ru": "Строительство мечети Сулеймание",
       "title_en": "Construction of the Süleymaniye Mosque",
       "summary_ru": "В Стамбуле по проекту архитектора Синана построили комплекс мечети Сулеймание.",
       "summary_en": "The Süleymaniye Mosque complex was built in Istanbul to a design by architect Sinan.",
-      "source_url": "https://whc.unesco.org/pg.cfm?cid=31&id_site=356"
+      "source_url": "https://whc.unesco.org/pg.cfm?cid=31&id_site=356",
+      "location": [
+        28.964,
+        41.016
+      ],
+      "place_ru": "Стамбул",
+      "place_en": "Istanbul"
+    },
+    {
+      "id": "lima_1551",
+      "start": 1551,
+      "end": 1551,
+      "countries": [
+        "PE"
+      ],
+      "kind": "event",
+      "title_ru": "Основание университета Сан-Маркос",
+      "title_en": "San Marcos University founded",
+      "summary_ru": "В Лиме основан университет Сан-Маркос, старейший действующий университет Америк.",
+      "summary_en": "San Marcos University was founded in Lima, the oldest continuously operating university in the Americas.",
+      "source_url": "https://www.unmsm.edu.pe/la-universidad/historia",
+      "location": [
+        -77.04,
+        -12.05
+      ],
+      "place_ru": "Лима",
+      "place_en": "Lima"
+    },
+    {
+      "id": "mughal_panipat_1556",
+      "start": 1556,
+      "end": 1556,
+      "countries": [
+        "IN"
+      ],
+      "kind": "war",
+      "title_ru": "Вторая битва при Панипате",
+      "title_en": "Second Battle of Panipat",
+      "summary_ru": "Победа Акбара укрепила власть Великих Моголов в Северной Индии.",
+      "summary_en": "Akbar’s victory consolidated Mughal rule in northern India.",
+      "location": [
+        76.97,
+        29.39
+      ],
+      "place_ru": "Панипат",
+      "place_en": "Panipat",
+      "source_url": "https://www.britannica.com/event/second-battle-of-Panipat"
+    },
+    {
+      "id": "vientiane_capital",
+      "start": 1560,
+      "end": 1560,
+      "countries": [
+        "LA"
+      ],
+      "kind": "event",
+      "title_ru": "Столица Лансанга переезжает во Вьентьян",
+      "title_en": "Lan Xang moves its capital to Vientiane",
+      "summary_ru": "Правители Лансанга перенесли столицу из Луангпхабанга во Вьентьян. Новый центр находился дальше от бирманских войск.",
+      "summary_en": "The rulers of Lan Xang moved the capital from Luang Prabang to Vientiane, farther from the Burmese armies.",
+      "source_url": "https://whc.unesco.org/document/153552",
+      "location": [
+        102.61,
+        17.97
+      ],
+      "place_ru": "Вьентьян",
+      "place_en": "Vientiane"
+    },
+    {
+      "id": "manila_galleon_1565",
+      "start": 1565,
+      "end": 1565,
+      "countries": [
+        "PH",
+        "ES",
+        "MX"
+      ],
+      "kind": "exploration",
+      "title_ru": "Обратный путь через Тихий океан",
+      "title_en": "An eastward passage across the Pacific",
+      "summary_ru": "Корабль с Андресом де Урданетой прошёл от Себу до Акапулько через северную часть Тихого океана. Маршрут стал основой галеонной торговли между Филиппинами и Мексикой.",
+      "summary_en": "Andrés de Urdaneta sailed from Cebu to Acapulco via the North Pacific. This eastbound route underpinned the later galleon trade between the Philippines and Mexico.",
+      "location": [
+        -99.9,
+        16.85
+      ],
+      "place_ru": "Акапулько, порт прибытия",
+      "place_en": "Acapulco, port of arrival",
+      "source_url": "https://www.metmuseum.org/essays/the-manila-galleon-trade-1565-1815"
+    },
+    {
+      "id": "lepanto_1571",
+      "start": 1571,
+      "end": 1571,
+      "countries": [
+        "TR",
+        "ES",
+        "IT"
+      ],
+      "kind": "war",
+      "title_ru": "Битва при Лепанто",
+      "title_en": "Battle of Lepanto",
+      "summary_ru": "Флот Священной лиги победил османский флот в крупном морском сражении у Лепанто.",
+      "summary_en": "The fleet of the Holy League defeated the Ottoman fleet at Lepanto.",
+      "source_url": "https://www.britannica.com/event/Battle-of-Lepanto"
+    },
+    {
+      "id": "vigan_1572",
+      "start": 1572,
+      "end": 1572,
+      "countries": [
+        "PH",
+        "ES"
+      ],
+      "kind": "event",
+      "title_ru": "Испанцы основывают город на месте Вигана",
+      "title_en": "A Spanish colonial town is founded at Vigan",
+      "summary_ru": "На месте существующего поселения Хуан де Сальседо основал Вилья-Фернандину. В планировке современного Вигана сохранились следы колониального города.",
+      "summary_en": "Juan de Salcedo founded Villa Ferdinandina on the site of an existing settlement. Its colonial street pattern survives in Vigan.",
+      "source_url": "https://whc.unesco.org/uploads/nominations/502rev.pdf",
+      "location": [
+        120.39,
+        17.57
+      ],
+      "place_ru": "Виган",
+      "place_en": "Vigan"
+    },
+    {
+      "id": "roanoke_1587",
+      "start": 1587,
+      "end": 1587,
+      "countries": [
+        "US",
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Колония Роанок",
+      "title_en": "Roanoke colony",
+      "summary_ru": "Английская экспедиция основала поселение на острове Роанок, известное как «затерянная колония».",
+      "summary_en": "An English expedition founded the Roanoke settlement, later known as the lost colony.",
+      "source_url": "https://www.nps.gov/fora/learn/historyculture/index.htm",
+      "location": [
+        -75.71,
+        35.94
+      ],
+      "place_ru": "Остров Роанок",
+      "place_en": "Roanoke Island"
     },
     {
       "id": "songhai_1591",
@@ -73,11 +327,120 @@
       "source_url": "https://www.metmuseum.org/ko/exhibitions/sahel-art-empire-sahara/inside-the-exhibition"
     },
     {
+      "id": "japan_korea_1592",
+      "start": 1592,
+      "end": 1598,
+      "countries": [
+        "JP",
+        "KR",
+        "CN"
+      ],
+      "kind": "war",
+      "title_ru": "Имдинская война",
+      "title_en": "Imjin War",
+      "summary_ru": "Войска Японии вторглись в Корею, которой помогла армия Минского Китая.",
+      "summary_en": "Japan invaded Korea, which was aided by Ming China.",
+      "location": [
+        126.98,
+        37.57
+      ],
+      "place_ru": "Сеул",
+      "place_en": "Seoul",
+      "source_url": "https://www.britannica.com/event/Imjin-War"
+    },
+    {
+      "id": "isfahan_capital",
+      "start": 1598,
+      "end": 1598,
+      "countries": [
+        "IR"
+      ],
+      "kind": "culture",
+      "title_ru": "Исфахан становится столицей Сефевидов",
+      "title_en": "Isfahan becomes the Safavid capital",
+      "summary_ru": "Шах Аббас перенёс столицу в Исфахан. Площадь Накш-е Джахан стала центром ансамбля дворцов, мечетей и торговых рядов.",
+      "summary_en": "Shah Abbas made Isfahan his capital. Naqsh-e Jahan Square became the centre of a complex of palaces, mosques and markets.",
+      "source_url": "https://whc.unesco.org/document/218274",
+      "location": [
+        51.68,
+        32.66
+      ],
+      "place_ru": "Исфахан",
+      "place_en": "Isfahan"
+    },
+    {
+      "id": "tokugawa_1600",
+      "start": 1600,
+      "end": 1600,
+      "countries": [
+        "JP"
+      ],
+      "kind": "war",
+      "title_ru": "Битва при Сэкигахаре",
+      "title_en": "Battle of Sekigahara",
+      "summary_ru": "Победа Токугава Иэясу открыла путь к объединению Японии и сёгунату Токугава.",
+      "summary_en": "Tokugawa Ieyasu’s victory opened the way to unification and the Tokugawa shogunate.",
+      "source_url": "https://www.britannica.com/event/battle-of-Sekigahara",
+      "location": [
+        136.47,
+        35.37
+      ],
+      "place_ru": "Сэкигахара",
+      "place_en": "Sekigahara"
+    },
+    {
+      "id": "edo_1603",
+      "start": 1603,
+      "end": 1603,
+      "countries": [
+        "JP"
+      ],
+      "kind": "event",
+      "title_ru": "Начало сёгуната Токугава",
+      "title_en": "Tokugawa shogunate begins",
+      "summary_ru": "Токугава Иэясу получил титул сёгуна и установил политический порядок эпохи Эдо.",
+      "summary_en": "Tokugawa Ieyasu became shogun and established the Edo political order.",
+      "location": [
+        139.69,
+        35.68
+      ],
+      "place_ru": "Эдо (Токио)",
+      "place_en": "Edo (Tokyo)",
+      "source_url": "https://www.britannica.com/event/Tokugawa-period"
+    },
+    {
+      "id": "jamestown_1607",
+      "start": 1607,
+      "end": 1607,
+      "countries": [
+        "US",
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Основание Джеймстауна",
+      "title_en": "Jamestown founded",
+      "summary_ru": "Английские поселенцы основали Джеймстаун, первое постоянное английское поселение в Северной Америке.",
+      "summary_en": "English settlers founded Jamestown, the first permanent English settlement in North America.",
+      "source_url": "https://www.nps.gov/jame/learn/historyculture/a-short-history-of-jamestown.htm",
+      "location": [
+        -76.78,
+        37.21
+      ],
+      "place_ru": "Джеймстаун",
+      "place_en": "Jamestown"
+    },
+    {
       "id": "thirty_years_war",
       "start": 1618,
       "end": 1648,
       "countries": [
-        "DE"
+        "DE",
+        "CZ",
+        "AT",
+        "FR",
+        "SE",
+        "ES",
+        "DK"
       ],
       "kind": "war",
       "title_ru": "Тридцатилетняя война",
@@ -85,6 +448,114 @@
       "summary_ru": "Вооружённые конфликты в Священной Римской империи и Европе продолжались с 1618 по 1648 год.",
       "summary_en": "Armed conflicts in the Holy Roman Empire and Europe continued from 1618 to 1648.",
       "source_url": "https://www.dhm.de/en/exhibitions/permanent-exhibition/reformation-and-the-thirty-years-war/"
+    },
+    {
+      "id": "mayflower_1620",
+      "start": 1620,
+      "end": 1620,
+      "countries": [
+        "US",
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Прибытие «Мэйфлауэра»",
+      "title_en": "Mayflower arrival",
+      "summary_ru": "Пилигримы с «Мэйфлауэра» основали колонию Плимут в Новой Англии.",
+      "summary_en": "Pilgrims aboard the Mayflower established Plymouth Colony in New England.",
+      "source_url": "https://en.wikipedia.org/wiki/Mayflower"
+    },
+    {
+      "id": "pilgrim_fathers_1620",
+      "start": 1620,
+      "end": 1620,
+      "countries": [
+        "US",
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Пакт «Мэйфлауэра»",
+      "title_en": "Mayflower Compact",
+      "summary_ru": "Поселенцы договорились о правилах самоуправления перед основанием Плимута.",
+      "summary_en": "Settlers agreed rules of self-government before founding Plymouth.",
+      "source_url": "https://en.wikipedia.org/wiki/Mayflower_Compact"
+    },
+    {
+      "id": "safavid_baghdad_1623",
+      "start": 1623,
+      "end": 1624,
+      "countries": [
+        "IR",
+        "IQ",
+        "TR"
+      ],
+      "kind": "war",
+      "title_ru": "Захват Багдада Сефевидами",
+      "title_en": "Safavid capture of Baghdad",
+      "summary_ru": "Шах Аббас I вернул Багдад Сефевидскому государству в борьбе с Османской империей.",
+      "summary_en": "Shah Abbas I recovered Baghdad for the Safavid state from the Ottomans.",
+      "source_url": "https://www.britannica.com/place/Iraq/History",
+      "location": [
+        44.37,
+        33.31
+      ],
+      "place_ru": "Багдад",
+      "place_en": "Baghdad"
+    },
+    {
+      "id": "plague_milan_1629",
+      "start": 1629,
+      "end": 1630,
+      "countries": [
+        "IT"
+      ],
+      "kind": "epidemic",
+      "title_ru": "Чума в Милане",
+      "title_en": "Plague in Milan",
+      "summary_ru": "В миланских записях о смертях сохранились следы чумы уже осенью 1629 года. Следующим летом город пережил особенно тяжёлую вспышку.",
+      "summary_en": "Milanese death records show plague was present in autumn 1629. An especially severe outbreak followed the next summer.",
+      "location": [
+        9.19,
+        45.46
+      ],
+      "place_ru": "Милан",
+      "place_en": "Milan",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/39282547/"
+    },
+    {
+      "id": "dutch_brazil_1630",
+      "start": 1630,
+      "end": 1654,
+      "countries": [
+        "BR",
+        "NL",
+        "PT"
+      ],
+      "kind": "war",
+      "title_ru": "Голландское правление в Бразилии",
+      "title_en": "Dutch Brazil",
+      "summary_ru": "Нидерландская Вест-Индская компания захватила часть северо-востока Бразилии, но была изгнана Португалией.",
+      "summary_en": "The Dutch West India Company seized northeast Brazil before Portuguese restoration.",
+      "source_url": "https://www.britannica.com/place/Brazil/History"
+    },
+    {
+      "id": "taj_mahal_1632",
+      "start": 1632,
+      "end": 1653,
+      "countries": [
+        "IN"
+      ],
+      "kind": "culture",
+      "title_ru": "Строительство Тадж-Махала",
+      "title_en": "Taj Mahal built",
+      "summary_ru": "Шах-Джахан построил мавзолей в Агре в память о Мумтаз-Махал.",
+      "summary_en": "Shah Jahan built the mausoleum at Agra in memory of Mumtaz Mahal.",
+      "source_url": "https://whc.unesco.org/en/list/252/",
+      "location": [
+        78.042,
+        27.175
+      ],
+      "place_ru": "Агра",
+      "place_en": "Agra"
     },
     {
       "id": "gondar_1636",
@@ -98,7 +569,89 @@
       "title_en": "Gondar becomes a capital",
       "summary_ru": "Эфиопский император Фасилид сделал Гондэр постоянной столицей.",
       "summary_en": "Ethiopian emperor Fasilides established Gondar as a permanent capital.",
-      "source_url": "https://whc.unesco.org/en/list/19/"
+      "source_url": "https://whc.unesco.org/en/list/19/",
+      "location": [
+        37.47,
+        12.61
+      ],
+      "place_ru": "Гондэр",
+      "place_en": "Gondar"
+    },
+    {
+      "id": "patan_1637",
+      "start": 1637,
+      "end": 1637,
+      "countries": [
+        "NP"
+      ],
+      "kind": "culture",
+      "title_ru": "Освящение храма Кришны в Патане",
+      "title_en": "Consecration of the Krishna temple at Patan",
+      "summary_ru": "Царь Сиддхи Нарасимха Малла освятил каменный храм Кришны на дворцовой площади. Башни храма напоминают об индийской традиции шикхара.",
+      "summary_en": "King Siddhi Narasimha Malla consecrated the stone Krishna temple on the palace square. Its towers reflect the Indian shikhara tradition.",
+      "source_url": "https://whc.unesco.org/document/180606",
+      "location": [
+        85.32,
+        27.67
+      ],
+      "place_ru": "Патан",
+      "place_en": "Patan"
+    },
+    {
+      "id": "galle_1640",
+      "start": 1640,
+      "end": 1640,
+      "countries": [
+        "LK",
+        "NL",
+        "PT"
+      ],
+      "kind": "war",
+      "title_ru": "Голландцы захватывают форт Галле",
+      "title_en": "The Dutch capture Galle Fort",
+      "summary_ru": "В марте голландские войска захватили у португальцев форт на юге Цейлона. Впоследствии его укрепления расширили.",
+      "summary_en": "In March, Dutch forces took the fort in southern Ceylon from the Portuguese. Its fortifications were subsequently expanded.",
+      "source_url": "https://whc.unesco.org/document/135152",
+      "location": [
+        80.22,
+        6.03
+      ],
+      "place_ru": "Галле",
+      "place_en": "Galle"
+    },
+    {
+      "id": "shalamar_gardens",
+      "start": 1641,
+      "end": 1642,
+      "countries": [
+        "PK"
+      ],
+      "kind": "culture",
+      "title_ru": "Создание садов Шалимар в Лахоре",
+      "title_en": "The Shalamar Gardens take shape in Lahore",
+      "summary_ru": "По приказу Шах-Джахана в Лахоре разбили сады на террасах. Бассейны и водные каналы связали уровни сада в единый ансамбль.",
+      "summary_en": "Shah Jahan commissioned terraced gardens at Lahore. Pools and water channels connected the garden levels.",
+      "source_url": "https://whc.unesco.org/document/221560",
+      "location": [
+        74.38,
+        31.59
+      ],
+      "place_ru": "Лахор",
+      "place_en": "Lahore"
+    },
+    {
+      "id": "english_civil_war",
+      "start": 1642,
+      "end": 1651,
+      "countries": [
+        "GB"
+      ],
+      "kind": "war",
+      "title_ru": "Гражданские войны в Англии",
+      "title_en": "English Civil Wars",
+      "summary_ru": "Парламентские силы победили сторонников короля, а Карл I был казнён.",
+      "summary_en": "Parliamentarian forces defeated the royalists and Charles I was executed.",
+      "source_url": "https://www.parliament.uk/about/living-heritage/evolutionofparliament/"
     },
     {
       "id": "qing_1644",
@@ -112,35 +665,96 @@
       "title_en": "Ming–Qing transition",
       "summary_ru": "Маньчжуры заняли Пекин и утвердили династию Цин после падения власти Мин.",
       "summary_en": "Manchu forces occupied Beijing and established Qing rule after the fall of Ming authority.",
-      "source_url": "https://www.metmuseum.org/fr/press-releases/dreams-of-yellow-mountain--landscapes-of-survival-in-seventeenthcentury-china-2003-exhibitions"
+      "source_url": "https://www.metmuseum.org/fr/press-releases/dreams-of-yellow-mountain--landscapes-of-survival-in-seventeenthcentury-china-2003-exhibitions",
+      "location": [
+        116.39,
+        39.91
+      ],
+      "place_ru": "Пекин",
+      "place_en": "Beijing"
     },
     {
       "id": "westphalia",
       "start": 1648,
       "end": 1648,
       "countries": [
-        "DE"
+        "DE",
+        "FR",
+        "NL",
+        "SE"
       ],
-      "kind": "event",
+      "kind": "treaty",
       "title_ru": "Вестфальский мир",
       "title_en": "Peace of Westphalia",
       "summary_ru": "Договоры в Мюнстере и Оснабрюке завершили Тридцатилетнюю войну.",
       "summary_en": "Treaties in Münster and Osnabrück ended the Thirty Years’ War.",
-      "source_url": "https://www.smb.museum/en/exhibitions/detail/impressions-of-the-thirty-years-war/"
+      "source_url": "https://www.smb.museum/en/exhibitions/detail/impressions-of-the-thirty-years-war/",
+      "location": [
+        7.63,
+        51.96
+      ],
+      "place_ru": "Мюнстер, один из двух городов переговоров",
+      "place_en": "Münster, one of the two negotiating cities"
     },
     {
-      "id": "taj_mahal_1653",
-      "start": 1653,
-      "end": 1653,
+      "id": "plague_london_1665",
+      "start": 1665,
+      "end": 1666,
       "countries": [
-        "IN"
+        "GB"
       ],
-      "kind": "event",
-      "title_ru": "Завершение комплекса Тадж-Махала",
-      "title_en": "Completion of the Taj Mahal complex",
-      "summary_ru": "После завершения мавзолея к 1653 году были закончены дополнительные сооружения комплекса в Агре.",
-      "summary_en": "After the mausoleum was completed, additional buildings of the Agra complex were finished by 1653.",
-      "source_url": "https://whc.unesco.org/en/list/252/"
+      "kind": "epidemic",
+      "title_ru": "Великая чума Лондона",
+      "title_en": "Great Plague of London",
+      "summary_ru": "В 1665 году чума широко распространилась в Лондоне, после чего город ввёл карантинные меры.",
+      "summary_en": "Plague spread widely through London in 1665, prompting quarantine measures.",
+      "location": [
+        -0.13,
+        51.51
+      ],
+      "place_ru": "Лондон",
+      "place_en": "London",
+      "source_url": "https://www.londonmuseum.org.uk/collections/london-stories/myths-great-fire-london/"
+    },
+    {
+      "id": "great_fire_london_1666",
+      "start": 1666,
+      "end": 1666,
+      "countries": [
+        "GB"
+      ],
+      "kind": "disaster",
+      "title_ru": "Великий пожар Лондона",
+      "title_en": "Great Fire of London",
+      "summary_ru": "Пожар уничтожил значительную часть средневекового Лондона и изменил городскую застройку.",
+      "summary_en": "The fire destroyed much of medieval London and reshaped the city.",
+      "source_url": "https://www.londonmuseum.org.uk/collections/london-stories/myths-great-fire-london/",
+      "location": [
+        -0.085,
+        51.51
+      ],
+      "place_ru": "Лондон",
+      "place_en": "London"
+    },
+    {
+      "id": "plague_vienna_1679",
+      "start": 1679,
+      "end": 1679,
+      "countries": [
+        "AT"
+      ],
+      "kind": "epidemic",
+      "title_ru": "Венская чума",
+      "title_en": "Vienna plague",
+      "summary_ru": "Крупная вспышка чумы затронула Вену и стала одной из последних больших эпидемий в Центральной Европе.",
+      "summary_en": "A major plague outbreak affected Vienna and was among central Europe’s last large epidemics.",
+      "location": [
+        16.37,
+        48.21
+      ],
+      "place_ru": "Вена",
+      "place_en": "Vienna",
+      "source_url": "https://magazin.wienmuseum.at/die-pest-in-wien-1679"
     },
     {
       "id": "newton",
@@ -149,12 +763,76 @@
       "countries": [
         "GB"
       ],
-      "kind": "event",
+      "kind": "science",
       "title_ru": "«Начала» Ньютона",
       "title_en": "Newton's Principia",
       "summary_ru": "Ньютон сформулировал законы движения и всемирного тяготения.",
       "summary_en": "Newton formulated laws of motion and universal gravitation.",
-      "source_url": "https://www.trin.cam.ac.uk/library/highlights/"
+      "source_url": "https://www.trin.cam.ac.uk/library/highlights/",
+      "location": [
+        -0.12,
+        51.51
+      ],
+      "place_ru": "Лондон, место издания",
+      "place_en": "London, publication city"
+    },
+    {
+      "id": "jamaica_earthquake_1692",
+      "start": 1692,
+      "end": 1692,
+      "countries": [
+        "JM",
+        "GB"
+      ],
+      "kind": "disaster",
+      "title_ru": "Землетрясение на Ямайке",
+      "title_en": "Jamaica earthquake",
+      "summary_ru": "Землетрясение разрушило Порт-Ройал и вызвало цунами на побережье Ямайки.",
+      "summary_en": "An earthquake destroyed Port Royal and generated a tsunami on Jamaica’s coast.",
+      "source_url": "https://en.wikipedia.org/wiki/1692_Jamaica_earthquake",
+      "location": [
+        -76.84,
+        17.94
+      ],
+      "place_ru": "Порт-Ройал",
+      "place_en": "Port Royal"
+    },
+    {
+      "id": "salem_trials_1692",
+      "start": 1692,
+      "end": 1693,
+      "countries": [
+        "US"
+      ],
+      "kind": "event",
+      "title_ru": "Судебные процессы в Салеме",
+      "title_en": "Salem witch trials",
+      "summary_ru": "Суды в Массачусетсе привели к казням обвинённых в колдовстве и стали примером массовой паники.",
+      "summary_en": "Massachusetts trials led to executions and became an example of collective panic.",
+      "source_url": "https://salemwitchmuseum.com/salem-witch-trials/",
+      "location": [
+        -70.9,
+        42.52
+      ],
+      "place_ru": "Сейлем, Массачусетс",
+      "place_en": "Salem, Massachusetts"
+    },
+    {
+      "id": "great_northern_war",
+      "start": 1700,
+      "end": 1721,
+      "countries": [
+        "RU",
+        "SE",
+        "PL",
+        "DK"
+      ],
+      "kind": "war",
+      "title_ru": "Северная война",
+      "title_en": "Great Northern War",
+      "summary_ru": "Россия и союзники победили Швецию и изменили баланс сил в Северной Европе.",
+      "summary_en": "Russia and its allies defeated Sweden and changed the balance of power in northern Europe.",
+      "source_url": "https://www.britannica.com/event/Great-Northern-War"
     },
     {
       "id": "asante_1701",
@@ -171,18 +849,242 @@
       "source_url": "https://artistproject.metmuseum.org/toah/ht/09/afg.html"
     },
     {
+      "id": "peterburg_1703",
+      "start": 1703,
+      "end": 1703,
+      "countries": [
+        "RU"
+      ],
+      "kind": "event",
+      "title_ru": "Основание Санкт-Петербурга",
+      "title_en": "Saint Petersburg founded",
+      "summary_ru": "Пётр I основал Санкт-Петербург на Неве, будущую столицу Российской империи.",
+      "summary_en": "Peter I founded Saint Petersburg on the Neva, later the capital of the Russian Empire.",
+      "source_url": "https://www.britannica.com/place/Saint-Petersburg-Russia",
+      "location": [
+        30.31,
+        59.95
+      ],
+      "place_ru": "Санкт-Петербург",
+      "place_en": "Saint Petersburg"
+    },
+    {
+      "id": "great_britain_1707",
+      "start": 1707,
+      "end": 1707,
+      "countries": [
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Образование Великобритании",
+      "title_en": "Kingdom of Great Britain formed",
+      "summary_ru": "Акт об унии объединил Англию и Шотландию в Королевство Великобритания.",
+      "summary_en": "The Acts of Union united England and Scotland as Great Britain.",
+      "source_url": "https://www.parliament.uk/about/living-heritage/evolutionofparliament/"
+    },
+    {
+      "id": "plague_marseille_1720",
+      "start": 1720,
+      "end": 1722,
+      "countries": [
+        "FR"
+      ],
+      "kind": "epidemic",
+      "title_ru": "Марсельская чума",
+      "title_en": "Great Plague of Marseille",
+      "summary_ru": "Последняя крупная эпидемия чумы в Западной Европе распространилась из Марселя по Провансу.",
+      "summary_en": "The last major plague outbreak in western Europe spread from Marseille through Provence.",
+      "source_url": "https://en.wikipedia.org/wiki/Great_Plague_of_Marseilles",
+      "location": [
+        5.37,
+        43.3
+      ],
+      "place_ru": "Марсель",
+      "place_en": "Marseille"
+    },
+    {
+      "id": "nadir_shah_delhi_1739",
+      "start": 1739,
+      "end": 1739,
+      "countries": [
+        "IR",
+        "IN"
+      ],
+      "kind": "war",
+      "title_ru": "Поход Надир-шаха на Дели",
+      "title_en": "Nader Shah’s invasion of India",
+      "summary_ru": "Надир-шах захватил Дели и вывез значительные сокровища империи Великих Моголов.",
+      "summary_en": "Nader Shah captured Delhi and carried away Mughal treasures.",
+      "source_url": "https://www.britannica.com/biography/Nader-Shah",
+      "location": [
+        77.23,
+        28.66
+      ],
+      "place_ru": "Дели",
+      "place_en": "Delhi"
+    },
+    {
+      "id": "seven_years_war",
+      "start": 1756,
+      "end": 1763,
+      "countries": [
+        "GB",
+        "FR",
+        "DE",
+        "AT",
+        "RU",
+        "CA",
+        "US"
+      ],
+      "kind": "war",
+      "title_ru": "Семилетняя война",
+      "title_en": "Seven Years’ War",
+      "summary_ru": "Конфликт охватил Европу, Северную Америку, Индию и Карибский регион.",
+      "summary_en": "The conflict spanned Europe, North America, India and the Caribbean.",
+      "source_url": "https://www.britannica.com/event/Seven-Years-War"
+    },
+    {
+      "id": "paris_treaty_1763",
+      "start": 1763,
+      "end": 1763,
+      "countries": [
+        "GB",
+        "FR",
+        "ES"
+      ],
+      "kind": "treaty",
+      "title_ru": "Парижский мир 1763 года",
+      "title_en": "Treaty of Paris 1763",
+      "summary_ru": "Договор завершил Семилетнюю войну и передал Британии значительные французские владения.",
+      "summary_en": "The treaty ended the Seven Years’ War and transferred major French possessions to Britain.",
+      "source_url": "https://history.state.gov/milestones/1750-1775/treaty-of-paris",
+      "location": [
+        2.34,
+        48.86
+      ],
+      "place_ru": "Париж",
+      "place_en": "Paris"
+    },
+    {
+      "id": "industrial_spinning_1764",
+      "start": 1764,
+      "end": 1764,
+      "countries": [
+        "GB"
+      ],
+      "kind": "science",
+      "title_ru": "Изобретение прядильной машины «Дженни»",
+      "title_en": "Spinning Jenny invented",
+      "summary_ru": "Механическая прядильная машина ускорила текстильное производство в Британии.",
+      "summary_en": "The mechanical spinning machine accelerated textile production in Britain.",
+      "source_url": "https://en.wikipedia.org/wiki/Spinning_jenny"
+    },
+    {
+      "id": "ayutthaya_1767",
+      "start": 1767,
+      "end": 1767,
+      "countries": [
+        "TH",
+        "MM"
+      ],
+      "kind": "war",
+      "title_ru": "Падение Аютии",
+      "title_en": "The fall of Ayutthaya",
+      "summary_ru": "Бирманская армия разрушила столицу сиамского царства. Жители покинули город, а остатки храмовых башен и сегодня отмечают его прежний центр.",
+      "summary_en": "The Burmese army destroyed the Siamese capital. Its inhabitants abandoned the city, whose temple towers still mark the old centre.",
+      "source_url": "https://whc.unesco.org/en/list/576/",
+      "location": [
+        100.56,
+        14.36
+      ],
+      "place_ru": "Аютия",
+      "place_en": "Ayutthaya"
+    },
+    {
+      "id": "boston_tea_1773",
+      "start": 1773,
+      "end": 1773,
+      "countries": [
+        "US",
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Бостонское чаепитие",
+      "title_en": "Boston Tea Party",
+      "summary_ru": "Протест против британского налога на чай стал символом конфликта колоний с метрополией.",
+      "summary_en": "A protest against the British tea tax became a symbol of the colonies’ conflict with Britain.",
+      "source_url": "https://www.nps.gov/articles/boston-tea-party.htm",
+      "location": [
+        -71.05,
+        42.35
+      ],
+      "place_ru": "Бостонская гавань",
+      "place_en": "Boston Harbor"
+    },
+    {
+      "id": "american_independence",
+      "start": 1775,
+      "end": 1783,
+      "countries": [
+        "US",
+        "GB"
+      ],
+      "kind": "war",
+      "title_ru": "Война за независимость США",
+      "title_en": "American Revolutionary War",
+      "summary_ru": "Тринадцать колоний добились независимости от Великобритании.",
+      "summary_en": "Thirteen colonies won independence from Great Britain.",
+      "source_url": "https://www.archives.gov/founding-docs/declaration"
+    },
+    {
       "id": "american_rev",
       "start": 1776,
       "end": 1776,
       "countries": [
         "US"
       ],
-      "kind": "event",
+      "kind": "independence",
       "title_ru": "Декларация независимости США",
       "title_en": "US Declaration of Independence",
       "summary_ru": "Тринадцать колоний заявили о независимости от Британии.",
       "summary_en": "Thirteen colonies declared independence from Britain.",
-      "source_url": "https://www.archives.gov/founding-docs/declaration"
+      "source_url": "https://www.archives.gov/founding-docs/declaration",
+      "location": [
+        -75.15,
+        39.95
+      ],
+      "place_ru": "Филадельфия",
+      "place_en": "Philadelphia"
+    },
+    {
+      "id": "maratha_mysore_1780",
+      "start": 1780,
+      "end": 1784,
+      "countries": [
+        "IN",
+        "GB"
+      ],
+      "kind": "war",
+      "title_ru": "Вторая англо-майсурская война",
+      "title_en": "Second Anglo-Mysore War",
+      "summary_ru": "Майсур под руководством Хайдара Али и Типу Султана сражался с Ост-Индской компанией.",
+      "summary_en": "Mysore under Haidar Ali and Tipu Sultan fought the East India Company.",
+      "source_url": "https://www.britannica.com/event/Anglo-Mysore-Wars"
+    },
+    {
+      "id": "tupac_amaru_1780",
+      "start": 1780,
+      "end": 1781,
+      "countries": [
+        "PE",
+        "ES"
+      ],
+      "kind": "war",
+      "title_ru": "Восстание Тупак Амару II",
+      "title_en": "Túpac Amaru II rebellion",
+      "summary_ru": "Крупнейшее восстание коренного населения против испанского колониального порядка охватило Анды.",
+      "summary_en": "A major Indigenous revolt against Spanish colonial rule spread through the Andes.",
+      "source_url": "https://www.britannica.com/biography/Tupac-Amaru-II"
     },
     {
       "id": "paris_1783",
@@ -193,12 +1095,73 @@
         "GB",
         "FR"
       ],
-      "kind": "event",
+      "kind": "treaty",
       "title_ru": "Парижский мир",
       "title_en": "Treaty of Paris",
       "summary_ru": "Договор между Великобританией и США признал независимость США; переговоры проходили в Париже.",
       "summary_en": "The treaty between Britain and the United States recognised US independence; negotiations took place in Paris.",
-      "source_url": "https://history.state.gov/milestones/1776-1783/treaty"
+      "source_url": "https://history.state.gov/milestones/1776-1783/treaty",
+      "location": [
+        2.34,
+        48.86
+      ],
+      "place_ru": "Париж",
+      "place_en": "Paris"
+    },
+    {
+      "id": "us_constitution",
+      "start": 1787,
+      "end": 1787,
+      "countries": [
+        "US"
+      ],
+      "kind": "event",
+      "title_ru": "Принятие Конституции США",
+      "title_en": "United States Constitution drafted",
+      "summary_ru": "Конституционный конвент в Филадельфии утвердил текст Конституции США.",
+      "summary_en": "The Philadelphia Convention approved the text of the US Constitution.",
+      "source_url": "https://www.archives.gov/founding-docs/constitution",
+      "location": [
+        -75.15,
+        39.95
+      ],
+      "place_ru": "Филадельфия",
+      "place_en": "Philadelphia"
+    },
+    {
+      "id": "australian_first_fleet",
+      "start": 1788,
+      "end": 1788,
+      "countries": [
+        "AU",
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Основание колонии Новый Южный Уэльс",
+      "title_en": "New South Wales founded",
+      "summary_ru": "Первая британская флотилия основала каторжную колонию в Сиднее.",
+      "summary_en": "The First Fleet established a British penal colony at Sydney.",
+      "source_url": "https://www.nma.gov.au/defining-moments/resources/first-fleet",
+      "location": [
+        151.21,
+        -33.86
+      ],
+      "place_ru": "Сиднейская бухта",
+      "place_en": "Sydney Cove"
+    },
+    {
+      "id": "french_revolution",
+      "start": 1789,
+      "end": 1799,
+      "countries": [
+        "FR"
+      ],
+      "kind": "revolution",
+      "title_ru": "Французская революция",
+      "title_en": "French Revolution",
+      "summary_ru": "Революция свергла монархию и привела к созданию республики во Франции.",
+      "summary_en": "The revolution overthrew the monarchy and led to a French republic.",
+      "source_url": "https://www.britannica.com/event/French-Revolution"
     },
     {
       "id": "haitian_revolution",
@@ -208,12 +1171,33 @@
         "HT",
         "FR"
       ],
-      "kind": "war",
+      "kind": "revolution",
       "title_ru": "Гаитянская революция",
       "title_en": "Haitian Revolution",
       "summary_ru": "Восстание порабощённых людей во французской колонии завершилось независимостью Гаити.",
       "summary_en": "An uprising of enslaved people in the French colony culminated in Haitian independence.",
       "source_url": "https://history.state.gov/milestones/1784-1800/haitian-rev"
+    },
+    {
+      "id": "polish_constitution",
+      "start": 1791,
+      "end": 1791,
+      "countries": [
+        "PL",
+        "LT"
+      ],
+      "kind": "event",
+      "title_ru": "Конституция 3 мая",
+      "title_en": "Constitution of 3 May",
+      "summary_ru": "Речь Посполитая приняла одну из первых современных писаных конституций Европы.",
+      "summary_en": "The Polish–Lithuanian Commonwealth adopted one of Europe’s first modern written constitutions.",
+      "source_url": "https://www.gov.pl/web/diplomacy/constitution-of-3-may",
+      "location": [
+        21.01,
+        52.25
+      ],
+      "place_ru": "Варшава",
+      "place_en": "Warsaw"
     },
     {
       "id": "macartney_1793",
@@ -228,7 +1212,33 @@
       "title_en": "Macartney embassy to China",
       "summary_ru": "Британское посольство прибыло ко двору Цин, но не добилось прямого торгового договора.",
       "summary_en": "A British embassy visited the Qing court but failed to secure a direct commercial treaty.",
-      "source_url": "https://www.metmuseum.org/exhibitions/listings/2013/interwoven-globe"
+      "source_url": "https://www.metmuseum.org/exhibitions/listings/2013/interwoven-globe",
+      "location": [
+        117.94,
+        40.98
+      ],
+      "place_ru": "Жэхэ (Чэндэ), место аудиенции",
+      "place_en": "Rehe (Chengde), site of the audience"
+    },
+    {
+      "id": "yellow_fever_philadelphia_1793",
+      "start": 1793,
+      "end": 1793,
+      "countries": [
+        "US"
+      ],
+      "kind": "epidemic",
+      "title_ru": "Жёлтая лихорадка в Филадельфии",
+      "title_en": "Yellow fever in Philadelphia",
+      "summary_ru": "Вспышка жёлтой лихорадки стала крупнейшим кризисом общественного здоровья в ранней истории США.",
+      "summary_en": "A yellow-fever outbreak became the largest public-health crisis in the early United States.",
+      "location": [
+        -75.17,
+        39.95
+      ],
+      "place_ru": "Филадельфия",
+      "place_en": "Philadelphia",
+      "source_url": "https://www.nps.gov/articles/000/independence-mayorscommittee.htm"
     },
     {
       "id": "algiers_us_1795",
@@ -238,15 +1248,115 @@
         "DZ",
         "US"
       ],
-      "kind": "event",
+      "kind": "treaty",
       "title_ru": "Мирный договор США и Алжира",
       "title_en": "US–Algiers peace treaty",
       "summary_ru": "Алжир признал Соединённые Штаты подписанием мирного договора 5 сентября 1795 года.",
       "summary_en": "Algiers recognised the United States by signing a peace treaty on 5 September 1795.",
-      "source_url": "https://history.state.gov/countries/algeria/recognition"
+      "source_url": "https://history.state.gov/countries/algeria/recognition",
+      "location": [
+        3.06,
+        36.78
+      ],
+      "place_ru": "Алжир",
+      "place_en": "Algiers"
+    },
+    {
+      "id": "smallpox_vaccination_1796",
+      "start": 1796,
+      "end": 1796,
+      "countries": [
+        "GB"
+      ],
+      "kind": "health",
+      "title_ru": "Первая вакцинация от оспы",
+      "title_en": "First smallpox vaccination",
+      "summary_ru": "Эдвард Дженнер продемонстрировал защиту от оспы с помощью материала коровьей оспы.",
+      "summary_en": "Edward Jenner demonstrated protection against smallpox using cowpox material.",
+      "source_url": "https://www.who.int/news-room/spotlight/history-of-vaccination/history-of-smallpox-vaccination",
+      "location": [
+        -2.46,
+        51.69
+      ],
+      "place_ru": "Беркли, Глостершир",
+      "place_en": "Berkeley, Gloucestershire"
+    },
+    {
+      "id": "union_ireland_1801",
+      "start": 1801,
+      "end": 1801,
+      "countries": [
+        "IE",
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Акт об унии Великобритании и Ирландии",
+      "title_en": "Act of Union 1801",
+      "summary_ru": "Акт объединил Королевство Ирландия с Великобританией в Соединённое Королевство.",
+      "summary_en": "The act united the Kingdom of Ireland with Great Britain in the United Kingdom.",
+      "source_url": "https://www.britannica.com/event/Act-of-Union-Great-Britain-Ireland-1800"
+    },
+    {
+      "id": "hawaii_1810",
+      "start": 1810,
+      "end": 1810,
+      "countries": [
+        "US"
+      ],
+      "kind": "event",
+      "title_ru": "Объединение Гавайских островов",
+      "title_en": "Unification of the Hawaiian Islands",
+      "summary_ru": "После серии завоеваний и соглашений Камеамеа I объединил Гавайские острова под властью одного монарха.",
+      "summary_en": "Through conquest and negotiated agreements, Kamehameha I brought the Hawaiian Islands under one monarch.",
+      "source_url": "https://www.nps.gov/puho/planyourvisit/upload/PUHO_Large_Print_Unigrid_Low-Res_.pdf"
     },
     {
       "id": "mexico_independence",
+      "start": 1810,
+      "end": 1821,
+      "countries": [
+        "MX",
+        "ES"
+      ],
+      "kind": "war",
+      "title_ru": "Война за независимость Мексики",
+      "title_en": "Mexican War of Independence",
+      "summary_ru": "Восстание в Новой Испании завершилось созданием независимой Мексики.",
+      "summary_en": "An uprising in New Spain ended with the creation of independent Mexico.",
+      "source_url": "https://www.britannica.com/event/Mexican-War-of-Independence"
+    },
+    {
+      "id": "napoleon_russia_1812",
+      "start": 1812,
+      "end": 1812,
+      "countries": [
+        "RU",
+        "FR"
+      ],
+      "kind": "war",
+      "title_ru": "Отечественная война 1812 года",
+      "title_en": "French invasion of Russia",
+      "summary_ru": "Армия Наполеона вторглась в Россию и отступила после занятия Москвы.",
+      "summary_en": "Napoleon’s army invaded Russia and retreated after occupying Moscow.",
+      "source_url": "https://www.britannica.com/event/Patriotic-War-of-1812"
+    },
+    {
+      "id": "greek_independence",
+      "start": 1821,
+      "end": 1832,
+      "countries": [
+        "GR",
+        "TR"
+      ],
+      "kind": "war",
+      "title_ru": "Греческая война за независимость",
+      "title_en": "Greek War of Independence",
+      "summary_ru": "Греция добилась независимости от Османской империи при поддержке европейских держав.",
+      "summary_en": "Greece won independence from the Ottoman Empire with European support.",
+      "source_url": "https://www.britannica.com/event/Greek-War-of-Independence"
+    },
+    {
+      "id": "mexico_independence_1810",
       "start": 1821,
       "end": 1821,
       "countries": [
@@ -264,14 +1374,221 @@
       "start": 1822,
       "end": 1822,
       "countries": [
-        "BR"
+        "BR",
+        "PT"
       ],
-      "kind": "event",
+      "kind": "independence",
       "title_ru": "Независимость Бразилии",
       "title_en": "Brazilian independence",
       "summary_ru": "Педру провозгласил независимость Бразилии 7 сентября 1822 года.",
       "summary_en": "Pedro proclaimed Brazil’s independence on 7 September 1822.",
-      "source_url": "https://history.state.gov/historicaldocuments/frus1906p1/d114"
+      "source_url": "https://history.state.gov/historicaldocuments/frus1906p1/d114",
+      "location": [
+        -46.61,
+        -23.59
+      ],
+      "place_ru": "Ипиранга, Сан-Паулу",
+      "place_en": "Ipiranga, São Paulo"
+    },
+    {
+      "id": "abolition_british_1833",
+      "start": 1833,
+      "end": 1833,
+      "countries": [
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Парламент принимает закон об отмене рабства",
+      "title_en": "Parliament passes the Slavery Abolition Act",
+      "summary_ru": "Британский парламент принял закон в 1833 году. Он вступил в силу в большинстве британских колоний в 1834 году и предусматривал переходный период принудительного труда.",
+      "summary_en": "Parliament passed the Act in 1833. It took effect across most British colonies in 1834 and imposed a transitional apprenticeship system.",
+      "source_url": "https://www.parliament.uk/about/living-heritage/transformingsociety/electionsvoting/slavery/"
+    },
+    {
+      "id": "mauritius_1834",
+      "start": 1834,
+      "end": 1834,
+      "countries": [
+        "MU",
+        "IN",
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Первые индийские рабочие по контракту на Маврикии",
+      "title_en": "Indentured migration from India to Mauritius",
+      "summary_ru": "Британские власти выбрали Маврикий для новой системы найма рабочих после отмены рабства. Порт-Луи стал одним из главных пунктов прибытия людей из Индии.",
+      "summary_en": "British authorities chose Mauritius to experiment with indentured labour after abolition. Port Louis became a major arrival point for workers from India.",
+      "source_url": "https://whc.unesco.org/en/list/1227",
+      "location": [
+        57.5,
+        -20.16
+      ],
+      "place_ru": "Порт-Луи",
+      "place_en": "Port Louis"
+    },
+    {
+      "id": "texas_revolution",
+      "start": 1835,
+      "end": 1836,
+      "countries": [
+        "US",
+        "MX"
+      ],
+      "kind": "revolution",
+      "title_ru": "Техасская революция",
+      "title_en": "Texas Revolution",
+      "summary_ru": "Техасские силы победили мексиканскую армию и провозгласили независимость.",
+      "summary_en": "Texan forces defeated the Mexican army and declared independence.",
+      "source_url": "https://en.wikipedia.org/wiki/Texas_Revolution"
+    },
+    {
+      "id": "opium_war_1839",
+      "start": 1839,
+      "end": 1842,
+      "countries": [
+        "CN",
+        "GB"
+      ],
+      "kind": "war",
+      "title_ru": "Первая опиумная война",
+      "title_en": "First Opium War",
+      "summary_ru": "Война завершилась Нанкинским договором и открытием ряда китайских портов.",
+      "summary_en": "The war ended with the Treaty of Nanking and the opening of Chinese ports.",
+      "source_url": "https://www.britannica.com/event/Opium-Wars"
+    },
+    {
+      "id": "irish_famine",
+      "start": 1845,
+      "end": 1852,
+      "countries": [
+        "IE",
+        "GB"
+      ],
+      "kind": "disaster",
+      "title_ru": "Великий голод в Ирландии",
+      "title_en": "Great Famine in Ireland",
+      "summary_ru": "Болезнь картофеля вызвала массовый голод, эмиграцию и демографический кризис.",
+      "summary_en": "Potato blight caused mass starvation, emigration and demographic crisis.",
+      "source_url": "https://en.wikipedia.org/wiki/Great_Famine_(Ireland)"
+    },
+    {
+      "id": "revolutions_1848",
+      "start": 1848,
+      "end": 1849,
+      "countries": [
+        "FR",
+        "DE",
+        "IT",
+        "AT",
+        "HU"
+      ],
+      "kind": "revolution",
+      "title_ru": "Европейские революции 1848 года",
+      "title_en": "Revolutions of 1848",
+      "summary_ru": "Восстания и реформаторские движения охватили Францию, германские и итальянские земли, Австрию и Венгрию.",
+      "summary_en": "Uprisings and reform movements swept France, German and Italian lands, Austria and Hungary.",
+      "source_url": "https://www.britannica.com/event/Revolutions-of-1848"
+    },
+    {
+      "id": "crimean_war",
+      "start": 1853,
+      "end": 1856,
+      "countries": [
+        "RU",
+        "TR",
+        "GB",
+        "FR"
+      ],
+      "kind": "war",
+      "title_ru": "Крымская война",
+      "title_en": "Crimean War",
+      "summary_ru": "Россия воевала с Османской империей и её союзниками за влияние в Причерноморье.",
+      "summary_en": "Russia fought the Ottoman Empire and its allies for influence around the Black Sea.",
+      "source_url": "https://www.britannica.com/event/Crimean-War"
+    },
+    {
+      "id": "cholera_london_1854",
+      "start": 1854,
+      "end": 1854,
+      "countries": [
+        "GB"
+      ],
+      "kind": "epidemic",
+      "title_ru": "Вспышка холеры на Брод-стрит",
+      "title_en": "Broad Street cholera outbreak",
+      "summary_ru": "Карта Джона Сноу связала случаи холеры в Сохо с заражённой водой насоса на Брод-стрит.",
+      "summary_en": "John Snow’s map linked Soho cholera cases to contaminated water from the Broad Street pump.",
+      "location": [
+        -0.14,
+        51.51
+      ],
+      "place_ru": "Сохо, Лондон",
+      "place_en": "Soho, London",
+      "source_url": "https://www.cdc.gov/mmwr/preview/mmwrhtml/mm5334a1.htm"
+    },
+    {
+      "id": "sepoy_rebellion",
+      "start": 1857,
+      "end": 1858,
+      "countries": [
+        "IN",
+        "GB"
+      ],
+      "kind": "war",
+      "title_ru": "Восстание сипаев",
+      "title_en": "Indian Rebellion of 1857",
+      "summary_ru": "Крупное восстание в Индии привело к переходу управления от Ост-Индской компании к короне.",
+      "summary_en": "A major uprising led to administration passing from the East India Company to the Crown.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/asia"
+    },
+    {
+      "id": "darwin_origin_1859",
+      "start": 1859,
+      "end": 1859,
+      "countries": [
+        "GB"
+      ],
+      "kind": "science",
+      "title_ru": "Публикация «Происхождения видов»",
+      "title_en": "On the Origin of Species published",
+      "summary_ru": "Чарльз Дарвин изложил теорию эволюции посредством естественного отбора.",
+      "summary_en": "Charles Darwin set out evolution by natural selection.",
+      "source_url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+      "location": [
+        -0.14,
+        51.51
+      ],
+      "place_ru": "Лондон, место издания",
+      "place_en": "London, publication city"
+    },
+    {
+      "id": "italy_unification",
+      "start": 1859,
+      "end": 1871,
+      "countries": [
+        "IT",
+        "AT"
+      ],
+      "kind": "war",
+      "title_ru": "Объединение Италии",
+      "title_en": "Italian unification",
+      "summary_ru": "Военные кампании и политические соглашения объединили большую часть итальянских земель.",
+      "summary_en": "Military campaigns and political agreements united most Italian lands.",
+      "source_url": "https://www.britannica.com/event/Risorgimento"
+    },
+    {
+      "id": "us_civil_war",
+      "start": 1861,
+      "end": 1865,
+      "countries": [
+        "US"
+      ],
+      "kind": "war",
+      "title_ru": "Гражданская война в США",
+      "title_en": "American Civil War",
+      "summary_ru": "Война между Союзом и Конфедерацией сохранила единство США и привела к отмене рабства.",
+      "summary_en": "The war preserved the Union and led to abolition of slavery.",
+      "source_url": "https://www.nps.gov/civilwar/index.htm"
     },
     {
       "id": "meiji",
@@ -288,6 +1605,101 @@
       "source_url": "https://www.ndl.go.jp/portrait/e/pickup/012"
     },
     {
+      "id": "suez_canal",
+      "start": 1869,
+      "end": 1869,
+      "countries": [
+        "EG",
+        "FR"
+      ],
+      "kind": "event",
+      "title_ru": "Открытие Суэцкого канала",
+      "title_en": "Suez Canal opened",
+      "summary_ru": "Канал соединил Средиземное и Красное моря и резко сократил путь между Европой и Азией.",
+      "summary_en": "The canal linked the Mediterranean and Red seas, shortening routes between Europe and Asia.",
+      "source_url": "https://en.wikipedia.org/wiki/Suez_Canal",
+      "location": [
+        32.3,
+        31.26
+      ],
+      "place_ru": "Порт-Саид, северный вход в канал",
+      "place_en": "Port Said, northern entrance to the canal"
+    },
+    {
+      "id": "franco_prussian",
+      "start": 1870,
+      "end": 1871,
+      "countries": [
+        "FR",
+        "DE"
+      ],
+      "kind": "war",
+      "title_ru": "Франко-прусская война",
+      "title_en": "Franco-Prussian War",
+      "summary_ru": "Поражение Франции ускорило объединение Германии и привело к Парижской коммуне.",
+      "summary_en": "France’s defeat accelerated German unification and was followed by the Paris Commune.",
+      "source_url": "https://www.britannica.com/event/Franco-German-War"
+    },
+    {
+      "id": "zulu_war",
+      "start": 1879,
+      "end": 1879,
+      "countries": [
+        "ZA",
+        "GB"
+      ],
+      "kind": "war",
+      "title_ru": "Англо-зулусская война",
+      "title_en": "Anglo-Zulu War",
+      "summary_ru": "Зулусское королевство нанесло британцам поражение при Изандлване, но позднее было завоёвано.",
+      "summary_en": "The Zulu kingdom defeated Britain at Isandlwana before being conquered later that year.",
+      "source_url": "https://www.britishmuseum.org/collection/galleries/africa"
+    },
+    {
+      "id": "berlin_conference",
+      "start": 1884,
+      "end": 1885,
+      "countries": [
+        "DE",
+        "GB",
+        "FR",
+        "BE",
+        "PT"
+      ],
+      "kind": "event",
+      "title_ru": "Берлинская конференция",
+      "title_en": "Berlin Conference",
+      "summary_ru": "Европейские державы согласовали правила колониального раздела Африки.",
+      "summary_en": "European powers agreed rules for colonial claims in Africa.",
+      "source_url": "https://www.britannica.com/event/Berlin-West-Africa-Conference",
+      "location": [
+        13.38,
+        52.51
+      ],
+      "place_ru": "Берлин",
+      "place_en": "Berlin"
+    },
+    {
+      "id": "cholera_pandemic_1892",
+      "start": 1892,
+      "end": 1892,
+      "countries": [
+        "DE"
+      ],
+      "kind": "epidemic",
+      "title_ru": "Эпидемия холеры в Гамбурге",
+      "title_en": "Cholera epidemic in Hamburg",
+      "summary_ru": "В августе в Гамбурге началась вспышка холеры. За несколько недель болезнь унесла жизни более восьми тысяч человек.",
+      "summary_en": "A cholera outbreak began in Hamburg in August. More than eight thousand people died within weeks.",
+      "source_url": "https://www.vfhg.de/die-cholera-in-hamburg/",
+      "location": [
+        9.99,
+        53.55
+      ],
+      "place_ru": "Гамбург",
+      "place_en": "Hamburg"
+    },
+    {
       "id": "nz_suffrage_1893",
       "start": 1893,
       "end": 1893,
@@ -299,16 +1711,119 @@
       "title_en": "Women’s suffrage in New Zealand",
       "summary_ru": "В 1893 году избирательный закон Новой Зеландии предоставил женщинам право голосовать на парламентских выборах.",
       "summary_en": "In 1893 New Zealand’s Electoral Act gave women the right to vote in parliamentary elections.",
-      "source_url": "https://nzhistory.govt.nz/womens-suffrage-day"
+      "source_url": "https://nzhistory.govt.nz/womens-suffrage-day",
+      "location": [
+        174.78,
+        -41.28
+      ],
+      "place_ru": "Веллингтон",
+      "place_en": "Wellington"
+    },
+    {
+      "id": "yellow_fever_havana_1901",
+      "start": 1901,
+      "end": 1902,
+      "countries": [
+        "CU"
+      ],
+      "kind": "health",
+      "title_ru": "Кампания против жёлтой лихорадки в Гаване",
+      "title_en": "Yellow-fever campaign in Havana",
+      "summary_ru": "Санитарная кампания в Гаване после открытия роли комаров резко сократила передачу жёлтой лихорадки.",
+      "summary_en": "A Havana sanitation campaign after recognition of mosquito transmission sharply reduced yellow fever.",
+      "location": [
+        -82.37,
+        23.11
+      ],
+      "place_ru": "Гавана",
+      "place_en": "Havana",
+      "source_url": "https://media.defense.gov/2023/Apr/21/2003205505/-1/-1/0/3266.PDF"
+    },
+    {
+      "id": "wright_flyer",
+      "start": 1903,
+      "end": 1903,
+      "countries": [
+        "US"
+      ],
+      "kind": "science",
+      "title_ru": "Первый управляемый полёт",
+      "title_en": "First powered flight",
+      "summary_ru": "Братья Райт совершили управляемый полёт на двигателе в Китти-Хок.",
+      "summary_en": "The Wright brothers made the first controlled powered flight at Kitty Hawk.",
+      "source_url": "https://www.si.edu/spotlight/air-and-space/wright-flyer",
+      "location": [
+        -75.67,
+        36.02
+      ],
+      "place_ru": "Килл-Девил-Хилс",
+      "place_en": "Kill Devil Hills"
+    },
+    {
+      "id": "russian_revolution_1905",
+      "start": 1905,
+      "end": 1907,
+      "countries": [
+        "RU"
+      ],
+      "kind": "revolution",
+      "title_ru": "Революция 1905–1907 годов",
+      "title_en": "Russian Revolution of 1905",
+      "summary_ru": "Массовые протесты вынудили Российскую империю провести политические реформы и создать Думу.",
+      "summary_en": "Mass protests forced political reforms and creation of the Duma in the Russian Empire.",
+      "source_url": "https://www.britannica.com/event/Russian-Revolution-of-1905"
+    },
+    {
+      "id": "mexican_revolution",
+      "start": 1910,
+      "end": 1920,
+      "countries": [
+        "MX"
+      ],
+      "kind": "revolution",
+      "title_ru": "Мексиканская революция",
+      "title_en": "Mexican Revolution",
+      "summary_ru": "Десятилетняя революция привела к новой конституции и земельным реформам в Мексике.",
+      "summary_en": "The decade-long revolution led to a new constitution and land reforms.",
+      "source_url": "https://www.britannica.com/event/Mexican-Revolution"
+    },
+    {
+      "id": "panama_canal",
+      "start": 1914,
+      "end": 1914,
+      "countries": [
+        "PA",
+        "US"
+      ],
+      "kind": "event",
+      "title_ru": "Открытие Панамского канала",
+      "title_en": "Panama Canal opened",
+      "summary_ru": "Канал соединил Атлантический и Тихий океаны и изменил мировые морские маршруты.",
+      "summary_en": "The canal linked the Atlantic and Pacific and reshaped global shipping routes.",
+      "source_url": "https://pancanal.com/en/history-of-the-panama-canal/",
+      "location": [
+        -79.68,
+        9.08
+      ],
+      "place_ru": "Панамский канал",
+      "place_en": "Panama Canal"
     },
     {
       "id": "ww1",
       "start": 1914,
       "end": 1918,
       "countries": [
-        "GB",
+        "AT",
+        "BE",
+        "BA",
+        "DE",
         "FR",
-        "DE"
+        "GB",
+        "IT",
+        "RU",
+        "RS",
+        "TR",
+        "US"
       ],
       "kind": "war",
       "title_ru": "Первая мировая война",
@@ -318,18 +1833,61 @@
       "source_url": "https://www.loc.gov/collections/world-war-i-and-1920-election-recordings/articles-and-essays/from-war-to-normalcy/world-war-i/"
     },
     {
-      "id": "russian_revolution_1917",
+      "id": "polio_new_york_1916",
+      "start": 1916,
+      "end": 1916,
+      "countries": [
+        "US"
+      ],
+      "kind": "epidemic",
+      "title_ru": "Эпидемия полиомиелита в Нью-Йорке",
+      "title_en": "New York polio epidemic",
+      "summary_ru": "Во время вспышки полиомиелита городское управление здравоохранения вводило карантин и открывало клиники для заболевших.",
+      "summary_en": "During the polio outbreak, the city health department imposed quarantines and opened clinics.",
+      "location": [
+        -73.94,
+        40.67
+      ],
+      "place_ru": "Нью-Йорк",
+      "place_en": "New York",
+      "source_url": "https://www.nyc.gov/site/doh/about/about-doh.page"
+    },
+    {
+      "id": "russian_revolution_1917_expanded",
       "start": 1917,
       "end": 1917,
       "countries": [
         "RU"
       ],
-      "kind": "event",
+      "kind": "revolution",
       "title_ru": "Российские революции 1917 года",
       "title_en": "Russian revolutions of 1917",
       "summary_ru": "Февральская революция привела к отречению Николая II, а в октябре большевики свергли Временное правительство.",
       "summary_en": "The February Revolution brought Nicholas II’s abdication; in October the Bolsheviks overthrew the Provisional Government.",
-      "source_url": "https://projects.eh.bard.edu/1917/"
+      "source_url": "https://projects.eh.bard.edu/1917/",
+      "location": [
+        30.31,
+        59.94
+      ],
+      "place_ru": "Петроград",
+      "place_en": "Petrograd"
+    },
+    {
+      "id": "spanish_flu",
+      "start": 1918,
+      "end": 1920,
+      "countries": [
+        "US",
+        "ES",
+        "IN",
+        "FR"
+      ],
+      "kind": "epidemic",
+      "title_ru": "Пандемия гриппа 1918 года",
+      "title_en": "1918 influenza pandemic",
+      "summary_ru": "Пандемия гриппа охватила мир в конце Первой мировой войны и вызвала миллионы смертей.",
+      "summary_en": "Influenza spread worldwide at the end of World War I and caused millions of deaths.",
+      "source_url": "https://www.who.int/news-room/spotlight/influenza-are-we-ready"
     },
     {
       "id": "versailles_1919",
@@ -339,12 +1897,34 @@
         "FR",
         "DE"
       ],
-      "kind": "event",
+      "kind": "treaty",
       "title_ru": "Версальский договор",
       "title_en": "Treaty of Versailles",
       "summary_ru": "Мирный договор с Германией подписали в Версале 28 июня 1919 года.",
       "summary_en": "The peace treaty with Germany was signed at Versailles on 28 June 1919.",
-      "source_url": "https://history.state.gov/historicaldocuments/frus1919Parisv03/d12"
+      "source_url": "https://history.state.gov/historicaldocuments/frus1919Parisv03/d12",
+      "location": [
+        2.12,
+        48.8
+      ],
+      "place_ru": "Версаль",
+      "place_en": "Versailles"
+    },
+    {
+      "id": "league_nations",
+      "start": 1920,
+      "end": 1920,
+      "countries": [
+        "CH",
+        "FR",
+        "GB"
+      ],
+      "kind": "event",
+      "title_ru": "Создание Лиги Наций",
+      "title_en": "League of Nations begins",
+      "summary_ru": "Лига Наций начала работу как первая международная организация коллективной безопасности.",
+      "summary_en": "The League of Nations began as the first international collective-security organization.",
+      "source_url": "https://en.wikipedia.org/wiki/League_of_Nations"
     },
     {
       "id": "nineteenth_amendment",
@@ -354,21 +1934,82 @@
         "US"
       ],
       "kind": "event",
-      "title_ru": "Сертификация Девятнадцатой поправки в США",
+      "title_ru": "В Конституции США закреплено избирательное право женщин",
       "title_en": "Certification of the Nineteenth Amendment in the United States",
       "summary_ru": "26 августа 1920 года государственный секретарь США сертифицировал ратификацию Девятнадцатой поправки, запрещающей отказывать в праве голоса по признаку пола.",
       "summary_en": "On 26 August 1920, the US secretary of state certified ratification of the Nineteenth Amendment, which prohibits denying the right to vote on account of sex.",
       "source_url": "https://www.archives.gov/milestone-documents/19th-amendment"
     },
     {
+      "id": "turkey_republic",
+      "start": 1923,
+      "end": 1923,
+      "countries": [
+        "TR"
+      ],
+      "kind": "independence",
+      "title_ru": "Провозглашение Турецкой республики",
+      "title_en": "Republic of Turkey proclaimed",
+      "summary_ru": "После распада Османской империи была провозглашена Турецкая республика.",
+      "summary_en": "The Republic of Turkey was proclaimed after the Ottoman Empire’s collapse.",
+      "source_url": "https://www.britannica.com/place/Turkey/History",
+      "location": [
+        32.85,
+        39.93
+      ],
+      "place_ru": "Анкара",
+      "place_en": "Ankara"
+    },
+    {
+      "id": "great_depression",
+      "start": 1929,
+      "end": 1933,
+      "countries": [
+        "US",
+        "DE",
+        "GB",
+        "FR"
+      ],
+      "kind": "event",
+      "title_ru": "Великая депрессия",
+      "title_en": "Great Depression",
+      "summary_ru": "Мировой экономический кризис вызвал массовую безработицу и падение промышленного производства.",
+      "summary_en": "A global economic crisis caused mass unemployment and industrial decline.",
+      "source_url": "https://www.federalreservehistory.org/essays/great-depression"
+    },
+    {
+      "id": "holodomor",
+      "start": 1932,
+      "end": 1933,
+      "countries": [
+        "UA"
+      ],
+      "kind": "disaster",
+      "title_ru": "Голод 1932–1933 годов в Украине",
+      "title_en": "Famine of 1932–33 in Ukraine",
+      "summary_ru": "Массовый голод в Украинской ССР привёл к огромным человеческим потерям.",
+      "summary_en": "Mass famine in Soviet Ukraine caused enormous loss of life.",
+      "source_url": "https://www.britannica.com/event/Holodomor"
+    },
+    {
       "id": "ww2",
       "start": 1939,
       "end": 1945,
       "countries": [
-        "GB",
-        "FR",
+        "AU",
+        "BY",
+        "CA",
+        "CN",
         "DE",
-        "PL"
+        "FR",
+        "GB",
+        "IT",
+        "JP",
+        "NL",
+        "PL",
+        "RU",
+        "UA",
+        "US"
       ],
       "kind": "war",
       "title_ru": "Вторая мировая война",
@@ -378,10 +2019,37 @@
       "source_url": "https://encyclopedia.ushmm.org/content/en/article/world-war-ii-key-dates"
     },
     {
+      "id": "d_day",
+      "start": 1944,
+      "end": 1944,
+      "countries": [
+        "FR",
+        "US",
+        "GB",
+        "CA"
+      ],
+      "kind": "war",
+      "title_ru": "Высадка союзников в Нормандии",
+      "title_en": "Allied landings in Normandy",
+      "summary_ru": "Высадка 6 июня открыла западный фронт освобождения оккупированной Франции.",
+      "summary_en": "The 6 June landings opened the western front and began liberation of occupied France.",
+      "source_url": "https://en.wikipedia.org/wiki/Normandy_landings",
+      "location": [
+        -0.85,
+        49.37
+      ],
+      "place_ru": "Нормандия, один из участков высадки",
+      "place_en": "Normandy, one of the landing beaches"
+    },
+    {
       "id": "un",
       "start": 1945,
       "end": 1945,
       "countries": [
+        "CN",
+        "FR",
+        "GB",
+        "RU",
         "US"
       ],
       "kind": "event",
@@ -389,7 +2057,45 @@
       "title_en": "Founding of the United Nations",
       "summary_ru": "Устав ООН вступил в силу после войны.",
       "summary_en": "The UN Charter entered into force after the war.",
-      "source_url": "https://www.un.org/en/about-us/history-of-the-un"
+      "source_url": "https://www.un.org/en/about-us/history-of-the-un",
+      "location": [
+        -122.42,
+        37.78
+      ],
+      "place_ru": "Сан-Франциско, подписание Устава",
+      "place_en": "San Francisco, signing of the Charter"
+    },
+    {
+      "id": "india_independence",
+      "start": 1947,
+      "end": 1947,
+      "countries": [
+        "IN",
+        "GB",
+        "PK"
+      ],
+      "kind": "independence",
+      "title_ru": "Независимость Индии и раздел",
+      "title_en": "Indian independence and partition",
+      "summary_ru": "Британская Индия стала независимой, одновременно произошло разделение на Индию и Пакистан.",
+      "summary_en": "British India became independent and was partitioned into India and Pakistan.",
+      "source_url": "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/yourfamily/partition/"
+    },
+    {
+      "id": "israel_independence",
+      "start": 1948,
+      "end": 1948,
+      "countries": [
+        "IL",
+        "GB",
+        "PS"
+      ],
+      "kind": "independence",
+      "title_ru": "Провозглашение Израиля и война 1948 года",
+      "title_en": "Israel declared and 1948 war",
+      "summary_ru": "После окончания британского мандата было провозглашено государство Израиль и началась война.",
+      "summary_en": "Israel was declared after the British Mandate ended, followed by war.",
+      "source_url": "https://www.britannica.com/event/Arab-Israeli-wars"
     },
     {
       "id": "universal_declaration",
@@ -403,7 +2109,58 @@
       "title_en": "Universal Declaration of Human Rights",
       "summary_ru": "10 декабря 1948 года Генеральная Ассамблея ООН приняла в Париже Всеобщую декларацию прав человека резолюцией 217 A (III).",
       "summary_en": "On 10 December 1948, the UN General Assembly adopted the Universal Declaration of Human Rights in Paris as resolution 217 A (III).",
-      "source_url": "https://www.un.org/en/about-us/udhr/history-of-the-declaration"
+      "source_url": "https://www.un.org/en/about-us/udhr/history-of-the-declaration",
+      "location": [
+        2.29,
+        48.86
+      ],
+      "place_ru": "Дворец Шайо, Париж",
+      "place_en": "Palais de Chaillot, Paris"
+    },
+    {
+      "id": "chinese_revolution",
+      "start": 1949,
+      "end": 1949,
+      "countries": [
+        "CN"
+      ],
+      "kind": "revolution",
+      "title_ru": "Провозглашение Китайской Народной Республики",
+      "title_en": "People’s Republic of China proclaimed",
+      "summary_ru": "После гражданской войны Мао Цзэдун провозгласил Китайскую Народную Республику.",
+      "summary_en": "After civil war Mao Zedong proclaimed the People’s Republic of China.",
+      "source_url": "https://www.britannica.com/place/China/History"
+    },
+    {
+      "id": "korean_war",
+      "start": 1950,
+      "end": 1953,
+      "countries": [
+        "KR",
+        "KP",
+        "US",
+        "CN"
+      ],
+      "kind": "war",
+      "title_ru": "Корейская война",
+      "title_en": "Korean War",
+      "summary_ru": "Война завершилась перемирием и сохранением разделения Корейского полуострова.",
+      "summary_en": "An armistice ended the war and preserved the division of the Korean Peninsula.",
+      "source_url": "https://www.trumanlibrary.gov/education/presidential-inquiries/korean-war"
+    },
+    {
+      "id": "cuban_revolution",
+      "start": 1953,
+      "end": 1959,
+      "countries": [
+        "CU"
+      ],
+      "kind": "revolution",
+      "title_ru": "Кубинская революция",
+      "title_en": "Cuban Revolution",
+      "summary_ru": "Революционное движение свергло режим Батисты и пришло к власти в 1959 году.",
+      "summary_en": "A revolutionary movement overthrew Batista and took power in 1959.",
+      "source_url": "https://www.britannica.com/event/Cuban-Revolution"
     },
     {
       "id": "dna_1953",
@@ -412,26 +2169,100 @@
       "countries": [
         "GB"
       ],
-      "kind": "event",
+      "kind": "science",
       "title_ru": "Модель двойной спирали ДНК",
       "title_en": "DNA double helix",
       "summary_ru": "В 1953 году исследователи представили модель двойной спирали ДНК, опираясь в том числе на рентгеновские данные.",
       "summary_en": "In 1953 researchers presented the DNA double helix model, drawing in part on X-ray evidence.",
-      "source_url": "https://www.genome.gov/25520255/online-education-kit-1953-dna-double-helix"
+      "source_url": "https://www.genome.gov/25520255/online-education-kit-1953-dna-double-helix",
+      "location": [
+        0.12,
+        52.2
+      ],
+      "place_ru": "Кембридж",
+      "place_en": "Cambridge"
+    },
+    {
+      "id": "algeria_independence",
+      "start": 1954,
+      "end": 1962,
+      "countries": [
+        "DZ",
+        "FR"
+      ],
+      "kind": "war",
+      "title_ru": "Алжирская война за независимость",
+      "title_en": "Algerian War",
+      "summary_ru": "Фронт национального освобождения добился независимости Алжира от Франции.",
+      "summary_en": "The National Liberation Front won Algerian independence from France.",
+      "source_url": "https://www.britannica.com/event/Algerian-War"
+    },
+    {
+      "id": "polio_vaccine",
+      "start": 1955,
+      "end": 1955,
+      "countries": [
+        "US"
+      ],
+      "kind": "health",
+      "title_ru": "Лицензирование вакцины Солка",
+      "title_en": "Salk polio vaccine licensed",
+      "summary_ru": "В США лицензировали первую эффективную и широко доступную вакцину против полиомиелита.",
+      "summary_en": "The United States licensed the first effective widely available polio vaccine.",
+      "source_url": "https://en.wikipedia.org/wiki/Polio_vaccine"
+    },
+    {
+      "id": "vietnam_war",
+      "start": 1955,
+      "end": 1975,
+      "countries": [
+        "VN",
+        "US"
+      ],
+      "kind": "war",
+      "title_ru": "Вьетнамская война",
+      "title_en": "Vietnam War",
+      "summary_ru": "Длительная война завершилась объединением Вьетнама после падения Сайгона.",
+      "summary_en": "The long war ended with Vietnam’s reunification after the fall of Saigon.",
+      "source_url": "https://www.britannica.com/event/Vietnam-War"
+    },
+    {
+      "id": "suez_crisis",
+      "start": 1956,
+      "end": 1956,
+      "countries": [
+        "EG",
+        "GB",
+        "FR",
+        "IL"
+      ],
+      "kind": "war",
+      "title_ru": "Суэцкий кризис",
+      "title_en": "Suez Crisis",
+      "summary_ru": "Израильско-британско-французское вторжение в Египет завершилось под международным давлением.",
+      "summary_en": "The Israeli-British-French invasion of Egypt ended under international pressure.",
+      "source_url": "https://www.britannica.com/event/Suez-Crisis"
     },
     {
       "id": "ghana_1957",
       "start": 1957,
       "end": 1957,
       "countries": [
+        "GB",
         "GH"
       ],
-      "kind": "event",
+      "kind": "independence",
       "title_ru": "Независимость Ганы",
       "title_en": "Ghanaian independence",
       "summary_ru": "6 марта 1957 года Золотой Берег стал независимой Ганой.",
       "summary_en": "On 6 March 1957 the Gold Coast became independent Ghana.",
-      "source_url": "https://history.state.gov/countries/ghana"
+      "source_url": "https://history.state.gov/countries/ghana",
+      "location": [
+        -0.2,
+        5.56
+      ],
+      "place_ru": "Аккра",
+      "place_en": "Accra"
     },
     {
       "id": "sputnik_1957",
@@ -441,12 +2272,18 @@
         "RU",
         "KZ"
       ],
-      "kind": "event",
+      "kind": "science",
       "title_ru": "Запуск «Спутника-1»",
       "title_en": "Launch of Sputnik 1",
       "summary_ru": "СССР запустил первый искусственный спутник Земли с территории нынешнего Казахстана.",
       "summary_en": "The Soviet Union launched the first artificial Earth satellite from what is now Kazakhstan.",
-      "source_url": "https://www.nasa.gov/history/65-years-ago-sputnik-ushers-in-the-space-age/"
+      "source_url": "https://www.nasa.gov/history/65-years-ago-sputnik-ushers-in-the-space-age/",
+      "location": [
+        63.34,
+        45.92
+      ],
+      "place_ru": "Космодром Байконур",
+      "place_en": "Baikonur Cosmodrome"
     },
     {
       "id": "nigeria_1960",
@@ -455,12 +2292,77 @@
       "countries": [
         "NG"
       ],
-      "kind": "event",
+      "kind": "independence",
       "title_ru": "Независимость Нигерии",
       "title_en": "Nigerian independence",
       "summary_ru": "Нигерия получила независимость от Великобритании 1 октября 1960 года.",
       "summary_en": "Nigeria gained independence from Britain on 1 October 1960.",
-      "source_url": "https://history.state.gov/historicaldocuments/frus1958-60v14/d76"
+      "source_url": "https://history.state.gov/historicaldocuments/frus1958-60v14/d76",
+      "location": [
+        3.39,
+        6.45
+      ],
+      "place_ru": "Лагос",
+      "place_en": "Lagos"
+    },
+    {
+      "id": "space_first_man",
+      "start": 1961,
+      "end": 1961,
+      "countries": [
+        "RU",
+        "KZ"
+      ],
+      "kind": "science",
+      "title_ru": "Первый полёт человека в космос",
+      "title_en": "First human spaceflight",
+      "summary_ru": "Юрий Гагарин стал первым человеком на орбите Земли на корабле «Восток-1».",
+      "summary_en": "Yuri Gagarin became the first human to orbit Earth aboard Vostok 1.",
+      "source_url": "https://en.wikipedia.org/wiki/Vostok_1",
+      "location": [
+        63.34,
+        45.92
+      ],
+      "place_ru": "Байконур, место старта",
+      "place_en": "Baikonur, launch site"
+    },
+    {
+      "id": "cuban_missile",
+      "start": 1962,
+      "end": 1962,
+      "countries": [
+        "CU",
+        "US",
+        "RU"
+      ],
+      "kind": "event",
+      "title_ru": "Карибский кризис",
+      "title_en": "Cuban Missile Crisis",
+      "summary_ru": "Противостояние США и СССР из-за ракет на Кубе завершилось дипломатическим соглашением.",
+      "summary_en": "The US–Soviet confrontation over missiles in Cuba ended through diplomacy.",
+      "source_url": "https://history.state.gov/milestones/1961-1968/cuban-missile-crisis"
+    },
+    {
+      "id": "african_union",
+      "start": 1963,
+      "end": 1963,
+      "countries": [
+        "ET",
+        "GH",
+        "NG"
+      ],
+      "kind": "event",
+      "title_ru": "Создание Организации африканского единства",
+      "title_en": "Organization of African Unity founded",
+      "summary_ru": "Африканские государства создали региональную организацию для сотрудничества и деколонизации.",
+      "summary_en": "African states created a regional organization for cooperation and decolonization.",
+      "source_url": "https://au.int/en/overview",
+      "location": [
+        38.75,
+        9.03
+      ],
+      "place_ru": "Аддис-Абеба",
+      "place_en": "Addis Ababa"
     },
     {
       "id": "civil_rights",
@@ -474,7 +2376,52 @@
       "title_en": "US Civil Rights Act",
       "summary_ru": "Федеральный закон запретил дискриминацию в ключевых общественных сферах.",
       "summary_en": "Federal law prohibited discrimination in key public spheres.",
-      "source_url": "https://www.archives.gov/milestone-documents/civil-rights-act"
+      "source_url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+      "location": [
+        -77.04,
+        38.9
+      ],
+      "place_ru": "Вашингтон",
+      "place_en": "Washington, D.C."
+    },
+    {
+      "id": "smallpox_global_1967",
+      "start": 1967,
+      "end": 1980,
+      "countries": [
+        "ET",
+        "IN",
+        "BD",
+        "SO"
+      ],
+      "kind": "health",
+      "title_ru": "Глобальная программа ликвидации оспы",
+      "title_en": "Global smallpox eradication campaign",
+      "summary_ru": "Интенсивная международная вакцинация и эпиднадзор привели к ликвидации натуральной оспы.",
+      "summary_en": "Intensive international vaccination and surveillance led to smallpox eradication.",
+      "source_url": "https://www.who.int/teams/health-product-policy-and-standards/standards-and-specifications/vaccines-quality/smallpox"
+    },
+    {
+      "id": "prague_spring",
+      "start": 1968,
+      "end": 1968,
+      "countries": [
+        "CZ",
+        "SK",
+        "RU"
+      ],
+      "kind": "event",
+      "title_ru": "Пражская весна",
+      "title_en": "Prague Spring",
+      "summary_ru": "Реформы в Чехословакии были остановлены вводом войск Варшавского договора.",
+      "summary_en": "Czechoslovak reforms were halted by Warsaw Pact troops.",
+      "source_url": "https://www.britannica.com/event/Prague-Spring",
+      "location": [
+        14.42,
+        50.08
+      ],
+      "place_ru": "Прага",
+      "place_en": "Prague"
     },
     {
       "id": "moon",
@@ -483,7 +2430,7 @@
       "countries": [
         "US"
       ],
-      "kind": "event",
+      "kind": "science",
       "title_ru": "Высадка «Аполлона-11» на Луну",
       "title_en": "Apollo 11 Moon landing",
       "summary_ru": "Нил Армстронг и Базз Олдрин высадились на Луне.",
@@ -495,9 +2442,11 @@
       "start": 1971,
       "end": 1971,
       "countries": [
-        "BD"
+        "BD",
+        "PK",
+        "IN"
       ],
-      "kind": "event",
+      "kind": "independence",
       "title_ru": "Образование Бангладеш",
       "title_en": "Founding of Bangladesh",
       "summary_ru": "В 1971 году Восточный Пакистан отделился и возникло независимое государство Бангладеш.",
@@ -516,7 +2465,119 @@
       "title_en": "World Heritage Convention",
       "summary_ru": "ЮНЕСКО приняла в Париже конвенцию об охране культурного и природного наследия.",
       "summary_en": "UNESCO adopted the convention on protecting cultural and natural heritage in Paris.",
-      "source_url": "https://www.unesco.org/en/legal-affairs/convention-concerning-protection-world-cultural-and-natural-heritage"
+      "source_url": "https://www.unesco.org/en/legal-affairs/convention-concerning-protection-world-cultural-and-natural-heritage",
+      "location": [
+        2.31,
+        48.85
+      ],
+      "place_ru": "Париж",
+      "place_en": "Paris"
+    },
+    {
+      "id": "oil_crisis_1973",
+      "start": 1973,
+      "end": 1974,
+      "countries": [
+        "SA",
+        "US",
+        "GB",
+        "DE",
+        "JP"
+      ],
+      "kind": "event",
+      "title_ru": "Нефтяной кризис 1973 года",
+      "title_en": "1973 oil crisis",
+      "summary_ru": "Ограничение поставок нефти вызвало мировой энергетический и экономический кризис.",
+      "summary_en": "Oil supply restrictions triggered a global energy and economic crisis.",
+      "source_url": "https://www.federalreservehistory.org/essays/oil-shock-of-1973-74"
+    },
+    {
+      "id": "apollo_soyuz",
+      "start": 1975,
+      "end": 1975,
+      "countries": [
+        "US",
+        "RU"
+      ],
+      "kind": "science",
+      "title_ru": "Программа «Союз — Аполлон»",
+      "title_en": "Apollo–Soyuz mission",
+      "summary_ru": "Космические корабли США и СССР состыковались на орбите в знаке сотрудничества.",
+      "summary_en": "US and Soviet spacecraft docked in orbit as a symbol of cooperation.",
+      "source_url": "https://www.nasa.gov/history/50-years-ago-the-united-states-and-the-soviet-union-sign-a-space-cooperation-agreement/"
+    },
+    {
+      "id": "iran_revolution",
+      "start": 1978,
+      "end": 1979,
+      "countries": [
+        "IR"
+      ],
+      "kind": "revolution",
+      "title_ru": "Иранская революция",
+      "title_en": "Iranian Revolution",
+      "summary_ru": "Массовое движение свергло шаха и установило Исламскую республику.",
+      "summary_en": "A mass movement overthrew the Shah and established an Islamic Republic.",
+      "source_url": "https://www.britannica.com/event/Iranian-Revolution"
+    },
+    {
+      "id": "chernobyl",
+      "start": 1986,
+      "end": 1986,
+      "countries": [
+        "UA",
+        "RU",
+        "BY"
+      ],
+      "kind": "disaster",
+      "title_ru": "Авария на Чернобыльской АЭС",
+      "title_en": "Chernobyl disaster",
+      "summary_ru": "Взрыв реактора вызвал крупнейшую на тот момент аварию на атомной электростанции и радиоактивное загрязнение.",
+      "summary_en": "A reactor explosion caused the largest nuclear power accident at the time and radioactive contamination.",
+      "source_url": "https://www.iaea.org/topics/chernobyl",
+      "location": [
+        30.1,
+        51.39
+      ],
+      "place_ru": "Чернобыльская АЭС",
+      "place_en": "Chornobyl Nuclear Power Plant"
+    },
+    {
+      "id": "polio_eradication_1988",
+      "start": 1988,
+      "end": 1988,
+      "countries": [
+        "CH",
+        "US",
+        "IN",
+        "PK"
+      ],
+      "kind": "health",
+      "title_ru": "Глобальная инициатива по ликвидации полиомиелита",
+      "title_en": "Global Polio Eradication Initiative",
+      "summary_ru": "ВОЗ и партнёры запустили глобальную программу искоренения полиомиелита.",
+      "summary_en": "WHO and partners launched a global program to eradicate polio.",
+      "source_url": "https://en.wikipedia.org/wiki/Global_Polio_Eradication_Initiative"
+    },
+    {
+      "id": "berlin_wall",
+      "start": 1989,
+      "end": 1989,
+      "countries": [
+        "DE"
+      ],
+      "kind": "event",
+      "title_ru": "Падение Берлинской стены",
+      "title_en": "Fall of the Berlin Wall",
+      "summary_ru": "Открытие переходов через стену стало символом окончания разделения Германии и холодной войны.",
+      "summary_en": "Opening the crossings symbolized the end of Germany’s division and the Cold War.",
+      "source_url": "https://en.wikipedia.org/wiki/Berlin_Wall",
+      "location": [
+        13.4,
+        52.55
+      ],
+      "place_ru": "Борнхольмер-штрассе, Берлин",
+      "place_en": "Bornholmer Straße, Berlin"
     },
     {
       "id": "internet",
@@ -525,12 +2586,55 @@
       "countries": [
         "CH"
       ],
-      "kind": "event",
+      "kind": "science",
       "title_ru": "Предложение Всемирной паутины",
       "title_en": "World Wide Web proposed",
       "summary_ru": "Тим Бернерс-Ли предложил систему гипертекстовой информации в CERN.",
       "summary_en": "Tim Berners-Lee proposed a hypertext information system at CERN.",
-      "source_url": "https://home.cern/science/computing/the-birth-of-the-web"
+      "source_url": "https://home.cern/science/computing/the-birth-of-the-web",
+      "location": [
+        6.05,
+        46.23
+      ],
+      "place_ru": "ЦЕРН, близ Женевы",
+      "place_en": "CERN, near Geneva"
+    },
+    {
+      "id": "gulf_war",
+      "start": 1990,
+      "end": 1991,
+      "countries": [
+        "IQ",
+        "KW",
+        "US",
+        "SA"
+      ],
+      "kind": "war",
+      "title_ru": "Война в Персидском заливе",
+      "title_en": "Gulf War",
+      "summary_ru": "Международная коалиция вытеснила иракские войска из Кувейта.",
+      "summary_en": "An international coalition expelled Iraqi forces from Kuwait.",
+      "source_url": "https://www.britannica.com/event/Persian-Gulf-War"
+    },
+    {
+      "id": "hubble_1990",
+      "start": 1990,
+      "end": 1990,
+      "countries": [
+        "US"
+      ],
+      "kind": "science",
+      "title_ru": "Запуск телескопа «Хаббл»",
+      "title_en": "Hubble Space Telescope launched",
+      "summary_ru": "Космический телескоп «Хаббл» начал наблюдения Вселенной с околоземной орбиты.",
+      "summary_en": "The Hubble Space Telescope began observing the universe from low Earth orbit.",
+      "source_url": "https://science.nasa.gov/mission/hubble/overview/",
+      "location": [
+        -80.6,
+        28.61
+      ],
+      "place_ru": "Космический центр Кеннеди, место старта",
+      "place_en": "Kennedy Space Center, launch site"
     },
     {
       "id": "namibia_1990",
@@ -539,12 +2643,63 @@
       "countries": [
         "NA"
       ],
-      "kind": "event",
+      "kind": "independence",
       "title_ru": "Независимость Намибии",
       "title_en": "Namibian independence",
       "summary_ru": "Намибия стала независимой 21 марта 1990 года после процесса под наблюдением ООН.",
       "summary_en": "Namibia became independent on 21 March 1990 after a UN-supervised process.",
-      "source_url": "https://peacekeeping.un.org/sites/default/files/past/untagFT.htm"
+      "source_url": "https://peacekeeping.un.org/sites/default/files/past/untagFT.htm",
+      "location": [
+        17.08,
+        -22.57
+      ],
+      "place_ru": "Виндхук",
+      "place_en": "Windhoek"
+    },
+    {
+      "id": "soviet_union_dissolution",
+      "start": 1991,
+      "end": 1991,
+      "countries": [
+        "RU",
+        "UA",
+        "KZ",
+        "BY"
+      ],
+      "kind": "event",
+      "title_ru": "Распад СССР",
+      "title_en": "Dissolution of the Soviet Union",
+      "summary_ru": "Беловежские соглашения и Алма-Атинская декларация завершили существование СССР.",
+      "summary_en": "The Belavezha Accords and Alma-Ata Declaration ended the Soviet Union.",
+      "source_url": "https://www.britannica.com/event/Soviet-Union/Dissolution-of-the-Soviet-Union"
+    },
+    {
+      "id": "nelson_mandela_1994",
+      "start": 1994,
+      "end": 1994,
+      "countries": [
+        "ZA"
+      ],
+      "kind": "event",
+      "title_ru": "Президентство Нельсона Манделы",
+      "title_en": "Nelson Mandela becomes president",
+      "summary_ru": "После первых всеобщих выборов Нельсон Мандела стал президентом Южной Африки.",
+      "summary_en": "After the first universal elections, Nelson Mandela became South Africa’s president.",
+      "source_url": "https://www.nelsonmandela.org/biography"
+    },
+    {
+      "id": "rwanda_genocide",
+      "start": 1994,
+      "end": 1994,
+      "countries": [
+        "RW"
+      ],
+      "kind": "event",
+      "title_ru": "Геноцид в Руанде",
+      "title_en": "Rwandan genocide",
+      "summary_ru": "Массовое убийство в Руанде продолжалось около ста дней и унесло сотни тысяч жизней.",
+      "summary_en": "Mass killing in Rwanda lasted about one hundred days and claimed hundreds of thousands of lives.",
+      "source_url": "https://www.un.org/en/preventgenocide/rwanda"
     },
     {
       "id": "south_africa_1994",

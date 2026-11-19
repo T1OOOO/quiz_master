@@ -45,3 +45,16 @@ def test_german_democratic_republic_ends_in_1990():
     assert gdr(1989)
     assert gdr(1990)
     assert not gdr(1991)
+
+
+def test_all_historical_shapes_have_russian_labels():
+    import re
+
+    names = {row[0] for c in range(16, 21) for row in load_pack(c)["polities"]}
+    labels = json.loads((ROOT / "historical_polity_names_ru.json").read_text(encoding="utf-8"))
+    assert labels.keys() == names
+    assert all(re.search("[А-Яа-яЁё]", title) and not re.search("[A-Za-z]", title)
+               for title in labels.values())
+    assert labels["Russian Empire"] == "Российская империя"
+    assert labels["Mughal Empire"] == labels["(Mughal Empire)"] == "Империя Великих Моголов"
+    assert labels["Golden Horde"] == "Золотая Орда"

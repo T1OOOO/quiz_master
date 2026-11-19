@@ -3,8 +3,10 @@ import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/knowledge_map/history_globe.dart';
+import 'package:quiz_app/knowledge_map/history_event_symbol.dart';
 
 void main() {
   test('orthographic projection rejects the back hemisphere', () {
@@ -30,6 +32,110 @@ void main() {
     await tester.tap(find.byTooltip('Zoom in'));
     await tester.drag(find.byType(CustomPaint).last, const Offset(40, 10));
     await tester.pumpAndSettle();
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('visible event pin is rendered and tappable', (tester) async {
+    HistoryEventPin? tapped;
+    const pin = (
+      longitude: 15.0,
+      latitude: 30.0,
+      title: 'Тестовое событие',
+      kind: 'war',
+    );
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: HistoryGlobe(
+            land: const [],
+            polities: const [],
+            year: 1800,
+            eventPins: const [pin],
+            onSelect: (_) {},
+            onEventTap: (value) => tapped = value,
+          ),
+        ),
+      ),
+    );
+    expect(find.bySemanticsLabel('Тестовое событие'), findsOneWidget);
+    await tester.tap(find.bySemanticsLabel('Тестовое событие'));
+    expect(tapped?.title, 'Тестовое событие');
+  });
+  testWidgets(
+    'pin follows touch drag started on its seal and two-finger pinch',
+    (tester) async {
+      const pin = (longitude: 40.0, latitude: 30.0, title: 'Pin', kind: 'war');
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: HistoryGlobe(
+              land: const [],
+              polities: const [],
+              year: 1917,
+              eventPins: const [pin],
+              onSelect: (_) {},
+            ),
+          ),
+        ),
+      );
+      final marker = find.byTooltip('Pin');
+      final before = tester.getCenter(marker);
+      final center = tester.getCenter(find.byType(HistoryGlobe));
+      await tester.dragFrom(before, const Offset(-80, 0));
+      await tester.pump();
+      final after = tester.getCenter(marker);
+      expect(after.dx, lessThan(before.dx - 20));
+      final one = await tester.startGesture(
+        center - const Offset(40, 0),
+        pointer: 1,
+      );
+      final two = await tester.startGesture(
+        center + const Offset(40, 0),
+        pointer: 2,
+      );
+      for (final extra in [15.0, 35.0, 55.0]) {
+        await one.moveTo(center - Offset(40 + extra, 0));
+        await two.moveTo(center + Offset(40 + extra, 0));
+        await tester.pump();
+      }
+      await two.up();
+      await one.up();
+      await tester.pump();
+      expect(
+        (tester.getCenter(marker) - center).distance,
+        greaterThan((after - center).distance * 1.25),
+      );
+    },
+  );
+  testWidgets('trackpad pan zoom updates the globe without pointer count', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: HistoryGlobe(
+            land: const [],
+            polities: const [],
+            year: 1800,
+            onSelect: (_) {},
+          ),
+        ),
+      ),
+    );
+    final center = tester.getCenter(find.byType(HistoryGlobe));
+    tester.binding.handlePointerEvent(
+      PointerPanZoomStartEvent(position: center, device: 7),
+    );
+    tester.binding.handlePointerEvent(
+      PointerPanZoomUpdateEvent(
+        position: center + const Offset(20, 0),
+        pan: const Offset(20, 0),
+        panDelta: const Offset(20, 0),
+        scale: 1.4,
+        rotation: 0,
+        device: 7,
+      ),
+    );
+    await tester.pump();
     expect(tester.takeException(), isNull);
   });
   testWidgets('selects a visible polity and ignores a back-facing one', (
