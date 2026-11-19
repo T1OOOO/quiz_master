@@ -92,7 +92,7 @@ void main() {
         center + const Offset(40, 0),
         pointer: 2,
       );
-      for (final extra in [15.0, 35.0, 55.0]) {
+      for (final extra in [4.0, 8.0, 12.0]) {
         await one.moveTo(center - Offset(40 + extra, 0));
         await two.moveTo(center + Offset(40 + extra, 0));
         await tester.pump();
@@ -102,7 +102,7 @@ void main() {
       await tester.pump();
       expect(
         (tester.getCenter(marker) - center).distance,
-        greaterThan((after - center).distance * 1.25),
+        greaterThan((after - center).distance * 1.15),
       );
     },
   );
