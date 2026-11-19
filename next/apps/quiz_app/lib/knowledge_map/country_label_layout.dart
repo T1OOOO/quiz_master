@@ -23,23 +23,6 @@ class GeoViewport {
   }
 }
 
-/// Reuse anchors while their label has room on screen.
-Map<String, (double, double)> stableCountryLabelAnchors(
-  Map<String, (double, double)> previous,
-  Map<String, (double, double)> proposed,
-  GeoViewport safeViewport,
-) => {
-  for (final entry in proposed.entries)
-    entry.key:
-        previous[entry.key] != null &&
-            safeViewport.contains(
-              previous[entry.key]!.$1,
-              previous[entry.key]!.$2,
-            )
-        ? previous[entry.key]!
-        : entry.value,
-};
-
 /// Finds a point inside the visible portion of a GeoJSON Polygon/MultiPolygon.
 /// Returns null for malformed or non-polygon geometry.
 ({double longitude, double latitude})? countryLabelAnchor(
@@ -214,6 +197,8 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
   List<dynamic> visible,
   GeoViewport viewport, {
   List<dynamic>? fullOutlines,
+  GeoViewport? safeViewport,
+  Map<String, (double, double)> previous = const {},
 }) {
   final outlines = <String, Map>{};
   for (final item in visible) {
@@ -243,6 +228,13 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
         coords[0] is! num ||
         coords[1] is! num ||
         !outlines.containsKey(id)) {
+      continue;
+    }
+    final anchor =
+        previous[id] ??
+        ((coords[0] as num).toDouble(), (coords[1] as num).toDouble());
+    if (safeViewport?.contains(anchor.$1, anchor.$2) == true) {
+      result[id] = anchor;
       continue;
     }
     final point = countryLabelAnchor(outlines[id]!, viewport);

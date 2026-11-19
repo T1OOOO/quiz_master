@@ -7,10 +7,39 @@ import 'dart:io';
 void main() {
   const view = GeoViewport(west: 0, east: 10, south: 0, north: 10);
   test('keeps visible anchors until they approach the viewport edge', () {
-    final result = stableCountryLabelAnchors(
-      {'a': (5.0, 5.0), 'b': (0.5, 5.0), 'gone': (4.0, 4.0)},
-      {'a': (6.0, 6.0), 'b': (2.0, 5.0), 'new': (3.0, 3.0)},
-      const GeoViewport(west: 1, east: 9, south: 1, north: 9),
+    final labels = [
+      for (final id in ['a', 'b', 'new'])
+        {
+          'properties': {'country_id': id},
+          'geometry': {
+            'coordinates': [3, 3],
+          },
+        },
+    ];
+    final outlines = [
+      for (final label in labels)
+        {
+          'properties': label['properties'],
+          'geometry': {
+            'type': 'Polygon',
+            'coordinates': [
+              [
+                [1, 4],
+                [3, 4],
+                [3, 6],
+                [1, 6],
+                [1, 4],
+              ],
+            ],
+          },
+        },
+    ];
+    final result = visibleCountryLabelAnchors(
+      labels,
+      outlines,
+      view,
+      previous: {'a': (5.0, 5.0), 'b': (0.5, 5.0), 'gone': (4.0, 4.0)},
+      safeViewport: const GeoViewport(west: 1, east: 9, south: 1, north: 9),
     );
     expect(result, {'a': (5.0, 5.0), 'b': (2.0, 5.0), 'new': (3.0, 3.0)});
   });

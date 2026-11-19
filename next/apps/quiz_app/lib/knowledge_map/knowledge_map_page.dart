@@ -1837,22 +1837,19 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       if (practice || countryLabels == null || appliedCountryLabels == null) {
         return;
       }
-      final proposed = visibleCountryLabelAnchors(
-        countryLabels!['features'] as List,
-        features,
-        viewport,
-        fullOutlines: countries!['features'] as List,
-      );
       final width = viewport.east >= viewport.west
           ? viewport.east - viewport.west
           : viewport.east + 360 - viewport.west;
       final horizontalInset = width * math.min(0.3, 75 / size.width);
       final verticalInset =
           (viewport.north - viewport.south) * math.min(0.3, 40 / size.height);
-      final anchors = stableCountryLabelAnchors(
-        labelOverrides,
-        proposed,
-        GeoViewport(
+      final anchors = visibleCountryLabelAnchors(
+        countryLabels!['features'] as List,
+        features,
+        viewport,
+        fullOutlines: countries!['features'] as List,
+        previous: labelOverrides,
+        safeViewport: GeoViewport(
           west: viewport.west + horizontalInset,
           east: viewport.west + width - horizontalInset,
           south: viewport.south + verticalInset,
@@ -1934,7 +1931,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           generation != attempt ||
           controller != c ||
           c == null ||
-          id != hover.countryId) {
+          key != queuedHoverFilterKey) {
         return;
       }
       try {
