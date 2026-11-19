@@ -199,8 +199,9 @@ class _CountryFactReaderState extends State<CountryFactReader> {
 
   Future<void> openSource() async {
     try {
-      if (await launchUrl(story.source, mode: LaunchMode.externalApplication))
+      if (await launchUrl(story.source, mode: LaunchMode.externalApplication)) {
         return;
+      }
     } on PlatformException {
       // Report the failure in the reader so the user can keep their place.
     }
