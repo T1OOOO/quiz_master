@@ -20,6 +20,25 @@ import 'map_state.dart';
 import 'practice_hints.dart';
 
 @visibleForTesting
+String? waterFeatureId(Map properties) {
+  final canonical = properties['water_id'];
+  if (canonical is String && canonical.isNotEmpty) return canonical;
+  final id = properties['id'];
+  return id is String && id.isNotEmpty ? id : null;
+}
+
+@visibleForTesting
+Map? preferredMarineFeature(List features) {
+  if (features.isEmpty) return null;
+  return features.cast<Map>().firstWhere(
+    (feature) => !((feature['properties'] as Map)['name_en'] as String? ?? '')
+        .toLowerCase()
+        .contains('ocean'),
+    orElse: () => features.first as Map,
+  );
+}
+
+@visibleForTesting
 String thematicNumberLabel(
   num? value, {
   required bool russian,
@@ -107,6 +126,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Map<String, dynamic> featureFacts = {};
   Map<String, dynamic>? selectedFeature;
   String? selectedFeatureKind;
+  String? hoveredWaterId;
   bool detailRiversReady = false, detailLakesReady = false;
   bool failed = false,
       ready = false,
@@ -124,6 +144,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   final tapRequests = MapTapRequests();
   Timer? hoverTimer;
   Future<void> hoverFilter = Future.value();
+  String? queuedHoverFilterKey;
   Future<void> capitalCommands = Future.value();
   Future<void> labelCommands = Future.value();
   Future<void> thematicCommands = Future.value();
@@ -421,6 +442,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       read('assets/quizipedia/food_atlas.json'),
       read('assets/quizipedia/country_waters.json'),
       read('assets/quizipedia/map_feature_facts.json'),
+      for (final pack in countryStoryPacks)
+        read('assets/quizipedia/map_v2/$pack.json'),
     ]);
     if (!mounted || generation != attempt) return;
     setState(() {
@@ -436,6 +459,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         featureFacts['capitals'] as Map? ?? const {},
         dishes: dishes,
         foodSources: foodSources,
+        storyPacks: results.skip(3),
       );
     });
   }
@@ -446,6 +470,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final attempt = generation;
     thematicSprites.clear();
     thematicSequence++;
+    queuedHoverFilterKey = null;
     var stage = 'countries';
     try {
       await c.addGeoJsonSource('countries', countries!);
@@ -506,12 +531,63 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       }
       await c.addFillLayer(
         'waterways',
+        'marine',
+        const FillLayerProperties(
+          fillColor: [
+            'match',
+            ['get', 'id'],
+            ['Q1239', 'Q7354', 'Q788', 'Q97', 'Q98'],
+            '#bbdce0',
+            '#a4cfd9',
+          ],
+        ),
+        belowLayerId: 'land',
+        filter: [
+          '==',
+          ['get', 'kind'],
+          'marine',
+        ],
+      );
+      await c.addFillLayer(
+        'waterways',
+        'marine-highlight',
+        const FillLayerProperties(fillColor: '#1688a5', fillOpacity: 0.48),
+        belowLayerId: 'land',
+        filter: [
+          'in',
+          ['get', 'id'],
+          ['literal', <String>[]],
+        ],
+      );
+      await c.addLineLayer(
+        'waterways',
+        'marine-outline',
+        const LineLayerProperties(lineColor: '#316b61', lineWidth: 2),
+        belowLayerId: 'land',
+        filter: [
+          'in',
+          ['get', 'id'],
+          ['literal', <String>[]],
+        ],
+      );
+      await c.addFillLayer(
+        'waterways',
         'lakes',
         const FillLayerProperties(fillColor: '#acd4dd'),
         filter: [
           '==',
           ['get', 'kind'],
           'lake',
+        ],
+      );
+      await c.addFillLayer(
+        'waterways',
+        'lake-highlight',
+        const FillLayerProperties(fillColor: '#1688a5', fillOpacity: 0.48),
+        filter: [
+          'in',
+          ['get', 'id'],
+          ['literal', <String>[]],
         ],
       );
       await c.addLineLayer(
@@ -522,6 +598,16 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           '==',
           ['get', 'kind'],
           'river',
+        ],
+      );
+      await c.addLineLayer(
+        'waterways',
+        'water-outline',
+        const LineLayerProperties(lineColor: '#316b61', lineWidth: 2),
+        filter: [
+          'in',
+          ['get', 'id'],
+          ['literal', <String>[]],
         ],
       );
       stage = 'capitals';
@@ -763,6 +849,38 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             minzoom: 4,
             belowLayerId: 'capital-dots',
           );
+          await c.addFillLayer(
+            id,
+            'lakes-detail-highlight',
+            const FillLayerProperties(fillColor: '#1688a5', fillOpacity: 0.48),
+            minzoom: 4,
+            belowLayerId: 'capital-dots',
+            filter: [
+              'in',
+              [
+                'coalesce',
+                ['get', 'water_id'],
+                ['get', 'id'],
+              ],
+              ['literal', <String>[]],
+            ],
+          );
+          await c.addLineLayer(
+            id,
+            'lakes-detail-outline',
+            const LineLayerProperties(lineColor: '#316b61', lineWidth: 2),
+            minzoom: 4,
+            belowLayerId: 'capital-dots',
+            filter: [
+              'in',
+              [
+                'coalesce',
+                ['get', 'water_id'],
+                ['get', 'id'],
+              ],
+              ['literal', <String>[]],
+            ],
+          );
         }
         if (!mounted || generation != attempt || controller != c || failed) {
           return;
@@ -785,6 +903,34 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           );
         } else {
           detailLakesReady = true;
+          queueHoverFilter();
+          await c.setLayerProperties(
+            'lake-highlight',
+            const FillLayerProperties(
+              fillColor: '#1688a5',
+              fillOpacity: [
+                'step',
+                ['zoom'],
+                0.48,
+                4,
+                0,
+              ],
+            ),
+          );
+          await c.setLayerProperties(
+            'water-outline',
+            const LineLayerProperties(
+              lineColor: '#316b61',
+              lineWidth: 2,
+              lineOpacity: [
+                'step',
+                ['zoom'],
+                1,
+                4,
+                0,
+              ],
+            ),
+          );
           await c.setLayerProperties(
             'lakes',
             const FillLayerProperties(
@@ -1003,6 +1149,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       visibleOpen = false;
       layersOpen = false;
     });
+    queueHoverFilter();
     try {
       await practiceVisibility(!value);
     } catch (error, stack) {
@@ -1032,7 +1179,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     setState(() {
       state?.select(id);
       placesOpen = false;
-      countryDetailsOpen = false;
+      if (id == null) countryDetailsOpen = false;
       if (id != null) {
         visibleOpen = false;
         browserOpen = false;
@@ -1041,6 +1188,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       selectedFeatureKind = null;
       layersOpen = false;
     });
+    queueHoverFilter();
     if (!ready || c == null) return;
     try {
       await c.setFilter('selected', [
@@ -1086,7 +1234,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     if (!mounted) return;
     tapRequests.invalidate();
     FocusScope.of(context).unfocus();
-    final waterId = properties['water_id'];
+    final waterId = waterFeatureId(properties);
     if (waterId is String && waterways != null) {
       final match = (waterways!['features'] as List)
           .map((f) => f['properties'] as Map)
@@ -1109,6 +1257,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       placesOpen = false;
       layersOpen = false;
     });
+    queueHoverFilter();
     final c = controller;
     if (c != null && ready) {
       await c.setFilter('selected', [
@@ -1189,10 +1338,24 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       if (features.isEmpty) {
         features = await c.queryRenderedFeatures(point, ['land'], null);
         if (!current()) return;
+        if (features.isEmpty) {
+          final marine = await c.queryRenderedFeatures(point, ['marine'], null);
+          if (!current()) return;
+          if (marine.isNotEmpty) {
+            await selectFeature(
+              'marine',
+              Map<String, dynamic>.from(
+                preferredMarineFeature(marine)!['properties'] as Map,
+              ),
+            );
+            return;
+          }
+        }
       }
       final id = features.isEmpty
           ? null
           : features.first['properties']['country_id'] as String?;
+      if (id == null && countryDetailsOpen && state?.selected != null) return;
       await select(id);
       if (markerTapped &&
           id != null &&
@@ -1461,6 +1624,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       selectedFeatureKind = null;
       layersOpen = false;
     });
+    clearHover();
     if (!ready || c == null) return;
     try {
       await c.setFilter('selected', [
@@ -1546,6 +1710,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   void clearHover() {
     hoverTimer?.cancel();
     hover.clear();
+    hoveredWaterId = null;
     if (mounted) setState(() {});
     queueHoverFilter();
   }
@@ -1645,9 +1810,21 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   }
 
   void queueHoverFilter() {
+    if (!mounted || !ready || controller == null) return;
     final c = controller;
     final attempt = generation;
     final id = hover.countryId;
+    final waterIds = <String>{
+      ?hoveredWaterId,
+      if (selectedFeature != null &&
+          const {'lake', 'marine'}.contains(selectedFeatureKind) &&
+          waterFeatureId(selectedFeature!) != null)
+        waterFeatureId(selectedFeature!)!,
+    }.toList();
+    waterIds.sort();
+    final key = jsonEncode([attempt, id, waterIds, detailLakesReady]);
+    if (key == queuedHoverFilterKey) return;
+    queuedHoverFilterKey = key;
     hoverFilter = hoverFilter.catchError((Object _) {}).then((_) async {
       if (!mounted ||
           !ready ||
@@ -1658,12 +1835,53 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         return;
       }
       try {
+        final ids = [
+          'in',
+          ['get', 'id'],
+          ['literal', waterIds],
+        ];
+        final marineFilter = [
+          'all',
+          [
+            '==',
+            ['get', 'kind'],
+            'marine',
+          ],
+          ids,
+        ];
+        final lakeFilter = [
+          'all',
+          [
+            '==',
+            ['get', 'kind'],
+            'lake',
+          ],
+          ids,
+        ];
+        await c.setFilter('marine-highlight', marineFilter);
+        await c.setFilter('marine-outline', marineFilter);
+        await c.setFilter('lake-highlight', lakeFilter);
+        await c.setFilter('water-outline', lakeFilter);
+        if (detailLakesReady) {
+          final detailFilter = [
+            'in',
+            [
+              'coalesce',
+              ['get', 'water_id'],
+              ['get', 'id'],
+            ],
+            ['literal', waterIds],
+          ];
+          await c.setFilter('lakes-detail-highlight', detailFilter);
+          await c.setFilter('lakes-detail-outline', detailFilter);
+        }
         await c.setFilter('hovered', [
           '==',
           ['get', 'country_id'],
           id ?? '',
         ]);
       } catch (error, stack) {
+        if (queuedHoverFilterKey == key) queuedHoverFilterKey = null;
         debugPrint('Knowledge map: hover outline failed: $error\n$stack');
       }
     });
@@ -1710,6 +1928,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         if (features.isNotEmpty) {
           final id = features.first['properties']['id'] as String;
           if (hover.completeLandmark(request, id, Offset(point.x, point.y))) {
+            hoveredWaterId = null;
             setState(() {});
             queueHoverFilter();
           }
@@ -1717,6 +1936,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         }
         features = await queryCountryMarkers(c, point);
         if (!current()) return;
+        String? waterId;
         if (features.isEmpty) {
           final water = await c.queryRenderedFeatures(point, [
             'lakes',
@@ -1725,15 +1945,29 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             if (detailLakesReady) 'lakes-detail',
           ], null);
           if (!current()) return;
-          if (water.isEmpty) {
+          if (water.isNotEmpty) {
+            waterId = waterFeatureId(water.first['properties'] as Map);
+          } else {
             features = await c.queryRenderedFeatures(point, ['land'], null);
             if (!current()) return;
+            if (features.isEmpty) {
+              final marine = await c.queryRenderedFeatures(point, [
+                'marine',
+              ], null);
+              if (!current()) return;
+              if (marine.isNotEmpty) {
+                waterId = waterFeatureId(
+                  preferredMarineFeature(marine)!['properties'] as Map,
+                );
+              }
+            }
           }
         }
         final id = features.isEmpty
             ? null
             : features.first['properties']['country_id'] as String?;
         if (hover.complete(request, id, Offset(point.x, point.y))) {
+          hoveredWaterId = waterId;
           setState(() {});
           queueHoverFilter();
         }
@@ -1744,6 +1978,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             controller == c &&
             hover.isCurrent(request)) {
           hover.complete(request, null, Offset(point.x, point.y));
+          hoveredWaterId = null;
           setState(() {});
           queueHoverFilter();
         }
@@ -2009,6 +2244,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       children: children,
                     );
                     return SingleChildScrollView(
+                      key: countryPanel ? ValueKey(state?.selectedId) : null,
                       padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
                       child: Center(
                         child: ConstrainedBox(
@@ -2972,6 +3208,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               'capital' =>
                                 '${tr('Capital', 'Столица')} · ${countryName(feature['country_id'] as String? ?? '')}',
                               'lake' => tr('Lake', 'Озеро'),
+                              'marine' => tr('Water body', 'Акватория'),
                               'river' => tr('River', 'Река'),
                               _ => tr('Water', 'Водоём'),
                             },

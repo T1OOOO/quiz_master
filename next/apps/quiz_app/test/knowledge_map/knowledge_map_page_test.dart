@@ -1248,8 +1248,24 @@ void main() {
       expect(find.text('Dish source: Test dish'), findsOneWidget);
       select('MC');
       await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey('country-bottom-panel')),
+        findsOneWidget,
+      );
+      expect(find.text('Monaco'), findsWidgets);
       expect(find.text('Interesting facts'), findsNothing);
       expect(find.text('First France fact'), findsNothing);
+      select('FR');
+      await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey('current-country-fact')),
+        findsOneWidget,
+      );
+      await tester.tap(find.byTooltip('Close'));
+      await tester.pumpAndSettle();
+      select('MC');
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('country-bottom-panel')), findsNothing);
     },
   );
 

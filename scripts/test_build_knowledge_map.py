@@ -45,6 +45,21 @@ class MapBuildTest(unittest.TestCase):
         self.assertTrue(facts['capitals'][capitals[0]['id']])
         self.assertNotIn('capital-1159135121',facts['capitals'])
 
+    def test_equatorial_guinea_capital_after_2026_relocation(self):
+        capitals=[f for f in self.layers['capitals.geojson']['features'] if f['properties'].get('country_id')=='GQ']
+        self.assertEqual(len(capitals),1)
+        capital=capitals[0]
+        self.assertEqual(capital['id'],'capital-geonames-12226438')
+        self.assertEqual(capital['properties']['name_en'],'Ciudad de la Paz')
+        self.assertEqual(capital['properties']['name_ru'],'Сьюдад-де-ла-Пас')
+        self.assertEqual(capital['geometry']['coordinates'],[10.82361,1.5925])
+        countries=json.loads((m.ROOT/'next/apps/quiz_app/assets/quizipedia/country_facts.json').read_text(encoding='utf8'))
+        self.assertEqual(next(c for c in countries['countries'] if c['id']=='GQ')['capital'],'Ciudad de la Paz')
+        self.assertIn('decreto_ley',countries['sources']['equatorial_guinea_capital']['url'])
+        facts=json.loads((m.ROOT/'next/apps/quiz_app/assets/quizipedia/map_feature_facts.json').read_text(encoding='utf8'))['capitals']
+        self.assertTrue(facts[capital['id']])
+        self.assertNotIn('capital-1159150867',facts)
+
     def test_water_labels_and_anchor(self):
         waters={f['id']:f for f in self.layers['waterways.geojson']['features']}
         existing=m.checked_read(m.ROOT/'next/apps/quiz_app/assets/quizipedia/waterways.json', m.SOURCES['next/apps/quiz_app/assets/quizipedia/waterways.json'][0])

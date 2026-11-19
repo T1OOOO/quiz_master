@@ -113,6 +113,7 @@ const Map<String, String> russianCountryLabels = <String, String>{
   "Cockburn Town": "Кокбёрн-Таун",
   "Colombo": "Коломбо",
   "Comorian": "коморский",
+  "Ciudad de la Paz": "Сьюдад-де-ла-Пас",
   "Conakry": "Конакри",
   "Cook Islands Māori": "маори Островов Кука",
   "COP": "колумбийский песо",

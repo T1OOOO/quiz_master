@@ -10,6 +10,15 @@ import 'country_number_format.dart';
 import '../country_labels_ru.dart';
 import 'map_state.dart';
 
+const countryStoryPacks = [
+  'country_traditions',
+  'country_shared_heritage',
+  'country_foodways',
+  'country_capital_names',
+  'country_island_stories',
+  'country_geography_stories',
+];
+
 /// Build once per asset load. Every story keeps its original source.
 Map<String, List<MapInterestingFact>> countryReadingLists(
   List<MapCountry> countries,
@@ -18,6 +27,7 @@ Map<String, List<MapInterestingFact>> countryReadingLists(
   Map capitalFacts, {
   List dishes = const [],
   List foodSources = const [],
+  Iterable<Map> storyPacks = const [],
 }) {
   final lists = {
     for (final c in countries) c.id: [...c.interestingFacts],
@@ -93,7 +103,37 @@ Map<String, List<MapInterestingFact>> countryReadingLists(
       pages.add(page);
       return false;
     });
-    if (stories.length != 1 || (c.area ?? 0) <= 0) continue;
+    final sourcedTopics = <(String, String)>{};
+    for (final pack in storyPacks) {
+      for (final row
+          in (pack['countries']?[c.id] as List? ?? const []).whereType<Map>()) {
+        final (ru, en) = switch (row['topic']) {
+          'custom' => ('Обычаи и ремёсла', 'Traditions and crafts'),
+          'cuisine' => ('Местная кухня', 'Local food'),
+          'capital' => ('Из жизни столицы', 'Capital city'),
+          'name' => ('История названия', 'Names and language'),
+          _ => ('География', 'Geography'),
+        };
+        final fact = MapInterestingFact.fromJson(
+          row,
+          subjectRu: ru,
+          subjectEn: en,
+        );
+        if (fact == null ||
+            seenRu.contains(fact.textRu) ||
+            seenEn.contains(fact.textEn)) {
+          continue;
+        }
+        // Two accounts of one tradition can enter via different catalogues.
+        final source = fact.source.toString().replaceFirst(RegExp(r'/$'), '');
+        if (pages.contains(source) || !sourcedTopics.add((source, en)))
+          continue;
+        seenRu.add(fact.textRu);
+        seenEn.add(fact.textEn);
+        stories.add(fact);
+      }
+    }
+    if (stories.length >= 4 || (c.area ?? 0) <= 0) continue;
     final others = reference.where((other) => other.id != c.id).toList();
     double distance(MapCountry other) => math.log(other.area! / c.area!).abs();
     others.sort((a, b) => distance(a).compareTo(distance(b)));

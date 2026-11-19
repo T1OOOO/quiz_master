@@ -50,6 +50,9 @@ class MapLibreMapController extends MapLibrePlatform
   ScaleControl? _scaleControl;
   String? _scaleControlPosition;
   Timer? lastResizeObserverTimer;
+  // isStyleLoaded() also becomes false while tiles or updated sources load.
+  // During those updates the last rendered frame still supports hit testing.
+  bool _hasRenderedStyle = false;
 
   @override
   Widget buildView(
@@ -66,12 +69,14 @@ class MapLibreMapController extends MapLibrePlatform
 
   @override
   void dispose() {
+    _hasRenderedStyle = false;
     _removeManualPuck();
     for (final sub in _mapSubscriptions) {
       sub.unsubscribe();
     }
     _mapSubscriptions.clear();
     if (_mapCreated) {
+      _mapCreated = false;
       _map.clearMissingStyleImageHandler();
       _map.remove();
     }
@@ -664,13 +669,7 @@ class MapLibreMapController extends MapLibrePlatform
     List<String> layerIds,
     List<Object>? filter,
   ) async {
-    if (!_map.isStyleLoaded()) {
-      // Style is not loaded yet, return empty list
-      print(
-        'MapLibreMapController: queryRenderedFeatures, Style not loaded yet, returning empty list',
-      );
-      return [];
-    }
+    if (!_hasRenderedStyle) return [];
 
     final options = <String, dynamic>{};
     if (layerIds.isNotEmpty) {
@@ -707,7 +706,7 @@ class MapLibreMapController extends MapLibrePlatform
     List<String> layerIds,
     String? filter,
   ) async {
-    if (!_map.isStyleLoaded()) {
+    if (!_hasRenderedStyle) {
       // Style is not loaded yet, return empty list
       print(
         'MapLibreMapController: queryRenderedFeaturesInRect, Style not loaded yet, returning empty list',
@@ -963,6 +962,7 @@ class MapLibreMapController extends MapLibrePlatform
   }
 
   void _onStyleLoaded(data) {
+    if (!_mapCreated) return;
     final loaded = _map.isStyleLoaded();
     if (!loaded) {
       Future.delayed(const Duration(milliseconds: 100), () {
@@ -970,6 +970,7 @@ class MapLibreMapController extends MapLibrePlatform
       });
       return;
     }
+    _hasRenderedStyle = true;
     _onMapResize();
     onMapStyleLoadedPlatform(null);
   }
@@ -1464,6 +1465,7 @@ class MapLibreMapController extends MapLibrePlatform
 
     final sanitizedStyle = await _sanitizeStyleObject(styleObject);
     _map.setStyle(sanitizedStyle, {'diff': false});
+    _hasRenderedStyle = false;
   }
 
   /// Sanitizes the style object to ensure it is in the correct format.

@@ -58,14 +58,22 @@ void main() {
         load('map_feature_facts.json')['capitals'],
         dishes: food['dishes'],
         foodSources: food['sources'],
+        storyPacks: countryStoryPacks
+            .map((pack) => load('map_v2/$pack.json'))
+            .toList(),
       );
       final seine = Uri.parse('https://whc.unesco.org/en/list/600/');
       expect(lists['FR']!.where((f) => f.source == seine), hasLength(1));
+      final kimjang = Uri.parse('https://ich.unesco.org/en/RL/00881');
+      expect(
+        lists['KR']!.where((f) => f.source == kimjang).map((f) => f.subjectEn),
+        containsAll(['Local food', 'Traditions and crafts']),
+      );
       final deck = CountryFactRotation();
       expect(lists.length, countries.length);
       for (final entry in lists.entries) {
         final facts = entry.value;
-        expect(facts.length, greaterThanOrEqualTo(2), reason: entry.key);
+        expect(facts.length, greaterThanOrEqualTo(4), reason: entry.key);
         final firstCycle = List.generate(
           facts.length,
           (_) => deck.next(entry.key, facts),
