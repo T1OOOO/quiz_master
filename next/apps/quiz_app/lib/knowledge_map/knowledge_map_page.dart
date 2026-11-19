@@ -20,6 +20,7 @@ import 'landmarks_browser.dart';
 import 'country_number_format.dart';
 import 'countries_browser.dart';
 import 'map_state.dart';
+import 'map_projection.dart';
 import 'practice_hints.dart';
 import 'thematic_legend.dart';
 import 'history_map.dart';
@@ -207,6 +208,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     'landmark',
   };
   String thematic = 'none';
+  bool globeMode = false;
+  CameraPosition? beforeGlobe;
   List<dynamic> dishes = [];
   Map<String, dynamic> waters = {};
   Map<String, dynamic> borders = {};
@@ -2137,7 +2140,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               (coordinates[1] as num).toDouble(),
             )) {
           final id = feature['properties']['country_id'];
-          if (id is String) visibleIds.add(id);
+          if (!globeMode && id is String) visibleIds.add(id);
         }
       }
       setState(
@@ -2702,6 +2705,44 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                if (globeProjectionSupported && controller != null)
+                  SwitchListTile.adaptive(
+                    dense: true,
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(tr('3D globe', '3D-глобус')),
+                    value: globeMode,
+                    onChanged: ready
+                        ? (value) async {
+                            final c = controller;
+                            if (c == null) return;
+                            if (value) beforeGlobe = c.cameraPosition;
+                            final applied = await setGlobeProjection(c, value);
+                            if (!applied || !mounted || c != controller) return;
+                            setState(() {
+                              globeMode = value;
+                              visible = [];
+                              visibleRequest++;
+                            });
+                            if (dialogContext.mounted) dialogSetState(() {});
+                            final previous = beforeGlobe;
+                            if (previous != null) {
+                              if (value && previous.zoom > 1.2) {
+                                await c.animateCamera(
+                                  CameraUpdate.newLatLngZoom(
+                                    previous.target,
+                                    1.2,
+                                  ),
+                                );
+                              } else if (!value) {
+                                await c.animateCamera(
+                                  CameraUpdate.newCameraPosition(previous),
+                                );
+                              }
+                            }
+                            await updateVisibleCountries();
+                          }
+                        : null,
+                  ),
                 Wrap(
                   spacing: 8,
                   runSpacing: 4,

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'map_state.dart';
+import 'history_globe.dart';
 
 const _root = 'assets/quizipedia/map_v2/';
 const _centuries = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
@@ -35,12 +36,14 @@ class HistoryMap extends StatefulWidget {
     required this.russian,
     this.initialCountry,
     this.initialYear = 1914,
+    this.initialGlobe = false,
     this.onExit,
   });
   final List<MapCountry> countries;
   final bool russian;
   final String? initialCountry;
   final int initialYear;
+  final bool initialGlobe;
   final VoidCallback? onExit;
   @override
   State<HistoryMap> createState() => _HistoryMapState();
@@ -49,6 +52,9 @@ class HistoryMap extends StatefulWidget {
 class _HistoryMapState extends State<HistoryMap> {
   late int year = widget.initialYear.clamp(1501, 2000);
   bool century = false;
+  late bool globe = widget.initialGlobe;
+  int resetGlobe = 0;
+  late List landPolygons;
   late String? country = widget.initialCountry;
   late List<MapCountry> countryNames = widget.countries;
   _Polity? selected;
@@ -85,20 +91,41 @@ class _HistoryMapState extends State<HistoryMap> {
           MapCountry(id: r['id'], nameRu: r['name_ru'], nameEn: r['name_en']),
       ];
     }
+    landPolygons = jsonDecode(texts[0]) as List;
     return (
-      _shape(jsonDecode(texts[0])),
+      _shape(landPolygons),
       (jsonDecode(texts[1])['records'] as List).cast<Map>(),
     );
   }
 
-  Future<List<_Polity>> _load(int c) => packs.putIfAbsent(c, () async {
-    final obj = jsonDecode(
-      await rootBundle.loadString('${_root}historical_shapes_$c.json'),
-    );
-    return (obj['polities'] as List)
-        .map((r) => _Polity(r[0], r[1], r[2], _shape(r[3])))
+  Future<List<_Polity>> _load(int c) {
+    if (!packs.containsKey(c) && packs.length >= 2) {
+      packs.remove(packs.keys.first);
+    }
+    return packs.putIfAbsent(c, () async {
+      final obj = jsonDecode(
+        await rootBundle.loadString('${_root}historical_shapes_$c.json'),
+      );
+      return (obj['polities'] as List)
+          .map((r) => _Polity(r[0], r[1], r[2], r[3]))
+          .toList();
+    });
+  }
+
+  int? visibleYear;
+  List<_Polity>? visiblePack;
+  List<_Polity> visiblePolities = [];
+  List<GlobePolity> globePolities = [];
+  void updateVisible(List<_Polity> pack) {
+    if (visibleYear == year && identical(visiblePack, pack)) return;
+    visibleYear = year;
+    visiblePack = pack;
+    visiblePolities = pack
+        .where((p) => p.start <= year && p.end >= year)
         .toList();
-  });
+    globePolities = [for (final p in visiblePolities) p.globePolity];
+  }
+
   void changeYear(int v) => setState(() {
     year = v;
     selected = null;
@@ -288,6 +315,16 @@ class _HistoryMapState extends State<HistoryMap> {
         ),
       ),
       actions: [
+        Tooltip(
+          message: globe
+              ? t('Показать плоскую карту', 'Show flat map')
+              : t('Показать глобус', 'Show globe'),
+          child: TextButton.icon(
+            onPressed: () => setState(() => globe = !globe),
+            icon: Icon(globe ? Icons.map_outlined : Icons.public, size: 20),
+            label: Text(globe ? '2D' : '3D'),
+          ),
+        ),
         TextButton(
           onPressed: () =>
               launchUrl(Uri.parse('https://doi.org/10.5281/zenodo.13363121')),
@@ -314,7 +351,13 @@ class _HistoryMapState extends State<HistoryMap> {
         IconButton(
           tooltip: t('Вписать карту', 'Fit map'),
           icon: const Icon(Icons.fit_screen_outlined),
-          onPressed: () => transform.value = Matrix4.identity(),
+          onPressed: () {
+            if (globe) {
+              setState(() => resetGlobe++);
+            } else {
+              transform.value = Matrix4.identity();
+            }
+          },
         ),
         IconButton(
           tooltip: t('Об источнике', 'About the data'),
@@ -343,9 +386,10 @@ class _HistoryMapState extends State<HistoryMap> {
             children: [
               Expanded(
                 child: ColoredBox(
-                  color: const Color(0xffadd6df),
+                  color: globe
+                      ? const Color(0xff142f3a)
+                      : const Color(0xffadd6df),
                   child: FutureBuilder<List<_Polity>>(
-                    key: ValueKey(historyCentury(year)),
                     future: _load(historyCentury(year)),
                     builder: (context, pack) {
                       if (pack.hasError) {
@@ -361,53 +405,75 @@ class _HistoryMapState extends State<HistoryMap> {
                       if (!pack.hasData) {
                         return const Center(child: CircularProgressIndicator());
                       }
-                      final visible = pack.data!
-                          .where((p) => p.start <= year && p.end >= year)
-                          .toList();
+                      updateVisible(pack.data!);
+                      final visible = visiblePolities;
                       return Stack(
                         children: [
-                          Positioned.fill(
-                            child: LayoutBuilder(
-                              builder: (context, box) {
-                                final s = math.min(
-                                  box.maxWidth / 360,
-                                  box.maxHeight / 180,
-                                );
-                                final offset = Offset(
-                                  (box.maxWidth - 360 * s) / 2,
-                                  (box.maxHeight - 180 * s) / 2,
-                                );
-                                return InteractiveViewer(
-                                  transformationController: transform,
-                                  maxScale: 18,
-                                  child: GestureDetector(
-                                    behavior: HitTestBehavior.opaque,
-                                    onTapUp: (tap) {
-                                      final point =
-                                          (tap.localPosition - offset) / s;
-                                      setState(
-                                        () => selected = visible.reversed
-                                            .where(
-                                              (p) => p.path.contains(point),
-                                            )
-                                            .firstOrNull,
-                                      );
-                                    },
-                                    child: CustomPaint(
-                                      size: Size(box.maxWidth, box.maxHeight),
-                                      painter: _Painter(
-                                        land,
-                                        visible,
-                                        selected,
-                                        offset,
-                                        s,
+                          if (globe)
+                            Positioned.fill(
+                              child: HistoryGlobe(
+                                key: ValueKey(resetGlobe),
+                                land: landPolygons,
+                                polities: globePolities,
+                                year: year,
+                                selectedName: selected?.name,
+                                onSelect: (name) => setState(
+                                  () => selected = visible
+                                      .where((p) => p.name == name)
+                                      .firstOrNull,
+                                ),
+                              ),
+                            )
+                          else
+                            Positioned.fill(
+                              child: LayoutBuilder(
+                                builder: (context, box) {
+                                  final s = math.min(
+                                    box.maxWidth / 360,
+                                    box.maxHeight / 180,
+                                  );
+                                  final offset = Offset(
+                                    (box.maxWidth - 360 * s) / 2,
+                                    (box.maxHeight - 180 * s) / 2,
+                                  );
+                                  return InteractiveViewer(
+                                    transformationController: transform,
+                                    maxScale: 18,
+                                    child: GestureDetector(
+                                      behavior: HitTestBehavior.opaque,
+                                      onTapUp: (tap) {
+                                        final point =
+                                            (tap.localPosition - offset) / s;
+                                        setState(
+                                          () => selected = visible.reversed
+                                              .where(
+                                                (p) => p.path.contains(point),
+                                              )
+                                              .firstOrNull,
+                                        );
+                                      },
+                                      child: CustomPaint(
+                                        size: Size(box.maxWidth, box.maxHeight),
+                                        painter: _Painter(
+                                          land,
+                                          visible,
+                                          selected,
+                                          offset,
+                                          s,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
+                                  );
+                                },
+                              ),
                             ),
-                          ),
+                          if (pack.connectionState == ConnectionState.waiting)
+                            const Positioned(
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              child: LinearProgressIndicator(),
+                            ),
                           if (selected != null)
                             Positioned(
                               top: 4,
@@ -514,10 +580,12 @@ Path _shape(List polygons) {
 }
 
 class _Polity {
-  const _Polity(this.name, this.start, this.end, this.path);
+  _Polity(this.name, this.start, this.end, this.polygons);
   final String name;
   final int start, end;
-  final Path path;
+  final List polygons;
+  late final path = _shape(polygons);
+  late final globePolity = GlobePolity(name: name, polygons: polygons);
 }
 
 class _Painter extends CustomPainter {
