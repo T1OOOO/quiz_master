@@ -222,6 +222,13 @@ class _HistoryGlobeState extends State<HistoryGlobe>
   });
 
   void _onPointerSignal(PointerSignalEvent event) {
+    // Flutter Web delivers trackpad pinch as incremental scale signals.
+    if (event is PointerScaleEvent) {
+      if (event.scale.isFinite && event.scale > 0 && event.scale != 1) {
+        _changeZoom(_zoom * event.scale);
+      }
+      return;
+    }
     if (event is! PointerScrollEvent) return;
     // Browsers report wheel deltas in logical pixels.  Keep the response
     // deliberately small so a trackpad does not jump across the globe.

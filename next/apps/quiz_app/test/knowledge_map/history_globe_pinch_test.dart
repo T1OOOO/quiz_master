@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/knowledge_map/history_globe.dart';
 
@@ -121,5 +122,51 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(find.byTooltip('West'), findsOneWidget);
     expect(find.byTooltip('East'), findsOneWidget);
+  });
+
+  testWidgets(
+    'late second finger and asymmetric spread change marker spacing',
+    (tester) async {
+      await pumpGlobe(tester);
+      final center = tester.getCenter(find.byType(HistoryGlobe));
+      final before = markerDistance(tester);
+      final first = await tester.startGesture(
+        center - const Offset(38, 0),
+        pointer: 31,
+      );
+      await first.moveBy(const Offset(-12, 7));
+      final second = await tester.startGesture(
+        center + const Offset(20, 8),
+        pointer: 32,
+      );
+      for (var i = 0; i < 5; i++) {
+        await first.moveBy(const Offset(-5, -1));
+        await second.moveBy(const Offset(9, 2));
+        await tester.pump();
+      }
+      final after = markerDistance(tester);
+      expect(after, greaterThan(before * 1.15));
+      await second.up();
+      await first.up();
+    },
+  );
+
+  testWidgets('scale signal pinch expands then contracts marker spacing', (
+    tester,
+  ) async {
+    await pumpGlobe(tester);
+    final center = tester.getCenter(find.byType(HistoryGlobe));
+    final before = markerDistance(tester);
+    tester.binding.handlePointerEvent(
+      PointerScaleEvent(position: center, device: 90, scale: 1.2),
+    );
+    await tester.pump();
+    final expanded = markerDistance(tester);
+    expect(expanded, greaterThan(before * 1.1));
+    tester.binding.handlePointerEvent(
+      PointerScaleEvent(position: center, device: 90, scale: .8),
+    );
+    await tester.pump();
+    expect(markerDistance(tester), lessThan(expanded * .9));
   });
 }
