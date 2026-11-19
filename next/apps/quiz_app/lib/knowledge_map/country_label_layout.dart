@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 /// Geometry helpers for placing country labels in the visible outline.
 /// Coordinates are GeoJSON [longitude, latitude].
 class GeoViewport {
@@ -239,6 +241,82 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
     }
     final point = countryLabelAnchor(outlines[id]!, viewport);
     if (point != null) result[id] = (point.longitude, point.latitude);
+  }
+  return result;
+}
+
+class CountryLabelCandidate {
+  const CountryLabelCandidate({
+    required this.id,
+    required this.point,
+    required this.fullSize,
+    required this.shortSize,
+    this.selected = false,
+    this.priority = 0,
+  });
+  final String id;
+  final Offset point;
+  final Size fullSize, shortSize;
+  final bool selected;
+  final num priority;
+}
+
+class CountryLabelPlacement {
+  const CountryLabelPlacement(this.bounds, this.offset, this.short);
+  final Rect bounds;
+  final Offset offset;
+  final bool short;
+}
+
+Map<String, CountryLabelPlacement> placeCountryLabels(
+  List<CountryLabelCandidate> candidates,
+  Size viewport, {
+  Size flagSize = Size.zero,
+}) {
+  final ordered = [...candidates]
+    ..sort((a, b) {
+      if (a.selected != b.selected) return a.selected ? -1 : 1;
+      final order = a.priority.compareTo(b.priority);
+      return order == 0 ? a.id.compareTo(b.id) : order;
+    });
+  final result = <String, CountryLabelPlacement>{};
+  final occupied = <Rect>[
+    if (flagSize != Size.zero)
+      for (final item in candidates)
+        Rect.fromCenter(
+          center: item.point,
+          width: flagSize.width,
+          height: flagSize.height,
+        ),
+  ];
+  final screen = Offset.zero & viewport;
+  for (final item in ordered) {
+    for (final short in item.selected ? [false] : [false, true]) {
+      final size = short ? item.shortSize : item.fullSize;
+      final offsets = [
+        Offset(0, 10 + size.height / 2),
+        Offset(10 + size.width / 2, 0),
+        Offset(0, -10 - size.height / 2),
+        Offset(-10 - size.width / 2, 0),
+      ];
+      for (final offset in offsets) {
+        final rect = Rect.fromCenter(
+          center: item.point + offset,
+          width: size.width,
+          height: size.height,
+        );
+        if (!item.selected &&
+            (!screen.contains(rect.topLeft) ||
+                !screen.contains(rect.bottomRight) ||
+                occupied.any((other) => other.overlaps(rect.inflate(2))))) {
+          continue;
+        }
+        result[item.id] = CountryLabelPlacement(rect, offset, short);
+        occupied.add(rect);
+        break;
+      }
+      if (result.containsKey(item.id)) break;
+    }
   }
   return result;
 }

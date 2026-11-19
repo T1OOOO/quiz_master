@@ -433,10 +433,10 @@ void main() {
     expect(find.text('Capital: Paris'), findsOneWidget);
     await toggleMapData(tester);
     await tester.pumpAndSettle();
-    await toggleMapData(tester);
+    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
     await tester.pumpAndSettle();
-    expect(find.byKey(const ValueKey('country-bottom-panel')), findsNothing);
-    expect(find.text('Country details'), findsOneWidget);
+    expect(find.byKey(const ValueKey('country-bottom-panel')), findsOneWidget);
+    expect(find.text('Capital: Paris'), findsOneWidget);
   });
 
   testWidgets('country panel resizes the same map and closing restores it', (
@@ -825,32 +825,18 @@ void main() {
     expect(find.text('Map data'), findsOneWidget);
     expect(find.text('Population'), findsOneWidget);
     expect(find.text('Area'), findsOneWidget);
-    await tester.tap(find.text('Capital'));
-    await tester.pump();
-    expect(
-      tester
-          .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Capital'))
-          .selected,
-      isTrue,
-    );
-    await tester.tap(find.text('Dishes'));
-    await tester.pump();
-    expect(
-      tester
-          .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Dishes'))
-          .selected,
-      isTrue,
-    );
-    await tester.tap(find.text('Population'));
-    await tester.pump();
-    await tester.tap(find.text('Dishes'));
-    await tester.pump();
-    expect(
-      tester
-          .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, 'Dishes'))
-          .selected,
-      isTrue,
-    );
+    for (final label in ['Capital', 'Dishes', 'Population']) {
+      await tester.tap(find.widgetWithText(ChoiceChip, label));
+      await tester.pumpAndSettle();
+      expect(find.byType(AlertDialog), findsNothing);
+      await toggleMapData(tester);
+      expect(
+        tester
+            .widget<ChoiceChip>(find.widgetWithText(ChoiceChip, label))
+            .selected,
+        isTrue,
+      );
+    }
     expect(find.text('Country labels'), findsNothing);
     expect(find.text('Capitals'), findsNothing);
   });
@@ -1452,4 +1438,27 @@ void main() {
     expect(find.text('River'), findsOneWidget);
     expect(find.text('Source'), findsNothing);
   });
+  testWidgets(
+    'map search opens from its compact control and selects a country',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeMapPage.test(
+            bundle: MapFixtureBundle(),
+            mapBuilder: (context, select) => const SizedBox.expand(),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byTooltip('Search'));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextField), 'France');
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('France').last);
+      await tester.pumpAndSettle();
+      expect(find.byType(Dialog), findsNothing);
+      expect(find.byKey(const ValueKey('country-bottom-panel')), findsNothing);
+      expect(tester.takeException(), isNull);
+    },
+  );
 }
