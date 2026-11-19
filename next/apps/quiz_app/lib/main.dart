@@ -174,6 +174,7 @@ GoRouter createRouter({String initialLocation = '/'}) {
           russian: Localizations.localeOf(context).languageCode == 'ru',
           initialYear: int.tryParse(state.uri.queryParameters['year'] ?? '') ?? 1914,
           initialCountry: state.uri.queryParameters['country']?.toUpperCase(),
+          initialGlobe: state.uri.queryParameters['view'] == 'globe',
           onExit: () => context.go('/atlas/map-preview'),
         ),
       ),
