@@ -317,11 +317,13 @@ class _HistoryGlobeState extends State<HistoryGlobe> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
+                      color: const Color(0xff244e57),
                       tooltip: russian ? 'Увеличить' : 'Zoom in',
                       onPressed: () => _changeZoom(_zoom * 1.25),
                       icon: const Icon(Icons.add),
                     ),
                     IconButton(
+                      color: const Color(0xff244e57),
                       tooltip: russian ? 'Уменьшить' : 'Zoom out',
                       onPressed: () => _changeZoom(_zoom / 1.25),
                       icon: const Icon(Icons.remove),
@@ -372,6 +374,17 @@ class _GlobePainter extends CustomPainter {
           ..strokeWidth = .55,
       );
     }
+    canvas.drawCircle(
+      scene.center,
+      scene.radius,
+      Paint()
+        ..shader = ui.Gradient.radial(
+          scene.center - Offset(scene.radius * .26, scene.radius * .3),
+          scene.radius * 1.35,
+          const [Color(0x10ffffff), Color(0x00ffffff), Color(0x460b3444)],
+          const [0.0, .52, 1.0],
+        ),
+    );
     canvas.restore();
     canvas.drawCircle(
       scene.center,
