@@ -3,8 +3,51 @@ import 'package:quiz_app/knowledge_map/country_label_layout.dart';
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:ui';
 
 void main() {
+  test('dense labels try positions and retain selected full name', () {
+    final placements = placeCountryLabels([
+      CountryLabelCandidate(
+        id: 'A',
+        point: const Offset(100, 100),
+        fullSize: const Size(80, 16),
+        shortSize: const Size(20, 16),
+      ),
+      CountryLabelCandidate(
+        id: 'B',
+        point: const Offset(110, 100),
+        fullSize: const Size(80, 16),
+        shortSize: const Size(20, 16),
+      ),
+      CountryLabelCandidate(
+        id: 'C',
+        point: const Offset(115, 100),
+        fullSize: const Size(80, 16),
+        shortSize: const Size(20, 16),
+        selected: true,
+      ),
+    ], const Size(200, 200));
+    expect(placements['C']!.short, isFalse);
+    expect(placements.length, 3);
+    final rects = placements.values.map((p) => p.bounds).toList();
+    for (var i = 0; i < rects.length; i++) {
+      for (var j = i + 1; j < rects.length; j++) {
+        expect(rects[i].overlaps(rects[j]), isFalse);
+      }
+    }
+  });
+  test('a long name falls back to its short label when space is narrow', () {
+    final placement = placeCountryLabels([
+      CountryLabelCandidate(
+        id: 'A',
+        point: const Offset(30, 25),
+        fullSize: const Size(160, 12),
+        shortSize: const Size(18, 12),
+      ),
+    ], const Size(60, 50));
+    expect(placement['A']?.short, isTrue);
+  });
   const view = GeoViewport(west: 0, east: 10, south: 0, north: 10);
   test('keeps visible anchors until they approach the viewport edge', () {
     final labels = [
