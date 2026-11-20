@@ -19,7 +19,6 @@ import 'history_relief.dart';
 export 'history_period.dart' show historyPeriod;
 
 const _root = 'assets/quizipedia/map_v2/';
-const _centuries = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
 int historyCentury(int year) => (year - 1) ~/ 100 + 1;
 List<Map> historyEventsFor(
   List<Map> events,
@@ -30,8 +29,7 @@ List<Map> historyEventsFor(
   return events
       .where(
         (e) =>
-            e['start'] <= end &&
-            e['end'] >= start &&
+            historyEventOverlaps(e, start, end) &&
             (country == null || (e['countries'] as List).contains(country)),
       )
       .toList()
@@ -61,18 +59,19 @@ class HistoryMap extends StatefulWidget {
 class _HistoryMapState extends State<HistoryMap> {
   late int year = widget.initialYear.clamp(1501, 2000);
   int periodLength = 1;
-  bool calendarCentury = false;
-  (int, int) get period =>
-      historyPeriod(year, periodLength, calendarCentury: calendarCentury);
+  bool customRange = false;
+  (int, int) get period => historyPeriod(year, periodLength);
   String get periodLabel =>
       period.$1 == period.$2 ? '${period.$1}' : '${period.$1}–${period.$2}';
 
-  Future<void> choosePeriod() async {
+  Future<void> choosePeriod(List<Map> scoped) async {
     final choice = await showDialog<(int, int, bool)>(
       context: context,
       builder: (_) => HistoryPeriodDialog(
         year: year,
-        period: period,
+        step: periodLength,
+        customRange: customRange,
+        events: scoped,
         russian: widget.russian,
       ),
     );
@@ -80,7 +79,7 @@ class _HistoryMapState extends State<HistoryMap> {
     setState(() {
       year = choice.$1;
       periodLength = choice.$2;
-      calendarCentury = choice.$3;
+      customRange = choice.$3;
       selectedEvent = null;
       selected = null;
     });
@@ -101,7 +100,6 @@ class _HistoryMapState extends State<HistoryMap> {
   late final base = _loadBase();
   String t(String ru, String en) => widget.russian ? ru : en;
   String name(MapCountry c) => widget.russian ? c.nameRu : c.nameEn;
-  String get centuryName => _centuries[historyCentury(year) - 16];
   String get regionName {
     final r = countryNames.where((c) => c.id == country).firstOrNull;
     return r == null ? t('Все страны', 'All countries') : name(r);
@@ -238,74 +236,10 @@ class _HistoryMapState extends State<HistoryMap> {
     });
   }
 
-  Future<void> chooseYear() async {
-    var input = year.toString();
-    final n = await showDialog<int>(
-      context: context,
-      builder: (d) => StatefulBuilder(
-        builder: (context, refresh) {
-          final v = int.tryParse(input);
-          final valid = v != null && v >= 1501 && v <= 2000;
-          return AlertDialog(
-            title: Text(t('Перейти к году', 'Go to year')),
-            content: TextFormField(
-              initialValue: input,
-              autofocus: true,
-              keyboardType: TextInputType.number,
-              inputFormatters: [
-                FilteringTextInputFormatter.digitsOnly,
-                LengthLimitingTextInputFormatter(4),
-              ],
-              decoration: const InputDecoration(helperText: '1501–2000'),
-              onChanged: (s) => refresh(() => input = s),
-              onFieldSubmitted: (_) {
-                if (valid) Navigator.pop(d, v);
-              },
-            ),
-            actions: [
-              close(d),
-              FilledButton(
-                onPressed: valid ? () => Navigator.pop(d, v) : null,
-                child: Text(t('Перейти', 'Go')),
-              ),
-            ],
-          );
-        },
-      ),
-    );
-    if (mounted && n != null) changeYear(n);
-  }
-
   Widget close(BuildContext d) => TextButton(
     onPressed: () => Navigator.pop(d),
     child: Text(t('Закрыть', 'Close')),
   );
-  Future<void> chooseCentury() async {
-    final c = await showDialog<int>(
-      context: context,
-      builder: (d) => SimpleDialog(
-        title: Text(t('Выбрать век', 'Choose century')),
-        children: [
-          for (var i = 16; i <= 20; i++)
-            SimpleDialogOption(
-              onPressed: () => Navigator.pop(d, i),
-              child: Text('${_centuries[i - 16]} · ${i * 100 - 99}–${i * 100}'),
-            ),
-          close(d),
-        ],
-      ),
-    );
-    if (mounted && c != null) {
-      setState(() {
-        if (historyCentury(year) != c) year = c * 100 - 99;
-        calendarCentury = true;
-        periodLength = 100;
-        selected = null;
-        selectedEvent = null;
-      });
-    }
-  }
-
   Future<void> chooseCountry(List<Map> events) async {
     var query = '';
     final ids = events
@@ -768,20 +702,6 @@ class _HistoryMapState extends State<HistoryMap> {
                               ),
                             ),
                           ),
-                          Positioned(
-                            top: 10,
-                            right: 10,
-                            child: FilledButton.tonalIcon(
-                              onPressed: choosePeriod,
-                              icon: const Icon(
-                                Icons.date_range_outlined,
-                                size: 18,
-                              ),
-                              label: Text(
-                                '${t("Период", "Period")} · $periodLabel',
-                              ),
-                            ),
-                          ),
                           if (selected != null)
                             Positioned(
                               top: 52,
@@ -811,16 +731,13 @@ class _HistoryMapState extends State<HistoryMap> {
                 ),
               ),
               HistoryTimeline(
-                year: year,
-                centuryName: centuryName,
+                step: periodLength,
                 russian: widget.russian,
                 countryName: regionName,
-                events: scoped,
                 eventCount: rows.length,
                 period: period,
                 onYear: changeYear,
-                pickYear: chooseYear,
-                pickCentury: chooseCentury,
+                openCalendar: () => choosePeriod(scoped),
                 pickCountry: () => chooseCountry(events),
                 openEvents: () => openIndex(rows),
               ),
