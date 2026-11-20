@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/knowledge_map/history_timeline.dart';
 import 'package:quiz_app/knowledge_map/history_map_pins.dart';
@@ -9,6 +12,68 @@ import 'package:quiz_app/knowledge_map/history_period.dart'
 import 'package:quiz_app/knowledge_map/history_map.dart';
 
 void main() {
+  testWidgets(
+    'the year selects all ongoing events, only tapping a pin focuses one',
+    (tester) async {
+      final records = [
+        for (final (title, start, lon) in [
+          ('Voyage', 1700, -90),
+          ('Treaty', 1701, 90),
+        ])
+          {
+            'title_en': title,
+            'summary_en': title,
+            'source_url': 'https://example.org',
+            'start': start,
+            'end': 1703,
+            'kind': 'event',
+            'countries': ['GB'],
+            'location': [lon, 0],
+          },
+      ];
+      final assets = {
+        'history_events.json': {'records': records},
+        'historical_land.json': [],
+        'historical_polity_names_ru.json': {},
+        'country_facts.json': {'countries': []},
+        'country_labels.geojson': {'features': []},
+        'historical_shapes_18.json': {'polities': []},
+        'historical_shapes_17.json': {'polities': []},
+      };
+      final messenger = tester.binding.defaultBinaryMessenger;
+      messenger.setMockMessageHandler('flutter/assets', (bytes) async {
+        final path = utf8.decode(Uint8List.sublistView(bytes!));
+        final data = assets[path.split('/').last];
+        return data == null
+            ? null
+            : ByteData.sublistView(
+                Uint8List.fromList(utf8.encode(jsonEncode(data))),
+              );
+      });
+      addTearDown(() {
+        messenger.setMockMessageHandler('flutter/assets', null);
+        rootBundle.clear();
+      });
+      await tester.pumpWidget(
+        const MaterialApp(home: HistoryMap(russian: false, initialYear: 1701)),
+      );
+      await tester.pumpAndSettle();
+      HistoryMapPins overlay() => tester.widget(find.byType(HistoryMapPins));
+      expect(overlay().pins.map((p) => p.title), ['Voyage', 'Treaty']);
+      expect(overlay().focus, isNull);
+      await tester.tap(find.byTooltip('Treaty'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Close'));
+      await tester.pumpAndSettle();
+      expect(overlay().focus?.title, 'Treaty');
+      tester.widget<Slider>(find.byType(Slider)).onChanged!(1702);
+      await tester.pumpAndSettle();
+      expect(overlay().focus, isNull);
+      expect(overlay().pins, hasLength(2));
+      expect(find.byType(AlertDialog), findsNothing);
+    },
+  );
+
   testWidgets(
     'custom period rejects reversed dates and includes the last year',
     (tester) async {
@@ -89,14 +154,14 @@ void main() {
       await tester.tapAt(Offset(track.left + 30, track.center.dy));
       await tester.pump();
       expect(year, lessThan(1600));
-      expect(find.text('0'), findsOneWidget);
+      expect(find.text('События · 0'), findsOneWidget);
       expect(tester.getRect(find.byType(HistoryTimeline)), timeline);
       final before = year;
       await tester.tap(find.byTooltip('Следующий год'));
       await tester.pump();
       expect(year, before + 1);
       expect(tester.getRect(slider), track);
-      await tester.tap(find.text('0'));
+      await tester.tap(find.text('События · 0'));
       expect(opened, isTrue);
     },
   );
@@ -250,13 +315,6 @@ void main() {
         events[0],
         events[2],
       ]);
-    });
-
-    test('timeline preview follows the year and prefers new developments', () {
-      expect(closestHistoryEvent(events, 1601), same(events[1]));
-      expect(closestHistoryEvent(events, 1609), same(events[2]));
-      expect(closestHistoryEvent(events.take(2), 1607), same(events[0]));
-      expect(closestHistoryEvent([], 1690), isNull);
     });
   });
 }
