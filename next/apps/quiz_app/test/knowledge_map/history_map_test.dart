@@ -146,6 +146,55 @@ void main() {
     },
   );
 
+  testWidgets(
+    'edge captions stay inside the map and clear nearby tap targets',
+    (tester) async {
+      final pins = [
+        for (final (x, y, title) in [
+          (12.0, 8.0, 'Harbour'),
+          (18.0, 70.0, 'Bridge'),
+          (112.0, 8.0, 'Fort'),
+        ])
+          (longitude: x, latitude: y, title: title, kind: 'event'),
+      ];
+      List<HistoryEventPin>? chosen;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              width: 290,
+              height: 180,
+              child: HistoryMapPins(
+                size: const Size(290, 180),
+                pins: pins,
+                focus: pins.first,
+                caption: '1700 · Harbour',
+                russian: true,
+                project: (p) => Offset(p.longitude, p.latitude),
+                onOpen: (v) => chosen = v,
+              ),
+            ),
+          ),
+        ),
+      );
+      final bounds = tester.getRect(find.byType(HistoryMapPins));
+      final targets = [
+        for (final p in pins) tester.getRect(find.byTooltip(p.title)),
+      ];
+      final labels = <Rect>[];
+      for (final title in ['1700 · Harbour', 'Bridge', 'Fort']) {
+        final label = tester.getRect(find.text(title));
+        expect(bounds.intersect(label), label);
+        expect([...targets, ...labels].any(label.overlaps), isFalse);
+        labels.add(label);
+      }
+      for (final p in pins) {
+        await tester.tap(find.byTooltip(p.title));
+        expect(chosen, [p]);
+      }
+    },
+  );
+
   group('history map period helpers', () {
     test('maps years to their historical century', () {
       expect(historyCentury(1600), 16);
