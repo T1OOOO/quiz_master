@@ -22,6 +22,7 @@ import 'quizipedia.dart';
 import 'question_articles.dart';
 import 'knowledge_map/knowledge_map_page.dart';
 import 'knowledge_map/history_map.dart';
+import 'knowledge_map/atlas_view.dart';
 
 part 'api_models.dart';
 part 'api_repository.dart';
@@ -164,7 +165,8 @@ GoRouter createRouter({String initialLocation = '/'}) {
     routes: [
       GoRoute(
         path: '/atlas/map-preview',
-        builder: (context, _) => KnowledgeMapPage(
+        builder: (context, state) => KnowledgeMapPage(
+          initialView: state.extra is AtlasView ? state.extra as AtlasView : null,
           onExit: () => context.go('/quizipedia'),
         ),
       ),
@@ -177,6 +179,7 @@ GoRouter createRouter({String initialLocation = '/'}) {
           initialCountry: state.uri.queryParameters['country']?.toUpperCase(),
           initialGlobe: state.uri.queryParameters['view'] == 'globe',
           onExit: () => context.go('/atlas/map-preview'),
+          onWorld: (view) => context.go('/atlas/map-preview', extra: view),
         ),
       ),
       // Keep global controls below the navigator's already-owned overlay.

@@ -12,12 +12,14 @@ class AtlasHeader extends StatelessWidget {
     this.showProjection = true,
     this.onProjection,
     this.onAbout,
+    this.onAtlasSwitch,
+    this.history = false,
   });
 
-  final bool russian, globe, showProjection;
+  final bool russian, globe, showProjection, history;
   final String title;
   final VoidCallback onBack;
-  final VoidCallback? onProjection, onAbout;
+  final VoidCallback? onProjection, onAbout, onAtlasSwitch;
 
   @override
   Widget build(BuildContext context) => Material(
@@ -27,7 +29,13 @@ class AtlasHeader extends StatelessWidget {
     borderRadius: BorderRadius.circular(16),
     child: LayoutBuilder(
       builder: (context, box) {
-        final compact = box.maxWidth < (onAbout == null ? 245 : 280);
+        final compact =
+            box.maxWidth <
+            (onAtlasSwitch != null
+                ? 365
+                : onAbout == null
+                ? 245
+                : 280);
         final projection = globe
             ? (russian ? '2D-карта' : '2D map')
             : (russian ? '3D-глобус' : '3D globe');
@@ -53,6 +61,29 @@ class AtlasHeader extends StatelessWidget {
                 onPressed: onProjection,
                 icon: glyph,
                 label: Text(projection),
+              ),
+          if (onAtlasSwitch != null)
+            if (box.maxWidth >= 235)
+              TextButton(
+                onPressed: onAtlasSwitch,
+                style: TextButton.styleFrom(
+                  foregroundColor: const Color(0xff215b53),
+                  minimumSize: const Size(0, 44),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                ),
+                child: Text(
+                  history
+                      ? (russian ? 'Мир' : 'World')
+                      : (russian ? 'История' : 'History'),
+                ),
+              )
+            else
+              IconButton(
+                tooltip: history
+                    ? (russian ? 'Атлас мира' : 'World atlas')
+                    : (russian ? 'Исторический атлас' : 'Historical atlas'),
+                onPressed: onAtlasSwitch,
+                icon: const Icon(Icons.swap_horiz, size: 21),
               ),
           if (onAbout != null)
             IconButton(

@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'atlas_controls.dart';
+import 'atlas_view.dart';
 import 'map_state.dart';
 import 'history_globe.dart';
 import 'history_event_symbol.dart';
@@ -46,6 +47,8 @@ class HistoryMap extends StatefulWidget {
     this.initialYear = 1914,
     this.initialGlobe = false,
     this.onExit,
+    this.initialCamera,
+    this.onWorld,
   });
   final List<MapCountry> countries;
   final bool russian;
@@ -53,6 +56,8 @@ class HistoryMap extends StatefulWidget {
   final int initialYear;
   final bool initialGlobe;
   final VoidCallback? onExit;
+  final AtlasCamera? initialCamera;
+  final ValueChanged<AtlasView>? onWorld;
   @override
   State<HistoryMap> createState() => _HistoryMapState();
 }
@@ -340,17 +345,53 @@ class _HistoryMapState extends State<HistoryMap> {
       ],
     ),
   );
+  late AtlasCamera? globeCamera = widget.initialGlobe
+      ? widget.initialCamera
+      : null;
+  Size flatViewport = Size.zero;
+  bool restoredFlatCamera = false;
+  double flatMinScale = 1, flatMaxScale = 18;
+
+  void switchToWorld() {
+    AtlasCamera? camera = globe ? globeCamera : widget.initialCamera;
+    if (!globe && !flatViewport.isEmpty) {
+      final scale = math.min(
+        flatViewport.width / 360,
+        flatViewport.height / 180,
+      );
+      final center = flatViewport.center(Offset.zero);
+      camera = atlasFlatCamera(
+        transform.toScene(center),
+        center - Offset(180 * scale, 90 * scale),
+        scale,
+        transform.value.getMaxScaleOnAxis(),
+      );
+    }
+    final view = (country: country, globe: globe, camera: camera);
+    if (widget.onWorld case final switchAtlas?) {
+      switchAtlas(view);
+    } else {
+      Navigator.pop(context, view);
+    }
+  }
+
   void zoomFlat(Size size, double factor) {
     final center = size.center(Offset.zero);
     final scene = transform.toScene(center);
     final zoom = (transform.value.getMaxScaleOnAxis() * factor).clamp(
-      1.0,
-      18.0,
+      flatMinScale,
+      flatMaxScale,
     );
     transform.value = Matrix4.diagonal3Values(zoom, zoom, zoom)
       ..setTranslationRaw(
-        (center.dx - scene.dx * zoom).clamp(size.width * (1 - zoom), 0.0),
-        (center.dy - scene.dy * zoom).clamp(size.height * (1 - zoom), 0.0),
+        (center.dx - scene.dx * zoom).clamp(
+          math.min(0.0, size.width * (1 - zoom)),
+          math.max(0.0, size.width * (1 - zoom)),
+        ),
+        (center.dy - scene.dy * zoom).clamp(
+          math.min(0.0, size.height * (1 - zoom)),
+          math.max(0.0, size.height * (1 - zoom)),
+        ),
         0,
       );
   }
@@ -377,6 +418,10 @@ class _HistoryMapState extends State<HistoryMap> {
                     ? closeReader
                     : widget.onExit ?? () => Navigator.maybePop(context),
                 onAbout: about,
+                history: true,
+                onAtlasSwitch: loaded && widget.onWorld != null
+                    ? switchToWorld
+                    : null,
                 onProjection: loaded
                     ? () => setState(() => globe = !globe)
                     : null,
@@ -479,6 +524,8 @@ class _HistoryMapState extends State<HistoryMap> {
                       Positioned.fill(
                         child: HistoryGlobe(
                           onSearch: () => chooseCountry(events),
+                          initialCamera: globeCamera,
+                          onCamera: (camera) => globeCamera = camera,
                           land: landPolygons,
                           polities: globePolities,
                           year: year,
@@ -513,13 +560,44 @@ class _HistoryMapState extends State<HistoryMap> {
                               (box.maxWidth - 360 * s) / 2,
                               (box.maxHeight - 180 * s) / 2,
                             );
+                            flatViewport = box.biggest;
+                            if (!restoredFlatCamera) {
+                              restoredFlatCamera = true;
+                              final incoming = widget.initialGlobe
+                                  ? globeCamera
+                                  : widget.initialCamera;
+                              if (incoming != null) {
+                                final scale =
+                                    atlasPixelsPerDegree(incoming.zoom) / s;
+                                flatMinScale = math.min(1.0, scale);
+                                flatMaxScale = math.max(18.0, scale);
+                                final scene =
+                                    offset +
+                                    Offset(
+                                          180 + incoming.longitude,
+                                          90 - incoming.latitude,
+                                        ) *
+                                        s;
+                                final translation =
+                                    box.biggest.center(Offset.zero) -
+                                    scene * scale;
+                                transform.value =
+                                    Matrix4.diagonal3Values(scale, scale, scale)
+                                      ..setTranslationRaw(
+                                        translation.dx,
+                                        translation.dy,
+                                        0,
+                                      );
+                              }
+                            }
                             revealFlatPin(focus, box.biggest, offset, s);
                             return Stack(
                               fit: StackFit.expand,
                               children: [
                                 InteractiveViewer(
                                   transformationController: transform,
-                                  maxScale: 18,
+                                  minScale: flatMinScale,
+                                  maxScale: flatMaxScale,
                                   child: GestureDetector(
                                     behavior: HitTestBehavior.opaque,
                                     onTapUp: (tap) {

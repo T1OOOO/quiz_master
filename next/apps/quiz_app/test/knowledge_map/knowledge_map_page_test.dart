@@ -356,14 +356,14 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.text('3D globe'));
+    await tester.tap(find.byTooltip('3D globe'));
     await tester.pumpAndSettle();
     expect(find.text('World globe'), findsOneWidget);
     await tester.tap(find.byTooltip('Zoom in'));
     await tester.pump();
-    await tester.tap(find.text('2D map'));
+    await tester.tap(find.byTooltip('2D map'));
     await tester.pumpAndSettle();
-    expect(find.text('3D globe'), findsOneWidget);
+    expect(find.byTooltip('3D globe'), findsOneWidget);
     expect(find.byTooltip('Map menu'), findsOneWidget);
   });
   testWidgets('map opens while supplementary facts are still loading', (

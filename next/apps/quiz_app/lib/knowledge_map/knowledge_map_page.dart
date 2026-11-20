@@ -22,6 +22,7 @@ import 'countries_browser.dart';
 import 'map_state.dart';
 import 'map_projection.dart';
 import 'atlas_controls.dart';
+import 'atlas_view.dart';
 import 'world_globe.dart';
 import 'practice_hints.dart';
 import 'thematic_legend.dart';
@@ -128,7 +129,7 @@ Future<void> commitCountryLabelsUpdate({
 }
 
 class KnowledgeMapPage extends StatefulWidget {
-  const KnowledgeMapPage({super.key, this.onExit})
+  const KnowledgeMapPage({super.key, this.onExit, this.initialView})
     : mapBuilder = null,
       hoverMapBuilder = null,
       landmarkMapBuilder = null,
@@ -145,6 +146,7 @@ class KnowledgeMapPage extends StatefulWidget {
     this.visibleCountryIds,
     this.bundle,
     this.onExit,
+    this.initialView,
   });
   final Widget Function(
     BuildContext,
@@ -167,6 +169,7 @@ class KnowledgeMapPage extends StatefulWidget {
   final AssetBundle? bundle;
   final List<String>? visibleCountryIds;
   final VoidCallback? onExit;
+  final AtlasView? initialView;
   final Widget Function(BuildContext, void Function(String?))? mapBuilder;
   @override
   State<KnowledgeMapPage> createState() => _KnowledgeMapPageState();
@@ -211,6 +214,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   };
   String thematic = 'none';
   bool globeMode = false;
+  bool atlasSwitching = false;
+  bool appliedInitialView = false;
   bool projectionBusy = false;
   final countrySpriteSizes = <String, Size>{};
   Set<String> clippedNames = {};
@@ -490,7 +495,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       }
       if (mounted) {
         setState(() {
-          state = MapState(items, landmarks: landmarkItems);
+          state = MapState(items, landmarks: landmarkItems)
+            ..select(widget.initialView?.country);
           readingLists = countryReadingLists(
             items,
             landmarkItems,
@@ -1021,6 +1027,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       }
       startupTimer?.cancel();
       setState(() => ready = true);
+      if (!appliedInitialView && widget.initialView != null) {
+        appliedInitialView = true;
+        await _restoreAtlasView(widget.initialView!);
+        if (!mounted || c != controller) return;
+      }
       unawaited(relief.install(c, belowLayerId: 'thematic-countries'));
       updateVisibleCountries();
       unawaited(installDetailedWater(c, attempt));
@@ -2691,6 +2702,96 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     );
   }
 
+  AtlasView _currentAtlasView() {
+    final position = controller?.cameraPosition;
+    return (
+      country: state?.selectedId,
+      globe: globeMode,
+      camera: position == null
+          ? widget.initialView?.camera
+          : (
+              longitude: position.target.longitude,
+              latitude: position.target.latitude,
+              zoom: position.zoom,
+            ),
+    );
+  }
+
+  Future<AtlasView?> _openHistory(AtlasView view) =>
+      Navigator.of(context).push<AtlasView>(
+        MaterialPageRoute(
+          builder: (routeContext) => HistoryMap(
+            countries: state!.countries,
+            russian: ru,
+            initialCountry: view.country,
+            initialGlobe: view.globe,
+            initialCamera: view.camera,
+            onWorld: (updated) => Navigator.pop(routeContext, updated),
+          ),
+        ),
+      );
+
+  Future<void> _switchAtlas() async {
+    if (atlasSwitching || state == null || projectionBusy) return;
+    atlasSwitching = true;
+    try {
+      final view = await _openHistory(_currentAtlasView());
+      if (mounted && view != null) await _restoreAtlasView(view);
+    } finally {
+      atlasSwitching = false;
+    }
+  }
+
+  Future<void> _restoreAtlasView(AtlasView view) async {
+    final c = controller;
+    if (view.globe != globeMode && c != null) {
+      final applied = await setGlobeProjection(c, view.globe);
+      if (!mounted || c != controller) return;
+      if (applied) {
+        setState(() => globeMode = view.globe);
+        beforeGlobe = null;
+      } else if (view.globe && !globeProjectionSupported) {
+        await select(view.country);
+        await _openWorldGlobe(view.camera);
+        return;
+      }
+    }
+    if (view.camera case final camera?) {
+      await c?.moveCamera(
+        CameraUpdate.newLatLngZoom(
+          LatLng(camera.latitude, camera.longitude),
+          camera.zoom,
+        ),
+      );
+    }
+    if (mounted) await select(view.country);
+  }
+
+  Future<void> _openWorldGlobe(AtlasCamera? camera) async {
+    final id = await Navigator.of(context).push<Object>(
+      MaterialPageRoute(
+        builder: (_) => WorldGlobe(
+          features: countries!['features'] as List,
+          russian: ru,
+          selectedId: state?.selectedId,
+          initialCamera: camera,
+          onHistory: _openHistory,
+          names: {
+            for (final country in state!.countries)
+              country.id: ru ? country.nameRu : country.nameEn,
+          },
+        ),
+      ),
+    );
+    if (!mounted) return;
+    if (id is String) {
+      await select(id, move: true);
+      if (mounted) setState(() => countryDetailsOpen = true);
+    } else if (id is AtlasView) {
+      await _restoreAtlasView(id);
+    }
+  }
+
   Future<void> _toggleProjection() async {
     if (projectionBusy || countries == null) return;
     setState(() => projectionBusy = true);
@@ -2720,23 +2821,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         }
         await updateVisibleCountries();
       } else if (mounted) {
-        final id = await Navigator.of(context).push<String>(
-          MaterialPageRoute(
-            builder: (_) => WorldGlobe(
-              features: countries!['features'] as List,
-              russian: ru,
-              selectedId: state?.selectedId,
-              names: {
-                for (final country in state!.countries)
-                  country.id: ru ? country.nameRu : country.nameEn,
-              },
-            ),
-          ),
-        );
-        if (mounted && id != null) {
-          await select(id, move: true);
-          if (mounted) setState(() => countryDetailsOpen = true);
-        }
+        await _openWorldGlobe(null);
       }
     } finally {
       if (mounted) setState(() => projectionBusy = false);
@@ -3054,16 +3139,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     );
     if (!mounted || section == null) return;
     if (section == 'history' && context.mounted) {
-      await Navigator.of(context).push(
-        MaterialPageRoute<void>(
-          builder: (_) => HistoryMap(
-            countries: state!.countries,
-            russian: ru,
-            initialCountry: state!.selectedId,
-            initialGlobe: globeMode,
-          ),
-        ),
-      );
+      await _switchAtlas();
       return;
     }
     if (section == 'practice') {
@@ -3420,10 +3496,20 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               disableSymbolPlacementFade: true,
                               trackCameraPosition: true,
                               styleString: '{"version":8,"sources":{},"layers":[{"id":"sea","type":"background","paint":{"background-color":"#a8d4df"}}]}',
-                              initialCameraPosition: const CameraPosition(
-                                target: LatLng(20, 10),
-                                zoom: 1.6,
-                              ),
+                              initialCameraPosition:
+                                  switch (widget.initialView?.camera) {
+                                    final camera? => CameraPosition(
+                                      target: LatLng(
+                                        camera.latitude,
+                                        camera.longitude,
+                                      ),
+                                      zoom: camera.zoom,
+                                    ),
+                                    null => const CameraPosition(
+                                      target: LatLng(20, 10),
+                                      zoom: 1.6,
+                                    ),
+                                  },
                               onMapCreated: (c) {
                                 controller = c;
                                 c.onMapMouseMove.add(onMouseMove);
@@ -3592,6 +3678,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               widget.onExit ??
                               () => Navigator.maybePop(context),
                           globe: globeMode,
+                          onAtlasSwitch: !practice && ready
+                              ? _switchAtlas
+                              : null,
                           showProjection: !practice && state != null,
                           onProjection:
                               projectionBusy ||

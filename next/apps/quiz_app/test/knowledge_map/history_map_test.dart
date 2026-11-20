@@ -10,6 +10,7 @@ import 'package:quiz_app/knowledge_map/history_period.dart'
     show HistoryPeriodMenu;
 
 import 'package:quiz_app/knowledge_map/history_map.dart';
+import 'package:quiz_app/knowledge_map/atlas_view.dart';
 
 void main() {
   testWidgets(
@@ -116,6 +117,31 @@ void main() {
       expect(overlay().focus, isNull);
       expect(overlay().pins, hasLength(2));
       expect(find.byType(AlertDialog), findsNothing);
+
+      const incoming = (longitude: -2.5, latitude: 51.4, zoom: 3.75);
+      for (final globe in [false, true]) {
+        AtlasView? outgoing;
+        await tester.pumpWidget(
+          MaterialApp(
+            home: HistoryMap(
+              key: ValueKey(globe),
+              russian: false,
+              initialYear: 1701,
+              initialCountry: 'GB',
+              initialGlobe: globe,
+              initialCamera: incoming,
+              onWorld: (view) => outgoing = view,
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('World'));
+        expect(outgoing?.country, 'GB');
+        expect(outgoing?.globe, globe);
+        expect(outgoing?.camera?.longitude, closeTo(incoming.longitude, 1e-8));
+        expect(outgoing?.camera?.latitude, closeTo(incoming.latitude, 1e-8));
+        expect(outgoing?.camera?.zoom, closeTo(incoming.zoom, 1e-8));
+      }
     },
   );
 
