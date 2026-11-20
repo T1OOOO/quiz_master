@@ -16,6 +16,8 @@ void main() {
   testWidgets(
     'the year selects all ongoing events, only tapping a pin focuses one',
     (tester) async {
+      await tester.binding.setSurfaceSize(const Size(600, 760));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
       final records = [
         for (final (title, start, lon) in [
           ('Voyage', 1700, -90),
@@ -279,18 +281,21 @@ void main() {
         {'start': 1917, 'end': 1917},
       ];
       var year = 1917;
+      var step = 1;
       var opened = false;
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
             bottomNavigationBar: StatefulBuilder(
               builder: (context, refresh) => HistoryTimeline(
-                period: (year, year),
-                step: 1,
+                period: historyPeriod(year, step),
+                step: step,
                 russian: true,
                 countryName: 'Все страны',
                 eventCount: historyEventsFor(entries, year, year, null).length,
                 onYear: (v) => refresh(() => year = v),
+                onCentury: (v) => refresh(() => year = v),
+                onStep: (v) => refresh(() => step = v),
                 openCalendar: () {},
                 pickCountry: () {},
                 openEvents: () => opened = true,
@@ -300,7 +305,7 @@ void main() {
         ),
       );
       final timeline = tester.getRect(find.byType(HistoryTimeline));
-      expect(timeline.height, lessThanOrEqualTo(56));
+      expect(timeline.height, lessThanOrEqualTo(96));
       expect(find.byType(Slider), findsNothing);
       expect(find.text('События · 2'), findsOneWidget);
       for (var i = 0; i < 2; i++) {
@@ -311,6 +316,19 @@ void main() {
       expect(tester.getRect(find.byType(HistoryTimeline)), timeline);
       await tester.tap(find.text('События · 0'));
       expect(opened, isTrue);
+      await tester.tap(find.byTooltip('Выбрать век'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('XVIII век · 1701–1800'));
+      await tester.pumpAndSettle();
+      expect(year, 1701);
+      await tester.tap(find.byTooltip('Шаг перелистывания'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('10 лет'));
+      await tester.pumpAndSettle();
+      expect(find.text('1701–1710'), findsOneWidget);
+      await tester.tap(find.byTooltip('Следующий период'));
+      await tester.pump();
+      expect(year, 1711);
     },
   );
 

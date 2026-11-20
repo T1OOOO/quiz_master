@@ -98,15 +98,17 @@ class _HistoryMapState extends State<HistoryMap> {
       ),
     );
     if (!mounted || choice == null) return;
-    setState(() {
-      year = choice.$1;
-      periodLength = choice.$2;
-      customRange = choice.$3;
-      resetReader();
-      selectedEvent = null;
-      selected = null;
-    });
+    applyPeriod(choice);
   }
+
+  void applyPeriod(PeriodChoice choice) => setState(() {
+    year = choice.$1;
+    periodLength = choice.$2;
+    customRange = choice.$3;
+    resetReader();
+    selectedEvent = null;
+    selected = null;
+  });
 
   late bool globe = widget.initialGlobe;
   Map? selectedEvent;
@@ -399,7 +401,14 @@ class _HistoryMapState extends State<HistoryMap> {
     resetReader();
   });
 
-  Future<void> showEvents(List<Map> rows) async {
+  Future<void> showEvents(List<Map> rows, {required bool side}) async {
+    if (side) {
+      setState(() {
+        readerOpen = !readerOpen;
+        resetReader();
+      });
+      return;
+    }
     final anchor = eventsButton.currentContext;
     if (anchor == null) return;
     Map? detail;
@@ -767,19 +776,24 @@ class _HistoryMapState extends State<HistoryMap> {
               },
             ),
           );
-          final timeline = HistoryTimeline(
-            dateButton: dateButton,
-            countryButton: countryButton,
-            eventsButton: eventsButton,
-            step: periodLength,
-            russian: widget.russian,
-            countryName: regionName,
-            eventCount: rows.length,
-            period: period,
-            onYear: changeYear,
-            openCalendar: () => choosePeriod(scoped),
-            pickCountry: () => chooseCountry(events),
-            openEvents: () => showEvents(rows),
+          final timeline = LayoutBuilder(
+            builder: (context, layout) => HistoryTimeline(
+              dateButton: dateButton,
+              countryButton: countryButton,
+              eventsButton: eventsButton,
+              step: periodLength,
+              russian: widget.russian,
+              countryName: regionName,
+              eventCount: rows.length,
+              period: period,
+              onYear: changeYear,
+              onCentury: (start) =>
+                  applyPeriod((start, periodLength, customRange)),
+              onStep: (step) => applyPeriod((year, step, false)),
+              openCalendar: () => choosePeriod(scoped),
+              pickCountry: () => chooseCountry(events),
+              openEvents: () => showEvents(rows, side: layout.maxWidth >= 680),
+            ),
           );
           final reader = HistoryEventIndex(
             key: ValueKey((period, country, nearbyRows)),

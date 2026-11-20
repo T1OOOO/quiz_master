@@ -265,7 +265,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   final panelStoryKey = GlobalKey();
   Map<String, List<MapInterestingFact>> readingLists = {};
   bool countryDetailsOpen = false;
-  bool countryPanelOnSide = false;
+  bool? countryPanelDockOverride;
+  bool get countryPanelOnSide =>
+      countryPanelDockOverride ?? MediaQuery.sizeOf(context).width >= 1000;
   double? countryPanelHeight;
   bool practice = false;
   bool practiceBusy = false;
@@ -1429,23 +1431,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         id ?? '',
       ]);
       if (!mounted || generation != attempt || controller != c) return;
-      await c.setLayerProperties(
-        'country-markers',
-        SymbolLayerProperties(
-          symbolSortKey: [
-            'case',
-            [
-              '==',
-              ['get', 'country_id'],
-              id ?? '',
-            ],
-            -1e12,
-            ['get', 'label_priority'],
-          ],
-        ),
-      );
-      if (!mounted || generation != attempt || controller != c) return;
-      unawaited(updateVisibleCountries());
       if (move &&
           id != null &&
           capitals != null &&
@@ -3319,7 +3304,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                   'Переместить панель вбок',
                                 ),
                           onPressed: () => setState(
-                            () => countryPanelOnSide = !countryPanelOnSide,
+                            () =>
+                                countryPanelDockOverride = !countryPanelOnSide,
                           ),
                           icon: Icon(
                             countryPanelOnSide

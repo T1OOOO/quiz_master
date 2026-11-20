@@ -12,6 +12,7 @@ bool historyEventOverlaps(Map event, int start, int end) =>
 typedef PeriodChoice = (int, int, bool);
 
 const historyCenturyNumerals = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
+const historySteps = [1, 5, 10, 25, 50, 100];
 
 Future<PeriodChoice?> showHistoryPeriodMenu(
   BuildContext anchor,
@@ -95,7 +96,6 @@ class HistoryPeriodMenu extends StatefulWidget {
 }
 
 class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
-  static const steps = [1, 5, 10, 25, 50, 100];
   late int step = widget.customRange ? 1 : widget.step;
   late bool custom = widget.customRange;
   bool typing = false;
@@ -274,7 +274,7 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
                 style: Theme.of(context).textTheme.labelMedium,
               ),
             ),
-            for (final n in steps)
+            for (final n in historySteps)
               option(
                 '$n',
                 n == 1 ? t('1 год', '1 year') : '$n ${t("лет", "years")}',
