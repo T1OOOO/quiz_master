@@ -36,7 +36,7 @@ typedef _PinGroup = ({Offset at, List<HistoryEventPin> pins});
 
 class _HistoryMapPinsState extends State<HistoryMapPins> {
   // The globe reprojects the same titles on every frame of a rotation.
-  final _sizes = <String, Size>{};
+  final _sizes = <(String, int, double), Size>{};
   double _lastWidth = 0;
 
   @override
@@ -78,7 +78,7 @@ class _HistoryMapPinsState extends State<HistoryMapPins> {
       for (final g in groups) Rect.fromCircle(center: g.at, radius: radius),
     ];
     final captions = <Widget>[];
-    final maxWidth = math.min(152.0, size.width - 8);
+    final maxWidth = math.min(210.0, size.width - 8);
     if (_lastWidth != maxWidth) {
       _sizes.clear();
       _lastWidth = maxWidth;
@@ -91,55 +91,82 @@ class _HistoryMapPinsState extends State<HistoryMapPins> {
     );
     final scaler = MediaQuery.textScalerOf(context);
     final direction = Directionality.of(context);
-    for (final g in [
-      ?focused,
-      ...groups.where((g) => g != focused && g.pins.length == 1),
-    ]) {
+    Size measure(String title, int lines, double width) =>
+        _sizes.putIfAbsent((title, lines, width), () {
+          final painter = TextPainter(
+            text: TextSpan(text: title, style: style),
+            textDirection: direction,
+            textScaler: scaler,
+            maxLines: lines,
+            ellipsis: '…',
+          )..layout(maxWidth: width - 10);
+          final measured = Size(
+            painter.width.ceilToDouble(),
+            painter.height.ceilToDouble(),
+          );
+          painter.dispose();
+          return measured;
+        });
+    final others = groups.where((g) => g != focused).toList()
+      ..sort((a, b) => b.pins.length.compareTo(a.pins.length));
+    for (final g in [?focused, ...others]) {
       final active = g == focused;
+      final preview = !active && g.pins.length > 1;
       final pin = active ? focus! : g.pins.first;
-      final title = active ? widget.caption ?? pin.title : pin.title;
-      final measured = _sizes.putIfAbsent(title, () {
-        final painter = TextPainter(
-          text: TextSpan(text: title, style: style),
-          textDirection: direction,
-          textScaler: scaler,
-          maxLines: 2,
-          ellipsis: '…',
-        )..layout(maxWidth: maxWidth - 10);
-        final measured = Size(
-          painter.width.ceilToDouble() + 10,
-          painter.height.ceilToDouble() + 4,
-        );
-        painter.dispose();
-        return measured;
-      });
-      final rect = _captionRect(g.at, measured, size, occupied);
+      final titles = preview
+          ? g.pins.take(2).map((p) => p.title).toList()
+          : [active ? widget.caption ?? pin.title : pin.title];
+      final width = preview ? maxWidth : math.min(maxWidth, 152.0);
+      final lines = preview ? 1 : 2;
+      final sizes = [for (final title in titles) measure(title, lines, width)];
+      final measured = Size(
+        sizes.map((s) => s.width).reduce(math.max) + 10,
+        sizes.fold(4.0, (h, s) => h + s.height),
+      );
+      final rect =
+          _captionRect(g.at, measured, size, occupied) ??
+          (preview && measured.width > 112
+              ? _captionRect(g.at, Size(112, measured.height), size, occupied)
+              : null);
       if (rect == null) continue;
       occupied.add(rect.inflate(2));
       captions.add(
         Positioned.fromRect(
           rect: rect,
           child: ExcludeSemantics(
-            excluding: g.pins.length == 1 && title == pin.title,
+            excluding: !active || titles.first == pin.title,
             child: Material(
               color: active ? const Color(0xf522424a) : const Color(0xf4fffaf0),
               borderRadius: BorderRadius.circular(5),
               child: InkWell(
-                onTap: () => onOpen([pin]),
+                onTap: () => onOpen(preview ? g.pins : [pin]),
                 borderRadius: BorderRadius.circular(5),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 5,
                     vertical: 2,
                   ),
-                  child: Text(
-                    title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: style.copyWith(
-                      color: active ? Colors.white : const Color(0xff213f47),
-                    ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: preview
+                        ? CrossAxisAlignment.start
+                        : CrossAxisAlignment.center,
+                    children: [
+                      for (final title in titles)
+                        Text(
+                          title,
+                          maxLines: lines,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: preview
+                              ? TextAlign.start
+                              : TextAlign.center,
+                          style: style.copyWith(
+                            color: active
+                                ? Colors.white
+                                : const Color(0xff213f47),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ),
@@ -164,9 +191,16 @@ class _HistoryMapPinsState extends State<HistoryMapPins> {
                 final count = g.pins.length;
                 final label = count == 1
                     ? pin.title
-                    : (widget.russian
-                          ? 'События рядом · $count'
-                          : 'Nearby events · $count');
+                    : [
+                        widget.russian
+                            ? 'События рядом · $count'
+                            : 'Nearby events · $count',
+                        ...g.pins.take(3).map((p) => p.title),
+                        if (count > 3)
+                          widget.russian
+                              ? 'И ещё ${count - 3}'
+                              : 'And ${count - 3} more',
+                      ].join('\n');
                 return Semantics(
                   button: true,
                   label: label,
@@ -200,16 +234,57 @@ class _HistoryMapPinsState extends State<HistoryMapPins> {
                                   pin.kind,
                                   size: active ? 27 : 22,
                                 )
-                              : CircleAvatar(
-                                  radius: active ? 14 : 12,
-                                  backgroundColor: const Color(0xff244f59),
-                                  child: Text(
-                                    '$count',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12,
-                                    ),
+                              : SizedBox(
+                                  width: 38,
+                                  height: 30,
+                                  child: Stack(
+                                    children: [
+                                      Positioned(
+                                        left: 0,
+                                        top: 0,
+                                        child: HistoryEventSeal(
+                                          pin.kind,
+                                          size: 23,
+                                        ),
+                                      ),
+                                      Positioned(
+                                        right: 0,
+                                        bottom: 0,
+                                        child: HistoryEventSeal(
+                                          g.pins[1].kind,
+                                          size: 23,
+                                        ),
+                                      ),
+                                      if (count > 2)
+                                        Positioned(
+                                          right: 0,
+                                          top: 0,
+                                          child: DecoratedBox(
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xff213f47),
+                                              borderRadius:
+                                                  BorderRadius.circular(6),
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    horizontal: 2,
+                                                  ),
+                                              child: Text(
+                                                '+${count - 2}',
+                                                textScaler:
+                                                    TextScaler.noScaling,
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 10,
+                                                  height: 1.15,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                    ],
                                   ),
                                 ),
                         ),

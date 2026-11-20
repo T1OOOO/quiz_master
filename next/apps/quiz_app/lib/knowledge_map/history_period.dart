@@ -11,6 +11,8 @@ bool historyEventOverlaps(Map event, int start, int end) =>
 
 typedef PeriodChoice = (int, int, bool);
 
+const historyCenturyNumerals = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
+
 Future<PeriodChoice?> showHistoryPeriodMenu(
   BuildContext anchor,
   HistoryPeriodMenu picker,
@@ -110,10 +112,9 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
 
   void choose(int a, int length, bool range) =>
       Navigator.pop(context, (a, length, range));
+  int get century => 1501 + (anchorYear - 1501) ~/ 100 * 100;
   int get block => 1501 + (anchorYear - 1501) ~/ (10 * step) * 10 * step;
   int get last => math.min(2000, block + 10 * step - 1);
-  String groupName(int start) =>
-      span(start, math.min(2000, start + 10 * step - 1));
   int? get nearby {
     int? nearest;
     int distance = 501;
@@ -173,35 +174,51 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
     final dates = entered;
-    final lengths = DropdownButton<int>(
-      isExpanded: true,
-      value: custom ? 0 : step,
-      underline: const SizedBox.shrink(),
-      items: [
-        for (final n in [...steps, 0])
-          DropdownMenuItem(
-            value: n,
+    Widget option(
+      String text,
+      String label,
+      bool selected,
+      VoidCallback select,
+    ) {
+      return Expanded(
+        child: Semantics(
+          button: true,
+          selected: selected,
+          label: label,
+          excludeSemantics: true,
+          onTap: select,
+          child: TextButton(
+            style: TextButton.styleFrom(
+              minimumSize: const Size(0, 42),
+              padding: const EdgeInsets.symmetric(horizontal: 1),
+              foregroundColor: selected ? colors.onPrimary : colors.onSurface,
+              backgroundColor: selected
+                  ? colors.primary
+                  : colors.surfaceContainerLow,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(7),
+              ),
+            ),
+            onPressed: select,
             child: Text(
-              n == 0
-                  ? t('Свой диапазон', 'Custom range')
-                  : n == 1
-                  ? t('1 год', '1 year')
-                  : '$n ${t("лет", "years")}',
+              text,
+              maxLines: 1,
+              style: const TextStyle(fontWeight: FontWeight.w600),
             ),
           ),
-      ],
-      onChanged: (v) {
-        if (v == null) return;
-        setState(() {
-          if (v == 0 && !editedRange && !widget.customRange) {
-            to = '${historyPeriod(widget.year, step).$2}';
-          }
-          custom = v == 0;
-          if (!custom) step = v;
-          typing = false;
-        });
-      },
-    );
+        ),
+      );
+    }
+
+    void browse(int start) {
+      FocusManager.instance.primaryFocus?.unfocus();
+      setState(() {
+        anchorYear = start;
+        custom = false;
+        typing = false;
+      });
+    }
+
     final header = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -209,9 +226,13 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
           children: [
             Expanded(
               child: Text(
-                t('Период', 'Period'),
-                style: Theme.of(context).textTheme.titleMedium,
+                '${t("Век", "Century")} · $century–${century + 99}',
+                style: Theme.of(context).textTheme.titleSmall,
               ),
+            ),
+            TextButton(
+              onPressed: () => choose(century, 100, false),
+              child: Text(t('Весь век', 'Full century')),
             ),
             IconButton(
               tooltip: t('Закрыть', 'Close'),
@@ -221,50 +242,49 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
           ],
         ),
         Row(
+          spacing: 3,
           children: [
-            Expanded(
-              flex: 3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    t('Длительность', 'Duration'),
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  lengths,
-                ],
+            for (var i = 0; i < historyCenturyNumerals.length; i++)
+              option(
+                historyCenturyNumerals[i],
+                '${historyCenturyNumerals[i]} ${t("век", "century")} · ${1501 + i * 100}–${1600 + i * 100}',
+                century == 1501 + i * 100,
+                () => browse(1501 + i * 100),
               ),
-            ),
-            if (!custom && !typing) ...[
-              const SizedBox(width: 10),
-              Expanded(
-                flex: 4,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      t('Группа лет', 'Year group'),
-                      style: Theme.of(context).textTheme.labelSmall,
-                    ),
-                    DropdownButton<int>(
-                      value: block,
-                      isExpanded: true,
-                      underline: const SizedBox.shrink(),
-                      menuMaxHeight: 300,
-                      items: [
-                        for (var i = 1501; i <= 2000; i += 10 * step)
-                          DropdownMenuItem(value: i, child: Text(groupName(i))),
-                      ],
-                      onChanged: (v) {
-                        if (v != null) setState(() => anchorYear = v);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ],
           ],
         ),
+        const SizedBox(height: 4),
+        Row(
+          spacing: 2,
+          children: [
+            Padding(
+              padding: const EdgeInsetsDirectional.only(end: 4),
+              child: Text(
+                t('Шаг, лет', 'Years'),
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ),
+            for (final n in steps)
+              option(
+                '$n',
+                n == 1 ? t('1 год', '1 year') : '$n ${t("лет", "years")}',
+                !custom && step == n,
+                () {
+                  setState(() {
+                    step = n;
+                    custom = false;
+                    typing = false;
+                  });
+                },
+              ),
+          ],
+        ),
+        if ((typing || custom ? null : nearby) case final y?)
+          TextButton.icon(
+            icon: const Icon(Icons.event_available, size: 18),
+            onPressed: () => setState(() => anchorYear = y),
+            label: Text(t('К событиям $y года', 'Browse events in $y')),
+          ),
       ],
     );
     Widget tile(int y) {
@@ -304,13 +324,7 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
     }
 
     final periodList = [
-      if (nearby case final y?)
-        TextButton.icon(
-          icon: const Icon(Icons.event_available, size: 18),
-          onPressed: () => setState(() => anchorYear = y),
-          label: Text(t('К событиям $y года', 'Browse events in $y')),
-        ),
-      for (var y = block; y <= last; y += step) tile(y),
+      for (var y = century; y < century + 100; y += step) tile(y),
     ];
     final fields = <Widget>[
       if (custom)
@@ -361,20 +375,42 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
         ),
       ),
     ];
-    final toggle = Align(
-      alignment: AlignmentDirectional.centerStart,
-      child: TextButton.icon(
-        onPressed: () => setState(() {
-          typing = !typing;
-          exact = '';
-        }),
-        icon: Icon(typing ? Icons.list : Icons.keyboard_outlined, size: 18),
-        label: Text(
-          typing
-              ? t('К списку дат', 'Date list')
-              : t('Ввести год', 'Enter a year'),
+    final controls = Wrap(
+      alignment: WrapAlignment.spaceBetween,
+      children: [
+        TextButton.icon(
+          icon: Icon(
+            typing || custom ? Icons.list : Icons.keyboard_outlined,
+            size: 17,
+          ),
+          onPressed: () => setState(() {
+            if (custom) {
+              custom = false;
+              typing = false;
+            } else {
+              typing = !typing;
+            }
+            exact = '';
+          }),
+          label: Text(
+            typing || custom
+                ? t('К списку дат', 'Date list')
+                : t('Ввести год', 'Enter a year'),
+          ),
         ),
-      ),
+        if (!custom)
+          TextButton(
+            onPressed: () => setState(() {
+              if (!editedRange && !widget.customRange) {
+                from = '$anchorYear';
+                to = '${historyPeriod(anchorYear, step).$2}';
+              }
+              custom = true;
+              typing = false;
+            }),
+            child: Text(t('Свой диапазон', 'Custom range')),
+          ),
+      ],
     );
     return Material(
       color: colors.surface,
@@ -384,7 +420,7 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
           builder: (context, box) {
             if (custom ||
                 typing ||
-                box.maxHeight < 265 ||
+                box.maxHeight < (nearby == null ? 265 : 320) ||
                 MediaQuery.textScalerOf(context).scale(16) > 22) {
               return ListView(
                 key: ValueKey((custom, typing, block, step)),
@@ -392,7 +428,7 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
                 children: [
                   header,
                   if (custom || typing) ...fields else ...periodList,
-                  if (!custom) toggle,
+                  controls,
                 ],
               );
             }
@@ -415,11 +451,11 @@ class _HistoryPeriodMenuState extends State<HistoryPeriodMenu> {
                 Divider(height: 1, color: colors.outlineVariant),
                 Expanded(
                   child: SingleChildScrollView(
-                    key: ValueKey((block, step)),
+                    key: ValueKey((century, step)),
                     child: Column(children: periodList),
                   ),
                 ),
-                toggle,
+                SizedBox(width: double.infinity, child: controls),
               ],
             );
           },

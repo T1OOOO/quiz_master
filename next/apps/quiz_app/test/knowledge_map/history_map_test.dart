@@ -140,6 +140,15 @@ void main() {
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
       expect(result, (1896, 10, false));
+      await tester.tap(find.text('open'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('XX'));
+      await tester.pumpAndSettle();
+      expect(find.bySemanticsLabel('1991–2000 · 0 событий'), findsOneWidget);
+      expect(find.bySemanticsLabel('1731–1740 · 0 событий'), findsNothing);
+      await tester.tap(find.text('Весь век'));
+      await tester.pumpAndSettle();
+      expect(result, (1901, 100, false));
     },
   );
 
@@ -269,7 +278,7 @@ void main() {
         kind: 'event',
       );
       List<HistoryEventPin>? chosen;
-      Widget frame(double separation) => MaterialApp(
+      Widget frame(double separation, {bool focused = true}) => MaterialApp(
         home: Scaffold(
           body: SizedBox(
             width: 320,
@@ -277,7 +286,7 @@ void main() {
             child: HistoryMapPins(
               size: const Size(320, 220),
               pins: const [a, b],
-              focus: a,
+              focus: focused ? a : null,
               caption: '1700 · Island',
               russian: true,
               project: (p) => Offset(90 + separation * p.longitude, 90),
@@ -286,13 +295,20 @@ void main() {
           ),
         ),
       );
+      await tester.pumpWidget(frame(8, focused: false));
+      expect(find.text('Island'), findsOneWidget);
+      await tester.tap(find.text('Harbour'));
+      expect(chosen, [a, b]);
       await tester.pumpWidget(frame(8));
-      await tester.tap(find.byTooltip('События рядом · 2'));
+      await tester.tap(find.byTooltip('События рядом · 2\nIsland\nHarbour'));
       expect(chosen, [a, b]);
       await tester.tap(find.text('1700 · Island'));
       expect(chosen, [a]);
       await tester.pumpWidget(frame(90));
-      expect(find.byTooltip('События рядом · 2'), findsNothing);
+      expect(
+        find.byTooltip('События рядом · 2\nIsland\nHarbour'),
+        findsNothing,
+      );
       await tester.tap(find.byTooltip('Harbour'));
       expect(chosen, [b]);
     },
