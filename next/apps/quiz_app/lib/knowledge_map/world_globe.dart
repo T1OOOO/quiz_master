@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
+import 'atlas_controls.dart';
 import 'history_globe.dart';
 import 'history_relief.dart';
 
@@ -87,16 +88,6 @@ class _WorldGlobeState extends State<WorldGlobe> {
     final name = widget.names[selected];
     return Scaffold(
       backgroundColor: const Color(0xff17353e),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leadingWidth: 116,
-        leading: TextButton.icon(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back),
-          label: Text(ru ? '2D-карта' : '2D map'),
-        ),
-        title: Text(ru ? 'Глобус мира' : 'World globe'),
-      ),
       body: SafeArea(
         child: Stack(
           fit: StackFit.expand,
@@ -109,6 +100,21 @@ class _WorldGlobeState extends State<WorldGlobe> {
               russian: ru,
               selectedName: selected,
               onSelect: (id) => setState(() => selected = id),
+            ),
+            Positioned(
+              top: 10,
+              left: 12,
+              right: 12,
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: AtlasHeader(
+                  russian: ru,
+                  title: ru ? 'Глобус мира' : 'World globe',
+                  globe: true,
+                  onBack: () => Navigator.pop(context),
+                  onProjection: () => Navigator.pop(context),
+                ),
+              ),
             ),
             if (name != null)
               Positioned(

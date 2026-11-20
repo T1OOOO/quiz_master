@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:quiz_app/knowledge_map/knowledge_map_page.dart';
+import 'package:quiz_app/knowledge_map/atlas_controls.dart';
 import 'package:quiz_app/knowledge_map/landmarks_browser.dart';
 import 'package:quiz_app/knowledge_map/map_state.dart';
 
@@ -311,6 +312,36 @@ void main() {
     );
     expect(waterFeatureId({'id': 'ne10-river-1'}), 'ne10-river-1');
   });
+  testWidgets('projection and back still fit beside a docked panel', (
+    tester,
+  ) async {
+    var switched = false;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Align(
+          alignment: Alignment.topLeft,
+          child: SizedBox(
+            width: 72,
+            child: AtlasHeader(
+              russian: false,
+              title: 'World atlas',
+              globe: false,
+              onBack: () {},
+              onProjection: () => switched = true,
+            ),
+          ),
+        ),
+      ),
+    );
+    final back = tester.getRect(find.byTooltip('Back'));
+    final projection = tester.getRect(find.byTooltip('3D globe'));
+    expect(back.right, lessThanOrEqualTo(72));
+    expect(projection.right, lessThanOrEqualTo(72));
+    expect(back.overlaps(projection), isFalse);
+    await tester.tap(find.byTooltip('3D globe'));
+    expect(switched, isTrue);
+  });
+
   testWidgets('mobile atlas exposes its globe and returns to the same map', (
     tester,
   ) async {
