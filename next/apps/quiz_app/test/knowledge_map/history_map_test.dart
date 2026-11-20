@@ -66,7 +66,12 @@ void main() {
       await tester.tap(find.text('Close'));
       await tester.pumpAndSettle();
       expect(overlay().focus?.title, 'Treaty');
-      tester.widget<Slider>(find.byType(Slider)).onChanged!(1702);
+      expect(find.byType(Slider), findsNothing);
+      await tester.tap(find.text('1701'));
+      await tester.pumpAndSettle();
+      expect(find.bySemanticsLabel('1701 · 2 events'), findsOneWidget);
+      expect(find.bySemanticsLabel('1704 · 0 events'), findsOneWidget);
+      await tester.tap(find.bySemanticsLabel('1702 · 2 events'));
       await tester.pumpAndSettle();
       expect(overlay().focus, isNull);
       expect(overlay().pins, hasLength(2));
@@ -87,7 +92,9 @@ void main() {
                   context: context,
                   builder: (_) => const HistoryPeriodDialog(
                     year: 1733,
-                    period: (1733, 1742),
+                    step: 10,
+                    customRange: true,
+                    events: [],
                     russian: true,
                   ),
                 );
@@ -109,12 +116,12 @@ void main() {
       await tester.pump();
       await tester.tap(find.text('Применить'));
       await tester.pumpAndSettle();
-      expect(result, (1698, 3, false));
+      expect(result, (1698, 3, true));
     },
   );
 
   testWidgets(
-    'a full-width year slider keeps the timeline stable across events and empty years',
+    'calendar navigation keeps its height across events and empty years',
     (tester) async {
       await tester.binding.setSurfaceSize(const Size(360, 640));
       addTearDown(() => tester.binding.setSurfaceSize(null));
@@ -129,15 +136,13 @@ void main() {
           home: Scaffold(
             bottomNavigationBar: StatefulBuilder(
               builder: (context, refresh) => HistoryTimeline(
-                year: year,
-                centuryName: 'XX',
+                period: (year, year),
+                step: 1,
                 russian: true,
                 countryName: 'Все страны',
-                events: entries,
                 eventCount: historyEventsFor(entries, year, year, null).length,
                 onYear: (v) => refresh(() => year = v),
-                pickYear: () {},
-                pickCentury: () {},
+                openCalendar: () {},
                 pickCountry: () {},
                 openEvents: () => opened = true,
               ),
@@ -145,22 +150,16 @@ void main() {
           ),
         ),
       );
-      final slider = find.byType(Slider);
       final timeline = tester.getRect(find.byType(HistoryTimeline));
-      final track = tester.getRect(slider);
-      expect(track.width, greaterThan(340));
-      expect(track.height, greaterThanOrEqualTo(48));
-      expect(timeline.height, lessThanOrEqualTo(100));
-      await tester.tapAt(Offset(track.left + 30, track.center.dy));
-      await tester.pump();
-      expect(year, lessThan(1600));
-      expect(find.text('События · 0'), findsOneWidget);
+      expect(timeline.height, lessThanOrEqualTo(56));
+      expect(find.byType(Slider), findsNothing);
+      expect(find.text('События · 2'), findsOneWidget);
+      for (var i = 0; i < 2; i++) {
+        await tester.tap(find.byTooltip('Следующий период'));
+        await tester.pump();
+      }
+      expect(year, 1919);
       expect(tester.getRect(find.byType(HistoryTimeline)), timeline);
-      final before = year;
-      await tester.tap(find.byTooltip('Следующий год'));
-      await tester.pump();
-      expect(year, before + 1);
-      expect(tester.getRect(slider), track);
       await tester.tap(find.text('События · 0'));
       expect(opened, isTrue);
     },
@@ -307,14 +306,16 @@ void main() {
       expect(historyEventsFor(events, 1601, 1700, 'FR'), hasLength(1));
     });
 
-    test('windows include both ends, keep their duration at the edge and preserve ongoing events', () {
-      expect(historyPeriod(1733, 10), (1733, 1742));
-      expect(historyPeriod(1999, 50), (1951, 2000));
-      expect(historyPeriod(1600, 100, calendarCentury: true), (1501, 1600));
-      expect(historyEventsFor(events, 1602, 1603, null), [
-        events[0],
-        events[2],
-      ]);
-    });
+    test(
+      'windows include both ends, stop at 2000 and preserve ongoing events',
+      () {
+        expect(historyPeriod(1733, 10), (1733, 1742));
+        expect(historyPeriod(1999, 50), (1999, 2000));
+        expect(historyEventsFor(events, 1602, 1603, null), [
+          events[0],
+          events[2],
+        ]);
+      },
+    );
   });
 }
