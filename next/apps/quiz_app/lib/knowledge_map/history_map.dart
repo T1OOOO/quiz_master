@@ -535,6 +535,7 @@ class _HistoryMapState extends State<HistoryMap> {
                     .toList();
           final rows = historyEventsFor(scoped, period.$1, period.$2, null);
           final lang = widget.russian ? 'ru' : 'en';
+          final topControlsHeight = selected == null ? 60.0 : 108.0;
           final story = preview ?? closestHistoryEvent(rows, year);
           HistoryEventPin pinFor(Map row, Offset point) => (
             longitude: point.dx,
@@ -557,13 +558,10 @@ class _HistoryMapState extends State<HistoryMap> {
             pinRecords[pin] = r;
             if (r == story) {
               focus = pin;
-              final regionName = countryNames
-                  .where((c) => c.id == region)
-                  .firstOrNull;
-              final location = xy is List
+              final regionHint = xy is List
                   ? ''
-                  : ' · ${t("Регион", "Region")} ${regionName == null ? region : name(regionName)}';
-              focusCaption = '${historyEventDate(r)}$location\n${pin.title}';
+                  : ' · ${t("регион", "region")}';
+              focusCaption = '${historyEventDate(r)} · ${pin.title}$regionHint';
             }
           }
           Future<void> openPins(List<HistoryEventPin> pins) async {
@@ -571,18 +569,31 @@ class _HistoryMapState extends State<HistoryMap> {
             if (pins.length > 1) {
               event = await showDialog<Map>(
                 context: context,
-                builder: (d) => SimpleDialog(
-                  title: Text(t('События рядом', 'Nearby events')),
-                  children: [
-                    for (final pin in pins)
-                      ListTile(
-                        leading: HistoryEventSeal(pin.kind, size: 32),
-                        title: Text(pin.title),
-                        subtitle: Text(historyEventDate(pinRecords[pin]!)),
-                        onTap: () => Navigator.pop(d, pinRecords[pin]),
-                      ),
-                    close(d),
-                  ],
+                builder: (d) => AlertDialog(
+                  title: Text(
+                    '${t("События рядом", "Nearby events")} · ${pins.length}',
+                  ),
+                  contentPadding: const EdgeInsets.only(top: 8),
+                  content: SizedBox(
+                    width: 400,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: pins.length,
+                      itemBuilder: (context, index) {
+                        final pin = pins[index];
+                        return ListTile(
+                          leading: HistoryEventSeal(pin.kind, size: 24),
+                          titleTextStyle: Theme.of(context)
+                              .textTheme
+                              .bodyMedium,
+                          title: Text(pin.title),
+                          subtitle: Text(historyEventDate(pinRecords[pin]!)),
+                          onTap: () => Navigator.pop(d, pinRecords[pin]),
+                        );
+                      },
+                    ),
+                  ),
+                  actions: [close(d)],
                 ),
               );
             }
@@ -627,6 +638,7 @@ class _HistoryMapState extends State<HistoryMap> {
                                 year: year,
                                 focus: focus,
                                 focusCaption: focusCaption,
+                                topControlsHeight: topControlsHeight,
                                 russian: widget.russian,
                                 eventPins: pinRecords.keys.toList(),
                                 relief: relief,
@@ -695,6 +707,14 @@ class _HistoryMapState extends State<HistoryMap> {
                                               child: HistoryMapPins(
                                                 size: box.biggest,
                                                 pins: pinRecords.keys,
+                                                obstacles: [
+                                                  Rect.fromLTWH(
+                                                    0,
+                                                    0,
+                                                    box.maxWidth,
+                                                    topControlsHeight,
+                                                  ),
+                                                ],
                                                 focus: focus,
                                                 caption: focusCaption,
                                                 russian: widget.russian,

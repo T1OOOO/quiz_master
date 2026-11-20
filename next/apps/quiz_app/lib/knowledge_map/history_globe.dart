@@ -47,6 +47,7 @@ class HistoryGlobe extends StatefulWidget {
     this.focus,
     this.focusRegion,
     this.focusCaption,
+    this.topControlsHeight = 0,
     this.onGroupTap,
     this.russian,
     this.eventPins = const [],
@@ -60,6 +61,7 @@ class HistoryGlobe extends StatefulWidget {
   final String? selectedName;
   final HistoryEventPin? focus;
   final String? focusRegion, focusCaption;
+  final double topControlsHeight;
   final bool? russian;
   final ValueChanged<List<HistoryEventPin>>? onGroupTap;
   final List<HistoryEventPin> eventPins;
@@ -481,6 +483,20 @@ class _HistoryGlobeState extends State<HistoryGlobe>
                       HistoryMapPins(
                         size: size,
                         pins: widget.eventPins,
+                        obstacles: [
+                          Rect.fromLTWH(
+                            0,
+                            0,
+                            size.width,
+                            widget.topControlsHeight,
+                          ),
+                          Rect.fromLTWH(
+                            size.width - 62,
+                            size.height - 110,
+                            52,
+                            100,
+                          ),
+                        ],
                         focus: widget.focus,
                         russian: widget.russian ?? russian,
                         caption: widget.focusCaption ?? widget.focusRegion,

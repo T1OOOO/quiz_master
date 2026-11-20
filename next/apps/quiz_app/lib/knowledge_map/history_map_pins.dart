@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'history_event_symbol.dart';
 
 /// Lays out tap targets in screen pixels in both map projections.
-class HistoryMapPins extends StatelessWidget {
+class HistoryMapPins extends StatefulWidget {
   const HistoryMapPins({
     required this.size,
     required this.pins,
@@ -14,6 +14,7 @@ class HistoryMapPins extends StatelessWidget {
     required this.caption,
     required this.onOpen,
     required this.russian,
+    this.obstacles = const [],
     super.key,
   });
 
@@ -25,15 +26,45 @@ class HistoryMapPins extends StatelessWidget {
   final bool russian;
   final ValueChanged<List<HistoryEventPin>> onOpen;
 
+  final List<Rect> obstacles;
+
+  @override
+  State<HistoryMapPins> createState() => _HistoryMapPinsState();
+}
+
+typedef _PinGroup = ({Offset at, List<HistoryEventPin> pins});
+
+class _HistoryMapPinsState extends State<HistoryMapPins> {
+  // The globe reprojects the same titles on every frame of a rotation.
+  final _sizes = <String, Size>{};
+  double _lastWidth = 0;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _sizes.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final groups = <({Offset at, List<HistoryEventPin> pins})>[];
+    final size = widget.size, focus = widget.focus, onOpen = widget.onOpen;
+    final groups = <_PinGroup>[];
+    if (size.shortestSide < historyPinTarget) return const SizedBox.shrink();
+    const radius = historyPinTarget / 2;
     final bounds = (Offset.zero & size).inflate(historyPinTarget / 2);
-    for (final pin in {...pins, ?focus}) {
-      final at = project(pin);
-      if (at == null || !bounds.contains(at)) continue;
+    for (final pin in {...widget.pins, ?focus}) {
+      final point = widget.project(pin);
+      if (point == null || !bounds.contains(point)) continue;
+      final at = Offset(
+        point.dx.clamp(radius, size.width - radius),
+        point.dy.clamp(radius, size.height - radius),
+      );
       final near = groups
-          .where((g) => (g.at - at).distance < historyPinTarget)
+          .where(
+            (g) =>
+                (g.at.dx - at.dx).abs() < historyPinTarget &&
+                (g.at.dy - at.dy).abs() < historyPinTarget,
+          )
           .firstOrNull;
       if (near == null) {
         groups.add((at: at, pins: [pin]));
@@ -42,7 +73,81 @@ class HistoryMapPins extends StatelessWidget {
       }
     }
     final focused = groups.where((g) => g.pins.contains(focus)).firstOrNull;
-    final labelWidth = math.min(190.0, math.max(0.0, size.width - 12));
+    final occupied = [
+      ...widget.obstacles,
+      for (final g in groups) Rect.fromCircle(center: g.at, radius: radius),
+    ];
+    final captions = <Widget>[];
+    final maxWidth = math.min(152.0, size.width - 8);
+    if (_lastWidth != maxWidth) {
+      _sizes.clear();
+      _lastWidth = maxWidth;
+    }
+    final style = DefaultTextStyle.of(context).style.copyWith(
+      fontSize: 11.5,
+      height: 1.15,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0,
+    );
+    final scaler = MediaQuery.textScalerOf(context);
+    final direction = Directionality.of(context);
+    for (final g in [
+      ?focused,
+      ...groups.where((g) => g != focused && g.pins.length == 1),
+    ]) {
+      final active = g == focused;
+      final pin = active ? focus! : g.pins.first;
+      final title = active ? widget.caption ?? pin.title : pin.title;
+      final measured = _sizes.putIfAbsent(title, () {
+        final painter = TextPainter(
+          text: TextSpan(text: title, style: style),
+          textDirection: direction,
+          textScaler: scaler,
+          maxLines: 2,
+          ellipsis: '…',
+        )..layout(maxWidth: maxWidth - 10);
+        final measured = Size(
+          painter.width.ceilToDouble() + 10,
+          painter.height.ceilToDouble() + 4,
+        );
+        painter.dispose();
+        return measured;
+      });
+      final rect = _captionRect(g.at, measured, size, occupied);
+      if (rect == null) continue;
+      occupied.add(rect.inflate(2));
+      captions.add(
+        Positioned.fromRect(
+          rect: rect,
+          child: ExcludeSemantics(
+            excluding: g.pins.length == 1 && title == pin.title,
+            child: Material(
+              color: active ? const Color(0xf522424a) : const Color(0xf4fffaf0),
+              borderRadius: BorderRadius.circular(5),
+              child: InkWell(
+                onTap: () => onOpen([pin]),
+                borderRadius: BorderRadius.circular(5),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 5,
+                    vertical: 2,
+                  ),
+                  child: Text(
+                    title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: style.copyWith(
+                      color: active ? Colors.white : const Color(0xff213f47),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
     return Stack(
       children: [
         for (final g in groups)
@@ -59,7 +164,7 @@ class HistoryMapPins extends StatelessWidget {
                 final count = g.pins.length;
                 final label = count == 1
                     ? pin.title
-                    : (russian
+                    : (widget.russian
                           ? 'События рядом · $count'
                           : 'Nearby events · $count');
                 return Semantics(
@@ -93,16 +198,17 @@ class HistoryMapPins extends StatelessWidget {
                           child: count == 1
                               ? HistoryEventSeal(
                                   pin.kind,
-                                  size: active ? 33 : 26,
+                                  size: active ? 27 : 22,
                                 )
                               : CircleAvatar(
-                                  radius: active ? 17 : 15,
+                                  radius: active ? 14 : 12,
                                   backgroundColor: const Color(0xff244f59),
                                   child: Text(
                                     '$count',
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
+                                      fontSize: 12,
                                     ),
                                   ),
                                 ),
@@ -114,50 +220,39 @@ class HistoryMapPins extends StatelessWidget {
               },
             ),
           ),
-        if (focused != null &&
-            caption != null &&
-            size.width >= 90 &&
-            size.height >= 100)
-          Positioned(
-            left: (focused.at.dx - labelWidth / 2).clamp(
-              6.0,
-              size.width - labelWidth - 6,
-            ),
-            width: labelWidth,
-            top: focused.at.dy < size.height - 90 ? focused.at.dy + 21 : null,
-            bottom: focused.at.dy >= size.height - 90
-                ? size.height - focused.at.dy + 21
-                : null,
-            child: Center(
-              child: Material(
-                color: const Color(0xf51c3a42),
-                borderRadius: BorderRadius.circular(8),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(8),
-                  onTap: () => onOpen([focus!]),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 5,
-                    ),
-                    child: Text(
-                      caption!,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        height: 1.15,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+        ...captions,
       ],
     );
   }
+}
+
+Rect? _captionRect(
+  Offset anchor,
+  Size label,
+  Size viewport,
+  List<Rect> occupied,
+) {
+  const gap = historyPinTarget / 2 + 2;
+  final w = label.width, h = label.height;
+  if (w > viewport.width - 6 || h > viewport.height - 6) return null;
+  final x = anchor.dx, y = anchor.dy;
+  for (final corner in [
+    Offset(x - w / 2, y + gap),
+    Offset(x - w / 2, y - gap - h),
+    Offset(x + gap, y - h / 2),
+    Offset(x - gap - w, y - h / 2),
+    Offset(x + gap, y + gap),
+    Offset(x - gap - w, y + gap),
+    Offset(x + gap, y - gap - h),
+    Offset(x - gap - w, y - gap - h),
+  ]) {
+    final rect =
+        Offset(
+          corner.dx.clamp(3.0, viewport.width - w - 3),
+          corner.dy.clamp(3.0, viewport.height - h - 3),
+        ) &
+        label;
+    if (!occupied.any(rect.overlaps)) return rect;
+  }
+  return null;
 }
