@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'history_event_symbol.dart';
-
 int _distanceTo(Map event, int year) {
   final start = event['start'] as int;
   final end = event['end'] as int;
@@ -36,28 +34,21 @@ class HistoryTimeline extends StatelessWidget {
     required this.year,
     required this.centuryName,
     required this.russian,
-    required this.century,
     required this.countryName,
     required this.events,
-    required this.rows,
+    required this.eventCount,
     required this.onYear,
     required this.pickYear,
     required this.pickCentury,
     required this.pickCountry,
     required this.openEvents,
-    required this.openEvent,
-    this.preview,
-    this.onPreviewChanged,
   });
-  final int year;
+  final int year, eventCount;
   final String centuryName, countryName;
-  final bool russian, century;
-  final List<Map> events, rows;
+  final bool russian;
+  final List<Map> events;
   final ValueChanged<int> onYear;
   final VoidCallback pickYear, pickCentury, pickCountry, openEvents;
-  final ValueChanged<Map> openEvent;
-  final Map? preview;
-  final ValueChanged<Map>? onPreviewChanged;
 
   static const ink = Color(0xff193b43);
   static const accent = Color(0xff8b532c);
@@ -69,16 +60,6 @@ class HistoryTimeline extends StatelessWidget {
     final years = events.map((r) => r['start'] as int).toSet().toList()..sort();
     final previous = years.where((v) => v < year).lastOrNull;
     final next = years.where((v) => v > year).firstOrNull;
-    final featured = closestHistoryEvent(rows.isEmpty ? events : rows, year);
-    final country = TextButton.icon(
-      style: TextButton.styleFrom(
-        foregroundColor: ink,
-        padding: const EdgeInsets.symmetric(horizontal: 6),
-      ),
-      icon: const Icon(Icons.public, size: 16),
-      label: Text(countryName, overflow: TextOverflow.ellipsis, maxLines: 1),
-      onPressed: pickCountry,
-    );
     Widget step(int? target, bool forward) => IconButton(
       color: ink,
       disabledColor: const Color(0xffa69d89),
@@ -87,272 +68,135 @@ class HistoryTimeline extends StatelessWidget {
           : t('Предыдущий год с событием', 'Previous event year'),
       icon: Icon(
         forward ? Icons.skip_next_rounded : Icons.skip_previous_rounded,
-        size: 20,
       ),
       onPressed: target == null ? null : () => onYear(target),
     );
+    final style = TextButton.styleFrom(
+      foregroundColor: ink,
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      minimumSize: const Size(44, 44),
+    );
+    final countLabel = '${t("События", "Events")} · $eventCount';
     return Material(
       color: paper,
-      child: Center(
-        heightFactor: 1,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 960),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: LayoutBuilder(
+        builder: (context, box) {
+          final compact = box.maxWidth < 580;
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                SizedBox(
+                  height: 48,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 14),
+                        child: CustomPaint(painter: _EventTicks(years)),
+                      ),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          activeTrackColor: accent,
+                          inactiveTrackColor: const Color(0xffcbbda6),
+                          thumbColor: ink,
+                          trackHeight: 8,
+                          overlayShape: const RoundSliderOverlayShape(
+                            overlayRadius: 22,
+                          ),
+                          thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 11,
+                          ),
+                          tickMarkShape: SliderTickMarkShape.noTickMark,
+                        ),
+                        child: Slider(
+                          min: 1501,
+                          max: 2000,
+                          divisions: 499,
+                          padding: const EdgeInsets.symmetric(horizontal: 14),
+                          label: '$year',
+                          semanticFormatterCallback: (v) => '${v.round()}',
+                          value: year.toDouble(),
+                          onChanged: (v) => onYear(v.round()),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Row(
                   children: [
+                    step(previous, false),
                     TextButton(
+                      style: style,
                       onPressed: pickYear,
-                      style: TextButton.styleFrom(foregroundColor: ink),
                       child: Text(
                         '$year',
+                        maxLines: 1,
                         style: const TextStyle(
-                          fontFamily: 'serif',
+                          fontSize: 21,
                           fontWeight: FontWeight.bold,
-                          fontSize: 24,
                         ),
                       ),
                     ),
-                    step(previous, false),
-                    Expanded(
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: CustomPaint(
-                              size: const Size(double.infinity, 22),
-                              painter: _EventTicks(years),
-                            ),
-                          ),
-                          SliderTheme(
-                            data: SliderTheme.of(context).copyWith(
-                              activeTrackColor: const Color(0xff9a683b),
-                              inactiveTrackColor: const Color(0xffc7bcaa),
-                              thumbColor: ink,
-                              trackHeight: 3,
-                              overlayShape: const RoundSliderOverlayShape(
-                                overlayRadius: 11,
-                              ),
-                              thumbShape: const RoundSliderThumbShape(
-                                enabledThumbRadius: 8,
-                              ),
-                              tickMarkShape: SliderTickMarkShape.noTickMark,
-                            ),
-                            child: Slider(
-                              min: 1501,
-                              max: 2000,
-                              divisions: 499,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                              ),
-                              label: '$year',
-                              semanticFormatterCallback: (v) => '${v.round()}',
-                              value: year.toDouble(),
-                              onChanged: (v) => onYear(v.round()),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                     step(next, true),
-                    TextButton(
-                      onPressed: pickCentury,
-                      style: TextButton.styleFrom(foregroundColor: accent),
-                      child: Text('$centuryName ${t("век", "century")}'),
-                    ),
-                  ],
-                ),
-                if (featured != null)
-                  _StoryPreview(
-                    key: ValueKey((year, countryName, century)),
-                    rows: [featured, ...rows.where((e) => e != featured)],
-                    nearest: rows.isEmpty,
-                    russian: russian,
-                    onOpen: openEvent,
-                    preview: preview,
-                    onPreviewChanged: onPreviewChanged,
-                  ),
-                Row(
-                  children: [
                     Expanded(
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: country,
+                      child: TextButton(
+                        style: style,
+                        onPressed: pickCentury,
+                        child: Text(
+                          '$centuryName ${t("век", "century")}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
-                    TextButton(
-                      onPressed: openEvents,
-                      style: TextButton.styleFrom(foregroundColor: accent),
-                      child: Text('${t("События", "Events")} · ${rows.length}'),
+                    if (compact)
+                      IconButton(
+                        color: ink,
+                        tooltip: countryName,
+                        onPressed: pickCountry,
+                        icon: const Icon(Icons.public),
+                      )
+                    else
+                      Expanded(
+                        flex: 3,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton.icon(
+                            style: style,
+                            onPressed: pickCountry,
+                            icon: const Icon(Icons.public, size: 18),
+                            label: Text(
+                              countryName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      ),
+                    Tooltip(
+                      message: countLabel,
+                      excludeFromSemantics: true,
+                      child: Semantics(
+                        label: compact ? t('События', 'Events') : null,
+                        child: TextButton.icon(
+                          style: style,
+                          onPressed: openEvents,
+                          icon: const Icon(Icons.list_alt_outlined, size: 18),
+                          label: Text(
+                            compact ? '$eventCount' : countLabel,
+                            maxLines: 1,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ],
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _StoryPreview extends StatefulWidget {
-  const _StoryPreview({
-    super.key,
-    required this.rows,
-    required this.russian,
-    required this.nearest,
-    required this.onOpen,
-    this.preview,
-    this.onPreviewChanged,
-  });
-  final List<Map> rows;
-  final bool russian, nearest;
-  final ValueChanged<Map> onOpen;
-  final Map? preview;
-  final ValueChanged<Map>? onPreviewChanged;
-  @override
-  State<_StoryPreview> createState() => _StoryPreviewState();
-}
-
-class _StoryPreviewState extends State<_StoryPreview> {
-  int index = 0;
-  double dragDistance = 0;
-  @override
-  void didUpdateWidget(_StoryPreview oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.preview != null && widget.preview != oldWidget.preview) {
-      final selected = widget.rows.indexOf(widget.preview!);
-      if (selected >= 0) index = selected;
-    }
-  }
-
-  void move(int delta) {
-    setState(() => index = (index + delta) % widget.rows.length);
-    widget.onPreviewChanged?.call(widget.rows[index]);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final event = widget.rows[index];
-    final style = HistoryEventStyle.forKind(event['kind']);
-    final ru = widget.russian;
-    final many = widget.rows.length > 1;
-    final meta = [
-      if (widget.nearest) ru ? 'Ближайшее событие' : 'Nearest event',
-      historyEventDate(event),
-      ru ? style.ru : style.en,
-    ].join(' · ');
-    return GestureDetector(
-      onHorizontalDragStart: many ? (_) => dragDistance = 0 : null,
-      onHorizontalDragUpdate: many
-          ? (details) => dragDistance += details.primaryDelta ?? 0
-          : null,
-      onHorizontalDragEnd: many
-          ? (details) {
-              final speed = details.primaryVelocity ?? 0;
-              if (dragDistance.abs() >= 24 || speed.abs() > 60) {
-                move(
-                  (dragDistance.abs() >= 24 ? dragDistance : speed) < 0
-                      ? 1
-                      : -1,
-                );
-              }
-            }
-          : null,
-      child: Material(
-        color: const Color(0xfff4ead6),
-        borderRadius: BorderRadius.circular(12),
-        child: Row(
-          children: [
-            Expanded(
-              child: InkWell(
-                borderRadius: BorderRadius.circular(12),
-                onTap: () => widget.onOpen(event),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 7,
-                  ),
-                  child: Row(
-                    children: [
-                      HistoryEventSeal(event['kind']),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              meta,
-                              style: TextStyle(
-                                color: style.color,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 12,
-                              ),
-                            ),
-                            Text(
-                              event[ru ? 'title_ru' : 'title_en'],
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: HistoryTimeline.ink,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                height: 1.16,
-                              ),
-                            ),
-                            if (event[ru ? 'place_ru' : 'place_en']
-                                case final String place)
-                              Text(
-                                place,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: HistoryTimeline.ink,
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
-                      if (!many)
-                        const Icon(
-                          Icons.chevron_right,
-                          color: HistoryTimeline.ink,
-                        ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            if (many)
-              IconButton(
-                tooltip: ru ? 'Листать события' : 'Cycle through events',
-                onPressed: () => move(1),
-                icon: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(
-                      Icons.arrow_forward,
-                      size: 18,
-                      color: HistoryTimeline.ink,
-                    ),
-                    Text(
-                      '${index + 1}/${widget.rows.length}',
-                      style: const TextStyle(
-                        fontSize: 10,
-                        color: HistoryTimeline.ink,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -369,8 +213,8 @@ class _EventTicks extends CustomPainter {
     for (final y in years) {
       final x = (y - 1501) / 499 * size.width;
       canvas.drawLine(
-        Offset(x, size.height / 2 + 3),
-        Offset(x, size.height / 2 + 7),
+        Offset(x, size.height / 2 + 6),
+        Offset(x, size.height / 2 + 10),
         paint,
       );
     }

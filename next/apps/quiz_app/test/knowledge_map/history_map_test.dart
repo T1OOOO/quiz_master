@@ -8,71 +8,54 @@ import 'package:quiz_app/knowledge_map/history_map.dart';
 
 void main() {
   testWidgets(
-    'scrubbing and cycling update the visible story without a dialog',
+    'a full-width year slider keeps the timeline stable across events and empty years',
     (tester) async {
+      await tester.binding.setSurfaceSize(const Size(360, 640));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
       const entries = [
-        {
-          'start': 1914,
-          'end': 1918,
-          'title_ru': 'Долгое событие',
-          'kind': 'war',
-        },
-        {
-          'start': 1917,
-          'end': 1917,
-          'title_ru': 'Событие года',
-          'kind': 'revolution',
-        },
+        {'start': 1914, 'end': 1918},
+        {'start': 1917, 'end': 1917},
       ];
       var year = 1917;
-      Map? preview;
+      var opened = false;
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: StatefulBuilder(
+            bottomNavigationBar: StatefulBuilder(
               builder: (context, refresh) => HistoryTimeline(
                 year: year,
                 centuryName: 'XX',
                 russian: true,
-                century: false,
-                countryName: 'Россия',
+                countryName: 'Все страны',
                 events: entries,
-                rows: entries
-                    .where(
-                      (e) =>
-                          (e['start'] as int) <= year &&
-                          year <= (e['end'] as int),
-                    )
-                    .toList(),
+                eventCount: historyEventsFor(entries, year, false, null).length,
                 onYear: (v) => refresh(() => year = v),
                 pickYear: () {},
                 pickCentury: () {},
                 pickCountry: () {},
-                openEvents: () {},
-                openEvent: (_) {},
-                onPreviewChanged: (event) => preview = event,
+                openEvents: () => opened = true,
               ),
             ),
           ),
         ),
       );
-      expect(find.text('Событие года'), findsOneWidget);
-      await tester.tap(find.byTooltip('Листать события'));
+      final slider = find.byType(Slider);
+      final timeline = tester.getRect(find.byType(HistoryTimeline));
+      final track = tester.getRect(slider);
+      expect(track.width, greaterThan(340));
+      expect(track.height, greaterThanOrEqualTo(48));
+      expect(timeline.height, lessThanOrEqualTo(100));
+      await tester.tapAt(Offset(track.left + 30, track.center.dy));
       await tester.pump();
-      expect(find.text('Долгое событие'), findsOneWidget);
-      expect(preview?['title_ru'], 'Долгое событие');
-      await tester.drag(find.text('Долгое событие'), const Offset(-80, 0));
-      await tester.pump();
-      expect(preview?['title_ru'], 'Событие года');
-      final slider = tester.widget<Slider>(find.byType(Slider));
-      slider.onChanged!(1903);
-      await tester.pump();
-      expect(find.textContaining('Ближайшее событие'), findsOneWidget);
-      expect(find.text('1903'), findsOneWidget);
+      expect(year, lessThan(1600));
+      expect(find.text('0'), findsOneWidget);
+      expect(tester.getRect(find.byType(HistoryTimeline)), timeline);
       await tester.tap(find.byTooltip('Следующий год с событием'));
       await tester.pump();
-      expect(find.text('1914'), findsOneWidget);
-      expect(find.textContaining('Ближайшее событие'), findsNothing);
+      expect(year, 1914);
+      expect(tester.getRect(slider), track);
+      await tester.tap(find.text('1'));
+      expect(opened, isTrue);
     },
   );
 
