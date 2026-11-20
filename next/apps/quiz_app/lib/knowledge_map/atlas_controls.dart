@@ -47,6 +47,9 @@ class AtlasHeader extends StatelessWidget {
               )
             else
               TextButton.icon(
+                style: TextButton.styleFrom(
+                  foregroundColor: const Color(0xff215b53),
+                ),
                 onPressed: onProjection,
                 icon: glyph,
                 label: Text(projection),
@@ -120,16 +123,34 @@ class AtlasCameraControls extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget button(String en, String ru, IconData icon, VoidCallback? action) =>
-        SizedBox.square(
-          dimension: 44,
-          child: IconButton(
-            tooltip: russian ? ru : en,
-            onPressed: action,
-            icon: Icon(icon, size: 21),
-          ),
-        );
     final rect = bounds(viewport, search: showSearch);
+    final horizontal = rect.width > rect.height;
+    Widget button(
+      String en,
+      String ru,
+      IconData icon,
+      VoidCallback? action,
+    ) => Tooltip(
+      message: russian ? ru : en,
+      positionDelegate: (c) {
+        // Place the hint beside the rail so it cannot cover the next button.
+        final hint = c.tooltipSize;
+        final x = horizontal
+            ? c.target.dx - hint.width / 2
+            : c.target.dx - c.targetSize.width / 2 - 6 - hint.width;
+        final y = horizontal
+            ? c.target.dy - c.targetSize.height / 2 - 6 - hint.height
+            : c.target.dy - hint.height / 2;
+        return Offset(
+          x.clamp(0.0, math.max(0.0, c.overlaySize.width - hint.width)),
+          y.clamp(0.0, math.max(0.0, c.overlaySize.height - hint.height)),
+        );
+      },
+      child: SizedBox.square(
+        dimension: 44,
+        child: IconButton(onPressed: action, icon: Icon(icon, size: 21)),
+      ),
+    );
     return Material(
       color: const Color(0xfffffef9),
       elevation: 2,
@@ -138,7 +159,7 @@ class AtlasCameraControls extends StatelessWidget {
       child: IconTheme(
         data: const IconThemeData(color: Color(0xff215b53)),
         child: Flex(
-          direction: rect.width > rect.height ? Axis.horizontal : Axis.vertical,
+          direction: horizontal ? Axis.horizontal : Axis.vertical,
           mainAxisSize: MainAxisSize.min,
           children: [
             if (showSearch) button('Search', 'Поиск', Icons.search, onSearch),
