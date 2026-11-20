@@ -3,10 +3,51 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:quiz_app/knowledge_map/history_timeline.dart';
 import 'package:quiz_app/knowledge_map/history_map_pins.dart';
 import 'package:quiz_app/knowledge_map/history_event_symbol.dart';
+import 'package:quiz_app/knowledge_map/history_period.dart'
+    show HistoryPeriodDialog;
 
 import 'package:quiz_app/knowledge_map/history_map.dart';
 
 void main() {
+  testWidgets(
+    'custom period rejects reversed dates and includes the last year',
+    (tester) async {
+      (int, int, bool)? result;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (context) => TextButton(
+              onPressed: () async {
+                result = await showDialog<(int, int, bool)>(
+                  context: context,
+                  builder: (_) => const HistoryPeriodDialog(
+                    year: 1733,
+                    period: (1733, 1742),
+                    russian: true,
+                  ),
+                );
+              },
+              child: const Text('open'),
+            ),
+          ),
+        ),
+      );
+      await tester.tap(find.text('open'));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextFormField).last, '1700');
+      await tester.pump();
+      expect(
+        tester.widget<FilledButton>(find.byType(FilledButton)).onPressed,
+        isNull,
+      );
+      await tester.enterText(find.byType(TextFormField).first, '1698');
+      await tester.pump();
+      await tester.tap(find.text('Применить'));
+      await tester.pumpAndSettle();
+      expect(result, (1698, 3, false));
+    },
+  );
+
   testWidgets(
     'a full-width year slider keeps the timeline stable across events and empty years',
     (tester) async {
@@ -28,7 +69,7 @@ void main() {
                 russian: true,
                 countryName: 'Все страны',
                 events: entries,
-                eventCount: historyEventsFor(entries, year, false, null).length,
+                eventCount: historyEventsFor(entries, year, year, null).length,
                 onYear: (v) => refresh(() => year = v),
                 pickYear: () {},
                 pickCentury: () {},
@@ -50,11 +91,12 @@ void main() {
       expect(year, lessThan(1600));
       expect(find.text('0'), findsOneWidget);
       expect(tester.getRect(find.byType(HistoryTimeline)), timeline);
-      await tester.tap(find.byTooltip('Следующий год с событием'));
+      final before = year;
+      await tester.tap(find.byTooltip('Следующий год'));
       await tester.pump();
-      expect(year, 1914);
+      expect(year, before + 1);
       expect(tester.getRect(slider), track);
-      await tester.tap(find.text('1'));
+      await tester.tap(find.text('0'));
       expect(opened, isTrue);
     },
   );
@@ -131,24 +173,34 @@ void main() {
     ];
 
     test('filters a year and preserves overlapping events', () {
-      final result = historyEventsFor(events, 1601, false, null);
+      final result = historyEventsFor(events, 1601, 1601, null);
       expect(result, hasLength(2));
       expect(result.map((event) => event['start']), [1598, 1601]);
     });
 
     test('filters the selected country while retaining its overlaps', () {
-      final result = historyEventsFor(events, 1601, false, 'SE');
+      final result = historyEventsFor(events, 1601, 1601, 'SE');
       expect(result, hasLength(2));
       expect(
         result.every((event) => (event['countries'] as List).contains('SE')),
         isTrue,
       );
-      expect(historyEventsFor(events, 1601, false, 'FR'), isEmpty);
+      expect(historyEventsFor(events, 1601, 1601, 'FR'), isEmpty);
     });
 
     test('whole century uses the selected century range', () {
-      expect(historyEventsFor(events, 1601, true, null), hasLength(3));
-      expect(historyEventsFor(events, 1601, true, 'FR'), hasLength(1));
+      expect(historyEventsFor(events, 1601, 1700, null), hasLength(3));
+      expect(historyEventsFor(events, 1601, 1700, 'FR'), hasLength(1));
+    });
+
+    test('windows include both ends, keep their duration at the edge and preserve ongoing events', () {
+      expect(historyPeriod(1733, 10), (1733, 1742));
+      expect(historyPeriod(1999, 50), (1951, 2000));
+      expect(historyPeriod(1600, 100, calendarCentury: true), (1501, 1600));
+      expect(historyEventsFor(events, 1602, 1603, null), [
+        events[0],
+        events[2],
+      ]);
     });
 
     test('timeline preview follows the year and prefers new developments', () {

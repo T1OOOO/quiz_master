@@ -37,6 +37,7 @@ class HistoryTimeline extends StatelessWidget {
     required this.countryName,
     required this.events,
     required this.eventCount,
+    this.period,
     required this.onYear,
     required this.pickYear,
     required this.pickCentury,
@@ -44,6 +45,7 @@ class HistoryTimeline extends StatelessWidget {
     required this.openEvents,
   });
   final int year, eventCount;
+  final (int, int)? period;
   final String centuryName, countryName;
   final bool russian;
   final List<Map> events;
@@ -58,14 +60,22 @@ class HistoryTimeline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final years = events.map((r) => r['start'] as int).toSet().toList()..sort();
-    final previous = years.where((v) => v < year).lastOrNull;
-    final next = years.where((v) => v > year).firstOrNull;
+    final (start, end) = period ?? (year, year);
+    final interval = start != end;
+    final previous = start > 1501
+        ? (start - (end - start + 1)).clamp(1501, 2000)
+        : null;
+    final next = end < 2000 ? end + 1 : null;
     Widget step(int? target, bool forward) => IconButton(
       color: ink,
       disabledColor: const Color(0xffa69d89),
-      tooltip: forward
-          ? t('Следующий год с событием', 'Next event year')
-          : t('Предыдущий год с событием', 'Previous event year'),
+      tooltip: interval
+          ? (forward
+                ? t('Следующий период', 'Next period')
+                : t('Предыдущий период', 'Previous period'))
+          : forward
+          ? t('Следующий год', 'Next year')
+          : t('Предыдущий год', 'Previous year'),
       icon: Icon(
         forward ? Icons.skip_next_rounded : Icons.skip_previous_rounded,
       ),

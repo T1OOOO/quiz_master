@@ -12,8 +12,11 @@ import 'history_globe.dart';
 import 'history_event_symbol.dart';
 import 'history_map_pins.dart';
 import 'history_timeline.dart';
+import 'history_period.dart';
+import 'history_event_index.dart';
 import 'history_relief.dart';
 
+export 'history_period.dart' show historyPeriod;
 export 'history_timeline.dart' show closestHistoryEvent;
 
 const _root = 'assets/quizipedia/map_v2/';
@@ -21,16 +24,15 @@ const _centuries = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
 int historyCentury(int year) => (year - 1) ~/ 100 + 1;
 List<Map> historyEventsFor(
   List<Map> events,
-  int year,
-  bool wholeCentury,
+  int start,
+  int end,
   String? country,
 ) {
-  final end = historyCentury(year) * 100;
   return events
       .where(
         (e) =>
-            e['start'] <= (wholeCentury ? end : year) &&
-            e['end'] >= (wholeCentury ? end - 99 : year) &&
+            e['start'] <= end &&
+            e['end'] >= start &&
             (country == null || (e['countries'] as List).contains(country)),
       )
       .toList()
@@ -59,7 +61,32 @@ class HistoryMap extends StatefulWidget {
 
 class _HistoryMapState extends State<HistoryMap> {
   late int year = widget.initialYear.clamp(1501, 2000);
-  bool century = false;
+  int periodLength = 1;
+  bool calendarCentury = false;
+  (int, int) get period =>
+      historyPeriod(year, periodLength, calendarCentury: calendarCentury);
+  String get periodLabel =>
+      period.$1 == period.$2 ? '${period.$1}' : '${period.$1}–${period.$2}';
+
+  Future<void> choosePeriod() async {
+    final choice = await showDialog<(int, int, bool)>(
+      context: context,
+      builder: (_) => HistoryPeriodDialog(
+        year: year,
+        period: period,
+        russian: widget.russian,
+      ),
+    );
+    if (!mounted || choice == null) return;
+    setState(() {
+      year = choice.$1;
+      periodLength = choice.$2;
+      calendarCentury = choice.$3;
+      preview = null;
+      selected = null;
+    });
+  }
+
   late bool globe = widget.initialGlobe;
   int resetGlobe = 0;
   Map? preview;
@@ -272,7 +299,8 @@ class _HistoryMapState extends State<HistoryMap> {
     if (mounted && c != null) {
       setState(() {
         if (historyCentury(year) != c) year = c * 100 - 99;
-        century = true;
+        calendarCentury = true;
+        periodLength = 100;
         selected = null;
         preview = null;
       });
@@ -336,123 +364,101 @@ class _HistoryMapState extends State<HistoryMap> {
     }
   }
 
-  Future<void> showEvents(List<Map> rows, {bool detail = false}) async {
-    final lang = widget.russian ? 'ru' : 'en';
+  Future<void> openIndex(List<Map> rows) async {
     await showDialog<void>(
       context: context,
-      builder: (d) => AlertDialog(
-        title: Text(
-          detail
-              ? (widget.russian
-                    ? HistoryEventStyle.forKind(rows.first['kind']).ru
-                    : HistoryEventStyle.forKind(rows.first['kind']).en)
-              : '${century ? "$centuryName ${t('век', 'century')}" : year} · $regionName',
-        ),
-        content: SizedBox(
-          width: 480,
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              if (rows.isEmpty)
-                Text(
-                  t(
-                    'Для этого периода и страны пока нет записей. Можно выбрать целый век.',
-                    'No entries for this period and country yet. Try the full century.',
-                  ),
-                ),
-              for (final r in rows) ...[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    HistoryEventSeal(r['kind'], size: 34),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            historyEventDate(r),
-                            style: Theme.of(context).textTheme.labelMedium,
-                          ),
-                          Text(
-                            r['title_$lang'],
-                            style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w700),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  r['summary_$lang'],
-                  style: Theme.of(context).textTheme.bodyMedium
-                      ?.copyWith(height: 1.4),
-                ),
-                if (detail || r['place_$lang'] != null || r['location'] == null)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Icon(Icons.place_outlined, size: 16),
-                        const SizedBox(width: 4),
-                        Expanded(
-                          child: Text(
-                            [
-                              if (r['place_$lang'] != null) r['place_$lang'],
-                              if (r['location'] == null)
-                                t('Регион события', 'Event region'),
-                              if (detail || r['location'] == null)
-                                ...countryNames
-                                    .where(
-                                      (c) => (r['countries'] as List).contains(
-                                        c.id,
-                                      ),
-                                    )
-                                    .map(name),
-                            ].join(' · '),
-                            style: Theme.of(context).textTheme.labelMedium,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                Wrap(
-                  children: [
-                    if (year < r['start'] || year > r['end'])
-                      TextButton.icon(
-                        icon: const Icon(Icons.timeline),
-                        onPressed: () {
-                          Navigator.pop(d);
-                          changeYear(r['start']);
-                        },
-                        label: Text(
-                          t(
-                            'Перейти к ${r['start']} году',
-                            'Go to ${r['start']}',
-                          ),
-                        ),
-                      ),
-                    TextButton.icon(
-                      icon: const Icon(Icons.open_in_new, size: 15),
-                      onPressed: () => launchUrl(
-                        Uri.parse(r['source_url']),
-                        mode: LaunchMode.externalApplication,
-                      ),
-                      label: Text(t('Источник', 'Source')),
-                    ),
-                  ],
-                ),
-                if (r != rows.last) const Divider(height: 24),
-              ],
-            ],
-          ),
-        ),
-        actions: [close(d)],
+      builder: (d) => HistoryEventIndex(
+        rows: rows,
+        period: periodLabel,
+        region: regionName,
+        russian: widget.russian,
+        countriesOf: (event) => countryNames
+            .where((c) => (event['countries'] as List).contains(c.id))
+            .map(name)
+            .join(', '),
+        onOpen: (event) async {
+          final showOnMap = await showDetail(event);
+          if (showOnMap && d.mounted) Navigator.pop(d);
+        },
       ),
     );
+  }
+
+  Future<bool> showDetail(Map event) async {
+    final lang = widget.russian ? 'ru' : 'en';
+    final style = HistoryEventStyle.forKind(event['kind']);
+    final location = [
+      if (event['place_$lang'] != null) event['place_$lang'],
+      if (event['location'] == null) t('Регион события', 'Event region'),
+      ...countryNames
+          .where((c) => (event['countries'] as List).contains(c.id))
+          .map(name),
+    ].join(' · ');
+    final action = await showDialog<String>(
+      context: context,
+      builder: (d) => AlertDialog(
+        scrollable: true,
+        title: Text(event['title_$lang']),
+        content: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                HistoryEventSeal(event['kind'], size: 30),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    '${historyEventDate(event)} · ${widget.russian ? style.ru : style.en}',
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Text(
+              event['summary_$lang'],
+              style: Theme.of(d).textTheme.bodyLarge?.copyWith(height: 1.4),
+            ),
+            const SizedBox(height: 12),
+            Text(location, style: Theme.of(d).textTheme.bodySmall),
+            TextButton.icon(
+              icon: const Icon(Icons.open_in_new, size: 16),
+              onPressed: () => launchUrl(
+                Uri.parse(event['source_url']),
+                mode: LaunchMode.externalApplication,
+              ),
+              label: Text(t('Источник', 'Source')),
+            ),
+            if (year < event['start'] || year > event['end'])
+              TextButton(
+                onPressed: () => Navigator.pop(d, 'year'),
+                child: Text(
+                  t(
+                    'Перейти к ${event['start']} году',
+                    'Go to ${event['start']}',
+                  ),
+                ),
+              ),
+          ],
+        ),
+        actions: [
+          close(d),
+          FilledButton.icon(
+            icon: const Icon(Icons.place_outlined),
+            label: Text(t('На карте', 'Show on map')),
+            onPressed: () => Navigator.pop(d, 'map'),
+          ),
+        ],
+      ),
+    );
+    if (!mounted || action == null) return false;
+    setState(() {
+      if (action == 'year') {
+        year = event['start'];
+        selected = null;
+      }
+      preview = event;
+    });
+    return true;
   }
 
   void about() => showDialog<void>(
@@ -527,11 +533,9 @@ class _HistoryMapState extends State<HistoryMap> {
               : events
                     .where((r) => (r['countries'] as List).contains(country))
                     .toList();
-          final rows = historyEventsFor(scoped, year, century, null);
+          final rows = historyEventsFor(scoped, period.$1, period.$2, null);
           final lang = widget.russian ? 'ru' : 'en';
-          final story =
-              preview ??
-              closestHistoryEvent(rows.isEmpty ? scoped : rows, year);
+          final story = preview ?? closestHistoryEvent(rows, year);
           HistoryEventPin pinFor(Map row, Offset point) => (
             longitude: point.dx,
             latitude: point.dy,
@@ -542,7 +546,7 @@ class _HistoryMapState extends State<HistoryMap> {
           final pinRecords = <HistoryEventPin, Map>{};
           HistoryEventPin? focus;
           String? focusCaption;
-          for (final r in [...rows, if (rows.isEmpty && story != null) story]) {
+          for (final r in rows) {
             final xy = r['location'];
             final region = country ?? r['countries'].first as String;
             final point = xy is List
@@ -556,14 +560,10 @@ class _HistoryMapState extends State<HistoryMap> {
               final regionName = countryNames
                   .where((c) => c.id == region)
                   .firstOrNull;
-              final prefix = rows.isEmpty
-                  ? t('Ближайшее · ', 'Nearest · ')
-                  : '';
               final location = xy is List
                   ? ''
                   : ' · ${t("Регион", "Region")} ${regionName == null ? region : name(regionName)}';
-              focusCaption =
-                  '$prefix${historyEventDate(r)}$location\n${pin.title}';
+              focusCaption = '${historyEventDate(r)}$location\n${pin.title}';
             }
           }
           Future<void> openPins(List<HistoryEventPin> pins) async {
@@ -588,7 +588,7 @@ class _HistoryMapState extends State<HistoryMap> {
             }
             if (!mounted || event == null) return;
             setState(() => preview = event);
-            await showEvents([event], detail: true);
+            await showDetail(event);
           }
 
           return Column(
@@ -741,9 +741,11 @@ class _HistoryMapState extends State<HistoryMap> {
                                   size: 18,
                                 ),
                                 label: Text(
-                                  globe
-                                      ? t('2D · Карта', '2D · Map')
-                                      : t('3D · Глобус', '3D · Globe'),
+                                  MediaQuery.sizeOf(context).width < 350
+                                      ? (globe ? '2D' : '3D')
+                                      : globe
+                                      ? t('Карта', 'Map')
+                                      : t('Глобус', 'Globe'),
                                 ),
                               ),
                             ),
@@ -751,43 +753,15 @@ class _HistoryMapState extends State<HistoryMap> {
                           Positioned(
                             top: 10,
                             right: 10,
-                            child: SegmentedButton<bool>(
-                              showSelectedIcon: false,
-                              style: SegmentedButton.styleFrom(
-                                backgroundColor: const Color(0xfff6f2e7),
-                                foregroundColor: const Color(0xff214852),
-                                selectedForegroundColor: Colors.white,
-                                selectedBackgroundColor: const Color(
-                                  0xff23545d,
-                                ),
-                                visualDensity: VisualDensity.compact,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 9,
-                                ),
+                            child: FilledButton.tonalIcon(
+                              onPressed: choosePeriod,
+                              icon: const Icon(
+                                Icons.date_range_outlined,
+                                size: 18,
                               ),
-                              segments: [
-                                ButtonSegment(
-                                  value: false,
-                                  label: Text(t('За год', 'Year')),
-                                  tooltip: t(
-                                    'События на карте за год',
-                                    'Map events for the year',
-                                  ),
-                                ),
-                                ButtonSegment(
-                                  value: true,
-                                  label: Text(t('За век', 'Century')),
-                                  tooltip: t(
-                                    'События на карте за век',
-                                    'Map events for the century',
-                                  ),
-                                ),
-                              ],
-                              selected: {century},
-                              onSelectionChanged: (values) => setState(() {
-                                century = values.first;
-                                preview = null;
-                              }),
+                              label: Text(
+                                '${t("Период", "Period")} · $periodLabel',
+                              ),
                             ),
                           ),
                           if (selected != null)
@@ -825,11 +799,12 @@ class _HistoryMapState extends State<HistoryMap> {
                 countryName: regionName,
                 events: scoped,
                 eventCount: rows.length,
+                period: period,
                 onYear: changeYear,
                 pickYear: chooseYear,
                 pickCentury: chooseCentury,
                 pickCountry: () => chooseCountry(events),
-                openEvents: () => showEvents(rows),
+                openEvents: () => openIndex(rows),
               ),
             ],
           );
