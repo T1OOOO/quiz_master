@@ -33,18 +33,32 @@ class AtlasHeader extends StatelessWidget {
           1.0,
           MediaQuery.textScalerOf(context).scale(14) / 14,
         );
-        final compact =
-            box.maxWidth <
-            (onAtlasSwitch != null
-                    ? 365
-                    : onAbout == null
-                    ? 245
-                    : 280) *
-                textScale;
-        final projection = globe
-            ? (russian ? '2D-карта' : '2D map')
-            : (russian ? '3D-глобус' : '3D globe');
+        final compact = box.maxWidth < 245 * textScale;
+        final flatLabel = russian ? '2D-карта' : '2D map';
+        final globeLabel = russian ? '3D-глобус' : '3D globe';
+        final projection = globe ? flatLabel : globeLabel;
         final glyph = Icon(globe ? Icons.map_outlined : Icons.public, size: 19);
+        const ink = Color(0xff215b53);
+        Widget projectionOption(String label, String tooltip, bool active) =>
+            Semantics(
+              selected: active,
+              child: Tooltip(
+                message: tooltip,
+                child: TextButton(
+                  onPressed: active ? null : onProjection,
+                  style: TextButton.styleFrom(
+                    foregroundColor: ink,
+                    disabledForegroundColor: active ? Colors.white : null,
+                    disabledBackgroundColor: active ? ink : null,
+                    minimumSize: const Size(39, 36),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    visualDensity: VisualDensity.standard,
+                  ),
+                  child: Text(label),
+                ),
+              ),
+            );
         final back = IconButton(
           tooltip: russian ? 'Назад' : 'Back',
           icon: const Icon(Icons.arrow_back, size: 20),
@@ -59,27 +73,43 @@ class AtlasHeader extends StatelessWidget {
                 icon: glyph,
               )
             else
-              TextButton.icon(
-                style: TextButton.styleFrom(
-                  foregroundColor: const Color(0xff215b53),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: const Color(0xffe9f1ed),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(2),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        projectionOption('2D', flatLabel, !globe),
+                        projectionOption('3D', globeLabel, globe),
+                      ],
+                    ),
+                  ),
                 ),
-                onPressed: onProjection,
-                icon: glyph,
-                label: Text(projection),
               ),
           if (onAtlasSwitch != null)
-            if (box.maxWidth >= 235 * textScale)
-              TextButton(
-                onPressed: onAtlasSwitch,
-                style: TextButton.styleFrom(
-                  foregroundColor: const Color(0xff215b53),
-                  minimumSize: const Size(0, 44),
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                ),
-                child: Text(
-                  history
-                      ? (russian ? 'Мир' : 'World')
-                      : (russian ? 'История' : 'History'),
+            if (box.maxWidth >= 285 * textScale)
+              Padding(
+                padding: const EdgeInsets.only(left: 4),
+                child: OutlinedButton.icon(
+                  onPressed: onAtlasSwitch,
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: ink,
+                    side: const BorderSide(color: Color(0xffbbcfc5)),
+                    minimumSize: const Size(0, 40),
+                    padding: const EdgeInsets.symmetric(horizontal: 9),
+                  ),
+                  icon: const Icon(Icons.swap_horiz, size: 17),
+                  label: Text(
+                    history
+                        ? (russian ? 'Мир' : 'World')
+                        : (russian ? 'История' : 'History'),
+                  ),
                 ),
               )
             else
@@ -109,7 +139,11 @@ class AtlasHeader extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 8),
                   child: Text(
-                    title,
+                    box.maxWidth < 370 * textScale && onAtlasSwitch != null
+                        ? (history
+                              ? (russian ? 'История' : 'History')
+                              : (russian ? 'Мир' : 'World'))
+                        : title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
