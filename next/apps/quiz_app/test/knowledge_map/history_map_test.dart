@@ -79,6 +79,75 @@ void main() {
     },
   );
 
+  testWidgets('compact calendar fits ten years and jumps by keyboard', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(320, 600));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    (int, int, bool)? result;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Builder(
+          builder: (context) => TextButton(
+            onPressed: () async {
+              result = await showDialog<(int, int, bool)>(
+                context: context,
+                builder: (_) => const HistoryPeriodDialog(
+                  year: 1734,
+                  step: 10,
+                  customRange: false,
+                  events: [],
+                  russian: true,
+                ),
+              );
+            },
+            child: const Text('open'),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('open'));
+    await tester.pumpAndSettle();
+    final first = tester.getRect(find.bySemanticsLabel('1731 · 0 событий'));
+    final fifth = tester.getRect(find.bySemanticsLabel('1735 · 0 событий'));
+    expect(first.top, fifth.top);
+    expect(first.width, greaterThanOrEqualTo(48));
+    await tester.tap(find.text('Ввести год'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.byType(TextFormField), '1499');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pumpAndSettle();
+    expect(result, isNull);
+    await tester.enterText(find.byType(TextFormField), '1896');
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pumpAndSettle();
+    expect(result, (1896, 10, false));
+  });
+
+  testWidgets('empty decade can browse the nearest year with events', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: HistoryPeriodDialog(
+          year: 1665,
+          step: 1,
+          customRange: false,
+          russian: true,
+          events: [
+            {'start': 1590, 'end': 1610},
+            {'start': 1675, 'end': 1680},
+          ],
+        ),
+      ),
+    );
+    await tester.tap(find.text('К событиям 1675 года'));
+    await tester.pumpAndSettle();
+    expect(find.bySemanticsLabel('1675 · 1 событие'), findsOneWidget);
+    expect(find.text('К событиям 1675 года'), findsNothing);
+    expect(find.byType(HistoryPeriodDialog), findsOneWidget);
+  });
+
   testWidgets(
     'custom period rejects reversed dates and includes the last year',
     (tester) async {
