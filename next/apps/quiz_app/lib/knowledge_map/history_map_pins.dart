@@ -78,6 +78,7 @@ class _HistoryMapPinsState extends State<HistoryMapPins> {
       for (final g in groups) Rect.fromCircle(center: g.at, radius: radius),
     ];
     final captions = <Widget>[];
+    final leaders = <(Offset, Offset)>[];
     final maxWidth = math.min(210.0, size.width - 8);
     if (_lastWidth != maxWidth) {
       _sizes.clear();
@@ -127,8 +128,24 @@ class _HistoryMapPinsState extends State<HistoryMapPins> {
           _captionRect(g.at, measured, size, occupied) ??
           (preview && measured.width > 112
               ? _captionRect(g.at, Size(112, measured.height), size, occupied)
+              : null) ??
+          (preview
+              ? _captionRect(
+                  g.at,
+                  Size(math.min(154, measured.width), measured.height),
+                  size,
+                  occupied,
+                  allowDistant: true,
+                )
               : null);
       if (rect == null) continue;
+      if (preview) {
+        final end = Offset(
+          g.at.dx.clamp(rect.left, rect.right),
+          g.at.dy.clamp(rect.top, rect.bottom),
+        );
+        leaders.add((g.at, end));
+      }
       occupied.add(rect.inflate(2));
       captions.add(
         Positioned.fromRect(
@@ -177,6 +194,12 @@ class _HistoryMapPinsState extends State<HistoryMapPins> {
     }
     return Stack(
       children: [
+        if (leaders.isNotEmpty)
+          Positioned.fill(
+            child: IgnorePointer(
+              child: CustomPaint(painter: _PinLeaders(leaders)),
+            ),
+          ),
         for (final g in groups)
           Positioned.fromRect(
             rect: Rect.fromCenter(
@@ -305,8 +328,9 @@ Rect? _captionRect(
   Offset anchor,
   Size label,
   Size viewport,
-  List<Rect> occupied,
-) {
+  List<Rect> occupied, {
+  bool allowDistant = false,
+}) {
   const gap = historyPinTarget / 2 + 2;
   final w = label.width, h = label.height;
   if (w > viewport.width - 6 || h > viewport.height - 6) return null;
@@ -320,6 +344,15 @@ Rect? _captionRect(
     Offset(x - gap - w, y + gap),
     Offset(x + gap, y - gap - h),
     Offset(x - gap - w, y - gap - h),
+    if (allowDistant)
+      for (
+        double distance = gap + 24;
+        distance <= math.min(viewport.longestSide / 2, 230);
+        distance += 24
+      )
+        for (final dx in [0.0, -w / 2, w / 2])
+          for (final top in [y - distance - h, y + distance])
+            Offset(x - w / 2 + dx, top),
   ]) {
     final rect =
         Offset(
@@ -330,4 +363,26 @@ Rect? _captionRect(
     if (!occupied.any(rect.overlaps)) return rect;
   }
   return null;
+}
+
+class _PinLeaders extends CustomPainter {
+  const _PinLeaders(this.lines);
+  final List<(Offset, Offset)> lines;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final halo = Paint()
+      ..color = const Color(0xd9fff7e6)
+      ..strokeWidth = 3;
+    final ink = Paint()
+      ..color = const Color(0xdd36575a)
+      ..strokeWidth = 1.25;
+    for (final (start, end) in lines) {
+      canvas.drawLine(start, end, halo);
+      canvas.drawLine(start, end, ink);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_PinLeaders oldDelegate) => true;
 }
