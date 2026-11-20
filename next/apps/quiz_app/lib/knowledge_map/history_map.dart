@@ -64,10 +64,24 @@ class _HistoryMapState extends State<HistoryMap> {
   String get periodLabel =>
       period.$1 == period.$2 ? '${period.$1}' : '${period.$1}–${period.$2}';
 
+  final dateButton = GlobalKey();
+  bool readerOpen = false;
+  Map? reading;
+  List<Map>? nearbyRows;
+  void resetReader() {
+    reading = null;
+    nearbyRows = null;
+  }
+
+  void closeReader() => setState(() {
+    readerOpen = false;
+    resetReader();
+  });
+
   Future<void> choosePeriod(List<Map> scoped) async {
-    final choice = await showDialog<(int, int, bool)>(
-      context: context,
-      builder: (_) => HistoryPeriodDialog(
+    final choice = await showHistoryPeriodMenu(
+      dateButton.currentContext!,
+      HistoryPeriodMenu(
         year: year,
         step: periodLength,
         customRange: customRange,
@@ -80,6 +94,7 @@ class _HistoryMapState extends State<HistoryMap> {
       year = choice.$1;
       periodLength = choice.$2;
       customRange = choice.$3;
+      resetReader();
       selectedEvent = null;
       selected = null;
     });
@@ -198,6 +213,7 @@ class _HistoryMapState extends State<HistoryMap> {
     setState(() {
       year = v;
       selected = null;
+      resetReader();
       selectedEvent = null;
     });
   }
@@ -292,106 +308,10 @@ class _HistoryMapState extends State<HistoryMap> {
     if (mounted && choice != null) {
       setState(() {
         country = choice.isEmpty ? null : choice;
+        resetReader();
         selectedEvent = null;
       });
     }
-  }
-
-  Future<void> openIndex(List<Map> rows) async {
-    await showDialog<void>(
-      context: context,
-      builder: (d) => HistoryEventIndex(
-        rows: rows,
-        period: periodLabel,
-        region: regionName,
-        russian: widget.russian,
-        countriesOf: (event) => countryNames
-            .where((c) => (event['countries'] as List).contains(c.id))
-            .map(name)
-            .join(', '),
-        onOpen: (event) async {
-          final showOnMap = await showDetail(event);
-          if (showOnMap && d.mounted) Navigator.pop(d);
-        },
-      ),
-    );
-  }
-
-  Future<bool> showDetail(Map event) async {
-    final lang = widget.russian ? 'ru' : 'en';
-    final style = HistoryEventStyle.forKind(event['kind']);
-    final location = [
-      if (event['place_$lang'] != null) event['place_$lang'],
-      if (event['location'] == null) t('Регион события', 'Event region'),
-      ...countryNames
-          .where((c) => (event['countries'] as List).contains(c.id))
-          .map(name),
-    ].join(' · ');
-    final action = await showDialog<String>(
-      context: context,
-      builder: (d) => AlertDialog(
-        scrollable: true,
-        title: Text(event['title_$lang']),
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                HistoryEventSeal(event['kind'], size: 30),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    '${historyEventDate(event)} · ${widget.russian ? style.ru : style.en}',
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            Text(
-              event['summary_$lang'],
-              style: Theme.of(d).textTheme.bodyLarge?.copyWith(height: 1.4),
-            ),
-            const SizedBox(height: 12),
-            Text(location, style: Theme.of(d).textTheme.bodySmall),
-            TextButton.icon(
-              icon: const Icon(Icons.open_in_new, size: 16),
-              onPressed: () => launchUrl(
-                Uri.parse(event['source_url']),
-                mode: LaunchMode.externalApplication,
-              ),
-              label: Text(t('Источник', 'Source')),
-            ),
-            if (year < event['start'] || year > event['end'])
-              TextButton(
-                onPressed: () => Navigator.pop(d, 'year'),
-                child: Text(
-                  t(
-                    'Перейти к ${event['start']} году',
-                    'Go to ${event['start']}',
-                  ),
-                ),
-              ),
-          ],
-        ),
-        actions: [
-          close(d),
-          FilledButton.icon(
-            icon: const Icon(Icons.place_outlined),
-            label: Text(t('На карте', 'Show on map')),
-            onPressed: () => Navigator.pop(d, 'map'),
-          ),
-        ],
-      ),
-    );
-    if (!mounted || action == null) return false;
-    setState(() {
-      if (action == 'year') {
-        year = event['start'];
-        selected = null;
-      }
-      selectedEvent = event;
-    });
-    return true;
   }
 
   void about() => showDialog<void>(
@@ -425,7 +345,7 @@ class _HistoryMapState extends State<HistoryMap> {
     appBar: AppBar(
       leading: widget.onExit == null
           ? null
-          : BackButton(onPressed: widget.onExit),
+          : BackButton(onPressed: readerOpen ? closeReader : widget.onExit),
       title: Text(t('Историческая карта', 'Historical map')),
       actions: [
         IconButton(
@@ -496,252 +416,281 @@ class _HistoryMapState extends State<HistoryMap> {
               focusCaption = '${historyEventDate(r)} · ${pin.title}$regionHint';
             }
           }
-          Future<void> openPins(List<HistoryEventPin> pins) async {
-            Map? event = pinRecords[pins.first];
-            if (pins.length > 1) {
-              event = await showDialog<Map>(
-                context: context,
-                builder: (d) => AlertDialog(
-                  title: Text(
-                    '${t("События рядом", "Nearby events")} · ${pins.length}',
-                  ),
-                  contentPadding: const EdgeInsets.only(top: 8),
-                  content: SizedBox(
-                    width: 400,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: pins.length,
-                      itemBuilder: (context, index) {
-                        final pin = pins[index];
-                        return ListTile(
-                          leading: HistoryEventSeal(pin.kind, size: 24),
-                          titleTextStyle: Theme.of(context)
-                              .textTheme
-                              .bodyMedium,
-                          title: Text(pin.title),
-                          subtitle: Text(historyEventDate(pinRecords[pin]!)),
-                          onTap: () => Navigator.pop(d, pinRecords[pin]),
-                        );
-                      },
-                    ),
-                  ),
-                  actions: [close(d)],
-                ),
-              );
-            }
-            if (!mounted || event == null) return;
-            setState(() => selectedEvent = event);
-            await showDetail(event);
+          void openPins(List<HistoryEventPin> pins) {
+            if (pins.isEmpty) return;
+            setState(() {
+              readerOpen = true;
+              nearbyRows = pins.length > 1
+                  ? [for (final pin in pins) pinRecords[pin]!]
+                  : null;
+              reading = pins.length == 1 ? pinRecords[pins.first] : null;
+              if (reading != null) selectedEvent = reading;
+            });
           }
 
-          return Column(
-            children: [
-              Expanded(
-                child: ColoredBox(
-                  color: globe
-                      ? const Color(0xff142f3a)
-                      : const Color(0xffadd6df),
-                  child: FutureBuilder<List<_Polity>>(
-                    future: _load(historyCentury(year)),
-                    builder: (context, pack) {
-                      if (pack.hasError) {
-                        return Center(
-                          child: Text(
-                            t(
-                              'Не удалось загрузить границы',
-                              'Could not load boundaries',
-                            ),
+          final map = ColoredBox(
+            color: globe ? const Color(0xff142f3a) : const Color(0xffadd6df),
+            child: FutureBuilder<List<_Polity>>(
+              future: _load(historyCentury(year)),
+              builder: (context, pack) {
+                if (pack.hasError) {
+                  return Center(
+                    child: Text(
+                      t(
+                        'Не удалось загрузить границы',
+                        'Could not load boundaries',
+                      ),
+                    ),
+                  );
+                }
+                if (!pack.hasData) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                updateVisible(pack.data!);
+                final visible = visiblePolities;
+                return Stack(
+                  children: [
+                    if (globe)
+                      Positioned.fill(
+                        child: HistoryGlobe(
+                          key: ValueKey(resetGlobe),
+                          land: landPolygons,
+                          polities: globePolities,
+                          year: year,
+                          focus: focus,
+                          focusCaption: focusCaption,
+                          topControlsHeight: topControlsHeight,
+                          russian: widget.russian,
+                          eventPins: pinRecords.keys.toList(),
+                          relief: relief,
+                          onEventTap: (pin) => openPins([pin]),
+                          onGroupTap: openPins,
+                          selectedName: selected?.name,
+                          onSelect: (name) => setState(
+                            () => selected = visible
+                                .where((p) => p.name == name)
+                                .firstOrNull,
                           ),
-                        );
-                      }
-                      if (!pack.hasData) {
-                        return const Center(child: CircularProgressIndicator());
-                      }
-                      updateVisible(pack.data!);
-                      final visible = visiblePolities;
-                      return Stack(
-                        children: [
-                          if (globe)
-                            Positioned.fill(
-                              child: HistoryGlobe(
-                                key: ValueKey(resetGlobe),
-                                land: landPolygons,
-                                polities: globePolities,
-                                year: year,
-                                focus: focus,
-                                focusCaption: focusCaption,
-                                topControlsHeight: topControlsHeight,
-                                russian: widget.russian,
-                                eventPins: pinRecords.keys.toList(),
-                                relief: relief,
-                                onEventTap: (pin) => openPins([pin]),
-                                onGroupTap: openPins,
-                                selectedName: selected?.name,
-                                onSelect: (name) => setState(
-                                  () => selected = visible
-                                      .where((p) => p.name == name)
-                                      .firstOrNull,
-                                ),
-                              ),
-                            )
-                          else
-                            Positioned.fill(
-                              child: LayoutBuilder(
-                                builder: (context, box) {
-                                  if (box.biggest.isEmpty) {
-                                    return const SizedBox.shrink();
-                                  }
-                                  final s = math.min(
-                                    box.maxWidth / 360,
-                                    box.maxHeight / 180,
-                                  );
-                                  final offset = Offset(
-                                    (box.maxWidth - 360 * s) / 2,
-                                    (box.maxHeight - 180 * s) / 2,
-                                  );
-                                  revealFlatPin(focus, box.biggest, offset, s);
-                                  return InteractiveViewer(
-                                    transformationController: transform,
-                                    maxScale: 18,
-                                    child: GestureDetector(
-                                      behavior: HitTestBehavior.opaque,
-                                      onTapUp: (tap) {
-                                        final point =
-                                            (tap.localPosition - offset) / s;
-                                        setState(
-                                          () => selected = visible.reversed
-                                              .where(
-                                                (p) => p.path.contains(point),
-                                              )
-                                              .firstOrNull,
-                                        );
-                                      },
-                                      child: Stack(
-                                        fit: StackFit.expand,
-                                        children: [
-                                          CustomPaint(
-                                            painter: _Painter(
-                                              land,
-                                              visible,
-                                              selected,
-                                              offset,
-                                              s,
-                                              transform,
-                                              relief: relief,
-                                            ),
-                                          ),
-                                          AnimatedBuilder(
-                                            animation: transform,
-                                            builder: (context, _) => Transform(
-                                              transform: Matrix4.inverted(
-                                                transform.value,
-                                              ),
-                                              child: HistoryMapPins(
-                                                size: box.biggest,
-                                                pins: pinRecords.keys,
-                                                obstacles: [
-                                                  Rect.fromLTWH(
-                                                    0,
-                                                    0,
-                                                    box.maxWidth,
-                                                    topControlsHeight,
-                                                  ),
-                                                ],
-                                                focus: focus,
-                                                caption: focusCaption,
-                                                russian: widget.russian,
-                                                onOpen: openPins,
-                                                project: (p) =>
-                                                    MatrixUtils.transformPoint(
-                                                      transform.value,
-                                                      offset +
-                                                          Offset(
-                                                                180 +
-                                                                    p.longitude,
-                                                                90 - p.latitude,
-                                                              ) *
-                                                              s,
-                                                    ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                        ),
+                      )
+                    else
+                      Positioned.fill(
+                        child: LayoutBuilder(
+                          builder: (context, box) {
+                            if (box.biggest.isEmpty) {
+                              return const SizedBox.shrink();
+                            }
+                            final s = math.min(
+                              box.maxWidth / 360,
+                              box.maxHeight / 180,
+                            );
+                            final offset = Offset(
+                              (box.maxWidth - 360 * s) / 2,
+                              (box.maxHeight - 180 * s) / 2,
+                            );
+                            revealFlatPin(focus, box.biggest, offset, s);
+                            return InteractiveViewer(
+                              transformationController: transform,
+                              maxScale: 18,
+                              child: GestureDetector(
+                                behavior: HitTestBehavior.opaque,
+                                onTapUp: (tap) {
+                                  final point =
+                                      (tap.localPosition - offset) / s;
+                                  setState(
+                                    () => selected = visible.reversed
+                                        .where((p) => p.path.contains(point))
+                                        .firstOrNull,
                                   );
                                 },
-                              ),
-                            ),
-                          if (pack.connectionState == ConnectionState.waiting)
-                            const Positioned(
-                              top: 0,
-                              left: 0,
-                              right: 0,
-                              child: LinearProgressIndicator(),
-                            ),
-                          Positioned(
-                            left: 10,
-                            top: 10,
-                            child: Tooltip(
-                              message: globe
-                                  ? t('Показать плоскую карту', 'Show flat map')
-                                  : t('Показать глобус', 'Show globe'),
-                              child: FilledButton.tonalIcon(
-                                onPressed: () => setState(() => globe = !globe),
-                                icon: Icon(
-                                  globe ? Icons.map_outlined : Icons.public,
-                                  size: 18,
+                                child: Stack(
+                                  fit: StackFit.expand,
+                                  children: [
+                                    CustomPaint(
+                                      painter: _Painter(
+                                        land,
+                                        visible,
+                                        selected,
+                                        offset,
+                                        s,
+                                        transform,
+                                        relief: relief,
+                                      ),
+                                    ),
+                                    AnimatedBuilder(
+                                      animation: transform,
+                                      builder: (context, _) => Transform(
+                                        transform: Matrix4.inverted(
+                                          transform.value,
+                                        ),
+                                        child: HistoryMapPins(
+                                          size: box.biggest,
+                                          pins: pinRecords.keys,
+                                          obstacles: [
+                                            Rect.fromLTWH(
+                                              0,
+                                              0,
+                                              box.maxWidth,
+                                              topControlsHeight,
+                                            ),
+                                          ],
+                                          focus: focus,
+                                          caption: focusCaption,
+                                          russian: widget.russian,
+                                          onOpen: openPins,
+                                          project: (p) =>
+                                              MatrixUtils.transformPoint(
+                                                transform.value,
+                                                offset +
+                                                    Offset(
+                                                          180 + p.longitude,
+                                                          90 - p.latitude,
+                                                        ) *
+                                                        s,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                label: Text(
-                                  MediaQuery.sizeOf(context).width < 350
-                                      ? (globe ? '2D' : '3D')
-                                      : globe
-                                      ? t('Карта', 'Map')
-                                      : t('Глобус', 'Globe'),
-                                ),
                               ),
-                            ),
+                            );
+                          },
+                        ),
+                      ),
+                    if (pack.connectionState == ConnectionState.waiting)
+                      const Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: LinearProgressIndicator(),
+                      ),
+                    Positioned(
+                      left: 10,
+                      top: 10,
+                      child: Tooltip(
+                        message: globe
+                            ? t('Показать плоскую карту', 'Show flat map')
+                            : t('Показать глобус', 'Show globe'),
+                        child: FilledButton.tonalIcon(
+                          onPressed: () => setState(() => globe = !globe),
+                          icon: Icon(
+                            globe ? Icons.map_outlined : Icons.public,
+                            size: 18,
                           ),
-                          if (selected != null)
-                            Positioned(
-                              top: 52,
-                              left: 8,
-                              right: 8,
-                              child: Align(
-                                alignment: Alignment.topCenter,
-                                child: Chip(
-                                  label: Text(
-                                    widget.russian
-                                        ? (polityNames[selected!.name]
-                                                  as String? ??
-                                              selected!.name)
-                                        : selected!.name,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  onDeleted: () =>
-                                      setState(() => selected = null),
-                                ),
-                              ),
+                          label: Text(
+                            MediaQuery.sizeOf(context).width < 350
+                                ? (globe ? '2D' : '3D')
+                                : globe
+                                ? t('Карта', 'Map')
+                                : t('Глобус', 'Globe'),
+                          ),
+                        ),
+                      ),
+                    ),
+                    if (selected != null)
+                      Positioned(
+                        top: 52,
+                        left: 8,
+                        right: 8,
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: Chip(
+                            label: Text(
+                              widget.russian
+                                  ? (polityNames[selected!.name] as String? ??
+                                        selected!.name)
+                                  : selected!.name,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            onDeleted: () => setState(() => selected = null),
+                          ),
+                        ),
+                      ),
+                  ],
+                );
+              },
+            ),
+          );
+          final timeline = HistoryTimeline(
+            dateButton: dateButton,
+            step: periodLength,
+            russian: widget.russian,
+            countryName: regionName,
+            eventCount: rows.length,
+            period: period,
+            onYear: changeYear,
+            openCalendar: () => choosePeriod(scoped),
+            pickCountry: () => chooseCountry(events),
+            openEvents: () => setState(() {
+              readerOpen = !readerOpen;
+              resetReader();
+            }),
+          );
+          final reader = HistoryEventIndex(
+            key: ValueKey((period, country, nearbyRows)),
+            rows: nearbyRows ?? rows,
+            nearby: nearbyRows != null,
+            period: periodLabel,
+            region: regionName,
+            russian: widget.russian,
+            detail: reading,
+            year: year,
+            countriesOf: (event) => countryNames
+                .where((c) => (event['countries'] as List).contains(c.id))
+                .map(name)
+                .join(', '),
+            onClose: closeReader,
+            onRead: (event) => setState(() {
+              reading = event;
+              if (event != null) selectedEvent = event;
+            }),
+            onMap: (event, jump) => setState(() {
+              if (jump) {
+                year = event['start'];
+                selected = null;
+              }
+              selectedEvent = event;
+              readerOpen = false;
+              resetReader();
+            }),
+          );
+          return PopScope(
+            canPop: !readerOpen,
+            onPopInvokedWithResult: (popped, _) {
+              if (!popped && readerOpen) closeReader();
+            },
+            child: Column(
+              children: [
+                Expanded(
+                  child: LayoutBuilder(
+                    builder: (context, box) {
+                      final wide = box.maxWidth >= 680;
+                      final editing =
+                          MediaQuery.viewInsetsOf(context).bottom > 0;
+                      return Flex(
+                        direction: wide ? Axis.horizontal : Axis.vertical,
+                        children: [
+                          Expanded(child: map),
+                          if (readerOpen)
+                            SizedBox(
+                              width: wide
+                                  ? math.min(400, box.maxWidth * .44)
+                                  : null,
+                              height: wide
+                                  ? null
+                                  : box.maxHeight * (editing ? 0.9 : 0.55),
+                              child: reader,
                             ),
                         ],
                       );
                     },
                   ),
                 ),
-              ),
-              HistoryTimeline(
-                step: periodLength,
-                russian: widget.russian,
-                countryName: regionName,
-                eventCount: rows.length,
-                period: period,
-                onYear: changeYear,
-                openCalendar: () => choosePeriod(scoped),
-                pickCountry: () => chooseCountry(events),
-                openEvents: () => openIndex(rows),
-              ),
-            ],
+                timeline,
+              ],
+            ),
           );
         },
       ),
