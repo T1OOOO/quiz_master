@@ -71,7 +71,7 @@ void main() {
       await tester.tap(find.byTooltip('Search'));
       await tester.pumpAndSettle();
       expect(find.text('Events by country'), findsOneWidget);
-      await tester.tap(find.text('Close'));
+      await tester.tap(find.byTooltip('Close'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('2D map'));
       await tester.pumpAndSettle();
@@ -82,10 +82,16 @@ void main() {
       HistoryMapPins overlay() => tester.widget(find.byType(HistoryMapPins));
       expect(overlay().pins.map((p) => p.title), ['Voyage', 'Treaty']);
       expect(overlay().focus, isNull);
+      final mapSize = tester.getSize(find.byType(InteractiveViewer));
       await tester.tap(find.text('Events · 2'));
       await tester.pumpAndSettle();
       expect(find.byType(Dialog), findsNothing);
       expect(overlay().pins.length, 2);
+      expect(tester.getSize(find.byType(InteractiveViewer)), mapSize);
+      expect(
+        tester.getRect(find.byTooltip('Search events')).bottom,
+        lessThan(tester.getRect(find.text('Events · 2').first).bottom),
+      );
       await tester.tap(find.byTooltip('Search events'));
       await tester.pumpAndSettle();
       await tester.enterText(find.byType(TextField), 'Voyage');

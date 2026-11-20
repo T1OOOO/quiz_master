@@ -16,7 +16,17 @@ const historyCenturyNumerals = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
 Future<PeriodChoice?> showHistoryPeriodMenu(
   BuildContext anchor,
   HistoryPeriodMenu picker,
-) {
+) => showHistoryMenu<PeriodChoice>(
+  anchor,
+  label: picker.russian ? 'Выбор периода' : 'Choose period',
+  child: picker,
+);
+
+Future<T?> showHistoryMenu<T>(
+  BuildContext anchor, {
+  required String label,
+  required Widget child,
+}) {
   final overlay =
       Navigator.of(anchor).overlay!.context.findRenderObject() as RenderBox;
   final box = anchor.findRenderObject() as RenderBox;
@@ -26,9 +36,9 @@ Future<PeriodChoice?> showHistoryPeriodMenu(
     430.0,
     math.max(140.0, origin.dy - MediaQuery.paddingOf(anchor).top - 12),
   );
-  return showMenu<PeriodChoice>(
+  return showMenu<T>(
     context: anchor,
-    semanticLabel: picker.russian ? 'Выбор периода' : 'Choose period',
+    semanticLabel: label,
     position: RelativeRect.fromRect(
       Rect.fromLTWH(origin.dx, origin.dy - height - 4, box.size.width, height),
       Offset.zero & overlay.size,
@@ -37,22 +47,22 @@ Future<PeriodChoice?> showHistoryPeriodMenu(
     menuPadding: EdgeInsets.zero,
     clipBehavior: Clip.antiAlias,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-    items: [_PeriodEntry(height: height, child: picker)],
+    items: [_HistoryMenuEntry<T>(height: height, child: child)],
   );
 }
 
-class _PeriodEntry extends PopupMenuEntry<PeriodChoice> {
-  const _PeriodEntry({required this.height, required this.child});
+class _HistoryMenuEntry<T> extends PopupMenuEntry<T> {
+  const _HistoryMenuEntry({required this.height, required this.child});
   @override
   final double height;
   final Widget child;
   @override
-  bool represents(PeriodChoice? value) => false;
+  bool represents(T? value) => false;
   @override
-  State<_PeriodEntry> createState() => _PeriodEntryState();
+  State<_HistoryMenuEntry<T>> createState() => _HistoryMenuEntryState<T>();
 }
 
-class _PeriodEntryState extends State<_PeriodEntry> {
+class _HistoryMenuEntryState<T> extends State<_HistoryMenuEntry<T>> {
   @override
   Widget build(BuildContext context) => SizedBox(
     height: math.min(
