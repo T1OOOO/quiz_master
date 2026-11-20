@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'history_period.dart' show historyCenturyNumerals;
+
 String historyEventDate(Map r) =>
     r['start'] == r['end'] ? '${r['start']}' : '${r['start']}–${r['end']}';
 
@@ -30,6 +32,11 @@ class HistoryTimeline extends StatelessWidget {
   Widget build(BuildContext context) {
     final (start, end) = period;
     final date = start == end ? '$start' : '$start–$end';
+    final firstCentury = historyCenturyNumerals[(start - 1501) ~/ 100];
+    final lastCentury = historyCenturyNumerals[(end - 1501) ~/ 100];
+    final era = firstCentury == lastCentury
+        ? '$firstCentury ${t("век", "century")}'
+        : '$firstCentury–$lastCentury ${t("вв.", "centuries")}';
     final count = '${t("События", "Events")} · $eventCount';
     return Material(
       color: const Color(0xfffff6e5),
@@ -62,12 +69,27 @@ class HistoryTimeline extends StatelessWidget {
                         children: [
                           if (!compact)
                             const Icon(Icons.calendar_month_outlined, size: 18),
-                          Text(
-                            date,
-                            style: const TextStyle(
-                              fontSize: 19,
-                              fontWeight: FontWeight.w700,
-                            ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ExcludeSemantics(
+                                child: Text(
+                                  era,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    height: 1.05,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                date,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  height: 1.12,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
                           ),
                           const Icon(Icons.arrow_drop_down, size: 18),
                         ],
