@@ -818,30 +818,18 @@ class _HistoryMapState extends State<HistoryMap> {
                   ),
                 ),
               ),
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: MediaQuery.sizeOf(context).height * .44,
-                ),
-                child: SingleChildScrollView(
-                  child: HistoryTimeline(
-                    year: year,
-                    centuryName: centuryName,
-                    russian: widget.russian,
-                    century: century,
-                    countryName: regionName,
-                    preview: preview,
-                    events: scoped,
-                    rows: rows,
-                    onYear: changeYear,
-                    pickYear: chooseYear,
-                    pickCentury: chooseCentury,
-                    pickCountry: () => chooseCountry(events),
-                    onPreviewChanged: (event) =>
-                        setState(() => preview = event),
-                    openEvents: () => showEvents(rows),
-                    openEvent: (event) => showEvents([event], detail: true),
-                  ),
-                ),
+              HistoryTimeline(
+                year: year,
+                centuryName: centuryName,
+                russian: widget.russian,
+                countryName: regionName,
+                events: scoped,
+                eventCount: rows.length,
+                onYear: changeYear,
+                pickYear: chooseYear,
+                pickCentury: chooseCentury,
+                pickCountry: () => chooseCountry(events),
+                openEvents: () => showEvents(rows),
               ),
             ],
           );
