@@ -132,6 +132,7 @@ class AtlasCameraControls extends StatelessWidget {
       VoidCallback? action,
     ) => Tooltip(
       message: russian ? ru : en,
+      excludeFromSemantics: true,
       positionDelegate: (c) {
         // Place the hint beside the rail so it cannot cover the next button.
         final hint = c.tooltipSize;
@@ -148,7 +149,10 @@ class AtlasCameraControls extends StatelessWidget {
       },
       child: SizedBox.square(
         dimension: 44,
-        child: IconButton(onPressed: action, icon: Icon(icon, size: 21)),
+        child: IconButton(
+          onPressed: action,
+          icon: Icon(icon, size: 21, semanticLabel: russian ? ru : en),
+        ),
       ),
     );
     return Material(
