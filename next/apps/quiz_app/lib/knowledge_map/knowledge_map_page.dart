@@ -2885,7 +2885,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           }
           beforeGlobe = null;
         }
-        await updateVisibleCountries();
+        unawaited(updateVisibleCountries());
       } else if (mounted) {
         await _openWorldGlobe(null);
       }
