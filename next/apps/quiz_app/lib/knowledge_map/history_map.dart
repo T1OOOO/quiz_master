@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'atlas_controls.dart';
 import 'map_state.dart';
 import 'history_globe.dart';
 import 'history_event_symbol.dart';
@@ -101,7 +102,6 @@ class _HistoryMapState extends State<HistoryMap> {
   }
 
   late bool globe = widget.initialGlobe;
-  int resetGlobe = 0;
   Map? selectedEvent;
   final regionAnchors = <String, Offset>{};
   late List landPolygons;
@@ -340,45 +340,70 @@ class _HistoryMapState extends State<HistoryMap> {
       ],
     ),
   );
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      leading: widget.onExit == null
-          ? null
-          : BackButton(onPressed: readerOpen ? closeReader : widget.onExit),
-      title: Text(t('Историческая карта', 'Historical map')),
-      actions: [
-        IconButton(
-          tooltip: t('Вписать карту', 'Fit map'),
-          icon: const Icon(Icons.fit_screen_outlined),
-          onPressed: () {
-            if (globe) {
-              setState(() => resetGlobe++);
-            } else {
-              transform.value = Matrix4.identity();
-            }
-          },
-        ),
-        IconButton(
-          tooltip: t('Об источнике', 'About the data'),
-          icon: const Icon(Icons.info_outline),
-          onPressed: about,
-        ),
+  void zoomFlat(Size size, double factor) {
+    final center = size.center(Offset.zero);
+    final scene = transform.toScene(center);
+    final zoom = (transform.value.getMaxScaleOnAxis() * factor).clamp(
+      1.0,
+      18.0,
+    );
+    transform.value = Matrix4.diagonal3Values(zoom, zoom, zoom)
+      ..setTranslationRaw(
+        (center.dx - scene.dx * zoom).clamp(size.width * (1 - zoom), 0.0),
+        (center.dy - scene.dy * zoom).clamp(size.height * (1 - zoom), 0.0),
+        0,
+      );
+  }
+
+  Widget frame(Widget map, {bool loaded = false}) => LayoutBuilder(
+    builder: (context, box) => Stack(
+      fit: StackFit.expand,
+      children: [
+        map,
+        if (box.maxHeight >= 60)
+          Positioned(
+            top: 10,
+            left: 12,
+            right: 12,
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: AtlasHeader(
+                russian: widget.russian,
+                title: box.maxWidth < 380
+                    ? t('История', 'History')
+                    : t('Исторический атлас', 'Historical atlas'),
+                globe: globe,
+                onBack: readerOpen
+                    ? closeReader
+                    : widget.onExit ?? () => Navigator.maybePop(context),
+                onAbout: about,
+                onProjection: loaded
+                    ? () => setState(() => globe = !globe)
+                    : null,
+              ),
+            ),
+          ),
       ],
     ),
+  );
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
     body: SafeArea(
       child: FutureBuilder<(Path, List<Map>)>(
         future: base,
         builder: (context, snap) {
           if (snap.hasError) {
-            return Center(
-              child: Text(
-                t('Не удалось загрузить атлас', 'Could not load atlas'),
+            return frame(
+              Center(
+                child: Text(
+                  t('Не удалось загрузить атлас', 'Could not load atlas'),
+                ),
               ),
             );
           }
           if (!snap.hasData) {
-            return const Center(child: CircularProgressIndicator());
+            return frame(const Center(child: CircularProgressIndicator()));
           }
           final (land, events) = snap.data!;
           final scoped = country == null
@@ -453,7 +478,7 @@ class _HistoryMapState extends State<HistoryMap> {
                     if (globe)
                       Positioned.fill(
                         child: HistoryGlobe(
-                          key: ValueKey(resetGlobe),
+                          onSearch: () => chooseCountry(events),
                           land: landPolygons,
                           polities: globePolities,
                           year: year,
@@ -489,71 +514,97 @@ class _HistoryMapState extends State<HistoryMap> {
                               (box.maxHeight - 180 * s) / 2,
                             );
                             revealFlatPin(focus, box.biggest, offset, s);
-                            return InteractiveViewer(
-                              transformationController: transform,
-                              maxScale: 18,
-                              child: GestureDetector(
-                                behavior: HitTestBehavior.opaque,
-                                onTapUp: (tap) {
-                                  final point =
-                                      (tap.localPosition - offset) / s;
-                                  setState(
-                                    () => selected = visible.reversed
-                                        .where((p) => p.path.contains(point))
-                                        .firstOrNull,
-                                  );
-                                },
-                                child: Stack(
-                                  fit: StackFit.expand,
-                                  children: [
-                                    CustomPaint(
-                                      painter: _Painter(
-                                        land,
-                                        visible,
-                                        selected,
-                                        offset,
-                                        s,
-                                        transform,
-                                        relief: relief,
-                                      ),
-                                    ),
-                                    AnimatedBuilder(
-                                      animation: transform,
-                                      builder: (context, _) => Transform(
-                                        transform: Matrix4.inverted(
-                                          transform.value,
+                            return Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                InteractiveViewer(
+                                  transformationController: transform,
+                                  maxScale: 18,
+                                  child: GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
+                                    onTapUp: (tap) {
+                                      final point =
+                                          (tap.localPosition - offset) / s;
+                                      setState(
+                                        () => selected = visible.reversed
+                                            .where(
+                                              (p) => p.path.contains(point),
+                                            )
+                                            .firstOrNull,
+                                      );
+                                    },
+                                    child: Stack(
+                                      fit: StackFit.expand,
+                                      children: [
+                                        CustomPaint(
+                                          painter: _Painter(
+                                            land,
+                                            visible,
+                                            selected,
+                                            offset,
+                                            s,
+                                            transform,
+                                            relief: relief,
+                                          ),
                                         ),
-                                        child: HistoryMapPins(
-                                          size: box.biggest,
-                                          pins: pinRecords.keys,
-                                          obstacles: [
-                                            Rect.fromLTWH(
-                                              0,
-                                              0,
-                                              box.maxWidth,
-                                              topControlsHeight,
+                                        AnimatedBuilder(
+                                          animation: transform,
+                                          builder: (context, _) => Transform(
+                                            transform: Matrix4.inverted(
+                                              transform.value,
                                             ),
-                                          ],
-                                          focus: focus,
-                                          caption: focusCaption,
-                                          russian: widget.russian,
-                                          onOpen: openPins,
-                                          project: (p) =>
-                                              MatrixUtils.transformPoint(
-                                                transform.value,
-                                                offset +
-                                                    Offset(
-                                                          180 + p.longitude,
-                                                          90 - p.latitude,
-                                                        ) *
-                                                        s,
-                                              ),
+                                            child: HistoryMapPins(
+                                              size: box.biggest,
+                                              pins: pinRecords.keys,
+                                              obstacles: [
+                                                Rect.fromLTWH(
+                                                  0,
+                                                  0,
+                                                  box.maxWidth,
+                                                  topControlsHeight,
+                                                ),
+                                                AtlasCameraControls.bounds(
+                                                  box.biggest,
+                                                  search: true,
+                                                ).inflate(3),
+                                              ],
+                                              focus: focus,
+                                              caption: focusCaption,
+                                              russian: widget.russian,
+                                              onOpen: openPins,
+                                              project: (p) =>
+                                                  MatrixUtils.transformPoint(
+                                                    transform.value,
+                                                    offset +
+                                                        Offset(
+                                                              180 + p.longitude,
+                                                              90 - p.latitude,
+                                                            ) *
+                                                            s,
+                                                  ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                                Positioned(
+                                  right: 12,
+                                  bottom: 12,
+                                  child: AtlasCameraControls(
+                                    russian: widget.russian,
+                                    viewport: box.biggest,
+                                    showSearch: true,
+                                    onSearch: () => chooseCountry(events),
+                                    onFit: () =>
+                                        transform.value = Matrix4.identity(),
+                                    onZoomIn: () => zoomFlat(box.biggest, 1.5),
+                                    onZoomOut: () =>
+                                        zoomFlat(box.biggest, 1 / 1.5),
+                                  ),
+                                ),
+                              ],
                             );
                           },
                         ),
@@ -565,32 +616,9 @@ class _HistoryMapState extends State<HistoryMap> {
                         right: 0,
                         child: LinearProgressIndicator(),
                       ),
-                    Positioned(
-                      left: 10,
-                      top: 10,
-                      child: Tooltip(
-                        message: globe
-                            ? t('Показать плоскую карту', 'Show flat map')
-                            : t('Показать глобус', 'Show globe'),
-                        child: FilledButton.tonalIcon(
-                          onPressed: () => setState(() => globe = !globe),
-                          icon: Icon(
-                            globe ? Icons.map_outlined : Icons.public,
-                            size: 18,
-                          ),
-                          label: Text(
-                            MediaQuery.sizeOf(context).width < 350
-                                ? (globe ? '2D' : '3D')
-                                : globe
-                                ? t('Карта', 'Map')
-                                : t('Глобус', 'Globe'),
-                          ),
-                        ),
-                      ),
-                    ),
                     if (selected != null)
                       Positioned(
-                        top: 52,
+                        top: 64,
                         left: 8,
                         right: 8,
                         child: Align(
@@ -672,7 +700,7 @@ class _HistoryMapState extends State<HistoryMap> {
                       return Flex(
                         direction: wide ? Axis.horizontal : Axis.vertical,
                         children: [
-                          Expanded(child: map),
+                          Expanded(child: frame(map, loaded: true)),
                           if (readerOpen)
                             SizedBox(
                               width: wide

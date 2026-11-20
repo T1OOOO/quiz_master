@@ -21,6 +21,7 @@ import 'country_number_format.dart';
 import 'countries_browser.dart';
 import 'map_state.dart';
 import 'map_projection.dart';
+import 'atlas_controls.dart';
 import 'world_globe.dart';
 import 'practice_hints.dart';
 import 'thematic_legend.dart';
@@ -3059,6 +3060,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             countries: state!.countries,
             russian: ru,
             initialCountry: state!.selectedId,
+            initialGlobe: globeMode,
           ),
         ),
       );
@@ -3577,68 +3579,27 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                     top: 10,
                     left: 12,
                     child: PointerInterceptor(
-                      child: Material(
-                        color: const Color(0xfffffef9),
-                        elevation: 2,
-                        shadowColor: const Color(0x55324c44),
-                        borderRadius: BorderRadius.circular(16),
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxWidth: math.max(
-                              0,
-                              currentMapViewport.width - 24,
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                tooltip: tr('Back', 'Назад'),
-                                onPressed:
-                                    widget.onExit ??
-                                    () => Navigator.maybePop(context),
-                                icon: const Icon(Icons.arrow_back, size: 20),
-                              ),
-                              if (!practice && currentMapViewport.width >= 290)
-                                Flexible(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 16),
-                                    child: Text(
-                                      tr('World atlas', 'Атлас мира'),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontFamily: 'Georgia',
-                                        fontWeight: FontWeight.w700,
-                                        color: Color(0xff214b41),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              if (!practice && state != null)
-                                TextButton.icon(
-                                  onPressed:
-                                      projectionBusy ||
-                                          (globeProjectionSupported &&
-                                              !ready &&
-                                              !failed)
-                                      ? null
-                                      : _toggleProjection,
-                                  icon: Icon(
-                                    globeMode
-                                        ? Icons.map_outlined
-                                        : Icons.public,
-                                    size: 19,
-                                  ),
-                                  label: Text(
-                                    globeMode
-                                        ? tr('2D map', '2D-карта')
-                                        : tr('3D globe', '3D-глобус'),
-                                  ),
-                                ),
-                            ],
-                          ),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: math.max(0, currentMapViewport.width - 24),
+                        ),
+                        child: AtlasHeader(
+                          russian: ru,
+                          title: practice
+                              ? ''
+                              : tr('World atlas', 'Атлас мира'),
+                          onBack:
+                              widget.onExit ??
+                              () => Navigator.maybePop(context),
+                          globe: globeMode,
+                          showProjection: !practice && state != null,
+                          onProjection:
+                              projectionBusy ||
+                                  (globeProjectionSupported &&
+                                      !ready &&
+                                      !failed)
+                              ? null
+                              : _toggleProjection,
                         ),
                       ),
                     ),
@@ -4039,63 +4000,23 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       Positioned(
                         bottom: panelHeight + 12,
                         right: panelWidth + 12,
-                        child: Material(
-                          color: const Color(0xfffffef9),
-                          elevation: 2,
-                          borderRadius: BorderRadius.circular(14),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              if (!practice)
-                                PointerInterceptor(
-                                  child: IconButton(
-                                    tooltip: tr('Search', 'Поиск'),
-                                    onPressed: ready ? _openAtlasSearch : null,
-                                    icon: const Icon(
-                                      Icons.search,
-                                      color: Color(0xff165b64),
-                                    ),
-                                  ),
-                                ),
-                              PointerInterceptor(
-                                child: IconButton(
-                                  tooltip: tr('Whole map', 'Вся карта'),
-                                  onPressed: ready ? _fitWorld : null,
-                                  icon: const Icon(
-                                    Icons.public,
-                                    color: Color(0xffa56b25),
-                                  ),
-                                ),
-                              ),
-                              PointerInterceptor(
-                                child: IconButton(
-                                  tooltip: tr('Zoom in', 'Увеличить'),
-                                  onPressed: ready
-                                      ? () => controller?.animateCamera(
-                                          CameraUpdate.zoomIn(),
-                                        )
-                                      : null,
-                                  icon: const Icon(
-                                    Icons.add,
-                                    color: Color(0xff265d80),
-                                  ),
-                                ),
-                              ),
-                              PointerInterceptor(
-                                child: IconButton(
-                                  tooltip: tr('Zoom out', 'Уменьшить'),
-                                  onPressed: ready
-                                      ? () => controller?.animateCamera(
-                                          CameraUpdate.zoomOut(),
-                                        )
-                                      : null,
-                                  icon: const Icon(
-                                    Icons.remove,
-                                    color: Color(0xff265d80),
-                                  ),
-                                ),
-                              ),
-                            ],
+                        child: PointerInterceptor(
+                          child: AtlasCameraControls(
+                            russian: ru,
+                            viewport: currentMapViewport,
+                            showSearch: true,
+                            onSearch: ready ? _openAtlasSearch : null,
+                            onFit: ready ? _fitWorld : null,
+                            onZoomIn: ready
+                                ? () => controller?.animateCamera(
+                                    CameraUpdate.zoomIn(),
+                                  )
+                                : null,
+                            onZoomOut: ready
+                                ? () => controller?.animateCamera(
+                                    CameraUpdate.zoomOut(),
+                                  )
+                                : null,
                           ),
                         ),
                       ),

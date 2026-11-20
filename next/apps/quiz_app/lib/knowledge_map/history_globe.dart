@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
+import 'atlas_controls.dart';
 import 'history_event_symbol.dart';
 import 'history_map_pins.dart';
 
@@ -49,11 +50,13 @@ class HistoryGlobe extends StatefulWidget {
     this.focusCaption,
     this.topControlsHeight = 0,
     this.onGroupTap,
+    this.onSearch,
     this.russian,
     this.eventPins = const [],
     this.onEventTap,
     this.relief,
   });
+  final VoidCallback? onSearch;
   final List land;
   final List<GlobePolity> polities;
   final int year;
@@ -417,7 +420,9 @@ class _HistoryGlobeState extends State<HistoryGlobe>
 
   @override
   Widget build(BuildContext context) {
-    final russian = Localizations.localeOf(context).languageCode == 'ru';
+    final russian =
+        widget.russian ??
+        (Localizations.localeOf(context).languageCode == 'ru');
     return LayoutBuilder(
       builder: (context, constraints) {
         final size = Size(constraints.maxWidth, constraints.maxHeight);
@@ -490,12 +495,10 @@ class _HistoryGlobeState extends State<HistoryGlobe>
                             size.width,
                             widget.topControlsHeight,
                           ),
-                          Rect.fromLTWH(
-                            size.width - 62,
-                            size.height - 110,
-                            52,
-                            100,
-                          ),
+                          AtlasCameraControls.bounds(
+                            size,
+                            search: widget.onSearch != null,
+                          ).inflate(3),
                         ],
                         focus: widget.focus,
                         russian: widget.russian ?? russian,
@@ -527,26 +530,22 @@ class _HistoryGlobeState extends State<HistoryGlobe>
             Positioned(
               right: 12,
               bottom: 12,
-              child: Material(
-                color: const Color(0xfff5f2e7),
-                borderRadius: BorderRadius.circular(12),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    IconButton(
-                      color: const Color(0xff244e57),
-                      tooltip: russian ? 'Увеличить' : 'Zoom in',
-                      onPressed: () => _changeZoom(_zoom * 1.25),
-                      icon: const Icon(Icons.add),
-                    ),
-                    IconButton(
-                      color: const Color(0xff244e57),
-                      tooltip: russian ? 'Уменьшить' : 'Zoom out',
-                      onPressed: () => _changeZoom(_zoom / 1.25),
-                      icon: const Icon(Icons.remove),
-                    ),
-                  ],
-                ),
+              child: AtlasCameraControls(
+                russian: russian,
+                viewport: size,
+                showSearch: widget.onSearch != null,
+                onSearch: widget.onSearch,
+                onFit: () {
+                  flight.stop();
+                  setState(() {
+                    _longitude = widget.focus?.longitude ?? 15;
+                    _latitude = widget.focus?.latitude ?? 30;
+                    _zoom = 1;
+                    _invalidate();
+                  });
+                },
+                onZoomIn: () => _changeZoom(_zoom * 1.25),
+                onZoomOut: () => _changeZoom(_zoom / 1.25),
               ),
             ),
           ],

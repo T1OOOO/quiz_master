@@ -58,6 +58,26 @@ void main() {
         const MaterialApp(home: HistoryMap(russian: false, initialYear: 1701)),
       );
       await tester.pumpAndSettle();
+      final camera = tester
+          .widget<InteractiveViewer>(find.byType(InteractiveViewer))
+          .transformationController!;
+      await tester.tap(find.byTooltip('Zoom in'));
+      await tester.pumpAndSettle();
+      expect(camera.value.getMaxScaleOnAxis(), 1.5);
+      await tester.tap(find.text('3D globe'));
+      await tester.pumpAndSettle();
+      expect(find.byTooltip('Whole map'), findsOneWidget);
+      await tester.tap(find.byTooltip('Search'));
+      await tester.pumpAndSettle();
+      expect(find.text('Events by country'), findsOneWidget);
+      await tester.tap(find.text('Close'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('2D map'));
+      await tester.pumpAndSettle();
+      expect(camera.value.getMaxScaleOnAxis(), 1.5);
+      await tester.tap(find.byTooltip('Whole map'));
+      await tester.pumpAndSettle();
+      expect(camera.value, Matrix4.identity());
       HistoryMapPins overlay() => tester.widget(find.byType(HistoryMapPins));
       expect(overlay().pins.map((p) => p.title), ['Voyage', 'Treaty']);
       expect(overlay().focus, isNull);
