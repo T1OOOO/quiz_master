@@ -217,8 +217,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   bool atlasSwitching = false;
   bool appliedInitialView = false;
   bool projectionBusy = false;
-  final countrySpriteSizes = <String, Size>{};
-  Set<String> clippedNames = {};
+  bool projectionVeil = false;
   CameraPosition? beforeGlobe;
   List<dynamic> dishes = [];
   Map<String, dynamic> waters = {};
@@ -311,8 +310,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     visibleRequest++;
     visible = [];
     labelOverrides = {};
-    clippedNames = {};
-    countrySpriteSizes.clear();
     globeMode = false;
     beforeGlobe = null;
     visibleOpen = false;
@@ -563,14 +560,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         storyPacks: results.skip(4),
       );
     });
-  }
-
-  void _rememberCountrySize(String sprite, Uint8List png) {
-    final header = ByteData.sublistView(png);
-    countrySpriteSizes[sprite] = Size(
-      header.getUint32(16).toDouble(),
-      header.getUint32(20).toDouble(),
-    );
   }
 
   Future<void> setup() async {
@@ -829,7 +818,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           final id = properties['country_id'] as String;
           await c.addImage('country-$id', sprites[i]);
           properties['sprite'] = 'country-$id';
-          _rememberCountrySize('country-$id', sprites[i]);
           final flagSprite = flagSprites[i];
           if (flagSprite != null) {
             await c.addImage('country-flag-$id', flagSprite);
@@ -850,6 +838,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             'interpolate',
             ['linear'],
             ['zoom'],
+            1,
+            0.22,
             3,
             0.3,
             7,
@@ -858,7 +848,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           iconPadding: 4,
           symbolSortKey: ['get', 'label_priority'],
         ),
-        minzoom: 3,
       );
       await c.addSymbolLayer(
         'country-markers',
@@ -1832,7 +1821,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               throw StateError('Thematic request superseded');
             }
             await c.addImage(sprite, bytes);
-            _rememberCountrySize(sprite, bytes);
           },
         );
         if (!mounted ||
@@ -2186,7 +2174,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       final horizontalInset = width * math.min(0.3, 75 / size.width);
       final verticalInset =
           (viewport.north - viewport.south) * math.min(0.3, 40 / size.height);
-      final anchors = globeMode
+      final anchors = globeMode || (c.cameraPosition?.zoom ?? 0) < 3
           ? <String, (double, double)>{}
           : visibleCountryLabelAnchors(
               countryLabels!['features'] as List,
@@ -2201,50 +2189,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 north: viewport.north - verticalInset,
               ),
             );
-      final labelsOnMap = appliedCountryLabels!['features'] as List;
-      final points = <LatLng>[
-        for (final feature in countryLabels!['features'] as List)
-          if (anchors[feature['properties']['country_id']] case final anchor?)
-            LatLng(anchor.$2, anchor.$1)
-          else
-            LatLng(
-              (feature['geometry']['coordinates'][1] as num).toDouble(),
-              (feature['geometry']['coordinates'][0] as num).toDouble(),
-            ),
-      ];
-      final screen = await c.toScreenLocationBatch(points);
-      if (!current()) return;
-      final zoom = c.cameraPosition?.zoom ?? 1.6;
-      final markerScale = 0.46 + (zoom - 1).clamp(0, 6) / 6 * 0.10;
-      final frame = Offset.zero & size;
-      final clipped = <String>{};
-      for (var i = 0; i < screen.length; i++) {
-        final p = labelsOnMap[i]['properties'];
-        final spriteSize = countrySpriteSizes[p['sprite']];
-        if (spriteSize == null) continue;
-        final marker = Rect.fromCenter(
-          center: Offset(screen[i].x / scale, screen[i].y / scale),
-          width: spriteSize.width * markerScale,
-          height: spriteSize.height * markerScale,
-        );
-        if (frame.overlaps(marker) &&
-            (!frame.contains(marker.topLeft) ||
-                !frame.contains(marker.bottomRight))) {
-          clipped.add(p['country_id'] as String);
-        }
-      }
-      if (!setEquals(clippedNames, clipped)) {
-        await c.setFilter('country-markers', [
-          '!',
-          [
-            'in',
-            ['get', 'country_id'],
-            ['literal', clipped.toList()],
-          ],
-        ]);
-        if (!current()) return;
-        clippedNames = clipped;
-      }
       // Updating GeoJSON schedules another idle callback. Leave stable labels
       // in place so MapLibre can finish its collision and fade pass.
       if (mapEquals(anchors, labelOverrides)) return;
@@ -2717,26 +2661,69 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     );
   }
 
-  Future<AtlasView?> _openHistory(AtlasView view) =>
-      Navigator.of(context).push<AtlasView>(
-        MaterialPageRoute(
-          builder: (routeContext) => HistoryMap(
-            countries: state!.countries,
-            russian: ru,
-            initialCountry: view.country,
-            initialGlobe: view.globe,
-            initialCamera: view.camera,
-            onWorld: (updated) => Navigator.pop(routeContext, updated),
-          ),
+  Future<AtlasView?> _openHistory(
+    AtlasView view, {
+    bool restoreBeforeReturn = false,
+  }) {
+    final duration = MediaQuery.disableAnimationsOf(context)
+        ? Duration.zero
+        : const Duration(milliseconds: 220);
+    var returning = false;
+    return Navigator.of(context).push<AtlasView>(
+      PageRouteBuilder(
+        transitionDuration: duration,
+        reverseTransitionDuration: duration,
+        pageBuilder: (routeContext, _, _) => HistoryMap(
+          countries: state!.countries,
+          russian: ru,
+          initialCountry: view.country,
+          initialGlobe: view.globe,
+          initialCamera: view.camera,
+          onWorld: (updated) async {
+            if (returning || ModalRoute.of(routeContext)?.isCurrent != true) {
+              return;
+            }
+            returning = true;
+            var restored = false;
+            try {
+              if (restoreBeforeReturn) {
+                await _restoreAtlasView(updated)
+                    .timeout(const Duration(seconds: 2));
+                restored = true;
+              }
+            } catch (error) {
+              debugPrint(
+                'Knowledge map: restoring after closing history: $error',
+              );
+            }
+            if (routeContext.mounted &&
+                ModalRoute.of(routeContext)?.isCurrent == true) {
+              Navigator.pop(routeContext, restored ? null : updated);
+            }
+            returning = false;
+          },
         ),
-      );
+        transitionsBuilder: (_, animation, _, child) => FadeTransition(
+          opacity: animation.drive(CurveTween(curve: Curves.easeInOut)),
+          child: child,
+        ),
+      ),
+    );
+  }
 
   Future<void> _switchAtlas() async {
     if (atlasSwitching || state == null || projectionBusy) return;
     atlasSwitching = true;
     try {
-      final view = await _openHistory(_currentAtlasView());
-      if (mounted && view != null) await _restoreAtlasView(view);
+      final restoreBeforeReturn =
+          globeProjectionSupported && controller != null;
+      final view = await _openHistory(
+        _currentAtlasView(),
+        restoreBeforeReturn: restoreBeforeReturn,
+      );
+      if (mounted && view != null) {
+        await _restoreAtlasView(view);
+      }
     } finally {
       atlasSwitching = false;
     }
@@ -2798,7 +2785,16 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     final c = controller;
     try {
       final enable = !globeMode;
+      final animate = !MediaQuery.disableAnimationsOf(context);
+      final duration = animate
+          ? const Duration(milliseconds: 420)
+          : Duration.zero;
       final position = c?.cameraPosition;
+      if (animate && globeProjectionSupported && c != null && ready) {
+        setState(() => projectionVeil = true);
+        await Future<void>.delayed(const Duration(milliseconds: 90));
+        if (!mounted || c != controller) return;
+      }
       if (globeProjectionSupported &&
           c != null &&
           ready &&
@@ -2806,6 +2802,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         if (!mounted || c != controller) return;
         setState(() {
           globeMode = enable;
+          projectionVeil = false;
           visible = [];
           visibleOpen = false;
           visibleRequest++;
@@ -2813,10 +2810,20 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         if (enable) {
           beforeGlobe = position;
           if (position != null) {
-            await c.animateCamera(_fitGlobe(position.target));
+            final target = _fitGlobe(position.target);
+            if (animate) {
+              await c.animateCamera(target, duration: duration);
+            } else {
+              await c.moveCamera(target);
+            }
           }
         } else if (beforeGlobe != null) {
-          await c.animateCamera(CameraUpdate.newCameraPosition(beforeGlobe!));
+          final target = CameraUpdate.newCameraPosition(beforeGlobe!);
+          if (animate) {
+            await c.animateCamera(target, duration: duration);
+          } else {
+            await c.moveCamera(target);
+          }
           beforeGlobe = null;
         }
         await updateVisibleCountries();
@@ -2824,7 +2831,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         await _openWorldGlobe(null);
       }
     } finally {
-      if (mounted) setState(() => projectionBusy = false);
+      if (mounted) {
+        setState(() {
+          projectionBusy = false;
+          projectionVeil = false;
+        });
+      }
     }
   }
 
@@ -3493,7 +3505,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                             onExit: (_) => clearHover(),
                             child: MapLibreMap(
                               key: ValueKey(generation),
-                              disableSymbolPlacementFade: true,
                               trackCameraPosition: true,
                               styleString: '{"version":8,"sources":{},"layers":[{"id":"sea","type":"background","paint":{"background-color":"#a8d4df"}}]}',
                               initialCameraPosition:
@@ -3533,6 +3544,21 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                   AttributionButtonPosition.bottomRight,
                             ),
                           ),
+                    ),
+                  if (ready && !failed && globeProjectionSupported)
+                    Positioned(
+                      left: 0,
+                      right: panelWidth,
+                      top: 0,
+                      bottom: mapBottom,
+                      child: IgnorePointer(
+                        child: AnimatedOpacity(
+                          duration: const Duration(milliseconds: 130),
+                          curve: Curves.easeOut,
+                          opacity: projectionVeil ? .4 : 0,
+                          child: const ColoredBox(color: Color(0xffeaf3ef)),
+                        ),
+                      ),
                     ),
                   if ((state == null || !ready) && !failed && !unsupported)
                     const Center(child: CircularProgressIndicator()),

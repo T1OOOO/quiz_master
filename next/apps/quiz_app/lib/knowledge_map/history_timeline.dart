@@ -9,6 +9,8 @@ class HistoryTimeline extends StatelessWidget {
   const HistoryTimeline({
     super.key,
     this.dateButton,
+    this.countryButton,
+    this.eventsButton,
     required this.period,
     required this.step,
     required this.russian,
@@ -19,7 +21,7 @@ class HistoryTimeline extends StatelessWidget {
     required this.pickCountry,
     required this.openEvents,
   });
-  final Key? dateButton;
+  final Key? dateButton, countryButton, eventsButton;
   final (int, int) period;
   final int step, eventCount;
   final String countryName;
@@ -104,31 +106,55 @@ class HistoryTimeline extends StatelessWidget {
                 ),
                 if (compact)
                   IconButton(
+                    key: countryButton,
                     tooltip: countryName,
                     onPressed: pickCountry,
-                    icon: const Icon(Icons.public, size: 20),
+                    icon: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.public, size: 18),
+                        Icon(Icons.arrow_drop_down, size: 14),
+                      ],
+                    ),
                   )
                 else
                   Expanded(
                     flex: 2,
                     child: TextButton.icon(
+                      key: countryButton,
                       onPressed: pickCountry,
                       icon: const Icon(Icons.public, size: 18),
-                      label: Text(
-                        countryName,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      label: Row(
+                        children: [
+                          Flexible(
+                            child: Text(
+                              countryName,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          const Icon(Icons.arrow_drop_down, size: 16),
+                        ],
                       ),
                     ),
                   ),
                 Expanded(
                   flex: 2,
                   child: TextButton(
+                    key: eventsButton,
                     onPressed: openEvents,
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 2),
                     ),
-                    child: FittedBox(fit: BoxFit.scaleDown, child: Text(count)),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        children: [
+                          Text(count),
+                          const Icon(Icons.arrow_drop_down, size: 16),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ],

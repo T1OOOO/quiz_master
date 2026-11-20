@@ -71,6 +71,8 @@ class _HistoryMapState extends State<HistoryMap> {
       period.$1 == period.$2 ? '${period.$1}' : '${period.$1}–${period.$2}';
 
   final dateButton = GlobalKey();
+  final countryButton = GlobalKey();
+  final eventsButton = GlobalKey();
   bool readerOpen = false;
   Map? reading;
   List<Map>? nearbyRows;
@@ -268,45 +270,52 @@ class _HistoryMapState extends State<HistoryMap> {
         .toSet();
     final choices = countryNames.where((c) => ids.contains(c.id)).toList()
       ..sort((a, b) => name(a).compareTo(name(b)));
-    final choice = await showDialog<String>(
-      context: context,
-      builder: (d) => StatefulBuilder(
-        builder: (context, refresh) => AlertDialog(
-          title: Text(t('События по стране', 'Events by country')),
-          content: SizedBox(
-            width: 380,
-            height: 350,
-            child: Column(
-              children: [
-                TextField(
-                  onChanged: (s) =>
-                      refresh(() => query = s.toLowerCase().trim()),
-                  decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search),
-                    hintText: t('Название страны', 'Country name'),
-                  ),
-                ),
-                Expanded(
-                  child: ListView(
-                    children: [
-                      ListTile(
-                        title: Text(t('Все страны', 'All countries')),
-                        onTap: () => Navigator.pop(d, ''),
-                      ),
-                      for (final c in choices.where(
-                        (c) => name(c).toLowerCase().contains(query),
-                      ))
-                        ListTile(
-                          title: Text(name(c)),
-                          onTap: () => Navigator.pop(d, c.id),
-                        ),
-                    ],
-                  ),
-                ),
-              ],
+    final anchor = countryButton.currentContext;
+    if (anchor == null) return;
+    final choice = await showHistoryMenu<String>(
+      anchor,
+      label: t('Выбор страны', 'Choose country'),
+      child: StatefulBuilder(
+        builder: (context, refresh) => Column(
+          children: [
+            ListTile(
+              title: Text(t('События по стране', 'Events by country')),
+              trailing: IconButton(
+                tooltip: t('Закрыть', 'Close'),
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.close),
+              ),
             ),
-          ),
-          actions: [close(d)],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: TextField(
+                onChanged: (s) => refresh(() => query = s.toLowerCase().trim()),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.search),
+                  hintText: t('Название страны', 'Country name'),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: Text(t('Все страны', 'All countries')),
+                    selected: country == null,
+                    onTap: () => Navigator.pop(context, ''),
+                  ),
+                  for (final c in choices.where(
+                    (c) => name(c).toLowerCase().contains(query),
+                  ))
+                    ListTile(
+                      title: Text(name(c)),
+                      selected: country == c.id,
+                      onTap: () => Navigator.pop(context, c.id),
+                    ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -352,27 +361,68 @@ class _HistoryMapState extends State<HistoryMap> {
   bool restoredFlatCamera = false;
   double flatMinScale = 1, flatMaxScale = 18;
 
-  void switchToWorld() {
-    AtlasCamera? camera = globe ? globeCamera : widget.initialCamera;
-    if (!globe && !flatViewport.isEmpty) {
-      final scale = math.min(
-        flatViewport.width / 360,
-        flatViewport.height / 180,
-      );
-      final center = flatViewport.center(Offset.zero);
-      camera = atlasFlatCamera(
-        transform.toScene(center),
-        center - Offset(180 * scale, 90 * scale),
-        scale,
-        transform.value.getMaxScaleOnAxis(),
-      );
+  AtlasCamera? flatCamera() {
+    if (flatViewport.isEmpty) return widget.initialCamera;
+    final scale = math.min(flatViewport.width / 360, flatViewport.height / 180);
+    final center = flatViewport.center(Offset.zero);
+    return atlasFlatCamera(
+      transform.toScene(center),
+      center - Offset(180 * scale, 90 * scale),
+      scale,
+      transform.value.getMaxScaleOnAxis(),
+    );
+  }
+
+  void switchToWorld() => widget.onWorld?.call((
+    country: country,
+    globe: globe,
+    camera: globe ? globeCamera : flatCamera(),
+  ));
+
+  void toggleProjection() => setState(() {
+    if (!globe) globeCamera ??= flatCamera();
+    globe = !globe;
+  });
+
+  String eventCountries(Map event) => countryNames
+      .where((c) => (event['countries'] as List).contains(c.id))
+      .map(name)
+      .join(', ');
+
+  void focusEvent(Map event, bool jump) => setState(() {
+    if (jump) {
+      year = event['start'];
+      selected = null;
     }
-    final view = (country: country, globe: globe, camera: camera);
-    if (widget.onWorld case final switchAtlas?) {
-      switchAtlas(view);
-    } else {
-      Navigator.pop(context, view);
-    }
+    selectedEvent = event;
+    readerOpen = false;
+    resetReader();
+  });
+
+  Future<void> showEvents(List<Map> rows) async {
+    final anchor = eventsButton.currentContext;
+    if (anchor == null) return;
+    Map? detail;
+    final choice = await showHistoryMenu<(Map, bool)>(
+      anchor,
+      label: t('События периода', 'Events in this period'),
+      child: StatefulBuilder(
+        builder: (context, update) => HistoryEventIndex(
+          rows: rows,
+          nearby: false,
+          period: periodLabel,
+          region: regionName,
+          russian: widget.russian,
+          detail: detail,
+          year: year,
+          countriesOf: eventCountries,
+          onClose: () => Navigator.pop(context),
+          onRead: (event) => update(() => detail = event),
+          onMap: (event, jump) => Navigator.pop(context, (event, jump)),
+        ),
+      ),
+    );
+    if (mounted && choice != null) focusEvent(choice.$1, choice.$2);
   }
 
   void zoomFlat(Size size, double factor) {
@@ -410,7 +460,7 @@ class _HistoryMapState extends State<HistoryMap> {
               alignment: Alignment.topLeft,
               child: AtlasHeader(
                 russian: widget.russian,
-                title: box.maxWidth < 380
+                title: box.maxWidth < 460
                     ? t('История', 'History')
                     : t('Исторический атлас', 'Historical atlas'),
                 globe: globe,
@@ -422,9 +472,7 @@ class _HistoryMapState extends State<HistoryMap> {
                 onAtlasSwitch: loaded && widget.onWorld != null
                     ? switchToWorld
                     : null,
-                onProjection: loaded
-                    ? () => setState(() => globe = !globe)
-                    : null,
+                onProjection: loaded ? toggleProjection : null,
               ),
             ),
           ),
@@ -721,6 +769,8 @@ class _HistoryMapState extends State<HistoryMap> {
           );
           final timeline = HistoryTimeline(
             dateButton: dateButton,
+            countryButton: countryButton,
+            eventsButton: eventsButton,
             step: periodLength,
             russian: widget.russian,
             countryName: regionName,
@@ -729,10 +779,7 @@ class _HistoryMapState extends State<HistoryMap> {
             onYear: changeYear,
             openCalendar: () => choosePeriod(scoped),
             pickCountry: () => chooseCountry(events),
-            openEvents: () => setState(() {
-              readerOpen = !readerOpen;
-              resetReader();
-            }),
+            openEvents: () => showEvents(rows),
           );
           final reader = HistoryEventIndex(
             key: ValueKey((period, country, nearbyRows)),
@@ -743,24 +790,13 @@ class _HistoryMapState extends State<HistoryMap> {
             russian: widget.russian,
             detail: reading,
             year: year,
-            countriesOf: (event) => countryNames
-                .where((c) => (event['countries'] as List).contains(c.id))
-                .map(name)
-                .join(', '),
+            countriesOf: eventCountries,
             onClose: closeReader,
             onRead: (event) => setState(() {
               reading = event;
               if (event != null) selectedEvent = event;
             }),
-            onMap: (event, jump) => setState(() {
-              if (jump) {
-                year = event['start'];
-                selected = null;
-              }
-              selectedEvent = event;
-              readerOpen = false;
-              resetReader();
-            }),
+            onMap: focusEvent,
           );
           return PopScope(
             canPop: !readerOpen,
@@ -778,7 +814,22 @@ class _HistoryMapState extends State<HistoryMap> {
                       return Flex(
                         direction: wide ? Axis.horizontal : Axis.vertical,
                         children: [
-                          Expanded(child: frame(map, loaded: true)),
+                          Expanded(
+                            child: frame(
+                              TweenAnimationBuilder<double>(
+                                key: ValueKey(globe),
+                                duration:
+                                    MediaQuery.disableAnimationsOf(context)
+                                    ? Duration.zero
+                                    : const Duration(milliseconds: 220),
+                                tween: Tween(begin: .76, end: 1),
+                                builder: (context, opacity, child) =>
+                                    Opacity(opacity: opacity, child: child),
+                                child: map,
+                              ),
+                              loaded: true,
+                            ),
+                          ),
                           if (readerOpen)
                             SizedBox(
                               width: wide
