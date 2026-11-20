@@ -29,13 +29,18 @@ class AtlasHeader extends StatelessWidget {
     borderRadius: BorderRadius.circular(16),
     child: LayoutBuilder(
       builder: (context, box) {
+        final textScale = math.max(
+          1.0,
+          MediaQuery.textScalerOf(context).scale(14) / 14,
+        );
         final compact =
             box.maxWidth <
             (onAtlasSwitch != null
-                ? 365
-                : onAbout == null
-                ? 245
-                : 280);
+                    ? 365
+                    : onAbout == null
+                    ? 245
+                    : 280) *
+                textScale;
         final projection = globe
             ? (russian ? '2D-карта' : '2D map')
             : (russian ? '3D-глобус' : '3D globe');
@@ -63,7 +68,7 @@ class AtlasHeader extends StatelessWidget {
                 label: Text(projection),
               ),
           if (onAtlasSwitch != null)
-            if (box.maxWidth >= 235)
+            if (box.maxWidth >= 235 * textScale)
               TextButton(
                 onPressed: onAtlasSwitch,
                 style: TextButton.styleFrom(
