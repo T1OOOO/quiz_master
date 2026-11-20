@@ -358,7 +358,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('3D globe'));
     await tester.pumpAndSettle();
-    expect(find.text('World globe'), findsOneWidget);
+    expect(find.byTooltip('2D map'), findsOneWidget);
     await tester.tap(find.byTooltip('Zoom in'));
     await tester.pump();
     await tester.tap(find.byTooltip('2D map'));

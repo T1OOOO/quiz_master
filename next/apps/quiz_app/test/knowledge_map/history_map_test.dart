@@ -65,7 +65,7 @@ void main() {
       await tester.tap(find.byTooltip('Zoom in'));
       await tester.pumpAndSettle();
       expect(camera.value.getMaxScaleOnAxis(), 1.5);
-      await tester.tap(find.text('3D globe'));
+      await tester.tap(find.byTooltip('3D globe'));
       await tester.pumpAndSettle();
       expect(find.byTooltip('Whole map'), findsOneWidget);
       await tester.tap(find.byTooltip('Search'));
@@ -73,7 +73,7 @@ void main() {
       expect(find.text('Events by country'), findsOneWidget);
       await tester.tap(find.byTooltip('Close'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('2D map'));
+      await tester.tap(find.byTooltip('2D map'));
       await tester.pumpAndSettle();
       expect(camera.value.getMaxScaleOnAxis(), 1.5);
       await tester.tap(find.byTooltip('Whole map'));

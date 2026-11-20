@@ -176,6 +176,21 @@ class KnowledgeMapPage extends StatefulWidget {
 }
 
 class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
+  // Both sprites use the same 48 × 32 pixel flag canvas.
+  static const countryIconScale = [
+    'interpolate',
+    ['linear'],
+    ['zoom'],
+    1,
+    0.46,
+    7,
+    0.56,
+  ];
+  Future<void> Function()? loadZoomLabels;
+  bool detailWaterRequested = false;
+  bool cameraMoving = false;
+  math.Point<double>? pointerOnMap;
+
   MapLibreMapController? controller;
   Timer? startupTimer;
   MapState? state;
@@ -317,6 +332,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     placesOpen = false;
     placesCategory = 'all';
     controller = null;
+    loadZoomLabels = null;
+    detailWaterRequested = false;
+    cameraMoving = false;
+    pointerOnMap = null;
     thematicSprites.clear();
     dishes = [];
     foodSources = [];
@@ -834,17 +853,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'country-flags',
         const SymbolLayerProperties(
           iconImage: ['get', 'flag_sprite'],
-          iconSize: [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            1,
-            0.22,
-            3,
-            0.3,
-            7,
-            0.48,
-          ],
+          iconSize: countryIconScale,
           iconPadding: 4,
           symbolSortKey: ['get', 'label_priority'],
         ),
@@ -855,69 +864,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         const SymbolLayerProperties(
           iconImage: ['get', 'sprite'],
           iconPadding: 3,
-          iconSize: [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            1,
-            0.46,
-            7,
-            0.56,
-          ],
+          iconSize: countryIconScale,
           symbolSortKey: ['get', 'label_priority'],
         ),
       );
-      Future<void> addLabels(
+      Future<void> addLabelLayer(
         String source,
         Map<String, dynamic> collection,
         double minZoom,
       ) async {
-        final features = collection['features'] as List;
-        for (var start = 0; start < features.length; start += 8) {
-          if (!mounted || generation != attempt || controller != c || failed) {
-            return;
-          }
-          final batch = features.skip(start).take(8).toList();
-          final sprites = await Future.wait(
-            batch.map((feature) {
-              final p = feature['properties'] as Map<String, dynamic>;
-              if (source == 'landmarks') {
-                p['map_category'] = placeCategory(
-                  p['categories'] as List? ?? const [],
-                );
-              }
-              return renderCountryMarker(
-                pixelScale: 2,
-                name: p[localizedRu ? 'name_ru' : 'name_en'] as String,
-                landmark: source == 'landmarks',
-                wonder:
-                    source == 'landmarks' &&
-                    placeCategory(p['categories'] as List? ?? const []) ==
-                        'wonders',
-                capital: source == 'capital-labels',
-                water: source == 'water-labels',
-              );
-            }),
-          );
-          if (!mounted || generation != attempt || controller != c || failed) {
-            return;
-          }
-          for (var i = 0; i < batch.length; i++) {
-            if (!mounted ||
-                generation != attempt ||
-                controller != c ||
-                failed) {
-              return;
-            }
-            final p = batch[i]['properties'] as Map<String, dynamic>;
-            final id = p['id'] as String;
-            await c.addImage('$source-$id', sprites[i]);
-            p['sprite'] = '$source-$id';
-          }
-        }
-        if (!mounted || generation != attempt || controller != c || failed) {
-          return;
-        }
         await c.addGeoJsonSource(source, collection);
         await c.addSymbolLayer(
           source,
@@ -951,12 +906,73 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         );
       }
 
-      stage = 'capital labels';
-      await addLabels('capital-labels', capitals!, 4);
-      stage = 'water labels';
-      await addLabels('water-labels', waterLabels!, 3);
-      stage = 'landmarks';
-      await addLabels('landmarks', landmarks!, 3.5);
+      Future<void> drawLabels(
+        String source,
+        Map<String, dynamic> collection,
+      ) async {
+        final features = collection['features'] as List;
+        for (var start = 0; start < features.length; start += 8) {
+          if (!mounted || generation != attempt || controller != c || failed) {
+            return;
+          }
+          final batch = features.skip(start).take(8).toList();
+          final sprites = await Future.wait(
+            batch.map((feature) {
+              final p = feature['properties'] as Map<String, dynamic>;
+              return renderCountryMarker(
+                pixelScale: 2,
+                name: p[localizedRu ? 'name_ru' : 'name_en'] as String,
+                landmark: source == 'landmarks',
+                wonder:
+                    source == 'landmarks' &&
+                    placeCategory(p['categories'] as List? ?? const []) ==
+                        'wonders',
+                capital: source == 'capital-labels',
+                water: source == 'water-labels',
+              );
+            }),
+          );
+          if (!mounted || generation != attempt || controller != c || failed) {
+            return;
+          }
+          for (var i = 0; i < batch.length; i++) {
+            if (!mounted ||
+                generation != attempt ||
+                controller != c ||
+                failed) {
+              return;
+            }
+            final p = batch[i]['properties'] as Map<String, dynamic>;
+            final id = p['id'] as String;
+            await c.addImage('$source-$id', sprites[i]);
+            p['sprite'] = '$source-$id';
+          }
+        }
+        if (!mounted || generation != attempt || controller != c || failed) {
+          return;
+        }
+        await c.setGeoJsonSource(source, collection);
+      }
+
+      stage = 'detail layers';
+      for (final feature in landmarks!['features'] as List) {
+        final p = feature['properties'] as Map<String, dynamic>;
+        p['map_category'] = placeCategory(p['categories'] as List? ?? const []);
+      }
+      await addLabelLayer('capital-labels', capitals!, 4);
+      await addLabelLayer('water-labels', waterLabels!, 3);
+      await addLabelLayer('landmarks', landmarks!, 3.5);
+      loadZoomLabels = () async {
+        try {
+          await drawLabels('water-labels', waterLabels!);
+          if (!mounted || generation != attempt || controller != c) return;
+          await drawLabels('landmarks', landmarks!);
+          if (!mounted || generation != attempt || controller != c) return;
+          await drawLabels('capital-labels', capitals!);
+        } catch (error) {
+          debugPrint('Knowledge map: detail labels unavailable: $error');
+        }
+      };
       await c.addCircleLayer(
         'landmarks',
         'landmark-pins',
@@ -1022,8 +1038,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         if (!mounted || c != controller) return;
       }
       unawaited(relief.install(c, belowLayerId: 'thematic-countries'));
-      updateVisibleCountries();
-      unawaited(installDetailedWater(c, attempt));
+      onCameraSettled();
     } catch (error, stack) {
       debugPrint('Knowledge map: setup failed at $stage: $error\n$stack');
       if (mounted && generation == attempt) setState(() => failed = true);
@@ -2411,8 +2426,52 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     queueHoverFilter();
   }
 
+  void onCameraSettled() {
+    final c = controller;
+    final didMove = cameraMoving;
+    cameraMoving = false;
+    if (!mounted || !ready || c == null) return;
+    final zoom = c.cameraPosition?.zoom ?? 0;
+    if (zoom >= 3) {
+      final load = loadZoomLabels;
+      loadZoomLabels = null;
+      if (load != null) unawaited(load());
+    }
+    if (zoom >= 4 && !detailWaterRequested) {
+      detailWaterRequested = true;
+      unawaited(installDetailedWater(c, generation));
+    }
+    unawaited(updateVisibleCountries());
+    if (!didMove) return;
+    final point = pointerOnMap;
+    if (point == null) {
+      clearHover();
+    } else {
+      unawaited(
+        c
+            .toLatLng(point)
+            .then((coordinates) {
+              if (mounted &&
+                  controller == c &&
+                  !cameraMoving &&
+                  pointerOnMap == point) {
+                onMouseMove(point, coordinates);
+              }
+            })
+            .catchError((Object error) {
+              debugPrint(
+                'Knowledge map: pointer could not be restored: $error',
+              );
+            }),
+      );
+    }
+  }
+
   void onMouseMove(math.Point<double> point, LatLng coordinates) {
-    if (!mounted || !ready || controller == null || practice) return;
+    pointerOnMap = point;
+    if (!mounted || !ready || controller == null || practice || cameraMoving) {
+      return;
+    }
     final request = hover.begin();
     final attempt = generation;
     final c = controller!;
@@ -3502,7 +3561,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           ) ??
                           widget.mapBuilder?.call(context, select) ??
                           MouseRegion(
-                            onExit: (_) => clearHover(),
+                            onExit: (_) {
+                              pointerOnMap = null;
+                              if (!cameraMoving) clearHover();
+                            },
                             child: MapLibreMap(
                               key: ValueKey(generation),
                               trackCameraPosition: true,
@@ -3528,15 +3590,19 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               onStyleLoadedCallback: setup,
                               onCameraMove: (_) {
                                 visibleRequest++;
+                                if (!cameraMoving) {
+                                  cameraMoving = true;
+                                  hoverTimer?.cancel();
+                                  hover.begin();
+                                }
                                 if (visible.isNotEmpty) {
-                                  clearHover();
                                   setState(() {
                                     visible = [];
                                     visibleOpen = false;
                                   });
                                 }
                               },
-                              onCameraIdle: updateVisibleCountries,
+                              onCameraIdle: onCameraSettled,
                               onMapClick: tap,
                               featureTapsTriggersMapClick: true,
                               compassEnabled: false,
