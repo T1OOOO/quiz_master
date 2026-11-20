@@ -314,6 +314,46 @@ void main() {
     },
   );
 
+  testWidgets('crowded groups show names outside the occupied band', (
+    tester,
+  ) async {
+    const pins = [
+      (longitude: 0.0, latitude: 0.0, title: 'Treaty of Riga', kind: 'treaty'),
+      (
+        longitude: 1.0,
+        latitude: 0.0,
+        title: 'Founding of the city',
+        kind: 'culture',
+      ),
+    ];
+    List<HistoryEventPin>? chosen;
+    const band = Rect.fromLTWH(0, 95, 320, 120);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: SizedBox(
+            width: 320,
+            height: 310,
+            child: HistoryMapPins(
+              size: const Size(320, 310),
+              pins: pins,
+              project: (p) => Offset(155 + p.longitude, 155),
+              focus: null,
+              caption: null,
+              russian: false,
+              obstacles: const [band],
+              onOpen: (v) => chosen = v,
+            ),
+          ),
+        ),
+      ),
+    );
+    final caption = find.text('Treaty of Riga');
+    expect(tester.getRect(caption).overlaps(band), isFalse);
+    await tester.tap(caption);
+    expect(chosen, pins);
+  });
+
   testWidgets(
     'edge captions stay inside the map and clear nearby tap targets',
     (tester) async {
