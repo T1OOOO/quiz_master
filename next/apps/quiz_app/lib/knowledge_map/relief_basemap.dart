@@ -23,40 +23,42 @@ class ReliefBasemap {
     String? belowLayerId,
   }) async {
     final generation = ++_generation;
+    // LatLng wraps +180 to -180. Keep each image on its own hemisphere.
+    const edge = 179.999999;
     final quadrants = <_ReliefQuadrant>[
       _ReliefQuadrant(
         'nw',
         const LatLngQuad(
-          topLeft: LatLng(85.0511287798, -180),
+          topLeft: LatLng(85.0511287798, -edge),
           topRight: LatLng(85.0511287798, 0),
           bottomRight: LatLng(0, 0),
-          bottomLeft: LatLng(0, -180),
+          bottomLeft: LatLng(0, -edge),
         ),
       ),
       _ReliefQuadrant(
         'ne',
         const LatLngQuad(
           topLeft: LatLng(85.0511287798, 0),
-          topRight: LatLng(85.0511287798, 180),
-          bottomRight: LatLng(0, 180),
+          topRight: LatLng(85.0511287798, edge),
+          bottomRight: LatLng(0, edge),
           bottomLeft: LatLng(0, 0),
         ),
       ),
       _ReliefQuadrant(
         'sw',
         const LatLngQuad(
-          topLeft: LatLng(0, -180),
+          topLeft: LatLng(0, -edge),
           topRight: LatLng(0, 0),
           bottomRight: LatLng(-85.0511287798, 0),
-          bottomLeft: LatLng(-85.0511287798, -180),
+          bottomLeft: LatLng(-85.0511287798, -edge),
         ),
       ),
       _ReliefQuadrant(
         'se',
         const LatLngQuad(
           topLeft: LatLng(0, 0),
-          topRight: LatLng(0, 180),
-          bottomRight: LatLng(-85.0511287798, 180),
+          topRight: LatLng(0, edge),
+          bottomRight: LatLng(-85.0511287798, edge),
           bottomLeft: LatLng(-85.0511287798, 0),
         ),
       ),

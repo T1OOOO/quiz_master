@@ -21,6 +21,7 @@ import 'country_number_format.dart';
 import 'countries_browser.dart';
 import 'map_state.dart';
 import 'map_projection.dart';
+import 'world_globe.dart';
 import 'practice_hints.dart';
 import 'thematic_legend.dart';
 import 'history_map.dart';
@@ -209,6 +210,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   };
   String thematic = 'none';
   bool globeMode = false;
+  bool projectionBusy = false;
+  final countrySpriteSizes = <String, Size>{};
+  Set<String> clippedNames = {};
   CameraPosition? beforeGlobe;
   List<dynamic> dishes = [];
   Map<String, dynamic> waters = {};
@@ -216,7 +220,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   final relief = ReliefBasemap();
   List<dynamic> waterSources = [], foodSources = [];
   final Set<String> thematicSprites = {};
-  final thematicSpriteSizes = <String, Size>{};
   final hover = MapHoverState();
   final tapRequests = MapTapRequests();
   Timer? hoverTimer;
@@ -302,13 +305,16 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     visibleRequest++;
     visible = [];
     labelOverrides = {};
+    clippedNames = {};
+    countrySpriteSizes.clear();
+    globeMode = false;
+    beforeGlobe = null;
     visibleOpen = false;
     browserOpen = false;
     placesOpen = false;
     placesCategory = 'all';
     controller = null;
     thematicSprites.clear();
-    thematicSpriteSizes.clear();
     dishes = [];
     foodSources = [];
     waters = {};
@@ -552,12 +558,19 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     });
   }
 
+  void _rememberCountrySize(String sprite, Uint8List png) {
+    final header = ByteData.sublistView(png);
+    countrySpriteSizes[sprite] = Size(
+      header.getUint32(16).toDouble(),
+      header.getUint32(20).toDouble(),
+    );
+  }
+
   Future<void> setup() async {
     final c = controller;
     if (c == null) return;
     final attempt = generation;
     thematicSprites.clear();
-    thematicSpriteSizes.clear();
     thematicSequence++;
     queuedHoverFilterKey = null;
     var stage = 'countries';
@@ -566,7 +579,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       await c.addFillLayer(
         'countries',
         'land',
-        const FillLayerProperties(fillColor: '#f3e9cf'),
+        const FillLayerProperties(fillColor: '#f3e9cf', fillAntialias: false),
       );
       await c.addFillLayer(
         'countries',
@@ -594,7 +607,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         const FillLayerProperties(
           fillColor: '#00000000',
           fillOpacity: 0,
-          fillAntialias: true,
+          fillAntialias: false,
         ),
         belowLayerId: 'practice-excluded',
       );
@@ -603,20 +616,20 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'borders',
         const LineLayerProperties(
           lineColor: '#858b72',
-          lineOpacity: 0.78,
+          lineOpacity: 0.65,
           lineJoin: 'round',
           lineCap: 'round',
-          lineBlur: 0.3,
+          lineBlur: 0.15,
           lineWidth: [
             'interpolate',
             ['linear'],
             ['zoom'],
             1,
-            0.62,
+            0.34,
             5,
-            0.95,
+            0.52,
             10,
-            1.45,
+            0.78,
           ],
         ),
       );
@@ -625,7 +638,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'selected',
         const LineLayerProperties(
           lineColor: '#b44e26',
-          lineWidth: 3,
+          lineWidth: 1.5,
           lineJoin: 'round',
           lineCap: 'round',
         ),
@@ -640,7 +653,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'hovered',
         const LineLayerProperties(
           lineColor: '#216d69',
-          lineWidth: 2,
+          lineWidth: 1.1,
           lineJoin: 'round',
           lineCap: 'round',
         ),
@@ -762,10 +775,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       await c.addSymbolLayer(
         'capitals',
         'capital-dots',
-        const SymbolLayerProperties(
-          iconImage: 'capital-star',
-          iconAllowOverlap: true,
-        ),
+        const SymbolLayerProperties(iconImage: 'capital-star', iconPadding: 2),
         minzoom: 2.5,
       );
       stage = 'country markers';
@@ -779,7 +789,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         final sprites = await Future.wait(
           batch.map((feature) {
             final properties = feature['properties'] as Map<String, dynamic>;
+            final encoded = flags[properties['country_id']] as String?;
             return renderCountryMarker(
+              flagBytes: encoded == null ? null : flagImageBytes(encoded),
               pixelScale: 2,
               name: mapCountryName(
                 properties['country_id'] as String,
@@ -789,15 +801,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               compact: true,
             );
           }),
-        );
-        final shortSprites = await Future.wait(
-          batch.map(
-            (feature) => renderCountryMarker(
-              name: feature['properties']['country_id'] as String,
-              pixelScale: 2,
-              compact: true,
-            ),
-          ),
         );
         final flagSprites = await Future.wait(
           batch.map((feature) {
@@ -819,17 +822,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           final id = properties['country_id'] as String;
           await c.addImage('country-$id', sprites[i]);
           properties['sprite'] = 'country-$id';
-          final fullData = ByteData.sublistView(sprites[i]);
-          final shortData = ByteData.sublistView(shortSprites[i]);
-          properties['full_width'] = fullData.getUint32(16);
-          properties['full_height'] = fullData.getUint32(20);
-          properties['short_width'] = shortData.getUint32(16);
-          properties['short_height'] = shortData.getUint32(20);
-          properties['label_offset'] = [0, 18];
-          properties['label_short'] = false;
-          properties['label_visible'] = true;
-          properties['short_sprite'] = 'country-short-$id';
-          await c.addImage('country-short-$id', shortSprites[i]);
+          _rememberCountrySize('country-$id', sprites[i]);
           final flagSprite = flagSprites[i];
           if (flagSprite != null) {
             await c.addImage('country-flag-$id', flagSprite);
@@ -850,44 +843,30 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             'interpolate',
             ['linear'],
             ['zoom'],
-            1,
-            0.2,
-            4,
-            0.32,
+            3,
+            0.3,
             7,
-            0.5,
+            0.48,
           ],
-          iconAllowOverlap: true,
-          iconIgnorePlacement: true,
+          iconPadding: 4,
+          symbolSortKey: ['get', 'label_priority'],
         ),
+        minzoom: 3,
       );
       await c.addSymbolLayer(
         'country-markers',
         'country-markers',
         const SymbolLayerProperties(
-          iconImage: [
-            'case',
-            ['get', 'label_visible'],
-            [
-              'case',
-              ['get', 'label_short'],
-              ['get', 'short_sprite'],
-              ['get', 'sprite'],
-            ],
-            '',
-          ],
-          iconAnchor: 'center',
-          iconOffset: ['get', 'label_offset'],
-          iconAllowOverlap: true,
-          iconIgnorePlacement: true,
+          iconImage: ['get', 'sprite'],
+          iconPadding: 3,
           iconSize: [
             'interpolate',
             ['linear'],
             ['zoom'],
             1,
-            0.5,
+            0.46,
             7,
-            0.59,
+            0.56,
           ],
           symbolSortKey: ['get', 'label_priority'],
         ),
@@ -986,7 +965,26 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'landmarks',
         'landmark-pins',
         const CircleLayerProperties(
-          circleRadius: 4,
+          circleRadius: [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            1.5,
+            [
+              'case',
+              [
+                '==',
+                ['get', 'map_category'],
+                'wonders',
+              ],
+              2.8,
+              0,
+            ],
+            4,
+            3,
+            7,
+            4,
+          ],
           circleColor: [
             'match',
             ['get', 'map_category'],
@@ -1003,7 +1001,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             '#247a83',
           ],
           circleStrokeColor: '#ffffff',
-          circleStrokeWidth: 1.5,
+          circleStrokeWidth: [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            1.5,
+            0,
+            4,
+            0.9,
+            7,
+            1.25,
+          ],
         ),
         minzoom: 1.5,
       );
@@ -1405,6 +1413,22 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         id ?? '',
       ]);
       if (!mounted || generation != attempt || controller != c) return;
+      await c.setLayerProperties(
+        'country-markers',
+        SymbolLayerProperties(
+          symbolSortKey: [
+            'case',
+            [
+              '==',
+              ['get', 'country_id'],
+              id ?? '',
+            ],
+            -1e12,
+            ['get', 'label_priority'],
+          ],
+        ),
+      );
+      if (!mounted || generation != attempt || controller != c) return;
       unawaited(updateVisibleCountries());
       if (move &&
           id != null &&
@@ -1724,7 +1748,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         FillLayerProperties(
           fillColor: thematicFillExpression(value),
           fillOpacity: value == 'population' || value == 'area' ? 0.62 : 0,
-          fillAntialias: true,
+          fillAntialias: false,
         ),
       );
       for (final feature in labels['features'] as List) {
@@ -1778,7 +1802,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           thematicSprites,
           sprite,
           () async {
+            final encoded = flags[id] as String?;
             bytes = await renderCountryMarker(
+              flagBytes: encoded == null ? null : flagImageBytes(encoded),
               pixelScale: 2,
               name: mapCountryName(id, name, russian: ru),
               datum: displayDatum,
@@ -1794,11 +1820,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               throw StateError('Thematic request superseded');
             }
             await c.addImage(sprite, bytes);
-            final header = ByteData.sublistView(bytes);
-            thematicSpriteSizes[sprite] = Size(
-              header.getUint32(16).toDouble(),
-              header.getUint32(20).toDouble(),
-            );
+            _rememberCountrySize(sprite, bytes);
           },
         );
         if (!mounted ||
@@ -1808,12 +1830,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           return;
         }
         p['sprite'] = sprite;
-        final spriteSize = thematicSpriteSizes[sprite]!;
-        p['full_width'] = spriteSize.width;
-        p['full_height'] = spriteSize.height;
-        p['label_short'] = false;
-        p['label_visible'] = true;
-        p['label_offset'] = [0, 18];
       }
       if (mounted &&
           generation == attempt &&
@@ -2112,6 +2128,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       final features = await queryVisibleWithRetry(
         () => c.queryRenderedFeaturesInRect(Offset.zero & (size * scale), [
           'land',
+          if (globeMode) ...['country-markers', 'country-flags'],
         ], null),
         current,
         () => Future<void>.delayed(const Duration(milliseconds: 500)),
@@ -2157,19 +2174,68 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       final horizontalInset = width * math.min(0.3, 75 / size.width);
       final verticalInset =
           (viewport.north - viewport.south) * math.min(0.3, 40 / size.height);
-      final anchors = visibleCountryLabelAnchors(
-        countryLabels!['features'] as List,
-        features,
-        viewport,
-        fullOutlines: countries!['features'] as List,
-        previous: labelOverrides,
-        safeViewport: GeoViewport(
-          west: viewport.west + horizontalInset,
-          east: viewport.west + width - horizontalInset,
-          south: viewport.south + verticalInset,
-          north: viewport.north - verticalInset,
-        ),
-      );
+      final anchors = globeMode
+          ? <String, (double, double)>{}
+          : visibleCountryLabelAnchors(
+              countryLabels!['features'] as List,
+              features,
+              viewport,
+              fullOutlines: countries!['features'] as List,
+              previous: labelOverrides,
+              safeViewport: GeoViewport(
+                west: viewport.west + horizontalInset,
+                east: viewport.west + width - horizontalInset,
+                south: viewport.south + verticalInset,
+                north: viewport.north - verticalInset,
+              ),
+            );
+      final labelsOnMap = appliedCountryLabels!['features'] as List;
+      final points = <LatLng>[
+        for (final feature in countryLabels!['features'] as List)
+          if (anchors[feature['properties']['country_id']] case final anchor?)
+            LatLng(anchor.$2, anchor.$1)
+          else
+            LatLng(
+              (feature['geometry']['coordinates'][1] as num).toDouble(),
+              (feature['geometry']['coordinates'][0] as num).toDouble(),
+            ),
+      ];
+      final screen = await c.toScreenLocationBatch(points);
+      if (!current()) return;
+      final zoom = c.cameraPosition?.zoom ?? 1.6;
+      final markerScale = 0.46 + (zoom - 1).clamp(0, 6) / 6 * 0.10;
+      final frame = Offset.zero & size;
+      final clipped = <String>{};
+      for (var i = 0; i < screen.length; i++) {
+        final p = labelsOnMap[i]['properties'];
+        final spriteSize = countrySpriteSizes[p['sprite']];
+        if (spriteSize == null) continue;
+        final marker = Rect.fromCenter(
+          center: Offset(screen[i].x / scale, screen[i].y / scale),
+          width: spriteSize.width * markerScale,
+          height: spriteSize.height * markerScale,
+        );
+        if (frame.overlaps(marker) &&
+            (!frame.contains(marker.topLeft) ||
+                !frame.contains(marker.bottomRight))) {
+          clipped.add(p['country_id'] as String);
+        }
+      }
+      if (!setEquals(clippedNames, clipped)) {
+        await c.setFilter('country-markers', [
+          '!',
+          [
+            'in',
+            ['get', 'country_id'],
+            ['literal', clipped.toList()],
+          ],
+        ]);
+        if (!current()) return;
+        clippedNames = clipped;
+      }
+      // Updating GeoJSON schedules another idle callback. Leave stable labels
+      // in place so MapLibre can finish its collision and fade pass.
+      if (mapEquals(anchors, labelOverrides)) return;
       thematicCommands = thematicCommands.catchError((Object _) {}).then((
         _,
       ) async {
@@ -2192,81 +2258,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           feature['geometry']['coordinates'] = anchor == null
               ? originals[id]
               : [anchor.$1, anchor.$2];
-        }
-        {
-          final visibleFeatures = (labels['features'] as List)
-              .where((f) => visibleIds.contains(f['properties']['country_id']))
-              .toList();
-          final points = await c.toScreenLocationBatch(
-            visibleFeatures.map((f) {
-              final coordinates = f['geometry']['coordinates'] as List;
-              return LatLng(
-                (coordinates[1] as num).toDouble(),
-                (coordinates[0] as num).toDouble(),
-              );
-            }),
-          );
-          if (!current()) return;
-          final zoom = c.cameraPosition?.zoom ?? 1.6;
-          final iconScale = 0.5 + ((zoom - 1).clamp(0.0, 6.0) / 6) * 0.09;
-          final placements = placeCountryLabels(
-            [
-              for (var i = 0; i < visibleFeatures.length; i++)
-                CountryLabelCandidate(
-                  id: visibleFeatures[i]['properties']['country_id'] as String,
-                  priority:
-                      visibleFeatures[i]['properties']['label_priority']
-                          as num? ??
-                      0,
-                  point: Offset(
-                    points[i].x.toDouble() / scale,
-                    points[i].y.toDouble() / scale,
-                  ),
-                  fullSize: Size(
-                    (visibleFeatures[i]['properties']['full_width'] as num)
-                            .toDouble() *
-                        iconScale,
-                    (visibleFeatures[i]['properties']['full_height'] as num)
-                            .toDouble() *
-                        iconScale,
-                  ),
-                  shortSize: Size(
-                    (visibleFeatures[i]['properties']['short_width'] as num)
-                            .toDouble() *
-                        iconScale,
-                    (visibleFeatures[i]['properties']['short_height'] as num)
-                            .toDouble() *
-                        iconScale,
-                  ),
-                  selected:
-                      visibleFeatures[i]['properties']['country_id'] ==
-                      state?.selectedId,
-                ),
-            ],
-            size,
-            flagSize: Size(
-              48 *
-                  (zoom < 4
-                      ? 0.2 + ((zoom - 1).clamp(0.0, 3.0) / 3) * 0.12
-                      : 0.32 + ((zoom - 4).clamp(0.0, 3.0) / 3) * 0.18),
-              32 *
-                  (zoom < 4
-                      ? 0.2 + ((zoom - 1).clamp(0.0, 3.0) / 3) * 0.12
-                      : 0.32 + ((zoom - 4).clamp(0.0, 3.0) / 3) * 0.18),
-            ),
-          );
-          for (final feature in visibleFeatures) {
-            final p = feature['properties'] as Map<String, dynamic>;
-            final placement = placements[p['country_id']];
-            p['label_visible'] = placement != null;
-            if (placement != null) {
-              p['label_short'] = placement.short;
-              p['label_offset'] = [
-                placement.offset.dx / iconScale,
-                placement.offset.dy / iconScale,
-              ];
-            }
-          }
         }
         await c.setGeoJsonSource('country-markers', labels);
         if (current()) {
@@ -2667,9 +2658,24 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     );
   }
 
+  CameraUpdate _fitGlobe(LatLng target) {
+    final latitudeScale = math
+        .cos(target.latitude * math.pi / 180)
+        .clamp(0.35, 1.0);
+    final zoom =
+        math.log(mapViewport.shortestSide * latitudeScale / 170) / math.ln2;
+    return CameraUpdate.newLatLngZoom(target, zoom.clamp(0.0, 2.4));
+  }
+
   Future<void> _fitWorld() async {
     final c = controller;
     if (!ready || c == null) return;
+    if (globeMode) {
+      await c.animateCamera(
+        _fitGlobe(c.cameraPosition?.target ?? const LatLng(20, 10)),
+      );
+      return;
+    }
     await c.animateCamera(
       CameraUpdate.newLatLngBounds(
         LatLngBounds(
@@ -2682,6 +2688,58 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         bottom: 16,
       ),
     );
+  }
+
+  Future<void> _toggleProjection() async {
+    if (projectionBusy || countries == null) return;
+    setState(() => projectionBusy = true);
+    final c = controller;
+    try {
+      final enable = !globeMode;
+      final position = c?.cameraPosition;
+      if (globeProjectionSupported &&
+          c != null &&
+          ready &&
+          await setGlobeProjection(c, enable)) {
+        if (!mounted || c != controller) return;
+        setState(() {
+          globeMode = enable;
+          visible = [];
+          visibleOpen = false;
+          visibleRequest++;
+        });
+        if (enable) {
+          beforeGlobe = position;
+          if (position != null) {
+            await c.animateCamera(_fitGlobe(position.target));
+          }
+        } else if (beforeGlobe != null) {
+          await c.animateCamera(CameraUpdate.newCameraPosition(beforeGlobe!));
+          beforeGlobe = null;
+        }
+        await updateVisibleCountries();
+      } else if (mounted) {
+        final id = await Navigator.of(context).push<String>(
+          MaterialPageRoute(
+            builder: (_) => WorldGlobe(
+              features: countries!['features'] as List,
+              russian: ru,
+              selectedId: state?.selectedId,
+              names: {
+                for (final country in state!.countries)
+                  country.id: ru ? country.nameRu : country.nameEn,
+              },
+            ),
+          ),
+        );
+        if (mounted && id != null) {
+          await select(id, move: true);
+          if (mounted) setState(() => countryDetailsOpen = true);
+        }
+      }
+    } finally {
+      if (mounted) setState(() => projectionBusy = false);
+    }
   }
 
   Future<void> _openDataDialog(BuildContext context) async {
@@ -2705,44 +2763,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (globeProjectionSupported && controller != null)
-                  SwitchListTile.adaptive(
-                    dense: true,
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(tr('3D globe', '3D-глобус')),
-                    value: globeMode,
-                    onChanged: ready
-                        ? (value) async {
-                            final c = controller;
-                            if (c == null) return;
-                            if (value) beforeGlobe = c.cameraPosition;
-                            final applied = await setGlobeProjection(c, value);
-                            if (!applied || !mounted || c != controller) return;
-                            setState(() {
-                              globeMode = value;
-                              visible = [];
-                              visibleRequest++;
-                            });
-                            if (dialogContext.mounted) dialogSetState(() {});
-                            final previous = beforeGlobe;
-                            if (previous != null) {
-                              if (value && previous.zoom > 1.2) {
-                                await c.animateCamera(
-                                  CameraUpdate.newLatLngZoom(
-                                    previous.target,
-                                    1.2,
-                                  ),
-                                );
-                              } else if (!value) {
-                                await c.animateCamera(
-                                  CameraUpdate.newCameraPosition(previous),
-                                );
-                              }
-                            }
-                            await updateVisibleCountries();
-                          }
-                        : null,
-                  ),
                 Wrap(
                   spacing: 8,
                   runSpacing: 4,
@@ -3562,30 +3582,63 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         elevation: 2,
                         shadowColor: const Color(0x55324c44),
                         borderRadius: BorderRadius.circular(16),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              tooltip: tr('Back', 'Назад'),
-                              onPressed:
-                                  widget.onExit ??
-                                  () => Navigator.maybePop(context),
-                              icon: const Icon(Icons.arrow_back, size: 20),
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxWidth: math.max(
+                              0,
+                              currentMapViewport.width - 24,
                             ),
-                            if (!practice && currentMapViewport.width >= 290)
-                              Padding(
-                                padding: const EdgeInsets.only(right: 16),
-                                child: Text(
-                                  tr('World atlas', 'Атлас мира'),
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontFamily: 'Georgia',
-                                    fontWeight: FontWeight.w700,
-                                    color: Color(0xff214b41),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                tooltip: tr('Back', 'Назад'),
+                                onPressed:
+                                    widget.onExit ??
+                                    () => Navigator.maybePop(context),
+                                icon: const Icon(Icons.arrow_back, size: 20),
+                              ),
+                              if (!practice && currentMapViewport.width >= 290)
+                                Flexible(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 16),
+                                    child: Text(
+                                      tr('World atlas', 'Атлас мира'),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: 'Georgia',
+                                        fontWeight: FontWeight.w700,
+                                        color: Color(0xff214b41),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                          ],
+                              if (!practice && state != null)
+                                TextButton.icon(
+                                  onPressed:
+                                      projectionBusy ||
+                                          (globeProjectionSupported &&
+                                              !ready &&
+                                              !failed)
+                                      ? null
+                                      : _toggleProjection,
+                                  icon: Icon(
+                                    globeMode
+                                        ? Icons.map_outlined
+                                        : Icons.public,
+                                    size: 19,
+                                  ),
+                                  label: Text(
+                                    globeMode
+                                        ? tr('2D map', '2D-карта')
+                                        : tr('3D globe', '3D-глобус'),
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
                       ),
                     ),

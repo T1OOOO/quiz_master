@@ -10,21 +10,22 @@ import 'flag_sprite.dart';
 String mapCountryName(String id, String name, {required bool russian}) {
   if (!russian) return name;
   return const {
-        'AE': 'ОАЭ',
+        'AE': 'Арабские Эмираты',
         'BO': 'Боливия',
-        'CD': 'ДР Конго',
-        'CF': 'ЦАР',
+        'CD': 'Конго-Киншаса',
+        'CG': 'Конго-Браззавиль',
+        'CF': 'Центральноафриканская Республика',
         'FM': 'Микронезия',
         'GB': 'Великобритания',
         'IR': 'Иран',
-        'KP': 'КНДР',
+        'KP': 'Северная Корея',
         'KR': 'Южная Корея',
         'LA': 'Лаос',
         'MD': 'Молдова',
         'RU': 'Россия',
         'SY': 'Сирия',
         'TZ': 'Танзания',
-        'US': 'США',
+        'US': 'Соединённые Штаты',
         'VE': 'Венесуэла',
       }[id] ??
       name;
@@ -91,7 +92,7 @@ Future<Uint8List> renderCountryMarker({
     textDirection: TextDirection.ltr,
     maxLines: maxLines,
     ellipsis: maxLines == null ? null : '…',
-  )..layout(maxWidth: compact ? 120 : 170);
+  )..layout(maxWidth: compact && name.contains(' ') ? 120 : 170);
   ui.Image? flag;
   try {
     if (flagBytes != null && !capital && !landmark) {
