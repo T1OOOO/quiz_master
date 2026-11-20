@@ -6,6 +6,7 @@ String historyEventDate(Map r) =>
 class HistoryTimeline extends StatelessWidget {
   const HistoryTimeline({
     super.key,
+    this.dateButton,
     required this.period,
     required this.step,
     required this.russian,
@@ -16,6 +17,7 @@ class HistoryTimeline extends StatelessWidget {
     required this.pickCountry,
     required this.openEvents,
   });
+  final Key? dateButton;
   final (int, int) period;
   final int step, eventCount;
   final String countryName;
@@ -48,6 +50,7 @@ class HistoryTimeline extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: TextButton(
+                    key: dateButton,
                     onPressed: openCalendar,
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 2),

@@ -7,7 +7,7 @@ import 'package:quiz_app/knowledge_map/history_timeline.dart';
 import 'package:quiz_app/knowledge_map/history_map_pins.dart';
 import 'package:quiz_app/knowledge_map/history_event_symbol.dart';
 import 'package:quiz_app/knowledge_map/history_period.dart'
-    show HistoryPeriodDialog;
+    show HistoryPeriodMenu;
 
 import 'package:quiz_app/knowledge_map/history_map.dart';
 
@@ -61,9 +61,29 @@ void main() {
       HistoryMapPins overlay() => tester.widget(find.byType(HistoryMapPins));
       expect(overlay().pins.map((p) => p.title), ['Voyage', 'Treaty']);
       expect(overlay().focus, isNull);
+      await tester.tap(find.text('Events · 2'));
+      await tester.pumpAndSettle();
+      expect(find.byType(Dialog), findsNothing);
+      expect(overlay().pins.length, 2);
+      await tester.tap(find.byTooltip('Search events'));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextField), 'Voyage');
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Voyage').last);
+      await tester.pumpAndSettle();
+      expect(find.text('Source'), findsOneWidget);
+      await tester.tap(find.byTooltip('Back to events'));
+      await tester.pumpAndSettle();
+      expect(
+        tester.widget<TextField>(find.byType(TextField)).controller?.text,
+        'Voyage',
+      );
+      await tester.tap(find.byTooltip('Close'));
+      await tester.pumpAndSettle();
       await tester.tap(find.byTooltip('Treaty'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Close'));
+      expect(find.byType(AlertDialog), findsNothing);
+      await tester.tap(find.byTooltip('Close'));
       await tester.pumpAndSettle();
       expect(overlay().focus?.title, 'Treaty');
       expect(find.byType(Slider), findsNothing);
@@ -79,57 +99,56 @@ void main() {
     },
   );
 
-  testWidgets('compact calendar fits ten years and jumps by keyboard', (
-    tester,
-  ) async {
-    await tester.binding.setSurfaceSize(const Size(320, 600));
-    addTearDown(() => tester.binding.setSurfaceSize(null));
-    (int, int, bool)? result;
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Builder(
-          builder: (context) => TextButton(
-            onPressed: () async {
-              result = await showDialog<(int, int, bool)>(
-                context: context,
-                builder: (_) => const HistoryPeriodDialog(
-                  year: 1734,
-                  step: 10,
-                  customRange: false,
-                  events: [],
-                  russian: true,
-                ),
-              );
-            },
-            child: const Text('open'),
+  testWidgets(
+    'decade start choices follow the selected step and support exact years',
+    (tester) async {
+      await tester.binding.setSurfaceSize(const Size(320, 600));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      (int, int, bool)? result;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (context) => TextButton(
+              onPressed: () async {
+                result = await showDialog<(int, int, bool)>(
+                  context: context,
+                  builder: (_) => const HistoryPeriodMenu(
+                    year: 1734,
+                    step: 10,
+                    customRange: false,
+                    events: [],
+                    russian: true,
+                  ),
+                );
+              },
+              child: const Text('open'),
+            ),
           ),
         ),
-      ),
-    );
-    await tester.tap(find.text('open'));
-    await tester.pumpAndSettle();
-    final first = tester.getRect(find.bySemanticsLabel('1731 · 0 событий'));
-    final fifth = tester.getRect(find.bySemanticsLabel('1735 · 0 событий'));
-    expect(first.top, fifth.top);
-    expect(first.width, greaterThanOrEqualTo(48));
-    await tester.tap(find.text('Ввести год'));
-    await tester.pumpAndSettle();
-    await tester.enterText(find.byType(TextFormField), '1499');
-    await tester.testTextInput.receiveAction(TextInputAction.done);
-    await tester.pumpAndSettle();
-    expect(result, isNull);
-    await tester.enterText(find.byType(TextFormField), '1896');
-    await tester.testTextInput.receiveAction(TextInputAction.done);
-    await tester.pumpAndSettle();
-    expect(result, (1896, 10, false));
-  });
+      );
+      await tester.tap(find.text('open'));
+      await tester.pumpAndSettle();
+      expect(find.bySemanticsLabel('1731–1740 · 0 событий'), findsOneWidget);
+      expect(find.bySemanticsLabel('1732–1741 · 0 событий'), findsNothing);
+      await tester.tap(find.text('Ввести год'));
+      await tester.pumpAndSettle();
+      await tester.enterText(find.byType(TextFormField), '1499');
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pumpAndSettle();
+      expect(result, isNull);
+      await tester.enterText(find.byType(TextFormField), '1896');
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pumpAndSettle();
+      expect(result, (1896, 10, false));
+    },
+  );
 
   testWidgets('empty decade can browse the nearest year with events', (
     tester,
   ) async {
     await tester.pumpWidget(
       const MaterialApp(
-        home: HistoryPeriodDialog(
+        home: HistoryPeriodMenu(
           year: 1665,
           step: 1,
           customRange: false,
@@ -145,7 +164,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.bySemanticsLabel('1675 · 1 событие'), findsOneWidget);
     expect(find.text('К событиям 1675 года'), findsNothing);
-    expect(find.byType(HistoryPeriodDialog), findsOneWidget);
+    expect(find.byType(HistoryPeriodMenu), findsOneWidget);
   });
 
   testWidgets(
@@ -159,7 +178,7 @@ void main() {
               onPressed: () async {
                 result = await showDialog<(int, int, bool)>(
                   context: context,
-                  builder: (_) => const HistoryPeriodDialog(
+                  builder: (_) => const HistoryPeriodMenu(
                     year: 1733,
                     step: 10,
                     customRange: true,
