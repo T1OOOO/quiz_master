@@ -3300,61 +3300,87 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
-                child: Row(
-                  children: [
-                    if (leading != null) ...[leading, const SizedBox(width: 8)],
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            title,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff214b41),
-                            ),
+                child: LayoutBuilder(
+                  builder: (context, box) {
+                    final compact =
+                        countryPanel &&
+                        countryPanelOnSide &&
+                        box.maxWidth < 245;
+                    final actions = <Widget>[
+                      if (countryPanel)
+                        IconButton(
+                          tooltip: countryPanelOnSide
+                              ? tr(
+                                  'Move panel to bottom',
+                                  'Переместить панель вниз',
+                                )
+                              : tr(
+                                  'Move panel to side',
+                                  'Переместить панель вбок',
+                                ),
+                          onPressed: () => setState(
+                            () => countryPanelOnSide = !countryPanelOnSide,
                           ),
-                          if (headerAction != null)
-                            headerAction
-                          else if (subtitle != null)
-                            Text(
-                              subtitle,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                        ],
-                      ),
-                    ),
-                    if (countryPanel)
+                          icon: Icon(
+                            countryPanelOnSide
+                                ? Icons.vertical_align_bottom
+                                : Icons.vertical_split_outlined,
+                          ),
+                        ),
                       IconButton(
-                        tooltip: countryPanelOnSide
-                            ? tr(
-                                'Move panel to bottom',
-                                'Переместить панель вниз',
-                              )
-                            : tr(
-                                'Move panel to side',
-                                'Переместить панель вбок',
-                              ),
-                        onPressed: () => setState(
-                          () => countryPanelOnSide = !countryPanelOnSide,
-                        ),
-                        icon: Icon(
-                          countryPanelOnSide
-                              ? Icons.vertical_align_bottom
-                              : Icons.vertical_split_outlined,
-                        ),
+                        tooltip: tr('Close', 'Закрыть'),
+                        onPressed: onClose,
+                        icon: const Icon(Icons.close),
                       ),
-                    IconButton(
-                      tooltip: tr('Close', 'Закрыть'),
-                      onPressed: onClose,
-                      icon: const Icon(Icons.close),
-                    ),
-                  ],
+                    ];
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        if (compact)
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Wrap(children: actions),
+                          ),
+                        Row(
+                          children: [
+                            if (leading != null) ...[
+                              leading,
+                              const SizedBox(width: 8),
+                            ],
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    title,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xff214b41),
+                                    ),
+                                  ),
+                                  if (headerAction != null && !compact)
+                                    headerAction
+                                  else if (subtitle != null)
+                                    Text(
+                                      subtitle,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                ],
+                              ),
+                            ),
+                            if (!compact) ...actions,
+                          ],
+                        ),
+                        if (compact && headerAction != null) headerAction,
+                      ],
+                    );
+                  },
                 ),
               ),
               Flexible(
@@ -3500,7 +3526,13 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         .clamp(viewport.height * 0.2, viewport.height * 0.8)
                   : 0.0;
               final panelWidth = panelOpen && countryPanelOnSide
-                  ? math.min(360.0, viewport.width * 0.7)
+                  ? math.min(
+                      360.0,
+                      math.min(
+                        viewport.width * .55,
+                        math.max(viewport.width * .4, viewport.width - 184),
+                      ),
+                    )
                   : 0.0;
               if (practice) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -3531,7 +3563,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 mapViewport = currentMapViewport;
                 visibleRequest++;
                 WidgetsBinding.instance.addPostFrameCallback((_) {
-                  if (mounted) updateVisibleCountries();
+                  if (!mounted || mapViewport != currentMapViewport) return;
+                  if (kIsWeb && ready) controller?.resizeWebMap();
+                  updateVisibleCountries();
                 });
               }
               return Stack(
@@ -3631,6 +3665,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   if (!practice &&
                       ready &&
                       visible.isNotEmpty &&
+                      (panelWidth == 0 || currentMapViewport.width >= 280) &&
                       !visibleOpen &&
                       !browserOpen &&
                       !placesOpen)
@@ -4208,8 +4243,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         featureKind != null)
                       Positioned(
                         left: 12,
-                        right: 12,
-                        bottom: viewport.width < 520 ? 112 : 68,
+                        right: panelWidth + 12,
+                        bottom: currentMapViewport.width < 520 ? 112 : 68,
                         child: Align(
                           alignment: Alignment.bottomLeft,
                           child: _detailCard(

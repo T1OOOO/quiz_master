@@ -632,6 +632,23 @@ void main() {
       tester.getRect(map).right,
       tester.getRect(find.byKey(const ValueKey('country-bottom-panel'))).left,
     );
+    tester.view.physicalSize = const Size(320, 600);
+    await tester.pumpAndSettle();
+    final narrowMap = tester.getRect(map);
+    expect(narrowMap.width, greaterThanOrEqualTo(184));
+    for (final name in [
+      'Map menu',
+      'Zoom in',
+      '3D globe',
+      'Historical atlas',
+    ]) {
+      final button = find.byTooltip(name).hitTestable();
+      expect(button, findsOneWidget);
+      expect(tester.getRect(button).right, lessThanOrEqualTo(narrowMap.right));
+    }
+    expect(tester.takeException(), isNull);
+    tester.view.physicalSize = const Size(800, 600);
+    await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Move panel to bottom'));
     await tester.pumpAndSettle();
     expect(tester.getSize(map).width, 800);
