@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 import 'atlas_controls.dart';
+import 'atlas_view.dart';
 import 'history_globe.dart';
 import 'history_relief.dart';
 
@@ -15,12 +16,16 @@ class WorldGlobe extends StatefulWidget {
     required this.names,
     required this.russian,
     this.selectedId,
+    this.initialCamera,
+    this.onHistory,
   });
 
   final List features;
   final Map<String, String> names;
   final bool russian;
   final String? selectedId;
+  final AtlasCamera? initialCamera;
+  final Future<AtlasView?> Function(AtlasView)? onHistory;
 
   @override
   State<WorldGlobe> createState() => _WorldGlobeState();
@@ -55,6 +60,34 @@ class _WorldGlobeState extends State<WorldGlobe> {
         ),
   ];
   late String? selected = widget.selectedId;
+  late AtlasCamera? camera = widget.initialCamera;
+  int viewRevision = 0;
+  bool switching = false;
+
+  Future<void> switchToHistory() async {
+    if (switching) return;
+    switching = true;
+    try {
+      final result = await widget.onHistory?.call((
+        country: selected,
+        globe: true,
+        camera: camera,
+      ));
+      if (!mounted || result == null) return;
+      if (!result.globe) {
+        Navigator.pop(context, result);
+        return;
+      }
+      setState(() {
+        selected = result.country;
+        camera = result.camera;
+        viewRevision++;
+      });
+    } finally {
+      switching = false;
+    }
+  }
+
   ui.Image? relief;
 
   @override
@@ -93,7 +126,10 @@ class _WorldGlobeState extends State<WorldGlobe> {
           fit: StackFit.expand,
           children: [
             HistoryGlobe(
+              key: ValueKey(viewRevision),
               land: const [],
+              initialCamera: camera,
+              onCamera: (value) => camera = value,
               polities: polities,
               year: 0,
               relief: relief,
@@ -111,6 +147,9 @@ class _WorldGlobeState extends State<WorldGlobe> {
                   russian: ru,
                   title: ru ? 'Глобус мира' : 'World globe',
                   globe: true,
+                  onAtlasSwitch: widget.onHistory == null
+                      ? null
+                      : switchToHistory,
                   onBack: () => Navigator.pop(context),
                   onProjection: () => Navigator.pop(context),
                 ),

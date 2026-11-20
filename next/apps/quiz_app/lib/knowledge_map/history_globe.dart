@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
 import 'atlas_controls.dart';
+import 'atlas_view.dart';
 import 'history_event_symbol.dart';
 import 'history_map_pins.dart';
 
@@ -55,8 +56,12 @@ class HistoryGlobe extends StatefulWidget {
     this.eventPins = const [],
     this.onEventTap,
     this.relief,
+    this.initialCamera,
+    this.onCamera,
   });
   final VoidCallback? onSearch;
+  final AtlasCamera? initialCamera;
+  final ValueChanged<AtlasCamera>? onCamera;
   final List land;
   final List<GlobePolity> polities;
   final int year;
@@ -161,13 +166,18 @@ class _HistoryGlobeState extends State<HistoryGlobe>
   _Scene? _scene;
   ui.FragmentShader? _terrainShader;
   Size? _sceneSize;
+  bool _restoredZoom = false;
+  double _minimumZoom = .64, _maximumZoom = 3;
 
   @override
   void initState() {
     super.initState();
     _loadShader();
     _selected = widget.selectedName;
-    if (widget.focus case final target?) {
+    if (widget.initialCamera case final camera?) {
+      _longitude = camera.longitude;
+      _latitude = camera.latitude;
+    } else if (widget.focus case final target?) {
       _longitude = target.longitude;
       _latitude = target.latitude;
     }
@@ -227,8 +237,16 @@ class _HistoryGlobeState extends State<HistoryGlobe>
     _scene = null;
   }
 
+  void _reportCamera(double side) {
+    if (side > 0) {
+      widget.onCamera?.call(
+        atlasGlobeCamera(_longitude, _latitude, side * .47 * _zoom),
+      );
+    }
+  }
+
   void _changeZoom(double value) => setState(() {
-    _zoom = value.clamp(.64, 3);
+    _zoom = value.clamp(_minimumZoom, _maximumZoom);
     _invalidate();
   });
 
@@ -280,7 +298,7 @@ class _HistoryGlobeState extends State<HistoryGlobe>
         );
       }
       final requested = _startZoom * scale;
-      _zoom = requested.clamp(.64, 3);
+      _zoom = requested.clamp(_minimumZoom, _maximumZoom);
       if (requested != _zoom) _startZoom = _zoom / scale;
       _invalidate();
     });
@@ -426,6 +444,15 @@ class _HistoryGlobeState extends State<HistoryGlobe>
     return LayoutBuilder(
       builder: (context, constraints) {
         final size = Size(constraints.maxWidth, constraints.maxHeight);
+        if (!_restoredZoom && !size.isEmpty) {
+          _restoredZoom = true;
+          if (widget.initialCamera case final camera?) {
+            _zoom = atlasGlobeRadius(camera) / (size.shortestSide * .47);
+            _minimumZoom = math.min(_minimumZoom, _zoom);
+            _maximumZoom = math.max(_maximumZoom, _zoom);
+          }
+        }
+        _reportCamera(size.shortestSide);
         final scene = _getScene(size);
         return Stack(
           fit: StackFit.expand,
