@@ -1,30 +1,5 @@
 import 'package:flutter/material.dart';
 
-int _distanceTo(Map event, int year) {
-  final start = event['start'] as int;
-  final end = event['end'] as int;
-  return year < start
-      ? start - year
-      : year > end
-      ? year - end
-      : 0;
-}
-
-/// Inside an interval prefer the event that started most recently.
-Map? closestHistoryEvent(Iterable<Map> events, int year) {
-  Map? best;
-  for (final event in events) {
-    final distance = _distanceTo(event, year);
-    if (best == null ||
-        distance < _distanceTo(best, year) ||
-        (distance == _distanceTo(best, year) &&
-            (event['start'] as int) > (best['start'] as int))) {
-      best = event;
-    }
-  }
-  return best;
-}
-
 String historyEventDate(Map r) =>
     r['start'] == r['end'] ? '${r['start']}' : '${r['start']}–${r['end']}';
 
@@ -125,7 +100,9 @@ class HistoryTimeline extends StatelessWidget {
                           max: 2000,
                           divisions: 499,
                           padding: const EdgeInsets.symmetric(horizontal: 14),
-                          label: '$year',
+                          label:
+                              '${interval ? "$start–$end" : year} · $countLabel',
+                          onChangeStart: (_) => onYear(year),
                           semanticFormatterCallback: (v) => '${v.round()}',
                           value: year.toDouble(),
                           onChanged: (v) => onYear(v.round()),
@@ -185,20 +162,18 @@ class HistoryTimeline extends StatelessWidget {
                           ),
                         ),
                       ),
-                    Tooltip(
-                      message: countLabel,
-                      excludeFromSemantics: true,
-                      child: Semantics(
-                        label: compact ? t('События', 'Events') : null,
-                        child: TextButton.icon(
-                          style: style,
-                          onPressed: openEvents,
-                          icon: const Icon(Icons.list_alt_outlined, size: 18),
-                          label: Text(
-                            compact ? '$eventCount' : countLabel,
-                            maxLines: 1,
-                          ),
+                    Flexible(
+                      flex: 2,
+                      child: TextButton.icon(
+                        style: style,
+                        icon: compact
+                            ? null
+                            : const Icon(Icons.list_alt_outlined, size: 18),
+                        label: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(countLabel, maxLines: 1),
                         ),
+                        onPressed: openEvents,
                       ),
                     ),
                   ],

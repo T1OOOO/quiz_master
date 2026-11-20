@@ -17,7 +17,6 @@ import 'history_event_index.dart';
 import 'history_relief.dart';
 
 export 'history_period.dart' show historyPeriod;
-export 'history_timeline.dart' show closestHistoryEvent;
 
 const _root = 'assets/quizipedia/map_v2/';
 const _centuries = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
@@ -82,14 +81,14 @@ class _HistoryMapState extends State<HistoryMap> {
       year = choice.$1;
       periodLength = choice.$2;
       calendarCentury = choice.$3;
-      preview = null;
+      selectedEvent = null;
       selected = null;
     });
   }
 
   late bool globe = widget.initialGlobe;
   int resetGlobe = 0;
-  Map? preview;
+  Map? selectedEvent;
   final regionAnchors = <String, Offset>{};
   late List landPolygons;
   Map<String, dynamic> polityNames = {};
@@ -197,11 +196,11 @@ class _HistoryMapState extends State<HistoryMap> {
   }
 
   void changeYear(int v) {
-    if (v == year) return;
+    if (v == year && selectedEvent == null) return;
     setState(() {
       year = v;
       selected = null;
-      preview = null;
+      selectedEvent = null;
     });
   }
 
@@ -302,7 +301,7 @@ class _HistoryMapState extends State<HistoryMap> {
         calendarCentury = true;
         periodLength = 100;
         selected = null;
-        preview = null;
+        selectedEvent = null;
       });
     }
   }
@@ -359,7 +358,7 @@ class _HistoryMapState extends State<HistoryMap> {
     if (mounted && choice != null) {
       setState(() {
         country = choice.isEmpty ? null : choice;
-        preview = null;
+        selectedEvent = null;
       });
     }
   }
@@ -456,7 +455,7 @@ class _HistoryMapState extends State<HistoryMap> {
         year = event['start'];
         selected = null;
       }
-      preview = event;
+      selectedEvent = event;
     });
     return true;
   }
@@ -536,7 +535,6 @@ class _HistoryMapState extends State<HistoryMap> {
           final rows = historyEventsFor(scoped, period.$1, period.$2, null);
           final lang = widget.russian ? 'ru' : 'en';
           final topControlsHeight = selected == null ? 60.0 : 108.0;
-          final story = preview ?? closestHistoryEvent(rows, year);
           HistoryEventPin pinFor(Map row, Offset point) => (
             longitude: point.dx,
             latitude: point.dy,
@@ -556,7 +554,7 @@ class _HistoryMapState extends State<HistoryMap> {
             if (point == null) continue;
             final pin = pinFor(r, point);
             pinRecords[pin] = r;
-            if (r == story) {
+            if (r == selectedEvent) {
               focus = pin;
               final regionHint = xy is List
                   ? ''
@@ -598,7 +596,7 @@ class _HistoryMapState extends State<HistoryMap> {
               );
             }
             if (!mounted || event == null) return;
-            setState(() => preview = event);
+            setState(() => selectedEvent = event);
             await showDetail(event);
           }
 
