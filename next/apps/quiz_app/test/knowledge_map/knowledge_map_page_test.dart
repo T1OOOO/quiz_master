@@ -311,6 +311,30 @@ void main() {
     );
     expect(waterFeatureId({'id': 'ne10-river-1'}), 'ne10-river-1');
   });
+  testWidgets('mobile atlas exposes its globe and returns to the same map', (
+    tester,
+  ) async {
+    await tester.binding.setSurfaceSize(const Size(320, 640));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, select) => const SizedBox.expand(),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('3D globe'));
+    await tester.pumpAndSettle();
+    expect(find.text('World globe'), findsOneWidget);
+    await tester.tap(find.byTooltip('Zoom in'));
+    await tester.pump();
+    await tester.tap(find.text('2D map'));
+    await tester.pumpAndSettle();
+    expect(find.text('3D globe'), findsOneWidget);
+    expect(find.byTooltip('Map menu'), findsOneWidget);
+  });
   testWidgets('map opens while supplementary facts are still loading', (
     tester,
   ) async {

@@ -7,6 +7,15 @@ import 'package:quiz_app/knowledge_map/country_marker.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test('dense regions keep readable cartographic names', () {
+    expect(mapCountryName('KP', 'КНДР', russian: true), 'Северная Корея');
+    expect(
+      mapCountryName('CF', 'ЦАР', russian: true),
+      'Центральноафриканская Республика',
+    );
+    expect(mapCountryName('AE', 'ОАЭ', russian: true), 'Арабские Эмираты');
+  });
+
   test('standalone flag has a fixed compact footprint', () async {
     final flag = image.Image(width: 12, height: 8, numChannels: 4);
     image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));
