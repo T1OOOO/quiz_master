@@ -114,7 +114,7 @@ class HistoryTimeline extends StatelessWidget {
                 height: 44,
                 child: IconButton(
                   tooltip: label,
-                  icon: Icon(icon),
+                  icon: Icon(icon, color: ink),
                   onPressed: change,
                   padding: EdgeInsets.zero,
                 ),
@@ -255,10 +255,11 @@ class _TimelineOption extends StatelessWidget {
             label,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.labelLarge,
+            style: Theme.of(context).textTheme.labelLarge
+                ?.copyWith(color: const Color(0xff503a27)),
           ),
         ),
-        const Icon(Icons.arrow_drop_down, size: 18),
+        const Icon(Icons.arrow_drop_down, size: 18, color: Color(0xff503a27)),
       ],
     ),
   );
