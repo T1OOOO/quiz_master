@@ -333,7 +333,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       setState(() => _landPainted = true);
       notifyAtlasLandReady();
     }
-    onCameraSettled();
   }
 
   Future<void> load() async {
@@ -3927,7 +3926,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                   });
                                 }
                               },
-                              onCameraIdle: _onMapIdle,
+                              onCameraIdle: onCameraSettled,
+                              onMapIdle: _onMapIdle,
                               onMapClick: tap,
                               featureTapsTriggersMapClick: true,
                               compassEnabled: false,
