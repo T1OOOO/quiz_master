@@ -112,7 +112,7 @@ class ReliefBasemap {
               ['linear'],
               ['zoom'],
               3.5,
-              0.52,
+              0.32,
               5.8,
               0.0,
             ],

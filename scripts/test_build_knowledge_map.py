@@ -27,6 +27,15 @@ class MapBuildTest(unittest.TestCase):
                 self.assertEqual(f['id'],f['properties']['id'])
                 m.validate_geometry(f['geometry'])
 
+    def test_overview_keeps_country_identities_in_a_smaller_payload(self):
+        detail = self.layers['countries.geojson']
+        overview = self.layers['countries_overview.geojson']
+        self.assertEqual(
+            [f['properties'] for f in overview['features']],
+            [f['properties'] for f in detail['features']],
+        )
+        self.assertLess(len(m.encoded(overview)), len(m.encoded(detail)) / 5)
+
     def test_existing_country_anchor_retained_and_ms_not_plymouth(self):
         labels={f['id']:f for f in self.layers['country_labels.geojson']['features']}
         self.assertGreaterEqual(len(labels),219)

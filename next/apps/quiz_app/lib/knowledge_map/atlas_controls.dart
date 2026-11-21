@@ -23,10 +23,13 @@ class AtlasHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Material(
-    color: const Color(0xfffffef9),
+    color: const Color(0xfffcf7ed),
     elevation: 2,
-    shadowColor: const Color(0x55324c44),
-    borderRadius: BorderRadius.circular(16),
+    shadowColor: const Color(0x55473425),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+      side: const BorderSide(color: Color(0xffdfd1bd)),
+    ),
     child: LayoutBuilder(
       builder: (context, box) {
         final textScale = math.max(
@@ -38,7 +41,13 @@ class AtlasHeader extends StatelessWidget {
         final globeLabel = russian ? '3D-глобус' : '3D globe';
         final projection = globe ? flatLabel : globeLabel;
         final glyph = Icon(globe ? Icons.map_outlined : Icons.public, size: 19);
-        const ink = Color(0xff215b53);
+        const ink = Color(0xff48392c);
+        const accent = Color(0xff754524);
+        const selectedFill = Color(0xffefd7b5);
+        final atlasIcon = history ? Icons.public : Icons.history_edu_outlined;
+        final atlasTitle = history
+            ? (russian ? 'Атлас мира' : 'World atlas')
+            : (russian ? 'Исторический атлас' : 'Historical atlas');
         Widget projectionOption(String label, String tooltip, bool active) =>
             Semantics(
               selected: active,
@@ -48,8 +57,14 @@ class AtlasHeader extends StatelessWidget {
                   onPressed: active ? null : onProjection,
                   style: TextButton.styleFrom(
                     foregroundColor: ink,
-                    disabledForegroundColor: active ? Colors.white : null,
-                    disabledBackgroundColor: active ? ink : null,
+                    disabledForegroundColor: active ? accent : null,
+                    disabledBackgroundColor: active ? selectedFill : null,
+                    textStyle: TextStyle(
+                      fontWeight: active ? FontWeight.w800 : FontWeight.w500,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7),
+                    ),
                     minimumSize: const Size(39, 36),
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -61,7 +76,7 @@ class AtlasHeader extends StatelessWidget {
             );
         final back = IconButton(
           tooltip: russian ? 'Назад' : 'Back',
-          icon: const Icon(Icons.arrow_back, size: 20),
+          icon: const Icon(Icons.arrow_back_rounded, size: 20, color: ink),
           onPressed: onBack,
         );
         final actions = <Widget>[
@@ -70,6 +85,7 @@ class AtlasHeader extends StatelessWidget {
               IconButton(
                 tooltip: projection,
                 onPressed: onProjection,
+                color: ink,
                 icon: glyph,
               )
             else
@@ -77,8 +93,8 @@ class AtlasHeader extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: const Color(0xffe9f1ed),
-                    borderRadius: BorderRadius.circular(30),
+                    color: const Color(0xfff1e8d9),
+                    borderRadius: BorderRadius.circular(9),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(2),
@@ -93,18 +109,21 @@ class AtlasHeader extends StatelessWidget {
                 ),
               ),
           if (onAtlasSwitch != null)
-            if (box.maxWidth >= 285 * textScale)
+            if (box.maxWidth >= 294 * textScale)
               Padding(
-                padding: const EdgeInsets.only(left: 4),
-                child: OutlinedButton.icon(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                child: TextButton.icon(
                   onPressed: onAtlasSwitch,
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: ink,
-                    side: const BorderSide(color: Color(0xffbbcfc5)),
+                  style: TextButton.styleFrom(
+                    foregroundColor: accent,
+                    backgroundColor: const Color(0xfff7eddd),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                     minimumSize: const Size(0, 40),
                     padding: const EdgeInsets.symmetric(horizontal: 9),
                   ),
-                  icon: const Icon(Icons.swap_horiz, size: 17),
+                  icon: Icon(atlasIcon, size: 18),
                   label: Text(
                     history
                         ? (russian ? 'Мир' : 'World')
@@ -114,11 +133,10 @@ class AtlasHeader extends StatelessWidget {
               )
             else
               IconButton(
-                tooltip: history
-                    ? (russian ? 'Атлас мира' : 'World atlas')
-                    : (russian ? 'Исторический атлас' : 'Historical atlas'),
+                tooltip: atlasTitle,
                 onPressed: onAtlasSwitch,
-                icon: const Icon(Icons.swap_horiz, size: 21),
+                color: accent,
+                icon: Icon(atlasIcon, size: 21),
               ),
           if (onAbout != null)
             IconButton(
@@ -150,7 +168,7 @@ class AtlasHeader extends StatelessWidget {
                       fontSize: 18,
                       fontFamily: 'Georgia',
                       fontWeight: FontWeight.w700,
-                      color: Color(0xff214b41),
+                      color: ink,
                     ),
                   ),
                 ),

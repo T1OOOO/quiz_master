@@ -188,6 +188,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   ];
   Future<void> Function()? loadZoomLabels;
   bool detailWaterRequested = false;
+  bool detailedCountriesRequested = false;
   bool cameraMoving = false;
   math.Point<double>? pointerOnMap;
 
@@ -336,6 +337,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     controller = null;
     loadZoomLabels = null;
     detailWaterRequested = false;
+    detailedCountriesRequested = false;
     cameraMoving = false;
     pointerOnMap = null;
     thematicSprites.clear();
@@ -367,7 +369,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     try {
       final texts = await Future.wait([
         (widget.bundle ?? rootBundle).loadString(
-          'assets/quizipedia/map_v2/countries.geojson',
+          'assets/quizipedia/map_v2/countries_overview.geojson',
           cache: false,
         ),
         (widget.bundle ?? rootBundle).loadString(
@@ -706,7 +708,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'waterways',
         'marine-highlight',
         const FillLayerProperties(
-          fillColor: '#197d97',
+          fillColor: '#356f60',
           fillAntialias: false,
           fillOpacity: 0.72,
         ),
@@ -721,7 +723,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       await c.addFillLayer(
         'waterways',
         'lakes',
-        const FillLayerProperties(fillColor: '#acd4dd'),
+        const FillLayerProperties(fillColor: '#b7ccc3'),
         filter: [
           '==',
           ['get', 'kind'],
@@ -732,7 +734,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'waterways',
         'lake-highlight',
         const FillLayerProperties(
-          fillColor: '#197d97',
+          fillColor: '#356f60',
           fillAntialias: false,
           fillOpacity: 0.72,
         ),
@@ -745,7 +747,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       await c.addLineLayer(
         'waterways',
         'rivers',
-        const LineLayerProperties(lineColor: '#81b6c1', lineWidth: 1.2),
+        const LineLayerProperties(lineColor: '#719d90', lineWidth: 1.2),
         filter: [
           '==',
           ['get', 'kind'],
@@ -755,7 +757,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       await c.addLineLayer(
         'waterways',
         'river-highlight',
-        const LineLayerProperties(lineColor: '#007f9b', lineWidth: 4),
+        const LineLayerProperties(lineColor: '#2d7563', lineWidth: 4),
         filter: [
           'all',
           [
@@ -780,7 +782,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'marine-focus',
         const CircleLayerProperties(
           circleRadius: 10,
-          circleColor: '#197d97',
+          circleColor: '#356f60',
           circleOpacity: 0.65,
           circleStrokeColor: '#f1fcff',
           circleStrokeWidth: 2,
@@ -1047,6 +1049,40 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     }
   }
 
+  Future<void> installDetailedCountries(
+    MapLibreMapController c,
+    int attempt,
+  ) async {
+    bool current() => mounted && generation == attempt && controller == c;
+    try {
+      final text = await (widget.bundle ?? rootBundle).loadString(
+        'assets/quizipedia/map_v2/countries.geojson',
+        cache: false,
+      );
+      if (!current()) return;
+      final detailed = jsonDecode(text) as Map<String, dynamic>;
+      final byId = {
+        for (final country in state!.countries) country.id: country,
+      };
+      for (final feature in detailed['features'] as List) {
+        final properties = feature['properties'] as Map;
+        final country = byId[properties['country_id']];
+        if (country?.area case final area?) properties['area'] = area;
+        if (country?.population case final population?) {
+          properties['population'] = population;
+        }
+      }
+      await c.setGeoJsonSource('countries', detailed);
+      if (!current()) return;
+      countries = detailed;
+      unawaited(updateVisibleCountries());
+    } catch (error) {
+      debugPrint(
+        'Knowledge map: detailed country outlines unavailable: $error',
+      );
+    }
+  }
+
   Future<void> installDetailedWater(
     MapLibreMapController c,
     int attempt,
@@ -1075,14 +1111,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           await c.addLineLayer(
             id,
             id,
-            const LineLayerProperties(lineColor: '#81b6c1', lineWidth: 1.2),
+            const LineLayerProperties(lineColor: '#719d90', lineWidth: 1.2),
             minzoom: 4,
             belowLayerId: 'capital-dots',
           );
           await c.addLineLayer(
             id,
             'rivers-detail-highlight',
-            const LineLayerProperties(lineColor: '#007f9b', lineWidth: 4),
+            const LineLayerProperties(lineColor: '#2d7563', lineWidth: 4),
             minzoom: 4,
             belowLayerId: 'capital-dots',
             filter: [
@@ -1100,7 +1136,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           await c.addFillLayer(
             id,
             id,
-            const FillLayerProperties(fillColor: '#acd4dd'),
+            const FillLayerProperties(fillColor: '#b7ccc3'),
             minzoom: 4,
             belowLayerId: 'capital-dots',
           );
@@ -1108,7 +1144,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             id,
             'lakes-detail-highlight',
             const FillLayerProperties(
-              fillColor: '#197d97',
+              fillColor: '#356f60',
               fillAntialias: false,
               fillOpacity: 0.72,
             ),
@@ -1136,7 +1172,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           await c.setLayerProperties(
             'rivers',
             const LineLayerProperties(
-              lineColor: '#81b6c1',
+              lineColor: '#719d90',
               lineWidth: 1.2,
               lineOpacity: [
                 'step',
@@ -1154,7 +1190,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           await c.setLayerProperties(
             'lake-highlight',
             const FillLayerProperties(
-              fillColor: '#197d97',
+              fillColor: '#356f60',
               fillAntialias: false,
               fillOpacity: [
                 'step',
@@ -1168,7 +1204,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           await c.setLayerProperties(
             'lakes',
             const FillLayerProperties(
-              fillColor: '#acd4dd',
+              fillColor: '#b7ccc3',
               fillOpacity: [
                 'step',
                 ['zoom'],
@@ -1687,7 +1723,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       final id = features.isEmpty
           ? null
           : features.first['properties']['country_id'] as String?;
-      if (id == null && countryDetailsOpen && state?.selected != null) return;
+      if (id == null && countryDetailsOpen) return;
       await select(id);
       if (markerTapped &&
           id != null &&
@@ -2109,7 +2145,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     hoverTimer?.cancel();
     hover.clear();
     hoveredWaterId = null;
-    if (mounted) setState(() {});
     queueHoverFilter();
   }
 
@@ -2343,7 +2378,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           await c.setLayerProperties(
             'river-highlight',
             LineLayerProperties(
-              lineColor: '#007f9b',
+              lineColor: '#2d7563',
               lineWidth: 4,
               lineOpacity: hasDetailedRiver
                   ? const [
@@ -2422,6 +2457,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       loadZoomLabels = null;
       if (load != null) unawaited(load());
     }
+    if (zoom >= 4 && !detailedCountriesRequested) {
+      detailedCountriesRequested = true;
+      unawaited(installDetailedCountries(c, generation));
+    }
     if (zoom >= 4 && !detailWaterRequested) {
       detailWaterRequested = true;
       unawaited(installDetailedWater(c, generation));
@@ -2477,7 +2516,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           final id = features.first['properties']['id'] as String;
           if (hover.completeLandmark(request, id, Offset(point.x, point.y))) {
             hoveredWaterId = null;
-            setState(() {});
             queueHoverFilter();
           }
           return;
@@ -2519,7 +2557,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         if (hover.complete(request, id, Offset(point.x, point.y))) {
           if (waterId != hoveredWaterId) hoveredMarinePoint = marinePoint;
           hoveredWaterId = waterId;
-          setState(() {});
           queueHoverFilter();
         }
       } catch (error, stack) {
@@ -2530,7 +2567,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
             hover.isCurrent(request)) {
           hover.complete(request, null, Offset(point.x, point.y));
           hoveredWaterId = null;
-          setState(() {});
           queueHoverFilter();
         }
       }
@@ -3170,8 +3206,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           ),
                           enabled: id != 'visible' || visible.isNotEmpty,
                           leading: CircleAvatar(
-                            backgroundColor: const Color(0xffe9f1ec),
-                            foregroundColor: const Color(0xff28594f),
+                            backgroundColor: const Color(0xfff1e5d1),
+                            foregroundColor: const Color(0xff62482e),
                             child: Icon(icon, size: 21),
                           ),
                           title: Text(
@@ -3244,7 +3280,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         ),
         child: Material(
           elevation: 4,
-          color: const Color(0xfffffef9),
+          color: const Color(0xfffcf6e9),
           borderRadius: countryPanel
               ? (countryPanelOnSide
                     ? const BorderRadius.horizontal(left: Radius.circular(20))
@@ -3276,7 +3312,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         width: 44,
                         height: 5,
                         decoration: BoxDecoration(
-                          color: const Color(0xffaaa3ad),
+                          color: const Color(0xffb6a38d),
                           borderRadius: BorderRadius.circular(3),
                         ),
                       ),
@@ -3346,7 +3382,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                     style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff214b41),
+                                      color: Color(0xff47362a),
                                     ),
                                   ),
                                   if (headerAction != null && !compact)
@@ -3478,14 +3514,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     return Theme(
       data: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff235f55))
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff795334))
             .copyWith(
-              primary: const Color(0xff20594f),
+              primary: const Color(0xff62482e),
               surface: const Color(0xfffffef9),
             ),
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: const Color(0xffedf2ec),
+          fillColor: const Color(0xfff2eadc),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,
@@ -3501,7 +3537,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 constraints.maxHeight,
               );
               final panelOpen =
-                  selected != null &&
+                  (selected != null ||
+                      feature != null ||
+                      selectedLandmark != null) &&
                   countryDetailsOpen &&
                   !visibleOpen &&
                   !browserOpen &&
@@ -3554,6 +3592,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   updateVisibleCountries();
                 });
               }
+              Widget positionFeatureDetails(Widget card) => Positioned(
+                left: panelOpen ? (countryPanelOnSide ? null : 0) : 12,
+                right: panelOpen ? 0 : 12,
+                top: panelOpen && countryPanelOnSide ? 0 : null,
+                bottom: panelOpen ? 0 : (viewport.width < 520 ? 112 : 68),
+                width: panelOpen && countryPanelOnSide ? panelWidth : null,
+                height: panelOpen && !countryPanelOnSide ? panelHeight : null,
+                child: panelOpen
+                    ? card
+                    : Align(alignment: Alignment.bottomLeft, child: card),
+              );
               return Stack(
                 fit: StackFit.expand,
                 children: [
@@ -3588,7 +3637,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                             child: MapLibreMap(
                               key: ValueKey(generation),
                               trackCameraPosition: true,
-                              styleString: '{"version":8,"sources":{},"layers":[{"id":"sea","type":"background","paint":{"background-color":"#a8d4df"}}]}',
+                              styleString: '{"version":8,"sources":{},"layers":[{"id":"sea","type":"background","paint":{"background-color":"#b6cac0"}}]}',
                               initialCameraPosition:
                                   switch (widget.initialView?.camera) {
                                     final camera? => CameraPosition(
@@ -3642,7 +3691,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           duration: const Duration(milliseconds: 130),
                           curve: Curves.easeOut,
                           opacity: projectionVeil ? .4 : 0,
-                          child: const ColoredBox(color: Color(0xffeaf3ef)),
+                          child: const ColoredBox(color: Color(0xffeee9dc)),
                         ),
                       ),
                     ),
@@ -3816,7 +3865,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                       left: 12,
                       child: PointerInterceptor(
                         child: Material(
-                          color: const Color(0xff20594f),
+                          color: const Color(0xff62482e),
                           borderRadius: BorderRadius.circular(14),
                           elevation: 2,
                           child: Tooltip(
@@ -3874,7 +3923,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                           heroTag: null,
                           tooltip: tr('Map layers', 'Слои карты'),
                           backgroundColor: const Color(0xfffff9e9),
-                          foregroundColor: const Color(0xff25645c),
+                          foregroundColor: const Color(0xff725134),
                           onPressed: () => _openDataDialog(context),
                           child: const Icon(Icons.layers_outlined),
                         ),
@@ -4227,151 +4276,137 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                         !placesOpen &&
                         feature != null &&
                         featureKind != null)
-                      Positioned(
-                        left: 12,
-                        right: panelWidth + 12,
-                        bottom: currentMapViewport.width < 520 ? 112 : 68,
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: _detailCard(
-                            viewport: viewport,
-                            title:
-                                (feature[ru ? 'name_ru' : 'name_en']
-                                    as String?) ??
-                                tr('Unnamed feature', 'Без названия'),
-                            subtitle: switch (featureKind) {
-                              'capital' =>
-                                '${tr('Capital', 'Столица')} · ${countryName(feature['country_id'] as String? ?? '')}',
-                              'lake' => tr('Lake', 'Озеро'),
-                              'marine' => tr('Water body', 'Акватория'),
-                              'river' => tr('River', 'Река'),
-                              _ => tr('Water', 'Водоём'),
-                            },
-                            onClose: () => select(null),
-                            children: [
-                              for (final fact
-                                  in ((featureFacts[featureKind == 'capital'
-                                                      ? 'capitals'
-                                                      : 'waterways']
-                                                  as Map?)?[feature['fact_id'] ??
-                                                  feature['id']]
-                                              as List? ??
-                                          const [])
-                                      .map(MapInterestingFact.fromJson)
-                                      .whereType<MapInterestingFact>()) ...[
-                                Text(ru ? fact.textRu : fact.textEn),
-                                TextButton(
-                                  onPressed: () => launchUrl(
-                                    fact.source,
-                                    mode: LaunchMode.externalApplication,
-                                  ),
-                                  child: Text(tr('Source', 'Источник')),
+                      positionFeatureDetails(
+                        _detailCard(
+                          countryPanel: panelOpen,
+                          viewport: viewport,
+                          title:
+                              (feature[ru ? 'name_ru' : 'name_en']
+                                  as String?) ??
+                              tr('Unnamed feature', 'Без названия'),
+                          subtitle: switch (featureKind) {
+                            'capital' =>
+                              '${tr('Capital', 'Столица')} · ${countryName(feature['country_id'] as String? ?? '')}',
+                            'lake' => tr('Lake', 'Озеро'),
+                            'marine' => tr('Water body', 'Акватория'),
+                            'river' => tr('River', 'Река'),
+                            _ => tr('Water', 'Водоём'),
+                          },
+                          onClose: () => select(null),
+                          children: [
+                            for (final fact
+                                in ((featureFacts[featureKind == 'capital'
+                                                    ? 'capitals'
+                                                    : 'waterways']
+                                                as Map?)?[feature['fact_id'] ??
+                                                feature['id']]
+                                            as List? ??
+                                        const [])
+                                    .map(MapInterestingFact.fromJson)
+                                    .whereType<MapInterestingFact>()) ...[
+                              Text(ru ? fact.textRu : fact.textEn),
+                              TextButton(
+                                onPressed: () => launchUrl(
+                                  fact.source,
+                                  mode: LaunchMode.externalApplication,
                                 ),
-                              ],
+                                child: Text(tr('Source', 'Источник')),
+                              ),
                             ],
-                          ),
+                          ],
                         ),
                       ),
                     if (!visibleOpen &&
                         !browserOpen &&
                         !placesOpen &&
                         selectedLandmark != null)
-                      Positioned(
-                        left: 12,
-                        right: 12,
-                        bottom: viewport.width < 520 ? 112 : 68,
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: _detailCard(
-                            viewport: viewport,
-                            title: ru
-                                ? selectedLandmark.nameRu
-                                : selectedLandmark.nameEn,
-                            subtitle: countryName(selectedLandmark.countryId),
-                            onClose: () => selectLandmark(null),
-                            children: [
-                              if (selectedLandmark.thumbnailAsset != null)
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
-                                  child: Image.asset(
-                                    selectedLandmark.thumbnailAsset!,
-                                    height: 110,
-                                    fit: BoxFit.cover,
-                                    errorBuilder: (_, _, _) =>
-                                        const SizedBox.shrink(),
-                                  ),
+                      positionFeatureDetails(
+                        _detailCard(
+                          countryPanel: panelOpen,
+                          viewport: viewport,
+                          title: ru
+                              ? selectedLandmark.nameRu
+                              : selectedLandmark.nameEn,
+                          subtitle: countryName(selectedLandmark.countryId),
+                          onClose: () => select(null),
+                          children: [
+                            if (selectedLandmark.thumbnailAsset != null)
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.asset(
+                                  selectedLandmark.thumbnailAsset!,
+                                  height: 110,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (_, _, _) =>
+                                      const SizedBox.shrink(),
                                 ),
-                              const SizedBox(height: 8),
-                              Text(
-                                ru
-                                    ? selectedLandmark.explanationRu
-                                    : selectedLandmark.explanationEn,
                               ),
-                              if (selectedLandmark.thumbnailAsset != null &&
-                                  selectedLandmark.imageAttribution != null)
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 8),
-                                  child: Text(
-                                    '${selectedLandmark.imageAttribution} · ${selectedLandmark.imageLicense ?? ''}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall,
-                                  ),
+                            const SizedBox(height: 8),
+                            Text(
+                              ru
+                                  ? selectedLandmark.explanationRu
+                                  : selectedLandmark.explanationEn,
+                            ),
+                            if (selectedLandmark.thumbnailAsset != null &&
+                                selectedLandmark.imageAttribution != null)
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8),
+                                child: Text(
+                                  '${selectedLandmark.imageAttribution} · ${selectedLandmark.imageLicense ?? ''}',
+                                  style: Theme.of(context).textTheme.bodySmall,
                                 ),
-                              Wrap(
-                                spacing: 4,
-                                children: [
-                                  TextButton(
-                                    onPressed: () => launchUrl(
-                                      Uri.parse(selectedLandmark.sourceUrl),
-                                      mode: LaunchMode.externalApplication,
-                                    ),
-                                    child: Text(tr('Source', 'Источник')),
+                              ),
+                            Wrap(
+                              spacing: 4,
+                              children: [
+                                TextButton(
+                                  onPressed: () => launchUrl(
+                                    Uri.parse(selectedLandmark.sourceUrl),
+                                    mode: LaunchMode.externalApplication,
                                   ),
+                                  child: Text(tr('Source', 'Источник')),
+                                ),
+                                TextButton(
+                                  onPressed: () => launchUrl(
+                                    Uri.parse(
+                                      selectedLandmark.coordinateSourceUrl,
+                                    ),
+                                    mode: LaunchMode.externalApplication,
+                                  ),
+                                  child: Text(tr('Coordinates', 'Координаты')),
+                                ),
+                                if (selectedLandmark.thumbnailAsset != null &&
+                                    selectedLandmark.imageSourceUrl != null)
                                   TextButton(
                                     onPressed: () => launchUrl(
                                       Uri.parse(
-                                        selectedLandmark.coordinateSourceUrl,
+                                        selectedLandmark.imageSourceUrl!,
                                       ),
                                       mode: LaunchMode.externalApplication,
                                     ),
                                     child: Text(
-                                      tr('Coordinates', 'Координаты'),
+                                      tr('Image source', 'Источник фото'),
                                     ),
                                   ),
-                                  if (selectedLandmark.thumbnailAsset != null &&
-                                      selectedLandmark.imageSourceUrl != null)
-                                    TextButton(
-                                      onPressed: () => launchUrl(
-                                        Uri.parse(
-                                          selectedLandmark.imageSourceUrl!,
-                                        ),
-                                        mode: LaunchMode.externalApplication,
+                                if (selectedLandmark.thumbnailAsset != null &&
+                                    selectedLandmark.imageLicenseUrl != null)
+                                  TextButton(
+                                    onPressed: () => launchUrl(
+                                      Uri.parse(
+                                        selectedLandmark.imageLicenseUrl!,
                                       ),
-                                      child: Text(
-                                        tr('Image source', 'Источник фото'),
-                                      ),
+                                      mode: LaunchMode.externalApplication,
                                     ),
-                                  if (selectedLandmark.thumbnailAsset != null &&
-                                      selectedLandmark.imageLicenseUrl != null)
-                                    TextButton(
-                                      onPressed: () => launchUrl(
-                                        Uri.parse(
-                                          selectedLandmark.imageLicenseUrl!,
-                                        ),
-                                        mode: LaunchMode.externalApplication,
-                                      ),
-                                      child: Text(
-                                        tr('Image licence', 'Лицензия фото'),
-                                      ),
+                                    child: Text(
+                                      tr('Image licence', 'Лицензия фото'),
                                     ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                  ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                    if (panelOpen)
+                    if (panelOpen && selected != null)
                       Positioned(
                         left: countryPanelOnSide ? null : 0,
                         right: 0,

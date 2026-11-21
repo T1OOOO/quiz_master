@@ -274,7 +274,7 @@ class MapFixtureBundle extends CachingAssetBundle {
     } else {
       data = {
         'type': 'FeatureCollection',
-        'features': key.endsWith('countries.geojson')
+        'features': key.endsWith('countries_overview.geojson')
             ? [
                 {
                   'type': 'Feature',
@@ -654,6 +654,63 @@ void main() {
     expect(tester.getSize(map).width, 800);
     expect(tester.getSize(map).height, lessThan(height));
   });
+
+  for (final kind in ['marine', 'landmark']) {
+    testWidgets('docked map details stay open for $kind', (tester) async {
+      tester.view.physicalSize = const Size(1200, 720);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      const mapArea = SizedBox.expand(key: ValueKey('map-area'));
+      late VoidCallback selectObject;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: KnowledgeMapPage.test(
+            bundle: MapFixtureBundle(),
+            initialView: (country: 'FR', globe: false, camera: null),
+            mapBuilder: (context, select) => mapArea,
+            featureMapBuilder: kind == 'marine'
+                ? (context, select) {
+                    selectObject = () => select('marine', {
+                      'id': 'mediterranean',
+                      'name_en': 'Mediterranean Sea',
+                      'name_ru': 'Средиземное море',
+                    });
+                    return mapArea;
+                  }
+                : null,
+            landmarkMapBuilder: kind == 'landmark'
+                ? (context, select, hover) {
+                    selectObject = () => select('eiffel');
+                    return mapArea;
+                  }
+                : null,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Country details'));
+      await tester.pumpAndSettle();
+      final panel = find.byKey(const ValueKey('country-bottom-panel'));
+      final map = find.byKey(const ValueKey('map-area'));
+      final mapBounds = tester.getRect(map);
+      expect(tester.getRect(panel).left, mapBounds.right);
+
+      selectObject();
+      await tester.pumpAndSettle();
+      expect(tester.getRect(map), mapBounds);
+      final name = kind == 'marine' ? 'Mediterranean Sea' : 'Eiffel Tower';
+      expect(
+        find.descendant(of: panel, matching: find.text(name)),
+        findsOneWidget,
+      );
+
+      await tester.tap(find.byTooltip('Close'));
+      await tester.pumpAndSettle();
+      expect(panel, findsNothing);
+      expect(tester.getSize(map).width, 1200);
+    });
+  }
 
   testWidgets('practice checks a map selection and can be exited', (
     tester,

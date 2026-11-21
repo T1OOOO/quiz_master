@@ -252,6 +252,14 @@ def build():
         landmarks.append(f)
     water_labels=[feature(f['id'],f['properties']['name_ru'],f['properties']['name_en'],f['properties']['kind'],{'type':'Point','coordinates':water_anchor(f['geometry'])}) for f in waterways if f['properties']['kind'] in ('river','lake')]
     layers={name+'.geojson':{'type':'FeatureCollection','features':sorted(rows,key=lambda f:f['id'])} for name,rows in [('countries',countries),('country_labels',country_labels),('capitals',capitals),('waterways',waterways),('rivers_detail',river_detail),('lakes_detail',lake_detail),('water_labels',water_labels),('landmarks',landmarks)]}
+    # Keep the same identities and retain detailed islands absent from 1:110m.
+    layers['countries_overview.geojson'] = {
+        'type': 'FeatureCollection',
+        'features': [
+            dict(f, geometry=legacy.get(f['properties']['country_id'], f)['geometry'])
+            for f in layers['countries.geojson']['features']
+        ],
+    }
     for name,collection in layers.items():
         ids=[f['id'] for f in collection['features']]
         if len(ids)!=len(set(ids)): raise ValueError('duplicate id in '+name)
