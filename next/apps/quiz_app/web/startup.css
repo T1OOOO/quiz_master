@@ -16,3 +16,24 @@ html, body { margin: 0; background: #111923; }
   border-radius: 12px; color: #e7edf5; background: #253d50; font: inherit; }
 @keyframes loading { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .startup-spinner { animation: none; } }
+
+#atlas-start-map {
+  position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+  background: #b6cac0 url('atlas-overview.webp') repeat-x
+    calc(50% - 43px) calc(50% + 88px) / 1552px 1552px;
+}
+#atlas-start-map::after {
+  content: 'Загружаем карту…';
+  position: absolute; left: 12px; bottom: max(12px, env(safe-area-inset-bottom));
+  background: #fcf7ed; color: #503a27; border-radius: 18px;
+  padding: 8px 12px; font: 14px/20px system-ui, sans-serif;
+}
+#app-startup.atlas-startup {
+  z-index: 1001; background: transparent; pointer-events: none;
+}
+#app-startup.atlas-startup > :not(#startup-retry) { display: none; }
+#app-startup.atlas-startup #startup-message {
+  display: block; position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%);
+}
+#app-startup.atlas-startup #startup-retry { pointer-events: auto; }
