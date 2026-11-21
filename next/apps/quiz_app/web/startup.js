@@ -1,4 +1,11 @@
 (() => {
+  if (location.hash.split('?')[0] === '#/atlas/map-preview') {
+    const atlasEngine = document.createElement('link');
+    atlasEngine.rel = 'modulepreload';
+    // Keep this URL in sync with the web map engine loader.
+    atlasEngine.href = 'https://unpkg.com/maplibre-gl@6.4.1/dist/maplibre-gl.mjs';
+    document.head.append(atlasEngine);
+  }
   const startup = document.getElementById('app-startup');
   const message = document.getElementById('startup-message');
   const retry = document.getElementById('startup-retry');

@@ -921,20 +921,37 @@ class MapLibreMapController extends MapLibrePlatform
     Uint8List bytes, [
     bool sdf = false,
   ]) async {
-    final photo = decodeImage(bytes)!;
-    if (!_map.hasImage(name)) {
-      // Convert image to RGBA format with proper byte ordering
-      final rgbaBytes = photo.convert(format: Format.uint8, numChannels: 4).getBytes();
-      final data = Uint8List.fromList(rgbaBytes);
-
-      await _map.addImage(
-        name,
-        {'width': photo.width, 'height': photo.height, 'data': data},
-        {'sdf': sdf, 'pixelRatio': 1},
-      );
-    } else {
-      print('MapLibreMapController: Image already exists on map: $name');
+    if (_map.hasImage(name)) return;
+    final options = {'sdf': sdf, 'pixelRatio': 1};
+    final image = web.document.createElement('img') as web.HTMLImageElement;
+    final url = web.URL.createObjectURL(web.Blob([bytes.toJS].toJS));
+    try {
+      image.src = url;
+      var decoded = false;
+      try {
+        await image.decode().toDart;
+        decoded = true;
+      } catch (_) {
+        // Keep support for formats the browser cannot decode.
+      }
+      if (decoded) {
+        if (!_map.hasImage(name)) await _map.addImage(name, image, options);
+        return;
+      }
+    } finally {
+      web.URL.revokeObjectURL(url);
     }
+
+    final photo = decodeImage(bytes);
+    if (photo == null) throw ArgumentError('Image bytes could not be decoded.');
+    if (_map.hasImage(name)) return;
+    await _map.addImage(name, {
+      'width': photo.width,
+      'height': photo.height,
+      'data': Uint8List.fromList(
+        photo.convert(format: Format.uint8, numChannels: 4).getBytes(),
+      ),
+    }, options);
   }
 
   @override
