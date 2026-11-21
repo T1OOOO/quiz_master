@@ -41,58 +41,70 @@ Future<Uint8List> renderCountryMarker({
   bool water = false,
   String? datum,
   bool compact = false,
+  bool denseCountryLabel = false,
   int? maxLines,
   int pixelScale = 1,
 }) async {
-  final text = TextPainter(
-    text: TextSpan(
-      text: name,
-      style: TextStyle(
-        fontSize: capital || water ? 13 : (landmark ? 14 : 16),
-        fontWeight: compact ? FontWeight.w700 : FontWeight.w500,
-        fontStyle: water ? FontStyle.italic : FontStyle.normal,
-        color: water ? const Color(0xff285e77) : const Color(0xff142e31),
-        height: 1.15,
-        shadows: const [
-          Shadow(
-            color: Color(0xfffffff8),
-            offset: Offset(-1, 0),
-            blurRadius: 0.5,
+  final text =
+      TextPainter(
+        text: TextSpan(
+          text: name,
+          style: TextStyle(
+            fontSize: capital || water
+                ? 13
+                : landmark
+                ? 14
+                : denseCountryLabel
+                ? 12.5
+                : 16,
+            fontWeight: compact ? FontWeight.w700 : FontWeight.w500,
+            fontStyle: water ? FontStyle.italic : FontStyle.normal,
+            color: water ? const Color(0xff285e77) : const Color(0xff142e31),
+            height: 1.15,
+            shadows: const [
+              Shadow(
+                color: Color(0xfffffff8),
+                offset: Offset(-1, 0),
+                blurRadius: 0.5,
+              ),
+              Shadow(
+                color: Color(0xfffffff8),
+                offset: Offset(1, 0),
+                blurRadius: 0.5,
+              ),
+              Shadow(
+                color: Color(0xfffffff8),
+                offset: Offset(0, -1),
+                blurRadius: 0.5,
+              ),
+              Shadow(
+                color: Color(0xfffffff8),
+                offset: Offset(0, 1),
+                blurRadius: 0.5,
+              ),
+            ],
           ),
-          Shadow(
-            color: Color(0xfffffff8),
-            offset: Offset(1, 0),
-            blurRadius: 0.5,
-          ),
-          Shadow(
-            color: Color(0xfffffff8),
-            offset: Offset(0, -1),
-            blurRadius: 0.5,
-          ),
-          Shadow(
-            color: Color(0xfffffff8),
-            offset: Offset(0, 1),
-            blurRadius: 0.5,
-          ),
-        ],
-      ),
-      children: [
-        if (datum != null)
-          TextSpan(
-            text: '\n$datum',
-            style: const TextStyle(
-              color: Color(0xff183f51),
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-      ],
-    ),
-    textAlign: TextAlign.center,
-    textDirection: TextDirection.ltr,
-    maxLines: maxLines,
-    ellipsis: maxLines == null ? null : '…',
-  )..layout(maxWidth: compact && name.contains(' ') ? 120 : 170);
+          children: [
+            if (datum != null)
+              TextSpan(
+                text: '\n$datum',
+                style: const TextStyle(
+                  color: Color(0xff183f51),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+          ],
+        ),
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.ltr,
+        maxLines: maxLines,
+        ellipsis: maxLines == null ? null : '…',
+      )..layout(
+        maxWidth: compact && name.contains(' ')
+            ? (denseCountryLabel ? 88 : 120)
+            : 170,
+      );
   ui.Image? flag;
   try {
     if (flagBytes != null && !capital && !landmark) {
@@ -191,37 +203,6 @@ Future<Uint8List> renderCountryMarker({
   } finally {
     flag?.dispose();
     text.dispose();
-  }
-}
-
-Future<Uint8List> renderCountryFlag(Uint8List bytes) async {
-  final codec = await ui.instantiateImageCodec(bytes);
-  final flag = (await codec.getNextFrame()).image;
-  codec.dispose();
-  final recorder = ui.PictureRecorder();
-  final canvas = ui.Canvas(recorder);
-  final scale = math.min(48 / flag.width, 32 / flag.height);
-  final width = flag.width * scale;
-  final height = flag.height * scale;
-  canvas.drawImageRect(
-    flag,
-    ui.Rect.fromLTWH(0, 0, flag.width.toDouble(), flag.height.toDouble()),
-    ui.Rect.fromLTWH((48 - width) / 2, (32 - height) / 2, width, height),
-    ui.Paint()..filterQuality = ui.FilterQuality.medium,
-  );
-  flag.dispose();
-  final picture = recorder.endRecording();
-  try {
-    final image = await picture.toImage(48, 32);
-    try {
-      final data = await image.toByteData(format: ui.ImageByteFormat.png);
-      if (data == null) throw StateError('Country flag PNG encoding failed');
-      return data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-    } finally {
-      image.dispose();
-    }
-  } finally {
-    picture.dispose();
   }
 }
 
