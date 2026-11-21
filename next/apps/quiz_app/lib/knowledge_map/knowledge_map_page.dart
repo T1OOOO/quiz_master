@@ -257,6 +257,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   bool visibleOpen = false;
   Map<String, dynamic>? appliedCountryLabels;
   List<dynamic> _overviewOutlines = const [];
+  Map<String, (double, double)> _countryCenters = const {};
   String appliedThematic = 'none';
   Map<String, (double, double)> labelOverrides = {};
   bool browserOpen = false;
@@ -413,7 +414,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       waterways = jsonDecode(texts[2]) as Map<String, dynamic>;
       countryLabels = jsonDecode(texts[3]) as Map<String, dynamic>;
       _overviewOutlines = countries!['features'] as List;
-      final centers = visibleCountryLabelAnchors(
+      _countryCenters = visibleCountryLabelAnchors(
         countryLabels!['features'] as List,
         _overviewOutlines,
         const GeoViewport(west: -180, east: 180, south: -85, north: 85),
@@ -448,7 +449,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       for (final feature in countryLabels!['features'] as List) {
         final p = feature['properties'] as Map<String, dynamic>;
         final f = byId[p['country_id']];
-        if (centers[p['country_id']] case final center?) {
+        if (_countryCenters[p['country_id']] case final center?) {
           feature['geometry']['coordinates'] = [center.$1, center.$2];
         }
         // MapLibre resolves collisions in ascending sort order.
@@ -2329,7 +2330,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               fullOutlines: (c.cameraPosition?.zoom ?? 0) < 4
                   ? _overviewOutlines
                   : countries!['features'] as List,
-              previous: labelOverrides,
+              previous: {..._countryCenters, ...labelOverrides},
               safeViewport: GeoViewport(
                 west: viewport.west + horizontalInset,
                 east: viewport.west + width - horizontalInset,
@@ -2337,6 +2338,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 north: viewport.north - verticalInset,
               ),
             );
+      anchors.removeWhere((id, point) => point == _countryCenters[id]);
       // Updating GeoJSON schedules another idle callback. Leave stable labels
       // in place so MapLibre can finish its collision and fade pass.
       if (mapEquals(anchors, labelOverrides)) return;
