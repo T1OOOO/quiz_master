@@ -232,7 +232,7 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
     }
     final anchor = previous[id];
     if (anchor != null &&
-        (safeViewport ?? viewport).contains(anchor.$1, anchor.$2)) {
+        safeViewport?.contains(anchor.$1, anchor.$2) == true) {
       result[id] = anchor;
       continue;
     }

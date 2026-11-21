@@ -38,7 +38,7 @@ class AtlasHeader extends StatelessWidget {
           MediaQuery.textScalerOf(context).scale(14) / 14,
         );
         final compact =
-            box.maxWidth < (paired ? 64 + 202 * scale : 205 * scale);
+            box.maxWidth < (paired ? 64 + 226 * scale : 205 * scale);
         final animate = !MediaQuery.disableAnimationsOf(context);
         final routeMotion = animate && history
             ? ModalRoute.of(context)?.animation
@@ -51,8 +51,8 @@ class AtlasHeader extends StatelessWidget {
         const accent = Color(0xff754524);
         Widget action(String tooltip, IconData icon, VoidCallback? callback) =>
             SizedBox(
-              width: 44,
-              height: 44,
+              width: 48,
+              height: 48,
               child: IconButton(
                 tooltip: tooltip,
                 onPressed: callback,
@@ -72,7 +72,7 @@ class AtlasHeader extends StatelessWidget {
             message: tooltip,
             child: SizedBox(
               width: width * scale,
-              height: 36,
+              height: 44,
               child: TextButton(
                 onPressed: active ? null : change,
                 style: TextButton.styleFrom(
@@ -216,11 +216,11 @@ class AtlasHeader extends StatelessWidget {
               else
                 group(
                   [
-                    option('2D', flat, !globe, 36, onProjection),
-                    option('3D', globeName, globe, 36, onProjection),
+                    option('2D', flat, !globe, 48, onProjection),
+                    option('3D', globeName, globe, 48, onProjection),
                   ],
                   globe,
-                  36,
+                  48,
                 ),
           ],
         );
