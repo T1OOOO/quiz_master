@@ -16,16 +16,34 @@ void main() {
     expect(mapCountryName('AE', 'ОАЭ', russian: true), 'Арабские Эмираты');
   });
 
-  test('standalone flag has a fixed compact footprint', () async {
-    final flag = image.Image(width: 12, height: 8, numChannels: 4);
-    image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));
-    final sprite = image.decodePng(
-      await renderCountryFlag(Uint8List.fromList(image.encodePng(flag))),
-    )!;
-    expect(sprite.width, 48);
-    expect(sprite.height, 32);
-    expect(sprite.getPixel(24, 16).a, 255);
-  });
+  test(
+    'dense label keeps the full flag size and draws a country name',
+    () async {
+      final flag = image.Image(width: 12, height: 8, numChannels: 4);
+      image.fill(flag, color: image.ColorRgba8(255, 0, 0, 255));
+      final flagBytes = Uint8List.fromList(image.encodePng(flag));
+      Future<image.Image> render(bool dense) async => image.decodePng(
+        await renderCountryMarker(
+          name: 'Швейцария',
+          flagBytes: flagBytes,
+          compact: true,
+          denseCountryLabel: dense,
+          pixelScale: 2,
+        ),
+      )!;
+      final regular = await render(false);
+      final dense = await render(true);
+      int coloredPixels(image.Image sprite) => sprite
+          .where((p) => p.r > 220 && p.g < 30 && p.b < 30 && p.a > 200)
+          .length;
+      expect(dense.width, lessThan(regular.width));
+      expect(coloredPixels(dense), coloredPixels(regular));
+      expect(
+        dense.where((p) => p.y >= 40 && p.a > 200 && p.r < 90),
+        isNotEmpty,
+      );
+    },
+  );
 
   test('country labels leave the map visible around the flag', () async {
     final flag = image.Image(width: 12, height: 8, numChannels: 4);

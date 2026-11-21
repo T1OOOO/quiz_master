@@ -804,28 +804,31 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         }
         final batch = countryFeatures.skip(start).take(8).toList();
         final sprites = await Future.wait(
-          batch.map((feature) {
+          batch.map((feature) async {
             final properties = feature['properties'] as Map<String, dynamic>;
-            final encoded = flags[properties['country_id']] as String?;
-            return renderCountryMarker(
-              flagBytes: encoded == null ? null : flagImageBytes(encoded),
-              pixelScale: 2,
-              name: mapCountryName(
-                properties['country_id'] as String,
-                properties[localizedRu ? 'name_ru' : 'name_en'] as String,
-                russian: localizedRu,
-              ),
-              compact: true,
-            );
-          }),
-        );
-        final flagSprites = await Future.wait(
-          batch.map((feature) {
-            final id = feature['properties']['country_id'] as String;
+            final id = properties['country_id'] as String;
             final encoded = flags[id] as String?;
-            return encoded == null
-                ? Future<Uint8List?>.value(null)
-                : renderCountryFlag(flagImageBytes(encoded));
+            final flag = encoded == null ? null : flagImageBytes(encoded);
+            final name = mapCountryName(
+              id,
+              properties[localizedRu ? 'name_ru' : 'name_en'] as String,
+              russian: localizedRu,
+            );
+            return Future.wait([
+              renderCountryMarker(
+                name: name,
+                flagBytes: flag,
+                pixelScale: 2,
+                compact: true,
+              ),
+              renderCountryMarker(
+                name: name,
+                flagBytes: flag,
+                pixelScale: 2,
+                compact: true,
+                denseCountryLabel: true,
+              ),
+            ]);
           }),
         );
         if (!mounted || generation != attempt || controller != c || failed) {
@@ -837,13 +840,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           }
           final properties = batch[i]['properties'] as Map<String, dynamic>;
           final id = properties['country_id'] as String;
-          await c.addImage('country-$id', sprites[i]);
+          await c.addImage('country-$id', sprites[i][0]);
+          await c.addImage('country-compact-$id', sprites[i][1]);
           properties['sprite'] = 'country-$id';
-          final flagSprite = flagSprites[i];
-          if (flagSprite != null) {
-            await c.addImage('country-flag-$id', flagSprite);
-            properties['flag_sprite'] = 'country-flag-$id';
-          }
+          properties['compact_sprite'] = 'country-compact-$id';
         }
       }
       await c.addGeoJsonSource('country-markers', countryLabels!);
@@ -852,11 +852,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       appliedThematic = 'none';
       await c.addSymbolLayer(
         'country-markers',
-        'country-flags',
+        'country-labels-compact',
         const SymbolLayerProperties(
-          iconImage: ['get', 'flag_sprite'],
+          iconImage: ['get', 'compact_sprite'],
+          iconAnchor: 'top',
           iconSize: countryIconScale,
-          iconPadding: 4,
+          iconPadding: 1,
           symbolSortKey: ['get', 'label_priority'],
         ),
       );
@@ -865,7 +866,8 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'country-markers',
         const SymbolLayerProperties(
           iconImage: ['get', 'sprite'],
-          iconPadding: 3,
+          iconAnchor: 'top',
+          iconPadding: 2,
           iconSize: countryIconScale,
           symbolSortKey: ['get', 'label_priority'],
         ),
@@ -903,7 +905,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                 ? const [0, 8]
                 : const [0, 0],
           ),
-          belowLayerId: 'country-markers',
+          belowLayerId: 'country-labels-compact',
           minzoom: minZoom,
         );
       }
@@ -1214,7 +1216,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     if (c == null || !ready) return;
     for (final entry in <String, bool>{
       'country-markers': show && showCountryLabels,
-      'country-flags': show && showCountryLabels,
+      'country-labels-compact': show && showCountryLabels,
       'thematic-countries': show,
       'capital-labels': show && showCapitals,
       'capital-dots': show && showCapitals,
@@ -1509,7 +1511,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   ) async {
     return c.queryRenderedFeatures(point, [
       'country-markers',
-      'country-flags',
+      'country-labels-compact',
     ], null);
   }
 
@@ -2082,7 +2084,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       try {
         await c.setLayerVisibility(layer, value);
         if (layer == 'country-markers') {
-          await c.setLayerVisibility('country-flags', value);
+          await c.setLayerVisibility('country-labels-compact', value);
         }
       } catch (error, stack) {
         debugPrint('Knowledge map: label visibility failed: $error\n$stack');
@@ -2128,7 +2130,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       final features = await queryVisibleWithRetry(
         () => c.queryRenderedFeaturesInRect(Offset.zero & (size * scale), [
           'land',
-          if (globeMode) ...['country-markers', 'country-flags'],
+          if (globeMode) ...['country-markers', 'country-labels-compact'],
         ], null),
         current,
         () => Future<void>.delayed(const Duration(milliseconds: 500)),
