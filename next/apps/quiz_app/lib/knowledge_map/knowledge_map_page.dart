@@ -855,7 +855,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'country-labels-compact',
         const SymbolLayerProperties(
           iconImage: ['get', 'compact_sprite'],
-          iconAnchor: 'top',
           iconSize: countryIconScale,
           iconPadding: 1,
           symbolSortKey: ['get', 'label_priority'],
@@ -866,7 +865,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         'country-markers',
         const SymbolLayerProperties(
           iconImage: ['get', 'sprite'],
-          iconAnchor: 'top',
           iconPadding: 2,
           iconSize: countryIconScale,
           symbolSortKey: ['get', 'label_priority'],
