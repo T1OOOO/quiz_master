@@ -352,7 +352,6 @@ void main() {
               globe: history,
               onBack: () {},
               onAtlasSwitch: () => refresh(() => history = !history),
-              onAbout: history ? () {} : null,
             ),
           ),
         ),

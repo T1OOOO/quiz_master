@@ -11,7 +11,6 @@ class AtlasHeader extends StatelessWidget {
     required this.globe,
     this.showProjection = true,
     this.onProjection,
-    this.onAbout,
     this.onAtlasSwitch,
     this.showAtlasSwitch = false,
     this.history = false,
@@ -20,7 +19,7 @@ class AtlasHeader extends StatelessWidget {
   final bool russian, globe, showProjection, history, showAtlasSwitch;
   final String title;
   final VoidCallback onBack;
-  final VoidCallback? onProjection, onAbout, onAtlasSwitch;
+  final VoidCallback? onProjection, onAtlasSwitch;
 
   @override
   Widget build(BuildContext context) => Material(
@@ -28,7 +27,7 @@ class AtlasHeader extends StatelessWidget {
     elevation: 2,
     shadowColor: const Color(0x55473425),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(16),
       side: const BorderSide(color: Color(0xffdfd1bd)),
     ),
     child: LayoutBuilder(
@@ -39,7 +38,11 @@ class AtlasHeader extends StatelessWidget {
           MediaQuery.textScalerOf(context).scale(14) / 14,
         );
         final compact =
-            box.maxWidth < (paired ? 116 + 208 * scale : 220 * scale);
+            box.maxWidth < (paired ? 64 + 202 * scale : 205 * scale);
+        final animate = !MediaQuery.disableAnimationsOf(context);
+        final routeMotion = animate && history
+            ? ModalRoute.of(context)?.animation
+            : null;
         final flat = russian ? '2D-карта' : '2D map';
         final globeName = russian ? '3D-глобус' : '3D globe';
         final world = russian ? 'Атлас мира' : 'World atlas';
@@ -48,8 +51,8 @@ class AtlasHeader extends StatelessWidget {
         const accent = Color(0xff754524);
         Widget action(String tooltip, IconData icon, VoidCallback? callback) =>
             SizedBox(
-              width: 48,
-              height: 48,
+              width: 44,
+              height: 44,
               child: IconButton(
                 tooltip: tooltip,
                 onPressed: callback,
@@ -69,15 +72,12 @@ class AtlasHeader extends StatelessWidget {
             message: tooltip,
             child: SizedBox(
               width: width * scale,
-              height: 40,
+              height: 36,
               child: TextButton(
                 onPressed: active ? null : change,
                 style: TextButton.styleFrom(
                   foregroundColor: ink,
                   disabledForegroundColor: active ? accent : null,
-                  disabledBackgroundColor: active
-                      ? const Color(0xffefd7b5)
-                      : null,
                   textStyle: const TextStyle(fontWeight: FontWeight.w700),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(7),
@@ -90,19 +90,74 @@ class AtlasHeader extends StatelessWidget {
             ),
           ),
         );
-        Widget group(List<Widget> options) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-          child: DecoratedBox(
+        Widget group(
+          List<Widget> options,
+          bool second,
+          double width, {
+          Animation<double>? motion,
+        }) {
+          final indicator = Container(
+            width: width * scale,
+            height: 36,
             decoration: BoxDecoration(
-              color: const Color(0xfff1e8d9),
+              color: const Color(0xfffffcf6),
               borderRadius: BorderRadius.circular(9),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0x261f160c),
+                  blurRadius: 4,
+                  offset: Offset(0, 1),
+                ),
+              ],
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(2),
-              child: Row(mainAxisSize: MainAxisSize.min, children: options),
+          );
+          return Padding(
+            padding: const EdgeInsets.only(right: 3),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: const Color(0xffefe7da),
+                borderRadius: BorderRadius.circular(11),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(2),
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: motion != null
+                          ? AnimatedBuilder(
+                              animation: motion,
+                              child: indicator,
+                              builder: (context, child) => Align(
+                                alignment: AlignmentDirectional(
+                                  2 *
+                                          Curves.easeInOut.transform(
+                                            motion.value.clamp(0.0, 1.0),
+                                          ) -
+                                      1,
+                                  0,
+                                ),
+                                child: child,
+                              ),
+                            )
+                          : AnimatedAlign(
+                              duration: animate
+                                  ? const Duration(milliseconds: 200)
+                                  : Duration.zero,
+                              curve: Curves.easeOutCubic,
+                              alignment: second
+                                  ? AlignmentDirectional.centerEnd
+                                  : AlignmentDirectional.centerStart,
+                              child: indicator,
+                            ),
+                    ),
+                    Row(mainAxisSize: MainAxisSize.min, children: options),
+                  ],
+                ),
+              ),
             ),
-          ),
-        );
+          );
+        }
+
         return Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
@@ -119,22 +174,27 @@ class AtlasHeader extends StatelessWidget {
                   onAtlasSwitch,
                 )
               else
-                group([
-                  option(
-                    russian ? 'Мир' : 'World',
-                    world,
-                    !history,
-                    50,
-                    onAtlasSwitch,
-                  ),
-                  option(
-                    russian ? 'История' : 'History',
-                    chronology,
-                    history,
-                    70,
-                    onAtlasSwitch,
-                  ),
-                ]),
+                group(
+                  [
+                    option(
+                      russian ? 'Мир' : 'World',
+                      world,
+                      !history,
+                      65,
+                      onAtlasSwitch,
+                    ),
+                    option(
+                      russian ? 'История' : 'History',
+                      chronology,
+                      history,
+                      65,
+                      onAtlasSwitch,
+                    ),
+                  ],
+                  history,
+                  65,
+                  motion: routeMotion,
+                ),
             if (!paired && title.isNotEmpty && box.maxWidth >= 245 * scale)
               Padding(
                 padding: const EdgeInsets.only(right: 8),
@@ -154,18 +214,14 @@ class AtlasHeader extends StatelessWidget {
                   onProjection,
                 )
               else
-                group([
-                  option('2D', flat, !globe, 44, onProjection),
-                  option('3D', globeName, globe, 44, onProjection),
-                ]),
-            if (onAbout != null)
-              action(
-                russian ? 'Об источнике' : 'About the data',
-                Icons.info_outline,
-                onAbout,
-              )
-            else if (paired)
-              const SizedBox(width: 48, height: 48),
+                group(
+                  [
+                    option('2D', flat, !globe, 36, onProjection),
+                    option('3D', globeName, globe, 36, onProjection),
+                  ],
+                  globe,
+                  36,
+                ),
           ],
         );
       },

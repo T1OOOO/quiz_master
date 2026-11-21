@@ -45,8 +45,8 @@ class HistoryTimeline extends StatelessWidget {
     return Material(
       color: const Color(0xfffcf7ed),
       elevation: 4,
-      child: LayoutBuilder(
-        builder: (context, box) {
+      child: Builder(
+        builder: (context) {
           final centuryIndex = (start - 1501) ~/ 100;
           String stepText(int size) {
             if (!russian) return '$size ${size == 1 ? 'year' : 'years'}';
@@ -59,51 +59,43 @@ class HistoryTimeline extends StatelessWidget {
             return '$size $word';
           }
 
-          final options = Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Expanded(
-                child: PopupMenuButton<int>(
-                  tooltip: t('Выбрать век', 'Choose century'),
-                  position: PopupMenuPosition.under,
-                  initialValue: 1501 + centuryIndex * 100,
-                  onSelected: onCentury,
-                  itemBuilder: (_) => [
-                    for (var i = 0; i < historyCenturyNumerals.length; i++)
-                      CheckedPopupMenuItem(
-                        value: 1501 + i * 100,
-                        checked: i == centuryIndex,
-                        child: Text(
-                          '${historyCenturyNumerals[i]} ${t('век', 'century')} · ${1501 + i * 100}–${1600 + i * 100}',
-                        ),
-                      ),
-                  ],
-                  child: _TimelineOption(era),
+          final centuryMenu = PopupMenuButton<int>(
+            tooltip: t('Выбрать век', 'Choose century'),
+            position: PopupMenuPosition.under,
+            initialValue: 1501 + centuryIndex * 100,
+            onSelected: onCentury,
+            itemBuilder: (_) => [
+              for (var i = 0; i < historyCenturyNumerals.length; i++)
+                CheckedPopupMenuItem(
+                  value: 1501 + i * 100,
+                  checked: i == centuryIndex,
+                  child: Text(
+                    '${historyCenturyNumerals[i]} ${t('век', 'century')} · ${1501 + i * 100}–${1600 + i * 100}',
+                  ),
                 ),
-              ),
-              Expanded(
-                child: PopupMenuButton<int>(
-                  tooltip: t('Шаг перелистывания', 'Navigation step'),
-                  position: PopupMenuPosition.under,
-                  initialValue: step,
-                  onSelected: onStep,
-                  itemBuilder: (_) => [
-                    for (final size in historySteps)
-                      CheckedPopupMenuItem(
-                        value: size,
-                        checked: size == step,
-                        child: Text(stepText(size)),
-                      ),
-                  ],
-                  child: _TimelineOption(stepText(step)),
-                ),
-              ),
             ],
+            child: _TimelineOption(era),
+          );
+          final stepMenu = PopupMenuButton<int>(
+            tooltip: t('Шаг перелистывания', 'Navigation step'),
+            position: PopupMenuPosition.under,
+            initialValue: step,
+            onSelected: onStep,
+            itemBuilder: (_) => [
+              for (final size in historySteps)
+                CheckedPopupMenuItem(
+                  value: size,
+                  checked: size == step,
+                  child: Text(stepText(size)),
+                ),
+            ],
+            child: _TimelineOption(stepText(step)),
           );
           const ink = Color(0xff503a27);
           final actionStyle = TextButton.styleFrom(
             foregroundColor: ink,
             padding: const EdgeInsets.symmetric(horizontal: 6),
+            minimumSize: const Size(0, 44),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
@@ -214,25 +206,25 @@ class HistoryTimeline extends StatelessWidget {
           );
           final dates = Row(
             children: [
+              Expanded(flex: 3, child: centuryMenu),
+              const SizedBox(width: 4),
               Expanded(flex: 6, child: navigation),
               const SizedBox(width: 4),
-              Expanded(flex: 5, child: options),
+              Expanded(flex: 3, child: stepMenu),
             ],
           );
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: box.maxWidth < 740
-                ? Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [dates, filters],
-                  )
-                : Row(
-                    children: [
-                      Expanded(child: dates),
-                      const SizedBox(width: 16),
-                      Expanded(child: filters),
-                    ],
-                  ),
+          return Center(
+            heightFactor: 1,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 620),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [dates, filters],
+                ),
+              ),
+            ),
           );
         },
       ),
