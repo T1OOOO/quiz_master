@@ -3288,7 +3288,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
               : BorderRadius.circular(12),
           clipBehavior: Clip.antiAlias,
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: countryPanel ? MainAxisSize.max : MainAxisSize.min,
             children: [
               if (countryPanel && !countryPanelOnSide)
                 GestureDetector(
