@@ -642,14 +642,14 @@ class _GlobePainter extends CustomPainter {
           ..shader = ui.Gradient.radial(
             scene.center - Offset(scene.radius * .3, scene.radius * .3),
             scene.radius * 1.5,
-            [const Color(0xffb7e0e1), const Color(0xff47839b)],
+            [const Color(0xffc9d4bd), const Color(0xff647d67)],
           ),
       );
     }
     canvas.drawPath(
       scene.grid,
       Paint()
-        ..color = const Color(0x46346170)
+        ..color = const Color(0x46647864)
         ..style = PaintingStyle.stroke
         ..strokeWidth = .7,
     );
@@ -679,7 +679,7 @@ class _GlobePainter extends CustomPainter {
         ..shader = ui.Gradient.radial(
           scene.center - Offset(scene.radius * .26, scene.radius * .3),
           scene.radius * 1.35,
-          const [Color(0x10ffffff), Color(0x00ffffff), Color(0x460b3444)],
+          const [Color(0x10ffffff), Color(0x00ffffff), Color(0x463e4534)],
           const [0.0, .52, 1.0],
         ),
     );
@@ -688,7 +688,7 @@ class _GlobePainter extends CustomPainter {
       scene.center,
       scene.radius,
       Paint()
-        ..color = const Color(0xff1b6371)
+        ..color = const Color(0xff67765e)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 1.5,
     );

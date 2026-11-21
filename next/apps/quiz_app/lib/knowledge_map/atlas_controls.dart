@@ -13,10 +13,11 @@ class AtlasHeader extends StatelessWidget {
     this.onProjection,
     this.onAbout,
     this.onAtlasSwitch,
+    this.showAtlasSwitch = false,
     this.history = false,
   });
 
-  final bool russian, globe, showProjection, history;
+  final bool russian, globe, showProjection, history, showAtlasSwitch;
   final String title;
   final VoidCallback onBack;
   final VoidCallback? onProjection, onAbout, onAtlasSwitch;
@@ -32,148 +33,139 @@ class AtlasHeader extends StatelessWidget {
     ),
     child: LayoutBuilder(
       builder: (context, box) {
-        final textScale = math.max(
+        final paired = showAtlasSwitch || onAtlasSwitch != null;
+        final scale = math.max(
           1.0,
           MediaQuery.textScalerOf(context).scale(14) / 14,
         );
-        final compact = box.maxWidth < 245 * textScale;
-        final flatLabel = russian ? '2D-карта' : '2D map';
-        final globeLabel = russian ? '3D-глобус' : '3D globe';
-        final projection = globe ? flatLabel : globeLabel;
-        final glyph = Icon(globe ? Icons.map_outlined : Icons.public, size: 19);
+        final compact =
+            box.maxWidth < (paired ? 116 + 208 * scale : 220 * scale);
+        final flat = russian ? '2D-карта' : '2D map';
+        final globeName = russian ? '3D-глобус' : '3D globe';
+        final world = russian ? 'Атлас мира' : 'World atlas';
+        final chronology = russian ? 'Исторический атлас' : 'Historical atlas';
         const ink = Color(0xff48392c);
         const accent = Color(0xff754524);
-        const selectedFill = Color(0xffefd7b5);
-        final atlasIcon = history ? Icons.public : Icons.history_edu_outlined;
-        final atlasTitle = history
-            ? (russian ? 'Атлас мира' : 'World atlas')
-            : (russian ? 'Исторический атлас' : 'Historical atlas');
-        Widget projectionOption(String label, String tooltip, bool active) =>
-            Semantics(
-              selected: active,
-              child: Tooltip(
-                message: tooltip,
-                child: TextButton(
-                  onPressed: active ? null : onProjection,
-                  style: TextButton.styleFrom(
-                    foregroundColor: ink,
-                    disabledForegroundColor: active ? accent : null,
-                    disabledBackgroundColor: active ? selectedFill : null,
-                    textStyle: TextStyle(
-                      fontWeight: active ? FontWeight.w800 : FontWeight.w500,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    minimumSize: const Size(39, 36),
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    visualDensity: VisualDensity.standard,
-                  ),
-                  child: Text(label),
-                ),
+        Widget action(String tooltip, IconData icon, VoidCallback? callback) =>
+            SizedBox(
+              width: 48,
+              height: 48,
+              child: IconButton(
+                tooltip: tooltip,
+                onPressed: callback,
+                color: ink,
+                icon: Icon(icon, size: 19),
               ),
             );
-        final back = IconButton(
-          tooltip: russian ? 'Назад' : 'Back',
-          icon: const Icon(Icons.arrow_back_rounded, size: 20, color: ink),
-          onPressed: onBack,
-        );
-        final actions = <Widget>[
-          if (showProjection)
-            if (compact)
-              IconButton(
-                tooltip: projection,
-                onPressed: onProjection,
-                color: ink,
-                icon: glyph,
-              )
-            else
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: const Color(0xfff1e8d9),
-                    borderRadius: BorderRadius.circular(9),
+        Widget option(
+          String label,
+          String tooltip,
+          bool active,
+          double width,
+          VoidCallback? change,
+        ) => Semantics(
+          selected: active,
+          child: Tooltip(
+            message: tooltip,
+            child: SizedBox(
+              width: width * scale,
+              height: 40,
+              child: TextButton(
+                onPressed: active ? null : change,
+                style: TextButton.styleFrom(
+                  foregroundColor: ink,
+                  disabledForegroundColor: active ? accent : null,
+                  disabledBackgroundColor: active
+                      ? const Color(0xffefd7b5)
+                      : null,
+                  textStyle: const TextStyle(fontWeight: FontWeight.w700),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(2),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        projectionOption('2D', flatLabel, !globe),
-                        projectionOption('3D', globeLabel, globe),
-                      ],
-                    ),
-                  ),
+                  padding: EdgeInsets.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
+                child: FittedBox(fit: BoxFit.scaleDown, child: Text(label)),
               ),
-          if (onAtlasSwitch != null)
-            if (box.maxWidth >= 294 * textScale)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 6),
-                child: TextButton.icon(
-                  onPressed: onAtlasSwitch,
-                  style: TextButton.styleFrom(
-                    foregroundColor: accent,
-                    backgroundColor: const Color(0xfff7eddd),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    minimumSize: const Size(0, 40),
-                    padding: const EdgeInsets.symmetric(horizontal: 9),
-                  ),
-                  icon: Icon(atlasIcon, size: 18),
-                  label: Text(
-                    history
-                        ? (russian ? 'Мир' : 'World')
-                        : (russian ? 'История' : 'History'),
-                  ),
-                ),
-              )
-            else
-              IconButton(
-                tooltip: atlasTitle,
-                onPressed: onAtlasSwitch,
-                color: accent,
-                icon: Icon(atlasIcon, size: 21),
-              ),
-          if (onAbout != null)
-            IconButton(
-              tooltip: russian ? 'Об источнике' : 'About the data',
-              onPressed: onAbout,
-              icon: const Icon(Icons.info_outline, size: 20),
             ),
-        ];
-        final iconWidth = (1 + actions.length) * 48;
-        if (box.maxWidth < iconWidth) return Wrap(children: [back, ...actions]);
-        return Row(
-          mainAxisSize: MainAxisSize.min,
+          ),
+        );
+        Widget group(List<Widget> options) => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: const Color(0xfff1e8d9),
+              borderRadius: BorderRadius.circular(9),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(2),
+              child: Row(mainAxisSize: MainAxisSize.min, children: options),
+            ),
+          ),
+        );
+        return Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            back,
-            if (title.isNotEmpty &&
-                (!compact || box.maxWidth >= iconWidth + 70))
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: Text(
-                    box.maxWidth < 370 * textScale && onAtlasSwitch != null
-                        ? (history
-                              ? (russian ? 'История' : 'History')
-                              : (russian ? 'Мир' : 'World'))
-                        : title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'Georgia',
-                      fontWeight: FontWeight.w700,
-                      color: ink,
-                    ),
+            action(
+              russian ? 'Назад' : 'Back',
+              Icons.arrow_back_rounded,
+              onBack,
+            ),
+            if (paired)
+              if (compact)
+                action(
+                  history ? world : chronology,
+                  history ? Icons.public : Icons.history_edu_outlined,
+                  onAtlasSwitch,
+                )
+              else
+                group([
+                  option(
+                    russian ? 'Мир' : 'World',
+                    world,
+                    !history,
+                    50,
+                    onAtlasSwitch,
+                  ),
+                  option(
+                    russian ? 'История' : 'History',
+                    chronology,
+                    history,
+                    70,
+                    onAtlasSwitch,
+                  ),
+                ]),
+            if (!paired && title.isNotEmpty && box.maxWidth >= 245 * scale)
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    color: ink,
                   ),
                 ),
               ),
-            ...actions,
+            if (showProjection)
+              if (compact)
+                action(
+                  globe ? flat : globeName,
+                  globe ? Icons.map_outlined : Icons.public,
+                  onProjection,
+                )
+              else
+                group([
+                  option('2D', flat, !globe, 44, onProjection),
+                  option('3D', globeName, globe, 44, onProjection),
+                ]),
+            if (onAbout != null)
+              action(
+                russian ? 'Об источнике' : 'About the data',
+                Icons.info_outline,
+                onAbout,
+              )
+            else if (paired)
+              const SizedBox(width: 48, height: 48),
           ],
         );
       },

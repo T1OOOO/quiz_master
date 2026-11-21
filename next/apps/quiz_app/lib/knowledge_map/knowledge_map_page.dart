@@ -583,6 +583,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         storyPacks: results.skip(4),
       );
     });
+    unawaited(_highlightCountryContext());
   }
 
   Future<void> setup() async {
@@ -654,6 +655,16 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       );
       await c.addLineLayer(
         'countries',
+        'country-neighbors',
+        const LineLayerProperties(
+          lineColor: '#a7814e',
+          lineOpacity: 0.72,
+          lineWidth: 1.15,
+        ),
+        filter: _countryContextFilter('country_id', const []),
+      );
+      await c.addLineLayer(
+        'countries',
         'selected',
         const LineLayerProperties(
           lineColor: '#b44e26',
@@ -706,6 +717,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       );
       await c.addFillLayer(
         'waterways',
+        'country-coasts',
+        const FillLayerProperties(
+          fillColor: '#618879',
+          fillOpacity: 0.28,
+          fillAntialias: false,
+        ),
+        belowLayerId: 'land',
+        filter: _countryContextFilter('id', const []),
+      );
+      await c.addFillLayer(
+        'waterways',
         'marine-highlight',
         const FillLayerProperties(
           fillColor: '#356f60',
@@ -729,6 +751,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           ['get', 'kind'],
           'lake',
         ],
+      );
+      await c.addFillLayer(
+        'waterways',
+        'country-lakes',
+        const FillLayerProperties(fillColor: '#618879', fillOpacity: 0.34),
+        filter: _countryContextFilter('id', const []),
       );
       await c.addFillLayer(
         'waterways',
@@ -871,6 +899,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           iconSize: countryIconScale,
           symbolSortKey: ['get', 'label_priority'],
         ),
+      );
+      await c.addSymbolLayer(
+        'capitals',
+        'selected-capital',
+        const SymbolLayerProperties(
+          iconImage: 'capital-star',
+          iconSize: 1.22,
+          iconAllowOverlap: true,
+          iconIgnorePlacement: true,
+        ),
+        filter: _countryContextFilter('country_id', const []),
       );
       Future<void> addLabelLayer(
         String source,
@@ -1036,6 +1075,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       }
       startupTimer?.cancel();
       setState(() => ready = true);
+      unawaited(_highlightCountryContext());
       if (!appliedInitialView && widget.initialView != null) {
         appliedInitialView = true;
         await _restoreAtlasView(widget.initialView!);
@@ -1254,6 +1294,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       'thematic-countries': show,
       'capital-labels': show && showCapitals,
       'capital-dots': show && showCapitals,
+      'selected-capital': show,
+      'country-neighbors': show,
+      'country-coasts': show,
+      'country-lakes': show && showLakes,
       'landmarks': show && showLandmarks,
       'landmark-pins': show && showLandmarks,
       'water-labels': show && showWaterLabels,
@@ -1421,6 +1465,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       visibleOpen = false;
     });
     queueHoverFilter();
+    unawaited(_highlightCountryContext());
     try {
       await practiceVisibility(!value);
     } catch (error, stack) {
@@ -1430,6 +1475,78 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       if (mounted) setState(() => practiceBusy = false);
     }
     if (value && mounted && practice && !failed) await nextPractice();
+  }
+
+  List<Object> _countryContextFilter(String property, List<String> ids) => [
+    'in',
+    ['get', property],
+    ['literal', ids],
+  ];
+
+  Future<void> _countryContextCommands = Future<void>.value();
+  int _countryContextRequest = 0;
+
+  Future<void> _highlightCountryContext() {
+    final request = ++_countryContextRequest;
+    final attempt = generation;
+    final c = controller;
+    return _countryContextCommands = _countryContextCommands.then((_) async {
+      if (request != _countryContextRequest ||
+          attempt != generation ||
+          c != controller ||
+          c == null ||
+          !ready ||
+          !mounted)
+        return;
+      try {
+        final country = practice ? null : state?.selected;
+        final references = (waters[country?.id] as List? ?? const [])
+            .whereType<Map>();
+        final names = <String>{
+          for (final row in references)
+            for (final key in ['id', 'name_en'])
+              if (row[key] is String) (row[key] as String).toLowerCase(),
+        };
+        final coasts = <String>[];
+        final lakes = <String>[];
+        if (names.isNotEmpty) {
+          for (final item in waterways?['features'] as List? ?? const []) {
+            final properties = item['properties'] as Map;
+            final id = properties['id'] as String?;
+            if (id == null ||
+                !(names.contains(id.toLowerCase()) ||
+                    names.contains(
+                      (properties['name_en'] as String?)?.toLowerCase(),
+                    ))) {
+              continue;
+            }
+            if (properties['kind'] == 'marine' && coastalBasins.contains(id)) {
+              coasts.add(id);
+            } else if (properties['kind'] == 'lake') {
+              lakes.add(id);
+            }
+          }
+        }
+        await Future.wait([
+          c.setFilter(
+            'selected-capital',
+            _countryContextFilter('country_id', [
+              if (country != null) country.id,
+            ]),
+          ),
+          c.setFilter(
+            'country-neighbors',
+            _countryContextFilter('country_id', country?.neighbors ?? const []),
+          ),
+          c.setFilter('country-coasts', _countryContextFilter('id', coasts)),
+          c.setFilter('country-lakes', _countryContextFilter('id', lakes)),
+        ]);
+      } catch (error) {
+        debugPrint(
+          'Knowledge map: country context could not be updated: $error',
+        );
+      }
+    });
   }
 
   Future<void> select(String? id, {bool move = false}) async {
@@ -1459,6 +1576,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       selectedFeatureKind = null;
     });
     queueHoverFilter();
+    unawaited(_highlightCountryContext());
     if (!ready || c == null) return;
     try {
       await c.setFilter('selected', [
@@ -1529,6 +1647,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       placesOpen = false;
     });
     queueHoverFilter();
+    unawaited(_highlightCountryContext());
     final c = controller;
     if (c != null && ready) {
       await c.setFilter('selected', [
@@ -1650,7 +1769,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         return;
       }
       for (final entry in <String, List<String>>{
-        'capital': ['capital-labels', 'capital-dots'],
+        'capital': ['selected-capital', 'capital-labels', 'capital-dots'],
         'water': [
           'water-labels',
           if (showLakes) 'lakes',
@@ -1725,27 +1844,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           : features.first['properties']['country_id'] as String?;
       if (id == null && countryDetailsOpen) return;
       await select(id);
-      if (markerTapped &&
-          id != null &&
-          mounted &&
-          generation == attempt &&
-          controller == c &&
-          state?.selectedId == id) {
-        final matches = (countryLabels?['features'] as List? ?? const []).where(
-          (f) => f['properties']['country_id'] == id,
-        );
-        if (matches.isNotEmpty) {
-          final coordinates = matches.first['geometry']['coordinates'] as List;
-          await c.animateCamera(
-            CameraUpdate.newLatLng(
-              LatLng(
-                (coordinates[1] as num).toDouble(),
-                (coordinates[0] as num).toDouble(),
-              ),
-            ),
-          );
-        }
-      }
     } catch (error, stack) {
       debugPrint('Knowledge map: tap failed: $error\n$stack');
       if (current()) {
@@ -2001,6 +2099,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       selectedFeatureKind = null;
     });
     clearHover();
+    unawaited(_highlightCountryContext());
     if (!ready || c == null) return;
     try {
       await c.setFilter('selected', [
@@ -2066,6 +2165,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         : [
             'lakes',
             'lake-highlight',
+            'country-lakes',
             if (detailLakesReady) ...['lakes-detail', 'lakes-detail-highlight'],
           ];
     for (final id in ids) {
@@ -2206,9 +2306,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       final width = viewport.east >= viewport.west
           ? viewport.east - viewport.west
           : viewport.east + 360 - viewport.west;
-      final horizontalInset = width * math.min(0.3, 75 / size.width);
+      final horizontalInset = width * math.min(0.3, 56 / size.width);
       final verticalInset =
-          (viewport.north - viewport.south) * math.min(0.3, 40 / size.height);
+          (viewport.north - viewport.south) * math.min(0.3, 32 / size.height);
       final anchors = globeMode || (c.cameraPosition?.zoom ?? 0) < 3
           ? <String, (double, double)>{}
           : visibleCountryLabelAnchors(
@@ -3385,14 +3485,14 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                       color: Color(0xff47362a),
                                     ),
                                   ),
-                                  if (headerAction != null && !compact)
-                                    headerAction
-                                  else if (subtitle != null)
+                                  if (subtitle != null)
                                     Text(
                                       subtitle,
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                     ),
+                                  if (headerAction != null && !compact)
+                                    headerAction,
                                 ],
                               ),
                             ),
@@ -3494,6 +3594,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Widget build(BuildContext context) {
     final selected = state?.selected;
     final selectedLandmark = state?.selectedLandmark;
+    final selectedCapital = capitalThematicLabel(selected, russian: ru);
     final visibleSorted = [...visible]
       ..sort(
         (a, b) =>
@@ -3840,10 +3941,11 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                               widget.onExit ??
                               () => Navigator.maybePop(context),
                           globe: globeMode,
+                          showAtlasSwitch: !practice,
                           onAtlasSwitch: !practice && ready
                               ? _switchAtlas
                               : null,
-                          showProjection: !practice && state != null,
+                          showProjection: !practice,
                           onProjection:
                               projectionBusy ||
                                   (globeProjectionSupported &&
@@ -3979,7 +4081,20 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                             onPressed: () =>
                                 setState(() => countryDetailsOpen = true),
                             icon: const Icon(Icons.info_outline),
-                            label: Text(tr('Country details', 'О стране')),
+                            label: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(tr('Country details', 'О стране')),
+                                if (selectedCapital != null)
+                                  Text(
+                                    '${tr('Capital', 'Столица')}: $selectedCapital',
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(fontSize: 12),
+                                  ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -4448,13 +4563,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                                 }
                               },
                             ),
-                            subtitle: [selected.subregion ?? selected.region]
-                                .whereType<String>()
-                                .map(
-                                  (value) =>
-                                      ru ? (regionRu[value] ?? value) : value,
-                                )
-                                .firstOrNull,
+                            subtitle: [
+                              ?selectedCapital,
+                              if ((selected.subregion ?? selected.region)
+                                  case final region?)
+                                ru ? (regionRu[region] ?? region) : region,
+                            ].join(' · '),
                             leading: flags[selected.id] == null
                                 ? null
                                 : Image.memory(

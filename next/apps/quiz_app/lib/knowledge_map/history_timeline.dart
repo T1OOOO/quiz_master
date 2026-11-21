@@ -43,10 +43,10 @@ class HistoryTimeline extends StatelessWidget {
         : '$firstCentury–$lastCentury ${t("вв.", "centuries")}';
     final count = '${t("События", "Events")} · $eventCount';
     return Material(
-      color: const Color(0xfffff6e5),
+      color: const Color(0xfffcf7ed),
+      elevation: 4,
       child: LayoutBuilder(
         builder: (context, box) {
-          final compact = box.maxWidth < 580;
           final centuryIndex = (start - 1501) ~/ 100;
           String stepText(int size) {
             if (!russian) return '$size ${size == 1 ? 'year' : 'years'}';
@@ -62,10 +62,10 @@ class HistoryTimeline extends StatelessWidget {
           final options = Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Flexible(
+              Expanded(
                 child: PopupMenuButton<int>(
                   tooltip: t('Выбрать век', 'Choose century'),
-                  position: PopupMenuPosition.over,
+                  position: PopupMenuPosition.under,
                   initialValue: 1501 + centuryIndex * 100,
                   onSelected: onCentury,
                   itemBuilder: (_) => [
@@ -81,10 +81,10 @@ class HistoryTimeline extends StatelessWidget {
                   child: _TimelineOption(era),
                 ),
               ),
-              Flexible(
+              Expanded(
                 child: PopupMenuButton<int>(
                   tooltip: t('Шаг перелистывания', 'Navigation step'),
-                  position: PopupMenuPosition.over,
+                  position: PopupMenuPosition.under,
                   initialValue: step,
                   onSelected: onStep,
                   itemBuilder: (_) => [
@@ -95,121 +95,142 @@ class HistoryTimeline extends StatelessWidget {
                         child: Text(stepText(size)),
                       ),
                   ],
-                  child: _TimelineOption(
-                    '${t('Шаг', 'Step')} · ${stepText(step)}',
-                  ),
+                  child: _TimelineOption(stepText(step)),
                 ),
               ),
             ],
           );
-          final navigation = Row(
-            children: [
-              IconButton(
-                tooltip: t('Предыдущий период', 'Previous period'),
-                icon: const Icon(Icons.chevron_left),
-                onPressed: start > 1501
-                    ? () => onYear((start - step).clamp(1501, 2000))
-                    : null,
-              ),
-              Expanded(
-                flex: 3,
-                child: TextButton(
-                  key: dateButton,
-                  onPressed: openCalendar,
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                  ),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (!compact)
-                          const Icon(Icons.calendar_month_outlined, size: 18),
-                        Text(
-                          date,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        const Icon(Icons.arrow_drop_down, size: 18),
-                      ],
-                    ),
-                  ),
+          const ink = Color(0xff503a27);
+          final actionStyle = TextButton.styleFrom(
+            foregroundColor: ink,
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          );
+          Widget arrow(String label, IconData icon, VoidCallback? change) =>
+              SizedBox(
+                width: 35,
+                height: 44,
+                child: IconButton(
+                  tooltip: label,
+                  icon: Icon(icon),
+                  onPressed: change,
+                  padding: EdgeInsets.zero,
                 ),
-              ),
-              IconButton(
-                tooltip: t('Следующий период', 'Next period'),
-                icon: const Icon(Icons.chevron_right),
-                onPressed: end < 2000 ? () => onYear(end + 1) : null,
-              ),
-              if (compact)
-                IconButton(
-                  key: countryButton,
-                  tooltip: countryName,
-                  onPressed: pickCountry,
-                  icon: const Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.public, size: 18),
-                      Icon(Icons.arrow_drop_down, size: 14),
-                    ],
-                  ),
-                )
-              else
+              );
+          final navigation = DecoratedBox(
+            decoration: BoxDecoration(
+              color: const Color(0xfff1e4d0),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              children: [
+                arrow(
+                  t('Предыдущий период', 'Previous period'),
+                  Icons.chevron_left,
+                  start > 1501
+                      ? () => onYear((start - step).clamp(1501, 2000))
+                      : null,
+                ),
                 Expanded(
-                  flex: 2,
-                  child: TextButton.icon(
-                    key: countryButton,
-                    onPressed: pickCountry,
-                    icon: const Icon(Icons.public, size: 18),
-                    label: Row(
-                      children: [
-                        Flexible(
-                          child: Text(
-                            countryName,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                  child: TextButton(
+                    key: dateButton,
+                    onPressed: openCalendar,
+                    style: actionStyle,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        date,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w800,
                         ),
-                        const Icon(Icons.arrow_drop_down, size: 16),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              Expanded(
-                flex: 2,
-                child: TextButton(
-                  key: eventsButton,
-                  onPressed: openEvents,
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                  ),
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Row(
-                      children: [
-                        Text(count),
-                        const Icon(Icons.arrow_drop_down, size: 16),
-                      ],
+                arrow(
+                  t('Следующий период', 'Next period'),
+                  Icons.chevron_right,
+                  end < 2000 ? () => onYear(end + 1) : null,
+                ),
+              ],
+            ),
+          );
+          Widget dropdown(
+            Key? key,
+            IconData icon,
+            String label,
+            VoidCallback open, {
+            bool emphasized = false,
+          }) => TextButton(
+            key: key,
+            onPressed: open,
+            style: emphasized
+                ? actionStyle.copyWith(
+                    backgroundColor: const WidgetStatePropertyAll(
+                      Color(0xffefd7b5),
                     ),
+                  )
+                : actionStyle,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, size: 16),
+                const SizedBox(width: 5),
+                Flexible(
+                  child: Text(
+                    label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
+                ),
+                const Icon(Icons.expand_more, size: 16),
+              ],
+            ),
+          );
+          final filters = Row(
+            children: [
+              Expanded(
+                child: dropdown(
+                  countryButton,
+                  Icons.public,
+                  countryName,
+                  pickCountry,
                 ),
               ),
+              const SizedBox(width: 4),
+              Expanded(
+                child: dropdown(
+                  eventsButton,
+                  Icons.list_alt_outlined,
+                  count,
+                  openEvents,
+                  emphasized: true,
+                ),
+              ),
+            ],
+          );
+          final dates = Row(
+            children: [
+              Expanded(flex: 6, child: navigation),
+              const SizedBox(width: 4),
+              Expanded(flex: 5, child: options),
             ],
           );
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: box.maxWidth < 740
                 ? Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: [options, navigation],
+                    children: [dates, filters],
                   )
                 : Row(
                     children: [
-                      options,
-                      Expanded(child: navigation),
+                      Expanded(child: dates),
+                      const SizedBox(width: 16),
+                      Expanded(child: filters),
                     ],
                   ),
           );
@@ -225,9 +246,9 @@ class _TimelineOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+    padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 10),
     child: Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Flexible(
           child: Text(

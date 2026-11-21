@@ -43,6 +43,43 @@ void main() {
     );
     expect(result, {'a': (5.0, 5.0), 'b': (2.0, 5.0), 'new': (3.0, 3.0)});
   });
+  test(
+    'anchors near the edge move into the visible interior when possible',
+    () {
+      final shape = {
+        'properties': {'country_id': 'FR'},
+        'geometry': {
+          'type': 'Polygon',
+          'coordinates': [
+            [
+              [0, 3],
+              [3, 3],
+              [3, 7],
+              [0, 7],
+              [0, 3],
+            ],
+          ],
+        },
+      };
+      final labels = [
+        {
+          'properties': {'country_id': 'FR'},
+          'geometry': {
+            'coordinates': [0.2, 5],
+          },
+        },
+      ];
+      const safe = GeoViewport(west: 2, east: 8, south: 2, north: 8);
+      final anchor = visibleCountryLabelAnchors(
+        labels,
+        [shape],
+        view,
+        safeViewport: safe,
+      )['FR']!;
+      expect(anchor.$1, inInclusiveRange(2, 3));
+      expect(anchor.$2, inInclusiveRange(3, 7));
+    },
+  );
   test('keeps an antimeridian island at the edge of a world view', () {
     const world = GeoViewport(west: -180, east: 180, south: -30, north: 30);
     final point = countryLabelAnchor({
