@@ -945,7 +945,30 @@ class _Painter extends CustomPainter {
         image,
         Rect.fromLTWH(0, 0, image.width.toDouble(), image.height.toDouble()),
         const Rect.fromLTWH(0, 0, 360, 180),
-        Paint()..filterQuality = FilterQuality.medium,
+        Paint()
+          ..filterQuality = FilterQuality.medium
+          ..colorFilter = const ColorFilter.matrix([
+            0.72,
+            0,
+            0.28,
+            0,
+            9,
+            0,
+            1,
+            0,
+            0,
+            -2,
+            0.43,
+            0,
+            0.57,
+            0,
+            -18,
+            0,
+            0,
+            0,
+            1,
+            0,
+          ]),
       );
     }
     final fill = Paint()..color = const Color(0xfff3e8cc);

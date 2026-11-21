@@ -1496,8 +1496,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
           c != controller ||
           c == null ||
           !ready ||
-          !mounted)
+          !mounted) {
         return;
+      }
       try {
         final country = practice ? null : state?.selected;
         final references = (waters[country?.id] as List? ?? const [])
