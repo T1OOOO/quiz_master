@@ -308,6 +308,15 @@ void main() {
       expect(timeline.height, lessThanOrEqualTo(96));
       expect(find.byType(Slider), findsNothing);
       expect(find.text('События · 2'), findsOneWidget);
+      final century = tester.getCenter(find.text('XX век'));
+      final date = tester.getCenter(find.text('1917'));
+      final stepControl = tester.getCenter(find.text('1 год'));
+      final country = tester.getCenter(find.text('Все страны'));
+      final events = tester.getCenter(find.text('События · 2'));
+      expect(century.dx, lessThan(date.dx));
+      expect(date.dx, lessThan(stepControl.dx));
+      expect(country.dy, greaterThan(date.dy));
+      expect(events.dy, closeTo(country.dy, 1));
       for (var i = 0; i < 2; i++) {
         await tester.tap(find.byTooltip('Следующий период'));
         await tester.pump();

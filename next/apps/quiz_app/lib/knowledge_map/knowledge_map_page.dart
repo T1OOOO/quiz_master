@@ -256,6 +256,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   List<MapCountry> visible = [];
   bool visibleOpen = false;
   Map<String, dynamic>? appliedCountryLabels;
+  List<dynamic> _overviewOutlines = const [];
   String appliedThematic = 'none';
   Map<String, (double, double)> labelOverrides = {};
   bool browserOpen = false;
@@ -411,6 +412,12 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       capitals = jsonDecode(texts[1]) as Map<String, dynamic>;
       waterways = jsonDecode(texts[2]) as Map<String, dynamic>;
       countryLabels = jsonDecode(texts[3]) as Map<String, dynamic>;
+      _overviewOutlines = countries!['features'] as List;
+      final centers = visibleCountryLabelAnchors(
+        countryLabels!['features'] as List,
+        _overviewOutlines,
+        const GeoViewport(west: -180, east: 180, south: -85, north: 85),
+      );
       final facts =
           (jsonDecode(texts[4]) as Map<String, dynamic>)['countries'] as List;
       final byId = {for (final f in facts) f['id']: f};
@@ -441,6 +448,9 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       for (final feature in countryLabels!['features'] as List) {
         final p = feature['properties'] as Map<String, dynamic>;
         final f = byId[p['country_id']];
+        if (centers[p['country_id']] case final center?) {
+          feature['geometry']['coordinates'] = [center.$1, center.$2];
+        }
         // MapLibre resolves collisions in ascending sort order.
         p['label_priority'] = -((f?['area_km2'] as num?) ?? 0);
         items.add(
@@ -2310,13 +2320,15 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       final horizontalInset = width * math.min(0.3, 56 / size.width);
       final verticalInset =
           (viewport.north - viewport.south) * math.min(0.3, 32 / size.height);
-      final anchors = globeMode || (c.cameraPosition?.zoom ?? 0) < 3
+      final anchors = globeMode
           ? <String, (double, double)>{}
           : visibleCountryLabelAnchors(
               countryLabels!['features'] as List,
               features,
               viewport,
-              fullOutlines: countries!['features'] as List,
+              fullOutlines: (c.cameraPosition?.zoom ?? 0) < 4
+                  ? _overviewOutlines
+                  : countries!['features'] as List,
               previous: labelOverrides,
               safeViewport: GeoViewport(
                 west: viewport.west + horizontalInset,
@@ -2848,7 +2860,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   }) {
     final duration = MediaQuery.disableAnimationsOf(context)
         ? Duration.zero
-        : const Duration(milliseconds: 220);
+        : const Duration(milliseconds: 260);
     var returning = false;
     return Navigator.of(context).push<AtlasView>(
       PageRouteBuilder(

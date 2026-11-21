@@ -476,7 +476,6 @@ class _HistoryMapState extends State<HistoryMap> {
                 onBack: readerOpen
                     ? closeReader
                     : widget.onExit ?? () => Navigator.maybePop(context),
-                onAbout: about,
                 history: true,
                 showAtlasSwitch: widget.onWorld != null,
                 onAtlasSwitch: loaded && widget.onWorld != null
@@ -484,6 +483,16 @@ class _HistoryMapState extends State<HistoryMap> {
                     : null,
                 onProjection: loaded ? toggleProjection : null,
               ),
+            ),
+          ),
+        if (loaded && box.maxWidth >= 120 && box.maxHeight >= 116)
+          Positioned(
+            left: 12,
+            bottom: 12,
+            child: IconButton.filledTonal(
+              tooltip: t('Об источнике', 'About the data'),
+              onPressed: about,
+              icon: const Icon(Icons.info_outline, size: 20),
             ),
           ),
       ],

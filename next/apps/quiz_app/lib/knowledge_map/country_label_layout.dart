@@ -230,10 +230,9 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
         !outlines.containsKey(id)) {
       continue;
     }
-    final anchor =
-        previous[id] ??
-        ((coords[0] as num).toDouble(), (coords[1] as num).toDouble());
-    if (safeViewport?.contains(anchor.$1, anchor.$2) == true) {
+    final anchor = previous[id];
+    if (anchor != null &&
+        (safeViewport ?? viewport).contains(anchor.$1, anchor.$2)) {
       result[id] = anchor;
       continue;
     }

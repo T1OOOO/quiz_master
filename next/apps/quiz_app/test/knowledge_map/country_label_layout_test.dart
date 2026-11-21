@@ -41,7 +41,7 @@ void main() {
       previous: {'a': (5.0, 5.0), 'b': (0.5, 5.0), 'gone': (4.0, 4.0)},
       safeViewport: const GeoViewport(west: 1, east: 9, south: 1, north: 9),
     );
-    expect(result, {'a': (5.0, 5.0), 'b': (2.0, 5.0), 'new': (3.0, 3.0)});
+    expect(result, {'a': (5.0, 5.0), 'b': (2.0, 5.0), 'new': (2.0, 5.0)});
   });
   test(
     'anchors near the edge move into the visible interior when possible',
