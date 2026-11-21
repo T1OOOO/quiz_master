@@ -237,7 +237,11 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
       result[id] = anchor;
       continue;
     }
-    final point = countryLabelAnchor(outlines[id]!, viewport);
+    final outline = outlines[id]!;
+    final interior = safeViewport == null
+        ? null
+        : countryLabelAnchor(outline, safeViewport);
+    final point = interior ?? countryLabelAnchor(outline, viewport);
     if (point != null) result[id] = (point.longitude, point.latitude);
   }
   return result;

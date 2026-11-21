@@ -478,6 +478,7 @@ class _HistoryMapState extends State<HistoryMap> {
                     : widget.onExit ?? () => Navigator.maybePop(context),
                 onAbout: about,
                 history: true,
+                showAtlasSwitch: widget.onWorld != null,
                 onAtlasSwitch: loaded && widget.onWorld != null
                     ? switchToWorld
                     : null,
@@ -490,7 +491,17 @@ class _HistoryMapState extends State<HistoryMap> {
   );
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => Theme(
+    data: Theme.of(context).copyWith(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: const Color(0xff795334),
+        brightness: Theme.of(context).brightness,
+      ),
+    ),
+    child: _historyScaffold(context),
+  );
+
+  Widget _historyScaffold(BuildContext context) => Scaffold(
     body: SafeArea(
       child: FutureBuilder<(Path, List<Map>)>(
         future: base,
@@ -556,7 +567,7 @@ class _HistoryMapState extends State<HistoryMap> {
           }
 
           final map = ColoredBox(
-            color: globe ? const Color(0xff142f3a) : const Color(0xffadd6df),
+            color: globe ? const Color(0xff39362a) : const Color(0xffbdcabe),
             child: FutureBuilder<List<_Polity>>(
               future: _load(historyCentury(year)),
               builder: (context, pack) {
@@ -945,7 +956,7 @@ class _Painter extends CustomPainter {
       ..strokeJoin = StrokeJoin.round
       ..color = const Color(0xb3556254);
     final grid = Paint()
-      ..color = const Color(0x403a7e86)
+      ..color = const Color(0x40697d6a)
       ..strokeWidth = .45 / screenScale;
     for (double x = 30; x < 360; x += 30) {
       canvas.drawLine(Offset(x, 0), Offset(x, 180), grid);

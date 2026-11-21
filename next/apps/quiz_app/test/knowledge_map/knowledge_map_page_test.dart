@@ -312,6 +312,63 @@ void main() {
     );
     expect(waterFeatureId({'id': 'ne10-river-1'}), 'ne10-river-1');
   });
+  testWidgets('country click immediately shows the capital outside the panel', (
+    tester,
+  ) async {
+    late void Function(String?) select;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: KnowledgeMapPage.test(
+          bundle: MapFixtureBundle(),
+          mapBuilder: (context, onSelect) {
+            select = onSelect;
+            return const SizedBox.expand();
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    select('FR');
+    await tester.pumpAndSettle();
+    expect(find.text('Capital: Paris'), findsOneWidget);
+    expect(find.byKey(const ValueKey('country-bottom-panel')), findsNothing);
+  });
+
+  testWidgets('atlas mode switch keeps the same bounds and labels', (
+    tester,
+  ) async {
+    const header = ValueKey('atlas-header');
+    var history = false;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Align(
+          alignment: Alignment.topLeft,
+          child: StatefulBuilder(
+            builder: (context, refresh) => AtlasHeader(
+              key: header,
+              russian: true,
+              title: history ? 'Исторический атлас' : 'Атлас мира',
+              history: history,
+              globe: history,
+              onBack: () {},
+              onAtlasSwitch: () => refresh(() => history = !history),
+              onAbout: history ? () {} : null,
+            ),
+          ),
+        ),
+      ),
+    );
+    final world = tester.getRect(find.text('Мир'));
+    final size = tester.getSize(find.byKey(header));
+    await tester.tap(find.text('История'));
+    await tester.pumpAndSettle();
+    expect(tester.getSize(find.byKey(header)), size);
+    expect(tester.getRect(find.text('Мир')).center, world.center);
+    expect(find.text('История'), findsOneWidget);
+    expect(find.text('2D'), findsOneWidget);
+    expect(find.text('3D'), findsOneWidget);
+  });
+
   testWidgets('projection and back still fit beside a docked panel', (
     tester,
   ) async {
@@ -961,7 +1018,8 @@ void main() {
     expect(find.text('Languages: French, Unknown language'), findsOneWidget);
     await tester.tap(find.byTooltip('Close'));
     await tester.pumpAndSettle();
-    expect(find.textContaining('Capital:'), findsNothing);
+    expect(find.byKey(const ValueKey('country-bottom-panel')), findsNothing);
+    expect(find.text('Capital: Paris'), findsOneWidget);
     await openMapSection(tester, 'Countries');
     await tester.enterText(find.byType(TextField), 'Monaco');
     await tester.pump();
