@@ -260,6 +260,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
   Map<String, (double, double)> _countryCenters = const {};
   String appliedThematic = 'none';
   Map<String, (double, double)> labelOverrides = {};
+  GeoViewport? _labelLayoutViewport;
   bool browserOpen = false;
   bool placesOpen = false;
   String placesCategory = 'all';
@@ -330,6 +331,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
     visibleRequest++;
     visible = [];
     labelOverrides = {};
+    _labelLayoutViewport = null;
     globeMode = false;
     beforeGlobe = null;
     visibleOpen = false;
@@ -838,55 +840,6 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       );
       stage = 'country markers';
       final localizedRu = ru;
-      final countryFeatures = countryLabels!['features'] as List;
-      for (var start = 0; start < countryFeatures.length; start += 8) {
-        if (!mounted || generation != attempt || controller != c || failed) {
-          return;
-        }
-        final batch = countryFeatures.skip(start).take(8).toList();
-        final sprites = await Future.wait(
-          batch.map((feature) async {
-            final properties = feature['properties'] as Map<String, dynamic>;
-            final id = properties['country_id'] as String;
-            final encoded = flags[id] as String?;
-            final flag = encoded == null ? null : flagImageBytes(encoded);
-            final name = mapCountryName(
-              id,
-              properties[localizedRu ? 'name_ru' : 'name_en'] as String,
-              russian: localizedRu,
-            );
-            return Future.wait([
-              renderCountryMarker(
-                name: name,
-                flagBytes: flag,
-                pixelScale: 2,
-                compact: true,
-              ),
-              renderCountryMarker(
-                name: name,
-                flagBytes: flag,
-                pixelScale: 2,
-                compact: true,
-                denseCountryLabel: true,
-              ),
-            ]);
-          }),
-        );
-        if (!mounted || generation != attempt || controller != c || failed) {
-          return;
-        }
-        for (var i = 0; i < batch.length; i++) {
-          if (!mounted || generation != attempt || controller != c || failed) {
-            return;
-          }
-          final properties = batch[i]['properties'] as Map<String, dynamic>;
-          final id = properties['country_id'] as String;
-          await c.addImage('country-$id', sprites[i][0]);
-          await c.addImage('country-compact-$id', sprites[i][1]);
-          properties['sprite'] = 'country-$id';
-          properties['compact_sprite'] = 'country-compact-$id';
-        }
-      }
       await c.addGeoJsonSource('country-markers', countryLabels!);
       appliedCountryLabels =
           jsonDecode(jsonEncode(countryLabels)) as Map<String, dynamic>;
@@ -1092,11 +1045,122 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         await _restoreAtlasView(widget.initialView!);
         if (!mounted || c != controller) return;
       }
+      unawaited(_installCountryMarkers(c, attempt, localizedRu));
       unawaited(relief.install(c, belowLayerId: 'thematic-countries'));
       onCameraSettled();
     } catch (error, stack) {
       debugPrint('Knowledge map: setup failed at $stage: $error\n$stack');
       if (mounted && generation == attempt) setState(() => failed = true);
+    }
+  }
+
+  Future<void> _installCountryMarkers(
+    MapLibreMapController c,
+    int attempt,
+    bool localizedRu,
+  ) async {
+    bool current() =>
+        mounted && generation == attempt && controller == c && !failed;
+    try {
+      final bounds = await c.getVisibleRegion();
+      if (!current()) return;
+      final viewport = GeoViewport(
+        west: bounds.southwest.longitude,
+        east: bounds.northeast.longitude,
+        south: bounds.southwest.latitude,
+        north: bounds.northeast.latitude,
+      );
+      final features = (countryLabels!['features'] as List)
+          .cast<Map>()
+          .toList();
+      int visibilityRank(Map feature) {
+        final coordinates = feature['geometry']['coordinates'] as List;
+        return viewport.contains(
+              (coordinates[0] as num).toDouble(),
+              (coordinates[1] as num).toDouble(),
+            )
+            ? 0
+            : 1;
+      }
+
+      features.sort((a, b) {
+        final order = visibilityRank(a).compareTo(visibilityRank(b));
+        if (order != 0) return order;
+        return (a['properties']['label_priority'] as num).compareTo(
+          b['properties']['label_priority'] as num,
+        );
+      });
+      final awaitingPublication = <String>{};
+      const batchSize = 8;
+      for (var start = 0; start < features.length; start += batchSize) {
+        if (!current()) return;
+        final batch = features.skip(start).take(batchSize);
+        await Future.wait(
+          batch.map((feature) async {
+            final properties = feature['properties'] as Map;
+            final id = properties['country_id'] as String;
+            try {
+              final encoded = flags[id] as String?;
+              final flag = encoded == null ? null : flagImageBytes(encoded);
+              final name = mapCountryName(
+                id,
+                properties[localizedRu ? 'name_ru' : 'name_en'] as String,
+                russian: localizedRu,
+              );
+              final sprites = await Future.wait([
+                for (final dense in [false, true])
+                  renderCountryMarker(
+                    name: name,
+                    flagBytes: flag,
+                    pixelScale: 2,
+                    compact: true,
+                    denseCountryLabel: dense,
+                  ),
+              ]);
+              if (!current()) return;
+              await Future.wait([
+                c.addImage('country-$id', sprites[0]),
+                c.addImage('country-compact-$id', sprites[1]),
+              ]);
+              awaitingPublication.add(id);
+            } catch (error) {
+              if (current()) {
+                debugPrint(
+                  'Knowledge map: country marker $id unavailable: $error',
+                );
+              }
+            }
+          }),
+        );
+        if (!current()) return;
+        if (awaitingPublication.isNotEmpty &&
+            (start == 0 ||
+                awaitingPublication.length >= 32 ||
+                start + batchSize >= features.length)) {
+          thematicCommands = thematicCommands.catchError((Object _) {}).then((
+            _,
+          ) async {
+            if (!current() || appliedCountryLabels == null) return;
+            final labels = jsonDecode(
+              jsonEncode(appliedCountryLabels),
+            ) as Map<String, dynamic>;
+            for (final feature in labels['features'] as List) {
+              final properties = feature['properties'] as Map;
+              final id = properties['country_id'] as String;
+              if (!awaitingPublication.contains(id)) continue;
+              properties['sprite'] ??= 'country-$id';
+              properties['compact_sprite'] = 'country-compact-$id';
+            }
+            await c.setGeoJsonSource('country-markers', labels);
+            if (current()) appliedCountryLabels = labels;
+          });
+          await thematicCommands;
+          awaitingPublication.clear();
+        }
+        await Future<void>.delayed(Duration.zero);
+      }
+    } catch (error) {
+      debugPrint('Knowledge map: country markers unavailable: $error');
     }
   }
 
@@ -2321,6 +2385,17 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       final horizontalInset = width * math.min(0.3, 56 / size.width);
       final verticalInset =
           (viewport.north - viewport.south) * math.min(0.3, 32 / size.height);
+      final checkpoint = _labelLayoutViewport;
+      final recenter =
+          checkpoint != null && viewport.changedSubstantiallySince(checkpoint);
+      void commitLayoutViewport() {
+        if (globeMode) {
+          _labelLayoutViewport = null;
+        } else if (checkpoint == null || recenter) {
+          _labelLayoutViewport = viewport;
+        }
+      }
+
       final anchors = globeMode
           ? <String, (double, double)>{}
           : visibleCountryLabelAnchors(
@@ -2331,6 +2406,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
                   ? _overviewOutlines
                   : countries!['features'] as List,
               previous: {..._countryCenters, ...labelOverrides},
+              recenter: recenter,
               safeViewport: GeoViewport(
                 west: viewport.west + horizontalInset,
                 east: viewport.west + width - horizontalInset,
@@ -2341,7 +2417,10 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
       anchors.removeWhere((id, point) => point == _countryCenters[id]);
       // Updating GeoJSON schedules another idle callback. Leave stable labels
       // in place so MapLibre can finish its collision and fade pass.
-      if (mapEquals(anchors, labelOverrides)) return;
+      if (mapEquals(anchors, labelOverrides)) {
+        commitLayoutViewport();
+        return;
+      }
       thematicCommands = thematicCommands.catchError((Object _) {}).then((
         _,
       ) async {
@@ -2369,6 +2448,7 @@ class _KnowledgeMapPageState extends State<KnowledgeMapPage> {
         if (current()) {
           appliedCountryLabels = labels;
           labelOverrides = anchors;
+          commitLayoutViewport();
         }
       });
       await thematicCommands;

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
@@ -139,6 +140,10 @@ class _HistoryMapState extends State<HistoryMap> {
   @override
   void initState() {
     super.initState();
+    // Start the first century alongside the base map. Its builder reports errors.
+    unawaited(
+      _load(historyCentury(year)).then<void>((_) {}, onError: (Object _) {}),
+    );
     loadHistoryRelief().then(
       (image) {
         if (!mounted) {
@@ -153,26 +158,26 @@ class _HistoryMapState extends State<HistoryMap> {
   }
 
   Future<(Path, List<Map>)> _loadBase() async {
-    final texts = await Future.wait(
-      [
+    final texts = await Future.wait([
+      for (final name in [
         'historical_land',
         'history_events',
         'historical_polity_names_ru',
-      ].map((s) => rootBundle.loadString('$_root$s.json')),
-    );
-    if (countryNames.isEmpty) {
-      final raw = jsonDecode(
-        await rootBundle.loadString('assets/quizipedia/country_facts.json'),
-      );
+      ])
+        rootBundle.loadString('$_root$name.json'),
+      rootBundle.loadString('${_root}country_labels.geojson'),
+      if (countryNames.isEmpty)
+        rootBundle.loadString('assets/quizipedia/country_facts.json'),
+    ]);
+    if (texts.length == 5) {
+      final raw = jsonDecode(texts[4]);
       countryNames = [
         for (final r in raw['countries'])
           MapCountry(id: r['id'], nameRu: r['name_ru'], nameEn: r['name_en']),
       ];
     }
     polityNames = jsonDecode(texts[2]) as Map<String, dynamic>;
-    final labels = jsonDecode(
-      await rootBundle.loadString('${_root}country_labels.geojson'),
-    );
+    final labels = jsonDecode(texts[3]);
     for (final feature in labels['features']) {
       final xy = feature['geometry']['coordinates'];
       regionAnchors[feature['properties']['country_id']] = Offset(
@@ -590,10 +595,7 @@ class _HistoryMapState extends State<HistoryMap> {
                     ),
                   );
                 }
-                if (!pack.hasData) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                updateVisible(pack.data!);
+                updateVisible(pack.data ?? const []);
                 final visible = visiblePolities;
                 return Stack(
                   children: [

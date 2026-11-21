@@ -6,6 +6,52 @@ import 'dart:io';
 
 void main() {
   const view = GeoViewport(west: 0, east: 10, south: 0, north: 10);
+  test(
+    'keeps a visible anchor on a small pan and recenters after a large one',
+    () {
+      final label = {
+        'properties': {'country_id': 'FR'},
+        'geometry': {
+          'coordinates': [5, 5],
+        },
+      };
+      final outline = {
+        'properties': {'country_id': 'FR'},
+        'geometry': {
+          'type': 'Polygon',
+          'coordinates': [
+            [
+              [0, 2],
+              [12, 2],
+              [12, 8],
+              [0, 8],
+              [0, 2],
+            ],
+          ],
+        },
+      };
+      const small = GeoViewport(west: 0.5, east: 10.5, south: 0, north: 10);
+      const large = GeoViewport(west: 4, east: 14, south: 0, north: 10);
+      Map<String, (double, double)> labelsIn(GeoViewport next) =>
+          visibleCountryLabelAnchors(
+            [label],
+            [outline],
+            next,
+            previous: const {'FR': (5, 5)},
+            safeViewport: next,
+            recenter: next.changedSubstantiallySince(view),
+          );
+      expect(labelsIn(small)['FR'], (5.0, 5.0));
+      expect(labelsIn(large)['FR'], (8.0, 5.0));
+    },
+  );
+
+  test('a small pan across the date line does not reset anchors', () {
+    const previous = GeoViewport(west: 167, east: -173, south: 0, north: 15);
+    const next = GeoViewport(west: 172, east: -168, south: 0, north: 15);
+    expect(next.changedSubstantiallySince(previous), isFalse);
+  });
+
   test('keeps visible anchors until they approach the viewport edge', () {
     final labels = [
       for (final id in ['a', 'b', 'new'])

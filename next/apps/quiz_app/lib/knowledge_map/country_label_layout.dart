@@ -11,6 +11,20 @@ class GeoViewport {
   bool contains(double lon, double lat) =>
       lat >= south && lat <= north && _x(lon) >= 0 && _x(lon) <= _width;
   double get _width => east >= west ? east - west : east + 360 - west;
+  bool changedSubstantiallySince(GeoViewport previous) {
+    const change = .25;
+    final height = north - south;
+    final previousHeight = previous.north - previous.south;
+    final moveX = _normalize(
+      west + _width / 2 - previous.west - previous._width / 2,
+    ).abs();
+    final moveY = ((south + north - previous.south - previous.north) / 2).abs();
+    return moveX > previous._width * change ||
+        moveY > previousHeight * change ||
+        (_width - previous._width).abs() > previous._width * change ||
+        (height - previousHeight).abs() > previousHeight * change;
+  }
+
   double _x(double lon) {
     var x = lon;
     while (x < west) {
@@ -199,6 +213,7 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
   List<dynamic>? fullOutlines,
   GeoViewport? safeViewport,
   Map<String, (double, double)> previous = const {},
+  bool recenter = false,
 }) {
   final outlines = <String, Map>{};
   for (final item in visible) {
@@ -231,8 +246,9 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
       continue;
     }
     final anchor = previous[id];
-    if (anchor != null &&
-        safeViewport?.contains(anchor.$1, anchor.$2) == true) {
+    final fits =
+        anchor != null && safeViewport?.contains(anchor.$1, anchor.$2) == true;
+    if (fits && !recenter) {
       result[id] = anchor;
       continue;
     }
@@ -241,7 +257,16 @@ Map<String, (double, double)> visibleCountryLabelAnchors(
         ? null
         : countryLabelAnchor(outline, safeViewport);
     final point = interior ?? countryLabelAnchor(outline, viewport);
-    if (point != null) result[id] = (point.longitude, point.latitude);
+    if (fits &&
+        (point == null ||
+            (_normalize(point.longitude - anchor.$1).abs() <
+                    viewport._width * .08 &&
+                (point.latitude - anchor.$2).abs() <
+                    (viewport.north - viewport.south) * .08))) {
+      result[id] = anchor;
+    } else if (point != null) {
+      result[id] = (point.longitude, point.latitude);
+    }
   }
   return result;
 }
